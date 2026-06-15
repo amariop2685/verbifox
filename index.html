@@ -188,6 +188,8 @@
   /* Dibujos de acción (SVG) */
   .dibujo{width:120px; height:120px; margin:6px auto 4px; animation:flota 3s ease-in-out infinite;}
   .dibujo svg{width:100%; height:100%; display:block;}
+  .dibujo-foto{width:150px; height:150px; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,.1);}
+  .dibujo-foto img{width:100%; height:100%; object-fit:contain; display:block;}
 
   /* ===== Teléfonos ===== */
   @media (max-width:600px){
@@ -524,8 +526,17 @@ const DIBUJOS = {
   can:_svg('<path d="M26 66 q2 -24 24 -24 l0 12 q-12 0 -12 12 z" fill="#fcd34d" stroke="#d97706" stroke-width="3"/><path d="M50 42 q16 0 16 14 q0 12 -12 12 l0 -12 q4 0 4 -4 q0 -10 -8 -10 z" fill="#fbbf24" stroke="#d97706" stroke-width="3"/><circle cx="52" cy="54" r="5" fill="#f59e0b"/>'),
   catch:_svg('<circle cx="60" cy="32" r="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/><line x1="70" y1="20" x2="74" y2="16" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/><path d="M30 78 q-8 -2 -8 -14 q0 -14 12 -14 q2 -8 8 -4 q4 -6 8 0 q6 -2 6 6 l0 8 q0 14 -14 16 z" fill="#a16207" stroke="#78350f" stroke-width="2"/>')
 };
-function imagenInf(inf){ return DIBUJOS[inf] ? `<div class="dibujo">${DIBUJOS[inf]}</div>` : ''; }
-function imagenDe(v){ return DIBUJOS[v.inf] ? `<div class="dibujo">${DIBUJOS[v.inf]}</div>` : `<div class="emoji-grande">${v.emoji}</div>`; }
+// Fotos/ilustraciones reales (archivos en img/). Tienen prioridad sobre los dibujos SVG.
+const IMG = { buy:'img/buy.jpg', hold:'img/hold.jpg', catch:'img/catch.jpg', build:'img/build.jpg', bring:'img/bring.jpg', go:'img/go.jpg' };
+function tieneImagen(inf){ return !!(IMG[inf] || DIBUJOS[inf]); }
+function imagenInf(inf){
+  if(IMG[inf]) return `<div class="dibujo dibujo-foto"><img src="${IMG[inf]}" alt="${inf}" loading="lazy"></div>`;
+  return DIBUJOS[inf] ? `<div class="dibujo">${DIBUJOS[inf]}</div>` : '';
+}
+function imagenDe(v){
+  if(IMG[v.inf]) return `<div class="dibujo dibujo-foto"><img src="${IMG[v.inf]}" alt="${v.inf}" loading="lazy"></div>`;
+  return DIBUJOS[v.inf] ? `<div class="dibujo">${DIBUJOS[v.inf]}</div>` : `<div class="emoji-grande">${v.emoji}</div>`;
+}
 const NUM_PREGUNTAS = 12;
 
 /* ====== ESTADO ====== */
@@ -936,7 +947,7 @@ function pintarPregunta(){
 
   const cuerpo = document.getElementById('q-cuerpo');
   let html = "";
-  if(p.verboInf && DIBUJOS[p.verboInf]) html += imagenInf(p.verboInf);
+  if(p.verboInf && tieneImagen(p.verboInf)) html += imagenInf(p.verboInf);
   else if(p.emoji) html += `<div class="emoji-grande">${p.emoji}</div>`;
 
   if(p.render==="abierta"){
@@ -1093,7 +1104,7 @@ function renderAhorcado(){
     return `<button class="${cls}" ${dis} onclick="adivinar('${l}')">${l}</button>`;
   }).join('');
   document.getElementById('q-cuerpo').innerHTML = `
-    ${a.infinitivo&&DIBUJOS[a.infinitivo]?imagenInf(a.infinitivo):(a.emoji?`<div class="emoji-pista">${a.emoji}</div>`:'')}
+    ${a.infinitivo&&tieneImagen(a.infinitivo)?imagenInf(a.infinitivo):(a.emoji?`<div class="emoji-pista">${a.emoji}</div>`:'')}
     ${a.formaNombre?`<div class="forma-pedida">Escribe el <b>${a.formaNombre.toUpperCase()}</b> de "${a.infinitivo}"</div>`:''}
     ${svgAhorcado(a.errores)}
     <div class="vidas">❤️ Vidas: ${a.max - a.errores} / ${a.max}</div>
