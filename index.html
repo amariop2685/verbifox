@@ -1034,7 +1034,7 @@ function evaluar(ok, refuerzo, puntos){
   quiz.contestada=true;
   const fb = document.getElementById('q-feedback');
   if(ok){
-    const gana = Math.max(2, (puntos||10) - (quiz.pistasUsadas||0)*3);
+    const gana = (puntos||10); // las pistas NO restan puntos
     quiz.puntos += gana; quiz.correctas++;
     fb.textContent = elegir(["¡Muy bien! 🎉","¡Excelente! 🌟","¡Correcto! 👏","¡Genial! 🚀"]);
     fb.className="feedback bien";
@@ -1114,11 +1114,10 @@ function adivinar(l){
 function finalizarAhorcado(gano){
   const a = ahorcado;
   // Más puntos si descubre la palabra (y aún más si le quedan vidas). Si no la descubre: 0.
-  const base = gano ? 10 + (a.max - a.errores) : 0;
-  const neto = gano ? Math.max(2, base - (quiz.pistasUsadas||0)*3) : 0;
+  const base = gano ? 10 + (a.max - a.errores) : 0; // las pistas NO restan puntos
   evaluar(gano, a.palabra, base);
   if(gano){
-    document.getElementById('q-feedback').innerHTML = `¡Descubriste la palabra! 🎉 <b>+${neto} ⭐</b>`;
+    document.getElementById('q-feedback').innerHTML = `¡Descubriste la palabra! 🎉 <b>+${base} ⭐</b>`;
   }
   document.getElementById('q-pista').disabled = true;
 }
