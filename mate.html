@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>VerbiFox Mate ⚽ · Matemáticas para niños</title>
+<style>
+  :root{
+    --azul:#3b82f6; --azul-osc:#2563eb; --verde:#22c55e; --verde-osc:#16a34a;
+    --rojo:#ef4444; --amarillo:#facc15; --morado:#a855f7; --naranja:#fb923c;
+    --tarjeta:#fff; --texto:#1e293b; --suave:#64748b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:linear-gradient(135deg,#065f46,#047857,#0e7490);
+    background-size:400% 400%; animation:bg 18s ease infinite;
+    min-height:100vh; min-height:100dvh; color:var(--texto);
+    display:flex; align-items:center; justify-content:center;
+    padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+  }
+  @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .app{width:100%; max-width:560px; background:var(--tarjeta); border-radius:26px; padding:22px; box-shadow:0 25px 60px rgba(0,0,0,.4); position:relative; overflow:hidden;}
+  .screen{display:none; animation:pop .35s ease;}
+  .screen.activa{display:block;}
+  @keyframes pop{from{opacity:0; transform:scale(.96)}to{opacity:1; transform:scale(1)}}
+  @keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  h1{font-size:1.7rem; text-align:center; color:var(--verde-osc); line-height:1.15;}
+  h2{font-size:1.35rem; text-align:center; color:var(--morado); margin-bottom:12px;}
+  p.sub{text-align:center; color:var(--suave); margin:6px 0 18px;}
+  .emoji-grande{font-size:3.6rem; text-align:center; margin:8px 0; animation:flota 3s ease-in-out infinite;}
+
+  input[type=text]{width:100%; padding:15px; font-size:1.2rem; border:3px solid #e2e8f0; border-radius:14px; text-align:center; outline:none; margin-bottom:12px;}
+  input[type=text]:focus{border-color:var(--verde);}
+
+  .btn{display:block; width:100%; padding:16px; font-size:1.15rem; font-weight:700; border:none; border-radius:15px; cursor:pointer; color:#fff; margin-bottom:11px; transition:transform .12s; box-shadow:0 6px 0 rgba(0,0,0,.18);}
+  .btn:active{transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,.18);}
+  .btn-verde{background:var(--verde);} .btn-azul{background:var(--azul);} .btn-morado{background:var(--morado);}
+  .btn-naranja{background:var(--naranja);} .btn-rojo{background:var(--rojo);} .btn-amarillo{background:var(--amarillo); color:#7c4a00;}
+  .btn-gris{background:#94a3b8; box-shadow:0 6px 0 #64748b;} .btn-pequeno{padding:10px 14px; font-size:.95rem; width:auto; display:inline-block;}
+  .btn:disabled{opacity:.5; box-shadow:0 6px 0 #cbd5e1; background:#e2e8f0; color:#94a3b8; cursor:default;}
+
+  .barra-sup{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:8px;}
+  .pill{padding:8px 14px; border-radius:50px; font-weight:800; font-size:1rem; white-space:nowrap;}
+  .pill-pts{background:var(--amarillo); color:#7c4a00;} .pill-sob{background:var(--morado); color:#fff;}
+  .progreso{color:var(--suave); font-weight:700;}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:11px;}
+  .op-btn{padding:18px 8px; border-radius:16px; border:none; color:#fff; font-weight:800; font-size:1.05rem; cursor:pointer; box-shadow:0 5px 0 rgba(0,0,0,.18);}
+  .op-btn:active{transform:translateY(3px); box-shadow:0 2px 0 rgba(0,0,0,.18);}
+  .op-btn .ic{display:block; font-size:1.8rem; margin-bottom:4px;}
+
+  .niv-btn{display:flex; align-items:center; justify-content:space-between; padding:16px; border-radius:14px; border:3px solid #e2e8f0; background:#fff; font-weight:800; font-size:1.1rem; color:var(--texto); cursor:pointer; margin-bottom:10px;}
+  .niv-btn .est{color:var(--amarillo); letter-spacing:1px;}
+  .niv-btn.bloq{opacity:.5; cursor:default;}
+
+  .mate-op{font-size:3rem; font-weight:800; text-align:center; color:var(--azul-osc); margin:14px 0;}
+  .mate-prob{font-size:1.3rem; text-align:center; line-height:1.5; color:var(--texto); margin:14px 0; font-weight:600;}
+  .mate-resp{min-height:64px; border:3px dashed var(--verde); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:2.2rem; font-weight:800; color:var(--verde-osc); margin-bottom:14px; background:#f0fdf4;}
+  .teclado-num{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+  .tn{padding:16px 0; font-size:1.5rem; font-weight:800; border:none; border-radius:14px; background:#eef2ff; color:var(--azul-osc); cursor:pointer; box-shadow:0 4px 0 #c7d2fe;}
+  .tn:active{transform:translateY(3px); box-shadow:0 1px 0 #c7d2fe;}
+  .tn-c{background:#fee2e2; color:#b91c1c; box-shadow:0 4px 0 #fecaca;}
+  .tn-ok{background:var(--verde); color:#fff; box-shadow:0 4px 0 var(--verde-osc);}
+  .feedback{text-align:center; font-size:1.3rem; font-weight:800; min-height:30px; margin:10px 0;}
+  .feedback.bien{color:var(--verde-osc);} .feedback.mal{color:var(--rojo);}
+
+  .resultado-num{font-size:3.4rem; text-align:center; font-weight:800; color:var(--verde-osc);}
+  .estrellas{font-size:2.2rem; text-align:center;}
+  .premio{background:#faf5ff; border:3px dashed var(--morado); border-radius:16px; padding:14px; text-align:center; font-weight:800; color:var(--morado); margin:12px 0;}
+
+  /* Sobre / cromos */
+  .sobre-grande{font-size:5rem; text-align:center; cursor:pointer; animation:flota 2.5s ease-in-out infinite;}
+  .cromos-fila{display:grid; grid-template-columns:repeat(auto-fit,minmax(82px,1fr)); gap:10px; margin:14px 0;}
+  .cromo{width:100%; animation:pop .4s ease backwards;}
+  .cromo svg{width:100%; display:block; border-radius:10px;}
+  .cromo .nuevo{text-align:center; font-size:.7rem; font-weight:800; color:var(--rojo);}
+  .album-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(78px,1fr)); gap:9px; margin-top:8px;}
+  .album-cel svg{width:100%; display:block; border-radius:8px;}
+  .album-cel.falta{opacity:1;}
+  .album-info{text-align:center; color:var(--suave); font-weight:700; margin-bottom:8px;}
+  .mini{text-align:center; color:var(--suave); font-size:.85rem; margin-top:8px;}
+  .confeti{position:fixed; top:-10px; font-size:1.5rem; pointer-events:none; animation:caer linear forwards; z-index:99;}
+  @keyframes caer{to{transform:translateY(105vh) rotate(540deg); opacity:0;}}
+
+  @media (max-width:600px){
+    .app{padding:18px 15px;} body{align-items:flex-start;}
+    .mate-op{font-size:2.5rem;} .mate-prob{font-size:1.15rem;}
+    .tn{padding:15px 0; font-size:1.4rem;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- BIENVENIDA -->
+  <section id="s-bien" class="screen activa">
+    <div class="emoji-grande">⚽🦊</div>
+    <h1>VerbiFox Mate</h1>
+    <p style="text-align:center;color:var(--morado);font-weight:800;margin:-2px 0 8px;">Matemáticas y figuritas del mundial</p>
+    <p class="sub">Escribe tu nombre para empezar</p>
+    <input type="text" id="nombre" placeholder="Tu nombre..." autocomplete="off">
+    <button class="btn btn-verde" onclick="empezar()">¡Jugar! ⚽</button>
+  </section>
+
+  <!-- MENÚ -->
+  <section id="s-menu" class="screen">
+    <div class="barra-sup">
+      <span class="pill pill-pts" id="m-pts">⭐ 0</span>
+      <span class="pill pill-sob" id="m-sob">✉️ 0</span>
+    </div>
+    <h2 id="m-titulo">¿Qué practicamos?</h2>
+    <div class="grid2" style="margin-bottom:11px;">
+      <button class="op-btn" style="background:#22c55e" onclick="verNiveles('suma')"><span class="ic">➕</span>Sumar</button>
+      <button class="op-btn" style="background:#3b82f6" onclick="verNiveles('resta')"><span class="ic">➖</span>Restar</button>
+      <button class="op-btn" style="background:#f59e0b" onclick="verNiveles('multi')"><span class="ic">✖️</span>Multiplicar</button>
+      <button class="op-btn" style="background:#a855f7" onclick="verNiveles('division')"><span class="ic">➗</span>Dividir</button>
+      <button class="op-btn" style="background:#ec4899" onclick="verNiveles('vueltos')"><span class="ic">💰</span>Vueltos</button>
+      <button class="op-btn" style="background:#14b8a6" onclick="verNiveles('fracciones')"><span class="ic">🍕</span>Fracciones</button>
+    </div>
+    <button class="btn btn-morado" id="m-abrir" onclick="irSobre()" style="display:none;"></button>
+    <button class="btn btn-amarillo" onclick="verAlbum()">📔 Mi álbum de cromos</button>
+    <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
+    <button class="btn btn-gris btn-pequeno" style="margin:6px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
+  </section>
+
+  <!-- NIVELES -->
+  <section id="s-niv" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')">⬅ Menú</button>
+      <span class="pill pill-sob" id="n-sob">✉️ 0</span>
+    </div>
+    <h2 id="n-titulo">Niveles</h2>
+    <p class="sub" id="n-sub">Domina un nivel (7 de 8) y ganas un sobre 🎁</p>
+    <div id="n-lista"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="s-quiz" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-niv')">⬅</button>
+      <span class="progreso" id="q-prog">1/8</span>
+      <span class="pill pill-pts" id="q-aciertos">✅ 0</span>
+    </div>
+    <div id="q-cuerpo"></div>
+    <div class="mate-resp" id="q-resp">_</div>
+    <div class="feedback" id="q-feedback"></div>
+    <div class="teclado-num" id="q-teclado"></div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="s-res" class="screen">
+    <div class="emoji-grande" id="r-emoji">⚽</div>
+    <h2 id="r-titulo">¡Ronda terminada!</h2>
+    <div class="estrellas" id="r-est"></div>
+    <div class="resultado-num" id="r-num">0/8</div>
+    <p class="sub" id="r-pts"></p>
+    <div id="r-premio"></div>
+    <button class="btn btn-morado" id="r-abrir" onclick="irSobre()" style="display:none;">🎁 ¡Abrir mi sobre!</button>
+    <button class="btn btn-verde" onclick="repetirRonda()">🔁 Otra ronda</button>
+    <button class="btn btn-gris btn-pequeno" style="margin:0 auto;" onclick="mostrar('s-menu')">Menú</button>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="s-sobre" class="screen">
+    <h2 id="so-titulo">¡Te ganaste un sobre! 🎉</h2>
+    <div id="so-cuerpo"></div>
+  </section>
+
+  <!-- ALBUM -->
+  <section id="s-album" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')">⬅ Menú</button>
+      <span class="pill pill-sob" id="a-sob">✉️ 0</span>
+    </div>
+    <h2>📔 Mi álbum</h2>
+    <p class="album-info" id="a-info"></p>
+    <div class="album-grid" id="a-grid"></div>
+  </section>
+
+</div>
+
+<script>
+/* ====== CROMOS (originales, estilo mundial — NO Panini) ====== */
+const _animales=['🦊','🦁','🐯','🐻','🐼','🐸','🐵','🦅','🐺','🦈','🐲','🦒','🐘','🦏','🐢','🦦','🐊','🦌','🐗','🦔','🐅','🐙','🦛','🦘'];
+const _paises=['Argentina','Brasil','España','México','Francia','Inglaterra','Alemania','Italia','Portugal','Uruguay','Colombia','Japón','Croacia','Holanda','Bélgica','Senegal','Marruecos','Corea','Canadá','EE.UU.','Ecuador','Chile','Perú','Ghana'];
+const _colores=['#1d4ed8','#dc2626','#ca8a04','#7c3aed','#059669','#0ea5e9','#db2777','#0d9488','#e11d48','#4f46e5','#16a34a','#b45309'];
+const _nombres=['El Veloz','La Muralla','El Mago','El Capitán','El Tanque','El Rayo','El Crack','El Pulpo','La Joya','El Gigante','El Tornado','El Fénix'];
+const CROMOS = _paises.map((p,i)=>({ id:i, pais:p, emoji:_animales[i%_animales.length], color:_colores[i%_colores.length], nombre:_nombres[i%_nombres.length], num:(i*7%29)+1, rareza:(i<14?'comun':i<21?'raro':'dorado') }));
+function cromoSVG(c){
+  const oro=c.rareza==='dorado', raro=c.rareza==='raro';
+  const borde = oro?'#fbbf24':raro?'#e5e7eb':'#ffffff';
+  const bw = oro?5:3;
+  return `<svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2.5" y="2.5" width="95" height="135" rx="12" fill="${c.color}" stroke="${borde}" stroke-width="${bw}"/>
+    <rect x="9" y="11" width="82" height="66" rx="8" fill="#ffffff" opacity="0.22"/>
+    <text x="50" y="62" font-size="44" text-anchor="middle">${c.emoji}</text>
+    <text x="50" y="98" font-size="9" text-anchor="middle" fill="#fff" font-weight="bold">${c.pais.toUpperCase()}</text>
+    <text x="50" y="113" font-size="7.5" text-anchor="middle" fill="#fff" opacity="0.9">${c.nombre}</text>
+    <circle cx="80" cy="22" r="11" fill="#fff"/><text x="80" y="26.5" font-size="12" text-anchor="middle" font-weight="bold" fill="${c.color}">${c.num}</text>
+    ${oro?'<text x="16" y="27" font-size="15">✨</text>':''}
+  </svg>`;
+}
+function cromoSilueta(c){
+  return `<svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2.5" y="2.5" width="95" height="135" rx="12" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="3"/>
+    <text x="50" y="86" font-size="46" text-anchor="middle" fill="#94a3b8" font-weight="bold">?</text>
+    <text x="50" y="112" font-size="7.5" text-anchor="middle" fill="#94a3b8">${c.pais}</text>
+  </svg>`;
+}
+
+/* ====== ESTADO ====== */
+let nombre="", datos=null, ronda=null, sobreVista=[];
+function clave(){ return "mate_"+nombre.toLowerCase(); }
+function cargar(){ try{ datos=JSON.parse(localStorage.getItem(clave())); }catch(e){ datos=null; }
+  if(!datos) datos={ puntos:0, sobres:0, album:[], prog:{suma:1,resta:1,multi:1,division:1,vueltos:1,fracciones:1}, dominado:{} };
+  ['suma','resta','multi','division','vueltos','fracciones'].forEach(o=>{ if(!datos.prog[o]) datos.prog[o]=1; });
+}
+function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }catch(e){} }
+
+/* ====== UTIL ====== */
+function mostrar(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('activa')); document.getElementById(id).classList.add('activa'); }
+function rnd(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+function baraja(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function confeti(){ for(let i=0;i<14;i++){ const c=document.createElement('div'); c.className='confeti'; c.textContent=['⚽','🎉','⭐','✨','🏆','🥅'][i%6]; c.style.left=Math.random()*100+'vw'; c.style.animationDuration=(1+Math.random())+'s'; document.body.appendChild(c); setTimeout(()=>c.remove(),2200);} }
+function lluvia(){ for(let k=0;k<5;k++) setTimeout(confeti,k*250); }
+
+/* ====== INICIO ====== */
+function empezar(){
+  const n=document.getElementById('nombre').value.trim();
+  if(!n){ document.getElementById('nombre').focus(); return; }
+  nombre=n.charAt(0).toUpperCase()+n.slice(1);
+  cargar();
+  document.getElementById('m-titulo').textContent="¿Qué practicamos, "+nombre+"?";
+  irMenu();
+}
+function cambiarJugador(){ document.getElementById('nombre').value=""; mostrar('s-bien'); }
+function irMenu(){
+  document.getElementById('m-pts').textContent="⭐ "+datos.puntos;
+  document.getElementById('m-sob').textContent="✉️ "+datos.sobres;
+  const ab=document.getElementById('m-abrir');
+  if(datos.sobres>0){ ab.style.display='block'; ab.textContent="🎁 Abrir sobre ("+datos.sobres+")"; } else ab.style.display='none';
+  mostrar('s-menu');
+}
+
+/* ====== NIVELES ====== */
+const OPS={ suma:{nombre:'Sumar ➕'}, resta:{nombre:'Restar ➖'}, multi:{nombre:'Multiplicar ✖️'}, division:{nombre:'Dividir ➗'}, vueltos:{nombre:'Vueltos 💰'}, fracciones:{nombre:'Fracciones 🍕'} };
+const NIV_NOMBRE=['Fácil','Medio','Difícil'];
+let opActual=null;
+function verNiveles(op){
+  opActual=op;
+  document.getElementById('n-titulo').textContent=OPS[op].nombre;
+  document.getElementById('n-sob').textContent="✉️ "+datos.sobres;
+  const lista=document.getElementById('n-lista'); lista.innerHTML="";
+  for(let L=1;L<=3;L++){
+    const desbloq = L<=datos.prog[op];
+    const dom = datos.dominado[op+'-'+L];
+    const est = dom ? "⭐⭐⭐" : "";
+    if(desbloq){
+      lista.innerHTML += `<div class="niv-btn" onclick="iniciarRonda('${op}',${L})"><span>${L}. ${NIV_NOMBRE[L-1]}</span><span class="est">${est||'▶'}</span></div>`;
+    } else {
+      lista.innerHTML += `<div class="niv-btn bloq"><span>${L}. ${NIV_NOMBRE[L-1]}</span><span>🔒</span></div>`;
+    }
+  }
+  mostrar('s-niv');
+}
+
+/* ====== GENERADORES ====== */
+function genPregunta(op,L){
+  if(op==='suma'){ const m=[10,25,60][L-1]; const a=rnd(1,m),b=rnd(1,m); return {op:`${a} + ${b}`, r:a+b}; }
+  if(op==='resta'){ const m=[10,25,60][L-1]; const a=rnd(2,m),b=rnd(0,a); return {op:`${a} − ${b}`, r:a-b}; }
+  if(op==='multi'){ const m=[5,10,12][L-1]; const a=rnd(2,m),b=rnd(2,m); return {op:`${a} × ${b}`, r:a*b}; }
+  if(op==='division'){ const m=[5,10,12][L-1]; const b=rnd(2,m),q=rnd(2,m); return {op:`${b*q} ÷ ${b}`, r:q}; }
+  if(op==='vueltos'){
+    const precio=[rnd(1,9)*5, rnd(3,19)*5, rnd(10,39)*5][L-1];
+    const pago=Math.ceil((precio+1)/(L>=2?50:10))*(L>=2?50:10) + (L===3?rnd(0,1)*50:0);
+    const cosas=['un jugo','una pelota','un lápiz','un helado','unas galletas','un sticker','un sándwich'];
+    return {prob:`Compras ${cosas[rnd(0,cosas.length-1)]} de <b>$${precio}</b>.<br>Pagas con <b>$${pago}</b>.<br>¿Cuánto te dan de vuelto?`, r:pago-precio};
+  }
+  // fracciones: fracción de una cantidad (respuesta numérica)
+  const denom = L===1?[2,4][rnd(0,1)] : L===2?[2,3,4,5][rnd(0,3)] : [3,4,5,6][rnd(0,3)];
+  const N = denom*rnd(2,L===3?9:6);
+  const num = L===1?1:rnd(1,denom-1);
+  return {prob:`¿Cuánto es <b>${num}/${denom}</b> de <b>${N}</b>?`, r:num*(N/denom)};
+}
+
+/* ====== RONDA ====== */
+const RONDA_N=8, META=7; // dominar = 7 de 8
+function iniciarRonda(op,L){
+  ronda={op,L,i:0,aciertos:0,resp:"",contestada:false};
+  document.getElementById('q-teclado').innerHTML =
+    [1,2,3,4,5,6,7,8,9].map(n=>`<button class="tn" onclick="tecla('${n}')">${n}</button>`).join('') +
+    `<button class="tn tn-c" onclick="tecla('C')">⌫</button>` +
+    `<button class="tn" onclick="tecla('0')">0</button>` +
+    `<button class="tn tn-ok" onclick="comprobar()">✓</button>`;
+  mostrar('s-quiz');
+  pintarPregunta();
+}
+function pintarPregunta(){
+  ronda.contestada=false; ronda.resp="";
+  ronda.actual=genPregunta(ronda.op,ronda.L);
+  document.getElementById('q-prog').textContent=(ronda.i+1)+"/"+RONDA_N;
+  document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
+  document.getElementById('q-feedback').textContent="";
+  document.getElementById('q-feedback').className="feedback";
+  const cuerpo=document.getElementById('q-cuerpo');
+  cuerpo.innerHTML = ronda.actual.op ? `<div class="mate-op">${ronda.actual.op} = ?</div>` : `<div class="mate-prob">${ronda.actual.prob}</div>`;
+  pintarResp();
+}
+function pintarResp(){ document.getElementById('q-resp').textContent = ronda.resp===""?"_":ronda.resp; }
+function tecla(t){
+  if(ronda.contestada) return;
+  if(t==='C'){ ronda.resp=ronda.resp.slice(0,-1); }
+  else if(ronda.resp.length<5){ ronda.resp+=t; }
+  pintarResp();
+}
+function comprobar(){
+  if(ronda.contestada) return;
+  if(ronda.resp===""){ return; }
+  ronda.contestada=true;
+  const ok = parseInt(ronda.resp,10)===ronda.actual.r;
+  const fb=document.getElementById('q-feedback');
+  if(ok){ ronda.aciertos++; fb.textContent=["¡Gol! ⚽","¡Correcto! 🎉","¡Muy bien! 🌟","¡Crack! 👏"][rnd(0,3)]; fb.className="feedback bien"; confeti(); }
+  else { fb.innerHTML="Era <b>"+ronda.actual.r+"</b>. ¡Sigue! 💪"; fb.className="feedback mal"; }
+  document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
+  setTimeout(()=>{ ronda.i++; if(ronda.i<RONDA_N) pintarPregunta(); else finRonda(); }, ok?650:1300);
+}
+function finRonda(){
+  const ac=ronda.aciertos, op=ronda.op, L=ronda.L;
+  const ptsAntes=datos.puntos;
+  datos.puntos += ac*10 + (ac===RONDA_N?20:0);
+  let sobresGanados = Math.floor(datos.puntos/100) - Math.floor(ptsAntes/100); // 1 sobre por cada 100 pts
+  let domina=false;
+  if(ac>=META && !datos.dominado[op+'-'+L]){
+    datos.dominado[op+'-'+L]=true; domina=true; sobresGanados++; // dominar un nivel = sobre garantizado
+    if(L===datos.prog[op] && L<3) datos.prog[op]=L+1; // desbloquea el siguiente
+  }
+  datos.sobres += sobresGanados;
+  guardar();
+  // pantalla resultado
+  const e = ac>=7?3:ac>=5?2:1;
+  document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
+  document.getElementById('r-emoji').textContent= ac>=7?"🏆":ac>=5?"⚽":"💪";
+  document.getElementById('r-titulo').textContent= ac>=7?("¡Excelente, "+nombre+"!"):ac>=5?"¡Bien hecho!":"¡A seguir practicando!";
+  document.getElementById('r-num').textContent=ac+" / "+RONDA_N;
+  document.getElementById('r-pts').textContent="+"+(ac*10+(ac===RONDA_N?20:0))+" puntos ⭐";
+  const prem=document.getElementById('r-premio'); prem.innerHTML="";
+  if(domina) prem.innerHTML += `<div class="premio">🏅 ¡DOMINASTE el nivel ${NIV_NOMBRE[L-1]}!<br>Ganaste un sobre 🎁</div>`;
+  if(sobresGanados>0) prem.innerHTML += `<div class="premio">🎁 ¡Sobres ganados: ${sobresGanados}!</div>`;
+  document.getElementById('r-abrir').style.display = datos.sobres>0 ? 'block' : 'none';
+  ronda.ultimo={op,L};
+  mostrar('s-res');
+  if(ac>=7) lluvia();
+}
+function repetirRonda(){ iniciarRonda(ronda.ultimo.op, ronda.ultimo.L); }
+
+/* ====== SOBRE ====== */
+function sacarCarta(){
+  const r=Math.random()*100; let pool;
+  if(r<10) pool=CROMOS.filter(c=>c.rareza==='dorado');
+  else if(r<40) pool=CROMOS.filter(c=>c.rareza==='raro');
+  else pool=CROMOS.filter(c=>c.rareza==='comun');
+  return pool[rnd(0,pool.length-1)];
+}
+function irSobre(){
+  if(datos.sobres<=0){ irMenu(); return; }
+  document.getElementById('so-titulo').textContent="¡Tienes "+datos.sobres+" sobre(s)! 🎉";
+  document.getElementById('so-cuerpo').innerHTML = `
+    <p class="sub">Toca el sobre para abrirlo</p>
+    <div class="sobre-grande" onclick="abrirSobre()">✉️</div>`;
+  mostrar('s-sobre');
+}
+function abrirSobre(){
+  if(datos.sobres<=0) return;
+  datos.sobres--;
+  const cartas=[]; for(let k=0;k<5;k++) cartas.push(sacarCarta());
+  const yaTengo=new Set(datos.album);
+  let nuevas=0;
+  const marcadas=cartas.map(c=>{
+    if(!yaTengo.has(c.id)){ datos.album.push(c.id); yaTengo.add(c.id); nuevas++; return {c, nuevo:true}; }
+    datos.puntos+=5; return {c, nuevo:false};
+  });
+  guardar();
+  document.getElementById('so-titulo').textContent="¡Tus cromos! ⚽";
+  document.getElementById('so-cuerpo').innerHTML = `
+    <div class="cromos-fila">${marcadas.map((m,i)=>`<div class="cromo" style="animation-delay:${i*0.12}s">${cromoSVG(m.c)}<div class="nuevo">${m.nuevo?'¡NUEVO!':'repe +5⭐'}</div></div>`).join('')}</div>
+    <p class="mini">Nuevos en tu álbum: <b>${nuevas}</b>${nuevas<5?` · Repetidos: +${(5-nuevas)*5}⭐`:''}</p>
+    ${datos.sobres>0?`<button class="btn btn-morado" onclick="irSobre()">🎁 Abrir otro (${datos.sobres})</button>`:''}
+    <button class="btn btn-amarillo" onclick="verAlbum()">📔 Ver mi álbum</button>
+    <button class="btn btn-verde" onclick="irMenu()">Seguir jugando ⚽</button>`;
+  lluvia();
+}
+
+/* ====== ÁLBUM ====== */
+function verAlbum(){
+  document.getElementById('a-sob').textContent="✉️ "+datos.sobres;
+  const tengo=new Set(datos.album);
+  document.getElementById('a-info').textContent="Tienes "+tengo.size+" de "+CROMOS.length+" cromos";
+  document.getElementById('a-grid').innerHTML = CROMOS.map(c=>{
+    return `<div class="album-cel ${tengo.has(c.id)?'':'falta'}">${tengo.has(c.id)?cromoSVG(c):cromoSilueta(c)}</div>`;
+  }).join('');
+  mostrar('s-album');
+}
+
+/* ====== TECLADO FÍSICO ====== */
+document.addEventListener('keydown', e=>{
+  if(document.getElementById('s-quiz').classList.contains('activa')){
+    if(e.key>='0'&&e.key<='9') tecla(e.key);
+    else if(e.key==='Backspace') tecla('C');
+    else if(e.key==='Enter') comprobar();
+  } else if(document.getElementById('s-bien').classList.contains('activa') && e.key==='Enter'){ empezar(); }
+});
+</script>
+</body>
+</html>
