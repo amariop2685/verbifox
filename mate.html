@@ -143,11 +143,10 @@
       <button class="op-btn" style="background:#f59e0b" onclick="verNiveles('multi')"><span class="ic">✖️</span>Multiplicar</button>
       <button class="op-btn" style="background:#a855f7" onclick="verNiveles('division')"><span class="ic">➗</span>Dividir</button>
       <button class="op-btn" style="background:#ec4899" onclick="verNiveles('vueltos')"><span class="ic">💰</span>Vueltos</button>
-      <button class="op-btn" style="background:#14b8a6" onclick="verNiveles('fracciones')"><span class="ic">🍕</span>Fracciones</button>
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
+    <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones (con regletas)</button>
     <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
-    <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones visuales (regletas)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
@@ -273,7 +272,7 @@
 <script>
 /* ====== ESTADO ====== */
 let nombre="", datos=null, ronda=null;
-const OPS={ suma:{n:'Sumar ➕'}, resta:{n:'Restar ➖'}, multi:{n:'Multiplicar ✖️'}, division:{n:'Dividir ➗'}, vueltos:{n:'Vueltos 💰'}, fracciones:{n:'Fracciones 🍕'}, abaco:{n:'Ábaco 🧮'} };
+const OPS={ suma:{n:'Sumar ➕'}, resta:{n:'Restar ➖'}, multi:{n:'Multiplicar ✖️'}, division:{n:'Dividir ➗'}, vueltos:{n:'Vueltos 💰'}, abaco:{n:'Ábaco 🧮'} };
 const NIV_NOMBRE=['Fácil','Medio','Difícil'];
 const META_RONDA=7, RONDA_N=8;          // dominar lección = 7 de 8
 const LECCIONES_PARA_SOBRE=5;           // dominar 5 lecciones nuevas para desbloquear la evaluación
@@ -311,6 +310,16 @@ function rnd(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
 function fmt(n){ return n.toLocaleString('es-CL'); }   // formato chileno: 1.500
 function confeti(){ for(let i=0;i<14;i++){ const c=document.createElement('div'); c.className='confeti'; c.textContent=['⚽','🎉','⭐','✨','🏆','🥅'][i%6]; c.style.left=Math.random()*100+'vw'; c.style.animationDuration=(1+Math.random())+'s'; document.body.appendChild(c); setTimeout(()=>c.remove(),2200);} }
 function lluvia(){ for(let k=0;k<6;k++) setTimeout(confeti,k*220); }
+// Nota chilena 1,0–7,0 (exigencia 60%) y mensaje que cuida la autoestima (estilo psicólogo infantil)
+function notaChile(pct){ let n = pct>=60 ? 4+(pct-60)/40*3 : 1+pct/60*3; n=Math.round(n*10)/10; return Math.max(1,Math.min(7,n)); }
+function notaTxt(n){ return n.toFixed(1).replace('.',','); }
+function mensajeNota(n){
+  if(n>=6.0) return "🌟 ¡Excelente! Tu esfuerzo se nota muchísimo. Sigue así, vas increíble.";
+  if(n>=5.0) return "💪 ¡Muy bien! Vas por gran camino y cada vez más seguro.";
+  if(n>=4.0) return "👏 ¡Lo lograste! Con un poco más de práctica vas a subir aún más.";
+  if(n>=3.0) return "🌱 ¡Buen intento! Tu cerebro está creciendo. Practiquemos un poquito y lo vas a lograr.";
+  return "💙 Lo más importante es que lo intentaste. Equivocarse es parte de aprender. Vamos paso a paso… ¡tú puedes!";
+}
 
 /* ====== RELATOR DE FÚTBOL (texto + voz) ====== */
 let vozOn=(()=>{ try{ return localStorage.getItem('mate_voz')!=='0'; }catch(e){ return true; } })();
@@ -449,8 +458,8 @@ function genPregunta(op,L){
   if(op==='abaco'){ const num = L===1?rnd(1,9):L===2?rnd(10,99):rnd(100,999); return {tipo:'abaco',L,num,prob:`<div class="soroban">${sorobanSVG(num)}</div>¿Qué número es?`, r:num}; }
   if(op==='suma'){ const m=[10,25,60][L-1]; const a=rnd(1,m),b=rnd(1,m); return {tipo:'suma',L,a,b,texto:`${a} + ${b}`,r:a+b}; }
   if(op==='resta'){ const m=[10,25,60][L-1]; const a=rnd(2,m),b=rnd(0,a); return {tipo:'resta',L,a,b,texto:`${a} − ${b}`,r:a-b}; }
-  if(op==='multi'){ const m=[5,10,12][L-1]; const a=rnd(2,m),b=rnd(2,m); return {tipo:'multi',L,a,b,texto:`${a} × ${b}`,r:a*b}; }
-  if(op==='division'){ const m=[5,10,12][L-1]; const b=rnd(2,m),q=rnd(2,m); return {tipo:'division',L,a:b*q,b,r:q,texto:`${b*q} ÷ ${b}`}; }
+  if(op==='multi'){ const m=[10,12,12][L-1]; const a=rnd(1,m),b=rnd(1,m); return {tipo:'multi',L,a,b,texto:`${a} × ${b}`,r:a*b}; }
+  if(op==='division'){ const m=[10,12,12][L-1]; const b=rnd(2,m),q=rnd(1,m); return {tipo:'division',L,a:b*q,b,r:q,texto:`${b*q} ÷ ${b}`}; }
   if(op==='vueltos'){
     let precio,pago;
     const cosas=['un completo','una bebida','un helado','un pan amasado','un cuaderno','un lápiz','una empanada','un jugo','unas papas fritas','un sándwich'];
@@ -555,7 +564,7 @@ function iniciarRonda(op,L){
 }
 function abrirEvalIntro(){
   if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
-  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas</b> mezcladas de lo que dominaste. Necesitas <b>${EVAL_PASA} correctas</b>.<br>Aquí <b>NO hay ayuda</b> — es la prueba de verdad.`;
+  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas combinadas</b> (sumar, restar, multiplicar, dividir…).<br>Te daré una <b>nota de 1,0 a 7,0</b>, como en el colegio 🇨🇱. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
   mostrar('s-eval-intro');
 }
 function comenzarEval(){ iniciarEval(); }
@@ -633,8 +642,8 @@ function fin(){ if(ronda.modo==='eval') finEval(); else finRonda(); }
 // Puntos por dificultad: lo más difícil vale MÁS (para que no se quede en lo fácil).
 const VALOR_OP={ suma:10, resta:12, multi:16, division:18, vueltos:14, fracciones:16, abaco:10 };
 function puntosPregunta(op,L){ return Math.round((VALOR_OP[op]||10)*(L===1?1:L===2?1.4:1.8)); }
-const ORDEN_RETOS=['suma','resta','multi','division','fracciones','vueltos','abaco'];
-function nombreCorto(op){ return ({suma:'la suma',resta:'la resta',multi:'la multiplicación',division:'la división',vueltos:'los vueltos',fracciones:'las fracciones',abaco:'el ábaco'})[op]||op; }
+const ORDEN_RETOS=['suma','resta','multi','division','vueltos','abaco'];
+function nombreCorto(op){ return ({suma:'la suma',resta:'la resta',multi:'la multiplicación',division:'la división',vueltos:'los vueltos',abaco:'el ábaco'})[op]||op; }
 // Qué conviene practicar ahora para avanzar y ganar más puntos (sin quedarse en lo fácil).
 function proximoReto(actualOp){
   for(const o of ORDEN_RETOS){ if(o!==actualOp && !datos.dominado[o+'-1']) return o; }      // 1) operación nueva
@@ -686,32 +695,37 @@ function finRonda(){
 
 function finEval(){
   const ac=ronda.aciertos, aprueba=ac>=EVAL_PASA;
+  const pct=Math.round(ac/EVAL_N*100), nota=notaChile(pct);
   datos.puntos += ac*15;
-  const prem=document.getElementById('r-premio'); prem.innerHTML="";
+  const prem=document.getElementById('r-premio');
+  // La nota chilena, siempre con un mensaje que cuida la autoestima
+  let html=`<div class="premio" style="border-color:var(--azul); font-size:1.5rem">📋 Tu nota: <b>${notaTxt(nota)}</b> <span style="font-size:.75rem">(de 1,0 a 7,0)</span></div>
+    <div class="premio">${mensajeNota(nota)}</div>`;
   if(aprueba){
     datos.sobres++; datos.leccionesNuevas=0;
     const fecha=new Date().toLocaleDateString('es-CL');
-    datos.vales.push({n:datos.sobres, fecha});
-    prem.innerHTML=`<div class="vale">
+    datos.vales.push({n:datos.sobres, fecha, nota:notaTxt(nota)});
+    html+=`<div class="vale">
       <div class="ico">🎟️⚽</div>
       <div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div>
-      <div class="det">${nombre} aprobó la Evaluación de Matemáticas<br>el ${fecha} con ${ac}/${EVAL_N}.</div>
+      <div class="det">${nombre} aprobó la Evaluación con nota <b>${notaTxt(nota)}</b><br>el ${fecha}.</div>
       <div class="det" style="margin-top:6px;">👉 Muéstrale este vale a papá para recibir tu sobre real.</div>
     </div>`;
     document.getElementById('r-emoji').textContent="🏆"; document.getElementById('r-titulo').textContent="¡GANASTE UN SOBRE, "+nombre+"!";
     document.getElementById('r-est').textContent="⭐⭐⭐";
   } else {
-    prem.innerHTML=`<div class="premio">Te faltó poco para el sobre (necesitas ${EVAL_PASA}/${EVAL_N}).<br>Practica un poquito más y vuelve a intentarlo. 💪</div>`;
-    document.getElementById('r-emoji').textContent="💪"; document.getElementById('r-titulo').textContent="¡Casi, "+nombre+"!";
-    document.getElementById('r-est').textContent="";
+    html+=`<div class="premio">Para el sobre necesitas ${EVAL_PASA}/${EVAL_N}. ¡Vas mejorando! Practica un poquito y vuelve cuando quieras. 💪</div>`;
+    document.getElementById('r-emoji').textContent= nota>=4?"😊":"🌱"; document.getElementById('r-titulo').textContent= nota>=4?("¡Bien hecho, "+nombre+"!"):("¡Vamos creciendo, "+nombre+"!");
+    document.getElementById('r-est').textContent= nota>=6?"⭐⭐⭐":nota>=5?"⭐⭐":nota>=4?"⭐":"";
   }
+  prem.innerHTML=html;
   guardar();
   document.getElementById('r-num').textContent=ac+" / "+EVAL_N;
   document.getElementById('r-pts').textContent="+"+(ac*15)+" puntos ⭐";
   document.getElementById('r-rep').style.display = aprueba ? 'none' : 'block';
   ronda.ultimo=null;
   mostrar('s-res'); if(aprueba) lluvia();
-  decir(aprueba?("¡CAMPEOÓN! "+nombre+" aprobó la evaluación y se gana un sobre del mundial. ¡Qué crack!"):("¡Casi, "+nombre+"! Sigue entrenando que la próxima es tuya."));
+  decir(aprueba?("¡Campeón "+nombre+"! Te sacaste un "+notaTxt(nota)+" y ganaste un sobre. ¡Qué crack!"):("¡Buen trabajo "+nombre+"! Tu nota fue "+notaTxt(nota)+". Cada práctica te hace mejor."));
 }
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
@@ -777,8 +791,8 @@ function finVel(){
 /* ====== MODO MEMORIZAR (repite cada operación varias veces, intercaladas, hasta grabarla) ====== */
 const MEM_FACTS=6, MEM_NEED=3; // 6 operaciones, cada una acertada 3 veces (intercaladas)
 function verMemoria(){
-  const ops=[{o:'multi',t:'Tablas ✖️ (del 1 al 12)',tab:true},{o:'suma',t:'Sumas ➕'},{o:'resta',t:'Restas ➖'},{o:'division',t:'Divisiones ➗'}];
-  document.getElementById('mem-lista').innerHTML = ops.map(x=>`<div class="niv-btn" onclick="${x.tab?'verTablas()':("iniciarMemoria('"+x.o+"')")}"><span>${x.t}</span><span class="est">▶</span></div>`).join('');
+  const ops=[{o:'multi',t:'Tablas ✖️ (todas, del 1 al 12)',tabla:'mix'},{o:'suma',t:'Sumas ➕'},{o:'resta',t:'Restas ➖'},{o:'division',t:'Divisiones ➗'}];
+  document.getElementById('mem-lista').innerHTML = ops.map(x=>`<div class="niv-btn" onclick="iniciarMemoria('${x.o}'${x.tabla?(",'"+x.tabla+"'"):''})"><span>${x.t}</span><span class="est">▶</span></div>`).join('');
   mostrar('s-mem');
 }
 function verTablas(){
@@ -856,7 +870,7 @@ function genFrac(i){
 }
 function fracOpciones(it){
   const correcta=labelFrac(it.whole,it.num,it.den); const set=new Set([correcta]); let g=0;
-  while(set.size<4 && g<60){ g++; const d=[2,3,4,5,6,8][rnd(0,5)]; const w=Math.random()<0.4?1:0; const n=rnd(1,d-1); set.add(labelFrac(w,n,d)); }
+  while(set.size<3 && g<60){ g++; const d=[2,3,4,5,6,8][rnd(0,5)]; const w=Math.random()<0.4?1:0; const n=rnd(1,d-1); set.add(labelFrac(w,n,d)); }
   return baraja([...set]);
 }
 function iniciarFrac(){
