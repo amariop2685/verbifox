@@ -108,6 +108,18 @@
   .nodo-circ.castillo.hecho{background:var(--amarillo); border-color:#d97706;}
   .nodo-lbl{font-weight:800; font-size:.9rem; margin-top:4px; color:var(--texto);}
   .nodo-est{font-size:.72rem; color:var(--suave); margin-bottom:2px;}
+  /* Modal */
+  .modal-bg{position:fixed; inset:0; background:rgba(15,23,42,.55); display:flex; align-items:center; justify-content:center; z-index:200; padding:18px;}
+  .modal-card{background:#fff; border-radius:22px; padding:22px; max-width:420px; width:100%; text-align:center; box-shadow:0 25px 60px rgba(0,0,0,.4); animation:pop .35s ease;}
+  .modal-card .tit-modal{font-size:1.4rem; font-weight:800; color:var(--morado); margin-bottom:8px;}
+  .modal-card .instr-modal{text-align:left; background:#eff6ff; border-left:6px solid var(--azul); border-radius:12px; padding:14px; line-height:1.5; margin-bottom:14px;}
+  .modal-emoji{font-size:3.6rem; animation:flota 2.5s ease-in-out infinite;}
+  /* Avisos flotantes (toasts) con campana */
+  .toasts{position:fixed; top:max(12px,env(safe-area-inset-top)); right:12px; left:12px; z-index:300; display:flex; flex-direction:column; align-items:center; gap:8px; pointer-events:none;}
+  .toast{background:#1e293b; color:#fff; font-weight:800; padding:10px 16px; border-radius:50px; box-shadow:0 8px 20px rgba(0,0,0,.3); animation:bajaToast .35s ease; font-size:1rem;}
+  .toast.mas{background:var(--verde-osc);} .toast.menos{background:var(--rojo);} .toast.logro{background:var(--morado);}
+  .toast.ir{opacity:0; transform:translateY(-12px); transition:.4s;}
+  @keyframes bajaToast{from{opacity:0; transform:translateY(-16px)}to{opacity:1; transform:translateY(0)}}
 
   .resultado-num{font-size:3.4rem; text-align:center; font-weight:800; color:var(--verde-osc);}
   .estrellas{font-size:2.2rem; text-align:center;}
@@ -161,9 +173,9 @@
       <button class="op-btn" style="background:#ec4899" onclick="verNiveles('vueltos')"><span class="ic">💰</span>Vueltos</button>
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
-    <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones (con regletas)</button>
-    <button class="btn btn-verde" onclick="iniciarDesafios()">🧩 Desafíos de quinto (patrones, medidas…)</button>
-    <button class="btn btn-azul" onclick="iniciarGeo()">📐 Geometría (plano, área, simetría)</button>
+    <button class="btn btn-naranja" onclick="retoFrac()">🍕 Fracciones (con regletas)</button>
+    <button class="btn btn-verde" onclick="retoDesafios()">🧩 Desafíos de quinto (patrones, medidas…)</button>
+    <button class="btn btn-azul" onclick="retoGeo()">📐 Geometría (plano, área, simetría)</button>
     <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
@@ -335,7 +347,49 @@ function cargar(){
   if(!datos.facts) datos.facts={}; if(!datos.velRecord) datos.velRecord={};
   if(!datos.examNivel) datos.examNivel=1;
   if(!datos.hitos) datos.hitos={};
+  if(!datos.conquistas) datos.conquistas=0;
+  if(!datos.artefactos) datos.artefactos=[];
+  if(typeof datos.escudos!=='number') datos.escudos=0;
 }
+/* ====== MODALES, AVISOS FLOTANTES y CAMPANA 🔔 ====== */
+function modal(html){ document.getElementById('modal-card').innerHTML=html; document.getElementById('modal-bg').style.display='flex'; }
+function cerrarModal(e){ if(!e || e.target.id==='modal-bg' || e._force) document.getElementById('modal-bg').style.display='none'; }
+function campana(){ try{ const A=window.AudioContext||window.webkitAudioContext; if(!A) return; const ac=campana._a||(campana._a=new A()); [880,1320].forEach((f,i)=>{ const o=ac.createOscillator(),g=ac.createGain(); o.type='sine'; o.frequency.value=f; const t=ac.currentTime+i*0.08; g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.25,t+0.01); g.gain.exponentialRampToValueAtTime(0.0001,t+0.5); o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+0.55); }); }catch(e){} }
+function toast(txt, tipo){ const c=document.getElementById('toasts'); if(!c) return; const t=document.createElement('div'); t.className='toast '+(tipo||''); t.innerHTML='🔔 '+txt; c.appendChild(t); campana(); setTimeout(()=>{ t.classList.add('ir'); setTimeout(()=>t.remove(),450); },2200); }
+function actualizarPuntosUI(){ const a=document.getElementById('m-pts'); if(a) a.textContent="⭐ "+datos.puntos; const b=document.getElementById('q-puntos'); }
+// Bonus por logros (suma puntos con aviso)
+function bonus(n, motivo){ datos.puntos += n; guardar(); toast('+'+n+' ⭐ '+(motivo||''),'mas'); actualizarPuntosUI(); }
+// Penaliza un error (un escudo lo protege; si no, baja puntos sin pasar de 0)
+function penalizar(n){ n=n||2; if((datos.escudos||0)>0){ datos.escudos--; guardar(); toast('🛡️ ¡Tu escudo te protegió!','logro'); return; } datos.puntos=Math.max(0, datos.puntos-n); guardar(); toast('−'+n+' ⭐','menos'); actualizarPuntosUI(); }
+
+/* ====== ARTEFACTOS / PODERES (se ganan al conquistar el castillo) ====== */
+const ARTEFACTOS=[
+  {n:'Espada de madera', e:'🗡️'},
+  {n:'Escudo de madera', e:'🛡️', escudo:true},
+  {n:'Espada de hierro', e:'⚔️'},
+  {n:'Escudo de hierro', e:'🛡️', escudo:true},
+  {n:'Espada de acero', e:'🗡️'},
+  {n:'Escudo de acero', e:'🛡️', escudo:true},
+  {n:'Sable de luz', e:'⚡'},
+  {n:'Escudo de energía', e:'🛡️', escudo:true}
+];
+function artefactoDe(k){ return ARTEFACTOS[(k-1)%ARTEFACTOS.length]; }
+
+/* ====== INSTRUCTIVO OPCIONAL antes de empezar un modo ====== */
+let _instrCb=null, _instrHtml='';
+function antesDe(cb, titulo, htmlInstr){
+  _instrCb=cb; _instrHtml=htmlInstr;
+  modal(`<div class="modal-emoji">🎮</div><div class="tit-modal">${titulo}</div>
+    <p class="sub">¿Quieres ver cómo se resuelve antes de empezar?</p>
+    <button class="btn btn-azul" onclick="verInstr()">📘 Sí, muéstrame</button>
+    <button class="btn btn-verde" onclick="instrIr()">▶️ ¡A jugar!</button>`);
+}
+function verInstr(){ modal(`<div class="tit-modal">📘 Cómo se resuelve</div><div class="instr-modal">${_instrHtml}</div><button class="btn btn-verde" onclick="instrIr()">¡Entendí, a jugar! ▶️</button>`); }
+function instrIr(){ cerrarModal({_force:true}); const cb=_instrCb; _instrCb=null; if(cb) cb(); }
+// Envoltorios con instructivo (los botones del menú llaman a estos)
+function retoDesafios(){ antesDe(iniciarDesafios, 'Desafíos de quinto', 'Verás <b>patrones</b> (¿qué número sigue?), <b>valor posicional</b> (cuánto vale una cifra), <b>redondeo</b>, <b>perímetro</b> y <b>medidas</b>.<br><br>Ej: <b>3, 6, 9, 12, ___</b> → suma de 3 en 3 → <b>15</b>.<br>Ej: en <b>4.732</b>, las centenas valen <b>700</b>.'); }
+function retoGeo(){ antesDe(iniciarGeo, 'Geometría', 'El <b>plano cartesiano</b> tiene dos números: <b>(x, y)</b>. Primero cuentas a la <b>derecha</b> (x), luego hacia <b>arriba</b> (y).<br><br>El <b>área</b> = cuántos cuadraditos cubre. El <b>perímetro</b> = el borde de afuera (suma de los lados).'); }
+function retoFrac(){ antesDe(iniciarFrac, 'Fracciones', 'Una fracción <b>a/b</b>: el de <b>abajo (b)</b> dice en cuántas partes iguales se parte; el de <b>arriba (a)</b>, cuántas se pintan.<br><br>Mueve la <b>regleta</b> para pintar, o <b>toca</b> la fracción correcta.'); }
 // Cuánto domina una operación (0..1): por lecciones y por hechos memorizados (tiempo+acierto)
 function progresoOp(op){
   const domL=[1,2,3].filter(L=>datos.dominado[op+'-'+L]).length;
@@ -774,8 +828,10 @@ function comprobar(){
   document.getElementById('q-como').style.display='none';
   const fb=document.getElementById('q-feedback');
   if(ok){ ronda.aciertos++; ronda.racha=(ronda.racha||0)+1; fb.textContent=["¡Gol! ⚽","¡Correcto! 🎉","¡Muy bien! 🌟","¡Crack! 👏"][rnd(0,3)]; fb.className="feedback bien"; confeti();
-    if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else relata('gol',FR_GOL); }
-  else { ronda.racha=0; fb.innerHTML="Era <b>"+ronda.actual.r+"</b>. ¡Sigue! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA); }
+    if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else relata('gol',FR_GOL);
+    if(ronda.modo!=='eval' && ronda.racha>0 && ronda.racha%5===0) bonus(10,'¡racha de '+ronda.racha+'!'); }
+  else { ronda.racha=0; fb.innerHTML="Era <b>"+ronda.actual.r+"</b>. ¡Sigue! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+    if(ronda.modo!=='eval') penalizar(2); }
   document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.total) pintarPregunta(); else fin(); }, ok?650:1300);
 }
@@ -864,22 +920,31 @@ function finEval(){
   // La nota chilena, siempre con un mensaje que cuida la autoestima
   let html=`<div class="premio" style="border-color:var(--azul); font-size:1.5rem">📋 Tu nota: <b>${notaTxt(nota)}</b> <span style="font-size:.75rem">(de 1,0 a 7,0)</span></div>
     <div class="premio">${mensajeNota(nota)}</div>`;
+  let art=null;
   if(aprueba){
-    datos.sobres++; datos.leccionesNuevas=0;
-    const fecha=new Date().toLocaleDateString('es-CL');
-    datos.vales.push({n:datos.sobres, fecha, nota:notaTxt(nota)});
-    const subio = (datos.examNivel||1)<5; datos.examNivel=Math.min(5,(datos.examNivel||1)+1);
-    if(subio) html+=`<div class="premio" style="border-color:var(--naranja); color:#9a3412">📈 ¡El próximo examen será un poquito más difícil! Vas creciendo, ${nombre}.</div>`;
-    html+=`<div class="vale">
-      <div class="ico">🎟️⚽</div>
-      <div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div>
-      <div class="det">${nombre} aprobó la Evaluación con nota <b>${notaTxt(nota)}</b><br>el ${fecha}.</div>
-      <div class="det" style="margin-top:6px;">👉 Muéstrale este vale a papá para recibir tu sobre real.</div>
-    </div>`;
-    document.getElementById('r-emoji').textContent="🏆"; document.getElementById('r-titulo').textContent="¡GANASTE UN SOBRE, "+nombre+"!";
+    datos.leccionesNuevas=0;
+    datos.conquistas=(datos.conquistas||0)+1;
+    datos.examNivel=Math.min(5,(datos.examNivel||1)+1);
+    art=artefactoDe(datos.conquistas); datos.artefactos.push(art.n); if(art.escudo) datos.escudos=(datos.escudos||0)+1;
+    datos.puntos += 50;
+    let ganoSobre=false;
+    if(datos.conquistas%2===0){ datos.sobres=(datos.sobres||0)+1; datos.vales.push({n:datos.sobres, fecha:new Date().toLocaleDateString('es-CL'), nota:notaTxt(nota), conquistas:datos.conquistas}); ganoSobre=true; }
+    html+=`<div class="premio" style="border-color:var(--amarillo); color:#7c2d12">🏰 ¡CONQUISTASTE EL CASTILLO! Avanzaste al <b>Mundo ${datos.examNivel}</b> 🌍</div>`;
+    html+=`<div class="premio">${art.e} Ganaste: <b>${art.n}</b>${art.escudo?' 🛡️ (te protege de perder puntos)':''}</div>`;
+    if(ganoSobre) html+=`<div class="vale"><div class="ico">🎟️⚽</div><div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div><div class="det">${nombre} logró <b>2 conquistas</b>.<br>👉 Pídele el sobre real a papá.</div></div>`;
+    else html+=`<div class="premio">🎟️ Conquistas para el próximo sobre: <b>${datos.conquistas%2}/2</b>. ¡Una más!</div>`;
+    document.getElementById('r-emoji').textContent="🏰"; document.getElementById('r-titulo').textContent="¡CASTILLO CONQUISTADO, "+nombre+"!";
     document.getElementById('r-est').textContent="⭐⭐⭐";
+    setTimeout(()=>{
+      modal(`<div class="modal-emoji">🏰</div><div class="tit-modal">¡Conquista #${datos.conquistas}!</div>
+        <p>Avanzaste al <b>Mundo ${datos.examNivel}</b> 🌍</p>
+        <div style="font-size:3rem">${art.e}</div><p>Ganaste: <b>${art.n}</b></p>
+        <p class="sub">Te uniste a los dueños de castillos a jugar fútbol ⚽. ${ganoSobre?'<b>¡2 conquistas → ganaste un sobre del mundial! 🎟️</b>':'Con <b>2 conquistas</b> ganas un sobre. ¡Te falta 1!'}</p>
+        <button class="btn btn-verde" onclick="cerrarModal({_force:true})">¡Genial! ▶️</button>`);
+      toast('+50 ⭐ ¡Conquista!','mas'); if(ganoSobre) toast('🎟️ ¡Ganaste un sobre!','logro');
+    }, 700);
   } else {
-    html+=`<div class="premio">Para el sobre necesitas <b>nota 5,5</b> o más. ¡Vas mejorando! Practica un poquito y vuelve cuando quieras. 💪</div>`;
+    html+=`<div class="premio">No conquistaste el castillo esta vez (necesitas <b>nota 5,5</b>). ¡Vas mejorando! Entrena un poquito y vuelve. 💪</div>`;
     document.getElementById('r-emoji').textContent= nota>=4?"😊":"🌱"; document.getElementById('r-titulo').textContent= nota>=4?("¡Bien hecho, "+nombre+"!"):("¡Vamos creciendo, "+nombre+"!");
     document.getElementById('r-est').textContent= nota>=6?"⭐⭐⭐":nota>=5?"⭐⭐":nota>=4?"⭐":"";
   }
@@ -890,7 +955,7 @@ function finEval(){
   document.getElementById('r-rep').style.display = aprueba ? 'none' : 'block';
   ronda.ultimo=null;
   mostrar('s-res'); if(aprueba) lluvia();
-  decir(aprueba?("¡Campeón "+nombre+"! Te sacaste un "+notaTxt(nota)+" y ganaste un sobre. ¡Qué crack!"):("¡Buen trabajo "+nombre+"! Tu nota fue "+notaTxt(nota)+". Cada práctica te hace mejor."));
+  decir(aprueba?("¡CASTILLO conquistado, "+nombre+"! Avanzaste de mundo y ganaste "+art.n+". ¡Crack!"):("¡Buen trabajo "+nombre+"! Tu nota fue "+notaTxt(nota)+". Cada práctica te hace mejor."));
 }
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
@@ -1250,6 +1315,8 @@ function verRuta(){
     const est = hecho?'✅ dominado (repaso)':actual?'▶ ¡aquí vas!':bloq?'🔒 bloqueado':'';
     html+=`<div class="ruta-nodo" onclick="rutaTocar(${i})"><div class="nodo-circ ${cls}">${icono}</div><div class="nodo-lbl">${e.n}</div><div class="nodo-est">${est}</div></div>`;
   });
+  const tes = (datos.artefactos&&datos.artefactos.length) ? datos.artefactos.map(a=>{ const o=ARTEFACTOS.find(x=>x.n===a); return o?o.e:'🎁'; }).join(' ') : '— (conquista el castillo para ganar tesoros)';
+  html = `<div class="premio" style="margin-bottom:12px; text-align:center">🎒 <b>Tus tesoros:</b> ${tes}<br>🛡️ Escudos: <b>${datos.escudos||0}</b> · 🏰 Conquistas: <b>${datos.conquistas||0}</b></div>` + html;
   document.getElementById('ruta-cuerpo').innerHTML=html;
   const fin = etapaHecha(et[et.length-1]);
   document.getElementById('ruta-sub').innerHTML = fin ? "🏆 ¡Llegaste al castillo, "+nombre+"! ¡Campeón del primer mundo!" : ("Etapa <b>"+(idx+1)+"</b> de "+et.length+" — ¡sigue avanzando hacia el 🏰!");
@@ -1299,5 +1366,9 @@ document.addEventListener('keydown', e=>{
 // Entrar directo como el último jugador (Martín) — el avance ya quedó guardado.
 window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); } }catch(e){} });
 </script>
+<div id="modal-bg" class="modal-bg" style="display:none;" onclick="cerrarModal(event)">
+  <div class="modal-card" id="modal-card"></div>
+</div>
+<div id="toasts" class="toasts"></div>
 </body>
 </html>
