@@ -753,6 +753,7 @@ function empezar(){
   const n = document.getElementById('nombre').value.trim();
   if(!n){ document.getElementById('nombre').focus(); return; }
   nombre = n.charAt(0).toUpperCase()+n.slice(1);
+  try{ localStorage.setItem('jugador', nombre); }catch(e){}
   document.getElementById('saludo').textContent = "¡Hola, "+nombre+"! 👋";
   document.getElementById('menu-titulo').textContent = "¿Qué quieres hacer, "+nombre+"?";
   // Calentar el motor de voz: Chrome a veces ignora la PRIMERA llamada; esta va silenciosa.
@@ -1495,6 +1496,8 @@ document.addEventListener('keydown', e=>{
     }
   }
 });
+// Entrar directo como el último jugador (Martín), saltando al menú.
+window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); mostrar('s-menu'); } }catch(e){} });
 </script>
 </body>
 </html>

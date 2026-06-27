@@ -138,7 +138,12 @@
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
     <button class="btn btn-naranja" onclick="verVoz()">🎙️ Voz del relator (elige la más humana)</button>
     <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
-    <button class="btn btn-gris btn-pequeno" style="margin:6px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
+    <div class="grid2" style="margin-top:4px;">
+      <button class="btn btn-gris btn-pequeno" onclick="respaldar()" style="margin:0;">💾 Guardar copia</button>
+      <button class="btn btn-gris btn-pequeno" onclick="document.getElementById('rest-file').click()" style="margin:0;">📂 Restaurar</button>
+    </div>
+    <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
+    <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
   </section>
 
   <!-- NIVELES -->
@@ -310,9 +315,23 @@ function empezar(){
   const n=document.getElementById('nombre').value.trim();
   if(!n){ document.getElementById('nombre').focus(); return; }
   nombre=n.charAt(0).toUpperCase()+n.slice(1);
+  try{ localStorage.setItem('jugador', nombre); }catch(e){}
   cargar();
   document.getElementById('m-titulo').textContent="¿Qué practicamos, "+nombre+"?";
   irMenu();
+}
+// Respaldo y restauración del avance (un archivo en Descargas)
+function respaldar(){
+  const all={}; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); all[k]=localStorage.getItem(k); }
+  const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='verbifox-'+(nombre||'avance')+'.json'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+}
+function restaurar(input){
+  const f=input.files&&input.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{ const o=JSON.parse(r.result); Object.keys(o).forEach(k=>localStorage.setItem(k,o[k])); alert('¡Avance restaurado! 🎉'); location.reload(); }catch(e){ alert('No se pudo leer el archivo de avance.'); } };
+  r.readAsText(f);
 }
 function cambiarJugador(){ document.getElementById('nombre').value=""; mostrar('s-bien'); }
 function irMenu(){
@@ -710,6 +729,8 @@ document.addEventListener('keydown', e=>{
     else if(e.key==='Enter') comprobar();
   } else if(document.getElementById('s-bien').classList.contains('activa') && e.key==='Enter'){ empezar(); }
 });
+// Entrar directo como el último jugador (Martín) — el avance ya quedó guardado.
+window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); } }catch(e){} });
 </script>
 </body>
 </html>
