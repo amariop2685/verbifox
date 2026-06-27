@@ -325,9 +325,10 @@ function factPrio(key){
   if(due) return 70-(r.nivel*8)+Math.random()*5;           // pendiente → el más débil primero
   return 10-r.nivel+Math.random()*3;                       // ya fresco → baja prioridad
 }
-function recordFact(key,limpio){
+function recordFact(key,limpio,rapido){
   const r=datos.facts[key]||{nivel:0,dia:0};
-  r.nivel = limpio ? Math.min(5,(r.nivel||0)+1) : Math.max(0,r.nivel||0);
+  // Sube más rápido si lo respondió bien Y rápido (= ya le es fácil → se "bloquea" para no repetirlo tanto)
+  r.nivel = limpio ? Math.min(5,(r.nivel||0)+(rapido?2:1)) : Math.max(0,r.nivel||0);
   r.dia=hoyDia(); datos.facts[key]=r;
 }
 function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }catch(e){} }
@@ -956,39 +957,65 @@ function iniciarMemoria(op, tabla){
   }
   pool.forEach(q=>{ q._prio=factPrio(factKey(op,q)); });
   pool.sort((a,b)=>b._prio-a._prio);
-  const facts=pool.slice(0,MEM_FACTS).map(q=>{ q.count=0; q.need=MEM_NEED; q._fallo=false; return q; });
-  ronda={modo:'memoria', op, tabla, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false};
+  const facts=pool.slice(0,MEM_FACTS).map(q=>{ q.count=0; q.need=MEM_NEED; q._fallo=false; q._fallos=0; q._ms=0; q._msN=0; return q; });
+  ronda={modo:'memoria', op, tabla, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false, seguidosMal:0, presentadas:0};
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarMemoria(); relatorInicio();
 }
-function pintarMemoria(){ ronda.actual=ronda.cola[0]; renderActual(); }
+function pintarMemoria(){ ronda.actual=ronda.cola[0]; renderActual(); ronda.tStart=Date.now(); }
+const MEM_RAPIDO_MS=5000;     // responder en menos de 5s = ya le es fácil
+const MEM_TOPE=18;            // tope de preguntas por sesión, para que no se canse
+function inyectarFacil(){
+  // Una operación sencilla del mismo tipo para tomar impulso (¡darle una victoria!)
+  const f = (ronda.op==='multi') ? genMultiMix() : genPregunta(ronda.op, 1);
+  f.count=0; f.need=1; f._fallo=false; f._fallos=0; f._ms=0; f._msN=0; f._facil=true;
+  ronda.cola.unshift(f);
+  comentar("Respira 😌 lo estás haciendo súper. ¡Vamos con una fácil!");
+}
 function compMemoria(ok){
   const fact=ronda.cola[0];
+  const ms=Date.now()-(ronda.tStart||Date.now());
+  ronda.presentadas++;
   const fb=document.getElementById('q-feedback');
   if(ok){
-    fact.count++;
-    if(fact.count>=fact.need){ recordFact(factKey(ronda.op,fact), !fact._fallo); ronda.memorizadas++; ronda.cola.shift(); fb.textContent="¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL); }
-    else { ronda.cola.push(ronda.cola.shift()); fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
+    ronda.seguidosMal=0;
+    fact.count++; fact._ms+=ms; fact._msN++;
+    if(fact.count>=fact.need){
+      const prom=fact._ms/Math.max(1,fact._msN), rapido = prom<MEM_RAPIDO_MS && !fact._fallo;
+      if(!fact._facil) recordFact(factKey(ronda.op,fact), !fact._fallo, rapido);
+      if(!fact._facil) ronda.memorizadas++;
+      ronda.cola.shift();
+      fb.textContent = rapido?"¡Grabada y rapidísima! 🧠⚡":"¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL);
+    } else { ronda.cola.push(ronda.cola.shift()); fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
   } else {
-    fact._fallo=true; fact.count=0; ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
-    fb.innerHTML="Era <b>"+fact.r+"</b>. ¡La repetimos! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+    ronda.seguidosMal++;
+    fact._fallo=true; fact._fallos++; fact.count=0;
+    if(fact._fallos>=2 && fact.need>1) fact.need--;   // si le cuesta mucho, menos repeticiones (no agotarlo)
+    ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
+    fb.innerHTML="Era <b>"+fact.r+"</b>. ¡Tranquilo, la repetimos! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
   }
+  // Anti-agotamiento: 3 fallos seguidos → una fácil para recuperar confianza
+  if(ronda.seguidosMal>=3){ inyectarFacil(); ronda.seguidosMal=1; }
   document.getElementById('q-prog').textContent='🧠 '+ronda.memorizadas+'/'+ronda.total;
   document.getElementById('q-aciertos').textContent='✅ '+ronda.memorizadas;
-  setTimeout(()=>{ if(ronda.cola.length===0) finMemoriaMate(); else pintarMemoria(); }, ok?600:1250);
+  const terminar = ronda.cola.length===0 || ronda.presentadas>=MEM_TOPE;
+  setTimeout(()=>{ if(terminar) finMemoriaMate(); else pintarMemoria(); }, ok?600:1250);
 }
 function finMemoriaMate(){
-  datos.puntos += ronda.total*5; guardar();
-  document.getElementById('r-emoji').textContent="🧠";
-  document.getElementById('r-est').textContent="⭐⭐⭐";
-  document.getElementById('r-titulo').textContent="¡Te lo grabaste, "+nombre+"!";
-  document.getElementById('r-num').textContent=ronda.total+" 🧠";
-  document.getElementById('r-pts').textContent="Memorizaste "+ronda.total+" operaciones · +"+(ronda.total*5)+" puntos ⭐";
-  document.getElementById('r-premio').innerHTML='<div class="premio">🔁 La repetición es la clave. ¡Vuelve mañana para que no se te olvide!</div>';
+  const m=ronda.memorizadas, total=ronda.total, todo=m>=total;
+  datos.puntos += m*5; guardar();
+  document.getElementById('r-emoji').textContent= todo?"🧠":"🌱";
+  document.getElementById('r-est').textContent= m>=total?"⭐⭐⭐":m>=Math.ceil(total/2)?"⭐⭐":"⭐";
+  document.getElementById('r-titulo').textContent= todo?("¡Te lo grabaste, "+nombre+"!"):("¡Buen esfuerzo, "+nombre+"!");
+  document.getElementById('r-num').textContent=m+" / "+total+" 🧠";
+  document.getElementById('r-pts').textContent="Grabaste "+m+" operación(es) · +"+(m*5)+" puntos ⭐";
+  document.getElementById('r-premio').innerHTML= todo
+    ? '<div class="premio">🔁 ¡Vuelve mañana para que no se te olvide!</div>'
+    : '<div class="premio">🌱 Las que te costaron, tu cerebro las está aprendiendo. Mañana las repasamos y te van a salir. 💙</div>';
   document.getElementById('r-rep').style.display='block';
   ronda.ultimo={mem:{op:ronda.op, tabla:ronda.tabla}};
-  mostrar('s-res'); lluvia();
-  decir("¡Te lo grabaste, "+nombre+"! ¡Eres un crack de la memoria!");
+  mostrar('s-res'); if(todo) lluvia();
+  decir(todo?("¡Te lo grabaste, "+nombre+"! ¡Crack de la memoria!"):("¡Buen trabajo, "+nombre+"! Lo que costó, mañana sale mejor."));
 }
 
 /* ====== FRACCIONES VISUALES (regletas, arrastrar y números mixtos) ====== */
