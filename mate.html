@@ -80,6 +80,19 @@
   .coment .mic{font-size:1.25rem; animation:flota 2s ease-in-out infinite;}
   .coment #q-coment{flex:1; line-height:1.2;}
   .voz-tog{background:rgba(255,255,255,.2); border:none; color:#fff; border-radius:8px; padding:6px 9px; font-size:1.05rem; cursor:pointer;}
+  /* Fracciones visuales (regletas + arrastrar) */
+  .fbar{display:flex; height:56px; border:3px solid #334155; border-radius:10px; overflow:hidden; margin:10px 0; background:#fff;}
+  .fcell{flex:1; border-right:2px solid #cbd5e1;}
+  .fcell:last-child{border-right:none;}
+  .fcell.on{background:var(--verde);}
+  .fcell.sep{border-left:4px solid #334155;}
+  .fval{text-align:center; font-size:1.7rem; font-weight:800; color:var(--verde-osc); margin:6px 0;}
+  input[type=range].regleta{width:100%; height:38px; accent-color:var(--verde);}
+  .fdrop{border:3px dashed var(--morado); border-radius:12px; min-height:62px; display:flex; align-items:center; justify-content:center; font-size:1.7rem; font-weight:800; color:var(--morado); margin:10px 0; background:#faf5ff;}
+  .fcards{display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
+  .fcard{background:#eef2ff; border:3px solid #c7d2fe; border-radius:12px; padding:12px 18px; font-size:1.4rem; font-weight:800; color:var(--azul-osc); cursor:grab; touch-action:none; user-select:none;}
+  .fcard.sel{background:var(--morado); color:#fff; border-color:#7c3aed;}
+  .fcard.dragging{position:fixed; z-index:999; pointer-events:none; opacity:.92; box-shadow:0 8px 20px rgba(0,0,0,.3);}
 
   .resultado-num{font-size:3.4rem; text-align:center; font-weight:800; color:var(--verde-osc);}
   .estrellas{font-size:2.2rem; text-align:center;}
@@ -134,6 +147,7 @@
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
     <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
+    <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones visuales (regletas)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
@@ -182,6 +196,20 @@
     <h2>🧠 Memorizar</h2>
     <p class="sub">Repite cada operación varias veces (intercaladas) hasta grabártela. ¡Ideal para las tablas! 🔁</p>
     <div id="mem-lista"></div>
+  </section>
+
+  <!-- FRACCIONES VISUALES (regletas + arrastrar) -->
+  <section id="s-frac" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅</button>
+      <span class="progreso" id="f-prog">1/6</span>
+      <span class="pill pill-pts" id="f-ac">✅ 0</span>
+    </div>
+    <div class="coment"><span class="mic">🎙️</span><span id="f-coment">¡Vamos!</span></div>
+    <div id="f-instr" class="mate-prob"></div>
+    <div id="f-area"></div>
+    <div class="feedback" id="f-fb"></div>
+    <button class="btn btn-verde" id="f-check" onclick="fracComprobar()">Comprobar ✓</button>
   </section>
 
   <!-- TABLAS DE MULTIPLICAR (del 1 al 12) -->
@@ -688,6 +716,7 @@ function finEval(){
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
   else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem.op, ronda.ultimo.mem.tabla);
+  else if(ronda.ultimo && ronda.ultimo.frac) iniciarFrac();
   else if(ronda.ultimo) iniciarRonda(ronda.ultimo.op, ronda.ultimo.L);
   else if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) iniciarEval();
   else irMenu();
@@ -810,6 +839,96 @@ function finMemoriaMate(){
   decir("¡Te lo grabaste, "+nombre+"! ¡Eres un crack de la memoria!");
 }
 
+/* ====== FRACCIONES VISUALES (regletas, arrastrar y números mixtos) ====== */
+function barraFrac(shaded,den,segments){
+  let cells='';
+  for(let i=0;i<segments;i++){ const on=i<shaded; const sep=(i>0 && i%den===0)?'sep':''; cells+=`<div class="fcell ${on?'on':''} ${sep}"></div>`; }
+  return `<div class="fbar">${cells}</div>`;
+}
+function labelFrac(w,n,d){ return w>0?`${w} ${n}/${d}`:`${n}/${d}`; }
+function valorTexto(shaded,den){ const w=Math.floor(shaded/den), n=shaded%den; return w>0?(n>0?`${w} ${n}/${den}`:`${w}`):`${n}/${den}`; }
+function genFrac(i){
+  const dens=[2,3,4,5,6,8]; const den=dens[rnd(0,dens.length-1)];
+  const mixto = (i>=3) && (Math.random()<0.5);   // números mixtos en la segunda mitad
+  const whole = mixto?1:0; const num=rnd(1,den-1);
+  const tipo=(i%2===0)?'pinta':'arrastra';
+  return {tipo, den, whole, num, segments:(whole?2:1)*den, shadedTarget: whole*den+num};
+}
+function fracOpciones(it){
+  const correcta=labelFrac(it.whole,it.num,it.den); const set=new Set([correcta]); let g=0;
+  while(set.size<4 && g<60){ g++; const d=[2,3,4,5,6,8][rnd(0,5)]; const w=Math.random()<0.4?1:0; const n=rnd(1,d-1); set.add(labelFrac(w,n,d)); }
+  return baraja([...set]);
+}
+function iniciarFrac(){
+  const items=[]; for(let i=0;i<6;i++) items.push(genFrac(i));
+  ronda={modo:'frac', items, i:0, aciertos:0, sel:null, sliderVal:0, contestada:false};
+  mostrar('s-frac'); pintarFrac(); sonar('inicio','¡Vamos con las fracciones!');
+}
+function dibujaBarra(shaded,it){ document.getElementById('f-bar').innerHTML=barraFrac(shaded,it.den,it.segments); }
+function pintarFrac(){
+  const it=ronda.items[ronda.i]; ronda.sel=null; ronda.sliderVal=0; ronda.contestada=false;
+  document.getElementById('f-prog').textContent=(ronda.i+1)+"/"+ronda.items.length;
+  document.getElementById('f-ac').textContent="✅ "+ronda.aciertos;
+  document.getElementById('f-fb').textContent=""; document.getElementById('f-fb').className="feedback";
+  document.getElementById('f-coment').textContent=pick(FR_ANIMO).replace(/\{n\}/g,nombre);
+  const area=document.getElementById('f-area'), instr=document.getElementById('f-instr');
+  const lbl=labelFrac(it.whole,it.num,it.den);
+  document.getElementById('f-check').style.display='block';
+  if(it.tipo==='pinta'){
+    instr.innerHTML=`Mueve la regleta para pintar: <b>${lbl}</b>`;
+    area.innerHTML=`<div id="f-bar"></div><div class="fval" id="f-val">0</div>
+      <input type="range" min="0" max="${it.segments}" value="0" class="regleta" id="f-slider" oninput="fracSlider(this.value)">
+      <p class="mini">Cada cuadro es 1/${it.den}${it.whole?' · la línea gruesa marca 1 entero':''}</p>`;
+    dibujaBarra(0,it);
+  } else {
+    instr.innerHTML=`¿Qué fracción está pintada? <b>Arrastra</b> la correcta a la caja (o tócala).`;
+    area.innerHTML=`<div id="f-bar"></div><div class="fdrop" id="f-drop">⬇️ suelta aquí</div><div class="fcards" id="f-cards"></div>`;
+    dibujaBarra(it.shadedTarget,it);
+    const cont=document.getElementById('f-cards');
+    fracOpciones(it).forEach(v=>{ const c=document.createElement('div'); c.className='fcard'; c.textContent=v; c.dataset.v=v; cont.appendChild(c); makeDrag(c); });
+  }
+}
+function fracSlider(v){ const it=ronda.items[ronda.i]; ronda.sliderVal=parseInt(v,10); dibujaBarra(ronda.sliderVal,it); document.getElementById('f-val').textContent=valorTexto(ronda.sliderVal,it.den); }
+function fracSeleccionar(v){ if(ronda.contestada) return; ronda.sel=v; document.querySelectorAll('#f-cards .fcard').forEach(c=>c.classList.toggle('sel',c.dataset.v===v)); const dz=document.getElementById('f-drop'); if(dz) dz.textContent=v; }
+function makeDrag(el){
+  el.addEventListener('click', ()=>fracSeleccionar(el.dataset.v));
+  el.addEventListener('pointerdown', e=>{
+    if(ronda.contestada) return; e.preventDefault();
+    const clone=el.cloneNode(true); clone.classList.add('dragging'); document.body.appendChild(clone);
+    const mv=ev=>{ clone.style.left=(ev.clientX-34)+'px'; clone.style.top=(ev.clientY-24)+'px'; }; mv(e);
+    const up=ev=>{ document.removeEventListener('pointermove',mv); document.removeEventListener('pointerup',up); clone.remove();
+      const dz=document.getElementById('f-drop'); if(dz){ const r=dz.getBoundingClientRect(); if(ev.clientX>=r.left&&ev.clientX<=r.right&&ev.clientY>=r.top&&ev.clientY<=r.bottom) fracSeleccionar(el.dataset.v); } };
+    document.addEventListener('pointermove',mv); document.addEventListener('pointerup',up);
+  });
+}
+function fracComprobar(){
+  if(ronda.contestada) return;
+  const it=ronda.items[ronda.i]; let ok;
+  if(it.tipo==='pinta'){ ok=(ronda.sliderVal===it.shadedTarget); }
+  else { if(!ronda.sel){ document.getElementById('f-fb').textContent="Arrastra o toca una fracción 👆"; return; } ok=(ronda.sel===labelFrac(it.whole,it.num,it.den)); }
+  ronda.contestada=true;
+  const fb=document.getElementById('f-fb');
+  if(ok){ ronda.aciertos++; datos.puntos+=12; fb.textContent="¡Correcto! 🎉"; fb.className="feedback bien"; confeti(); document.getElementById('f-coment').textContent=pick(FR_GOL).replace(/\{n\}/g,nombre); sonar('gol'); }
+  else { const corr=it.tipo==='pinta'?valorTexto(it.shadedTarget,it.den):labelFrac(it.whole,it.num,it.den); fb.innerHTML="Era <b>"+corr+"</b>. ¡Observa la regleta!"; fb.className="feedback mal"; sonar('falla'); }
+  document.getElementById('f-ac').textContent="✅ "+ronda.aciertos;
+  document.getElementById('f-check').style.display='none';
+  setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.items.length) pintarFrac(); else finFrac(); }, ok?850:1600);
+}
+function finFrac(){
+  guardar();
+  const ac=ronda.aciertos, total=ronda.items.length;
+  document.getElementById('r-emoji').textContent= ac>=5?"🏆":ac>=3?"🍕":"💪";
+  document.getElementById('r-titulo').textContent= ac>=5?("¡Crack de las fracciones, "+nombre+"!"):"¡Bien hecho!";
+  document.getElementById('r-est').textContent="⭐".repeat(ac>=5?3:ac>=3?2:1)+"☆".repeat(ac>=5?0:ac>=3?1:2);
+  document.getElementById('r-num').textContent=ac+" / "+total;
+  document.getElementById('r-pts').textContent="+"+(ac*12)+" puntos ⭐";
+  document.getElementById('r-premio').innerHTML='<div class="premio">🍕 Las fracciones se entienden mejor con dibujos. ¡Sigue practicando!</div>';
+  document.getElementById('r-rep').style.display='block';
+  ronda.ultimo={frac:true};
+  mostrar('s-res'); if(ac>=5) lluvia();
+  decir(ac>=5?("¡Excelente con las fracciones, "+nombre+"!"):("¡Bien, "+nombre+"! Sigue practicando las fracciones."));
+}
+
 /* ====== VALES (sobres ganados) ====== */
 function verVales(){
   document.getElementById('v-sob').textContent="🎟️ "+datos.sobres;
@@ -830,7 +949,8 @@ document.addEventListener('keydown', e=>{
     if(e.key>='0'&&e.key<='9') tecla(e.key);
     else if(e.key==='Backspace') tecla('C');
     else if(e.key==='Enter') comprobar();
-  } else if(document.getElementById('s-bien').classList.contains('activa') && e.key==='Enter'){ empezar(); }
+  } else if(document.getElementById('s-frac').classList.contains('activa') && e.key==='Enter'){ fracComprobar(); }
+  else if(document.getElementById('s-bien').classList.contains('activa') && e.key==='Enter'){ empezar(); }
 });
 // Entrar directo como el último jugador (Martín) — el avance ya quedó guardado.
 window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); } }catch(e){} });
