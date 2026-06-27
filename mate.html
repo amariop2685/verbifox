@@ -183,7 +183,7 @@
     </div>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
-    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 27-jun-2 ✅</p>
+    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 27-jun-3 ✅</p>
   </section>
 
   <!-- NIVELES -->
@@ -814,6 +814,16 @@ function comprobar(){
   if(ronda.modo==='memoria'){ compMemoria(ok); return; }
   document.getElementById('q-como').style.display='none';
   const fb=document.getElementById('q-feedback');
+  // Pista-primero en Desafíos: al 1er error NO revela el número, da pista y reintenta la MISMA
+  if(!ok && ronda.modo==='desafio'){
+    ronda.actual._intentos=(ronda.actual._intentos||0)+1;
+    if(ronda.actual._intentos===1){
+      ronda.racha=0;
+      fb.innerHTML = pistaMetodo(ronda.actual)+"<br>¡Inténtalo otra vez! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+      setTimeout(()=>{ renderActual(); }, 1400);
+      return;
+    }
+  }
   if(ok){ ronda.aciertos++; ronda.racha=(ronda.racha||0)+1; fb.textContent=["¡Gol! ⚽","¡Correcto! 🎉","¡Muy bien! 🌟","¡Crack! 👏"][rnd(0,3)]; fb.className="feedback bien"; confeti();
     if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else relata('gol',FR_GOL);
     if(ronda.modo!=='eval' && ronda.racha>0 && ronda.racha%5===0) bonus(10,'¡racha de '+ronda.racha+'!'); }
@@ -1066,6 +1076,13 @@ function pistaMetodo(q){
   if(q.tipo==='suma') return '💡 Usa los amigos del 10: completa a 10 primero.';
   if(q.tipo==='resta') return '💡 Cuenta hacia adelante desde el número más chico.';
   if(q.tipo==='division') return '💡 Piénsalo al revés: ¿'+q.b+' por cuánto da '+q.a+'?';
+  if(q.tipo==='patron') return '💡 Fíjate cuánto sube de un número al siguiente, y sigue el patrón.';
+  if(q.tipo==='valorpos') return '💡 Cada cifra vale por su lugar: unidades, decenas (×10), centenas (×100)…';
+  if(q.tipo==='redondeo') return '💡 Mira la cifra de la derecha: si es 5 o más, redondeas hacia arriba.';
+  if(q.tipo==='perimetro') return '💡 Perímetro = la vuelta entera: 2 largos + 2 anchos.';
+  if(q.tipo==='unidades') return '💡 Recuerda: 1 m = 100 cm · 1 km = 1000 m · 1 kg = 1000 g.';
+  if(q.tipo==='estima') return '💡 Redondea cada número a la decena y luego multiplica.';
+  if(q.tipo==='problema') return '💡 Lee otra vez: ¿junta (sumar), reparte (dividir) o repite (multiplicar)?';
   return '💡 Piénsalo con calma, ¡tú puedes!';
 }
 function compMemoria(ok){
@@ -1258,12 +1275,31 @@ function pintarGeo(){
   else if(it.tipo==='area'||it.tipo==='perimetro') area.innerHTML=gridSVG(rectSVG(it.w,it.h))+geoOpciones(it.ops);
   else area.innerHTML=`<div class="geo-letra">${it.letra}</div>`+geoOpciones(it.ops);
 }
-function geoElige(v){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; document.querySelectorAll('#g-ops .opcion').forEach(o=>{ if(o.textContent==(''+it.r)) o.classList.add('correcta'); else if(o.textContent===v) o.classList.add('mala'); }); geoResultado(v==(''+it.r)); }
-function geoUbicar(x,y){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; geoResultado(x===it.x && y===it.y); }
+function pistaGeo(it){
+  if(it.tipo==='ubicar'||it.tipo==='leer') return '💡 Primero cuenta a la <b>derecha</b> (→), luego hacia <b>arriba</b> (↑).';
+  if(it.tipo==='area') return '💡 Área = ancho × alto (cuenta los cuadraditos de adentro).';
+  if(it.tipo==='perimetro') return '💡 Perímetro = la vuelta entera al borde (2 largos + 2 anchos).';
+  if(it.tipo==='simetria') return '💡 Imagina doblar la letra por la mitad vertical: ¿queda igual a ambos lados?';
+  return '💡 Obsérvalo con calma.';
+}
+function geoElige(v){ if(ronda.contestada) return; ronda._sel=v; geoResultado(v==(''+ronda.items[ronda.i].r)); }
+function geoUbicar(x,y){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; ronda._sel=null; geoResultado(x===it.x && y===it.y); }
 function geoResultado(ok){
-  ronda.contestada=true; const it=ronda.items[ronda.i], fb=document.getElementById('g-fb');
+  const it=ronda.items[ronda.i], fb=document.getElementById('g-fb');
+  if(!ok){
+    it._intentos=(it._intentos||0)+1;
+    if(it._intentos===1){ // 1er error: pista del método, SIN revelar la respuesta; reintenta el mismo
+      ronda.contestada=true;
+      if(ronda._sel) document.querySelectorAll('#g-ops .opcion').forEach(o=>{ if(o.textContent===ronda._sel) o.classList.add('mala'); });
+      fb.innerHTML=pistaGeo(it)+"<br>¡Inténtalo otra vez! 💪"; fb.className="feedback mal"; sonar('falla');
+      setTimeout(()=>{ pintarGeo(); }, 1600);
+      return;
+    }
+  }
+  ronda.contestada=true;
+  document.querySelectorAll('#g-ops .opcion').forEach(o=>{ if(o.textContent==(''+it.r)) o.classList.add('correcta'); else if(o.textContent===ronda._sel) o.classList.add('mala'); });
   if(ok){ ronda.aciertos++; datos.puntos+=14; fb.textContent="¡Correcto! 🎉"; fb.className="feedback bien"; confeti(); document.getElementById('g-coment').textContent=pick(FR_GOL).replace(/\{n\}/g,nombre); sonar('gol'); }
-  else { fb.innerHTML="Era <b>"+(it.tipo==='ubicar'?`(${it.x}, ${it.y})`:it.r)+"</b>."; fb.className="feedback mal"; sonar('falla'); }
+  else { fb.innerHTML="Era <b>"+(it.tipo==='ubicar'?`(${it.x}, ${it.y})`:it.r)+"</b>."; fb.className="feedback mal"; sonar('falla'); if(typeof penalizar==='function') penalizar(2); }
   document.getElementById('g-ac').textContent="✅ "+ronda.aciertos;
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.items.length) pintarGeo(); else finGeo(); }, ok?900:1700);
 }
