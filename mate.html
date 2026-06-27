@@ -294,6 +294,7 @@ function cargar(){
   Object.keys(OPS).forEach(o=>{ if(!datos.prog[o]) datos.prog[o]=1; });
   if(!datos.vales) datos.vales=[]; if(typeof datos.leccionesNuevas!=='number') datos.leccionesNuevas=0;
   if(!datos.facts) datos.facts={}; if(!datos.velRecord) datos.velRecord={};
+  if(!datos.examNivel) datos.examNivel=1;
 }
 // Repetición espaciada por operación: recuerda lo que le costó y lo vuelve a priorizar entre días.
 function hoyDia(){ return Math.floor(Date.now()/86400000); }
@@ -493,6 +494,43 @@ function genGemelo(q){
   if(op==='suma'||op==='resta'){ const obj=necesitaLlevar(q); for(let t=0;t<40;t++){ const g=genPregunta(op,q.L); if(necesitaLlevar(g)===obj) return g; } }
   return genPregunta(op,q.L);
 }
+// ===== Contenido de QUINTO BÁSICO (currículum MINEDUC) para el examen progresivo =====
+function genX10(nivel){ // multiplicar por 10, 100, 1000
+  const k=rnd(1,Math.min(3,nivel)); const base=rnd(2,9), a=base*Math.pow(10,k), b=rnd(2,9);
+  return {tipo:'multi', texto:`${a} × ${b}`, r:a*b, a, b, L:3};
+}
+function genMultiGrande(nivel){
+  let a,b;
+  if(nivel<=2){ a=rnd(11,99); b=rnd(2,9); }          // 2 cifras × 1 cifra
+  else { a=rnd(11,99); b=rnd(11,99); }                // 2 cifras × 2 cifras
+  return {tipo:'multi', texto:`${a} × ${b}`, r:a*b, a, b, L:3};
+}
+function genDivGrande(nivel){
+  const b=rnd(2,9), q=rnd(20, nivel>=3?130:60), a=b*q;  // 3 cifras ÷ 1 cifra (exacta)
+  return {tipo:'division', texto:`${a} ÷ ${b}`, r:q, a, b, L:3};
+}
+function genProblema(nivel){
+  const gen=[
+    ()=>{ const c=rnd(3,12), p=rnd(4,12); return {prob:`En una caja hay ${p} jugos. ¿Cuántos jugos hay en ${c} cajas?`, r:c*p}; },
+    ()=>{ const pr=rnd(2,9)*100, c=rnd(3,12); return {prob:`Un cuaderno cuesta $${fmt(pr)}. ¿Cuánto cuestan ${c} cuadernos?`, r:pr*c}; },
+    ()=>{ const l=rnd(4,15), an=rnd(2,9); return {prob:`Un patio mide ${l} m de largo y ${an} m de ancho. ¿Cuál es su área en m²?`, r:l*an}; },
+    ()=>{ const t=rnd(20,120), g=rnd(5,15)*5; return {prob:`Ana tenía $${fmt(t*10)} y gastó $${fmt(g)}. ¿Cuánto le quedó?`, r:t*10-g}; }
+  ];
+  const q=gen[rnd(0,gen.length-1)](); return {tipo:'problema', prob:q.prob, r:q.r};
+}
+// Una pregunta del examen, mezclada y más difícil según el nivel del examen
+function genExamenItem(nivel){
+  const ops=[];
+  ops.push(()=>genPregunta('suma', Math.min(3,nivel)));
+  ops.push(()=>genPregunta('resta', Math.min(3,nivel)));
+  ops.push(()=>genPregunta('multi', Math.min(3,nivel)));
+  ops.push(()=>genPregunta('division', Math.min(3,nivel)));
+  if(nivel>=2){ ops.push(()=>genX10(nivel)); ops.push(()=>genMultiGrande(nivel)); ops.push(()=>genPregunta('vueltos', Math.min(3,nivel))); }
+  if(nivel>=3){ ops.push(()=>genDivGrande(nivel)); ops.push(()=>genProblema(nivel)); ops.push(()=>genMultiGrande(nivel)); }
+  if(nivel>=4){ ops.push(()=>genProblema(nivel)); ops.push(()=>genDivGrande(nivel)); }
+  return ops[rnd(0,ops.length-1)]();
+}
+
 // Explicación paso a paso (enseña el método: amigos del 10, llevar, pedir prestado, tablas…)
 function explicacion(q){
   if(q.tipo==='abaco'){
@@ -534,11 +572,19 @@ function explicacion(q){
     return s+`<div class="paso">✅ Resultado: <b>${q.r}</b></div>`;
   }
   if(q.tipo==='multi'){
-    const arr=Array(q.b).fill(q.a).join(' + '); let sc=[],acc=0; for(let k=1;k<=q.b;k++){acc+=q.a; sc.push(acc);}
+    const big=Math.max(q.a,q.b), small=Math.min(q.a,q.b);
+    if(big>=11){ // estrategia oficial MINEDUC: descomponer (propiedad distributiva)
+      const dec=Math.floor(big/10)*10, uni=big%10;
+      return `<div class="tit">✖️ Multiplicar descomponiendo</div>
+        <div class="paso">Descompongo ${big} = <b>${dec} + ${uni}</b> (propiedad distributiva).</div>
+        <div class="paso">${big} × ${small} = (${dec} + ${uni}) × ${small} = ${dec}×${small} + ${uni}×${small}</div>
+        <div class="paso">= ${dec*small} + ${uni*small} = <b>${q.r}</b></div>`;
+    }
+    const arr=Array(small).fill(big).join(' + '); let sc=[],acc=0; for(let k=1;k<=small;k++){acc+=big; sc.push(acc);}
     return `<div class="tit">✖️ Multiplicar</div>
-      <div class="paso">${q.a} × ${q.b} = sumar <b>${q.a}</b>, ${q.b} veces: ${arr} = <b>${q.r}</b>.</div>
-      <div class="paso">Contando de ${q.a} en ${q.a}: ${sc.join(', ')}.</div>
-      <div class="paso">🧠 Truco: apréndete la <b>tabla del ${q.a}</b>.</div>`;
+      <div class="paso">${big} × ${small} = sumar <b>${big}</b>, ${small} veces: ${arr} = <b>${q.r}</b>.</div>
+      <div class="paso">Contando de ${big} en ${big}: ${sc.join(', ')}.</div>
+      <div class="paso">🧠 Truco: apréndete la <b>tabla del ${big}</b>.</div>`;
   }
   if(q.tipo==='division'){
     return `<div class="tit">➗ Dividir</div>
@@ -573,13 +619,13 @@ function iniciarRonda(op,L){
 }
 function abrirEvalIntro(){
   if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
-  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas combinadas</b> (sumar, restar, multiplicar, dividir…).<br>Te daré una <b>nota de 1,0 a 7,0</b>, como en el colegio 🇨🇱. Para ganar el sobre necesitas <b>nota 5,5</b> o más. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
+  document.getElementById('ei-sub').innerHTML = `Examen combinado <b>nivel ${datos.examNivel||1}</b> de quinto básico (sumar, restar, multiplicar, dividir, problemas…).<br>Te daré una <b>nota de 1,0 a 7,0</b> 🇨🇱. Para el sobre necesitas <b>nota 5,5</b> o más, y <b>cada vez que apruebas, el siguiente sube de dificultad</b> 📈. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
   mostrar('s-eval-intro');
 }
 function comenzarEval(){ iniciarEval(); }
 function iniciarEval(){
   if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
-  ronda={modo:'eval',i:0,aciertos:0,racha:0,resp:"",contestada:false,total:EVAL_N, pares:paresDominados()};
+  ronda={modo:'eval',i:0,aciertos:0,racha:0,resp:"",contestada:false,total:EVAL_N, examNivel:(datos.examNivel||1)};
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarPregunta(); relatorInicio();
 }
@@ -598,7 +644,7 @@ function salirQuiz(){
   if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else if(ronda&&ronda.modo==='memoria') mostrar('s-mem'); else mostrar('s-niv');
 }
 function pintarPregunta(){   // genera una pregunta nueva y la muestra
-  if(ronda.modo==='eval'){ const pr=ronda.pares[rnd(0,ronda.pares.length-1)]; ronda.actual=genPregunta(pr.op,pr.L); }
+  if(ronda.modo==='eval'){ ronda.actual=genExamenItem(ronda.examNivel); }
   else ronda.actual=genPregunta(ronda.op,ronda.L);
   renderActual();
 }
@@ -715,6 +761,8 @@ function finEval(){
     datos.sobres++; datos.leccionesNuevas=0;
     const fecha=new Date().toLocaleDateString('es-CL');
     datos.vales.push({n:datos.sobres, fecha, nota:notaTxt(nota)});
+    const subio = (datos.examNivel||1)<5; datos.examNivel=Math.min(5,(datos.examNivel||1)+1);
+    if(subio) html+=`<div class="premio" style="border-color:var(--naranja); color:#9a3412">📈 ¡El próximo examen será un poquito más difícil! Vas creciendo, ${nombre}.</div>`;
     html+=`<div class="vale">
       <div class="ico">🎟️⚽</div>
       <div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div>
@@ -982,6 +1030,7 @@ function verReporte(){
     <b>🧮 Matemáticas</b><br>
     ⭐ Puntos: ${m.puntos} · 🎟️ Sobres: ${m.sobres}<br>
     ✅ Lecciones dominadas: ${lecciones}<br>
+    📈 Nivel del examen: ${m.examNivel||1} / 5<br>
     📋 Últimas notas de examen: ${notas.length?notas.join(' · '):'aún sin examen'}</div>`;
   if(velLines.length) h+=`<div class="premio" style="text-align:left"><b>⏱️ Récords de velocidad</b><br>${velLines.join('<br>')}</div>`;
   h+=`<div class="premio" style="text-align:left; border-color:var(--rojo); color:#7c2d12"><b>📌 Lo que más le cuesta (mate)</b><br>${debiles.length?debiles.join(' · '):'Sin datos aún. Usa "🧠 Memorizar" para detectarlo.'}</div>`;
