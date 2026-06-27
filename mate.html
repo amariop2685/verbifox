@@ -162,27 +162,18 @@
       <span class="pill pill-pts" id="m-pts">⭐ 0</span>
       <span class="pill pill-sob" id="m-sob">🎟️ 0</span>
     </div>
-    <h2 id="m-titulo">¿Qué practicamos?</h2>
-    <button class="btn btn-verde" onclick="verRuta()" style="font-size:1.25rem;">🗺️ Mi Aventura (¡llega al castillo! 🏰)</button>
+    <h2 id="m-titulo">¡Hola!</h2>
+    <button class="btn btn-verde" onclick="verRuta()" style="font-size:1.35rem; padding:22px;">🗺️ MI AVENTURA<br><span style="font-size:.85rem; font-weight:600;">¡avanza hasta el castillo! 🏰</span></button>
     <div class="meta-box" id="m-meta"></div>
-    <div class="grid2" style="margin-bottom:11px;">
-      <button class="op-btn" style="background:#22c55e" onclick="verNiveles('suma')"><span class="ic">➕</span>Sumar</button>
-      <button class="op-btn" style="background:#3b82f6" onclick="verNiveles('resta')"><span class="ic">➖</span>Restar</button>
-      <button class="op-btn" style="background:#f59e0b" onclick="verNiveles('multi')"><span class="ic">✖️</span>Multiplicar</button>
-      <button class="op-btn" style="background:#a855f7" onclick="verNiveles('division')"><span class="ic">➗</span>Dividir</button>
-      <button class="op-btn" style="background:#ec4899" onclick="verNiveles('vueltos')"><span class="ic">💰</span>Vueltos</button>
-      <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
+    <div class="grid2">
+      <button class="btn btn-rojo" onclick="verVelocidad()" style="margin:0;">⏱️ Velocidad</button>
+      <button class="btn btn-amarillo" onclick="verVales()" style="margin:0;">🎟️ Sobres</button>
     </div>
-    <button class="btn btn-naranja" onclick="retoFrac()">🍕 Fracciones (con regletas)</button>
-    <button class="btn btn-verde" onclick="retoDesafios()">🧩 Desafíos de quinto (patrones, medidas…)</button>
-    <button class="btn btn-azul" onclick="retoGeo()">📐 Geometría (plano, área, simetría)</button>
-    <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
-    <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
-    <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
-    <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
-    <button class="btn btn-azul" onclick="verReporte()">👨‍👩‍👦 Reporte para papá</button>
-    <button class="btn btn-naranja" onclick="verVoz()">🎙️ Voz del relator (elige la más humana)</button>
-    <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
+    <button class="btn btn-azul" onclick="verReporte()" style="margin-top:11px;">👨‍👩‍👦 Reporte para papá</button>
+    <div class="grid2" style="margin-top:4px;">
+      <button class="btn btn-gris btn-pequeno" onclick="verVoz()" style="margin:0;">🎙️ Voz</button>
+      <button class="btn btn-gris btn-pequeno" onclick="location.href='index.html'" style="margin:0;">🦊 Inglés</button>
+    </div>
     <div class="grid2" style="margin-top:4px;">
       <button class="btn btn-gris btn-pequeno" onclick="respaldar()" style="margin:0;">💾 Guardar copia</button>
       <button class="btn btn-gris btn-pequeno" onclick="document.getElementById('rest-file').click()" style="margin:0;">📂 Restaurar</button>
@@ -523,17 +514,8 @@ function cambiarJugador(){ document.getElementById('nombre').value=""; mostrar('
 function irMenu(){
   document.getElementById('m-pts').textContent="⭐ "+datos.puntos;
   document.getElementById('m-sob').textContent="🎟️ "+datos.sobres;
-  const falta=Math.max(0, LECCIONES_PARA_SOBRE-datos.leccionesNuevas);
-  const pct=Math.min(100, Math.round(datos.leccionesNuevas/LECCIONES_PARA_SOBRE*100));
-  const meta=document.getElementById('m-meta');
-  if(falta>0){
-    meta.innerHTML = `Para tu próximo sobre: <b>domina ${falta} lección(es) más</b> y aprueba la Evaluación.<div class="meta-barra"><div class="meta-fill" style="width:${pct}%"></div></div>`;
-  } else {
-    meta.innerHTML = `🏆 ¡Listo! Ya puedes dar la <b>Evaluación</b>. Apruébala (${EVAL_PASA}/${EVAL_N}) y ganas un sobre 🎟️<div class="meta-barra"><div class="meta-fill" style="width:100%"></div></div>`;
-  }
-  const ev=document.getElementById('m-eval');
-  if(falta>0){ ev.disabled=true; ev.textContent="🏆 Evaluación (faltan "+falta+" lecciones)"; }
-  else { ev.disabled=false; ev.textContent="🏆 ¡Evaluación! (gana un sobre)"; }
+  const c=datos.conquistas||0, mundo=datos.examNivel||1;
+  document.getElementById('m-meta').innerHTML = `🌍 Mundo <b>${mundo}</b> · 🏰 Conquistas: <b>${c}</b> · 🎟️ Para el sobre: <b>${c%2}/2</b><br><span style="font-size:.85rem;color:var(--suave)">Toca <b>🗺️ Mi Aventura</b> para avanzar.</span>`;
   mostrar('s-menu');
 }
 
@@ -761,13 +743,11 @@ function iniciarRonda(op,L){
   mostrar('s-quiz'); pintarPregunta(); relatorInicio();
 }
 function abrirEvalIntro(){
-  if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
   document.getElementById('ei-sub').innerHTML = `Examen combinado <b>nivel ${datos.examNivel||1}</b> de quinto básico (sumar, restar, multiplicar, dividir, problemas…).<br>Te daré una <b>nota de 1,0 a 7,0</b> 🇨🇱. Para el sobre necesitas <b>nota 5,5</b> o más, y <b>cada vez que apruebas, el siguiente sube de dificultad</b> 📈. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
   mostrar('s-eval-intro');
 }
 function comenzarEval(){ iniciarEval(); }
 function iniciarEval(){
-  if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
   ronda={modo:'eval',i:0,aciertos:0,racha:0,resp:"",contestada:false,total:EVAL_N, examNivel:(datos.examNivel||1)};
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarPregunta(); relatorInicio();
@@ -1298,7 +1278,7 @@ function rutaEtapas(){
     {id:'fracciones', n:'Fracciones', e:'🍕', f:()=>iniciarFrac()},
     {id:'desafio', n:'Desafíos', e:'🧩', f:()=>iniciarDesafios()},
     {id:'geo', n:'Geometría', e:'📐', f:()=>iniciarGeo()},
-    {id:'castillo', n:'¡Castillo!', e:'🏰', f:()=>{ if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) abrirEvalIntro(); else { document.getElementById('ruta-sub').textContent='🏰 Para entrar al castillo, primero domina 5 lecciones nuevas y da la Evaluación.'; } }}
+    {id:'castillo', n:'¡Castillo!', e:'🏰', f:()=>abrirEvalIntro()}
   ];
 }
 function etapaHecha(et){
