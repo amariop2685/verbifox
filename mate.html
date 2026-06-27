@@ -146,6 +146,7 @@
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
     <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones (con regletas)</button>
+    <button class="btn btn-verde" onclick="iniciarDesafios()">🧩 Desafíos de quinto (patrones, medidas…)</button>
     <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
@@ -518,6 +519,38 @@ function genProblema(nivel){
   ];
   const q=gen[rnd(0,gen.length-1)](); return {tipo:'problema', prob:q.prob, r:q.r};
 }
+function genPatron(nivel){
+  if(nivel>=3 && Math.random()<0.4){ const r=rnd(2,3), a=rnd(2,4); const s=[a,a*r,a*r*r,a*r*r*r]; return {tipo:'patron', prob:`¿Qué número sigue?<br>${s.join(', ')}, ___`, r:s[3]*r}; }
+  const paso=rnd(2, nivel>=2?12:6), ini=rnd(1,9); const s=[ini,ini+paso,ini+2*paso,ini+3*paso];
+  return {tipo:'patron', prob:`¿Qué número sigue?<br>${s.join(', ')}, ___`, r:ini+4*paso};
+}
+function genValorPos(nivel){
+  const ncif=Math.min(4, nivel+2); let num=rnd(Math.pow(10,ncif-1), Math.pow(10,ncif)-1);
+  const pos=rnd(1,ncif), place=Math.pow(10,pos-1), dig=Math.floor(num/place)%10;
+  const nom=['unidades','decenas','centenas','unidades de mil'][pos-1];
+  return {tipo:'valorpos', prob:`En <b>${fmt(num)}</b>, ¿cuánto vale la cifra de las ${nom}?`, r:dig*place};
+}
+function genRedondeo(nivel){
+  const a=rnd(11, nivel>=2?999:99);
+  if(nivel>=3 && a>99 && Math.random()<0.5){ return {tipo:'redondeo', prob:`Redondea <b>${a}</b> a la centena más cercana.`, r:Math.round(a/100)*100}; }
+  return {tipo:'redondeo', prob:`Redondea <b>${a}</b> a la decena más cercana.`, r:Math.round(a/10)*10};
+}
+function genPerimetro(nivel){
+  const l=rnd(3, nivel>=3?40:15), an=rnd(2, nivel>=3?30:9);
+  return {tipo:'perimetro', prob:`Un rectángulo mide ${l} m de largo y ${an} m de ancho.<br>¿Cuál es su <b>perímetro</b>? (suma de los 4 lados)`, r:2*(l+an)};
+}
+function genUnidades(){
+  const t=[
+    ()=>{ const m=rnd(2,9); return {prob:`¿Cuántos centímetros hay en ${m} metros? (1 m = 100 cm)`, r:m*100}; },
+    ()=>{ const km=rnd(2,9); return {prob:`¿Cuántos metros hay en ${km} kilómetros? (1 km = 1000 m)`, r:km*1000}; },
+    ()=>{ const kg=rnd(2,9); return {prob:`¿Cuántos gramos hay en ${kg} kilos? (1 kg = 1000 g)`, r:kg*1000}; }
+  ];
+  const q=t[rnd(0,t.length-1)](); return {tipo:'unidades', prob:q.prob, r:q.r};
+}
+function genDesafioItem(nivel){
+  const ops=[()=>genPatron(nivel),()=>genValorPos(nivel),()=>genRedondeo(nivel),()=>genPerimetro(nivel),()=>genUnidades(),()=>genProblema(nivel),()=>genMultiGrande(nivel),()=>genDivGrande(nivel)];
+  return ops[rnd(0,ops.length-1)]();
+}
 // Una pregunta del examen, mezclada y más difícil según el nivel del examen
 function genExamenItem(nivel){
   const ops=[];
@@ -525,7 +558,8 @@ function genExamenItem(nivel){
   ops.push(()=>genPregunta('resta', Math.min(3,nivel)));
   ops.push(()=>genPregunta('multi', Math.min(3,nivel)));
   ops.push(()=>genPregunta('division', Math.min(3,nivel)));
-  if(nivel>=2){ ops.push(()=>genX10(nivel)); ops.push(()=>genMultiGrande(nivel)); ops.push(()=>genPregunta('vueltos', Math.min(3,nivel))); }
+  ops.push(()=>genPatron(nivel)); ops.push(()=>genValorPos(nivel));
+  if(nivel>=2){ ops.push(()=>genX10(nivel)); ops.push(()=>genMultiGrande(nivel)); ops.push(()=>genPregunta('vueltos', Math.min(3,nivel))); ops.push(()=>genRedondeo(nivel)); ops.push(()=>genPerimetro(nivel)); ops.push(()=>genUnidades()); }
   if(nivel>=3){ ops.push(()=>genDivGrande(nivel)); ops.push(()=>genProblema(nivel)); ops.push(()=>genMultiGrande(nivel)); }
   if(nivel>=4){ ops.push(()=>genProblema(nivel)); ops.push(()=>genDivGrande(nivel)); }
   return ops[rnd(0,ops.length-1)]();
@@ -641,10 +675,11 @@ function salirQuiz(){
     else mostrar('s-quiz');
     return;
   }
-  if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else if(ronda&&ronda.modo==='memoria') mostrar('s-mem'); else mostrar('s-niv');
+  if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else if(ronda&&ronda.modo==='memoria') mostrar('s-mem'); else if(ronda&&ronda.modo==='desafio') irMenu(); else mostrar('s-niv');
 }
 function pintarPregunta(){   // genera una pregunta nueva y la muestra
   if(ronda.modo==='eval'){ ronda.actual=genExamenItem(ronda.examNivel); }
+  else if(ronda.modo==='desafio'){ ronda.actual=genDesafioItem(ronda.nivel); }
   else ronda.actual=genPregunta(ronda.op,ronda.L);
   renderActual();
 }
@@ -659,7 +694,7 @@ function renderActual(){    // muestra ronda.actual (sin generar otra) — sirve
   document.getElementById('q-cuerpo').innerHTML = ronda.actual.texto ? `<div class="mate-op">${ronda.actual.texto} = ?</div>` : `<div class="mate-prob">${ronda.actual.prob}</div>`;
   document.getElementById('q-explica').style.display='none';
   document.getElementById('q-controles').style.display='block';
-  const como=document.getElementById('q-como'); como.style.display = (ronda.modo==='eval'||ronda.modo==='velocidad'||ronda.modo==='memoria') ? 'none' : 'block';
+  const como=document.getElementById('q-como'); como.style.display = (ronda.modo==='eval'||ronda.modo==='velocidad'||ronda.modo==='memoria'||ronda.modo==='desafio') ? 'none' : 'block';
   const vb=document.getElementById('q-voz'); if(vb) vb.textContent=vozOn?'🔊':'🔇';
   comentar(pick(FR_ANIMO), false);
   pintarResp();
@@ -692,7 +727,27 @@ function comprobar(){
   document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.total) pintarPregunta(); else fin(); }, ok?650:1300);
 }
-function fin(){ if(ronda.modo==='eval') finEval(); else finRonda(); }
+function fin(){ if(ronda.modo==='eval') finEval(); else if(ronda.modo==='desafio') finDesafio(); else finRonda(); }
+function iniciarDesafios(){
+  ronda={modo:'desafio', i:0, aciertos:0, racha:0, total:8, resp:'', contestada:false, nivel:Math.min(5,(datos.examNivel||1)+1)};
+  document.getElementById('q-teclado').innerHTML=tecladoHTML();
+  mostrar('s-quiz'); pintarPregunta(); relatorInicio();
+}
+function finDesafio(){
+  const ac=ronda.aciertos, total=ronda.total;
+  datos.puntos += ac*14; guardar();
+  const e=ac>=7?3:ac>=5?2:1;
+  document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
+  document.getElementById('r-emoji').textContent= ac>=7?"🏆":ac>=5?"🧩":"💪";
+  document.getElementById('r-titulo').textContent= ac>=7?("¡Crack de quinto, "+nombre+"!"):ac>=5?"¡Bien hecho!":"¡A seguir practicando!";
+  document.getElementById('r-num').textContent=ac+" / "+total;
+  document.getElementById('r-pts').textContent="+"+(ac*14)+" puntos ⭐";
+  document.getElementById('r-premio').innerHTML='<div class="premio">🧩 Patrones, valor posicional, geometría y medidas (quinto básico). ¡Sigue así!</div>';
+  document.getElementById('r-rep').style.display='block';
+  ronda.ultimo={desafio:true};
+  mostrar('s-res'); if(ac>=7) lluvia();
+  decir(ac>=7?("¡Excelente, "+nombre+"!"):("¡Bien, "+nombre+"! Sigue practicando."));
+}
 
 // Puntos por dificultad: lo más difícil vale MÁS (para que no se quede en lo fácil).
 const VALOR_OP={ suma:10, resta:12, multi:16, division:18, vueltos:14, fracciones:16, abaco:10 };
@@ -789,6 +844,7 @@ function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
   else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem.op, ronda.ultimo.mem.tabla);
   else if(ronda.ultimo && ronda.ultimo.frac) iniciarFrac();
+  else if(ronda.ultimo && ronda.ultimo.desafio) iniciarDesafios();
   else if(ronda.ultimo) iniciarRonda(ronda.ultimo.op, ronda.ultimo.L);
   else if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) iniciarEval();
   else irMenu();
