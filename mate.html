@@ -96,6 +96,18 @@
   /* Geometría */
   .geo-svg{width:min(100%,300px); height:auto; display:block; margin:8px auto;}
   .geo-letra{font-size:5.5rem; text-align:center; font-weight:800; color:var(--azul-osc); margin:4px 0;}
+  /* Ruta / mapa de aventura (estilo Mario) */
+  .ruta{display:flex; flex-direction:column; align-items:center; padding:4px 0 10px;}
+  .ruta-link{width:6px; height:24px; background:repeating-linear-gradient(#cbd5e1 0 6px, transparent 6px 13px);}
+  .ruta-nodo{display:flex; flex-direction:column; align-items:center; cursor:pointer;}
+  .nodo-circ{width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem; border:4px solid #e2e8f0; background:#fff; box-shadow:0 5px 0 rgba(0,0,0,.12);}
+  .nodo-circ.hecho{background:var(--verde); border-color:var(--verde-osc); color:#fff;}
+  .nodo-circ.actual{border-color:var(--azul); box-shadow:0 0 0 5px #bfdbfe, 0 5px 0 rgba(0,0,0,.12); animation:flota 1.6s ease-in-out infinite;}
+  .nodo-circ.bloq{background:#eef2f7; color:#94a3b8; border-color:#e2e8f0;}
+  .nodo-circ.castillo{width:96px; height:96px; font-size:2.8rem; background:#fef3c7; border-color:#f59e0b;}
+  .nodo-circ.castillo.hecho{background:var(--amarillo); border-color:#d97706;}
+  .nodo-lbl{font-weight:800; font-size:.9rem; margin-top:4px; color:var(--texto);}
+  .nodo-est{font-size:.72rem; color:var(--suave); margin-bottom:2px;}
 
   .resultado-num{font-size:3.4rem; text-align:center; font-weight:800; color:var(--verde-osc);}
   .estrellas{font-size:2.2rem; text-align:center;}
@@ -139,6 +151,7 @@
       <span class="pill pill-sob" id="m-sob">🎟️ 0</span>
     </div>
     <h2 id="m-titulo">¿Qué practicamos?</h2>
+    <button class="btn btn-verde" onclick="verRuta()" style="font-size:1.25rem;">🗺️ Mi Aventura (¡llega al castillo! 🏰)</button>
     <div class="meta-box" id="m-meta"></div>
     <div class="grid2" style="margin-bottom:11px;">
       <button class="op-btn" style="background:#22c55e" onclick="verNiveles('suma')"><span class="ic">➕</span>Sumar</button>
@@ -214,6 +227,14 @@
     <div id="g-instr" class="mate-prob"></div>
     <div id="g-area"></div>
     <div class="feedback" id="g-fb"></div>
+  </section>
+
+  <!-- RUTA / MAPA DE AVENTURA -->
+  <section id="s-ruta" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
+    <h2>🗺️ Mi Aventura</h2>
+    <p class="sub" id="ruta-sub"></p>
+    <div class="ruta" id="ruta-cuerpo"></div>
   </section>
 
   <!-- REPORTE PARA PAPÁ -->
@@ -313,6 +334,13 @@ function cargar(){
   if(!datos.vales) datos.vales=[]; if(typeof datos.leccionesNuevas!=='number') datos.leccionesNuevas=0;
   if(!datos.facts) datos.facts={}; if(!datos.velRecord) datos.velRecord={};
   if(!datos.examNivel) datos.examNivel=1;
+  if(!datos.hitos) datos.hitos={};
+}
+// Cuánto domina una operación (0..1): por lecciones y por hechos memorizados (tiempo+acierto)
+function progresoOp(op){
+  const domL=[1,2,3].filter(L=>datos.dominado[op+'-'+L]).length;
+  const mastered=Object.keys(datos.facts).filter(k=>k.indexOf(op+':')===0 && datos.facts[k].nivel>=4).length;
+  return Math.max(domL/3, Math.min(1, mastered/10));
 }
 // Repetición espaciada por operación: recuerda lo que le costó y lo vuelve a priorizar entre días.
 function hoyDia(){ return Math.floor(Date.now()/86400000); }
@@ -759,7 +787,7 @@ function iniciarDesafios(){
 }
 function finDesafio(){
   const ac=ronda.aciertos, total=ronda.total;
-  datos.puntos += ac*14; guardar();
+  datos.puntos += ac*14; if(ac>=6){ datos.hitos=datos.hitos||{}; datos.hitos.desafio=true; } guardar();
   const e=ac>=7?3:ac>=5?2:1;
   document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
   document.getElementById('r-emoji').textContent= ac>=7?"🏆":ac>=5?"🧩":"💪";
@@ -1159,8 +1187,8 @@ function geoResultado(ok){
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.items.length) pintarGeo(); else finGeo(); }, ok?900:1700);
 }
 function finGeo(){
-  guardar();
   const ac=ronda.aciertos, total=ronda.items.length, e=ac>=5?3:ac>=3?2:1;
+  if(ac>=5){ datos.hitos=datos.hitos||{}; datos.hitos.geo=true; } guardar();
   document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
   document.getElementById('r-emoji').textContent= ac>=5?"🏆":ac>=3?"📐":"💪";
   document.getElementById('r-titulo').textContent= ac>=5?("¡Genio de la geometría, "+nombre+"!"):"¡Bien hecho!";
@@ -1189,6 +1217,49 @@ function verVales(){
 
 /* ====== REPORTE PARA PAPÁ (resume matemáticas + inglés) ====== */
 function fmtSeg(s){ s=Math.max(0,Math.round(s||0)); return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2); }
+/* ====== RUTA / MAPA DE AVENTURA (avanza hasta el castillo, bloquea lo dominado) ====== */
+let _rutaEtapas=[], _rutaIdx=0;
+function rutaEtapas(){
+  return [
+    {id:'suma', n:'Sumas', e:'➕', f:()=>iniciarMemoria('suma')},
+    {id:'resta', n:'Restas', e:'➖', f:()=>iniciarMemoria('resta')},
+    {id:'multi', n:'Tablas', e:'✖️', f:()=>iniciarMemoria('multi','mix')},
+    {id:'division', n:'Divisiones', e:'➗', f:()=>iniciarMemoria('division')},
+    {id:'vueltos', n:'Vueltos', e:'💰', f:()=>verNiveles('vueltos')},
+    {id:'desafio', n:'Desafíos', e:'🧩', f:()=>iniciarDesafios()},
+    {id:'geo', n:'Geometría', e:'📐', f:()=>iniciarGeo()},
+    {id:'castillo', n:'¡Castillo!', e:'🏰', f:()=>{ if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) abrirEvalIntro(); else { document.getElementById('ruta-sub').textContent='🏰 Para entrar al castillo, primero domina 5 lecciones nuevas y da la Evaluación.'; } }}
+  ];
+}
+function etapaHecha(et){
+  if(et.id==='castillo') return (datos.sobres||0)>=1;
+  if(et.id==='desafio') return !!(datos.hitos&&datos.hitos.desafio);
+  if(et.id==='geo') return !!(datos.hitos&&datos.hitos.geo);
+  return progresoOp(et.id)>=0.85;
+}
+function verRuta(){
+  const et=rutaEtapas();
+  let idx=et.findIndex(e=>!etapaHecha(e)); if(idx<0) idx=et.length-1;
+  _rutaEtapas=et; _rutaIdx=idx;
+  let html='';
+  et.forEach((e,i)=>{
+    const hecho=etapaHecha(e), actual=(i===idx), bloq=(i>idx);
+    if(i>0) html+='<div class="ruta-link"></div>';
+    const cls=(e.id==='castillo'?'castillo ':'')+(hecho?'hecho':actual?'actual':bloq?'bloq':'');
+    const icono = e.id==='castillo'?'🏰':(hecho?'🚩':actual?'🦊':bloq?'🔒':e.e);
+    const est = hecho?'✅ dominado (repaso)':actual?'▶ ¡aquí vas!':bloq?'🔒 bloqueado':'';
+    html+=`<div class="ruta-nodo" onclick="rutaTocar(${i})"><div class="nodo-circ ${cls}">${icono}</div><div class="nodo-lbl">${e.n}</div><div class="nodo-est">${est}</div></div>`;
+  });
+  document.getElementById('ruta-cuerpo').innerHTML=html;
+  const fin = etapaHecha(et[et.length-1]);
+  document.getElementById('ruta-sub').innerHTML = fin ? "🏆 ¡Llegaste al castillo, "+nombre+"! ¡Campeón del primer mundo!" : ("Etapa <b>"+(idx+1)+"</b> de "+et.length+" — ¡sigue avanzando hacia el 🏰!");
+  mostrar('s-ruta');
+}
+function rutaTocar(i){
+  if(i>_rutaIdx){ document.getElementById('ruta-sub').textContent='🔒 Primero completa las etapas anteriores.'; return; }
+  _rutaEtapas[i].f();
+}
+
 function verReporte(){
   const m=datos, low=nombre.toLowerCase();
   const lecciones=Object.values(m.dominado||{}).filter(Boolean).length;
