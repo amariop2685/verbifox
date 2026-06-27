@@ -863,6 +863,7 @@ function finRonda(){
     datos.dominado[op+'-'+L]=true; domina=true; datos.leccionesNuevas++;
     if(L===datos.prog[op] && L<3) datos.prog[op]=L+1;
   }
+  if(ac>=META_RONDA){ datos.hitos=datos.hitos||{}; datos.hitos['op_'+op]=true; } // completa su etapa en la ruta
   guardar();
   const e=ac>=7?3:ac>=5?2:1;
   document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
@@ -953,9 +954,9 @@ function repetir(){
 
 /* ====== MODO VELOCIDAD (rápido PERO seguro: fallar resta tiempo y corta la racha) ====== */
 function verVelocidad(){
-  const ops=['suma','resta','multi','division','vueltos','fracciones','abaco'];
+  const ops=['suma','resta','multi','division','vueltos','abaco'];
   const rec=datos.velRecord||{};
-  document.getElementById('vel-lista').innerHTML = ops.map(o=>`<div class="niv-btn" onclick="iniciarVelocidad('${o}')"><span>${OPS[o].n}</span><span class="est">🏆 ${rec[o]||0}</span></div>`).join('');
+  document.getElementById('vel-lista').innerHTML = ops.map(o=>`<div class="niv-btn" onclick="iniciarVelocidad('${o}')"><span>${OPS[o]?OPS[o].n:o}</span><span class="est">🏆 ${rec[o]||0}</span></div>`).join('');
   mostrar('s-vel');
 }
 function iniciarVelocidad(op){
@@ -1079,7 +1080,9 @@ function compMemoria(ok){
 }
 function finMemoriaMate(){
   const m=ronda.memorizadas, total=ronda.total, todo=m>=total;
-  datos.puntos += m*5; guardar();
+  datos.puntos += m*5;
+  if(m>=Math.max(3,Math.ceil(total*0.6))){ datos.hitos=datos.hitos||{}; datos.hitos['op_'+ronda.op]=true; } // completó la etapa de esta operación
+  guardar();
   document.getElementById('r-emoji').textContent= todo?"🧠":"🌱";
   document.getElementById('r-est').textContent= m>=total?"⭐⭐⭐":m>=Math.ceil(total/2)?"⭐⭐":"⭐";
   document.getElementById('r-titulo').textContent= todo?("¡Te lo grabaste, "+nombre+"!"):("¡Buen esfuerzo, "+nombre+"!");
@@ -1286,7 +1289,8 @@ function etapaHecha(et){
   if(et.id==='desafio') return !!(datos.hitos&&datos.hitos.desafio);
   if(et.id==='geo') return !!(datos.hitos&&datos.hitos.geo);
   if(et.id==='fracciones') return !!(datos.hitos&&datos.hitos.frac);
-  return progresoOp(et.id)>=0.85;
+  // Operación completada: con una buena sesión (hito) o si ya la domina bastante
+  return !!(datos.hitos && datos.hitos['op_'+et.id]) || progresoOp(et.id)>=0.6;
 }
 function verRuta(){
   const et=rutaEtapas();
@@ -1315,7 +1319,7 @@ function rutaTocar(i){
   const et=_rutaEtapas[i];
   if(i>_rutaIdx){ document.getElementById('ruta-sub').textContent='🔒 Primero completa las etapas anteriores.'; return; }
   // Si es una operación básica ya dominada, limitamos los repasos para empujarlo a lo nuevo
-  if(OPS_BASE.indexOf(et.id)>=0 && progresoOp(et.id)>=0.85){
+  if(OPS_BASE.indexOf(et.id)>=0 && etapaHecha(et)){
     const r=(datos.repasos&&datos.repasos[et.id])||0;
     if(r>=LIMITE_REPASO){
       modal(`<div class="modal-emoji">💪</div><div class="tit-modal">¡Eso ya lo dominas!</div>
