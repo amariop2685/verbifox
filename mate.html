@@ -136,6 +136,7 @@
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
+    <button class="btn btn-naranja" onclick="verVoz()">🎙️ Voz del relator (elige la más humana)</button>
     <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
     <button class="btn btn-gris btn-pequeno" style="margin:6px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
   </section>
@@ -149,6 +150,14 @@
     <h2 id="n-titulo">Niveles</h2>
     <p class="sub">Domina un nivel (7 de 8) para avanzar y sumar una lección ✅</p>
     <div id="n-lista"></div>
+  </section>
+
+  <!-- SELECTOR DE VOZ DEL RELATOR -->
+  <section id="s-voz" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
+    <h2>🎙️ Voz del relator</h2>
+    <p class="sub">Toca una voz para escucharla y elegirla. Las que dicen "natural" suelen ser más humanas.</p>
+    <div id="voz-lista"></div>
   </section>
 
   <!-- ANTESALA DE LA EVALUACIÓN -->
@@ -238,8 +247,33 @@ function lluvia(){ for(let k=0;k<6;k++) setTimeout(confeti,k*220); }
 
 /* ====== RELATOR DE FÚTBOL (texto + voz) ====== */
 let vozOn=(()=>{ try{ return localStorage.getItem('mate_voz')!=='0'; }catch(e){ return true; } })();
-function _vozEs(){ const vs=(window.speechSynthesis?speechSynthesis.getVoices():[])||[]; return vs.find(v=>v.lang&&/^es/i.test(v.lang)&&v.localService)||vs.find(v=>v.lang&&/^es/i.test(v.lang))||null; }
-function decir(t){ if(!vozOn||!('speechSynthesis'in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t.replace(/[⚽🎉🙌🔥💪🎙️]/g,'')); const v=_vozEs(); u.lang=v?v.lang:'es-419'; if(v)u.voice=v; u.rate=1.08; u.pitch=1.15; if(speechSynthesis.resume)speechSynthesis.resume(); speechSynthesis.speak(u);}catch(e){} }
+let vozNombre=(()=>{ try{ return localStorage.getItem('mate_voz_nombre')||''; }catch(e){ return ''; } })();
+function vozPrefList(){ const vs=(window.speechSynthesis?speechSynthesis.getVoices():[])||[]; return vs.filter(v=>v.lang&&/^es/i.test(v.lang)); }
+// Elige la voz en español que suene MÁS humana disponible en el dispositivo.
+function _vozEs(){
+  const vs=vozPrefList(); if(!vs.length) return null;
+  if(vozNombre){ const v=vs.find(x=>x.name===vozNombre); if(v) return v; }
+  const score=v=>{ let s=0; const n=(v.name||'').toLowerCase(), l=(v.lang||'').toLowerCase();
+    if(/google/.test(n)) s+=6;
+    if(/(enhanced|premium|natural|neural|siri|premium)/.test(n)) s+=5;
+    if(/(paulina|mónica|monica|sabina|helena|jorge|juan|diego|lucia|lupe)/.test(n)) s+=2;
+    if(/(es-mx|es-419|es-us|es-cl|es-co)/.test(l)) s+=3;
+    if(!v.localService) s+=2; // las "de red" suelen ser más naturales (en móvil)
+    return s; };
+  return vs.slice().sort((a,b)=>score(b)-score(a))[0];
+}
+function decir(t){ if(!vozOn||!('speechSynthesis'in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t.replace(/[⚽🎉🙌🔥💪🎙️🏆🐢🎯👍]/g,'')); const v=_vozEs(); u.lang=v?v.lang:'es-MX'; if(v)u.voice=v; u.rate=1.0; u.pitch=1.0; if(speechSynthesis.resume)speechSynthesis.resume(); speechSynthesis.speak(u);}catch(e){} }
+function verVoz(){
+  const vs=vozPrefList();
+  const lista=document.getElementById('voz-lista');
+  if(!vs.length){ lista.innerHTML='<p class="sub">Aún no hay voces en español. Recarga la página o prueba en otro navegador.</p>'; mostrar('s-voz'); return; }
+  const actual=(_vozEs()||{}).name;
+  lista.innerHTML = vs.map(v=>{ const sel=(vozNombre?v.name===vozNombre:v.name===actual); const tipo=v.localService?'':' · natural';
+    return `<div class="niv-btn" onclick="elegirVoz(this.dataset.n)" data-n="${v.name.replace(/"/g,'')}"><span>${v.name}${tipo}</span><span class="est">${sel?'✅':'▶'}</span></div>`; }).join('');
+  mostrar('s-voz');
+}
+function elegirVoz(n){ vozNombre=n; try{ localStorage.setItem('mate_voz_nombre',n); }catch(e){} const antes=vozOn; vozOn=true; decir('¡Hola '+nombre+'! Soy tu relator. ¡Vamos a jugar!'); vozOn=antes; verVoz(); }
+if('speechSynthesis'in window){ try{ speechSynthesis.onvoiceschanged=()=>{ const sv=document.getElementById('s-voz'); if(sv&&sv.classList.contains('activa')) verVoz(); }; speechSynthesis.getVoices(); }catch(e){} }
 function toggleVoz(){ vozOn=!vozOn; try{ localStorage.setItem('mate_voz', vozOn?'1':'0'); }catch(e){} const b=document.getElementById('q-voz'); if(b)b.textContent=vozOn?'🔊':'🔇'; if(vozOn) decir('¡Relator encendido!'); else if('speechSynthesis'in window) speechSynthesis.cancel(); }
 function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 let _rx="";
