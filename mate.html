@@ -887,39 +887,23 @@ function pintarFrac(){
   document.getElementById('f-coment').textContent=pick(FR_ANIMO).replace(/\{n\}/g,nombre);
   const area=document.getElementById('f-area'), instr=document.getElementById('f-instr');
   const lbl=labelFrac(it.whole,it.num,it.den);
-  document.getElementById('f-check').style.display='block';
   if(it.tipo==='pinta'){
+    document.getElementById('f-check').style.display='block';
     instr.innerHTML=`Mueve la regleta para pintar: <b>${lbl}</b>`;
     area.innerHTML=`<div id="f-bar"></div><div class="fval" id="f-val">0</div>
       <input type="range" min="0" max="${it.segments}" value="0" class="regleta" id="f-slider" oninput="fracSlider(this.value)">
       <p class="mini">Cada cuadro es 1/${it.den}${it.whole?' · la línea gruesa marca 1 entero':''}</p>`;
     dibujaBarra(0,it);
   } else {
-    instr.innerHTML=`¿Qué fracción está pintada? <b>Arrastra</b> la correcta a la caja (o tócala).`;
-    area.innerHTML=`<div id="f-bar"></div><div class="fdrop" id="f-drop">⬇️ suelta aquí</div><div class="fcards" id="f-cards"></div>`;
+    document.getElementById('f-check').style.display='none'; // se responde al tocar
+    instr.innerHTML=`¿Qué fracción está pintada? <b>Toca</b> la correcta.`;
+    const ops=fracOpciones(it).map(v=>`<div class="opcion" onclick="fracElige('${v}')">${v}</div>`).join('');
+    area.innerHTML=`<div id="f-bar"></div><div class="grid2" id="f-ops" style="margin-top:12px;">${ops}</div>`;
     dibujaBarra(it.shadedTarget,it);
-    const cont=document.getElementById('f-cards');
-    fracOpciones(it).forEach(v=>{ const c=document.createElement('div'); c.className='fcard'; c.textContent=v; c.dataset.v=v; cont.appendChild(c); makeDrag(c); });
   }
 }
 function fracSlider(v){ const it=ronda.items[ronda.i]; ronda.sliderVal=parseInt(v,10); dibujaBarra(ronda.sliderVal,it); document.getElementById('f-val').textContent=valorTexto(ronda.sliderVal,it.den); }
-function fracSeleccionar(v){ if(ronda.contestada) return; ronda.sel=v; document.querySelectorAll('#f-cards .fcard').forEach(c=>c.classList.toggle('sel',c.dataset.v===v)); const dz=document.getElementById('f-drop'); if(dz) dz.textContent=v; }
-function makeDrag(el){
-  el.addEventListener('click', ()=>fracSeleccionar(el.dataset.v));
-  el.addEventListener('pointerdown', e=>{
-    if(ronda.contestada) return; e.preventDefault();
-    const clone=el.cloneNode(true); clone.classList.add('dragging'); document.body.appendChild(clone);
-    const mv=ev=>{ clone.style.left=(ev.clientX-34)+'px'; clone.style.top=(ev.clientY-24)+'px'; }; mv(e);
-    const up=ev=>{ document.removeEventListener('pointermove',mv); document.removeEventListener('pointerup',up); clone.remove();
-      const dz=document.getElementById('f-drop'); if(dz){ const r=dz.getBoundingClientRect(); if(ev.clientX>=r.left&&ev.clientX<=r.right&&ev.clientY>=r.top&&ev.clientY<=r.bottom) fracSeleccionar(el.dataset.v); } };
-    document.addEventListener('pointermove',mv); document.addEventListener('pointerup',up);
-  });
-}
-function fracComprobar(){
-  if(ronda.contestada) return;
-  const it=ronda.items[ronda.i]; let ok;
-  if(it.tipo==='pinta'){ ok=(ronda.sliderVal===it.shadedTarget); }
-  else { if(!ronda.sel){ document.getElementById('f-fb').textContent="Arrastra o toca una fracción 👆"; return; } ok=(ronda.sel===labelFrac(it.whole,it.num,it.den)); }
+function fracResultado(ok, it){
   ronda.contestada=true;
   const fb=document.getElementById('f-fb');
   if(ok){ ronda.aciertos++; datos.puntos+=12; fb.textContent="¡Correcto! 🎉"; fb.className="feedback bien"; confeti(); document.getElementById('f-coment').textContent=pick(FR_GOL).replace(/\{n\}/g,nombre); sonar('gol'); }
@@ -927,6 +911,18 @@ function fracComprobar(){
   document.getElementById('f-ac').textContent="✅ "+ronda.aciertos;
   document.getElementById('f-check').style.display='none';
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.items.length) pintarFrac(); else finFrac(); }, ok?850:1600);
+}
+function fracElige(v){
+  if(ronda.contestada) return;
+  const it=ronda.items[ronda.i]; const correcta=labelFrac(it.whole,it.num,it.den); const ok=(v===correcta);
+  document.querySelectorAll('#f-ops .opcion').forEach(o=>{ if(o.textContent===correcta) o.classList.add('correcta'); else if(o.textContent===v) o.classList.add('mala'); });
+  fracResultado(ok, it);
+}
+function fracComprobar(){
+  if(ronda.contestada) return;
+  const it=ronda.items[ronda.i];
+  if(it.tipo!=='pinta') return; // las de elegir se responden al tocar la opción
+  fracResultado(ronda.sliderVal===it.shadedTarget, it);
 }
 function finFrac(){
   guardar();
