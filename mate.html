@@ -133,6 +133,7 @@
       <button class="op-btn" style="background:#14b8a6" onclick="verNiveles('fracciones')"><span class="ic">🍕</span>Fracciones</button>
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
+    <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
@@ -173,6 +174,14 @@
     <div class="premio">¿Te sientes preparado? 💪<br>Si no, no hay problema: puedes <b>seguir entrenando</b> y volver cuando quieras.</div>
     <button class="btn btn-morado" onclick="comenzarEval()">🏆 ¡Estoy listo, empezar!</button>
     <button class="btn btn-verde" onclick="irMenu()">💪 Mejor sigo entrenando</button>
+  </section>
+
+  <!-- MEMORIZAR: elegir operación -->
+  <section id="s-mem" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
+    <h2>🧠 Memorizar</h2>
+    <p class="sub">Repite cada operación varias veces (intercaladas) hasta grabártela. ¡Ideal para las tablas! 🔁</p>
+    <div id="mem-lista"></div>
   </section>
 
   <!-- VELOCIDAD: elegir operación -->
@@ -515,7 +524,7 @@ function salirQuiz(){
     else mostrar('s-quiz');
     return;
   }
-  if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else mostrar('s-niv');
+  if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else if(ronda&&ronda.modo==='memoria') mostrar('s-mem'); else mostrar('s-niv');
 }
 function pintarPregunta(){   // genera una pregunta nueva y la muestra
   if(ronda.modo==='eval'){ const pr=ronda.pares[rnd(0,ronda.pares.length-1)]; ronda.actual=genPregunta(pr.op,pr.L); }
@@ -525,13 +534,15 @@ function pintarPregunta(){   // genera una pregunta nueva y la muestra
 function renderActual(){    // muestra ronda.actual (sin generar otra) — sirve para el gemelo
   ronda.contestada=false; ronda.resp="";
   const prog=document.getElementById('q-prog');
-  if(ronda.modo!=='velocidad'){ prog.classList.remove('pill','crono-on'); prog.textContent=(ronda.i+1)+"/"+ronda.total+(ronda.modo==='eval'?' 🏆':''); }
-  document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
+  if(ronda.modo==='velocidad'){}
+  else if(ronda.modo==='memoria'){ prog.classList.remove('pill','crono-on'); prog.textContent='🧠 '+ronda.memorizadas+'/'+ronda.total; }
+  else { prog.classList.remove('pill','crono-on'); prog.textContent=(ronda.i+1)+"/"+ronda.total+(ronda.modo==='eval'?' 🏆':''); }
+  document.getElementById('q-aciertos').textContent="✅ "+(ronda.modo==='memoria'?ronda.memorizadas:ronda.aciertos);
   const fb=document.getElementById('q-feedback'); fb.textContent=""; fb.className="feedback";
   document.getElementById('q-cuerpo').innerHTML = ronda.actual.texto ? `<div class="mate-op">${ronda.actual.texto} = ?</div>` : `<div class="mate-prob">${ronda.actual.prob}</div>`;
   document.getElementById('q-explica').style.display='none';
   document.getElementById('q-controles').style.display='block';
-  const como=document.getElementById('q-como'); como.style.display = (ronda.modo==='eval'||ronda.modo==='velocidad') ? 'none' : 'block';
+  const como=document.getElementById('q-como'); como.style.display = (ronda.modo==='eval'||ronda.modo==='velocidad'||ronda.modo==='memoria') ? 'none' : 'block';
   const vb=document.getElementById('q-voz'); if(vb) vb.textContent=vozOn?'🔊':'🔇';
   comentar(pick(FR_ANIMO), false);
   pintarResp();
@@ -555,6 +566,7 @@ function comprobar(){
   ronda.contestada=true;
   const ok=parseInt(ronda.resp,10)===ronda.actual.r;
   if(ronda.modo==='velocidad'){ compVel(ok); return; }
+  if(ronda.modo==='memoria'){ compMemoria(ok); return; }
   document.getElementById('q-como').style.display='none';
   const fb=document.getElementById('q-feedback');
   if(ok){ ronda.aciertos++; ronda.racha=(ronda.racha||0)+1; fb.textContent=["¡Gol! ⚽","¡Correcto! 🎉","¡Muy bien! 🌟","¡Crack! 👏"][rnd(0,3)]; fb.className="feedback bien"; confeti();
@@ -650,6 +662,7 @@ function finEval(){
 }
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
+  else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem);
   else if(ronda.ultimo) iniciarRonda(ronda.ultimo.op, ronda.ultimo.L);
   else if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) iniciarEval();
   else irMenu();
@@ -705,6 +718,51 @@ function finVel(){
   ronda.ultimo={vel:ronda.op};
   mostrar('s-res'); if(record) lluvia();
   decir(record?("¡Nuevo récord, "+nombre+"! ¡Velocidad de crack!"):(prec>=90?("¡Rápido y seguro, "+nombre+"! Excelente."):("¡Buen ritmo, "+nombre+"! A seguir entrenando.")));
+}
+
+/* ====== MODO MEMORIZAR (repite cada operación varias veces, intercaladas, hasta grabarla) ====== */
+const MEM_FACTS=6, MEM_NEED=3; // 6 operaciones, cada una acertada 3 veces (intercaladas)
+function verMemoria(){
+  const ops=['multi','suma','resta','division'];
+  document.getElementById('mem-lista').innerHTML = ops.map(o=>`<div class="niv-btn" onclick="iniciarMemoria('${o}')"><span>${OPS[o].n}</span><span class="est">Nivel ${Math.min(datos.prog[o]||1,3)}</span></div>`).join('');
+  mostrar('s-mem');
+}
+function iniciarMemoria(op){
+  const L=Math.min(datos.prog[op]||1,3);
+  const facts=[]; const seen=new Set(); let tries=0;
+  while(facts.length<MEM_FACTS && tries<300){ tries++; const q=genPregunta(op,L); if(!seen.has(q.texto||q.prob)){ seen.add(q.texto||q.prob); q.count=0; q.need=MEM_NEED; facts.push(q); } }
+  ronda={modo:'memoria', op, L, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false};
+  document.getElementById('q-teclado').innerHTML=tecladoHTML();
+  mostrar('s-quiz'); pintarMemoria(); relatorInicio();
+}
+function pintarMemoria(){ ronda.actual=ronda.cola[0]; renderActual(); }
+function compMemoria(ok){
+  const fact=ronda.cola[0];
+  const fb=document.getElementById('q-feedback');
+  if(ok){
+    fact.count++;
+    if(fact.count>=fact.need){ ronda.memorizadas++; ronda.cola.shift(); fb.textContent="¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL); }
+    else { ronda.cola.push(ronda.cola.shift()); fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
+  } else {
+    fact.count=0; ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
+    fb.innerHTML="Era <b>"+fact.r+"</b>. ¡La repetimos! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+  }
+  document.getElementById('q-prog').textContent='🧠 '+ronda.memorizadas+'/'+ronda.total;
+  document.getElementById('q-aciertos').textContent='✅ '+ronda.memorizadas;
+  setTimeout(()=>{ if(ronda.cola.length===0) finMemoriaMate(); else pintarMemoria(); }, ok?600:1250);
+}
+function finMemoriaMate(){
+  datos.puntos += ronda.total*5; guardar();
+  document.getElementById('r-emoji').textContent="🧠";
+  document.getElementById('r-est').textContent="⭐⭐⭐";
+  document.getElementById('r-titulo').textContent="¡Te lo grabaste, "+nombre+"!";
+  document.getElementById('r-num').textContent=ronda.total+" 🧠";
+  document.getElementById('r-pts').textContent="Memorizaste "+ronda.total+" operaciones · +"+(ronda.total*5)+" puntos ⭐";
+  document.getElementById('r-premio').innerHTML='<div class="premio">🔁 La repetición es la clave. ¡Vuelve mañana para que no se te olvide!</div>';
+  document.getElementById('r-rep').style.display='block';
+  ronda.ultimo={mem:ronda.op};
+  mostrar('s-res'); lluvia();
+  decir("¡Te lo grabaste, "+nombre+"! ¡Eres un crack de la memoria!");
 }
 
 /* ====== VALES (sobres ganados) ====== */
