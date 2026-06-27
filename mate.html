@@ -93,6 +93,9 @@
   .fcard{background:#eef2ff; border:3px solid #c7d2fe; border-radius:12px; padding:12px 18px; font-size:1.4rem; font-weight:800; color:var(--azul-osc); cursor:grab; touch-action:none; user-select:none;}
   .fcard.sel{background:var(--morado); color:#fff; border-color:#7c3aed;}
   .fcard.dragging{position:fixed; z-index:999; pointer-events:none; opacity:.92; box-shadow:0 8px 20px rgba(0,0,0,.3);}
+  /* Geometría */
+  .geo-svg{width:min(100%,300px); height:auto; display:block; margin:8px auto;}
+  .geo-letra{font-size:5.5rem; text-align:center; font-weight:800; color:var(--azul-osc); margin:4px 0;}
 
   .resultado-num{font-size:3.4rem; text-align:center; font-weight:800; color:var(--verde-osc);}
   .estrellas{font-size:2.2rem; text-align:center;}
@@ -147,6 +150,7 @@
     </div>
     <button class="btn btn-naranja" onclick="iniciarFrac()">🍕 Fracciones (con regletas)</button>
     <button class="btn btn-verde" onclick="iniciarDesafios()">🧩 Desafíos de quinto (patrones, medidas…)</button>
+    <button class="btn btn-azul" onclick="iniciarGeo()">📐 Geometría (plano, área, simetría)</button>
     <button class="btn btn-azul" onclick="verMemoria()">🧠 Memorizar (repetir hasta grabarlo)</button>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
@@ -197,6 +201,19 @@
     <h2>🧠 Memorizar</h2>
     <p class="sub">Repite cada operación varias veces (intercaladas) hasta grabártela. ¡Ideal para las tablas! 🔁</p>
     <div id="mem-lista"></div>
+  </section>
+
+  <!-- GEOMETRÍA (plano cartesiano, área/perímetro, simetría) -->
+  <section id="s-geo" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅</button>
+      <span class="progreso" id="g-prog">1/6</span>
+      <span class="pill pill-pts" id="g-ac">✅ 0</span>
+    </div>
+    <div class="coment"><span class="mic">🎙️</span><span id="g-coment">¡Vamos!</span></div>
+    <div id="g-instr" class="mate-prob"></div>
+    <div id="g-area"></div>
+    <div class="feedback" id="g-fb"></div>
   </section>
 
   <!-- REPORTE PARA PAPÁ -->
@@ -318,6 +335,7 @@ function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }
 /* ====== UTIL ====== */
 function mostrar(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('activa')); document.getElementById(id).classList.add('activa'); }
 function rnd(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
+function baraja(a){ a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function fmt(n){ return n.toLocaleString('es-CL'); }   // formato chileno: 1.500
 function confeti(){ for(let i=0;i<14;i++){ const c=document.createElement('div'); c.className='confeti'; c.textContent=['⚽','🎉','⭐','✨','🏆','🥅'][i%6]; c.style.left=Math.random()*100+'vw'; c.style.animationDuration=(1+Math.random())+'s'; document.body.appendChild(c); setTimeout(()=>c.remove(),2200);} }
 function lluvia(){ for(let k=0;k<6;k++) setTimeout(confeti,k*220); }
@@ -547,8 +565,12 @@ function genUnidades(){
   ];
   const q=t[rnd(0,t.length-1)](); return {tipo:'unidades', prob:q.prob, r:q.r};
 }
+function genEstimacion(){
+  const a=rnd(11,99), b=rnd(11,99), ra=Math.round(a/10)*10, rb=Math.round(b/10)*10;
+  return {tipo:'estima', prob:`Estima <b>${a} × ${b}</b>: redondea cada número a la decena y multiplícalos.`, r:ra*rb};
+}
 function genDesafioItem(nivel){
-  const ops=[()=>genPatron(nivel),()=>genValorPos(nivel),()=>genRedondeo(nivel),()=>genPerimetro(nivel),()=>genUnidades(),()=>genProblema(nivel),()=>genMultiGrande(nivel),()=>genDivGrande(nivel)];
+  const ops=[()=>genPatron(nivel),()=>genValorPos(nivel),()=>genRedondeo(nivel),()=>genPerimetro(nivel),()=>genUnidades(),()=>genEstimacion(),()=>genProblema(nivel),()=>genMultiGrande(nivel),()=>genDivGrande(nivel)];
   return ops[rnd(0,ops.length-1)]();
 }
 // Una pregunta del examen, mezclada y más difícil según el nivel del examen
@@ -559,72 +581,73 @@ function genExamenItem(nivel){
   ops.push(()=>genPregunta('multi', Math.min(3,nivel)));
   ops.push(()=>genPregunta('division', Math.min(3,nivel)));
   ops.push(()=>genPatron(nivel)); ops.push(()=>genValorPos(nivel));
-  if(nivel>=2){ ops.push(()=>genX10(nivel)); ops.push(()=>genMultiGrande(nivel)); ops.push(()=>genPregunta('vueltos', Math.min(3,nivel))); ops.push(()=>genRedondeo(nivel)); ops.push(()=>genPerimetro(nivel)); ops.push(()=>genUnidades()); }
+  if(nivel>=2){ ops.push(()=>genX10(nivel)); ops.push(()=>genMultiGrande(nivel)); ops.push(()=>genPregunta('vueltos', Math.min(3,nivel))); ops.push(()=>genRedondeo(nivel)); ops.push(()=>genPerimetro(nivel)); ops.push(()=>genUnidades()); ops.push(()=>genEstimacion()); }
   if(nivel>=3){ ops.push(()=>genDivGrande(nivel)); ops.push(()=>genProblema(nivel)); ops.push(()=>genMultiGrande(nivel)); }
   if(nivel>=4){ ops.push(()=>genProblema(nivel)); ops.push(()=>genDivGrande(nivel)); }
   return ops[rnd(0,ops.length-1)]();
 }
 
 // Explicación paso a paso (enseña el método: amigos del 10, llevar, pedir prestado, tablas…)
+// ===== Trucos de cálculo (los más astutos del mundo: del 11, del 9, doblar, compensar, contar) =====
+function explicaMulti(q){
+  const a=q.a, b=q.b, big=Math.max(a,b), small=Math.min(a,b), r=q.r;
+  if(a===11||b===11){ const x=(a===11?b:a);
+    if(x<10) return `<div class="tit">🪄 Truco del 11</div><div class="paso">11 × ${x} = ${x}×10 + ${x} = ${x*10} + ${x} = <b>${r}</b>.</div>`;
+    const t=Math.floor(x/10), u=x%10, mid=t+u;
+    if(mid<10) return `<div class="tit">🪄 Truco mágico del 11</div><div class="paso">Para ${x} × 11: separa <b>${t}</b> y <b>${u}</b> y pon su suma (${t}+${u}=${mid}) en el medio.</div><div class="paso">→ <b>${t}${mid}${u}</b> = <b>${r}</b> ✨</div>`;
+  }
+  if(a===9||b===9){ const x=(a===9?b:a); return `<div class="tit">⚡ Truco del 9</div><div class="paso">×9 = <b>×10 menos el número</b>.</div><div class="paso">${x} × 9 = ${x*10} − ${x} = <b>${r}</b>.</div>`; }
+  if(a===5||b===5){ const x=(a===5?b:a); return `<div class="tit">✨ Truco del 5</div><div class="paso">×5 = <b>la mitad de ×10</b>.</div><div class="paso">${x} × 5 = ${x*10} ÷ 2 = <b>${r}</b>.</div>`; }
+  if(a===4||b===4){ const x=(a===4?b:a); return `<div class="tit">🔁 Truco del 4</div><div class="paso">×4 = <b>doblar dos veces</b>.</div><div class="paso">${x} → ${x*2} → <b>${x*4}</b>.</div>`; }
+  if(a===8||b===8){ const x=(a===8?b:a); return `<div class="tit">🔁 Truco del 8</div><div class="paso">×8 = <b>doblar tres veces</b>.</div><div class="paso">${x} → ${x*2} → ${x*4} → <b>${x*8}</b>.</div>`; }
+  if(a===2||b===2){ const x=(a===2?b:a); return `<div class="tit">🔁 Truco del 2</div><div class="paso">×2 = <b>doblar</b>.</div><div class="paso">${x} + ${x} = <b>${r}</b>.</div>`; }
+  const round=Math.round(big/10)*10, diff=big-round;
+  if(round>0 && Math.abs(diff)>0 && Math.abs(diff)<=2){ const adj=Math.abs(diff)*small;
+    return `<div class="tit">🎯 Redondea y ajusta</div><div class="paso">${big} está cerquita de ${round}.</div><div class="paso">${big} × ${small} = ${round*small} ${diff<0?'−':'+'} ${adj} = <b>${r}</b>.</div>`; }
+  if(big>=11){ const dec=Math.floor(big/10)*10, uni=big%10; return `<div class="tit">🧩 Descompón (repártelo)</div><div class="paso">${big} = ${dec} + ${uni}.</div><div class="paso">${big} × ${small} = ${dec*small} + ${uni*small} = <b>${r}</b>.</div>`; }
+  return `<div class="tit">✖️ Multiplicar</div><div class="paso">Es sumar <b>${big}</b>, ${small} veces (tabla del ${big}). = <b>${r}</b>.</div>`;
+}
+function explicaSuma(q){
+  const a=q.a,b=q.b,r=q.r, fa=(10-(a%10))%10, fb=(10-(b%10))%10;
+  if((fa===1||fa===2) && a>=8) return `<div class="tit">🎯 Redondea y compensa</div><div class="paso">${a} casi llega a ${a+fa} (le faltan ${fa}).</div><div class="paso">${a+fa} + ${b} = ${a+fa+b}, y le quito ${fa}: <b>${r}</b>.</div>`;
+  if((fb===1||fb===2) && b>=8) return `<div class="tit">🎯 Redondea y compensa</div><div class="paso">${b} casi llega a ${b+fb} (le faltan ${fb}).</div><div class="paso">${b+fb} + ${a} = ${b+fb+a}, y le quito ${fb}: <b>${r}</b>.</div>`;
+  const uA=a%10,uB=b%10,dA=Math.floor(a/10),dB=Math.floor(b/10),su=uA+uB,llevo=Math.floor(su/10),ud=su%10;
+  if(!dA && !dB){
+    if(su>=10){ const big=Math.max(uA,uB),small=Math.min(uA,uB),falta=10-big; return `<div class="tit">🤝 Amigos del 10</div><div class="paso">A ${big} le faltan ${falta} para 10. Tomo ${falta} del ${small} → queda ${small-falta}.</div><div class="paso">10 + ${small-falta} = <b>${r}</b>.</div>`; }
+    return `<div class="tit">➕ Sumar</div><div class="paso">${uA} + ${uB} = <b>${r}</b>.</div>`;
+  }
+  return `<div class="tit">➕ Sumar por columnas</div><div class="paso">Unidades: ${uA} + ${uB} = ${su}. ${llevo?`Escribo ${ud} y <b>llevo ${llevo}</b>.`:`Escribo ${ud}.`}</div><div class="paso">Decenas: ${dA} + ${dB}${llevo?` + ${llevo}`:''} = ${dA+dB+llevo}. → <b>${r}</b></div>`;
+}
+function _cuenta(b,a){ let s=''+b; for(let k=b+1;k<=a;k++) s+=' → '+k; return s; }
+function explicaResta(q){
+  const a=q.a,b=q.b,r=q.r, fb=(10-(b%10))%10;
+  if(r<=5 && b>0) return `<div class="tit">👣 Cuenta hacia adelante</div><div class="paso">De ${b} a ${a} hay poquito: ${_cuenta(b,a)} = <b>${r}</b> pasos.</div>`;
+  if((fb===1||fb===2) && b>=8) return `<div class="tit">🎯 Resta redondo y devuelve</div><div class="paso">${b} casi llega a ${b+fb}. Resto ${b+fb}: ${a} − ${b+fb} = ${a-(b+fb)}.</div><div class="paso">Quité ${fb} de más, los devuelvo: <b>${r}</b>.</div>`;
+  const uA=a%10,uB=b%10,dA=Math.floor(a/10),dB=Math.floor(b/10);
+  if(dA||dB){
+    let s=`<div class="tit">➖ Restar por columnas</div>`;
+    if(uA>=uB) s+=`<div class="paso">Unidades: ${uA} − ${uB} = ${uA-uB}. Decenas: ${dA} − ${dB} = ${dA-dB}.</div>`;
+    else s+=`<div class="paso">${uA} − ${uB} no se puede: <b>pido prestada 1 decena</b> → ${uA+10} − ${uB} = ${uA+10-uB}.</div><div class="paso">Decenas: ${dA-1} − ${dB} = ${dA-1-dB}.</div>`;
+    return s+`<div class="paso">✅ = <b>${r}</b></div>`;
+  }
+  return `<div class="tit">➖ Restar</div><div class="paso">${a} − ${b} = <b>${r}</b> (cuenta hacia atrás).</div>`;
+}
+function explicaDivision(q){
+  const a=q.a,b=q.b,r=q.r;
+  if(b===2) return `<div class="tit">➗ ÷2 es la mitad</div><div class="paso">${a} ÷ 2 = la <b>mitad</b> de ${a} = <b>${r}</b>.</div>`;
+  if(b===4) return `<div class="tit">➗ ÷4 = mitad de la mitad</div><div class="paso">${a} → mitad ${a/2} → mitad otra vez <b>${r}</b>.</div>`;
+  return `<div class="tit">➗ Piénsalo al revés</div><div class="paso">${a} ÷ ${b}: ¿${b} por cuánto da ${a}?</div><div class="paso">${b} × <b>${r}</b> = ${a}. ¡Esa es! 🔑</div>`;
+}
 function explicacion(q){
+  if(q.tipo==='suma') return explicaSuma(q);
+  if(q.tipo==='resta') return explicaResta(q);
+  if(q.tipo==='multi') return explicaMulti(q);
+  if(q.tipo==='division') return explicaDivision(q);
   if(q.tipo==='abaco'){
     const ds=String(q.r).split('').map(Number);
     let s=`<div class="tit">🧮 Leer el ábaco</div><div class="paso">Arriba de la barra cada cuenta vale <b>5</b>. Abajo cada cuenta vale <b>1</b>.</div>`;
     ds.forEach((d,i)=>{ const h=d>=5?5:0, e=d%5; s+=`<div class="paso">Columna ${i+1}: ${h?'1 arriba (5)':'nada arriba'} + ${e} abajo = <b>${d}</b></div>`; });
     return s+`<div class="paso">✅ El número es <b>${q.r}</b></div>`;
-  }
-  if(q.tipo==='suma'){
-    const uA=q.a%10,uB=q.b%10,dA=Math.floor(q.a/10),dB=Math.floor(q.b/10),su=uA+uB,llevo=Math.floor(su/10),ud=su%10;
-    let s=`<div class="tit">➕ Sumar paso a paso</div>`;
-    if(dA||dB){
-      s+=`<div class="paso">1) <b>Unidades:</b> ${uA} + ${uB} = ${su}. ${llevo?`Escribo <b>${ud}</b> y <b>llevo ${llevo}</b>.`:`Escribo <b>${ud}</b>.`}</div>`;
-      s+=`<div class="paso">2) <b>Decenas:</b> ${dA} + ${dB}${llevo?` + ${llevo} (el que llevé)`:''} = ${dA+dB+llevo}.</div>`;
-    } else if(su>=10){
-      const big=Math.max(uA,uB),small=Math.min(uA,uB),falta=10-big;
-      s+=`<div class="paso">🤝 <b>Amigos del 10:</b> a ${big} le faltan <b>${falta}</b> para llegar a 10.</div>`;
-      s+=`<div class="paso">Tomo ${falta} del ${small} → queda ${small-falta}. Entonces 10 + ${small-falta} = <b>${q.r}</b>.</div>`;
-    } else {
-      s+=`<div class="paso">${uA} + ${uB} = <b>${q.r}</b>.</div>`;
-    }
-    return s+`<div class="paso">✅ Resultado: <b>${q.r}</b></div>`;
-  }
-  if(q.tipo==='resta'){
-    const uA=q.a%10,uB=q.b%10,dA=Math.floor(q.a/10),dB=Math.floor(q.b/10);
-    let s=`<div class="tit">➖ Restar paso a paso</div>`;
-    if(dA||dB){
-      if(uA>=uB){
-        s+=`<div class="paso">1) <b>Unidades:</b> ${uA} − ${uB} = ${uA-uB}.</div>`;
-        s+=`<div class="paso">2) <b>Decenas:</b> ${dA} − ${dB} = ${dA-dB}.</div>`;
-      } else {
-        s+=`<div class="paso">1) ${uA} − ${uB} no se puede. <b>Pido prestada 1 decena:</b> ${uA} + 10 = ${uA+10}.</div>`;
-        s+=`<div class="paso">2) Ahora ${uA+10} − ${uB} = <b>${uA+10-uB}</b> (unidades).</div>`;
-        s+=`<div class="paso">3) A las decenas les queda 1 menos: ${dA}−1 = ${dA-1}, luego ${dA-1} − ${dB} = ${dA-1-dB}.</div>`;
-      }
-    } else {
-      s+=`<div class="paso">Cuenta hacia atrás desde ${q.a}: ${q.a} − ${q.b} = <b>${q.r}</b>.</div>`;
-    }
-    return s+`<div class="paso">✅ Resultado: <b>${q.r}</b></div>`;
-  }
-  if(q.tipo==='multi'){
-    const big=Math.max(q.a,q.b), small=Math.min(q.a,q.b);
-    if(big>=11){ // estrategia oficial MINEDUC: descomponer (propiedad distributiva)
-      const dec=Math.floor(big/10)*10, uni=big%10;
-      return `<div class="tit">✖️ Multiplicar descomponiendo</div>
-        <div class="paso">Descompongo ${big} = <b>${dec} + ${uni}</b> (propiedad distributiva).</div>
-        <div class="paso">${big} × ${small} = (${dec} + ${uni}) × ${small} = ${dec}×${small} + ${uni}×${small}</div>
-        <div class="paso">= ${dec*small} + ${uni*small} = <b>${q.r}</b></div>`;
-    }
-    const arr=Array(small).fill(big).join(' + '); let sc=[],acc=0; for(let k=1;k<=small;k++){acc+=big; sc.push(acc);}
-    return `<div class="tit">✖️ Multiplicar</div>
-      <div class="paso">${big} × ${small} = sumar <b>${big}</b>, ${small} veces: ${arr} = <b>${q.r}</b>.</div>
-      <div class="paso">Contando de ${big} en ${big}: ${sc.join(', ')}.</div>
-      <div class="paso">🧠 Truco: apréndete la <b>tabla del ${big}</b>.</div>`;
-  }
-  if(q.tipo==='division'){
-    return `<div class="tit">➗ Dividir</div>
-      <div class="paso">${q.a} ÷ ${q.b}: ¿cuántas veces cabe ${q.b} en ${q.a}?</div>
-      <div class="paso">Piensa en la tabla del ${q.b}: ${q.b} × ? = ${q.a}.</div>
-      <div class="paso">Como ${q.b} × <b>${q.r}</b> = ${q.a}, la respuesta es <b>${q.r}</b>.</div>`;
   }
   if(q.tipo==='vueltos'){
     return `<div class="tit">💰 Vuelto</div>
@@ -845,6 +868,7 @@ function repetir(){
   else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem.op, ronda.ultimo.mem.tabla);
   else if(ronda.ultimo && ronda.ultimo.frac) iniciarFrac();
   else if(ronda.ultimo && ronda.ultimo.desafio) iniciarDesafios();
+  else if(ronda.ultimo && ronda.ultimo.geo) iniciarGeo();
   else if(ronda.ultimo) iniciarRonda(ronda.ultimo.op, ronda.ultimo.L);
   else if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) iniciarEval();
   else irMenu();
@@ -1051,6 +1075,75 @@ function finFrac(){
   ronda.ultimo={frac:true};
   mostrar('s-res'); if(ac>=5) lluvia();
   decir(ac>=5?("¡Excelente con las fracciones, "+nombre+"!"):("¡Bien, "+nombre+"! Sigue practicando las fracciones."));
+}
+
+/* ====== GEOMETRÍA (plano cartesiano, área/perímetro, simetría) — por toques ====== */
+function xy2px(x,y){ const cell=34,pad=24,size=6*cell+pad*2; return [pad+x*cell, size-pad-y*cell]; }
+function gridSVG(inner){
+  const N=6, cell=34, pad=24, size=N*cell+pad*2;
+  let g=`<svg viewBox="0 0 ${size} ${size}" class="geo-svg" xmlns="http://www.w3.org/2000/svg">`;
+  for(let i=0;i<=N;i++){ const yy=size-pad-i*cell, xx=pad+i*cell;
+    g+=`<line x1="${pad}" y1="${yy}" x2="${size-pad}" y2="${yy}" stroke="#e2e8f0" stroke-width="1"/>`;
+    g+=`<line x1="${xx}" y1="${pad}" x2="${xx}" y2="${size-pad}" stroke="#e2e8f0" stroke-width="1"/>`; }
+  g+=`<line x1="${pad}" y1="${size-pad}" x2="${size-pad}" y2="${size-pad}" stroke="#334155" stroke-width="2.5"/>`;
+  g+=`<line x1="${pad}" y1="${pad}" x2="${pad}" y2="${size-pad}" stroke="#334155" stroke-width="2.5"/>`;
+  for(let i=0;i<=N;i++){ g+=`<text x="${pad+i*cell}" y="${size-pad+15}" font-size="11" text-anchor="middle" fill="#64748b">${i}</text>`;
+    if(i>0) g+=`<text x="${pad-11}" y="${size-pad-i*cell+4}" font-size="11" text-anchor="middle" fill="#64748b">${i}</text>`; }
+  return g+inner+'</svg>';
+}
+function puntosClicables(){ let s=''; for(let x=1;x<=6;x++) for(let y=1;y<=6;y++){ const [px,py]=xy2px(x,y); s+=`<circle cx="${px}" cy="${py}" r="11" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-opacity="0.5" onclick="geoUbicar(${x},${y})" style="cursor:pointer"/>`; } return s; }
+function dotSVG(x,y){ const [px,py]=xy2px(x,y); return `<circle cx="${px}" cy="${py}" r="8" fill="#ef4444"/>`; }
+function rectSVG(w,h){ const [x0,y0]=xy2px(0,h), [x1,y1]=xy2px(w,0); return `<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="#22c55e" fill-opacity="0.4" stroke="#16a34a" stroke-width="2.5"/>`; }
+function genSimetria(){
+  const sim=['A','H','M','T','U','V','W','X','Y','O'], no=['F','G','J','L','N','P','R','S','Z'];
+  const es=Math.random()<0.5; const L=es?sim[rnd(0,sim.length-1)]:no[rnd(0,no.length-1)];
+  return {tipo:'simetria', letra:L, instr:`¿La letra <b>${L}</b> se ve igual en un espejo vertical ▕ ?`, ops:['Sí','No'], r:es?'Sí':'No'};
+}
+function genGeo(i){
+  const t=['ubicar','leer','area','perimetro','simetria'][i%5];
+  if(t==='ubicar'){ const x=rnd(1,6),y=rnd(1,6); return {tipo:'ubicar', x, y, instr:`Toca el punto <b>(${x}, ${y})</b> en la cuadrícula.`}; }
+  if(t==='leer'){ const x=rnd(1,6),y=rnd(1,6), c=`(${x}, ${y})`; const s=new Set([c]); while(s.size<3) s.add(`(${rnd(1,6)}, ${rnd(1,6)})`); return {tipo:'leer', x, y, instr:'¿Qué coordenadas tiene el punto rojo?', ops:baraja([...s]), r:c}; }
+  if(t==='area'){ const w=rnd(2,5),h=rnd(2,4), c=w*h; const s=new Set([c]); while(s.size<3) s.add(rnd(2,5)*rnd(2,4)); return {tipo:'area', w, h, instr:'¿Cuál es el <b>área</b>? (cuántos cuadraditos cubre)', ops:baraja([...s]).map(String), r:String(c)}; }
+  if(t==='perimetro'){ const w=rnd(2,5),h=rnd(2,4), c=2*(w+h); const s=new Set([c]); while(s.size<3) s.add(2*(rnd(2,5)+rnd(2,4))); return {tipo:'perimetro', w, h, instr:'¿Cuál es el <b>perímetro</b>? (el borde de afuera)', ops:baraja([...s]).map(String), r:String(c)}; }
+  return genSimetria();
+}
+function geoOpciones(ops){ return `<div class="grid2" id="g-ops" style="margin-top:10px;">`+ops.map(o=>`<div class="opcion" onclick="geoElige('${(''+o).replace(/'/g,'')}')">${o}</div>`).join('')+`</div>`; }
+function iniciarGeo(){ const it=[]; for(let i=0;i<6;i++) it.push(genGeo(i)); ronda={modo:'geo', items:baraja(it), i:0, aciertos:0, contestada:false}; mostrar('s-geo'); pintarGeo(); sonar('inicio','¡Vamos con geometría!'); }
+function pintarGeo(){
+  const it=ronda.items[ronda.i]; ronda.contestada=false;
+  document.getElementById('g-prog').textContent=(ronda.i+1)+"/"+ronda.items.length;
+  document.getElementById('g-ac').textContent="✅ "+ronda.aciertos;
+  document.getElementById('g-fb').textContent=""; document.getElementById('g-fb').className="feedback";
+  document.getElementById('g-coment').textContent=pick(FR_ANIMO).replace(/\{n\}/g,nombre);
+  document.getElementById('g-instr').innerHTML=it.instr;
+  const area=document.getElementById('g-area');
+  if(it.tipo==='ubicar') area.innerHTML=gridSVG(puntosClicables());
+  else if(it.tipo==='leer') area.innerHTML=gridSVG(dotSVG(it.x,it.y))+geoOpciones(it.ops);
+  else if(it.tipo==='area'||it.tipo==='perimetro') area.innerHTML=gridSVG(rectSVG(it.w,it.h))+geoOpciones(it.ops);
+  else area.innerHTML=`<div class="geo-letra">${it.letra}</div>`+geoOpciones(it.ops);
+}
+function geoElige(v){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; document.querySelectorAll('#g-ops .opcion').forEach(o=>{ if(o.textContent==(''+it.r)) o.classList.add('correcta'); else if(o.textContent===v) o.classList.add('mala'); }); geoResultado(v==(''+it.r)); }
+function geoUbicar(x,y){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; geoResultado(x===it.x && y===it.y); }
+function geoResultado(ok){
+  ronda.contestada=true; const it=ronda.items[ronda.i], fb=document.getElementById('g-fb');
+  if(ok){ ronda.aciertos++; datos.puntos+=14; fb.textContent="¡Correcto! 🎉"; fb.className="feedback bien"; confeti(); document.getElementById('g-coment').textContent=pick(FR_GOL).replace(/\{n\}/g,nombre); sonar('gol'); }
+  else { fb.innerHTML="Era <b>"+(it.tipo==='ubicar'?`(${it.x}, ${it.y})`:it.r)+"</b>."; fb.className="feedback mal"; sonar('falla'); }
+  document.getElementById('g-ac').textContent="✅ "+ronda.aciertos;
+  setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.items.length) pintarGeo(); else finGeo(); }, ok?900:1700);
+}
+function finGeo(){
+  guardar();
+  const ac=ronda.aciertos, total=ronda.items.length, e=ac>=5?3:ac>=3?2:1;
+  document.getElementById('r-est').textContent="⭐".repeat(e)+"☆".repeat(3-e);
+  document.getElementById('r-emoji').textContent= ac>=5?"🏆":ac>=3?"📐":"💪";
+  document.getElementById('r-titulo').textContent= ac>=5?("¡Genio de la geometría, "+nombre+"!"):"¡Bien hecho!";
+  document.getElementById('r-num').textContent=ac+" / "+total;
+  document.getElementById('r-pts').textContent="+"+(ac*14)+" puntos ⭐";
+  document.getElementById('r-premio').innerHTML='<div class="premio">📐 Plano cartesiano, área, perímetro y simetría. ¡Sigue explorando!</div>';
+  document.getElementById('r-rep').style.display='block';
+  ronda.ultimo={geo:true};
+  mostrar('s-res'); if(ac>=5) lluvia();
+  decir(ac>=5?("¡Excelente en geometría, "+nombre+"!"):("¡Bien, "+nombre+"! Sigue practicando."));
 }
 
 /* ====== VALES (sobres ganados) ====== */
