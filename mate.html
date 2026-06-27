@@ -184,6 +184,14 @@
     <div id="mem-lista"></div>
   </section>
 
+  <!-- TABLAS DE MULTIPLICAR (del 1 al 12) -->
+  <section id="s-tablas" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="verMemoria()">⬅ Volver</button></div>
+    <h2>✖️ Tablas de multiplicar</h2>
+    <p class="sub">Elige una tabla (del 1 al 12). El color muestra cuánto la dominas.</p>
+    <div id="tablas-lista"></div>
+  </section>
+
   <!-- VELOCIDAD: elegir operación -->
   <section id="s-vel" class="screen">
     <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
@@ -249,6 +257,23 @@ function cargar(){
   if(!datos) datos={ puntos:0, sobres:0, vales:[], prog:{}, dominado:{}, leccionesNuevas:0 };
   Object.keys(OPS).forEach(o=>{ if(!datos.prog[o]) datos.prog[o]=1; });
   if(!datos.vales) datos.vales=[]; if(typeof datos.leccionesNuevas!=='number') datos.leccionesNuevas=0;
+  if(!datos.facts) datos.facts={}; if(!datos.velRecord) datos.velRecord={};
+}
+// Repetición espaciada por operación: recuerda lo que le costó y lo vuelve a priorizar entre días.
+function hoyDia(){ return Math.floor(Date.now()/86400000); }
+const SR_INT=[0,1,2,4,7,15];
+function factKey(op,q){ return op+':'+(q.texto||q.prob||''); }
+function factPrio(key){
+  const r=datos.facts[key]; const hoy=hoyDia();
+  if(!r) return 100+Math.random()*5;                       // nuevo → aprenderlo
+  const due=(hoy-(r.dia||0))>=(SR_INT[r.nivel]||0);
+  if(due) return 70-(r.nivel*8)+Math.random()*5;           // pendiente → el más débil primero
+  return 10-r.nivel+Math.random()*3;                       // ya fresco → baja prioridad
+}
+function recordFact(key,limpio){
+  const r=datos.facts[key]||{nivel:0,dia:0};
+  r.nivel = limpio ? Math.min(5,(r.nivel||0)+1) : Math.max(0,r.nivel||0);
+  r.dia=hoyDia(); datos.facts[key]=r;
 }
 function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }catch(e){} }
 
@@ -662,7 +687,7 @@ function finEval(){
 }
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
-  else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem);
+  else if(ronda.ultimo && ronda.ultimo.mem) iniciarMemoria(ronda.ultimo.mem.op, ronda.ultimo.mem.tabla);
   else if(ronda.ultimo) iniciarRonda(ronda.ultimo.op, ronda.ultimo.L);
   else if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) iniciarEval();
   else irMenu();
@@ -723,15 +748,35 @@ function finVel(){
 /* ====== MODO MEMORIZAR (repite cada operación varias veces, intercaladas, hasta grabarla) ====== */
 const MEM_FACTS=6, MEM_NEED=3; // 6 operaciones, cada una acertada 3 veces (intercaladas)
 function verMemoria(){
-  const ops=['multi','suma','resta','division'];
-  document.getElementById('mem-lista').innerHTML = ops.map(o=>`<div class="niv-btn" onclick="iniciarMemoria('${o}')"><span>${OPS[o].n}</span><span class="est">Nivel ${Math.min(datos.prog[o]||1,3)}</span></div>`).join('');
+  const ops=[{o:'multi',t:'Tablas ✖️ (del 1 al 12)',tab:true},{o:'suma',t:'Sumas ➕'},{o:'resta',t:'Restas ➖'},{o:'division',t:'Divisiones ➗'}];
+  document.getElementById('mem-lista').innerHTML = ops.map(x=>`<div class="niv-btn" onclick="${x.tab?'verTablas()':("iniciarMemoria('"+x.o+"')")}"><span>${x.t}</span><span class="est">▶</span></div>`).join('');
   mostrar('s-mem');
 }
-function iniciarMemoria(op){
+function verTablas(){
+  let html='<div class="grid2">';
+  for(let t=1;t<=12;t++){
+    let dom=0; for(let b=1;b<=12;b++){ const r=datos.facts['multi:'+t+' × '+b]; if(r&&r.nivel>=4) dom++; }
+    const col = dom>=12?'#16a34a':dom>=6?'#f59e0b':'#3b82f6';
+    html+=`<button class="op-btn" style="background:${col}" onclick="iniciarMemoria('multi',${t})"><span class="ic">✖️</span>Tabla del ${t}<br><small>${dom}/12 🧠</small></button>`;
+  }
+  html+='</div><button class="btn btn-morado" style="margin-top:10px;" onclick="iniciarMemoria(\'multi\',\'mix\')">🎲 Mezcladas (todas)</button>';
+  document.getElementById('tablas-lista').innerHTML=html;
+  mostrar('s-tablas');
+}
+function genMultiMix(){ const a=rnd(1,12),b=rnd(1,12); return {texto:`${a} × ${b}`, r:a*b, tipo:'multi', a, b, L:2}; }
+function iniciarMemoria(op, tabla){
   const L=Math.min(datos.prog[op]||1,3);
-  const facts=[]; const seen=new Set(); let tries=0;
-  while(facts.length<MEM_FACTS && tries<300){ tries++; const q=genPregunta(op,L); if(!seen.has(q.texto||q.prob)){ seen.add(q.texto||q.prob); q.count=0; q.need=MEM_NEED; facts.push(q); } }
-  ronda={modo:'memoria', op, L, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false};
+  let pool=[];
+  if(op==='multi' && tabla && tabla!=='mix'){
+    for(let b=1;b<=12;b++) pool.push({texto:`${tabla} × ${b}`, r:tabla*b, tipo:'multi', a:tabla, b, L:2});
+  } else {
+    const seen=new Set(); let tries=0;
+    while(pool.length<24 && tries<400){ tries++; const q=(op==='multi')?genMultiMix():genPregunta(op,L); const k=q.texto||q.prob; if(!seen.has(k)){ seen.add(k); pool.push(q); } }
+  }
+  pool.forEach(q=>{ q._prio=factPrio(factKey(op,q)); });
+  pool.sort((a,b)=>b._prio-a._prio);
+  const facts=pool.slice(0,MEM_FACTS).map(q=>{ q.count=0; q.need=MEM_NEED; q._fallo=false; return q; });
+  ronda={modo:'memoria', op, tabla, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false};
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarMemoria(); relatorInicio();
 }
@@ -741,10 +786,10 @@ function compMemoria(ok){
   const fb=document.getElementById('q-feedback');
   if(ok){
     fact.count++;
-    if(fact.count>=fact.need){ ronda.memorizadas++; ronda.cola.shift(); fb.textContent="¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL); }
+    if(fact.count>=fact.need){ recordFact(factKey(ronda.op,fact), !fact._fallo); ronda.memorizadas++; ronda.cola.shift(); fb.textContent="¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL); }
     else { ronda.cola.push(ronda.cola.shift()); fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
   } else {
-    fact.count=0; ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
+    fact._fallo=true; fact.count=0; ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
     fb.innerHTML="Era <b>"+fact.r+"</b>. ¡La repetimos! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
   }
   document.getElementById('q-prog').textContent='🧠 '+ronda.memorizadas+'/'+ronda.total;
@@ -760,7 +805,7 @@ function finMemoriaMate(){
   document.getElementById('r-pts').textContent="Memorizaste "+ronda.total+" operaciones · +"+(ronda.total*5)+" puntos ⭐";
   document.getElementById('r-premio').innerHTML='<div class="premio">🔁 La repetición es la clave. ¡Vuelve mañana para que no se te olvide!</div>';
   document.getElementById('r-rep').style.display='block';
-  ronda.ultimo={mem:ronda.op};
+  ronda.ultimo={mem:{op:ronda.op, tabla:ronda.tabla}};
   mostrar('s-res'); lluvia();
   decir("¡Te lo grabaste, "+nombre+"! ¡Eres un crack de la memoria!");
 }
