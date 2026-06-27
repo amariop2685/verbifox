@@ -134,7 +134,7 @@
       <button class="op-btn" style="background:#0ea5e9" onclick="verNiveles('abaco')"><span class="ic">🧮</span>Ábaco</button>
     </div>
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
-    <button class="btn btn-morado" id="m-eval" onclick="iniciarEval()">🏆 Evaluación</button>
+    <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
     <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
     <button class="btn btn-gris btn-pequeno" style="margin:6px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
@@ -149,6 +149,16 @@
     <h2 id="n-titulo">Niveles</h2>
     <p class="sub">Domina un nivel (7 de 8) para avanzar y sumar una lección ✅</p>
     <div id="n-lista"></div>
+  </section>
+
+  <!-- ANTESALA DE LA EVALUACIÓN -->
+  <section id="s-eval-intro" class="screen">
+    <div class="emoji-grande">🏆</div>
+    <h2 id="ei-titulo">Evaluación para tu sobre</h2>
+    <p class="sub" id="ei-sub"></p>
+    <div class="premio">¿Te sientes preparado? 💪<br>Si no, no hay problema: puedes <b>seguir entrenando</b> y volver cuando quieras.</div>
+    <button class="btn btn-morado" onclick="comenzarEval()">🏆 ¡Estoy listo, empezar!</button>
+    <button class="btn btn-verde" onclick="irMenu()">💪 Mejor sigo entrenando</button>
   </section>
 
   <!-- VELOCIDAD: elegir operación -->
@@ -410,6 +420,12 @@ function iniciarRonda(op,L){
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarPregunta(); relatorInicio();
 }
+function abrirEvalIntro(){
+  if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
+  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas</b> mezcladas de lo que dominaste. Necesitas <b>${EVAL_PASA} correctas</b>.<br>Aquí <b>NO hay ayuda</b> — es la prueba de verdad.`;
+  mostrar('s-eval-intro');
+}
+function comenzarEval(){ iniciarEval(); }
 function iniciarEval(){
   if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
   ronda={modo:'eval',i:0,aciertos:0,racha:0,resp:"",contestada:false,total:EVAL_N, pares:paresDominados()};
@@ -421,7 +437,15 @@ function paresDominados(){
   for(const op of Object.keys(OPS)) for(let L=1;L<=3;L++) if(datos.dominado[op+'-'+L]) p.push({op,L});
   return p.length?p:[{op:'suma',L:1}];
 }
-function salirQuiz(){ if(ronda&&ronda.timer){ clearInterval(ronda.timer); ronda.timer=null; } if(ronda&&(ronda.modo==='eval')) irMenu(); else if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else mostrar('s-niv'); }
+function salirQuiz(){
+  if(ronda&&ronda.timer){ clearInterval(ronda.timer); ronda.timer=null; }
+  if(ronda&&ronda.modo==='eval'){
+    if(confirm('¿Salir de la evaluación y seguir entrenando? No pierdes tus lecciones; puedes volver cuando quieras.')) irMenu();
+    else mostrar('s-quiz');
+    return;
+  }
+  if(ronda&&ronda.modo==='velocidad') mostrar('s-vel'); else mostrar('s-niv');
+}
 function pintarPregunta(){   // genera una pregunta nueva y la muestra
   if(ronda.modo==='eval'){ const pr=ronda.pares[rnd(0,ronda.pares.length-1)]; ronda.actual=genPregunta(pr.op,pr.L); }
   else ronda.actual=genPregunta(ronda.op,ronda.L);
@@ -493,6 +517,7 @@ function finRonda(){
   document.getElementById('r-rep').style.display='block';
   ronda.ultimo={op,L};
   mostrar('s-res'); if(ac>=7) lluvia();
+  decir(ac>=7?("¡Partido ganado, "+nombre+"! ¡Gran nivel!"):ac>=5?("¡Buen partido, "+nombre+"! Vamos por más."):("¡A seguir entrenando, "+nombre+", que vas a mejorar!"));
 }
 
 function finEval(){
@@ -522,6 +547,7 @@ function finEval(){
   document.getElementById('r-rep').style.display = aprueba ? 'none' : 'block';
   ronda.ultimo=null;
   mostrar('s-res'); if(aprueba) lluvia();
+  decir(aprueba?("¡CAMPEOÓN! "+nombre+" aprobó la evaluación y se gana un sobre del mundial. ¡Qué crack!"):("¡Casi, "+nombre+"! Sigue entrenando que la próxima es tuya."));
 }
 function repetir(){
   if(ronda.ultimo && ronda.ultimo.vel) iniciarVelocidad(ronda.ultimo.vel);
@@ -579,6 +605,7 @@ function finVel(){
   document.getElementById('r-rep').style.display='block';
   ronda.ultimo={vel:ronda.op};
   mostrar('s-res'); if(record) lluvia();
+  decir(record?("¡Nuevo récord, "+nombre+"! ¡Velocidad de crack!"):(prec>=90?("¡Rápido y seguro, "+nombre+"! Excelente."):("¡Buen ritmo, "+nombre+"! A seguir entrenando.")));
 }
 
 /* ====== VALES (sobres ganados) ====== */
