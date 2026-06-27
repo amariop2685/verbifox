@@ -284,8 +284,26 @@ const FR_GOL=["¡GOOOL de {n}! ⚽","¡Golazo! 🎉","¡Al ángulo, qué precisi
 const FR_FALLA=["¡Uy, rozó el palo! La próxima es gol.","¡Tranqui, los cracks también fallan, sigue!","¡Atento, viene la revancha!","¡No pasa nada {n}, vamos de nuevo!"];
 const FR_RACHA=["¡Racha de {x}! ¡Está encendido! 🔥","¡{x} seguidas, imparable!","¡Qué momento, {x} de fila! 🔥"];
 function comentar(txt, conVoz){ const t=rellena(txt); const el=document.getElementById('q-coment'); if(el) el.textContent=t; if(conVoz!==false) decir(t); }
-function comentarRacha(x){ _rx=String(x); comentar(pick(FR_RACHA)); }
-function relatorInicio(){ const b=document.getElementById('q-voz'); if(b)b.textContent=vozOn?'🔊':'🔇'; comentar(pick(FR_INICIO)); }
+// Clips de audio del relator (voz cálida, igual en todos los dispositivos). Respaldo: voz del aparato (TTS).
+const AUDIO={ inicio:2, gol:4, falla:3, racha:2 };
+let _ultAudio=null;
+function sonar(cat, fallbackTxt){
+  if(!vozOn) return;
+  const n=AUDIO[cat];
+  if(!n){ if(fallbackTxt) decir(fallbackTxt); return; }
+  const idx=1+Math.floor(Math.random()*n);
+  try{
+    if('speechSynthesis'in window) speechSynthesis.cancel();
+    if(_ultAudio){ try{ _ultAudio.pause(); }catch(e){} }
+    const a=new Audio('audio/'+cat+'_'+idx+'.m4a'); _ultAudio=a;
+    a.onerror=()=>{ if(fallbackTxt) decir(fallbackTxt); };
+    const p=a.play(); if(p&&p.catch) p.catch(()=>{ if(fallbackTxt) decir(fallbackTxt); });
+  }catch(e){ if(fallbackTxt) decir(fallbackTxt); }
+}
+// Muestra texto en el banner y reproduce el clip de esa categoría
+function relata(cat, frases){ const t=rellena(pick(frases)); const el=document.getElementById('q-coment'); if(el) el.textContent=t; sonar(cat, t); }
+function comentarRacha(x){ _rx=String(x); const t=rellena(pick(FR_RACHA)); const el=document.getElementById('q-coment'); if(el) el.textContent=t; sonar('racha', t); }
+function relatorInicio(){ const b=document.getElementById('q-voz'); if(b)b.textContent=vozOn?'🔊':'🔇'; relata('inicio', FR_INICIO); }
 
 /* ====== INICIO ====== */
 function empezar(){
@@ -521,8 +539,8 @@ function comprobar(){
   document.getElementById('q-como').style.display='none';
   const fb=document.getElementById('q-feedback');
   if(ok){ ronda.aciertos++; ronda.racha=(ronda.racha||0)+1; fb.textContent=["¡Gol! ⚽","¡Correcto! 🎉","¡Muy bien! 🌟","¡Crack! 👏"][rnd(0,3)]; fb.className="feedback bien"; confeti();
-    if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else comentar(pick(FR_GOL)); }
-  else { ronda.racha=0; fb.innerHTML="Era <b>"+ronda.actual.r+"</b>. ¡Sigue! 💪"; fb.className="feedback mal"; comentar(pick(FR_FALLA)); }
+    if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else relata('gol',FR_GOL); }
+  else { ronda.racha=0; fb.innerHTML="Era <b>"+ronda.actual.r+"</b>. ¡Sigue! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA); }
   document.getElementById('q-aciertos').textContent="✅ "+ronda.aciertos;
   setTimeout(()=>{ ronda.i++; if(ronda.i<ronda.total) pintarPregunta(); else fin(); }, ok?650:1300);
 }
