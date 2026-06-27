@@ -528,9 +528,24 @@ function comprobar(){
 }
 function fin(){ if(ronda.modo==='eval') finEval(); else finRonda(); }
 
+// Puntos por dificultad: lo más difícil vale MÁS (para que no se quede en lo fácil).
+const VALOR_OP={ suma:10, resta:12, multi:16, division:18, vueltos:14, fracciones:16, abaco:10 };
+function puntosPregunta(op,L){ return Math.round((VALOR_OP[op]||10)*(L===1?1:L===2?1.4:1.8)); }
+const ORDEN_RETOS=['suma','resta','multi','division','fracciones','vueltos','abaco'];
+function nombreCorto(op){ return ({suma:'la suma',resta:'la resta',multi:'la multiplicación',division:'la división',vueltos:'los vueltos',fracciones:'las fracciones',abaco:'el ábaco'})[op]||op; }
+// Qué conviene practicar ahora para avanzar y ganar más puntos (sin quedarse en lo fácil).
+function proximoReto(actualOp){
+  for(const o of ORDEN_RETOS){ if(o!==actualOp && !datos.dominado[o+'-1']) return o; }      // 1) operación nueva
+  for(const o of ORDEN_RETOS){ for(let L=2;L<=3;L++){ if(datos.prog[o]>=L && !datos.dominado[o+'-'+L]) return o; } } // 2) subir nivel
+  return null;
+}
+
 function finRonda(){
   const ac=ronda.aciertos, op=ronda.op, L=ronda.L;
-  datos.puntos += ac*10 + (ac===RONDA_N?20:0);
+  const yaEra=!!datos.dominado[op+'-'+L];
+  const vp=puntosPregunta(op,L);
+  const ganados=ac*vp + (ac===RONDA_N?vp*2:0);
+  datos.puntos += ganados;
   let domina=false;
   if(ac>=META_RONDA && !datos.dominado[op+'-'+L]){
     datos.dominado[op+'-'+L]=true; domina=true; datos.leccionesNuevas++;
@@ -542,21 +557,34 @@ function finRonda(){
   document.getElementById('r-emoji').textContent= ac>=7?"🏆":ac>=5?"⚽":"💪";
   document.getElementById('r-titulo').textContent= ac>=7?("¡Excelente, "+nombre+"!"):ac>=5?"¡Bien hecho!":"¡A seguir practicando!";
   document.getElementById('r-num').textContent=ac+" / "+RONDA_N;
-  document.getElementById('r-pts').textContent="+"+(ac*10+(ac===RONDA_N?20:0))+" puntos ⭐";
+  document.getElementById('r-pts').textContent="+"+ganados+" puntos ⭐ ("+vp+" c/u)";
   const prem=document.getElementById('r-premio'); prem.innerHTML="";
   if(domina){
     const falta=Math.max(0,LECCIONES_PARA_SOBRE-datos.leccionesNuevas);
-    prem.innerHTML=`<div class="premio">✅ ¡Lección DOMINADA!<br>${falta>0?`Te faltan <b>${falta}</b> lección(es) para la Evaluación 🏆`:`¡Ya puedes dar la <b>Evaluación</b> y ganar un sobre! 🎟️`}</div>`;
+    prem.innerHTML+=`<div class="premio">✅ ¡Lección DOMINADA!<br>${falta>0?`Te faltan <b>${falta}</b> lección(es) para la Evaluación 🏆`:`¡Ya puedes dar la <b>Evaluación</b> y ganar un sobre! 🎟️`}</div>`;
+  } else if(yaEra && ac>=META_RONDA){
+    prem.innerHTML+=`<div class="premio">😎 Ya dominabas esto. ¡No te quedes en lo fácil: sube de nivel o prueba algo que dé <b>más puntos</b>!</div>`;
+  }
+  // Coach: sugerir el próximo reto (que da más puntos)
+  let narr;
+  const sug = (domina || (yaEra && ac>=META_RONDA)) ? proximoReto(op) : null;
+  if(sug){
+    const dif = (VALOR_OP[sug]||10) > (VALOR_OP[op]||10);
+    prem.innerHTML+=`<div class="premio" style="border-color:var(--verde);color:var(--verde-osc)">➡️ Tu próximo reto: <b>${nombreCorto(sug)}</b>${dif?' (¡da más puntos!) ⭐':''}</div>
+      <button class="btn btn-verde" onclick="verNiveles('${sug}')">Probar ${nombreCorto(sug)} ➡️</button>`;
+    narr = (domina?("¡Dominaste "+nombreCorto(op)+", "+nombre+"! "):("¡Muy bien, "+nombre+"! ")) + "Ahora ve por "+nombreCorto(sug)+(dif?", que te da más puntos.":". ¡Vamos!");
+  } else {
+    narr = ac>=7?("¡Partido ganado, "+nombre+"! ¡Gran nivel!"):ac>=5?("¡Buen partido, "+nombre+"!"):("¡A seguir entrenando, "+nombre+", que vas a mejorar!");
   }
   document.getElementById('r-rep').style.display='block';
   ronda.ultimo={op,L};
   mostrar('s-res'); if(ac>=7) lluvia();
-  decir(ac>=7?("¡Partido ganado, "+nombre+"! ¡Gran nivel!"):ac>=5?("¡Buen partido, "+nombre+"! Vamos por más."):("¡A seguir entrenando, "+nombre+", que vas a mejorar!"));
+  decir(narr);
 }
 
 function finEval(){
   const ac=ronda.aciertos, aprueba=ac>=EVAL_PASA;
-  datos.puntos += ac*10;
+  datos.puntos += ac*15;
   const prem=document.getElementById('r-premio'); prem.innerHTML="";
   if(aprueba){
     datos.sobres++; datos.leccionesNuevas=0;
@@ -577,7 +605,7 @@ function finEval(){
   }
   guardar();
   document.getElementById('r-num').textContent=ac+" / "+EVAL_N;
-  document.getElementById('r-pts').textContent="+"+(ac*10)+" puntos ⭐";
+  document.getElementById('r-pts').textContent="+"+(ac*15)+" puntos ⭐";
   document.getElementById('r-rep').style.display = aprueba ? 'none' : 'block';
   ronda.ultimo=null;
   mostrar('s-res'); if(aprueba) lluvia();
@@ -613,7 +641,7 @@ function tickVel(){
 function compVel(ok){
   ronda.resueltas++;
   const fb=document.getElementById('q-feedback');
-  if(ok){ ronda.aciertos++; ronda.racha++; if(ronda.racha>ronda.mejorRacha) ronda.mejorRacha=ronda.racha; datos.puntos+=5;
+  if(ok){ ronda.aciertos++; ronda.racha++; if(ronda.racha>ronda.mejorRacha) ronda.mejorRacha=ronda.racha; datos.puntos+=Math.max(3,Math.round(puntosPregunta(ronda.op,ronda.L)/2));
     fb.textContent = ronda.racha>=3 ? ("✓ 🔥 racha "+ronda.racha) : "✓"; fb.className="feedback bien";
     if(ronda.racha>=3 && ronda.racha%3===0) comentarRacha(ronda.racha); else comentar(pick(FR_GOL), false); }
   else { ronda.racha=0; ronda.fin-=3000; fb.innerHTML="✗ era <b>"+ronda.actual.r+"</b> (−3s)"; fb.className="feedback mal"; comentar(pick(FR_FALLA), false); }
