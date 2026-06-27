@@ -350,7 +350,10 @@ function cargar(){
   if(!datos.conquistas) datos.conquistas=0;
   if(!datos.artefactos) datos.artefactos=[];
   if(typeof datos.escudos!=='number') datos.escudos=0;
+  if(!datos.repasos) datos.repasos={};
 }
+const LIMITE_REPASO=2;  // tras 2 repasos de algo dominado, se bloquea para empujar a lo nuevo
+const OPS_BASE=['suma','resta','multi','division'];
 /* ====== MODALES, AVISOS FLOTANTES y CAMPANA 🔔 ====== */
 function modal(html){ document.getElementById('modal-card').innerHTML=html; document.getElementById('modal-bg').style.display='flex'; }
 function cerrarModal(e){ if(!e || e.target.id==='modal-bg' || e._force) document.getElementById('modal-bg').style.display='none'; }
@@ -1183,8 +1186,9 @@ function fracComprobar(){
   fracResultado(ronda.sliderVal===it.shadedTarget, it);
 }
 function finFrac(){
-  guardar();
   const ac=ronda.aciertos, total=ronda.items.length;
+  if(ac>=5){ datos.hitos=datos.hitos||{}; datos.hitos.frac=true; }
+  guardar();
   document.getElementById('r-emoji').textContent= ac>=5?"🏆":ac>=3?"🍕":"💪";
   document.getElementById('r-titulo').textContent= ac>=5?("¡Crack de las fracciones, "+nombre+"!"):"¡Bien hecho!";
   document.getElementById('r-est').textContent="⭐".repeat(ac>=5?3:ac>=3?2:1)+"☆".repeat(ac>=5?0:ac>=3?1:2);
@@ -1291,6 +1295,7 @@ function rutaEtapas(){
     {id:'multi', n:'Tablas', e:'✖️', f:()=>iniciarMemoria('multi','mix')},
     {id:'division', n:'Divisiones', e:'➗', f:()=>iniciarMemoria('division')},
     {id:'vueltos', n:'Vueltos', e:'💰', f:()=>verNiveles('vueltos')},
+    {id:'fracciones', n:'Fracciones', e:'🍕', f:()=>iniciarFrac()},
     {id:'desafio', n:'Desafíos', e:'🧩', f:()=>iniciarDesafios()},
     {id:'geo', n:'Geometría', e:'📐', f:()=>iniciarGeo()},
     {id:'castillo', n:'¡Castillo!', e:'🏰', f:()=>{ if(datos.leccionesNuevas>=LECCIONES_PARA_SOBRE) abrirEvalIntro(); else { document.getElementById('ruta-sub').textContent='🏰 Para entrar al castillo, primero domina 5 lecciones nuevas y da la Evaluación.'; } }}
@@ -1300,6 +1305,7 @@ function etapaHecha(et){
   if(et.id==='castillo') return (datos.sobres||0)>=1;
   if(et.id==='desafio') return !!(datos.hitos&&datos.hitos.desafio);
   if(et.id==='geo') return !!(datos.hitos&&datos.hitos.geo);
+  if(et.id==='fracciones') return !!(datos.hitos&&datos.hitos.frac);
   return progresoOp(et.id)>=0.85;
 }
 function verRuta(){
@@ -1312,7 +1318,10 @@ function verRuta(){
     if(i>0) html+='<div class="ruta-link"></div>';
     const cls=(e.id==='castillo'?'castillo ':'')+(hecho?'hecho':actual?'actual':bloq?'bloq':'');
     const icono = e.id==='castillo'?'🏰':(hecho?'🚩':actual?'🦊':bloq?'🔒':e.e);
-    const est = hecho?'✅ dominado (repaso)':actual?'▶ ¡aquí vas!':bloq?'🔒 bloqueado':'';
+    let est;
+    if(hecho){ const r=(datos.repasos&&datos.repasos[e.id])||0; const bloqRepaso=OPS_BASE.indexOf(e.id)>=0 && r>=LIMITE_REPASO;
+      est = bloqRepaso ? '🔒 dominado · ¡a lo nuevo!' : '✅ dominado (repaso)'; }
+    else if(actual) est='▶ ¡aquí vas!'; else if(bloq) est='🔒 bloqueado'; else est='';
     html+=`<div class="ruta-nodo" onclick="rutaTocar(${i})"><div class="nodo-circ ${cls}">${icono}</div><div class="nodo-lbl">${e.n}</div><div class="nodo-est">${est}</div></div>`;
   });
   const tes = (datos.artefactos&&datos.artefactos.length) ? datos.artefactos.map(a=>{ const o=ARTEFACTOS.find(x=>x.n===a); return o?o.e:'🎁'; }).join(' ') : '— (conquista el castillo para ganar tesoros)';
@@ -1323,9 +1332,23 @@ function verRuta(){
   mostrar('s-ruta');
 }
 function rutaTocar(i){
+  const et=_rutaEtapas[i];
   if(i>_rutaIdx){ document.getElementById('ruta-sub').textContent='🔒 Primero completa las etapas anteriores.'; return; }
-  _rutaEtapas[i].f();
+  // Si es una operación básica ya dominada, limitamos los repasos para empujarlo a lo nuevo
+  if(OPS_BASE.indexOf(et.id)>=0 && progresoOp(et.id)>=0.85){
+    const r=(datos.repasos&&datos.repasos[et.id])||0;
+    if(r>=LIMITE_REPASO){
+      modal(`<div class="modal-emoji">💪</div><div class="tit-modal">¡Eso ya lo dominas!</div>
+        <p>Ya repasaste suficiente ${nombreCorto(et.id)}. ¡Es hora de un reto nuevo para crecer!</p>
+        <button class="btn btn-verde" onclick="cerrarModal({_force:true}); retoNuevo()">▶️ ¡A un reto nuevo!</button>
+        <button class="btn btn-gris btn-pequeno" style="margin:6px auto 0;" onclick="cerrarModal({_force:true})">Cerrar</button>`);
+      return;
+    }
+    datos.repasos=datos.repasos||{}; datos.repasos[et.id]=r+1; guardar();
+  }
+  et.f();
 }
+function retoNuevo(){ const et=_rutaEtapas[_rutaIdx]; if(et) et.f(); }
 
 function verReporte(){
   const m=datos, low=nombre.toLowerCase();
