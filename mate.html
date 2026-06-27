@@ -150,6 +150,7 @@
     <button class="btn btn-rojo" onclick="verVelocidad()">⏱️ Reto de velocidad (60s)</button>
     <button class="btn btn-morado" id="m-eval" onclick="abrirEvalIntro()">🏆 Evaluación</button>
     <button class="btn btn-amarillo" onclick="verVales()">🎟️ Mis sobres ganados</button>
+    <button class="btn btn-azul" onclick="verReporte()">👨‍👩‍👦 Reporte para papá</button>
     <button class="btn btn-naranja" onclick="verVoz()">🎙️ Voz del relator (elige la más humana)</button>
     <button class="btn btn-azul" onclick="location.href='index.html'">🦊 Inglés (VerbiFox)</button>
     <div class="grid2" style="margin-top:4px;">
@@ -195,6 +196,13 @@
     <h2>🧠 Memorizar</h2>
     <p class="sub">Repite cada operación varias veces (intercaladas) hasta grabártela. ¡Ideal para las tablas! 🔁</p>
     <div id="mem-lista"></div>
+  </section>
+
+  <!-- REPORTE PARA PAPÁ -->
+  <section id="s-reporte" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
+    <h2>👨‍👩‍👦 Reporte para papá</h2>
+    <div id="rep-cuerpo"></div>
   </section>
 
   <!-- FRACCIONES VISUALES (regletas + arrastrar) -->
@@ -953,6 +961,34 @@ function verVales(){
       + datos.vales.map(v=>`<div class="vale-fila"><span class="e">🎟️</span><span>Sobre #${v.n} — ganado el ${v.fecha}</span></div>`).join('');
   }
   mostrar('s-vales');
+}
+
+/* ====== REPORTE PARA PAPÁ (resume matemáticas + inglés) ====== */
+function fmtSeg(s){ s=Math.max(0,Math.round(s||0)); return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2); }
+function verReporte(){
+  const m=datos, low=nombre.toLowerCase();
+  const lecciones=Object.values(m.dominado||{}).filter(Boolean).length;
+  const vales=(m.vales||[]); const notas=vales.slice(-3).map(v=>v.nota||'—');
+  const vel=m.velRecord||{}; const velLines=Object.keys(vel).map(o=>`${OPS[o]?OPS[o].n:o}: <b>${vel[o]}</b> en 60s`);
+  const facts=m.facts||{}; const debiles=Object.keys(facts).filter(k=>(facts[k].nivel||0)<=1).slice(0,8).map(k=>k.split(':')[1]);
+  let ing=null, mem=null;
+  try{ ing=JSON.parse(localStorage.getItem('verbos_'+low)); }catch(e){}
+  try{ mem=JSON.parse(localStorage.getItem('memoria_'+low)); }catch(e){}
+  const verbosDom = mem?Object.keys(mem).filter(k=>(mem[k]||0)>=4):[];
+  const verbosCuesta = mem?Object.keys(mem).filter(k=>(mem[k]||0)<=1):[];
+  const fecha=new Date().toLocaleDateString('es-CL');
+  let h=`<p class="sub">${nombre} · ${fecha}</p>`;
+  h+=`<div class="premio" style="text-align:left">
+    <b>🧮 Matemáticas</b><br>
+    ⭐ Puntos: ${m.puntos} · 🎟️ Sobres: ${m.sobres}<br>
+    ✅ Lecciones dominadas: ${lecciones}<br>
+    📋 Últimas notas de examen: ${notas.length?notas.join(' · '):'aún sin examen'}</div>`;
+  if(velLines.length) h+=`<div class="premio" style="text-align:left"><b>⏱️ Récords de velocidad</b><br>${velLines.join('<br>')}</div>`;
+  h+=`<div class="premio" style="text-align:left; border-color:var(--rojo); color:#7c2d12"><b>📌 Lo que más le cuesta (mate)</b><br>${debiles.length?debiles.join(' · '):'Sin datos aún. Usa "🧠 Memorizar" para detectarlo.'}</div>`;
+  h+=`<div class="premio" style="text-align:left"><b>🦊 Inglés</b><br>${(ing&&ing.mejorPct!=null)?`🏆 Mejor examen: ${ing.mejorPct}% en ${fmtSeg(ing.mejorTiempo)}<br>`:''}✅ Verbos dominados: ${verbosDom.length}${verbosCuesta.length?`<br>📌 Repasar: ${verbosCuesta.join(', ')}`:''}</div>`;
+  h+=`<p class="mini">💡 Consejo: 5–10 min al día. Empiecen por "lo que más le cuesta". Puedes hacer una captura de pantalla para guardar este reporte.</p>`;
+  document.getElementById('rep-cuerpo').innerHTML=h;
+  mostrar('s-reporte');
 }
 
 /* ====== TECLADO FÍSICO ====== */

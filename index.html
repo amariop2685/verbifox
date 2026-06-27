@@ -163,6 +163,10 @@
   .voz-box select:focus{border-color:var(--azul);}
   .vel-btn{padding:8px 12px; font-size:1rem; font-weight:700; border:3px solid #e2e8f0; border-radius:12px; background:#fff; color:var(--suave); cursor:pointer;}
   .vel-btn.activa{border-color:var(--azul); background:#eff6ff; color:var(--azul-osc);}
+  .coment{display:flex; align-items:center; gap:8px; background:linear-gradient(90deg,#1e3a8a,#7c3aed); color:#fff; border-radius:12px; padding:9px 12px; margin-bottom:12px; font-weight:700; font-size:.98rem; min-height:44px;}
+  .coment .mic{font-size:1.25rem;}
+  .coment #eq-coment{flex:1; line-height:1.2;}
+  .voz-tog{background:rgba(255,255,255,.2); border:none; color:#fff; border-radius:8px; padding:6px 9px; font-size:1.05rem; cursor:pointer;}
   .vel-mini{display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:14px; font-size:.85rem; color:var(--suave); font-weight:700;}
   .vel-mini .vel-btn{padding:5px 11px;}
   .grid-dia{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px;}
@@ -310,6 +314,7 @@
       <span class="puntos" id="q-puntos">⭐ 0</span>
     </div>
     <div class="chip" id="q-tipo">Reto</div>
+    <div class="coment"><span class="mic">🎙️</span><span id="eq-coment">¡Vamos!</span><button class="voz-tog" id="eq-voz" onclick="toggleRel()" title="Voz del relator">🔊</button></div>
     <div class="instruccion">
       <button class="icono-audio" onclick="repetirAudioPregunta()">🔊</button>
       <span id="q-instruccion">Instrucción</span>
@@ -945,6 +950,7 @@ function arrancarQuiz(modo, tipos){
   }
   mostrar('s-quiz');
   pintarPregunta();
+  comentarEn(elegir(ENFR_INICIO)); sonarEn('inicio');
 }
 function pintarPregunta(){
   quiz.contestada=false;
@@ -953,6 +959,7 @@ function pintarPregunta(){
   document.getElementById('q-puntos').textContent = "⭐ "+quiz.puntos;
   document.getElementById('q-tipo').textContent = p.etiqueta;
   document.getElementById('q-instruccion').textContent = p.instruccion;
+  if(quiz.idx>0) comentarEn(elegir(ENFR_ANIMO));
   document.getElementById('q-feedback').textContent = "";
   document.getElementById('q-feedback').className = "feedback";
   // reiniciar pistas
@@ -1069,10 +1076,13 @@ function evaluar(ok, refuerzo, puntos){
     fb.textContent = elegir(["¡Muy bien! 🎉","¡Excelente! 🌟","¡Correcto! 👏","¡Genial! 🚀"]);
     fb.className="feedback bien";
     confeti();
-    hablar(elegir(["¡Muy bien!","¡Excelente!","¡Correcto!"]), 'es-MX');
+    quiz.racha=(quiz.racha||0)+1;
+    if(quiz.racha>=3 && quiz.racha%3===0){ comentarEn(elegir(ENFR_RACHA).replace('{x}',quiz.racha)); sonarEn('racha'); }
+    else { comentarEn(elegir(ENFR_GOL)); sonarEn('gol'); }
   } else {
     fb.innerHTML = "Casi... La respuesta era: <b>"+refuerzo+"</b>";
     fb.className="feedback mal";
+    quiz.racha=0; comentarEn(elegir(ENFR_FALLA)); sonarEn('falla');
     const p = quiz.preguntas[quiz.idx];
     quiz.fallos.push(refuerzo);
   }
@@ -1498,6 +1508,20 @@ function confeti(){
   }
 }
 function lluviaConfeti(){ for(let k=0;k<5;k++) setTimeout(confeti, k*250); }
+
+/* ====== RELATOR (clips de audio, igual que en matemáticas) ====== */
+const AUDIO_EN={inicio:2,gol:4,falla:3,racha:2};
+let _uaEn=null;
+function relOn(){ try{ return localStorage.getItem('mate_voz')!=='0'; }catch(e){ return true; } }
+function sonarEn(cat){ if(!relOn()) return; const n=AUDIO_EN[cat]; if(!n) return; const idx=1+Math.floor(Math.random()*n);
+  try{ if(_uaEn){ _uaEn.pause(); } _uaEn=new Audio('audio/'+cat+'_'+idx+'.m4a'); const p=_uaEn.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
+function toggleRel(){ const on=!relOn(); try{ localStorage.setItem('mate_voz', on?'1':'0'); }catch(e){} const b=document.getElementById('eq-voz'); if(b)b.textContent=on?'🔊':'🔇'; }
+function comentarEn(t){ const el=document.getElementById('eq-coment'); if(el) el.textContent=(t||'').replace(/\{n\}/g,nombre); const b=document.getElementById('eq-voz'); if(b)b.textContent=relOn()?'🔊':'🔇'; }
+const ENFR_INICIO=["¡Comienza el reto, {n}! ⚽","¡A la cancha, {n}!"];
+const ENFR_ANIMO=["¡Tú puedes con esta, {n}!","¡Concéntrate, crack!","¡Vamos {n}!","¡Pierna fuerte y a resolver!"];
+const ENFR_GOL=["¡GOOOL, {n}! ⚽","¡Excelente! 🎉","¡Muy bien, crack!","¡Imparable!","¡Jugadón!"];
+const ENFR_FALLA=["¡Casi! La próxima es gol.","¡Tranquilo {n}, sigue!","¡Viene la revancha!","¡No pasa nada, vamos de nuevo!"];
+const ENFR_RACHA=["¡Racha de {x}! 🔥","¡{x} seguidas, imparable!"];
 
 /* permite Enter para responder */
 document.addEventListener('keydown', e=>{
