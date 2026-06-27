@@ -276,7 +276,8 @@ const OPS={ suma:{n:'Sumar ➕'}, resta:{n:'Restar ➖'}, multi:{n:'Multiplicar 
 const NIV_NOMBRE=['Fácil','Medio','Difícil'];
 const META_RONDA=7, RONDA_N=8;          // dominar lección = 7 de 8
 const LECCIONES_PARA_SOBRE=5;           // dominar 5 lecciones nuevas para desbloquear la evaluación
-const EVAL_N=10, EVAL_PASA=8;           // evaluación: 10 preguntas, aprueba con 8
+const EVAL_N=10, EVAL_PASA=8;           // evaluación: 10 preguntas
+const NOTA_SOBRE=5.5;                    // se gana el sobre con nota 5,5 o más (exigente)
 
 function clave(){ return "mate_"+nombre.toLowerCase(); }
 function cargar(){
@@ -564,7 +565,7 @@ function iniciarRonda(op,L){
 }
 function abrirEvalIntro(){
   if(datos.leccionesNuevas<LECCIONES_PARA_SOBRE) return;
-  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas combinadas</b> (sumar, restar, multiplicar, dividir…).<br>Te daré una <b>nota de 1,0 a 7,0</b>, como en el colegio 🇨🇱. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
+  document.getElementById('ei-sub').innerHTML = `Son <b>${EVAL_N} preguntas combinadas</b> (sumar, restar, multiplicar, dividir…).<br>Te daré una <b>nota de 1,0 a 7,0</b>, como en el colegio 🇨🇱. Para ganar el sobre necesitas <b>nota 5,5</b> o más. Aquí <b>no hay ayuda</b>.<br>Pase lo que pase, ¡lo importante es tu esfuerzo! 💙`;
   mostrar('s-eval-intro');
 }
 function comenzarEval(){ iniciarEval(); }
@@ -694,8 +695,9 @@ function finRonda(){
 }
 
 function finEval(){
-  const ac=ronda.aciertos, aprueba=ac>=EVAL_PASA;
+  const ac=ronda.aciertos;
   const pct=Math.round(ac/EVAL_N*100), nota=notaChile(pct);
+  const aprueba = nota>=NOTA_SOBRE;
   datos.puntos += ac*15;
   const prem=document.getElementById('r-premio');
   // La nota chilena, siempre con un mensaje que cuida la autoestima
@@ -714,7 +716,7 @@ function finEval(){
     document.getElementById('r-emoji').textContent="🏆"; document.getElementById('r-titulo').textContent="¡GANASTE UN SOBRE, "+nombre+"!";
     document.getElementById('r-est').textContent="⭐⭐⭐";
   } else {
-    html+=`<div class="premio">Para el sobre necesitas ${EVAL_PASA}/${EVAL_N}. ¡Vas mejorando! Practica un poquito y vuelve cuando quieras. 💪</div>`;
+    html+=`<div class="premio">Para el sobre necesitas <b>nota 5,5</b> o más. ¡Vas mejorando! Practica un poquito y vuelve cuando quieras. 💪</div>`;
     document.getElementById('r-emoji').textContent= nota>=4?"😊":"🌱"; document.getElementById('r-titulo').textContent= nota>=4?("¡Bien hecho, "+nombre+"!"):("¡Vamos creciendo, "+nombre+"!");
     document.getElementById('r-est').textContent= nota>=6?"⭐⭐⭐":nota>=5?"⭐⭐":nota>=4?"⭐":"";
   }
