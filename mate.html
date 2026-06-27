@@ -183,7 +183,7 @@
     </div>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
-    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 27-jun ✅</p>
+    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 27-jun-2 ✅</p>
   </section>
 
   <!-- NIVELES -->
@@ -1038,7 +1038,7 @@ function iniciarMemoria(op, tabla){
   }
   pool.forEach(q=>{ q._prio=factPrio(factKey(op,q)); });
   pool.sort((a,b)=>b._prio-a._prio);
-  const facts=pool.slice(0,MEM_FACTS).map(q=>{ q.count=0; q.need=MEM_NEED; q._fallo=false; q._fallos=0; q._ms=0; q._msN=0; return q; });
+  const facts=pool.slice(0,MEM_FACTS).map(q=>{ q.count=0; q.need=MEM_NEED; q._fallo=false; q._fallos=0; q._intentos=0; q._ms=0; q._msN=0; return q; });
   ronda={modo:'memoria', op, tabla, cola:facts, total:facts.length, memorizadas:0, resp:'', contestada:false, seguidosMal:0, presentadas:0};
   document.getElementById('q-teclado').innerHTML=tecladoHTML();
   mostrar('s-quiz'); pintarMemoria(); relatorInicio();
@@ -1049,9 +1049,24 @@ const MEM_TOPE=18;            // tope de preguntas por sesión, para que no se c
 function inyectarFacil(){
   // Una operación sencilla del mismo tipo para tomar impulso (¡darle una victoria!)
   const f = (ronda.op==='multi') ? genMultiMix() : genPregunta(ronda.op, 1);
-  f.count=0; f.need=1; f._fallo=false; f._fallos=0; f._ms=0; f._msN=0; f._facil=true;
+  f.count=0; f.need=1; f._fallo=false; f._fallos=0; f._intentos=0; f._ms=0; f._msN=0; f._facil=true;
   ronda.cola.unshift(f);
   comentar("Respira 😌 lo estás haciendo súper. ¡Vamos con una fácil!");
+}
+// Pista del MÉTODO, sin revelar el número (para que piense, no copie)
+function pistaMetodo(q){
+  if(q.tipo==='multi'){ const a=q.a,b=q.b;
+    if(a===9||b===9) return '💡 ×9 es ×10 menos el número.';
+    if(a===5||b===5) return '💡 ×5 es la mitad de ×10.';
+    if(a===11||b===11) return '💡 Truco del 11: separa las cifras y suma al medio.';
+    if(a===4||b===4) return '💡 ×4 es doblar dos veces.';
+    if(a===8||b===8) return '💡 ×8 es doblar tres veces.';
+    if(a===2||b===2) return '💡 ×2 es doblar (sumarlo consigo mismo).';
+    return '💡 Descompón el número grande (ej: 12 = 10 + 2) y multiplica por partes.'; }
+  if(q.tipo==='suma') return '💡 Usa los amigos del 10: completa a 10 primero.';
+  if(q.tipo==='resta') return '💡 Cuenta hacia adelante desde el número más chico.';
+  if(q.tipo==='division') return '💡 Piénsalo al revés: ¿'+q.b+' por cuánto da '+q.a+'?';
+  return '💡 Piénsalo con calma, ¡tú puedes!';
 }
 function compMemoria(ok){
   const fact=ronda.cola[0];
@@ -1067,13 +1082,23 @@ function compMemoria(ok){
       if(!fact._facil) ronda.memorizadas++;
       ronda.cola.shift();
       fb.textContent = rapido?"¡Grabada y rapidísima! 🧠⚡":"¡Grabada! 🧠✅"; fb.className="feedback bien"; confeti(); relata('gol',FR_GOL);
-    } else { ronda.cola.push(ronda.cola.shift()); fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
+    } else { ronda.cola.push(ronda.cola.shift()); fact._intentos=0; fb.textContent="✓ "+fact.count+" de "+fact.need+" 🔁"; fb.className="feedback bien"; confeti(); }
   } else {
     ronda.seguidosMal++;
     fact._fallo=true; fact._fallos++; fact.count=0;
-    if(fact._fallos>=2 && fact.need>1) fact.need--;   // si le cuesta mucho, menos repeticiones (no agotarlo)
-    ronda.cola.shift(); ronda.cola.splice(Math.min(2,ronda.cola.length),0,fact);
-    fb.innerHTML="Era <b>"+fact.r+"</b>. ¡Tranquilo, la repetimos! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+    fact._intentos=(fact._intentos||0)+1;
+    if(fact._intentos===1){
+      // 1er error: SOLO pista del método (sin el número) y que lo reintente AHORA mismo
+      fb.innerHTML = pistaMetodo(fact)+"<br>¡Inténtalo otra vez! 💪"; fb.className="feedback mal"; relata('falla',FR_FALLA);
+      // se queda al frente de la cola (no hacemos shift) → reintenta la misma
+    } else {
+      // 2º error: recién aquí mostramos el resultado + método, y la mandamos al FINAL (para que no la copie de memoria corta)
+      if(fact._fallos>=4 && fact.need>1) fact.need--;
+      fb.innerHTML = "Era <b>"+fact.r+"</b>. "+pistaMetodo(fact)+"<br>La verás de nuevo <b>más adelante</b> para que la pienses. 🧠";
+      fb.className="feedback mal"; relata('falla',FR_FALLA);
+      fact._intentos=0;
+      ronda.cola.shift(); ronda.cola.push(fact);
+    }
   }
   // Anti-agotamiento: 3 fallos seguidos → una fácil para recuperar confianza
   if(ronda.seguidosMal>=3){ inyectarFacil(); ronda.seguidosMal=1; }
