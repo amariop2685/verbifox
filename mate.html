@@ -431,7 +431,7 @@ const ARMADURA=[
   {id:'casco',  n:'Casco',            e:'🪖', v:10},
   {id:'espada', n:'Espada',           e:'⚔️', v:15},
   {id:'escudo', n:'Escudo',           e:'🛡️', v:15},
-  {id:'peto',   n:'Coraza de Dragón', e:'🐉', v:40},
+  {id:'peto',   n:'Coraza',           e:'🐉', v:40},
   {id:'guantes',n:'Guanteletes',      e:'🧤', v:10},
   {id:'botas',  n:'Botas',            e:'🥾', v:10},
   {id:'capa',   n:'Capa',             e:'🧥', v:20},
@@ -440,6 +440,8 @@ const ARMADURA=[
 const MAX_NIVEL_PIEZA=5;
 const COSTO_PIEZA=[4,6,8,10]; // gemas para subir de nivel 1→2,2→3,3→4,4→5
 const ARM_NIV=['','Recluta','Escudero','Guardián','Capitán','Héroe'];
+const ARM_CONECT=['',' de Recluta',' del Escudero',' del Guardián',' del Capitán',' del Héroe'];
+function nombrePieza(p,niv){ return p.n+(ARM_CONECT[niv]||''); }
 function initArmadura(){
   if(!datos.armadura) datos.armadura={piezas:{},gemas:0};
   if(Array.isArray(datos.armadura.piezas)){ const m={}; datos.armadura.piezas.forEach(id=>m[id]=1); datos.armadura.piezas=m; } // migra formato viejo
@@ -472,8 +474,8 @@ function verArmadura(){
     const val=valorPieza(p,niv), max=niv>=MAX_NIVEL_PIEZA, costo=max?null:COSTO_PIEZA[niv-1], puede=!max&&(a.gemas||0)>=costo;
     return `<div style="text-align:center;padding:12px 6px;border-radius:12px;background:#fff7e6;border:2px solid #ffb454">
       <div style="height:46px;display:flex;align-items:center;justify-content:center">${piezaImg(p,niv)}</div>
-      <div style="font-size:.78rem;font-weight:800;color:#5a4a2a">${p.n}</div>
-      <div style="font-size:.64rem;color:#b07b1e">${ARM_NIV[niv]||''} ${'⭐'.repeat(niv)}</div>
+      <div style="font-size:.74rem;font-weight:800;color:#5a4a2a">${p.n}${ARM_CONECT[niv]||''}</div>
+      <div style="font-size:.64rem;color:#b07b1e">${'⭐'.repeat(niv)}</div>
       <div style="font-weight:800;color:#7c4a03;margin:2px 0">🪙 ${val}</div>
       ${max?'<div style="font-size:.68rem;color:#2bb673;font-weight:800">¡AL MÁXIMO! 🌟</div>'
             :`<button class="btn ${puede?'btn-verde':'btn-gris'} btn-pequeno" ${puede?'':'disabled'} style="margin:2px 0 0;padding:6px 8px;font-size:.72rem" onclick="mejorarPieza('${p.id}')">⬆️ ${costo} 💎</button>`}
@@ -496,7 +498,7 @@ function mejorarPieza(id){
   const costo=COSTO_PIEZA[niv-1];
   if((a.gemas||0)<costo){ toast('Te faltan gemas 💎. ¡Conquista castillos!','mal'); return; }
   a.gemas-=costo; a.piezas[id]=niv+1; guardar(); syncInventario(); try{ campana(); }catch(e){}
-  toast('⬆️ ¡'+p.n+' mejorada! Ahora vale 🪙 '+valorPieza(p,niv+1),'logro');
+  toast('⬆️ ¡'+nombrePieza(p,niv+1)+'! Ahora vale 🪙 '+valorPieza(p,niv+1),'logro');
   verArmadura();
 }
 
@@ -1021,7 +1023,7 @@ function finEval(){
     if(datos.conquistas%2===0){ datos.sobres=(datos.sobres||0)+1; datos.vales.push({n:datos.sobres, fecha:new Date().toLocaleDateString('es-CL'), nota:notaTxt(nota), conquistas:datos.conquistas}); ganoSobre=true; }
     html+=`<div class="premio" style="border-color:var(--amarillo); color:#7c2d12">🏰 ¡CONQUISTASTE EL CASTILLO! Avanzaste al <b>Mundo ${datos.examNivel}</b> 🌍</div>`;
     html+=`<div class="premio">${art.e} Ganaste: <b>${art.n}</b>${art.escudo?' 🛡️ (te protege de perder puntos)':''}</div>`;
-    html+= piezaNueva ? `<div class="premio" style="border-color:#ffb454">🛡️ ¡Nueva pieza de armadura: ${piezaNueva.e} <b>${piezaNueva.n}</b>! (+2 💎)</div>` : `<div class="premio" style="border-color:#ffb454">🛡️ ¡Armadura completa! Ganaste <b>+2 💎</b> para mejorarla.</div>`;
+    html+= piezaNueva ? `<div class="premio" style="border-color:#ffb454">🛡️ ¡Nueva pieza de armadura: ${piezaNueva.e} <b>${nombrePieza(piezaNueva,1)}</b>! (+2 💎)</div>` : `<div class="premio" style="border-color:#ffb454">🛡️ ¡Armadura completa! Ganaste <b>+2 💎</b> para mejorarla.</div>`;
     if(ganoSobre){ vfxRecompensaReal('sobre','Logró '+datos.conquistas+' conquistas (nota '+notaTxt(nota)+')'); html+=`<div class="vale"><div class="ico">🎟️⚽</div><div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div><div class="det">${nombre} logró <b>2 conquistas</b>.<br>👉 Tu papá lo verá en su panel y te lo dará. 🎁</div></div>`; }
     else html+=`<div class="premio">🎟️ Conquistas para el próximo sobre: <b>${datos.conquistas%2}/2</b>. ¡Una más!</div>`;
     document.getElementById('r-emoji').textContent="🏰"; document.getElementById('r-titulo').textContent="¡CASTILLO CONQUISTADO, "+nombre+"!";
@@ -1032,7 +1034,7 @@ function finEval(){
         <div style="font-size:3rem">${art.e}</div><p>Ganaste: <b>${art.n}</b></p>
         <p class="sub">Te uniste a los dueños de castillos a jugar fútbol ⚽. ${ganoSobre?'<b>¡2 conquistas → ganaste un sobre del mundial! 🎟️</b>':'Con <b>2 conquistas</b> ganas un sobre. ¡Te falta 1!'}</p>
         <button class="btn btn-verde" onclick="cerrarModal({_force:true})">¡Genial! ▶️</button>`);
-      toast('+50 ⭐ ¡Conquista!','mas'); if(piezaNueva) toast('🛡️ ¡Pieza nueva: '+piezaNueva.n+'!','logro'); if(ganoSobre) toast('🎟️ ¡Ganaste un sobre!','logro');
+      toast('+50 ⭐ ¡Conquista!','mas'); if(piezaNueva) toast('🛡️ ¡Ganaste: '+nombrePieza(piezaNueva,1)+'!','logro'); if(ganoSobre) toast('🎟️ ¡Ganaste un sobre!','logro');
     }, 700);
   } else {
     html+=`<div class="premio">No conquistaste el castillo esta vez (necesitas <b>nota 5,5</b>). ¡Vas mejorando! Entrena un poquito y vuelve. 💪</div>`;
