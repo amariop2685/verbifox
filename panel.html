@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>VerbiFox · Panel del Apoderado</title>
+<style>
+  :root{ --naranja:#ff7a18; --naranja2:#ff9d4d; --tinta:#26303b; --verde:#2bb673; --rojo:#e15554; --gris:#eef2f6; --linea:#dde5ec; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  body{ margin:0; background:#f6f8fb; color:var(--tinta); }
+  header{ background:linear-gradient(135deg,var(--naranja),var(--naranja2)); color:#fff; padding:18px 20px; display:flex; align-items:center; gap:10px; box-shadow:0 2px 12px rgba(0,0,0,.12); }
+  header .logo{ font-size:1.5rem; font-weight:800; letter-spacing:.5px; }
+  header .sp{ flex:1; }
+  .salir{ background:rgba(255,255,255,.2); color:#fff; border:0; padding:8px 14px; border-radius:10px; cursor:pointer; font-weight:600; }
+  .wrap{ max-width:880px; margin:0 auto; padding:18px; }
+  .card{ background:#fff; border:1px solid var(--linea); border-radius:16px; padding:20px; margin-bottom:16px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
+  .card h2{ margin:0 0 12px; font-size:1.1rem; display:flex; align-items:center; gap:8px; }
+  label{ display:block; font-size:.85rem; font-weight:600; margin:10px 0 4px; color:#5a6b7a; }
+  input,select{ width:100%; padding:12px; border:1px solid var(--linea); border-radius:10px; font-size:1rem; }
+  button.primary{ background:var(--naranja); color:#fff; border:0; padding:13px 18px; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; width:100%; margin-top:14px; }
+  button.primary:hover{ background:#ef6a08; }
+  .ghost{ background:none; border:0; color:var(--naranja); cursor:pointer; font-weight:600; text-decoration:underline; }
+  .row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .row>div{ flex:1; min-width:140px; }
+  .pill{ display:inline-block; padding:4px 12px; border-radius:999px; font-size:.8rem; font-weight:700; }
+  .pill.ok{ background:#e3f7ee; color:var(--verde); }
+  .pill.warn{ background:#fdeceb; color:var(--rojo); }
+  .pill.pend{ background:#fff4e0; color:#c47f12; }
+  .dato{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px dashed var(--linea); font-size:.95rem; }
+  .dato:last-child{ border:0; }
+  .dato b{ color:#5a6b7a; font-weight:600; }
+  .barra{ height:12px; background:var(--gris); border-radius:8px; overflow:hidden; margin-top:6px; }
+  .barra>i{ display:block; height:100%; background:linear-gradient(90deg,var(--verde),#7ad6a8); }
+  .mut{ color:#8294a4; font-size:.85rem; }
+  .err{ background:#fdeceb; color:var(--rojo); padding:10px 12px; border-radius:10px; font-size:.9rem; margin-top:10px; display:none; }
+  .ok-msg{ background:#e3f7ee; color:var(--verde); padding:10px 12px; border-radius:10px; font-size:.9rem; margin-top:10px; display:none; }
+  .hijo-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .hijo-tabs button{ border:1px solid var(--linea); background:#fff; padding:8px 14px; border-radius:999px; cursor:pointer; font-weight:600; }
+  .hijo-tabs button.activo{ background:var(--naranja); color:#fff; border-color:var(--naranja); }
+  .hidden{ display:none; }
+  .center{ text-align:center; }
+  .mate-col{ color:#2b7bb6; } .ing-col{ color:#8b5cf6; }
+  footer{ text-align:center; padding:20px; color:#9fb0bf; font-size:.8rem; }
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">🦊 VerbiFox</span>
+  <span style="opacity:.9;font-weight:600">Panel del Apoderado</span>
+  <span class="sp"></span>
+  <button class="salir hidden" id="btnSalir" onclick="salir()">Salir</button>
+</header>
+
+<div class="wrap">
+
+  <!-- LOGIN / REGISTRO -->
+  <div id="auth" class="card hidden">
+    <h2 id="authTit">Ingresar</h2>
+    <p class="mut" id="authSub">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
+    <label>Tu nombre</label>
+    <input id="fNombre" placeholder="Ej: María Pérez" class="hidden">
+    <label>Correo</label>
+    <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
+    <label>Contraseña</label>
+    <input id="fPass" type="password" placeholder="••••••••" autocomplete="current-password">
+    <button class="primary" id="btnAuth" onclick="hacerAuth()">Ingresar</button>
+    <div class="err" id="authErr"></div>
+    <div class="ok-msg" id="authOk"></div>
+    <p class="center" style="margin-top:14px">
+      <span id="toggleTxt" class="mut">¿No tienes cuenta?</span>
+      <button class="ghost" id="btnToggle" onclick="toggleModo()">Crear cuenta</button>
+    </p>
+  </div>
+
+  <!-- PANEL -->
+  <div id="panel" class="hidden">
+
+    <!-- CUENTA -->
+    <div class="card">
+      <h2>👤 Mi cuenta</h2>
+      <div class="dato"><b>Apoderado</b><span id="cNombre">—</span></div>
+      <div class="dato"><b>Correo</b><span id="cEmail">—</span></div>
+    </div>
+
+    <!-- SUSCRIPCIÓN -->
+    <div class="card">
+      <h2>💳 Suscripción</h2>
+      <div id="subVacia" class="hidden">
+        <p class="mut">Aún no tienes un plan activo. Escribe a tu profesor/coordinador para activarlo.</p>
+      </div>
+      <div id="subCont"></div>
+    </div>
+
+    <!-- HIJOS / REPORTE -->
+    <div class="card">
+      <h2>📈 Avance de mi hijo/a</h2>
+      <div id="sinHijos" class="hidden">
+        <p class="mut">Aún no hay estudiantes registrados.</p>
+        <button class="ghost" onclick="mostrarAltaHijo()">+ Agregar estudiante</button>
+        <div id="altaHijo" class="hidden" style="margin-top:10px">
+          <div class="row">
+            <div><label>Nombre</label><input id="hNombre" placeholder="Martín"></div>
+            <div><label>Curso</label><input id="hCurso" placeholder="5° Básico"></div>
+          </div>
+          <label>Colegio</label><input id="hColegio" placeholder="Colegio Boston">
+          <button class="primary" onclick="crearHijo()">Guardar estudiante</button>
+        </div>
+      </div>
+      <div id="hijosTabs" class="hijo-tabs"></div>
+      <div id="reporte"></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>VerbiFox · Aprendizaje alineado al currículo MINEDUC · <span id="ver">panel v1</span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script>
+let modo = 'login'; // 'login' | 'registro'
+let hijos = [], hijoSel = null;
+
+const $ = id => document.getElementById(id);
+function showErr(m){ const e=$('authErr'); e.textContent=m; e.style.display='block'; setTimeout(()=>e.style.display='none',5000); }
+function showOk(m){ const e=$('authOk'); e.textContent=m; e.style.display='block'; }
+
+function toggleModo(){
+  modo = modo==='login' ? 'registro' : 'login';
+  const reg = modo==='registro';
+  $('authTit').textContent = reg ? 'Crear cuenta' : 'Ingresar';
+  $('btnAuth').textContent  = reg ? 'Crear cuenta' : 'Ingresar';
+  $('fNombre').classList.toggle('hidden', !reg);
+  $('toggleTxt').textContent = reg ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?';
+  $('btnToggle').textContent = reg ? 'Ingresar' : 'Crear cuenta';
+}
+
+async function hacerAuth(){
+  const email=$('fEmail').value.trim(), pass=$('fPass').value;
+  if(!email||!pass){ showErr('Completa correo y contraseña.'); return; }
+  $('btnAuth').disabled=true;
+  try{
+    if(modo==='registro'){
+      await VFX.registrar(email, pass, $('fNombre').value.trim());
+      const s = await VFX.sesion();
+      if(!s){ showOk('Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego ingresa.'); $('btnAuth').disabled=false; return; }
+    } else {
+      await VFX.entrar(email, pass);
+    }
+    await cargarPanel();
+  }catch(err){
+    showErr(traducir(err.message));
+  }
+  $('btnAuth').disabled=false;
+}
+
+function traducir(m){
+  if(/Invalid login/i.test(m)) return 'Correo o contraseña incorrectos.';
+  if(/already registered/i.test(m)) return 'Ese correo ya tiene cuenta. Ingresa.';
+  if(/at least 6/i.test(m)) return 'La contraseña debe tener al menos 6 caracteres.';
+  if(/Email not confirmed/i.test(m)) return 'Debes confirmar tu correo antes de entrar.';
+  return m;
+}
+
+async function salir(){ await VFX.salir(); location.reload(); }
+
+function fechaCL(d){ if(!d) return '—'; const x=new Date(d+'T00:00:00'); return x.toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'}); }
+function pesos(n){ return '$'+(n||0).toLocaleString('es-CL'); }
+
+async function cargarPanel(){
+  $('auth').classList.add('hidden');
+  $('panel').classList.remove('hidden');
+  $('btnSalir').classList.remove('hidden');
+
+  const perfil = await VFX.miPerfil();
+  const u = await VFX.usuario();
+  $('cNombre').textContent = (perfil&&perfil.nombre) || '—';
+  $('cEmail').textContent  = (u&&u.email) || '—';
+
+  await pintarSuscripciones();
+  await pintarHijos();
+}
+
+async function pintarSuscripciones(){
+  let subs=[];
+  try{ subs = await VFX.misSuscripciones(); }catch(e){ console.warn(e); }
+  const cont=$('subCont');
+  if(!subs.length){ $('subVacia').classList.remove('hidden'); cont.innerHTML=''; return; }
+  $('subVacia').classList.add('hidden');
+  cont.innerHTML = subs.map(s=>{
+    const estado = s.estado==='activa' ? '<span class="pill ok">Activa</span>'
+      : s.estado==='vencida' ? '<span class="pill warn">Vencida</span>'
+      : '<span class="pill pend">Pendiente</span>';
+    const pac = s.cobro_automatico ? '<span class="pill ok">Activado</span>' : '<span class="pill pend">Desactivado</span>';
+    const plan = s.plans ? s.plans.nombre : s.plan_id;
+    const precio = s.plans ? pesos(s.plans.precio_clp)+'/'+(s.plans.periodo==='anual'?'año':'mes') : '';
+    return `<div style="margin-bottom:14px">
+      <div class="dato"><b>Plan</b><span>${plan} ${estado}</span></div>
+      <div class="dato"><b>Valor</b><span>${precio}</span></div>
+      <div class="dato"><b>Inicio</b><span>${fechaCL(s.fecha_inicio)}</span></div>
+      <div class="dato"><b>Último pago</b><span>${fechaCL(s.ultimo_pago)}</span></div>
+      <div class="dato"><b>Próximo pago</b><span>${fechaCL(s.proximo_pago)}</span></div>
+      <div class="dato"><b>Cobro automático (PAC)</b><span>${pac}</span></div>
+    </div>`;
+  }).join('');
+}
+
+async function pintarHijos(){
+  try{ hijos = await VFX.misHijos(); }catch(e){ hijos=[]; }
+  if(!hijos.length){ $('sinHijos').classList.remove('hidden'); $('hijosTabs').innerHTML=''; $('reporte').innerHTML=''; return; }
+  $('sinHijos').classList.add('hidden');
+  hijoSel = hijoSel || hijos[0].id;
+  $('hijosTabs').innerHTML = hijos.map(h=>
+    `<button class="${h.id===hijoSel?'activo':''}" onclick="selHijo('${h.id}')">${h.nombre}</button>`).join('');
+  await pintarReporte();
+}
+
+function selHijo(id){ hijoSel=id; pintarHijos(); }
+
+async function pintarReporte(){
+  const r=$('reporte'); r.innerHTML='<p class="mut">Cargando avance…</p>';
+  let res;
+  try{ res = await VFX.resumenAvance(hijoSel); }catch(e){ r.innerHTML='<p class="mut">No se pudo cargar el avance.</p>'; return; }
+  if(!res.total){ r.innerHTML='<p class="mut">Todavía no hay actividad registrada. Cuando tu hijo/a practique, verás aquí su avance.</p>'; return; }
+  const nombres={ matematicas:'Matemáticas', ingles:'Inglés' };
+  const cols={ matematicas:'mate-col', ingles:'ing-col' };
+  let html='';
+  for(const m in res.porMateria){
+    const d=res.porMateria[m];
+    const pct = d.total? Math.round(d.correctos/d.total*100):0;
+    const min = Math.round(d.tiempo/60000);
+    html+=`<div style="margin:12px 0">
+      <div style="display:flex;justify-content:space-between">
+        <b class="${cols[m]||''}">${nombres[m]||m}</b>
+        <span class="mut">${d.correctos}/${d.total} correctas · ${min} min</span>
+      </div>
+      <div class="barra"><i style="width:${pct}%"></i></div>
+      <div class="mut" style="margin-top:3px">Dominio: ${pct}%</div>
+    </div>`;
+  }
+  html+=`<p class="mut" style="margin-top:14px">Total de ejercicios registrados: <b>${res.total}</b></p>`;
+  r.innerHTML=html;
+}
+
+// ---- alta de hijo (por si el apoderado lo agrega) ----
+function mostrarAltaHijo(){ $('altaHijo').classList.toggle('hidden'); }
+async function crearHijo(){
+  const nombre=$('hNombre').value.trim();
+  if(!nombre){ alert('Escribe el nombre.'); return; }
+  try{
+    await VFX.agregarHijo({ nombre, curso:$('hCurso').value.trim(), colegio:$('hColegio').value.trim() });
+    await pintarHijos();
+  }catch(e){ alert('No se pudo: '+e.message); }
+}
+
+// ---- arranque ----
+document.addEventListener('vfx-listo', async ()=>{
+  const s = await VFX.sesion();
+  if(s){ await cargarPanel(); }
+  else { $('auth').classList.remove('hidden'); }
+});
+// fallback si el evento ya pasó
+setTimeout(async ()=>{
+  if(window.VFX && $('auth').classList.contains('hidden') && $('panel').classList.contains('hidden')){
+    const s = await VFX.sesion();
+    if(s) cargarPanel(); else $('auth').classList.remove('hidden');
+  }
+}, 1200);
+</script>
+</body>
+</html>

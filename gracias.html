@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerbiFox · ¡Gracias!</title>
+<style>
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+        background:linear-gradient(135deg,#ff7a18,#ff9d4d); color:#26303b; padding:20px; }
+  .card{ background:#fff; border-radius:22px; padding:34px 26px; max-width:440px; width:100%;
+         text-align:center; box-shadow:0 14px 40px rgba(0,0,0,.18); }
+  .fox{ font-size:3.4rem; }
+  h1{ margin:8px 0 6px; font-size:1.5rem; }
+  p{ color:#5a6b7a; line-height:1.5; }
+  .estado{ display:inline-block; padding:6px 16px; border-radius:999px; font-weight:700; font-size:.9rem; margin:6px 0 14px; }
+  .ok{ background:#e3f7ee; color:#2bb673; } .pend{ background:#fff4e0; color:#c47f12; } .bad{ background:#fdeceb; color:#e15554; }
+  .btn{ display:block; background:#ff7a18; color:#fff; text-decoration:none; padding:14px; border-radius:14px;
+        font-weight:700; font-size:1.05rem; margin-top:18px; }
+  .btn:hover{ background:#ef6a08; }
+  .pasos{ text-align:left; background:#f6f8fb; border-radius:14px; padding:16px 18px; margin-top:18px; }
+  .pasos li{ margin:6px 0; color:#3a4a58; }
+  .mut{ font-size:.82rem; color:#9fb0bf; margin-top:16px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="fox">🦊</div>
+    <span class="estado ok" id="estado">¡Pago aprobado!</span>
+    <h1 id="titulo">¡Gracias por suscribirte!</h1>
+    <p id="msg">Estamos activando el acceso de tu hijo/a. Crea tu cuenta de apoderado para empezar a ver su avance.</p>
+
+    <div class="pasos" id="pasos">
+      <b>Tus próximos pasos:</b>
+      <ol>
+        <li>Entra al <b>Panel del Apoderado</b>.</li>
+        <li>Crea tu cuenta con el <b>mismo correo</b> con que pagaste.</li>
+        <li>Tu plan quedará activo en unas horas (te confirmamos).</li>
+      </ol>
+    </div>
+
+    <a class="btn" href="panel.html">Entrar a mi panel →</a>
+    <p class="mut">¿Dudas? Escríbenos y te ayudamos. · verbifox.cl</p>
+  </div>
+
+<script>
+  // Lee el estado que envía la pasarela (Mercado Pago: ?status / ?collection_status)
+  const q = new URLSearchParams(location.search);
+  const st = (q.get('status') || q.get('collection_status') || 'approved').toLowerCase();
+  const E = document.getElementById('estado');
+  const T = document.getElementById('titulo');
+  const M = document.getElementById('msg');
+  const P = document.getElementById('pasos');
+  if(st==='pending' || st==='in_process'){
+    E.className='estado pend'; E.textContent='Pago en revisión';
+    T.textContent='Tu pago se está confirmando';
+    M.textContent='Apenas la pasarela confirme tu pago (puede tardar unos minutos), activaremos el acceso. Igual puedes crear tu cuenta ya.';
+  } else if(st==='rejected' || st==='failure' || st==='cancelled'){
+    E.className='estado bad'; E.textContent='Pago no completado';
+    T.textContent='No se pudo procesar el pago';
+    M.textContent='No te preocupes: no se realizó ningún cobro. Puedes intentarlo de nuevo o escribirnos para ayudarte.';
+    P.style.display='none';
+  }
+</script>
+</body>
+</html>
