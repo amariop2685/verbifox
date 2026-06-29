@@ -145,6 +145,8 @@
     .tn{padding:15px 0; font-size:1.4rem;}
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
 </head>
 <body>
 <div class="app">
@@ -412,6 +414,8 @@ function recordFact(key,limpio,rapido){
   r.dia=hoyDia(); datos.facts[key]=r;
 }
 function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }catch(e){} }
+// Guarda el avance en la nube (si el apoderado fijó este dispositivo para un niño). No estorba el juego.
+function vfxAvance(tipo, ok, extra){ try{ if(window.VFX) VFX.logAvance({materia:'matematicas', app:'mate', tipo:tipo, correcto:!!ok, detalle:extra||null}); }catch(e){} }
 
 /* ====== UTIL ====== */
 function mostrar(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('activa')); document.getElementById(id).classList.add('activa'); }
@@ -810,6 +814,7 @@ function comprobar(){
   if(ronda.contestada||ronda.resp==="") return;
   ronda.contestada=true;
   const ok=parseInt(ronda.resp,10)===ronda.actual.r;
+  vfxAvance(ronda.modo==='eval'?'examen':(ronda.op||ronda.modo||'operatoria'), ok, {op:ronda.op||null, modo:ronda.modo});
   if(ronda.modo==='velocidad'){ compVel(ok); return; }
   if(ronda.modo==='memoria'){ compMemoria(ok); return; }
   document.getElementById('q-como').style.display='none';
@@ -1195,6 +1200,7 @@ function pintarFrac(){
 function fracSlider(v){ const it=ronda.items[ronda.i]; ronda.sliderVal=parseInt(v,10); dibujaBarra(ronda.sliderVal,it); document.getElementById('f-val').textContent=valorTexto(ronda.sliderVal,it.den); }
 function fracResultado(ok, it){
   ronda.contestada=true;
+  vfxAvance('fracciones', ok, null);
   const fb=document.getElementById('f-fb');
   if(ok){ ronda.aciertos++; datos.puntos+=12; fb.textContent="¡Correcto! 🎉"; fb.className="feedback bien"; confeti(); document.getElementById('f-coment').textContent=pick(FR_GOL).replace(/\{n\}/g,nombre); sonar('gol'); }
   else { const corr=it.tipo==='pinta'?valorTexto(it.shadedTarget,it.den):labelFrac(it.whole,it.num,it.den); fb.innerHTML="Era <b>"+corr+"</b>. ¡Observa la regleta!"; fb.className="feedback mal"; sonar('falla'); }
@@ -1286,6 +1292,7 @@ function geoElige(v){ if(ronda.contestada) return; ronda._sel=v; geoResultado(v=
 function geoUbicar(x,y){ if(ronda.contestada) return; const it=ronda.items[ronda.i]; ronda._sel=null; geoResultado(x===it.x && y===it.y); }
 function geoResultado(ok){
   const it=ronda.items[ronda.i], fb=document.getElementById('g-fb');
+  vfxAvance('geometria', ok, null);
   if(!ok){
     it._intentos=(it._intentos||0)+1;
     if(it._intentos===1){ // 1er error: pista del método, SIN revelar la respuesta; reintenta el mismo

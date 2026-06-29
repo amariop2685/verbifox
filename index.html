@@ -232,6 +232,8 @@
     .app{ max-width:600px; }
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
 </head>
 <body>
 <div class="app">
@@ -1072,6 +1074,7 @@ function responder(){
 function evaluar(ok, refuerzo, puntos){
   if(quiz.contestada) return;
   quiz.contestada=true;
+  try{ if(window.VFX) VFX.logAvance({materia:'ingles', app:'ingles', tipo:(quiz&&(quiz.tipo||quiz.modo))||'verbos', correcto:!!ok, detalle:null}); }catch(e){}
   const fb = document.getElementById('q-feedback');
   if(ok){
     const gana = (puntos||10); // las pistas NO restan puntos

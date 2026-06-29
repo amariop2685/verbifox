@@ -108,6 +108,7 @@
         </div>
       </div>
       <div id="hijosTabs" class="hijo-tabs"></div>
+      <div id="devBar"></div>
       <div id="reporte"></div>
     </div>
 
@@ -213,7 +214,25 @@ async function pintarHijos(){
   hijoSel = hijoSel || hijos[0].id;
   $('hijosTabs').innerHTML = hijos.map(h=>
     `<button class="${h.id===hijoSel?'activo':''}" onclick="selHijo('${h.id}')">${h.nombre}</button>`).join('');
+  renderDevBar();
   await pintarReporte();
+}
+
+function renderDevBar(){
+  const h = hijos.find(x=>x.id===hijoSel); if(!h) { $('devBar').innerHTML=''; return; }
+  const activo = (window.VFX && VFX.studentActivo()) || '';
+  const esEste = activo===h.id;
+  $('devBar').innerHTML = esEste
+    ? `<div style="background:#e3f7ee;color:#2bb673;padding:10px 14px;border-radius:10px;font-size:.9rem;margin-bottom:10px">
+         ✅ Este dispositivo está guardando el avance de <b>${h.nombre}</b>.</div>`
+    : `<div style="background:#fff4e0;color:#c47f12;padding:10px 14px;border-radius:10px;font-size:.9rem;margin-bottom:10px">
+         📲 Para que se guarde el avance de <b>${h.nombre}</b> en este equipo (tablet/teléfono que usa el niño),
+         toca: <button class="ghost" onclick="usarDispositivo('${h.id}','${h.nombre.replace(/'/g,"")}')">Usar este dispositivo para ${h.nombre}</button></div>`;
+}
+function usarDispositivo(id, nombre){
+  if(window.VFX){ VFX.setStudentActivo(id, nombre); }
+  renderDevBar();
+  alert('¡Listo! En este dispositivo, el avance en las apps de Matemáticas e Inglés se guardará para '+nombre+'.');
 }
 
 function selHijo(id){ hijoSel=id; pintarHijos(); }

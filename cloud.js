@@ -85,6 +85,20 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     },
 
     // ---------- AVANCE (lo escribe la app del niño; lo lee el panel) ----------
+    // Estudiante "activo" en este dispositivo (lo fija el apoderado desde el panel)
+    studentActivo() { try { return localStorage.getItem('vfx_student') || null; } catch (e) { return null; } },
+    studentActivoNombre() { try { return localStorage.getItem('vfx_student_nombre') || ''; } catch (e) { return ''; } },
+    setStudentActivo(id, nombre) {
+      try { localStorage.setItem('vfx_student', id); if (nombre) localStorage.setItem('vfx_student_nombre', nombre); } catch (e) {}
+    },
+    // Guarda un evento de avance usando el estudiante activo + la sesión actual. "Fire and forget".
+    async logAvance(ev) {
+      try {
+        const sid = VFX.studentActivo(); if (!sid) return;
+        const s = await VFX.sesion(); if (!s) return;
+        VFX.registrarAvance(sid, ev);
+      } catch (e) { /* sin conexión: el juego sigue igual */ }
+    },
     async registrarAvance(studentId, ev) {
       // ev: { materia, app, tipo, oa_codigo, correcto, tiempo_ms, detalle }
       const { error } = await sb.from('progress_events')
