@@ -68,8 +68,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
 <script>
-  // ⚙️ Pon aquí tu número de WhatsApp (formato internacional, sin +, ej: 56912345678) para activar el botón verde.
-  const WHATSAPP = "";
+  // ⚙️ Número de WhatsApp de soporte (formato internacional, sin +).
+  const WHATSAPP = "56952284219";
   const $ = id => document.getElementById(id);
 
   async function enviar(){
@@ -90,16 +90,20 @@
   }
   function mostrarErr(m){ const e=$('err'); e.textContent=m; e.style.display='block'; setTimeout(()=>e.style.display='none',5000); }
 
+  // El botón de WhatsApp no depende de la nube: lo mostramos de inmediato.
+  if(WHATSAPP){ const a=$('wa'); a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hola, necesito ayuda con VerbiFox 🦊'); a.style.display='flex'; }
+
   // Prellenar datos si el apoderado tiene sesión
-  document.addEventListener('vfx-listo', async ()=>{
+  async function prellenar(){
     try{
       const u = await VFX.usuario();
       if(u && u.email && !$('email').value) $('email').value = u.email;
       const p = await VFX.miPerfil();
       if(p && p.nombre && !$('nombre').value) $('nombre').value = p.nombre;
     }catch(e){}
-    if(WHATSAPP){ const a=$('wa'); a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hola, necesito ayuda con VerbiFox 🦊'); a.style.display='flex'; }
-  });
+  }
+  document.addEventListener('vfx-listo', prellenar);
+  if(window.VFX) prellenar(); // por si el evento ya había pasado
 </script>
 </body>
 </html>
