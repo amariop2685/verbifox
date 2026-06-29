@@ -439,7 +439,7 @@ const ARMADURA=[
 ];
 const MAX_NIVEL_PIEZA=5;
 const COSTO_PIEZA=[4,6,8,10]; // gemas para subir de nivel 1→2,2→3,3→4,4→5
-const ARM_NIV=['','Común','Reforzada','Brillante','Épica','Legendaria'];
+const ARM_NIV=['','Recluta','Escudero','Guardián','Capitán','Héroe'];
 function initArmadura(){
   if(!datos.armadura) datos.armadura={piezas:{},gemas:0};
   if(Array.isArray(datos.armadura.piezas)){ const m={}; datos.armadura.piezas.forEach(id=>m[id]=1); datos.armadura.piezas=m; } // migra formato viejo
