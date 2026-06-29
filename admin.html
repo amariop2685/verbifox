@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>VerbiFox · Administración</title>
+<style>
+  :root{ --naranja:#ff7a18; --tinta:#26303b; --verde:#2bb673; --rojo:#e15554; --linea:#dde5ec; --gris:#f6f8fb; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  body{ margin:0; background:var(--gris); color:var(--tinta); }
+  header{ background:#26303b; color:#fff; padding:16px 20px; display:flex; align-items:center; gap:10px; }
+  header b{ font-size:1.2rem; } header .sp{ flex:1; }
+  .salir{ background:rgba(255,255,255,.15); color:#fff; border:0; padding:8px 14px; border-radius:10px; cursor:pointer; }
+  .wrap{ max-width:920px; margin:0 auto; padding:18px; }
+  .card{ background:#fff; border:1px solid var(--linea); border-radius:14px; padding:18px; margin-bottom:14px; }
+  input,select{ width:100%; padding:10px; border:1px solid var(--linea); border-radius:9px; font-size:.95rem; }
+  label{ font-size:.8rem; font-weight:600; color:#5a6b7a; display:block; margin:8px 0 3px; }
+  button{ cursor:pointer; border:0; border-radius:9px; font-weight:600; }
+  .pri{ background:var(--naranja); color:#fff; padding:10px 16px; }
+  .sec{ background:#eef2f6; color:#26303b; padding:8px 12px; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
+  .row>div{ flex:1; min-width:130px; }
+  .pill{ padding:3px 10px; border-radius:999px; font-size:.75rem; font-weight:700; }
+  .ok{ background:#e3f7ee; color:var(--verde); } .warn{ background:#fdeceb; color:var(--rojo); } .pend{ background:#fff4e0; color:#c47f12; }
+  .ap{ border-left:4px solid var(--naranja); padding-left:14px; margin-bottom:18px; }
+  .sub{ background:var(--gris); border-radius:10px; padding:12px; margin-top:8px; font-size:.9rem; }
+  .mut{ color:#8294a4; font-size:.85rem; }
+  .hidden{ display:none; }
+  table{ width:100%; border-collapse:collapse; font-size:.85rem; }
+  .acc{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .err{ background:#fdeceb; color:var(--rojo); padding:10px; border-radius:9px; margin-top:8px; }
+</style>
+</head>
+<body>
+<header><b>🦊 VerbiFox · Admin</b><span class="sp"></span><button class="salir hidden" id="bs" onclick="salir()">Salir</button></header>
+<div class="wrap">
+
+  <div id="login" class="card hidden" style="max-width:380px;margin:40px auto">
+    <h2>Acceso administrador</h2>
+    <label>Correo</label><input id="email" type="email">
+    <label>Contraseña</label><input id="pass" type="password">
+    <button class="pri" style="width:100%;margin-top:12px" onclick="entrar()">Ingresar</button>
+    <div class="err hidden" id="le"></div>
+  </div>
+
+  <div id="noadmin" class="card hidden">
+    <h2>Sin permisos</h2>
+    <p class="mut">Tu cuenta no es administradora. Si debería serlo, agrega tu UID a la tabla <code>admins</code>.</p>
+    <button class="sec" onclick="salir()">Salir</button>
+  </div>
+
+  <div id="admin" class="hidden">
+    <div class="card">
+      <h2 style="margin-top:0">Apoderados y suscripciones</h2>
+      <p class="mut">Aquí ves a cada familia, activas planes y marcas pagos. El cobro es manual: cuando recibas la transferencia, marca el pago.</p>
+      <button class="sec" onclick="cargar()">↻ Actualizar</button>
+    </div>
+    <div id="lista"></div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let DATA={apoderados:[],planes:[]};
+
+function fecha(d){ if(!d) return '—'; return new Date(d+'T00:00:00').toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'}); }
+function pesos(n){ return '$'+(n||0).toLocaleString('es-CL'); }
+
+async function entrar(){
+  try{ await VFX.entrar($('email').value.trim(), $('pass').value); arranque(); }
+  catch(e){ $('le').textContent='No se pudo: '+e.message; $('le').classList.remove('hidden'); }
+}
+async function salir(){ await VFX.salir(); location.reload(); }
+
+async function arranque(){
+  const s=await VFX.sesion();
+  if(!s){ $('login').classList.remove('hidden'); return; }
+  const adm=await VFX.soyAdmin();
+  $('login').classList.add('hidden');
+  $('bs').classList.remove('hidden');
+  if(!adm){ $('noadmin').classList.remove('hidden'); return; }
+  $('admin').classList.remove('hidden');
+  await cargar();
+}
+
+async function cargar(){
+  DATA=await VFX.adminTodo();
+  const cont=$('lista');
+  if(!DATA.apoderados.length){ cont.innerHTML='<div class="card mut">Aún no hay apoderados registrados. Cuando un papá cree su cuenta en el panel, aparecerá aquí.</div>'; return; }
+  cont.innerHTML = DATA.apoderados.map(renderAp).join('');
+}
+
+function renderAp(a){
+  const hijos = a.hijos.map(h=>h.nombre).join(', ') || '<span class="mut">sin estudiantes aún</span>';
+  const subs = a.subs.map(s=>renderSub(s)).join('') || '<p class="mut" style="margin:6px 0">Sin suscripción.</p>';
+  const optHijos = a.hijos.map(h=>`<option value="${h.id}">${h.nombre}</option>`).join('');
+  const optPlanes = DATA.planes.map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
+  return `<div class="card ap">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div><b>${a.nombre||'(sin nombre)'}</b><div class="mut">${a.email||''}</div></div>
+    </div>
+    <div class="mut" style="margin:6px 0">Estudiantes: ${hijos}</div>
+    ${subs}
+    <details style="margin-top:10px">
+      <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar suscripción</summary>
+      <div class="row" style="margin-top:10px">
+        <div><label>Estudiante</label><select id="ns_${a.id}">${optHijos||'<option value="">(el papá aún no agrega hijo)</option>'}</select></div>
+        <div><label>Plan</label><select id="np_${a.id}">${optPlanes}</select></div>
+        <div><label>Inicio</label><input type="date" id="nf_${a.id}"></div>
+        <div style="flex:0"><label>PAC</label><input type="checkbox" id="npac_${a.id}" style="width:auto;transform:scale(1.4)"></div>
+        <div style="flex:0"><button class="pri" onclick="crearSub('${a.id}')">Activar</button></div>
+      </div>
+    </details>
+  </div>`;
+}
+
+function renderSub(s){
+  const estado = s.estado==='activa'?'<span class="pill ok">Activa</span>':s.estado==='vencida'?'<span class="pill warn">Vencida</span>':'<span class="pill pend">'+s.estado+'</span>';
+  const pac = s.cobro_automatico?'<span class="pill ok">PAC ON</span>':'<span class="pill pend">PAC OFF</span>';
+  const per = s.plan? s.plan.periodo : 'mensual';
+  return `<div class="sub">
+    <div><b>${s.plan?s.plan.nombre:s.plan_id}</b> ${estado} ${pac}</div>
+    <div class="mut">Inicio ${fecha(s.fecha_inicio)} · Último pago ${fecha(s.ultimo_pago)} · Próximo ${fecha(s.proximo_pago)}</div>
+    <div class="acc">
+      <button class="sec" onclick="pagar('${s.id}','${per}', ${s.plan?s.plan.precio_clp:0})">💰 Marcar pago recibido</button>
+      <button class="sec" onclick="togglePac('${s.id}', ${s.cobro_automatico})">${s.cobro_automatico?'Apagar PAC':'Encender PAC'}</button>
+      <button class="sec" onclick="toggleEstado('${s.id}','${s.estado}')">${s.estado==='activa'?'Suspender':'Reactivar'}</button>
+    </div>
+  </div>`;
+}
+
+async function crearSub(parentId){
+  try{
+    await VFX.adminCrearSuscripcion({
+      parent_id: parentId,
+      student_id: $('ns_'+parentId).value || null,
+      plan_id: $('np_'+parentId).value,
+      fecha_inicio: $('nf_'+parentId).value || null,
+      cobro_automatico: $('npac_'+parentId).checked,
+    });
+    await cargar();
+  }catch(e){ alert('Error: '+e.message); }
+}
+async function pagar(subId, periodo, monto){
+  if(!confirm('¿Marcar pago recibido por '+pesos(monto)+'? Esto extiende la suscripción un período.')) return;
+  try{ await VFX.adminRegistrarPago({ subscription_id:subId, monto_clp:monto, periodo }); await cargar(); }
+  catch(e){ alert('Error: '+e.message); }
+}
+async function togglePac(subId, actual){ try{ await VFX.adminActualizarSub(subId,{cobro_automatico:!actual}); await cargar(); }catch(e){ alert(e.message); } }
+async function toggleEstado(subId, est){ const nuevo= est==='activa'?'cancelada':'activa'; try{ await VFX.adminActualizarSub(subId,{estado:nuevo}); await cargar(); }catch(e){ alert(e.message); } }
+
+document.addEventListener('vfx-listo', arranque);
+setTimeout(()=>{ if(window.VFX && $('login').classList.contains('hidden') && $('admin').classList.contains('hidden') && $('noadmin').classList.contains('hidden')) arranque(); }, 1200);
+</script>
+</body>
+</html>

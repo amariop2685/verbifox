@@ -109,6 +109,68 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       }
       return { total: evs.length, porMateria, ultimos: evs.slice(0, 20) };
     },
+
+    // ---------- ADMINISTRADOR ----------
+    async soyAdmin() {
+      try { const { data } = await sb.rpc('is_admin'); return !!data; }
+      catch (e) { return false; }
+    },
+    async adminTodo() {
+      const [pf, st, su, pl] = await Promise.all([
+        sb.from('profiles').select('*'),
+        sb.from('students').select('*'),
+        sb.from('subscriptions').select('*'),
+        sb.from('plans').select('*'),
+      ]);
+      const planes = pl.data || [];
+      const subs = (su.data || []).map(s => ({ ...s, plan: planes.find(p => p.id === s.plan_id) }));
+      const apoderados = (pf.data || []).map(p => ({
+        ...p,
+        hijos: (st.data || []).filter(x => x.parent_id === p.id),
+        subs: subs.filter(x => x.parent_id === p.id),
+      }));
+      return { apoderados, planes };
+    },
+    _sumaPeriodo(fechaISO, periodo) {
+      const d = new Date((fechaISO || new Date().toISOString().slice(0,10)) + 'T00:00:00');
+      if (periodo === 'anual') d.setFullYear(d.getFullYear() + 1);
+      else d.setMonth(d.getMonth() + 1);
+      return d.toISOString().slice(0, 10);
+    },
+    async adminCrearSuscripcion({ parent_id, student_id, plan_id, fecha_inicio, cobro_automatico }) {
+      const { planes } = await VFX.adminTodo();
+      const plan = planes.find(p => p.id === plan_id);
+      const inicio = fecha_inicio || new Date().toISOString().slice(0, 10);
+      const fila = {
+        parent_id, student_id: student_id || null, plan_id,
+        estado: 'activa',
+        fecha_inicio: inicio,
+        ultimo_pago: inicio,
+        proximo_pago: VFX._sumaPeriodo(inicio, plan ? plan.periodo : 'mensual'),
+        cobro_automatico: !!cobro_automatico,
+      };
+      const { data, error } = await sb.from('subscriptions').insert(fila).select().single();
+      if (error) throw error;
+      if (plan) await VFX.adminRegistrarPago({ subscription_id: data.id, monto_clp: plan.precio_clp, periodo: plan.periodo, avanzar: false });
+      return data;
+    },
+    async adminRegistrarPago({ subscription_id, monto_clp, periodo, avanzar = true }) {
+      const u = await VFX.usuario();
+      const hoy = new Date().toISOString().slice(0, 10);
+      const { error } = await sb.from('payments').insert({
+        subscription_id, monto_clp, fecha: hoy, metodo: 'transferencia', estado: 'pagado', marcado_por: u ? u.id : null,
+      });
+      if (error) throw error;
+      if (avanzar) {
+        await sb.from('subscriptions').update({
+          estado: 'activa', ultimo_pago: hoy, proximo_pago: VFX._sumaPeriodo(hoy, periodo || 'mensual'),
+        }).eq('id', subscription_id);
+      }
+    },
+    async adminActualizarSub(id, campos) {
+      const { error } = await sb.from('subscriptions').update(campos).eq('id', id);
+      if (error) throw error;
+    },
   };
 
   window.VFX = VFX;
