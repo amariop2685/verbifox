@@ -125,12 +125,12 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     },
 
     // ---------- ARMADURA / INVENTARIO + RECOMPENSAS REALES ----------
-    async guardarInventario(studentId, armadura) {
+    async guardarInventario(studentId, inv) {
       const fila = {
         student_id: studentId,
-        piezas: armadura.piezas || [],
-        nivel: armadura.nivel || 0,
-        gemas: armadura.gemas || 0,
+        piezas: inv.piezas || {},
+        gemas: inv.gemas || 0,
+        valor: inv.valor || 0,
         updated_at: new Date().toISOString(),
       };
       const { error } = await sb.from('inventario').upsert(fila, { onConflict: 'student_id' });
@@ -138,7 +138,7 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     },
     async miInventario(studentId) {
       const { data } = await sb.from('inventario').select('*').eq('student_id', studentId).maybeSingle();
-      return data || { piezas: [], nivel: 0, gemas: 0 };
+      return data || { piezas: {}, gemas: 0, valor: 0 };
     },
     // Recompensa REAL (sobre/vale) que el papá entrega
     async crearRecompensa(studentId, { tipo, motivo }) {

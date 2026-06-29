@@ -426,55 +426,68 @@ function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }
 // Guarda el avance en la nube (si el apoderado fijó este dispositivo para un niño). No estorba el juego.
 function vfxAvance(tipo, ok, extra){ try{ if(window.VFX) VFX.logAvance({materia:'matematicas', app:'mate', tipo:tipo, correcto:!!ok, detalle:extra||null}); }catch(e){} }
 
-/* ====== ARMADURA DEL CABALLERO (coleccionable) ====== */
+/* ====== ARMADURA DEL CABALLERO (coleccionable con valor) ====== */
 const ARMADURA=[
-  {id:'casco',  n:'Casco',       e:'🪖'},
-  {id:'espada', n:'Espada',      e:'⚔️'},
-  {id:'escudo', n:'Escudo',      e:'🛡️'},
-  {id:'peto',   n:'Coraza de Dragón', e:'🐉'},
-  {id:'guantes',n:'Guanteletes', e:'🧤'},
-  {id:'botas',  n:'Botas',       e:'🥾'},
-  {id:'capa',   n:'Capa',        e:'🧥'},
-  {id:'caballo',n:'Caballo',     e:'🐎'},
+  {id:'casco',  n:'Casco',            e:'🪖', v:10},
+  {id:'espada', n:'Espada',           e:'⚔️', v:15},
+  {id:'escudo', n:'Escudo',           e:'🛡️', v:15},
+  {id:'peto',   n:'Coraza de Dragón', e:'🐉', v:40},
+  {id:'guantes',n:'Guanteletes',      e:'🧤', v:10},
+  {id:'botas',  n:'Botas',            e:'🥾', v:10},
+  {id:'capa',   n:'Capa',             e:'🧥', v:20},
+  {id:'caballo',n:'Caballo',          e:'🐎', v:50},
 ];
-const TIERS=['Madera','Bronce','Plata','Oro','Legendaria'];
-const COSTO_MEJORA=[6,8,10,12];
-function initArmadura(){ if(!datos.armadura) datos.armadura={piezas:[],nivel:0,gemas:0}; }
-function syncInventario(){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.guardarInventario(sid, datos.armadura); } }catch(e){} }
+const MAX_NIVEL_PIEZA=5;
+const COSTO_PIEZA=[4,6,8,10]; // gemas para subir de nivel 1→2,2→3,3→4,4→5
+const ARM_NIV=['','Común','Reforzada','Brillante','Épica','Legendaria'];
+function initArmadura(){
+  if(!datos.armadura) datos.armadura={piezas:{},gemas:0};
+  if(Array.isArray(datos.armadura.piezas)){ const m={}; datos.armadura.piezas.forEach(id=>m[id]=1); datos.armadura.piezas=m; } // migra formato viejo
+  if(datos.armadura.piezas==null) datos.armadura.piezas={};
+  if(datos.armadura.gemas==null) datos.armadura.gemas=0;
+}
+function valorPieza(p, niv){ return p.v*(niv||1); }
+function valorTotal(){ initArmadura(); let s=0; for(const p of ARMADURA){ const niv=datos.armadura.piezas[p.id]; if(niv) s+=valorPieza(p,niv); } return s; }
+function syncInventario(){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.guardarInventario(sid, {piezas:datos.armadura.piezas, gemas:datos.armadura.gemas, valor:valorTotal()}); } }catch(e){} }
 function vfxRecompensaReal(tipo, motivo){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.crearRecompensa(sid, {tipo, motivo}); } }catch(e){} }
 function verArmadura(){
   initArmadura(); const a=datos.armadura;
-  const tot=ARMADURA.length, hechas=a.piezas.length;
-  const tieneCaballo=a.piezas.includes('caballo');
-  const hero = tieneCaballo?'🏇':(hechas>=4?'🧑‍🎤':'🧍');
-  const grid = ARMADURA.map(p=>{
-    const t=a.piezas.includes(p.id);
-    return `<div style="text-align:center;padding:10px 4px;border-radius:12px;background:${t?'#fff7e6':'#eef1f4'};border:2px solid ${t?'#ffb454':'#dfe5ea'};opacity:${t?1:.5}">
-      <div style="font-size:1.8rem">${t?p.e:'🔒'}</div><div style="font-size:.7rem;font-weight:700;color:#5a6b7a">${p.n}</div></div>`;
+  const owned=ARMADURA.filter(p=>a.piezas[p.id]);
+  const tot=ARMADURA.length, hechas=owned.length;
+  const tieneCaballo=!!a.piezas['caballo'];
+  const hero=tieneCaballo?'🏇':(hechas>=4?'🧑‍🎤':'🧍');
+  const grid=ARMADURA.map(p=>{
+    const niv=a.piezas[p.id];
+    if(!niv){ return `<div style="text-align:center;padding:12px 6px;border-radius:12px;background:#eef1f4;border:2px solid #dfe5ea;opacity:.55">
+      <div style="font-size:1.8rem">🔒</div><div style="font-size:.74rem;font-weight:700;color:#5a6b7a">${p.n}</div><div style="font-size:.64rem;color:#9aa7b2">Por conquistar</div></div>`; }
+    const val=valorPieza(p,niv), max=niv>=MAX_NIVEL_PIEZA, costo=max?null:COSTO_PIEZA[niv-1], puede=!max&&(a.gemas||0)>=costo;
+    return `<div style="text-align:center;padding:12px 6px;border-radius:12px;background:#fff7e6;border:2px solid #ffb454">
+      <div style="font-size:1.8rem">${p.e}</div>
+      <div style="font-size:.78rem;font-weight:800;color:#5a4a2a">${p.n}</div>
+      <div style="font-size:.64rem;color:#b07b1e">${ARM_NIV[niv]||''} ${'⭐'.repeat(niv)}</div>
+      <div style="font-weight:800;color:#7c4a03;margin:2px 0">🪙 ${val}</div>
+      ${max?'<div style="font-size:.68rem;color:#2bb673;font-weight:800">¡AL MÁXIMO! 🌟</div>'
+            :`<button class="btn ${puede?'btn-verde':'btn-gris'} btn-pequeno" ${puede?'':'disabled'} style="margin:2px 0 0;padding:6px 8px;font-size:.72rem" onclick="mejorarPieza('${p.id}')">⬆️ ${costo} 💎</button>`}
+    </div>`;
   }).join('');
-  let mejora='';
-  if(a.nivel < TIERS.length-1){
-    const c=COSTO_MEJORA[a.nivel], puede=(a.gemas||0)>=c;
-    mejora=`<button class="btn ${puede?'btn-verde':'btn-gris'}" ${puede?'':'disabled'} onclick="mejorarArmadura()">⬆️ Mejorar a ${TIERS[a.nivel+1]} (cuesta ${c} 💎)</button>`;
-  } else { mejora=`<div class="premio" style="border-color:#ffb454">🌟 ¡Armadura LEGENDARIA al máximo! Eres un caballero épico.</div>`; }
   document.getElementById('arm-cont').innerHTML=`
     <div style="text-align:center;background:linear-gradient(135deg,#fff3dc,#ffe2b8);border-radius:16px;padding:18px;margin-bottom:12px">
       <div style="font-size:3.4rem">${hero}</div>
-      <div style="font-weight:800;font-size:1.15rem;color:#7c4a03">Armadura de ${TIERS[a.nivel]||'Madera'}</div>
+      <div style="font-weight:800;font-size:1.1rem;color:#7c4a03">Valor de tu armadura: 🪙 ${valorTotal()}</div>
       <div style="color:#9a6a1e;font-weight:600">💎 ${a.gemas||0} gemas · 🛡️ ${hechas}/${tot} piezas</div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">${grid}</div>
-    ${mejora}
-    <p class="mini" style="margin-top:10px">Conquista castillos (gana las evaluaciones) para ganar piezas. Junta 💎 para mejorar tu armadura. ¡Pronto podrás intercambiar en la comunidad! 🤝</p>`;
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px">${grid}</div>
+    <p class="mini" style="margin-top:6px">Conquista castillos para ganar piezas. Cada pieza vale 🪙, y con 💎 la mejoras para que valga más. ¡Pronto podrás intercambiar en la comunidad! 🤝</p>`;
   mostrar('s-armadura');
 }
-function mejorarArmadura(){
-  initArmadura(); const a=datos.armadura;
-  if(a.nivel>=TIERS.length-1) return;
-  const c=COSTO_MEJORA[a.nivel];
-  if((a.gemas||0)<c){ toast('Te faltan gemas 💎','mal'); return; }
-  a.gemas-=c; a.nivel++; guardar(); syncInventario(); try{ campana(); }catch(e){}
-  modal(`<div class="modal-emoji">✨🛡️</div><div class="tit-modal">¡Armadura mejorada!</div><p>Ahora es de <b>${TIERS[a.nivel]}</b>. ¡Cada vez más épica!</p><button class="btn btn-verde" onclick="cerrarModal({_force:true})">¡Genial! ▶️</button>`);
+function mejorarPieza(id){
+  initArmadura(); const a=datos.armadura, p=ARMADURA.find(x=>x.id===id), niv=a.piezas[id];
+  if(!niv) return;
+  if(niv>=MAX_NIVEL_PIEZA){ toast('¡Ya está al máximo! 🌟','logro'); return; }
+  const costo=COSTO_PIEZA[niv-1];
+  if((a.gemas||0)<costo){ toast('Te faltan gemas 💎. ¡Conquista castillos!','mal'); return; }
+  a.gemas-=costo; a.piezas[id]=niv+1; guardar(); syncInventario(); try{ campana(); }catch(e){}
+  toast('⬆️ ¡'+p.n+' mejorada! Ahora vale 🪙 '+valorPieza(p,niv+1),'logro');
   verArmadura();
 }
 
@@ -993,8 +1006,8 @@ function finEval(){
     datos.puntos += 50;
     initArmadura();
     datos.armadura.gemas=(datos.armadura.gemas||0)+2;
-    const piezaNueva=ARMADURA.find(p=>!datos.armadura.piezas.includes(p.id));
-    if(piezaNueva) datos.armadura.piezas.push(piezaNueva.id);
+    const piezaNueva=ARMADURA.find(p=>!datos.armadura.piezas[p.id]);
+    if(piezaNueva) datos.armadura.piezas[piezaNueva.id]=1;
     let ganoSobre=false;
     if(datos.conquistas%2===0){ datos.sobres=(datos.sobres||0)+1; datos.vales.push({n:datos.sobres, fecha:new Date().toLocaleDateString('es-CL'), nota:notaTxt(nota), conquistas:datos.conquistas}); ganoSobre=true; }
     html+=`<div class="premio" style="border-color:var(--amarillo); color:#7c2d12">🏰 ¡CONQUISTASTE EL CASTILLO! Avanzaste al <b>Mundo ${datos.examNivel}</b> 🌍</div>`;

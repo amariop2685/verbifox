@@ -221,19 +221,20 @@ async function pintarHijos(){
   await pintarPremios();
 }
 
-const ARM_TOT = 8, ARM_TIERS = ['Madera','Bronce','Plata','Oro','Legendaria'];
+const ARM_TOT = 8;
 async function pintarPremios(){
   const cont = $('premios'); cont.innerHTML='';
   if(!hijoSel) return;
-  let inv={piezas:[],nivel:0,gemas:0}, recs=[];
+  let inv={piezas:{},gemas:0,valor:0}, recs=[];
   try{ inv = await VFX.miInventario(hijoSel); }catch(e){}
   try{ recs = await VFX.recompensasDe(hijoSel); }catch(e){}
-  const piezas=(inv.piezas||[]).length;
+  const pz = inv.piezas || {};
+  const piezas = Array.isArray(pz) ? pz.length : Object.keys(pz).length;
   const pend = recs.filter(r=>r.estado==='pendiente');
   let html = `<div style="border-top:1px dashed var(--linea);margin-top:14px;padding-top:12px">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <b>🛡️ Armadura del caballero</b>
-      <span class="mut">Armadura de ${ARM_TIERS[inv.nivel]||'Madera'}</span>
+      <span class="mut">Valor: 🪙 ${inv.valor||0}</span>
     </div>
     <div class="barra" style="margin-top:6px"><i style="width:${Math.round(piezas/ARM_TOT*100)}%"></i></div>
     <div class="mut" style="margin-top:3px">${piezas}/${ARM_TOT} piezas · 💎 ${inv.gemas||0} gemas para mejorar</div>
