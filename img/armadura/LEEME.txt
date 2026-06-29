@@ -1,0 +1,29 @@
+CÓMO AGREGAR EL ARTE DE LA ARMADURA (VerbiFox)
+================================================
+
+La app usa imágenes si existen; si no, muestra el emoji. No hay que tocar código:
+solo pon archivos PNG con estos nombres en esta carpeta (img/armadura/).
+
+NOMBRES POR PIEZA Y NIVEL (1=Recluta ... 5=Héroe)
+-------------------------------------------------
+  casco-1.png ... casco-5.png        (🪖 Casco)
+  espada-1.png ... espada-5.png      (⚔️ Espada)
+  escudo-1.png ... escudo-5.png      (🛡️ Escudo)
+  peto-1.png ... peto-5.png          (🐉 Coraza)   ← las 5 corazas Recluta→Héroe
+  guantes-1.png ... guantes-5.png    (🧤 Guanteletes)
+  botas-1.png ... botas-5.png        (🥾 Botas)
+  capa-1.png ... capa-5.png          (🧥 Capa)
+  caballo-1.png ... caballo-5.png    (🐎 Caballo)
+
+¿No quieres una por nivel? Pon una sola imagen base por pieza:
+  casco.png, espada.png, escudo.png, peto.png, guantes.png, botas.png, capa.png, caballo.png
+(La app intenta primero <pieza>-<nivel>.png, luego <pieza>.png, y si no, el emoji.)
+
+ESPECIFICACIONES RECOMENDADAS
+-----------------------------
+  - Formato: PNG con FONDO TRANSPARENTE.
+  - Tamaño: cuadrado, 256x256 o 512x512 px.
+  - Estilo: cartoon tipo Zelda — colores vivos, bordes suaves, formas redondeadas,
+    mucho brillo, sensación de aventura (no realista ni "de guerra").
+  - Misma silueta entre niveles para que se note la mejora de un vistazo.
+  - Importante: arte propio o con licencia de uso. No usar imágenes con derechos de terceros.

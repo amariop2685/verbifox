@@ -450,6 +450,15 @@ function valorPieza(p, niv){ return p.v*(niv||1); }
 function valorTotal(){ initArmadura(); let s=0; for(const p of ARMADURA){ const niv=datos.armadura.piezas[p.id]; if(niv) s+=valorPieza(p,niv); } return s; }
 function syncInventario(){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.guardarInventario(sid, {piezas:datos.armadura.piezas, gemas:datos.armadura.gemas, valor:valorTotal()}); } }catch(e){} }
 function vfxRecompensaReal(tipo, motivo){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.crearRecompensa(sid, {tipo, motivo}); } }catch(e){} }
+// Muestra la imagen de la pieza si existe (img/armadura/<id>-<nivel>.png → <id>.png → emoji)
+function piezaImg(p, niv){
+  return `<img src="img/armadura/${p.id}-${niv}.png" alt="${p.n}" data-id="${p.id}" data-emoji="${p.e}"
+    style="width:46px;height:46px;object-fit:contain" onerror="armImgFallback(this)">`;
+}
+function armImgFallback(img){
+  if(img.dataset.step!=='base'){ img.dataset.step='base'; img.src='img/armadura/'+img.dataset.id+'.png'; return; }
+  const s=document.createElement('span'); s.style.fontSize='1.8rem'; s.textContent=img.dataset.emoji||'🛡️'; if(img.parentNode) img.replaceWith(s);
+}
 function verArmadura(){
   initArmadura(); const a=datos.armadura;
   const owned=ARMADURA.filter(p=>a.piezas[p.id]);
@@ -462,7 +471,7 @@ function verArmadura(){
       <div style="font-size:1.8rem">🔒</div><div style="font-size:.74rem;font-weight:700;color:#5a6b7a">${p.n}</div><div style="font-size:.64rem;color:#9aa7b2">Por conquistar</div></div>`; }
     const val=valorPieza(p,niv), max=niv>=MAX_NIVEL_PIEZA, costo=max?null:COSTO_PIEZA[niv-1], puede=!max&&(a.gemas||0)>=costo;
     return `<div style="text-align:center;padding:12px 6px;border-radius:12px;background:#fff7e6;border:2px solid #ffb454">
-      <div style="font-size:1.8rem">${p.e}</div>
+      <div style="height:46px;display:flex;align-items:center;justify-content:center">${piezaImg(p,niv)}</div>
       <div style="font-size:.78rem;font-weight:800;color:#5a4a2a">${p.n}</div>
       <div style="font-size:.64rem;color:#b07b1e">${ARM_NIV[niv]||''} ${'⭐'.repeat(niv)}</div>
       <div style="font-weight:800;color:#7c4a03;margin:2px 0">🪙 ${val}</div>
