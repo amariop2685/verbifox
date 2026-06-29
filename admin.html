@@ -57,6 +57,13 @@
       <button class="sec" onclick="cargar()">↻ Actualizar</button>
     </div>
     <div id="lista"></div>
+
+    <div class="card">
+      <h2 style="margin-top:0">📨 Buzón PQRS / Soporte</h2>
+      <p class="mut">Mensajes de los apoderados (problemas, quejas, sugerencias). Marca como resuelto cuando lo atiendas.</p>
+      <button class="sec" onclick="cargarBuzon()">↻ Actualizar buzón</button>
+    </div>
+    <div id="buzon"></div>
   </div>
 
 </div>
@@ -85,6 +92,40 @@ async function arranque(){
   if(!adm){ $('noadmin').classList.remove('hidden'); return; }
   $('admin').classList.remove('hidden');
   await cargar();
+  await cargarBuzon();
+}
+
+async function cargarBuzon(){
+  const cont=$('buzon'); cont.innerHTML='<div class="card mut">Cargando buzón…</div>';
+  let tk=[];
+  try{ tk=await VFX.adminTickets(); }catch(e){ cont.innerHTML='<div class="card mut">No se pudo cargar el buzón: '+e.message+'</div>'; return; }
+  if(!tk.length){ cont.innerHTML='<div class="card mut">Sin mensajes por ahora. 🎉</div>'; return; }
+  const nuevos = tk.filter(t=>t.estado==='nuevo').length;
+  cont.innerHTML = (nuevos?`<div class="card" style="background:#fff4e0;color:#c47f12"><b>Tienes ${nuevos} mensaje(s) nuevo(s)</b></div>`:'')
+    + tk.map(renderTicket).join('');
+}
+function fechaHora(d){ return d? new Date(d).toLocaleString('es-CL',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}) : ''; }
+function renderTicket(t){
+  const colores={nuevo:'warn',en_proceso:'pend',resuelto:'ok'};
+  const pill=`<span class="pill ${colores[t.estado]||'pend'}">${t.estado}</span>`;
+  const tipos={problema:'🛠️ Problema',peticion:'🙋 Petición',queja:'😕 Queja',reclamo:'⚠️ Reclamo',sugerencia:'💡 Sugerencia'};
+  return `<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <b>${tipos[t.tipo]||t.tipo} ${pill}</b>
+      <span class="mut">${fechaHora(t.created_at)}</span>
+    </div>
+    <div class="mut" style="margin:4px 0">${t.nombre||'(sin nombre)'} · ${t.email||'sin correo'}</div>
+    ${t.asunto?`<div><b>${t.asunto}</b></div>`:''}
+    <div style="margin:6px 0;white-space:pre-wrap">${(t.mensaje||'').replace(/</g,'&lt;')}</div>
+    <div class="acc">
+      ${t.email?`<a class="sec" style="text-decoration:none;padding:8px 12px" href="mailto:${t.email}?subject=${encodeURIComponent('Respuesta VerbiFox: '+(t.asunto||'tu mensaje'))}">✉️ Responder por correo</a>`:''}
+      ${t.estado!=='en_proceso'?`<button class="sec" onclick="estadoTicket(${t.id},'en_proceso')">Marcar en proceso</button>`:''}
+      ${t.estado!=='resuelto'?`<button class="sec" onclick="estadoTicket(${t.id},'resuelto')">✅ Marcar resuelto</button>`:''}
+    </div>
+  </div>`;
+}
+async function estadoTicket(id, estado){
+  try{ await VFX.adminResponderTicket(id,{estado}); await cargarBuzon(); }catch(e){ alert('Error: '+e.message); }
 }
 
 async function cargar(){

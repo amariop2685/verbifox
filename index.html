@@ -1546,5 +1546,6 @@ document.addEventListener('keydown', e=>{
 // Entrar directo como el último jugador (Martín), saltando al menú.
 window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); mostrar('s-menu'); } }catch(e){} });
 </script>
+<a href="soporte.html" style="position:fixed;right:14px;bottom:14px;background:#ff7a18;color:#fff;padding:10px 15px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.22);z-index:9999;font-family:-apple-system,sans-serif">💬 Ayuda</a>
 </body>
 </html>

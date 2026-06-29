@@ -124,6 +124,27 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return { total: evs.length, porMateria, ultimos: evs.slice(0, 20) };
     },
 
+    // ---------- BUZÓN PQRS / SOPORTE ----------
+    async crearTicket({ nombre, email, tipo, asunto, mensaje }) {
+      const u = await VFX.usuario();
+      const fila = {
+        parent_id: u ? u.id : null,
+        nombre: nombre || (u ? null : null),
+        email: email || (u ? u.email : null),
+        tipo: tipo || 'problema', asunto: asunto || null, mensaje,
+      };
+      const { error } = await sb.from('tickets').insert(fila);
+      if (error) throw error;
+    },
+    async adminTickets() {
+      const { data, error } = await sb.from('tickets').select('*').order('created_at', { ascending: false });
+      if (error) throw error; return data || [];
+    },
+    async adminResponderTicket(id, campos) {
+      const { error } = await sb.from('tickets').update(campos).eq('id', id);
+      if (error) throw error;
+    },
+
     // ---------- ADMINISTRADOR ----------
     async soyAdmin() {
       try { const { data } = await sb.rpc('is_admin'); return !!data; }

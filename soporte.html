@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>VerbiFox · Ayuda y Soporte</title>
+<style>
+  :root{ --naranja:#ff7a18; --naranja2:#ff9d4d; --tinta:#26303b; --verde:#2bb673; --linea:#e3e9ef; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  body{ margin:0; background:#f6f8fb; color:var(--tinta); }
+  header{ background:linear-gradient(135deg,var(--naranja),var(--naranja2)); color:#fff; padding:22px 20px; text-align:center; }
+  header .fox{ font-size:2.2rem; } header h1{ margin:4px 0 2px; font-size:1.4rem; }
+  header p{ margin:0; opacity:.95; font-size:.95rem; }
+  .wrap{ max-width:560px; margin:18px auto; padding:0 16px 40px; }
+  .card{ background:#fff; border:1px solid var(--linea); border-radius:16px; padding:22px; box-shadow:0 4px 16px rgba(0,0,0,.05); }
+  label{ display:block; font-size:.85rem; font-weight:600; margin:12px 0 4px; color:#5a6b7a; }
+  input,select,textarea{ width:100%; padding:12px; border:1px solid var(--linea); border-radius:10px; font-size:1rem; font-family:inherit; }
+  textarea{ min-height:120px; resize:vertical; }
+  .btn{ background:var(--naranja); color:#fff; border:0; padding:14px; border-radius:12px; font-size:1.05rem; font-weight:700; cursor:pointer; width:100%; margin-top:16px; }
+  .btn:hover{ background:#ef6a08; } .btn:disabled{ opacity:.6; }
+  .wa{ display:flex; align-items:center; justify-content:center; gap:8px; background:#25D366; color:#fff; text-decoration:none; padding:13px; border-radius:12px; font-weight:700; margin-top:12px; }
+  .ok{ background:#e3f7ee; color:var(--verde); padding:14px; border-radius:12px; text-align:center; display:none; }
+  .err{ background:#fdeceb; color:#e15554; padding:10px; border-radius:10px; margin-top:10px; display:none; font-size:.9rem; }
+  .mut{ color:#8294a4; font-size:.85rem; text-align:center; margin-top:14px; }
+  a.volver{ color:var(--naranja); font-weight:700; text-decoration:none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="fox">🦊</div>
+  <h1>¿En qué te ayudamos?</h1>
+  <p>Cuéntanos tu problema, duda o sugerencia. Te respondemos pronto.</p>
+</header>
+
+<div class="wrap">
+  <div class="card" id="formCard">
+    <label>Tu nombre</label>
+    <input id="nombre" placeholder="Ej: María Pérez">
+    <label>Tu correo (para responderte)</label>
+    <input id="email" type="email" placeholder="tucorreo@gmail.com">
+    <label>Tipo de mensaje</label>
+    <select id="tipo">
+      <option value="problema">🛠️ Tengo un problema (no funciona / no tengo acceso)</option>
+      <option value="peticion">🙋 Petición</option>
+      <option value="queja">😕 Queja</option>
+      <option value="reclamo">⚠️ Reclamo</option>
+      <option value="sugerencia">💡 Sugerencia</option>
+    </select>
+    <label>Asunto (opcional)</label>
+    <input id="asunto" placeholder="Ej: Pagué y no veo el plan activo">
+    <label>Cuéntanos con detalle</label>
+    <textarea id="mensaje" placeholder="Escribe aquí lo que pasó…"></textarea>
+    <button class="btn" id="btn" onclick="enviar()">Enviar mensaje</button>
+    <div class="err" id="err"></div>
+    <a class="wa" id="wa" href="#" style="display:none" target="_blank">💬 O escríbenos por WhatsApp</a>
+    <p class="mut"><a class="volver" href="panel.html">← Volver al panel</a></p>
+  </div>
+
+  <div class="card ok" id="okCard">
+    <div style="font-size:2.4rem">✅</div>
+    <h2>¡Mensaje enviado!</h2>
+    <p>Gracias por escribirnos. Revisaremos tu mensaje y te responderemos al correo que indicaste.</p>
+    <p><a class="volver" href="panel.html">← Volver al panel</a></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script>
+  // ⚙️ Pon aquí tu número de WhatsApp (formato internacional, sin +, ej: 56912345678) para activar el botón verde.
+  const WHATSAPP = "";
+  const $ = id => document.getElementById(id);
+
+  async function enviar(){
+    const mensaje = $('mensaje').value.trim();
+    if(!mensaje){ mostrarErr('Escribe tu mensaje, por favor.'); return; }
+    $('btn').disabled = true;
+    try{
+      await VFX.crearTicket({
+        nombre: $('nombre').value.trim(),
+        email: $('email').value.trim(),
+        tipo: $('tipo').value,
+        asunto: $('asunto').value.trim(),
+        mensaje,
+      });
+      $('formCard').style.display='none';
+      $('okCard').style.display='block';
+    }catch(e){ mostrarErr('No se pudo enviar: '+e.message); $('btn').disabled=false; }
+  }
+  function mostrarErr(m){ const e=$('err'); e.textContent=m; e.style.display='block'; setTimeout(()=>e.style.display='none',5000); }
+
+  // Prellenar datos si el apoderado tiene sesión
+  document.addEventListener('vfx-listo', async ()=>{
+    try{
+      const u = await VFX.usuario();
+      if(u && u.email && !$('email').value) $('email').value = u.email;
+      const p = await VFX.miPerfil();
+      if(p && p.nombre && !$('nombre').value) $('nombre').value = p.nombre;
+    }catch(e){}
+    if(WHATSAPP){ const a=$('wa'); a.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hola, necesito ayuda con VerbiFox 🦊'); a.style.display='flex'; }
+  });
+</script>
+</body>
+</html>
