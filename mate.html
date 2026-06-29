@@ -174,6 +174,7 @@
       <button class="btn btn-rojo" onclick="verVelocidad()" style="margin:0;">⏱️ Velocidad</button>
       <button class="btn btn-amarillo" onclick="verVales()" style="margin:0;">🎟️ Sobres</button>
     </div>
+    <button class="btn btn-amarillo" onclick="verArmadura()" style="margin-top:11px;">🛡️ Mi Armadura del Caballero 🐎</button>
     <button class="btn btn-azul" onclick="verReporte()" style="margin-top:11px;">👨‍👩‍👦 Reporte para papá</button>
     <div class="grid2" style="margin-top:4px;">
       <button class="btn btn-gris btn-pequeno" onclick="verVoz()" style="margin:0;">🎙️ Voz</button>
@@ -185,7 +186,7 @@
     </div>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
-    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 27-jun-3 ✅</p>
+    <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 29-jun · armadura 🛡️</p>
   </section>
 
   <!-- NIVELES -->
@@ -323,6 +324,14 @@
     <div id="v-lista"></div>
   </section>
 
+  <section id="s-armadura" class="screen">
+    <div class="barra-sup">
+      <button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button>
+    </div>
+    <h2>🛡️ Mi Armadura del Caballero</h2>
+    <div id="arm-cont"></div>
+  </section>
+
 </div>
 
 <script>
@@ -416,6 +425,58 @@ function recordFact(key,limpio,rapido){
 function guardar(){ try{ localStorage.setItem(clave(), JSON.stringify(datos)); }catch(e){} }
 // Guarda el avance en la nube (si el apoderado fijó este dispositivo para un niño). No estorba el juego.
 function vfxAvance(tipo, ok, extra){ try{ if(window.VFX) VFX.logAvance({materia:'matematicas', app:'mate', tipo:tipo, correcto:!!ok, detalle:extra||null}); }catch(e){} }
+
+/* ====== ARMADURA DEL CABALLERO (coleccionable) ====== */
+const ARMADURA=[
+  {id:'casco',  n:'Casco',       e:'🪖'},
+  {id:'espada', n:'Espada',      e:'⚔️'},
+  {id:'escudo', n:'Escudo',      e:'🛡️'},
+  {id:'peto',   n:'Coraza',      e:'🦺'},
+  {id:'guantes',n:'Guanteletes', e:'🧤'},
+  {id:'botas',  n:'Botas',       e:'🥾'},
+  {id:'capa',   n:'Capa',        e:'🧥'},
+  {id:'caballo',n:'Caballo',     e:'🐎'},
+];
+const TIERS=['Madera','Bronce','Plata','Oro','Legendaria'];
+const COSTO_MEJORA=[6,8,10,12];
+function initArmadura(){ if(!datos.armadura) datos.armadura={piezas:[],nivel:0,gemas:0}; }
+function syncInventario(){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.guardarInventario(sid, datos.armadura); } }catch(e){} }
+function vfxRecompensaReal(tipo, motivo){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.crearRecompensa(sid, {tipo, motivo}); } }catch(e){} }
+function verArmadura(){
+  initArmadura(); const a=datos.armadura;
+  const tot=ARMADURA.length, hechas=a.piezas.length;
+  const tieneCaballo=a.piezas.includes('caballo');
+  const hero = tieneCaballo?'🏇':(hechas>=4?'🧑‍🎤':'🧍');
+  const grid = ARMADURA.map(p=>{
+    const t=a.piezas.includes(p.id);
+    return `<div style="text-align:center;padding:10px 4px;border-radius:12px;background:${t?'#fff7e6':'#eef1f4'};border:2px solid ${t?'#ffb454':'#dfe5ea'};opacity:${t?1:.5}">
+      <div style="font-size:1.8rem">${t?p.e:'🔒'}</div><div style="font-size:.7rem;font-weight:700;color:#5a6b7a">${p.n}</div></div>`;
+  }).join('');
+  let mejora='';
+  if(a.nivel < TIERS.length-1){
+    const c=COSTO_MEJORA[a.nivel], puede=(a.gemas||0)>=c;
+    mejora=`<button class="btn ${puede?'btn-verde':'btn-gris'}" ${puede?'':'disabled'} onclick="mejorarArmadura()">⬆️ Mejorar a ${TIERS[a.nivel+1]} (cuesta ${c} 💎)</button>`;
+  } else { mejora=`<div class="premio" style="border-color:#ffb454">🌟 ¡Armadura LEGENDARIA al máximo! Eres un caballero épico.</div>`; }
+  document.getElementById('arm-cont').innerHTML=`
+    <div style="text-align:center;background:linear-gradient(135deg,#fff3dc,#ffe2b8);border-radius:16px;padding:18px;margin-bottom:12px">
+      <div style="font-size:3.4rem">${hero}</div>
+      <div style="font-weight:800;font-size:1.15rem;color:#7c4a03">Armadura de ${TIERS[a.nivel]||'Madera'}</div>
+      <div style="color:#9a6a1e;font-weight:600">💎 ${a.gemas||0} gemas · 🛡️ ${hechas}/${tot} piezas</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">${grid}</div>
+    ${mejora}
+    <p class="mini" style="margin-top:10px">Conquista castillos (gana las evaluaciones) para ganar piezas. Junta 💎 para mejorar tu armadura. ¡Pronto podrás intercambiar en la comunidad! 🤝</p>`;
+  mostrar('s-armadura');
+}
+function mejorarArmadura(){
+  initArmadura(); const a=datos.armadura;
+  if(a.nivel>=TIERS.length-1) return;
+  const c=COSTO_MEJORA[a.nivel];
+  if((a.gemas||0)<c){ toast('Te faltan gemas 💎','mal'); return; }
+  a.gemas-=c; a.nivel++; guardar(); syncInventario(); try{ campana(); }catch(e){}
+  modal(`<div class="modal-emoji">✨🛡️</div><div class="tit-modal">¡Armadura mejorada!</div><p>Ahora es de <b>${TIERS[a.nivel]}</b>. ¡Cada vez más épica!</p><button class="btn btn-verde" onclick="cerrarModal({_force:true})">¡Genial! ▶️</button>`);
+  verArmadura();
+}
 
 /* ====== UTIL ====== */
 function mostrar(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('activa')); document.getElementById(id).classList.add('activa'); }
@@ -930,11 +991,16 @@ function finEval(){
     datos.examNivel=Math.min(5,(datos.examNivel||1)+1);
     art=artefactoDe(datos.conquistas); datos.artefactos.push(art.n); if(art.escudo) datos.escudos=(datos.escudos||0)+1;
     datos.puntos += 50;
+    initArmadura();
+    datos.armadura.gemas=(datos.armadura.gemas||0)+2;
+    const piezaNueva=ARMADURA.find(p=>!datos.armadura.piezas.includes(p.id));
+    if(piezaNueva) datos.armadura.piezas.push(piezaNueva.id);
     let ganoSobre=false;
     if(datos.conquistas%2===0){ datos.sobres=(datos.sobres||0)+1; datos.vales.push({n:datos.sobres, fecha:new Date().toLocaleDateString('es-CL'), nota:notaTxt(nota), conquistas:datos.conquistas}); ganoSobre=true; }
     html+=`<div class="premio" style="border-color:var(--amarillo); color:#7c2d12">🏰 ¡CONQUISTASTE EL CASTILLO! Avanzaste al <b>Mundo ${datos.examNivel}</b> 🌍</div>`;
     html+=`<div class="premio">${art.e} Ganaste: <b>${art.n}</b>${art.escudo?' 🛡️ (te protege de perder puntos)':''}</div>`;
-    if(ganoSobre) html+=`<div class="vale"><div class="ico">🎟️⚽</div><div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div><div class="det">${nombre} logró <b>2 conquistas</b>.<br>👉 Pídele el sobre real a papá.</div></div>`;
+    html+= piezaNueva ? `<div class="premio" style="border-color:#ffb454">🛡️ ¡Nueva pieza de armadura: ${piezaNueva.e} <b>${piezaNueva.n}</b>! (+2 💎)</div>` : `<div class="premio" style="border-color:#ffb454">🛡️ ¡Armadura completa! Ganaste <b>+2 💎</b> para mejorarla.</div>`;
+    if(ganoSobre){ vfxRecompensaReal('sobre','Logró '+datos.conquistas+' conquistas (nota '+notaTxt(nota)+')'); html+=`<div class="vale"><div class="ico">🎟️⚽</div><div class="tit">¡VALE POR 1 SOBRE DEL MUNDIAL!</div><div class="det">${nombre} logró <b>2 conquistas</b>.<br>👉 Tu papá lo verá en su panel y te lo dará. 🎁</div></div>`; }
     else html+=`<div class="premio">🎟️ Conquistas para el próximo sobre: <b>${datos.conquistas%2}/2</b>. ¡Una más!</div>`;
     document.getElementById('r-emoji').textContent="🏰"; document.getElementById('r-titulo').textContent="¡CASTILLO CONQUISTADO, "+nombre+"!";
     document.getElementById('r-est').textContent="⭐⭐⭐";
@@ -944,7 +1010,7 @@ function finEval(){
         <div style="font-size:3rem">${art.e}</div><p>Ganaste: <b>${art.n}</b></p>
         <p class="sub">Te uniste a los dueños de castillos a jugar fútbol ⚽. ${ganoSobre?'<b>¡2 conquistas → ganaste un sobre del mundial! 🎟️</b>':'Con <b>2 conquistas</b> ganas un sobre. ¡Te falta 1!'}</p>
         <button class="btn btn-verde" onclick="cerrarModal({_force:true})">¡Genial! ▶️</button>`);
-      toast('+50 ⭐ ¡Conquista!','mas'); if(ganoSobre) toast('🎟️ ¡Ganaste un sobre!','logro');
+      toast('+50 ⭐ ¡Conquista!','mas'); if(piezaNueva) toast('🛡️ ¡Pieza nueva: '+piezaNueva.n+'!','logro'); if(ganoSobre) toast('🎟️ ¡Ganaste un sobre!','logro');
     }, 700);
   } else {
     html+=`<div class="premio">No conquistaste el castillo esta vez (necesitas <b>nota 5,5</b>). ¡Vas mejorando! Entrena un poquito y vuelve. 💪</div>`;
@@ -952,7 +1018,7 @@ function finEval(){
     document.getElementById('r-est').textContent= nota>=6?"⭐⭐⭐":nota>=5?"⭐⭐":nota>=4?"⭐":"";
   }
   prem.innerHTML=html;
-  guardar();
+  guardar(); syncInventario();
   document.getElementById('r-num').textContent=ac+" / "+EVAL_N;
   document.getElementById('r-pts').textContent="+"+(ac*15)+" puntos ⭐";
   document.getElementById('r-rep').style.display = aprueba ? 'none' : 'block';

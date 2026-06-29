@@ -110,6 +110,7 @@
       <div id="hijosTabs" class="hijo-tabs"></div>
       <div id="devBar"></div>
       <div id="reporte"></div>
+      <div id="premios"></div>
     </div>
 
   </div>
@@ -217,6 +218,43 @@ async function pintarHijos(){
     `<button class="${h.id===hijoSel?'activo':''}" onclick="selHijo('${h.id}')">${h.nombre}</button>`).join('');
   renderDevBar();
   await pintarReporte();
+  await pintarPremios();
+}
+
+const ARM_TOT = 8, ARM_TIERS = ['Madera','Bronce','Plata','Oro','Legendaria'];
+async function pintarPremios(){
+  const cont = $('premios'); cont.innerHTML='';
+  if(!hijoSel) return;
+  let inv={piezas:[],nivel:0,gemas:0}, recs=[];
+  try{ inv = await VFX.miInventario(hijoSel); }catch(e){}
+  try{ recs = await VFX.recompensasDe(hijoSel); }catch(e){}
+  const piezas=(inv.piezas||[]).length;
+  const pend = recs.filter(r=>r.estado==='pendiente');
+  let html = `<div style="border-top:1px dashed var(--linea);margin-top:14px;padding-top:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <b>🛡️ Armadura del caballero</b>
+      <span class="mut">Armadura de ${ARM_TIERS[inv.nivel]||'Madera'}</span>
+    </div>
+    <div class="barra" style="margin-top:6px"><i style="width:${Math.round(piezas/ARM_TOT*100)}%"></i></div>
+    <div class="mut" style="margin-top:3px">${piezas}/${ARM_TOT} piezas · 💎 ${inv.gemas||0} gemas para mejorar</div>
+  </div>`;
+  // Recompensas reales por entregar
+  html += `<div style="margin-top:14px"><b>🎁 Premios reales</b>`;
+  if(!pend.length){
+    html += `<div class="mut" style="margin-top:4px">No hay premios pendientes por entregar. ${recs.length?'¡Ya entregaste todos! 🎉':''}</div>`;
+  } else {
+    html += pend.map(r=>`<div style="background:#fff4e0;border-radius:10px;padding:10px 12px;margin-top:8px">
+      <div>🎟️ <b>Vale por 1 sobre del mundial</b></div>
+      <div class="mut">${r.motivo||''}</div>
+      <button class="primary" style="margin-top:8px;padding:9px" onclick="entregarPremio(${r.id})">✅ Marcar como entregado</button>
+    </div>`).join('');
+  }
+  html += `</div>`;
+  cont.innerHTML = html;
+}
+async function entregarPremio(id){
+  try{ await VFX.marcarRecompensa(id,'entregado'); await pintarPremios(); }
+  catch(e){ alert('No se pudo: '+e.message); }
 }
 
 function renderDevBar(){

@@ -124,6 +124,36 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return { total: evs.length, porMateria, ultimos: evs.slice(0, 20) };
     },
 
+    // ---------- ARMADURA / INVENTARIO + RECOMPENSAS REALES ----------
+    async guardarInventario(studentId, armadura) {
+      const fila = {
+        student_id: studentId,
+        piezas: armadura.piezas || [],
+        nivel: armadura.nivel || 0,
+        gemas: armadura.gemas || 0,
+        updated_at: new Date().toISOString(),
+      };
+      const { error } = await sb.from('inventario').upsert(fila, { onConflict: 'student_id' });
+      if (error) console.warn('inventario:', error.message);
+    },
+    async miInventario(studentId) {
+      const { data } = await sb.from('inventario').select('*').eq('student_id', studentId).maybeSingle();
+      return data || { piezas: [], nivel: 0, gemas: 0 };
+    },
+    // Recompensa REAL (sobre/vale) que el papá entrega
+    async crearRecompensa(studentId, { tipo, motivo }) {
+      const { error } = await sb.from('recompensas').insert({ student_id: studentId, tipo: tipo || 'sobre', motivo: motivo || null });
+      if (error) console.warn('recompensa:', error.message);
+    },
+    async recompensasDe(studentId) {
+      const { data } = await sb.from('recompensas').select('*').eq('student_id', studentId).order('created_at', { ascending: false });
+      return data || [];
+    },
+    async marcarRecompensa(id, estado) {
+      const { error } = await sb.from('recompensas').update({ estado, entregado_at: estado === 'entregado' ? new Date().toISOString() : null }).eq('id', id);
+      if (error) throw error;
+    },
+
     // ---------- BUZÓN PQRS / SOPORTE ----------
     async crearTicket({ nombre, email, tipo, asunto, mensaje }) {
       const u = await VFX.usuario();
