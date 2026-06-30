@@ -202,21 +202,27 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       else d.setMonth(d.getMonth() + 1);
       return d.toISOString().slice(0, 10);
     },
-    async adminCrearSuscripcion({ parent_id, student_id, plan_id, fecha_inicio, cobro_automatico }) {
+    async adminCrearSuscripcion({ parent_id, student_id, plan_id, fecha_inicio, cobro_automatico, cortesia }) {
       const { planes } = await VFX.adminTodo();
       const plan = planes.find(p => p.id === plan_id);
       const inicio = fecha_inicio || new Date().toISOString().slice(0, 10);
+      let proximo = VFX._sumaPeriodo(inicio, plan ? plan.periodo : 'mensual');
+      if (cortesia) { const d = new Date(inicio + 'T00:00:00'); d.setFullYear(d.getFullYear() + 1); proximo = d.toISOString().slice(0, 10); }
       const fila = {
         parent_id, student_id: student_id || null, plan_id,
         estado: 'activa',
         fecha_inicio: inicio,
         ultimo_pago: inicio,
-        proximo_pago: VFX._sumaPeriodo(inicio, plan ? plan.periodo : 'mensual'),
-        cobro_automatico: !!cobro_automatico,
+        proximo_pago: proximo,
+        cobro_automatico: cortesia ? false : !!cobro_automatico,
       };
       const { data, error } = await sb.from('subscriptions').insert(fila).select().single();
       if (error) throw error;
-      if (plan) await VFX.adminRegistrarPago({ subscription_id: data.id, monto_clp: plan.precio_clp, periodo: plan.periodo, avanzar: false });
+      if (cortesia) {
+        await sb.from('payments').insert({ subscription_id: data.id, monto_clp: 0, metodo: 'cortesia', estado: 'pagado' });
+      } else if (plan) {
+        await VFX.adminRegistrarPago({ subscription_id: data.id, monto_clp: plan.precio_clp, periodo: plan.periodo, avanzar: false });
+      }
       return data;
     },
     async adminRegistrarPago({ subscription_id, monto_clp, periodo, avanzar = true }) {

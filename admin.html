@@ -153,6 +153,7 @@ function renderAp(a){
         <div><label>Plan</label><select id="np_${a.id}">${optPlanes}</select></div>
         <div><label>Inicio</label><input type="date" id="nf_${a.id}"></div>
         <div style="flex:0"><label>PAC</label><input type="checkbox" id="npac_${a.id}" style="width:auto;transform:scale(1.4)"></div>
+        <div style="flex:0"><label>🎁 Gratis</label><input type="checkbox" id="ncort_${a.id}" style="width:auto;transform:scale(1.4)"></div>
         <div style="flex:0"><button class="pri" onclick="crearSub('${a.id}')">Activar</button></div>
       </div>
     </details>
@@ -182,6 +183,7 @@ async function crearSub(parentId){
       plan_id: $('np_'+parentId).value,
       fecha_inicio: $('nf_'+parentId).value || null,
       cobro_automatico: $('npac_'+parentId).checked,
+      cortesia: $('ncort_'+parentId).checked,
     });
     await cargar();
   }catch(e){ alert('Error: '+e.message); }
