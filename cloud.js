@@ -154,6 +154,53 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       if (error) throw error;
     },
 
+    // ---------- ACCESO / CANDADO POR SUSCRIPCIÓN ----------
+    // Materias desbloqueadas para un estudiante (según sus suscripciones activas o de cortesía)
+    async misMaterias(studentId) {
+      const { data, error } = await sb.from('subscriptions').select('estado, student_id, plans(materias, curso)');
+      if (error) throw error;
+      const set = new Set(); let grado = null;
+      for (const sub of (data || [])) {
+        if (sub.estado !== 'activa') continue;                     // cortesía también queda 'activa'
+        if (sub.student_id && studentId && sub.student_id !== studentId) continue;
+        const pl = sub.plans;
+        if (pl) { (pl.materias || []).forEach(m => set.add(m)); if (pl.curso && !grado) grado = pl.curso; }
+      }
+      return { materias: [...set], grado };
+    },
+    // Devuelve 'ok' | 'locked' | 'sin-sesion' para una materia
+    async accesoMateria(materia) {
+      let s = null; try { s = await VFX.sesion(); } catch (e) {}
+      if (!s) return 'sin-sesion';
+      try { if (await VFX.soyAdmin()) return 'ok'; } catch (e) {}
+      try {
+        const r = await VFX.misMaterias(VFX.studentActivo());
+        return r.materias.includes(materia) ? 'ok' : 'locked';
+      } catch (e) { return 'ok'; } // ante error de red, no castigar a quien pagó
+    },
+    // Si no tiene acceso, muestra una pantalla de bloqueo. Devuelve true si bloqueó.
+    async bloquearSi(materia) {
+      if (document.getElementById('vfx-gate')) return true;
+      let estado = 'ok';
+      try { estado = await VFX.accesoMateria(materia); } catch (e) { return false; }
+      if (estado === 'ok') return false;
+      if (document.getElementById('vfx-gate')) return true;
+      const nombreMat = { matematicas: 'Matemática', ingles: 'Inglés' }[materia] || materia;
+      const sinSesion = (estado === 'sin-sesion');
+      const div = document.createElement('div');
+      div.id = 'vfx-gate';
+      div.style.cssText = 'position:fixed;inset:0;background:linear-gradient(135deg,#ff7a18,#ff9d4d);z-index:100000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif';
+      div.innerHTML = `<div style="background:#fff;border-radius:22px;padding:30px 24px;max-width:400px;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.25)">
+        <div style="font-size:3rem">🔒🦊</div>
+        <h2 style="margin:8px 0;color:#26303b">${nombreMat} está bloqueada</h2>
+        <p style="color:#5a6b7a">${sinSesion ? 'Inicia sesión con la cuenta del apoderado para entrar a tus materias.' : 'Tu plan aún no incluye esta materia.'}</p>
+        <a href="planes.html" style="display:block;background:#ff7a18;color:#fff;text-decoration:none;padding:14px;border-radius:14px;font-weight:800;margin-top:14px">Ver planes ▶</a>
+        <a href="${sinSesion ? 'panel.html' : 'inicio.html'}" style="display:block;color:#ff7a18;text-decoration:none;font-weight:700;margin-top:12px">${sinSesion ? 'Ingresar / crear cuenta' : '← Mis materias'}</a>
+      </div>`;
+      document.body.appendChild(div);
+      return true;
+    },
+
     // ---------- BUZÓN PQRS / SOPORTE ----------
     async crearTicket({ nombre, email, tipo, asunto, mensaje }) {
       const u = await VFX.usuario();

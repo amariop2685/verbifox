@@ -1452,6 +1452,10 @@ document.addEventListener('keydown', e=>{
 });
 // Entrar directo como el último jugador (Martín) — el avance ya quedó guardado.
 window.addEventListener('DOMContentLoaded', ()=>{ try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); } }catch(e){} });
+// Candado por suscripción: si el niño no tiene Matemática, muestra pantalla de bloqueo.
+function _gateMate(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('matematicas'); }
+document.addEventListener('vfx-listo', _gateMate);
+if(window.VFX) _gateMate();
 </script>
 <div id="modal-bg" class="modal-bg" style="display:none;" onclick="cerrarModal(event)">
   <div class="modal-card" id="modal-card"></div>
