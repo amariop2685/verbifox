@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>VerbiFox · Materia</title>
+<style>
+  :root{ --naranja:#ff7a18; --naranja2:#ff9d4d; --tinta:#26303b; --verde:#2bb673; --azul:#3a7bd5; --linea:#e3e9ef; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  body{ margin:0; background:#f6f8fb; color:var(--tinta); }
+  header{ background:linear-gradient(135deg,var(--naranja),var(--naranja2)); color:#fff; padding:18px 20px; text-align:center; }
+  header .ic{ font-size:2rem; } header h1{ margin:2px 0; font-size:1.3rem; } header p{ margin:0; opacity:.95; font-size:.9rem; }
+  .wrap{ max-width:640px; margin:16px auto; padding:0 16px 40px; }
+  .btn{ display:block; width:100%; border:0; border-radius:14px; padding:14px; font-size:1rem; font-weight:700; cursor:pointer; margin:8px 0; color:#fff; }
+  .b-azul{ background:var(--azul); text-align:left; } .b-verde{ background:var(--verde); } .b-gris{ background:#94a3b8; }
+  a.btn{ text-decoration:none; }
+  .card{ background:#fff;border:2px solid var(--linea);border-radius:14px;padding:12px 14px;margin:8px 0; }
+  .oa{ background:#fff4e0;border-radius:10px;padding:10px 12px;color:#7c4a03;font-weight:600;font-size:.9rem }
+  .item{ display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--linea);border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer }
+  .item .e{ font-size:1.7rem } .item b{ display:block } .item .d{ font-size:.85rem;color:#667 }
+  .mut{ color:#8294a4; font-size:.9rem }
+  h2{ font-size:1.15rem } h3{ margin:12px 0 4px }
+  .op{ background:var(--azul); color:#fff; border:0; border-radius:12px; padding:13px; width:100%; margin:6px 0; cursor:pointer; font-size:.98rem }
+  .res{ text-align:center;background:#e3f7ee;border-radius:12px;padding:18px;font-weight:800;color:var(--verde) }
+  .back{ background:#eef2f6;color:#26303b;border:0;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer }
+</style>
+</head>
+<body>
+<header>
+  <div class="ic" id="h-ic">📚</div>
+  <h1 id="h-nom">Materia</h1>
+  <p id="h-curso"></p>
+</header>
+<div class="wrap">
+  <button class="back" onclick="location.href='inicio.html'" style="margin-bottom:10px">← Mis materias</button>
+  <div id="app"></div>
+</div>
+
+<script src="contenido.js"></script>
+<script>
+  const $=id=>document.getElementById(id);
+  const params=new URLSearchParams(location.search);
+  const M=params.get('m'), G=(params.get('g')||'5').replace(/\D/g,'')||'5';
+  const mat = (window.CONTENIDO||{})[M];
+  let unidades = mat && mat.cursos ? (mat.cursos[G]||[]) : [];
+  let uActual=null, q=null;
+
+  function mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+  function decir(txt){ try{ if('speechSynthesis'in window){ const u=new SpeechSynthesisUtterance(txt); u.lang=(mat&&mat.lang)||'es-CL'; speechSynthesis.cancel(); speechSynthesis.speak(u); } }catch(e){} }
+
+  function init(){
+    if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
+    $('h-ic').textContent=mat.emoji||'📚'; $('h-nom').textContent=mat.nombre; $('h-curso').textContent=G+'° Básico';
+    document.title='VerbiFox · '+mat.nombre;
+    verUnidades();
+  }
+  function verUnidades(){
+    if(!unidades.length){ $('app').innerHTML='<div class="card mut">Contenido de este curso en preparación. 🌱</div>'; return; }
+    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' +
+      unidades.map(u=>`<button class="btn b-azul" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre}</button>`).join('');
+  }
+  function abrir(id){
+    const u=unidades.find(x=>x.id===id); if(!u) return; uActual=u;
+    const items=u.items.map((it,i)=>`<div class="item" onclick="decir('${(it.t+'. '+it.d).replace(/'/g,"\\'")}')">
+      <span class="e">${it.e||'•'}</span><div><b>${it.t} 🔊</b><span class="d">${it.d}</span></div></div>`).join('');
+    const datos=(u.datos||[]).map(d=>`<div class="card" style="background:#f0f6ff">💡 ${d}</div>`).join('');
+    $('app').innerHTML=`<button class="back" onclick="verUnidades()">← Unidades</button>
+      <h2>${u.emoji} ${u.nombre}</h2>
+      <div class="oa">🎯 ${u.oa||''}</div>
+      ${u.intro?`<p class="mut" style="margin:8px 0">${u.intro}</p>`:''}
+      <h3>Conceptos (toca para escuchar 🔊)</h3>${items}
+      ${datos?('<h3>¿Sabías que…?</h3>'+datos):''}
+      <button class="btn b-verde" onclick="quiz()">🎮 Quiz de esta unidad</button>`;
+  }
+  function quiz(){
+    q={ preg:mezcla(uActual.items).slice(0,Math.min(6,uActual.items.length)), i:0, ok:0 };
+    render();
+  }
+  function render(){
+    if(q.i>=q.preg.length){
+      const pct=Math.round(q.ok/q.preg.length*100);
+      const msg=pct>=80?'¡Excelente! 🌟':pct>=50?'¡Bien! 👏':'¡Sigue practicando! 💪';
+      $('app').innerHTML=`<div class="res">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.9rem;color:#557">${msg}</div></div>
+        <button class="btn b-verde" onclick="quiz()">🔁 Otra vez</button>
+        <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
+      return;
+    }
+    const it=q.preg[q.i];
+    q.ops=mezcla([it, ...mezcla(uActual.items.filter(x=>x!==it)).slice(0,3)]);
+    decir(it.t);
+    $('app').innerHTML=`<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>
+      <div style="text-align:center;font-size:2rem">${it.e||'❓'}</div>
+      <h2 style="text-align:center">${it.t}</h2>
+      <p style="text-align:center" class="mut">¿Qué es?</p>
+      ${q.ops.map((o,k)=>`<button class="op" onclick="resp(${k})">${o.d}</button>`).join('')}`;
+  }
+  function resp(k){ if(q.ops[k].d===q.preg[q.i].d) q.ok++; q.i++; render(); }
+
+  init();
+</script>
+</body>
+</html>

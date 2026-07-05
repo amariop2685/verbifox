@@ -52,6 +52,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
+<script src="contenido.js"></script>
 <script>
   const $ = id => document.getElementById(id);
 
@@ -85,15 +86,22 @@
   }
   function setCurso(c){ curso=c; try{localStorage.setItem('vfx_curso',c);}catch(e){} render(); }
 
+  function linkDe(a){
+    const gn=(curso.match(/[1-6]/)||[])[0];
+    if(a.app && a.grados && a.grados.includes(curso)) return a.app;
+    if(gn && window.CONTENIDO && CONTENIDO[a.id] && CONTENIDO[a.id].cursos && CONTENIDO[a.id].cursos[gn])
+      return 'materia.html?m='+a.id+'&g='+gn;
+    return null;
+  }
   function render(){
     pintarCursos();
     const n = nombre();
     $('saludo').textContent = n ? ('¡Hola, '+n+'!') : '¡Hola!';
     $('subtit').textContent = 'Asignaturas de '+curso+' Básico';
     $('grid').innerHTML = ASIGNATURAS.map(a=>{
-      const dispo = a.app && a.grados && a.grados.includes(curso);
-      if(dispo){
-        return `<a class="mat on" href="${a.app}">
+      const link = linkDe(a);
+      if(link){
+        return `<a class="mat on" href="${link}">
           <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
           <span class="badge go">¡Disponible! ▶</span></a>`;
       }
@@ -101,7 +109,7 @@
         <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
         <span class="badge soon">Pronto</span></div>`;
     }).join('');
-    const dispoNames = ASIGNATURAS.filter(a=>a.grados&&a.grados.includes(curso)).map(a=>a.nm);
+    const dispoNames = ASIGNATURAS.filter(a=>linkDe(a)).map(a=>a.nm);
     $('nota').innerHTML = dispoNames.length
       ? `En ${curso} Básico ya tienes: <b>${dispoNames.join('</b>, <b>')}</b>. Las demás asignaturas se irán agregando. 🚀`
       : `El contenido de ${curso} Básico se está preparando. 🌱`;
