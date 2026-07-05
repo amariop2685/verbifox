@@ -235,6 +235,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
 <script src="caballero.js"></script>
+<script src="temas-ingles-5.js"></script>
 </head>
 <body>
 <div class="app">
@@ -276,6 +277,7 @@
   <!-- MENÚ -->
   <section id="s-menu" class="screen">
     <h2 id="menu-titulo">¿Qué quieres hacer?</h2>
+    <button class="btn btn-verde" onclick="verTemas()">📚 Temas de 5° (MINEDUC)</button>
     <button class="btn btn-morado" onclick="iniciarMemoria()">🧠 Memoria: aprende sin olvidar</button>
     <button class="btn btn-rojo" onclick="iniciarRepaso()">⚡ Repaso del día (60 segundos)</button>
     <button class="btn btn-amarillo" onclick="iniciarEstudio()">📖 Estudiar los verbos</button>
@@ -291,6 +293,19 @@
     </div>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:10px auto 0;" onclick="cambiarNombre()">Cambiar de jugador</button>
+  </section>
+
+  <!-- TEMAS MINEDUC 5° -->
+  <section id="s-temas-lista" class="screen">
+    <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
+    <h2>📚 Temas de 5° Básico</h2>
+    <p class="sub" style="margin:-4px 0 10px">Vocabulario y frases exigidos por el MINEDUC.</p>
+    <div id="temas-lista"></div>
+  </section>
+  <section id="s-tema" class="screen">
+    <button class="btn btn-gris btn-pequeno" onclick="verTemas()" style="margin:0 0 10px;">⬅ Temas</button>
+    <h2 id="tema-titulo"></h2>
+    <div id="tema-cont"></div>
   </section>
 
   <!-- ARMADURA (compartida con Matemática) -->
@@ -1469,6 +1484,64 @@ function finRepaso(salir){
 function fmt(seg){ seg=Math.max(0,Math.round(seg)); const m=(seg/60|0); const s=seg%60; return m+":"+(s<10?"0":"")+s; }
 function elegir(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function verArmaduraIng(){ if(window.Caballero){ Caballero.render(document.getElementById('arm-cont-ing')); } mostrar('s-armadura-ing'); }
+
+/* ====== TEMAS MINEDUC 5° ====== */
+let temaActual=null, tq=null;
+function _mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+function decirIng(txt){ try{ hablar(txt,'en-US'); }catch(e){} }
+function verTemas(){
+  const temas=window.TEMAS_INGLES5||[];
+  document.getElementById('temas-lista').innerHTML = temas.map(t=>
+    `<button class="btn btn-azul" style="text-align:left" onclick="abrirTema('${t.id}')">${t.emoji} ${t.nombre}</button>`).join('')
+    + '<p class="sub" style="margin-top:12px">Y en el menú: 🎓 Verbos irregulares (past simple).</p>';
+  mostrar('s-temas-lista');
+}
+function abrirTema(id){
+  const t=(window.TEMAS_INGLES5||[]).find(x=>x.id===id); if(!t) return; temaActual=t;
+  document.getElementById('tema-titulo').textContent=t.emoji+' '+t.nombre;
+  const words=t.palabras.map((w,i)=>`<div onclick="decirTemaWord(${i})" style="display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e3e9ef;border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer">
+    <span style="font-size:1.7rem">${w.e}</span>
+    <div style="flex:1"><b>${w.en}</b> 🔊<div style="font-size:.85rem;color:#667">${w.es}</div></div></div>`).join('');
+  const fr=t.frases.map(f=>`<div style="background:#f0f6ff;border-radius:10px;padding:8px 12px;margin:6px 0"><b>${f.en}</b><div style="font-size:.85rem;color:#667">${f.es}</div></div>`).join('');
+  document.getElementById('tema-cont').innerHTML=`
+    <div style="background:#fff4e0;border-radius:10px;padding:10px 12px;color:#7c4a03;font-weight:600">🎯 ${t.oa}</div>
+    ${t.intro?`<p class="sub" style="margin:8px 0">${t.intro}</p>`:''}
+    <h3 style="margin:12px 0 4px">Palabras (toca para escuchar 🔊)</h3>${words}
+    <h3 style="margin:14px 0 4px">Frases</h3>${fr}
+    <button class="btn btn-verde" style="margin-top:12px" onclick="quizTema()">🎮 Quiz de este tema</button>`;
+  mostrar('s-tema');
+}
+function decirTemaWord(i){ if(temaActual) decirIng(temaActual.palabras[i].en); }
+function quizTema(){
+  const t=temaActual; if(!t) return;
+  tq={ t, preg:_mezcla(t.palabras).slice(0, Math.min(6,t.palabras.length)), i:0, ok:0 };
+  renderTemaQuiz();
+}
+function decirQuizWord(){ if(tq) decirIng(tq.preg[tq.i].en); }
+function renderTemaQuiz(){
+  const cont=document.getElementById('tema-cont');
+  if(tq.i>=tq.preg.length){
+    const pct=Math.round(tq.ok/tq.preg.length*100);
+    const msg = pct>=80?'¡Excelente! 🌟':pct>=50?'¡Bien! 👏':'¡Sigue practicando! 💪';
+    cont.innerHTML=`<div style="text-align:center;background:#e3f7ee;border-radius:12px;padding:18px;font-weight:800;color:#2bb673">🎉 ${tq.ok}/${tq.preg.length} correctas (${pct}%)<div style="font-size:.9rem;font-weight:600;color:#557">${msg}</div></div>
+      <button class="btn btn-verde" style="margin-top:12px" onclick="quizTema()">🔁 Otra vez</button>
+      <button class="btn btn-gris" onclick="abrirTema('${tq.t.id}')">⬅ Volver al tema</button>`;
+    decirIng(pct>=80?'Great job!':'Keep practicing!');
+    return;
+  }
+  const w=tq.preg[tq.i];
+  tq.opts=_mezcla([w, ..._mezcla(tq.t.palabras.filter(x=>x!==w)).slice(0,3)]);
+  decirIng(w.en);
+  cont.innerHTML=`<div class="sub">Pregunta ${tq.i+1} de ${tq.preg.length}</div>
+    <div style="text-align:center;font-size:1.9rem;margin:12px 0">${w.e}</div>
+    <div style="text-align:center;margin-bottom:8px"><b style="font-size:1.3rem">${w.en}</b> <button onclick="decirQuizWord()" style="border:0;background:#eef2f6;border-radius:8px;padding:4px 8px;cursor:pointer">🔊</button></div>
+    <p style="text-align:center;color:#667">¿Qué significa?</p>
+    ${tq.opts.map((o,k)=>`<button class="btn btn-azul" onclick="respTema(${k})">${o.es}</button>`).join('')}`;
+}
+function respTema(k){
+  if(tq.opts[k].es===tq.preg[tq.i].es) tq.ok++;
+  tq.i++; renderTemaQuiz();
+}
 
 function terminar(){
   if(quiz.timer) clearInterval(quiz.timer);
