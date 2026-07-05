@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs>
+ <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset="1" stop-color="#b7c1c9"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe089"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b57e4f"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d6b58"/><stop offset="1" stop-color="#39454f"/></linearGradient>
+ <radialGradient id="gem" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#eafaff"/><stop offset="0.5" stop-color="#8899aa"/><stop offset="1" stop-color="#2a5f8a"/></radialGradient>
+</defs><path d="M40,26 L64,26 L66,64 L40,64 Z" fill="url(#base)" stroke="#39454f" stroke-width="3.2"/><path d="M40,60 L40,80 C40,86 46,90 56,90 L84,90 C88,90 90,86 88,82 L70,60 Z" fill="url(#base)" stroke="#39454f" stroke-width="3.2"/><path d="M39,86 L86,86 C89,86 90,90 86,91 L44,91 C40,91 38,88 39,86 Z" fill="#39454f"/><rect x="38" y="24" width="28" height="9" rx="3" fill="url(#tr)" stroke="#39454f" stroke-width="2.4"/></svg>

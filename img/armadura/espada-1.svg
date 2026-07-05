@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs>
+ <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset="1" stop-color="#b7c1c9"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe089"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b57e4f"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d6b58"/><stop offset="1" stop-color="#39454f"/></linearGradient>
+ <radialGradient id="gem" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#eafaff"/><stop offset="0.5" stop-color="#8899aa"/><stop offset="1" stop-color="#2a5f8a"/></radialGradient>
+</defs><path d="M60,14 L66,66 L60,74 L54,66 Z" fill="url(#base)" stroke="#39454f" stroke-width="3"/><path d="M60,20 L60,66" stroke="#8b959d" stroke-width="2" opacity=".5"/><path d="M40,70 L80,70 L76,77 L44,77 Z" fill="url(#tr)" stroke="#39454f" stroke-width="2.6"/><rect x="55.5" y="77" width="9" height="20" rx="2.5" fill="#7d6b58" stroke="#39454f" stroke-width="2.4"/><path d="M56,80 L64,83" stroke="#39454f" stroke-width="1.4" opacity=".6"/><path d="M56,85 L64,88" stroke="#39454f" stroke-width="1.4" opacity=".6"/><path d="M56,90 L64,93" stroke="#39454f" stroke-width="1.4" opacity=".6"/><circle cx="60" cy="101" r="6" fill="url(#tr)" stroke="#39454f" stroke-width="2.4"/></svg>

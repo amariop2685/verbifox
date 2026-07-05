@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs>
+ <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2f6fa"/><stop offset="1" stop-color="#b7c1c9"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe089"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b57e4f"/><stop offset="1" stop-color="#7d5232"/></linearGradient>
+ <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7d6b58"/><stop offset="1" stop-color="#39454f"/></linearGradient>
+ <radialGradient id="gem" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#eafaff"/><stop offset="0.5" stop-color="#8899aa"/><stop offset="1" stop-color="#2a5f8a"/></radialGradient>
+</defs><path d="M60,20 C74,22 88,25 88,25 C88,60 76,86 60,99 C44,86 32,60 32,25 C32,25 46,22 60,20 Z" fill="url(#base)" stroke="#39454f" stroke-width="3.4"/><path d="M60,20 C74,22 88,25 88,25 C88,60 76,86 60,99 C44,86 32,60 32,25 C32,25 46,22 60,20 Z" fill="none" stroke="url(#tr)" stroke-width="3.4"/><path d="M60,26 L60,92" stroke="#8b959d" stroke-width="2" opacity=".4"/><circle cx="46" cy="34" r="2.6" fill="#8b959d" stroke="#39454f" stroke-width="1.2"/><circle cx="74" cy="34" r="2.6" fill="#8b959d" stroke="#39454f" stroke-width="1.2"/><circle cx="46" cy="62" r="2.6" fill="#8b959d" stroke="#39454f" stroke-width="1.2"/><circle cx="74" cy="62" r="2.6" fill="#8b959d" stroke="#39454f" stroke-width="1.2"/></svg>

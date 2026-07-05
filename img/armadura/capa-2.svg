@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs>
+ <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f8fb"/><stop offset="1" stop-color="#bcc6ce"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe089"/><stop offset="1" stop-color="#2c4d86"/></linearGradient>
+ <linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a63ab"/><stop offset="1" stop-color="#2c4d86"/></linearGradient>
+ <linearGradient id="cape" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#39548f"/><stop offset="1" stop-color="#39454f"/></linearGradient>
+ <radialGradient id="gem" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#eafaff"/><stop offset="0.5" stop-color="#8899aa"/><stop offset="1" stop-color="#2a5f8a"/></radialGradient>
+</defs><path d="M42,30 C30,54 30,86 26,104 L60,96 L94,104 C90,86 90,54 78,30 Z" fill="url(#cape)" stroke="#39454f" stroke-width="3.2"/><path d="M50,40 C48,64 47,86 46,98" stroke="#39454f" stroke-width="1.6" fill="none" opacity=".35"/><path d="M60,40 C58,64 57,86 56,98" stroke="#39454f" stroke-width="1.6" fill="none" opacity=".35"/><path d="M70,40 C68,64 67,86 66,98" stroke="#39454f" stroke-width="1.6" fill="none" opacity=".35"/><path d="M40,30 C48,22 72,22 80,30 C72,36 48,36 40,30 Z" fill="url(#tr)" stroke="#39454f" stroke-width="2.6"/><circle cx="60" cy="31" r="5" fill="#4a78c8" stroke="#39454f" stroke-width="2.2"/></svg>
