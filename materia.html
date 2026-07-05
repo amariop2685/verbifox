@@ -53,10 +53,13 @@
   function decir(txt){ try{ if('speechSynthesis'in window){ const u=new SpeechSynthesisUtterance(txt); u.lang=(mat&&mat.lang)||'es-CL'; speechSynthesis.cancel(); speechSynthesis.speak(u); } }catch(e){} }
   function decirItem(i){ const it=uActual.items[i]; if(it) decir(it.t+'. '+it.d); }
 
-  // ---- Dominio (mastery) por unidad, guardado local ----
-  function domKey(){ return 'vfx_dom_'+M+'_'+G; }
-  function guardarDominio(uid, pct){ try{ const d=JSON.parse(localStorage.getItem(domKey())||'{}'); d[uid]=Math.max(d[uid]||0,pct); localStorage.setItem(domKey(),JSON.stringify(d)); }catch(e){} }
-  function dominioDe(uid){ try{ return (JSON.parse(localStorage.getItem(domKey())||'{}'))[uid]||0; }catch(e){ return 0; } }
+  // ---- Tutor adaptativo: dominio por CONCEPTO + repetición espaciada ----
+  function mlKey(){ return 'vfx_ml_'+M+'_'+G; }
+  function loadML(){ try{ return JSON.parse(localStorage.getItem(mlKey())||'{}'); }catch(e){ return {}; } }
+  function saveML(d){ try{ localStorage.setItem(mlKey(), JSON.stringify(d)); }catch(e){} }
+  function cUpdate(uid,t,ok){ if(!t) return; const d=loadML(); d[uid]=d[uid]||{}; d[uid][t]=Math.max(0,Math.min(4,(d[uid][t]||0)+(ok?1:-1))); saveML(d); }
+  function unitMastery(u){ const m=loadML()[u.id]||{}; if(!u.items.length) return 0; let dom=0; for(const it of u.items) if((m[it.t]||0)>=3) dom++; return dom/u.items.length; }
+  function expertoDesbloqueado(u){ return unitMastery(u) >= 0.9; }
 
   function init(){
     if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
@@ -67,10 +70,10 @@
   function verUnidades(){
     if(!unidades.length){ $('app').innerHTML='<div class="card mut">Contenido de este curso en preparación. 🌱</div>'; return; }
     $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' + unidades.map((u,i)=>{
-      const d=dominioDe(u.id);
-      const estrella = d>=80?'🌟':d>=50?'⭐':'';
+      const pct=Math.round(unitMastery(u)*100);
+      const estrella = pct>=90?'🔥':pct>=60?'🌟':pct>=30?'⭐':'';
       return `<button class="btn b-azul vfx-up" style="animation-delay:${i*50}ms" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${estrella}
-        <div class="bar"><i style="width:${d}%"></i></div></button>`;
+        <div class="bar"><i style="width:${pct}%"></i></div></button>`;
     }).join('');
   }
   function abrir(id){
@@ -88,29 +91,41 @@
       ${img}
       <h3>Conceptos <span class="mut" style="font-weight:400">· español · <span class="en">inglés</span> · toca 🔊</span></h3>${items}
       ${datos?('<h3>¿Sabías que…? 🌍</h3>'+datos):''}
-      <button class="btn b-verde" onclick="quiz()">🎮 Practicar (memoria + ${hayRetos?'retos de campeón 🏆':'conceptos'})</button>`;
+      <div class="bar" style="margin-top:8px"><i style="width:${Math.round(unitMastery(u)*100)}%"></i></div>
+      <p class="mut" style="text-align:center;margin:4px 0 8px">Dominio: <b>${Math.round(unitMastery(u)*100)}%</b>${expertoDesbloqueado(u)?' · 🔥 Experto desbloqueado':' · llega a 90% para Experto 🔥'}</p>
+      <button class="btn b-verde" onclick="quiz(false)">🎮 Practicar (adaptativo 🧠)</button>
+      ${expertoDesbloqueado(u)?`<button class="btn" style="background:#e15554;color:#fff" onclick="quiz(true)">🔥 Modo Experto (más difícil)</button>`:''}`;
   }
 
-  // ---- Quiz avanzado: memoria + inverso + retos de orden superior ----
-  function armarPreguntas(u){
+  // ---- Quiz ADAPTATIVO: prioriza lo que te cuesta; Experto = más difícil ----
+  function armarPreguntas(u, experto){
+    const m=loadML()[u.id]||{};
+    // repetición espaciada: los conceptos con menor dominio salen primero (con algo de azar)
+    const orden=[...u.items].map(it=>({it, w:(m[it.t]||0)+Math.random()*0.9})).sort((a,b)=>a.w-b.w).map(x=>x.it);
+    const nOps = experto ? 4 : 3;
+    const sel = orden.slice(0, experto ? u.items.length : Math.min(6, u.items.length));
     const qs=[];
-    for(const it of u.items){
-      const distr=mezcla(u.items.filter(x=>x!==it)).slice(0,3);
-      if(Math.random()<0.5){
+    for(const it of sel){
+      const distr=mezcla(u.items.filter(x=>x!==it)).slice(0, nOps-1);
+      const modo = experto ? Math.floor(Math.random()*3) : (Math.random()<0.5?0:1);
+      if(modo===0){
         const ops=mezcla([{text:it.d,ok:true},...distr.map(x=>({text:x.d,ok:false}))]);
-        qs.push({emoji:it.e, prompt:it.t+(it.en?` <span class="en">(${it.en})</span>`:''), sub:'¿Qué es?', ops, porque:it.t+': '+it.d});
-      } else {
+        qs.push({concepto:it.t, emoji:it.e, prompt:it.t+(it.en?` <span class="en">(${it.en})</span>`:''), sub:'¿Qué es?', ops, porque:it.t+': '+it.d});
+      } else if(modo===1){
         const ops=mezcla([{text:it.t,ok:true},...distr.map(x=>({text:x.t,ok:false}))]);
-        qs.push({emoji:it.e, prompt:it.d, sub:'¿Qué concepto es?', ops, porque:it.t+': '+it.d});
+        qs.push({concepto:it.t, emoji:it.e, prompt:it.d, sub:'¿Qué concepto es?', ops, porque:it.t+': '+it.d});
+      } else { // EXPERTO: desafío bilingüe (inglés → definición)
+        const ops=mezcla([{text:it.d,ok:true},...distr.map(x=>({text:x.d,ok:false}))]);
+        qs.push({concepto:it.t, emoji:'🇬🇧', prompt:`<span class="en">${it.en||it.t}</span>`, sub:'What is it? (elige en español)', ops, porque:(it.en||it.t)+' = '+it.t+': '+it.d});
       }
     }
     for(const r of (u.retos||[])){
       const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
-      qs.push({emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops, porque:r.porque});
+      qs.push({concepto:null, emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops, porque:r.porque});
     }
-    return mezcla(qs).slice(0, Math.min(8, qs.length));
+    return mezcla(qs).slice(0, Math.min(experto?12:8, qs.length));
   }
-  function quiz(){ q={preg:armarPreguntas(uActual), i:0, ok:0}; render(); }
+  function quiz(experto){ q={preg:armarPreguntas(uActual, !!experto), i:0, ok:0, experto:!!experto}; render(); }
   function render(){
     if(q.i>=q.preg.length){ verResultado(); return; }
     const p=q.preg[q.i];
@@ -125,6 +140,7 @@
     const btns=[...document.querySelectorAll('#app .op')];
     btns.forEach((b,idx)=>{ b.disabled=true; if(p.ops[idx].ok) b.classList.add('op-correcta'); });
     const ok=p.ops[k].ok;
+    cUpdate(uActual.id, p.concepto, ok); // el tutor aprende qué te cuesta
     if(ok){ q.ok++; btns[k].classList.add('vfx-ok'); } else { btns[k].classList.add('op-incorrecta','vfx-shake'); }
     setTimeout(()=>mostrarPorque(p, ok), ok?700:950);
   }
@@ -137,17 +153,18 @@
   function siguiente(){ q.i++; render(); }
   function verResultado(){
     const pct=Math.round(q.ok/q.preg.length*100);
-    guardarDominio(uActual.id, pct);
-    const msg = pct>=80?'¡Dominas esta unidad! 🌟 Tu esfuerzo se nota.'
-      : pct>=50?'¡Vas muy bien! Un repaso más y lo dominas. 💪'
-      : 'Tu cerebro CRECE con cada error. ¡Inténtalo otra vez y verás! 🌱';
-    $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
-      <p style="text-align:center;margin-top:14px" class="mut">¿Cómo sentiste esta unidad? (pensar en eso te ayuda a aprender 🧠)</p>
-      <div style="text-align:center;font-size:2rem">
-        <span onclick="sentir()" style="cursor:pointer">😟</span>
-        <span onclick="sentir()" style="cursor:pointer;margin:0 16px">😐</span>
-        <span onclick="sentir()" style="cursor:pointer">😄</span></div>
-      <button class="btn b-verde" onclick="quiz()">🔁 Practicar otra vez</button>
+    const mast=Math.round(unitMastery(uActual)*100);
+    const exp=expertoDesbloqueado(uActual);
+    const msg = pct>=80?'¡Excelente! 🌟':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
+    const extra = exp
+      ? '<div class="card vfx-pop" style="background:#fff0f0;color:#c0392b;text-align:center;font-weight:800">🔥 ¡Nivel Experto desbloqueado! Domina en profundidad.</div>'
+      : `<p class="mut" style="text-align:center;margin-top:6px">Dominio de la unidad: <b>${mast}%</b> · llega a 90% para el Modo Experto 🔥</p>`;
+    $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} (${pct}%)${q.experto?' · 🔥 Experto':''}<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
+      ${extra}
+      <p style="text-align:center;margin-top:12px" class="mut">¿Cómo sentiste esta unidad? 🧠</p>
+      <div style="text-align:center;font-size:2rem"><span onclick="sentir()" style="cursor:pointer">😟</span><span onclick="sentir()" style="cursor:pointer;margin:0 16px">😐</span><span onclick="sentir()" style="cursor:pointer">😄</span></div>
+      <button class="btn b-verde" onclick="quiz(${q.experto?'true':'false'})">🔁 Practicar otra vez</button>
+      ${exp&&!q.experto?`<button class="btn" style="background:#e15554;color:#fff" onclick="quiz(true)">🔥 Modo Experto</button>`:''}
       <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
   }
   function sentir(){ verUnidades(); }
