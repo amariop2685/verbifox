@@ -211,7 +211,7 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       if (tiene) return false;
       if (e.trialActivo) { VFX._bannerTrial(e.diasRestantes); return false; } // prueba activa: deja pasar
       if (document.getElementById('vfx-gate')) return true;
-      const nombreMat = { matematicas: 'Matemática', ingles: 'Inglés' }[materia] || materia;
+      const nombreMat = { matematicas: 'Matemática', ingles: 'Inglés', ciencias: 'Ciencias Naturales', historia: 'Historia y Geografía', lenguaje: 'Lenguaje', orientacion: 'Orientación', tecnologia: 'Tecnología', artes: 'Artes Visuales', musica: 'Música', edfisica: 'Educación Física' }[materia] || materia;
       const sinSesion = !!e.sinSesion;
       const tienePlan = e.materias && e.materias.length > 0;
       let cuerpo;

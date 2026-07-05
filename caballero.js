@@ -124,6 +124,8 @@
       <div style="font-size:.8rem;color:#8a6d3a">👉 Pídeselo a papá (lo ve en su panel).</div></div>`).join('');
   }
 
-  window.Caballero={ load, estado:load, conquistar, mejorarPieza, render, valesHTML, valorTotal, nombrePieza, ARMADURA };
+  function premiar(gemas){ load(); S.gemas = (S.gemas||0) + (gemas||0); save(); }
+
+  window.Caballero={ load, estado:load, conquistar, premiar, mejorarPieza, render, valesHTML, valorTotal, nombrePieza, ARMADURA };
   load();
 })();

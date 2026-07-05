@@ -39,6 +39,9 @@
   <div id="app"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
 <script src="contenido.js"></script>
 <script>
   const $=id=>document.getElementById(id);
@@ -60,6 +63,10 @@
   function cUpdate(uid,t,ok){ if(!t) return; const d=loadML(); d[uid]=d[uid]||{}; d[uid][t]=Math.max(0,Math.min(4,(d[uid][t]||0)+(ok?1:-1))); saveML(d); }
   function unitMastery(u){ const m=loadML()[u.id]||{}; if(!u.items.length) return 0; let dom=0; for(const it of u.items) if((m[it.t]||0)>=3) dom++; return dom/u.items.length; }
   function expertoDesbloqueado(u){ return unitMastery(u) >= 0.9; }
+  // Premio único al caballero por dominar una unidad (90%)
+  function bonusKey(){ return 'vfx_bonus_'+M+'_'+G; }
+  function yaBonus(uid){ try{ return JSON.parse(localStorage.getItem(bonusKey())||'[]').includes(uid); }catch(e){ return false; } }
+  function marcarBonus(uid){ try{ const a=JSON.parse(localStorage.getItem(bonusKey())||'[]'); if(!a.includes(uid)){ a.push(uid); localStorage.setItem(bonusKey(),JSON.stringify(a)); } }catch(e){} }
 
   function init(){
     if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
@@ -155,12 +162,19 @@
     const pct=Math.round(q.ok/q.preg.length*100);
     const mast=Math.round(unitMastery(uActual)*100);
     const exp=expertoDesbloqueado(uActual);
+    let bonusMsg='';
+    if(unitMastery(uActual)>=0.9 && !yaBonus(uActual.id)){
+      marcarBonus(uActual.id);
+      try{ if(window.Caballero) Caballero.premiar(3); }catch(e){}
+      bonusMsg='<div class="card vfx-pop" style="background:#fff7e6;color:#7c4a03;text-align:center;font-weight:800">🛡️ +3 💎 para tu Caballero · ¡dominaste esta unidad!</div>';
+    }
     const msg = pct>=80?'¡Excelente! 🌟':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
     const extra = exp
       ? '<div class="card vfx-pop" style="background:#fff0f0;color:#c0392b;text-align:center;font-weight:800">🔥 ¡Nivel Experto desbloqueado! Domina en profundidad.</div>'
       : `<p class="mut" style="text-align:center;margin-top:6px">Dominio de la unidad: <b>${mast}%</b> · llega a 90% para el Modo Experto 🔥</p>`;
     $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} (${pct}%)${q.experto?' · 🔥 Experto':''}<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
       ${extra}
+      ${bonusMsg}
       <p style="text-align:center;margin-top:12px" class="mut">¿Cómo sentiste esta unidad? 🧠</p>
       <div style="text-align:center;font-size:2rem"><span onclick="sentir()" style="cursor:pointer">😟</span><span onclick="sentir()" style="cursor:pointer;margin:0 16px">😐</span><span onclick="sentir()" style="cursor:pointer">😄</span></div>
       <button class="btn b-verde" onclick="quiz(${q.experto?'true':'false'})">🔁 Practicar otra vez</button>
@@ -170,6 +184,10 @@
   function sentir(){ verUnidades(); }
 
   init();
+  // Candado por suscripción (prueba 7 días / pago). Las materias del motor requieren plan del grado.
+  function _gateMateria(){ if(mat && window.VFX && VFX.bloquearSi) VFX.bloquearSi(M); }
+  document.addEventListener('vfx-listo', _gateMateria);
+  if(window.VFX) _gateMateria();
 </script>
 </body>
 </html>

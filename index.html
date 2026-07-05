@@ -231,6 +231,9 @@
   @media (min-width:560px) and (min-height:700px){
     .app{ max-width:600px; }
   }
+  .btn{ transition: transform .1s ease, filter .2s ease; }
+  .btn:hover{ filter:brightness(1.05); }
+  @media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none !important; transition:none !important; } }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
