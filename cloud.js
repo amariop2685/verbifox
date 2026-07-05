@@ -215,6 +215,7 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
         ultimo_pago: inicio,
         proximo_pago: proximo,
         cobro_automatico: cortesia ? false : !!cobro_automatico,
+        cortesia: !!cortesia,
       };
       const { data, error } = await sb.from('subscriptions').insert(fila).select().single();
       if (error) throw error;

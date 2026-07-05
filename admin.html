@@ -52,9 +52,13 @@
 
   <div id="admin" class="hidden">
     <div class="card">
-      <h2 style="margin-top:0">Apoderados y suscripciones</h2>
-      <p class="mut">Aquí ves a cada familia, activas planes y marcas pagos. El cobro es manual: cuando recibas la transferencia, marca el pago.</p>
-      <button class="sec" onclick="cargar()">↻ Actualizar</button>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Apoderados y suscripciones</h2>
+        <button class="sec" onclick="cargar()">↻ Actualizar</button>
+      </div>
+      <div id="resumen" style="margin-top:12px"></div>
+      <input id="buscar" placeholder="🔍 Buscar por nombre o correo…" oninput="onBuscar(this.value)" style="margin-top:12px">
+      <div id="filtros" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px"></div>
     </div>
     <div id="lista"></div>
 
@@ -128,44 +132,108 @@ async function estadoTicket(id, estado){
   try{ await VFX.adminResponderTicket(id,{estado}); await cargarBuzon(); }catch(e){ alert('Error: '+e.message); }
 }
 
+let fTexto='', fEstado='todas', limite=12;
+const PAGINA=12;
+const EST_LABEL={todas:'Todas',activa:'Activas',cortesia:'🎁 Cortesías',pendiente:'Pendientes',vencida:'Sin vigencia',sin:'Sin plan'};
+
 async function cargar(){
   DATA=await VFX.adminTodo();
+  render();
+}
+function render(){ renderResumen(); renderFiltros(); renderLista(); }
+
+function estadoSub(a){
+  const s=a.subs||[];
+  if(s.some(x=>x.estado==='activa'&&x.cortesia)) return 'cortesia';
+  if(s.some(x=>x.estado==='activa')) return 'activa';
+  if(s.some(x=>x.estado==='pendiente')) return 'pendiente';
+  if(s.some(x=>x.estado==='vencida'||x.estado==='cancelada')) return 'vencida';
+  return 'sin';
+}
+function pillEstado(e){
+  const m={activa:['ok','Activa'],cortesia:['ok','🎁 Cortesía'],pendiente:['pend','Pendiente'],vencida:['warn','Sin vigencia'],sin:['pend','Sin plan']};
+  const x=m[e]||['pend',e]; return `<span class="pill ${x[0]}">${x[1]}</span>`;
+}
+function stat(n,l,color){ return `<div style="background:var(--gris);border-radius:10px;padding:10px;text-align:center"><div style="font-size:1.3rem;font-weight:800;${color?'color:'+color:''}">${n}</div><div class="mut" style="font-size:.72rem">${l}</div></div>`; }
+function renderResumen(){
+  const ap=DATA.apoderados; let activas=0,cort=0,pend=0,ingreso=0;
+  for(const a of ap) for(const s of (a.subs||[])){
+    if(s.estado==='activa'){ if(s.cortesia) cort++; else { activas++; ingreso+=s.plan?s.plan.precio_clp:0; } }
+    else if(s.estado==='pendiente') pend++;
+  }
+  $('resumen').innerHTML=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:8px">
+    ${stat(ap.length,'Apoderados')}
+    ${stat(activas,'Activas pagas','#2bb673')}
+    ${stat(cort,'Cortesías')}
+    ${stat(pend,'Pendientes','#c47f12')}
+    ${stat(pesos(ingreso),'Ingreso/mes est.','#2b7bb6')}
+  </div>`;
+}
+function renderFiltros(){
+  const c={todas:DATA.apoderados.length};
+  for(const k of ['activa','cortesia','pendiente','vencida','sin']) c[k]=DATA.apoderados.filter(a=>estadoSub(a)===k).length;
+  $('filtros').innerHTML=Object.keys(EST_LABEL).map(k=>
+    `<button class="${fEstado===k?'pri':'sec'}" onclick="setFiltro('${k}')">${EST_LABEL[k]} (${c[k]||0})</button>`).join('');
+}
+function setFiltro(k){ fEstado=k; limite=PAGINA; renderFiltros(); renderLista(); }
+function onBuscar(v){ fTexto=v; limite=PAGINA; renderLista(); }
+function verMas(){ limite+=PAGINA; renderLista(); }
+
+function renderLista(){
   const cont=$('lista');
-  if(!DATA.apoderados.length){ cont.innerHTML='<div class="card mut">Aún no hay apoderados registrados. Cuando un papá cree su cuenta en el panel, aparecerá aquí.</div>'; return; }
-  cont.innerHTML = DATA.apoderados.map(renderAp).join('');
+  if(!DATA.apoderados.length){ cont.innerHTML='<div class="card mut">Aún no hay apoderados. Cuando alguien cree su cuenta, aparece aquí.</div>'; return; }
+  const q=fTexto.trim().toLowerCase();
+  let ap=DATA.apoderados.filter(a=>{
+    if(fEstado!=='todas' && estadoSub(a)!==fEstado) return false;
+    if(q){ const t=((a.nombre||'')+' '+(a.email||'')).toLowerCase(); if(!t.includes(q)) return false; }
+    return true;
+  }).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  if(!ap.length){ cont.innerHTML='<div class="card mut">Nada coincide con el filtro o la búsqueda.</div>'; return; }
+  const total=ap.length, visibles=ap.slice(0,limite);
+  const masBtn = total>limite ? `<button class="sec" style="width:100%;padding:13px;margin-top:4px" onclick="verMas()">Mostrar más (${total-limite} restantes)</button>` : '';
+  cont.innerHTML=`<div class="mut" style="margin:0 2px 8px">Mostrando ${visibles.length} de ${total}${fTexto||fEstado!=='todas'?' (filtrado)':''}</div>`+visibles.map(renderAp).join('')+masBtn;
 }
 
 function renderAp(a){
-  const hijos = a.hijos.map(h=>h.nombre).join(', ') || '<span class="mut">sin estudiantes aún</span>';
+  const est=estadoSub(a);
+  const hijos = a.hijos.map(h=>h.nombre).join(', ') || 'sin estudiantes aún';
   const subs = a.subs.map(s=>renderSub(s)).join('') || '<p class="mut" style="margin:6px 0">Sin suscripción.</p>';
   const optHijos = a.hijos.map(h=>`<option value="${h.id}">${h.nombre}</option>`).join('');
   const optPlanes = DATA.planes.map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
-  return `<div class="card ap">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div><b>${a.nombre||'(sin nombre)'}</b><div class="mut">${a.email||''}</div></div>
+  const planTxt = a.subs.length ? a.subs.map(s=>s.plan?s.plan.nombre:s.plan_id).join(', ') : '—';
+  return `<details class="card" style="padding:0;margin-bottom:10px">
+    <summary style="padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <span style="min-width:0;overflow:hidden">
+        <b>${a.nombre||'(sin nombre)'}</b> ${pillEstado(est)}
+        <span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${a.email||''}</span>
+      </span>
+      <span class="mut" style="text-align:right;white-space:nowrap;flex-shrink:0">${planTxt}</span>
+    </summary>
+    <div style="padding:6px 16px 16px;border-top:1px solid var(--linea)">
+      <div class="mut" style="margin:8px 0">Estudiantes: ${hijos}</div>
+      ${subs}
+      <details style="margin-top:10px">
+        <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar / dar acceso</summary>
+        <div class="row" style="margin-top:10px">
+          <div><label>Estudiante</label><select id="ns_${a.id}">${optHijos||'<option value="">(sin hijo aún)</option>'}</select></div>
+          <div><label>Plan</label><select id="np_${a.id}">${optPlanes}</select></div>
+          <div><label>Inicio</label><input type="date" id="nf_${a.id}"></div>
+          <div style="flex:0"><label>PAC</label><input type="checkbox" id="npac_${a.id}" style="width:auto;transform:scale(1.4)"></div>
+          <div style="flex:0"><label>🎁 Gratis</label><input type="checkbox" id="ncort_${a.id}" style="width:auto;transform:scale(1.4)"></div>
+          <div style="flex:0"><button class="pri" onclick="crearSub('${a.id}')">Activar</button></div>
+        </div>
+      </details>
     </div>
-    <div class="mut" style="margin:6px 0">Estudiantes: ${hijos}</div>
-    ${subs}
-    <details style="margin-top:10px">
-      <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar suscripción</summary>
-      <div class="row" style="margin-top:10px">
-        <div><label>Estudiante</label><select id="ns_${a.id}">${optHijos||'<option value="">(el papá aún no agrega hijo)</option>'}</select></div>
-        <div><label>Plan</label><select id="np_${a.id}">${optPlanes}</select></div>
-        <div><label>Inicio</label><input type="date" id="nf_${a.id}"></div>
-        <div style="flex:0"><label>PAC</label><input type="checkbox" id="npac_${a.id}" style="width:auto;transform:scale(1.4)"></div>
-        <div style="flex:0"><label>🎁 Gratis</label><input type="checkbox" id="ncort_${a.id}" style="width:auto;transform:scale(1.4)"></div>
-        <div style="flex:0"><button class="pri" onclick="crearSub('${a.id}')">Activar</button></div>
-      </div>
-    </details>
-  </div>`;
+  </details>`;
 }
 
 function renderSub(s){
   const estado = s.estado==='activa'?'<span class="pill ok">Activa</span>':s.estado==='vencida'?'<span class="pill warn">Vencida</span>':'<span class="pill pend">'+s.estado+'</span>';
+  const cort = s.cortesia?'<span class="pill ok">🎁 Cortesía</span>':'';
   const pac = s.cobro_automatico?'<span class="pill ok">PAC ON</span>':'<span class="pill pend">PAC OFF</span>';
   const per = s.plan? s.plan.periodo : 'mensual';
   return `<div class="sub">
-    <div><b>${s.plan?s.plan.nombre:s.plan_id}</b> ${estado} ${pac}</div>
+    <div><b>${s.plan?s.plan.nombre:s.plan_id}</b> ${estado} ${cort} ${pac}</div>
     <div class="mut">Inicio ${fecha(s.fecha_inicio)} · Último pago ${fecha(s.ultimo_pago)} · Próximo ${fecha(s.proximo_pago)}</div>
     <div class="acc">
       <button class="sec" onclick="pagar('${s.id}','${per}', ${s.plan?s.plan.precio_clp:0})">💰 Marcar pago recibido</button>
