@@ -26,6 +26,7 @@
   .bar{ height:8px;background:#eef1f4;border-radius:6px;overflow:hidden;margin-top:6px } .bar>i{ display:block;height:100%;background:linear-gradient(90deg,#2bb673,#7ad6a8) }
   .diag{ width:100%;max-width:360px;display:block;margin:10px auto;background:#fff;border-radius:12px;border:1px solid var(--linea);padding:6px }
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
 <header>
@@ -65,17 +66,17 @@
   }
   function verUnidades(){
     if(!unidades.length){ $('app').innerHTML='<div class="card mut">Contenido de este curso en preparación. 🌱</div>'; return; }
-    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' + unidades.map(u=>{
+    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' + unidades.map((u,i)=>{
       const d=dominioDe(u.id);
       const estrella = d>=80?'🌟':d>=50?'⭐':'';
-      return `<button class="btn b-azul" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${estrella}
+      return `<button class="btn b-azul vfx-up" style="animation-delay:${i*50}ms" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${estrella}
         <div class="bar"><i style="width:${d}%"></i></div></button>`;
     }).join('');
   }
   function abrir(id){
     const u=unidades.find(x=>x.id===id); if(!u) return; uActual=u;
     const img=u.img?`<img class="diag" src="${u.img}" alt="${u.nombre}">`:'';
-    const items=u.items.map((it,i)=>`<div class="item" onclick="decirItem(${i})">
+    const items=u.items.map((it,i)=>`<div class="item vfx-up" style="animation-delay:${i*45}ms" onclick="decirItem(${i})">
       <span class="e">${it.e||'•'}</span>
       <div><b>${it.t}</b>${it.en?` · <span class="en">${it.en}</span>`:''} 🔊<div class="d">${it.d}</div></div></div>`).join('');
     const datos=(u.datos||[]).map(d=>`<div class="card" style="background:#f0f6ff">💡 ${d}</div>`).join('');
@@ -114,17 +115,24 @@
     if(q.i>=q.preg.length){ verResultado(); return; }
     const p=q.preg[q.i];
     $('app').innerHTML=`<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>
-      <div style="text-align:center;font-size:2rem">${p.emoji||'❓'}</div>
-      <h2 style="text-align:center">${p.prompt}</h2>
+      <div style="text-align:center;font-size:2rem" class="vfx-pop">${p.emoji||'❓'}</div>
+      <h2 style="text-align:center" class="vfx-up">${p.prompt}</h2>
       <p style="text-align:center" class="mut">${p.sub}</p>
-      ${p.ops.map((o,k)=>`<button class="op" onclick="resp(${k})">${o.text}</button>`).join('')}`;
+      ${p.ops.map((o,k)=>`<button class="op vfx-up" style="animation-delay:${k*60}ms" onclick="resp(${k})">${o.text}</button>`).join('')}`;
   }
   function resp(k){
-    const p=q.preg[q.i], ok=p.ops[k].ok; if(ok) q.ok++;
-    $('app').innerHTML=`<div style="text-align:center;font-size:2.4rem">${ok?'✅':'❌'}</div>
-      <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
-      <div class="card" style="background:#f0f6ff">💡 <b>Por qué:</b> ${p.porque}</div>
-      <button class="btn b-verde" onclick="siguiente()">Siguiente ▶</button>`;
+    const p=q.preg[q.i];
+    const btns=[...document.querySelectorAll('#app .op')];
+    btns.forEach((b,idx)=>{ b.disabled=true; if(p.ops[idx].ok) b.classList.add('op-correcta'); });
+    const ok=p.ops[k].ok;
+    if(ok){ q.ok++; btns[k].classList.add('vfx-ok'); } else { btns[k].classList.add('op-incorrecta','vfx-shake'); }
+    setTimeout(()=>mostrarPorque(p, ok), ok?700:950);
+  }
+  function mostrarPorque(p, ok){
+    $('app').innerHTML=`<div style="text-align:center;font-size:2.6rem" class="vfx-celebrate">${ok?'✅':'❌'}</div>
+      <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}" class="vfx-up">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
+      <div class="card vfx-up" style="background:#f0f6ff">💡 <b>Por qué:</b> ${p.porque}</div>
+      <button class="btn b-verde vfx-up" onclick="siguiente()">Siguiente ▶</button>`;
   }
   function siguiente(){ q.i++; render(); }
   function verResultado(){
@@ -133,7 +141,7 @@
     const msg = pct>=80?'¡Dominas esta unidad! 🌟 Tu esfuerzo se nota.'
       : pct>=50?'¡Vas muy bien! Un repaso más y lo dominas. 💪'
       : 'Tu cerebro CRECE con cada error. ¡Inténtalo otra vez y verás! 🌱';
-    $('app').innerHTML=`<div class="res">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
+    $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
       <p style="text-align:center;margin-top:14px" class="mut">¿Cómo sentiste esta unidad? (pensar en eso te ayuda a aprender 🧠)</p>
       <div style="text-align:center;font-size:2rem">
         <span onclick="sentir()" style="cursor:pointer">😟</span>

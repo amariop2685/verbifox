@@ -1,0 +1,36 @@
+/* ============================================================
+   VerbiFox · Animaciones y micro-interacciones compartidas (CSS3)
+   Se incluye donde se quiera dar más dinamismo a la UI.
+   ============================================================ */
+@keyframes vfxUp   { 0%{ transform:translateY(16px); opacity:0 } 100%{ transform:translateY(0); opacity:1 } }
+@keyframes vfxPop  { 0%{ transform:scale(.85); opacity:0 } 60%{ transform:scale(1.04) } 100%{ transform:scale(1); opacity:1 } }
+@keyframes vfxPopBig{ 0%{ transform:scale(0) } 70%{ transform:scale(1.18) } 100%{ transform:scale(1) } }
+@keyframes vfxShake{ 0%,100%{ transform:translateX(0) } 20%{ transform:translateX(-8px) } 40%{ transform:translateX(7px) } 60%{ transform:translateX(-5px) } 80%{ transform:translateX(4px) } }
+@keyframes vfxPulse{ 0%{ box-shadow:0 0 0 0 rgba(43,182,115,.55) } 100%{ box-shadow:0 0 0 18px rgba(43,182,115,0) } }
+@keyframes vfxFloat{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } }
+@keyframes vfxGlow { 0%,100%{ filter:drop-shadow(0 0 0 rgba(255,210,63,0)) } 50%{ filter:drop-shadow(0 0 10px rgba(255,210,63,.8)) } }
+
+.vfx-up       { animation: vfxUp .42s cubic-bezier(.2,.7,.3,1) both }
+.vfx-pop      { animation: vfxPop .35s ease both }
+.vfx-celebrate{ animation: vfxPopBig .5s cubic-bezier(.2,1.5,.4,1) both }
+.vfx-shake    { animation: vfxShake .45s }
+.vfx-ok       { animation: vfxPulse .65s ease-out }
+.vfx-float    { animation: vfxFloat 2.6s ease-in-out infinite }
+.vfx-glow     { animation: vfxGlow 1.8s ease-in-out infinite }
+
+/* feedback de opciones */
+.op-correcta   { background:#2bb673 !important; color:#fff !important }
+.op-incorrecta { background:#e15554 !important; color:#fff !important }
+
+/* micro-interacciones de botones (solo en páginas que incluyan ui.css) */
+button, .btn, a.btn, .op, .item, .mat, .curso {
+  transition: transform .13s ease, box-shadow .22s ease, background .22s ease, filter .22s ease, border-color .2s ease;
+}
+button:active, .btn:active, a.btn:active, .op:active, .item:active { transform: scale(.97) }
+.item:hover { border-color:#ffb454; transform: translateY(-2px) }
+.op:hover:not(:disabled) { filter: brightness(1.06) }
+
+/* accesibilidad: respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after { animation: none !important; transition: none !important }
+}

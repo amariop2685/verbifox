@@ -31,6 +31,7 @@
   .pie a{ color:var(--naranja); font-weight:700; text-decoration:none; margin:0 8px; }
   .nota{ text-align:center; color:#9fb0bf; font-size:.82rem; margin-top:16px; }
 </style>
+<link rel="stylesheet" href="ui.css">
 </head>
 <body>
   <div class="hero">
@@ -98,14 +99,15 @@
     const n = nombre();
     $('saludo').textContent = n ? ('¡Hola, '+n+'!') : '¡Hola!';
     $('subtit').textContent = 'Asignaturas de '+curso+' Básico';
-    $('grid').innerHTML = ASIGNATURAS.map(a=>{
+    $('grid').innerHTML = ASIGNATURAS.map((a,i)=>{
       const link = linkDe(a);
+      const delay = `animation-delay:${i*45}ms`;
       if(link){
-        return `<a class="mat on" href="${link}">
+        return `<a class="mat on vfx-up" style="${delay}" href="${link}">
           <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
           <span class="badge go">¡Disponible! ▶</span></a>`;
       }
-      return `<div class="mat off" onclick="proximamente('${a.nm}')" style="cursor:pointer">
+      return `<div class="mat off vfx-up" style="cursor:pointer;${delay}" onclick="proximamente('${a.nm}')">
         <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
         <span class="badge soon">Pronto</span></div>`;
     }).join('');
