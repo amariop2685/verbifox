@@ -169,34 +169,72 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return { materias: [...set], grado };
     },
     // Devuelve 'ok' | 'locked' | 'sin-sesion' para una materia
-    async accesoMateria(materia) {
-      let s = null; try { s = await VFX.sesion(); } catch (e) {}
-      if (!s) return 'sin-sesion';
-      try { if (await VFX.soyAdmin()) return 'ok'; } catch (e) {}
+    // Estado de acceso: sesión, admin, materias pagadas y prueba de 7 días
+    async estadoAcceso(studentId) {
+      let u = null; try { u = await VFX.usuario(); } catch (e) {}
+      if (!u) return { sinSesion: true };
+      try { if (await VFX.soyAdmin()) return { admin: true, materias: ['*'] }; } catch (e) {}
+      let materias = [];
+      try { const r = await VFX.misMaterias(studentId); materias = r.materias; } catch (e) {}
+      let trialActivo = false, diasRestantes = 0;
       try {
-        const r = await VFX.misMaterias(VFX.studentActivo());
-        return r.materias.includes(materia) ? 'ok' : 'locked';
-      } catch (e) { return 'ok'; } // ante error de red, no castigar a quien pagó
+        const p = await VFX.miPerfil();
+        if (p && p.created_at) {
+          const dias = (Date.now() - new Date(p.created_at).getTime()) / 86400000;
+          diasRestantes = Math.max(0, Math.ceil(7 - dias));
+          trialActivo = dias < 7;
+        }
+      } catch (e) {}
+      return { materias, trialActivo, diasRestantes };
     },
-    // Si no tiene acceso, muestra una pantalla de bloqueo. Devuelve true si bloqueó.
+    async accesoMateria(materia) {
+      let e; try { e = await VFX.estadoAcceso(VFX.studentActivo()); } catch (err) { return 'ok'; }
+      if (e.sinSesion) return 'sin-sesion';
+      if (e.admin) return 'ok';
+      if (e.materias && (e.materias.includes('*') || e.materias.includes(materia))) return 'ok';
+      if (e.trialActivo) return 'trial';
+      return 'locked';
+    },
+    _bannerTrial(dias) {
+      if (document.getElementById('vfx-trial')) return;
+      const b = document.createElement('div');
+      b.id = 'vfx-trial';
+      b.style.cssText = 'position:fixed;left:0;right:0;bottom:0;background:#26303b;color:#fff;padding:9px 14px;z-index:99998;text-align:center;font-family:-apple-system,sans-serif;font-size:.85rem';
+      b.innerHTML = `🎁 Prueba gratis: <b>${dias} día${dias===1?'':'s'}</b> restante${dias===1?'':'s'}. <a href="planes.html" style="color:#ffd23f;font-weight:800;text-decoration:none">Suscríbete ▶</a>`;
+      document.body.appendChild(b);
+    },
+    // Si no tiene acceso, muestra pantalla de bloqueo (o banner de prueba). Devuelve true si bloqueó.
     async bloquearSi(materia) {
       if (document.getElementById('vfx-gate')) return true;
-      let estado = 'ok';
-      try { estado = await VFX.accesoMateria(materia); } catch (e) { return false; }
-      if (estado === 'ok') return false;
+      let e; try { e = await VFX.estadoAcceso(VFX.studentActivo()); } catch (err) { return false; }
+      const tiene = e.admin || (e.materias && (e.materias.includes('*') || e.materias.includes(materia)));
+      if (tiene) return false;
+      if (e.trialActivo) { VFX._bannerTrial(e.diasRestantes); return false; } // prueba activa: deja pasar
       if (document.getElementById('vfx-gate')) return true;
       const nombreMat = { matematicas: 'Matemática', ingles: 'Inglés' }[materia] || materia;
-      const sinSesion = (estado === 'sin-sesion');
+      const sinSesion = !!e.sinSesion;
+      const tienePlan = e.materias && e.materias.length > 0;
+      let cuerpo;
+      if (sinSesion) {
+        cuerpo = `<h2 style="margin:8px 0;color:#26303b">🎁 Prueba gratis 7 días</h2>
+          <p style="color:#5a6b7a">Crea tu cuenta de apoderado y prueba <b>todo gratis por 7 días</b>. Sin tarjeta.</p>
+          <a href="panel.html" style="display:block;background:#ff7a18;color:#fff;text-decoration:none;padding:14px;border-radius:14px;font-weight:800;margin-top:14px">Crear cuenta y empezar ▶</a>
+          <a href="planes.html" style="display:block;color:#ff7a18;text-decoration:none;font-weight:700;margin-top:12px">Ver planes</a>`;
+      } else if (tienePlan) {
+        cuerpo = `<h2 style="margin:8px 0;color:#26303b">${nombreMat} no está en tu plan</h2>
+          <p style="color:#5a6b7a">Amplía tu plan para acceder a esta materia.</p>
+          <a href="planes.html" style="display:block;background:#ff7a18;color:#fff;text-decoration:none;padding:14px;border-radius:14px;font-weight:800;margin-top:14px">Ver planes ▶</a>
+          <a href="inicio.html" style="display:block;color:#ff7a18;text-decoration:none;font-weight:700;margin-top:12px">← Mis materias</a>`;
+      } else {
+        cuerpo = `<h2 style="margin:8px 0;color:#26303b">Tu prueba de 7 días terminó 🌟</h2>
+          <p style="color:#5a6b7a">¡Esperamos que la hayan disfrutado! Suscríbete para seguir aprendiendo sin límites.</p>
+          <a href="planes.html" style="display:block;background:#ff7a18;color:#fff;text-decoration:none;padding:14px;border-radius:14px;font-weight:800;margin-top:14px">Ver planes ▶</a>
+          <a href="panel.html" style="display:block;color:#ff7a18;text-decoration:none;font-weight:700;margin-top:12px">Ir a mi panel</a>`;
+      }
       const div = document.createElement('div');
       div.id = 'vfx-gate';
       div.style.cssText = 'position:fixed;inset:0;background:linear-gradient(135deg,#ff7a18,#ff9d4d);z-index:100000;display:flex;align-items:center;justify-content:center;padding:20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif';
-      div.innerHTML = `<div style="background:#fff;border-radius:22px;padding:30px 24px;max-width:400px;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.25)">
-        <div style="font-size:3rem">🔒🦊</div>
-        <h2 style="margin:8px 0;color:#26303b">${nombreMat} está bloqueada</h2>
-        <p style="color:#5a6b7a">${sinSesion ? 'Inicia sesión con la cuenta del apoderado para entrar a tus materias.' : 'Tu plan aún no incluye esta materia.'}</p>
-        <a href="planes.html" style="display:block;background:#ff7a18;color:#fff;text-decoration:none;padding:14px;border-radius:14px;font-weight:800;margin-top:14px">Ver planes ▶</a>
-        <a href="${sinSesion ? 'panel.html' : 'inicio.html'}" style="display:block;color:#ff7a18;text-decoration:none;font-weight:700;margin-top:12px">${sinSesion ? 'Ingresar / crear cuenta' : '← Mis materias'}</a>
-      </div>`;
+      div.innerHTML = `<div style="background:#fff;border-radius:22px;padding:30px 24px;max-width:400px;text-align:center;box-shadow:0 14px 40px rgba(0,0,0,.25)"><div style="font-size:3rem">🦊</div>${cuerpo}</div>`;
       document.body.appendChild(div);
       return true;
     },
