@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>VerbiFox · Materia</title>
 <style>
-  :root{ --naranja:#ff7a18; --naranja2:#ff9d4d; --tinta:#26303b; --verde:#2bb673; --azul:#3a7bd5; --linea:#e3e9ef; }
+  :root{ --naranja:#ff7a18; --naranja2:#ff9d4d; --tinta:#26303b; --verde:#2bb673; --azul:#3a7bd5; --rojo:#e15554; --linea:#e3e9ef; }
   *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
   body{ margin:0; background:#f6f8fb; color:var(--tinta); }
   header{ background:linear-gradient(135deg,var(--naranja),var(--naranja2)); color:#fff; padding:18px 20px; text-align:center; }
@@ -14,16 +14,17 @@
   .wrap{ max-width:640px; margin:16px auto; padding:0 16px 40px; }
   .btn{ display:block; width:100%; border:0; border-radius:14px; padding:14px; font-size:1rem; font-weight:700; cursor:pointer; margin:8px 0; color:#fff; }
   .b-azul{ background:var(--azul); text-align:left; } .b-verde{ background:var(--verde); } .b-gris{ background:#94a3b8; }
-  a.btn{ text-decoration:none; }
   .card{ background:#fff;border:2px solid var(--linea);border-radius:14px;padding:12px 14px;margin:8px 0; }
   .oa{ background:#fff4e0;border-radius:10px;padding:10px 12px;color:#7c4a03;font-weight:600;font-size:.9rem }
   .item{ display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--linea);border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer }
-  .item .e{ font-size:1.7rem } .item b{ display:block } .item .d{ font-size:.85rem;color:#667 }
+  .item .e{ font-size:1.7rem } .item .en{ color:var(--azul);font-weight:600 } .item .d{ font-size:.85rem;color:#667 }
   .mut{ color:#8294a4; font-size:.9rem }
   h2{ font-size:1.15rem } h3{ margin:12px 0 4px }
   .op{ background:var(--azul); color:#fff; border:0; border-radius:12px; padding:13px; width:100%; margin:6px 0; cursor:pointer; font-size:.98rem }
   .res{ text-align:center;background:#e3f7ee;border-radius:12px;padding:18px;font-weight:800;color:var(--verde) }
-  .back{ background:#eef2f6;color:#26303b;border:0;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer }
+  .back{ background:#eef2f6;color:#26303b;border:0;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer;margin-bottom:10px }
+  .bar{ height:8px;background:#eef1f4;border-radius:6px;overflow:hidden;margin-top:6px } .bar>i{ display:block;height:100%;background:linear-gradient(90deg,#2bb673,#7ad6a8) }
+  .diag{ width:100%;max-width:360px;display:block;margin:10px auto;background:#fff;border-radius:12px;border:1px solid var(--linea);padding:6px }
 </style>
 </head>
 <body>
@@ -33,7 +34,7 @@
   <p id="h-curso"></p>
 </header>
 <div class="wrap">
-  <button class="back" onclick="location.href='inicio.html'" style="margin-bottom:10px">← Mis materias</button>
+  <button class="back" onclick="location.href='inicio.html'">← Mis materias</button>
   <div id="app"></div>
 </div>
 
@@ -47,7 +48,14 @@
   let uActual=null, q=null;
 
   function mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+  function elegir(a){ return a[Math.floor(Math.random()*a.length)]; }
   function decir(txt){ try{ if('speechSynthesis'in window){ const u=new SpeechSynthesisUtterance(txt); u.lang=(mat&&mat.lang)||'es-CL'; speechSynthesis.cancel(); speechSynthesis.speak(u); } }catch(e){} }
+  function decirItem(i){ const it=uActual.items[i]; if(it) decir(it.t+'. '+it.d); }
+
+  // ---- Dominio (mastery) por unidad, guardado local ----
+  function domKey(){ return 'vfx_dom_'+M+'_'+G; }
+  function guardarDominio(uid, pct){ try{ const d=JSON.parse(localStorage.getItem(domKey())||'{}'); d[uid]=Math.max(d[uid]||0,pct); localStorage.setItem(domKey(),JSON.stringify(d)); }catch(e){} }
+  function dominioDe(uid){ try{ return (JSON.parse(localStorage.getItem(domKey())||'{}'))[uid]||0; }catch(e){ return 0; } }
 
   function init(){
     if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
@@ -57,45 +65,84 @@
   }
   function verUnidades(){
     if(!unidades.length){ $('app').innerHTML='<div class="card mut">Contenido de este curso en preparación. 🌱</div>'; return; }
-    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' +
-      unidades.map(u=>`<button class="btn b-azul" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre}</button>`).join('');
+    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' + unidades.map(u=>{
+      const d=dominioDe(u.id);
+      const estrella = d>=80?'🌟':d>=50?'⭐':'';
+      return `<button class="btn b-azul" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${estrella}
+        <div class="bar"><i style="width:${d}%"></i></div></button>`;
+    }).join('');
   }
   function abrir(id){
     const u=unidades.find(x=>x.id===id); if(!u) return; uActual=u;
-    const items=u.items.map((it,i)=>`<div class="item" onclick="decir('${(it.t+'. '+it.d).replace(/'/g,"\\'")}')">
-      <span class="e">${it.e||'•'}</span><div><b>${it.t} 🔊</b><span class="d">${it.d}</span></div></div>`).join('');
+    const img=u.img?`<img class="diag" src="${u.img}" alt="${u.nombre}">`:'';
+    const items=u.items.map((it,i)=>`<div class="item" onclick="decirItem(${i})">
+      <span class="e">${it.e||'•'}</span>
+      <div><b>${it.t}</b>${it.en?` · <span class="en">${it.en}</span>`:''} 🔊<div class="d">${it.d}</div></div></div>`).join('');
     const datos=(u.datos||[]).map(d=>`<div class="card" style="background:#f0f6ff">💡 ${d}</div>`).join('');
+    const hayRetos=(u.retos&&u.retos.length);
     $('app').innerHTML=`<button class="back" onclick="verUnidades()">← Unidades</button>
       <h2>${u.emoji} ${u.nombre}</h2>
       <div class="oa">🎯 ${u.oa||''}</div>
       ${u.intro?`<p class="mut" style="margin:8px 0">${u.intro}</p>`:''}
-      <h3>Conceptos (toca para escuchar 🔊)</h3>${items}
-      ${datos?('<h3>¿Sabías que…?</h3>'+datos):''}
-      <button class="btn b-verde" onclick="quiz()">🎮 Quiz de esta unidad</button>`;
+      ${img}
+      <h3>Conceptos <span class="mut" style="font-weight:400">· español · <span class="en">inglés</span> · toca 🔊</span></h3>${items}
+      ${datos?('<h3>¿Sabías que…? 🌍</h3>'+datos):''}
+      <button class="btn b-verde" onclick="quiz()">🎮 Practicar (memoria + ${hayRetos?'retos de campeón 🏆':'conceptos'})</button>`;
   }
-  function quiz(){
-    q={ preg:mezcla(uActual.items).slice(0,Math.min(6,uActual.items.length)), i:0, ok:0 };
-    render();
-  }
-  function render(){
-    if(q.i>=q.preg.length){
-      const pct=Math.round(q.ok/q.preg.length*100);
-      const msg=pct>=80?'¡Excelente! 🌟':pct>=50?'¡Bien! 👏':'¡Sigue practicando! 💪';
-      $('app').innerHTML=`<div class="res">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.9rem;color:#557">${msg}</div></div>
-        <button class="btn b-verde" onclick="quiz()">🔁 Otra vez</button>
-        <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
-      return;
+
+  // ---- Quiz avanzado: memoria + inverso + retos de orden superior ----
+  function armarPreguntas(u){
+    const qs=[];
+    for(const it of u.items){
+      const distr=mezcla(u.items.filter(x=>x!==it)).slice(0,3);
+      if(Math.random()<0.5){
+        const ops=mezcla([{text:it.d,ok:true},...distr.map(x=>({text:x.d,ok:false}))]);
+        qs.push({emoji:it.e, prompt:it.t+(it.en?` <span class="en">(${it.en})</span>`:''), sub:'¿Qué es?', ops, porque:it.t+': '+it.d});
+      } else {
+        const ops=mezcla([{text:it.t,ok:true},...distr.map(x=>({text:x.t,ok:false}))]);
+        qs.push({emoji:it.e, prompt:it.d, sub:'¿Qué concepto es?', ops, porque:it.t+': '+it.d});
+      }
     }
-    const it=q.preg[q.i];
-    q.ops=mezcla([it, ...mezcla(uActual.items.filter(x=>x!==it)).slice(0,3)]);
-    decir(it.t);
-    $('app').innerHTML=`<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>
-      <div style="text-align:center;font-size:2rem">${it.e||'❓'}</div>
-      <h2 style="text-align:center">${it.t}</h2>
-      <p style="text-align:center" class="mut">¿Qué es?</p>
-      ${q.ops.map((o,k)=>`<button class="op" onclick="resp(${k})">${o.d}</button>`).join('')}`;
+    for(const r of (u.retos||[])){
+      const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
+      qs.push({emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops, porque:r.porque});
+    }
+    return mezcla(qs).slice(0, Math.min(8, qs.length));
   }
-  function resp(k){ if(q.ops[k].d===q.preg[q.i].d) q.ok++; q.i++; render(); }
+  function quiz(){ q={preg:armarPreguntas(uActual), i:0, ok:0}; render(); }
+  function render(){
+    if(q.i>=q.preg.length){ verResultado(); return; }
+    const p=q.preg[q.i];
+    $('app').innerHTML=`<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>
+      <div style="text-align:center;font-size:2rem">${p.emoji||'❓'}</div>
+      <h2 style="text-align:center">${p.prompt}</h2>
+      <p style="text-align:center" class="mut">${p.sub}</p>
+      ${p.ops.map((o,k)=>`<button class="op" onclick="resp(${k})">${o.text}</button>`).join('')}`;
+  }
+  function resp(k){
+    const p=q.preg[q.i], ok=p.ops[k].ok; if(ok) q.ok++;
+    $('app').innerHTML=`<div style="text-align:center;font-size:2.4rem">${ok?'✅':'❌'}</div>
+      <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
+      <div class="card" style="background:#f0f6ff">💡 <b>Por qué:</b> ${p.porque}</div>
+      <button class="btn b-verde" onclick="siguiente()">Siguiente ▶</button>`;
+  }
+  function siguiente(){ q.i++; render(); }
+  function verResultado(){
+    const pct=Math.round(q.ok/q.preg.length*100);
+    guardarDominio(uActual.id, pct);
+    const msg = pct>=80?'¡Dominas esta unidad! 🌟 Tu esfuerzo se nota.'
+      : pct>=50?'¡Vas muy bien! Un repaso más y lo dominas. 💪'
+      : 'Tu cerebro CRECE con cada error. ¡Inténtalo otra vez y verás! 🌱';
+    $('app').innerHTML=`<div class="res">🎉 ${q.ok}/${q.preg.length} correctas (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
+      <p style="text-align:center;margin-top:14px" class="mut">¿Cómo sentiste esta unidad? (pensar en eso te ayuda a aprender 🧠)</p>
+      <div style="text-align:center;font-size:2rem">
+        <span onclick="sentir()" style="cursor:pointer">😟</span>
+        <span onclick="sentir()" style="cursor:pointer;margin:0 16px">😐</span>
+        <span onclick="sentir()" style="cursor:pointer">😄</span></div>
+      <button class="btn b-verde" onclick="quiz()">🔁 Practicar otra vez</button>
+      <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
+  }
+  function sentir(){ verUnidades(); }
 
   init();
 </script>
