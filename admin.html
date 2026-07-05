@@ -243,7 +243,9 @@ function renderSub(s){
   </div>`;
 }
 
+let ocupado=false;
 async function crearSub(parentId){
+  if(ocupado) return; ocupado=true;
   try{
     await VFX.adminCrearSuscripcion({
       parent_id: parentId,
@@ -255,11 +257,15 @@ async function crearSub(parentId){
     });
     await cargar();
   }catch(e){ alert('Error: '+e.message); }
+  finally{ ocupado=false; }
 }
 async function pagar(subId, periodo, monto){
+  if(ocupado) return;
   if(!confirm('¿Marcar pago recibido por '+pesos(monto)+'? Esto extiende la suscripción un período.')) return;
-  try{ await VFX.adminRegistrarPago({ subscription_id:subId, monto_clp:monto, periodo }); await cargar(); }
+  ocupado=true;
+  try{ await VFX.adminRegistrarPago({ subscription_id:subId, monto_clp:monto }); await cargar(); }
   catch(e){ alert('Error: '+e.message); }
+  finally{ ocupado=false; }
 }
 async function togglePac(subId, actual){ try{ await VFX.adminActualizarSub(subId,{cobro_automatico:!actual}); await cargar(); }catch(e){ alert(e.message); } }
 async function toggleEstado(subId, est){ const nuevo= est==='activa'?'cancelada':'activa'; try{ await VFX.adminActualizarSub(subId,{estado:nuevo}); await cargar(); }catch(e){ alert(e.message); } }
