@@ -58,10 +58,10 @@
   // Asignaturas según Bases Curriculares 1º–6º básico (MINEDUC)
   const ASIGNATURAS = [
     { id:'lenguaje',   nm:'Lenguaje y Comunicación', ic:'📖' },
-    { id:'matematica', nm:'Matemática',              ic:'➗', app:'mate.html' },
+    { id:'matematica', nm:'Matemática',              ic:'➗', app:'mate.html', grados:['5°'] },
     { id:'historia',   nm:'Historia y Geografía',    ic:'🌎' },
     { id:'ciencias',   nm:'Ciencias Naturales',      ic:'🔬' },
-    { id:'ingles',     nm:'Inglés',                  ic:'🔤', app:'index.html' },
+    { id:'ingles',     nm:'Inglés',                  ic:'🔤', app:'index.html', grados:['1°','2°','3°','4°','5°','6°'] },
     { id:'artes',      nm:'Artes Visuales',          ic:'🎨' },
     { id:'musica',     nm:'Música',                  ic:'🎵' },
     { id:'edfisica',   nm:'Educación Física',        ic:'⛹️' },
@@ -90,9 +90,8 @@
     const n = nombre();
     $('saludo').textContent = n ? ('¡Hola, '+n+'!') : '¡Hola!';
     $('subtit').textContent = 'Asignaturas de '+curso+' Básico';
-    const hayContenido = (curso === CURSO_CON_CONTENIDO);
     $('grid').innerHTML = ASIGNATURAS.map(a=>{
-      const dispo = hayContenido && a.app;
+      const dispo = a.app && a.grados && a.grados.includes(curso);
       if(dispo){
         return `<a class="mat on" href="${a.app}">
           <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
@@ -102,9 +101,10 @@
         <div class="ic">${a.ic}</div><div class="nm">${a.nm}</div>
         <span class="badge soon">Pronto</span></div>`;
     }).join('');
-    $('nota').innerHTML = hayContenido
-      ? 'Estás en 5° Básico: <b>Matemática</b> e <b>Inglés</b> ya están listas. Las demás asignaturas se irán agregando. 🚀'
-      : `El contenido de ${curso} Básico se está preparando. Por ahora, <b>5° Básico</b> ya tiene Matemática e Inglés. 🌱`;
+    const dispoNames = ASIGNATURAS.filter(a=>a.grados&&a.grados.includes(curso)).map(a=>a.nm);
+    $('nota').innerHTML = dispoNames.length
+      ? `En ${curso} Básico ya tienes: <b>${dispoNames.join('</b>, <b>')}</b>. Las demás asignaturas se irán agregando. 🚀`
+      : `El contenido de ${curso} Básico se está preparando. 🌱`;
   }
   function proximamente(nm){ alert('📚 '+nm+'\n\n¡Estamos preparando esta asignatura! Muy pronto disponible.'); }
 

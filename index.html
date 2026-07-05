@@ -235,7 +235,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
 <script src="caballero.js"></script>
-<script src="temas-ingles-5.js"></script>
+<script src="temas-ingles.js"></script>
 </head>
 <body>
 <div class="app">
@@ -298,7 +298,7 @@
   <!-- TEMAS MINEDUC 5° -->
   <section id="s-temas-lista" class="screen">
     <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
-    <h2>📚 Temas de 5° Básico</h2>
+    <h2 id="temas-titulo">📚 Temas de 5° Básico</h2>
     <p class="sub" style="margin:-4px 0 10px">Vocabulario y frases exigidos por el MINEDUC.</p>
     <div id="temas-lista"></div>
   </section>
@@ -1489,15 +1489,21 @@ function verArmaduraIng(){ if(window.Caballero){ Caballero.render(document.getEl
 let temaActual=null, tq=null;
 function _mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
 function decirIng(txt){ try{ hablar(txt,'en-US'); }catch(e){} }
+function cursoIng(){ const c=localStorage.getItem('vfx_curso')||'5°'; return (String(c).match(/[1-6]/)||['5'])[0]; }
+function setCursoIng(g){ try{ localStorage.setItem('vfx_curso', g+'°'); }catch(e){} verTemas(); }
+function temasCurso(){ return (window.TEMAS_INGLES||{})[cursoIng()]||[]; }
 function verTemas(){
-  const temas=window.TEMAS_INGLES5||[];
-  document.getElementById('temas-lista').innerHTML = temas.map(t=>
-    `<button class="btn btn-azul" style="text-align:left" onclick="abrirTema('${t.id}')">${t.emoji} ${t.nombre}</button>`).join('')
-    + '<p class="sub" style="margin-top:12px">Y en el menú: 🎓 Verbos irregulares (past simple).</p>';
+  const g=cursoIng(), temas=temasCurso();
+  const tt=document.getElementById('temas-titulo'); if(tt) tt.textContent='📚 Temas de '+g+'° Básico';
+  const selector = [1,2,3,4,5,6].map(n=>`<button class="btn btn-pequeno ${(''+n)===g?'btn-azul':'btn-gris'}" style="display:inline-block;width:auto;margin:2px" onclick="setCursoIng(${n})">${n}°</button>`).join('');
+  document.getElementById('temas-lista').innerHTML =
+    `<div style="text-align:center;margin-bottom:8px">Curso: ${selector}</div>` +
+    temas.map(t=>`<button class="btn btn-azul" style="text-align:left" onclick="abrirTema('${t.id}')">${t.emoji} ${t.nombre}</button>`).join('') +
+    (g==='5'||g==='6' ? '<p class="sub" style="margin-top:12px">Y en el menú: 🎓 Verbos irregulares (past simple).</p>' : '');
   mostrar('s-temas-lista');
 }
 function abrirTema(id){
-  const t=(window.TEMAS_INGLES5||[]).find(x=>x.id===id); if(!t) return; temaActual=t;
+  const t=temasCurso().find(x=>x.id===id); if(!t) return; temaActual=t;
   document.getElementById('tema-titulo').textContent=t.emoji+' '+t.nombre;
   const words=t.palabras.map((w,i)=>`<div onclick="decirTemaWord(${i})" style="display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e3e9ef;border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer">
     <span style="font-size:1.7rem">${w.e}</span>
