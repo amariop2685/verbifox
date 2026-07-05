@@ -452,13 +452,16 @@ function valorPieza(p, niv){ return p.v*(niv||1); }
 function valorTotal(){ initArmadura(); let s=0; for(const p of ARMADURA){ const niv=datos.armadura.piezas[p.id]; if(niv) s+=valorPieza(p,niv); } return s; }
 function syncInventario(){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.guardarInventario(sid, {piezas:datos.armadura.piezas, gemas:datos.armadura.gemas, valor:valorTotal()}); } }catch(e){} }
 function vfxRecompensaReal(tipo, motivo){ try{ if(window.VFX){ const sid=VFX.studentActivo(); if(sid) VFX.crearRecompensa(sid, {tipo, motivo}); } }catch(e){} }
-// Muestra la imagen de la pieza si existe (img/armadura/<id>-<nivel>.png → <id>.png → emoji)
+// Muestra la imagen de la pieza si existe. Prueba en orden: <id>-<niv>.svg → .png → <id>.svg → .png → emoji
 function piezaImg(p, niv){
-  return `<img src="img/armadura/${p.id}-${niv}.png" alt="${p.n}" data-id="${p.id}" data-emoji="${p.e}"
-    style="width:46px;height:46px;object-fit:contain" onerror="armImgFallback(this)">`;
+  const c=[`img/armadura/${p.id}-${niv}.svg`,`img/armadura/${p.id}-${niv}.png`,`img/armadura/${p.id}.svg`,`img/armadura/${p.id}.png`];
+  return `<img src="${c[0]}" alt="${p.n}" data-c='${JSON.stringify(c)}' data-i="0" data-emoji="${p.e}"
+    style="width:52px;height:52px;object-fit:contain" onerror="armImgFallback(this)">`;
 }
 function armImgFallback(img){
-  if(img.dataset.step!=='base'){ img.dataset.step='base'; img.src='img/armadura/'+img.dataset.id+'.png'; return; }
+  let c=[]; try{ c=JSON.parse(img.dataset.c); }catch(e){}
+  const i=parseInt(img.dataset.i||'0',10)+1;
+  if(i<c.length){ img.dataset.i=i; img.src=c[i]; return; }
   const s=document.createElement('span'); s.style.fontSize='1.8rem'; s.textContent=img.dataset.emoji||'🛡️'; if(img.parentNode) img.replaceWith(s);
 }
 function verArmadura(){

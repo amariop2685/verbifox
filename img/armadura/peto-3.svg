@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="steel3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6fafd"/><stop offset="1" stop-color="#c2ccd4"/>
+    </linearGradient>
+    <linearGradient id="gold3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e0a72b"/>
+    </linearGradient>
+  </defs>
+  <!-- hombreras doradas -->
+  <path d="M28,48 C18,34 33,24 46,30 C42,39 41,44 41,49 Z" fill="url(#gold3)" stroke="#a9760f" stroke-width="2.8"/>
+  <path d="M92,48 C102,34 87,24 74,30 C78,39 79,44 79,49 Z" fill="url(#gold3)" stroke="#a9760f" stroke-width="2.8"/>
+  <!-- cuerpo -->
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42 L88,74 C88,98 74,107 60,107 C46,107 32,98 32,74 Z"
+        fill="url(#steel3)" stroke="#39454f" stroke-width="3.4"/>
+  <!-- borde dorado -->
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42 L88,74 C88,98 74,107 60,107 C46,107 32,98 32,74 Z"
+        fill="none" stroke="url(#gold3)" stroke-width="3" opacity=".95"/>
+  <ellipse cx="60" cy="33" rx="11" ry="6" fill="#8b959d" stroke="#a9760f" stroke-width="2.6"/>
+  <path d="M60,40 L60,80" stroke="#aeb9c1" stroke-width="2.6" fill="none"/>
+  <!-- emblema: escudo dorado con estrella -->
+  <path d="M60,52 C66,52 69,54 69,54 C69,66 64,71 60,74 C56,71 51,66 51,54 C51,54 54,52 60,52 Z"
+        fill="url(#gold3)" stroke="#a9760f" stroke-width="2.4"/>
+  <path d="M60,57 l1.8,3.6 4,.6 -2.9,2.8 .7,4 -3.6,-1.9 -3.6,1.9 .7,-4 -2.9,-2.8 4,-.6 Z" fill="#2f4f8a"/>
+  <!-- cinturón -->
+  <rect x="33" y="86" width="54" height="11" rx="3.5" fill="#a56f45" stroke="#6f492c" stroke-width="2.6"/>
+  <rect x="53" y="85" width="14" height="13" rx="3" fill="url(#gold3)" stroke="#a9760f" stroke-width="2.2"/>
+</svg>

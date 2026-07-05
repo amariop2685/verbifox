@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="steel2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f8fb"/><stop offset="1" stop-color="#bcc6ce"/>
+    </linearGradient>
+    <linearGradient id="blue2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6a97e0"/><stop offset="1" stop-color="#3a63ab"/>
+    </linearGradient>
+  </defs>
+  <!-- hombreras -->
+  <path d="M30,46 C21,35 33,26 44,31 C41,38 40,43 40,47 Z" fill="url(#blue2)" stroke="#2c4d86" stroke-width="2.6"/>
+  <path d="M90,46 C99,35 87,26 76,31 C79,38 80,43 80,47 Z" fill="url(#blue2)" stroke="#2c4d86" stroke-width="2.6"/>
+  <!-- cuerpo -->
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42 L88,74 C88,98 74,107 60,107 C46,107 32,98 32,74 Z"
+        fill="url(#steel2)" stroke="#39454f" stroke-width="3.4"/>
+  <!-- borde azul superior -->
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42" fill="none" stroke="#3a63ab" stroke-width="3" opacity=".85"/>
+  <ellipse cx="60" cy="33" rx="11" ry="6" fill="#8b959d" stroke="#39454f" stroke-width="2.6"/>
+  <!-- cresta + grabado (rombos) -->
+  <path d="M60,41 L60,99" stroke="#9aa7b0" stroke-width="3" fill="none"/>
+  <path d="M60,50 l5,7 -5,7 -5,-7 Z" fill="#dbe3ec" stroke="#7d8a94" stroke-width="1.6"/>
+  <path d="M60,66 l4,6 -4,6 -4,-6 Z" fill="#dbe3ec" stroke="#7d8a94" stroke-width="1.4"/>
+  <path d="M44,54 C50,49 55,49 58,55" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="M76,54 C70,49 65,49 62,55" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>
+  <!-- cinturón con hebilla -->
+  <rect x="33" y="86" width="54" height="11" rx="3.5" fill="#a56f45" stroke="#6f492c" stroke-width="2.6"/>
+  <rect x="53" y="85" width="14" height="13" rx="3" fill="#e2c266" stroke="#8a6320" stroke-width="2.2"/>
+  <circle cx="40" cy="91.5" r="2.2" fill="#e2c266" stroke="#8a6320" stroke-width="1.4"/>
+  <circle cx="80" cy="91.5" r="2.2" fill="#e2c266" stroke="#8a6320" stroke-width="1.4"/>
+</svg>

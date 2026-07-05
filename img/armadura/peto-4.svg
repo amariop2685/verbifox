@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="steel4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef3fb"/><stop offset="1" stop-color="#aeb9cb"/>
+    </linearGradient>
+    <linearGradient id="gold4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/><stop offset="1" stop-color="#e0a72b"/>
+    </linearGradient>
+    <linearGradient id="cape4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a63ab"/><stop offset="1" stop-color="#26468a"/>
+    </linearGradient>
+  </defs>
+  <!-- capa corta detrás -->
+  <path d="M31,40 C19,60 21,92 27,104 L41,96 C37,78 38,56 43,44 Z" fill="url(#cape4)" stroke="#1d356b" stroke-width="2"/>
+  <path d="M89,40 C101,60 99,92 93,104 L79,96 C83,78 82,56 77,44 Z" fill="url(#cape4)" stroke="#1d356b" stroke-width="2"/>
+  <!-- hombreras doradas grandes -->
+  <path d="M27,49 C16,33 33,22 47,29 C42,39 41,45 41,50 Z" fill="url(#gold4)" stroke="#a9760f" stroke-width="2.8"/>
+  <path d="M93,49 C104,33 87,22 73,29 C78,39 79,45 79,50 Z" fill="url(#gold4)" stroke="#a9760f" stroke-width="2.8"/>
+  <!-- cuerpo azulado -->
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42 L88,74 C88,98 74,107 60,107 C46,107 32,98 32,74 Z"
+        fill="url(#steel4)" stroke="#2f3b52" stroke-width="3.4"/>
+  <path d="M34,42 C34,28 46,24 60,24 C74,24 86,28 86,42" fill="none" stroke="url(#gold4)" stroke-width="3.4"/>
+  <ellipse cx="60" cy="33" rx="11" ry="6" fill="#7f8ba6" stroke="#a9760f" stroke-width="2.6"/>
+  <path d="M60,40 L60,70" stroke="#c9d2df" stroke-width="2.6" fill="none"/>
+  <!-- abdomen segmentado dorado -->
+  <path d="M41,82 h38 M43,90 h34 M46,98 h28" stroke="url(#gold4)" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- emblema cruz dorada -->
+  <path d="M57,50 h6 v6 h6 v6 h-6 v6 h-6 v-6 h-6 v-6 h6 Z" fill="url(#gold4)" stroke="#a9760f" stroke-width="2.2"/>
+</svg>
