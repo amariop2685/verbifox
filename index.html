@@ -234,6 +234,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
+<script src="caballero.js"></script>
 </head>
 <body>
 <div class="app">
@@ -281,6 +282,7 @@
     <button class="btn btn-naranja" onclick="iniciarExamenProfe()">🎓 Examen estilo profesor</button>
     <button class="btn btn-azul" onclick="iniciarExamen()">📝 Examen completo (con tiempo)</button>
     <button class="btn btn-verde" onclick="iniciarPractica()">🎮 Práctica libre (sin tiempo)</button>
+    <button class="btn btn-amarillo" onclick="verArmaduraIng()">🛡️ Mi Armadura del Caballero 🐎</button>
     <button class="btn btn-naranja" onclick="location.href='inicio.html'">🏫 Mis materias (Matemática y más)</button>
     <div id="record-box"></div>
     <div class="grid2" style="margin-top:4px;">
@@ -289,6 +291,13 @@
     </div>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:10px auto 0;" onclick="cambiarNombre()">Cambiar de jugador</button>
+  </section>
+
+  <!-- ARMADURA (compartida con Matemática) -->
+  <section id="s-armadura-ing" class="screen">
+    <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
+    <h2>🛡️ Mi Armadura del Caballero</h2>
+    <div id="arm-cont-ing"></div>
   </section>
 
   <!-- ESTUDIAR (FLASHCARDS) -->
@@ -1459,6 +1468,8 @@ function finRepaso(salir){
 /* ====== RESULTADOS ====== */
 function fmt(seg){ seg=Math.max(0,Math.round(seg)); const m=(seg/60|0); const s=seg%60; return m+":"+(s<10?"0":"")+s; }
 function elegir(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function verArmaduraIng(){ if(window.Caballero){ Caballero.render(document.getElementById('arm-cont-ing')); } mostrar('s-armadura-ing'); }
+
 function terminar(){
   if(quiz.timer) clearInterval(quiz.timer);
   const seg = (Date.now()-quiz.inicio)/1000;
@@ -1495,6 +1506,16 @@ function terminar(){
     fb.style.display="flex";
     document.getElementById('r-fallos').textContent = [...new Set(quiz.fallos)].join(" · ");
   } else fb.style.display="none";
+
+  // CONQUISTA del caballero compartido: aprobar el examen (60%+) da pieza/gemas/sobre
+  if(quiz.modo==="examen" && pct>=60 && window.Caballero){
+    const rc = Caballero.conquistar('Inglés — '+pct+'%');
+    let msg = '<div class="record" style="background:#fff3dc;color:#7c4a03;margin-top:8px">🏰 ¡Conquista para tu Caballero! ';
+    msg += rc.piezaNueva ? ('Ganaste 🛡️ <b>'+Caballero.nombrePieza(rc.piezaNueva,1)+'</b> (+2 💎).') : '+2 💎 para tu armadura.';
+    if(rc.ganoSobre) msg += ' 🎟️ <b>¡Ganaste un sobre del mundial!</b>';
+    msg += ' <span style="font-size:.85rem">Míralo en 🛡️ Mi Armadura.</span></div>';
+    recBox.innerHTML += msg;
+  }
 
   mostrar('s-resultado');
   if(pct>=90) lluviaConfeti();
