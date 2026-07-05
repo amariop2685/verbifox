@@ -1,5 +1,4 @@
-/* VerbiFox · Motor de contenidos (todas las materias)
-   Generado+verificado (MINEDUC, sello Boston College). Ciencias 5° hecho a mano. */
+/* VerbiFox · Motor de contenidos (todas las materias) · MINEDUC + sello Boston College */
 window.CONTENIDO = {
  "ciencias": {
   "nombre": "Ciencias Naturales",
@@ -7471,6 +7470,12288 @@ window.CONTENIDO = {
        ],
        "correcta": 1,
        "porque": "Los relatos tradicionales que explican el origen de elementos de la naturaleza y se transmiten en una cultura son mitos o leyendas, parte valiosa del patrimonio de los pueblos originarios."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "orientacion": {
+  "nombre": "Orientación y Valores",
+  "emoji": "🧭",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "me-conozco",
+     "nombre": "Me conozco y me quiero",
+     "emoji": "🪞",
+     "oa": "OA 1: Observar, describir y valorar sus características personales, sus habilidades e intereses.",
+     "intro": "Aprendo quién soy, qué me gusta y en qué soy bueno.",
+     "items": [
+      {
+       "t": "Yo soy único",
+       "d": "No hay nadie igual a ti en el mundo. Tienes tu nombre, tus gustos y tu manera de ser.",
+       "e": "⭐",
+       "en": "I am unique"
+      },
+      {
+       "t": "Mis características",
+       "d": "Puedo describir cómo soy: mi pelo, mi estatura, si soy alegre o tranquilo.",
+       "e": "🧒",
+       "en": "My characteristics"
+      },
+      {
+       "t": "Mis habilidades",
+       "d": "Cada persona hace algo muy bien: dibujar, correr, ayudar o cantar.",
+       "e": "💪",
+       "en": "My skills"
+      },
+      {
+       "t": "Mis intereses",
+       "d": "Me gustan algunas cosas más que otras: los dinosaurios, la música o los cuentos.",
+       "e": "🔎",
+       "en": "My interests"
+      },
+      {
+       "t": "Me valoro",
+       "d": "Reconocer lo bueno que tengo me hace sentir contento conmigo mismo.",
+       "e": "❤️",
+       "en": "I value myself"
+      },
+      {
+       "t": "Todos somos distintos",
+       "d": "Mis compañeros tienen otras habilidades e intereses, y eso está muy bien.",
+       "e": "🌈",
+       "en": "We are all different"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… no existen dos personas con las mismas huellas de los dedos, ni siquiera los gemelos?",
+      "¿Sabías que… cada persona tiene una voz distinta, como una huella que se escucha?"
+     ],
+     "retos": [
+      {
+       "q": "La profesora te pide que digas una habilidad tuya. Sofía dibuja muy bien, Pedro corre rápido. ¿Qué respuesta describe una habilidad?",
+       "ops": [
+        "Tengo una mochila roja",
+        "Soy muy bueno para armar rompecabezas",
+        "Vivo cerca del colegio"
+       ],
+       "correcta": 1,
+       "porque": "Una habilidad es algo que haces bien, como armar rompecabezas; el color de la mochila y dónde vives no son habilidades."
+      },
+      {
+       "q": "Benjamín dice: 'Yo no sirvo para nada'. ¿Qué le puedes recordar para que se valore?",
+       "ops": [
+        "Que se quede callado",
+        "Que cada persona tiene cosas que hace muy bien",
+        "Que copie lo que hacen los demás"
+       ],
+       "correcta": 1,
+       "porque": "Todos tenemos habilidades propias; reconocerlas nos ayuda a valorarnos tal como somos."
+      }
+     ]
+    },
+    {
+     "id": "cuido-mis-emociones",
+     "nombre": "Reconozco mis emociones",
+     "emoji": "🌈",
+     "oa": "OA 2: Identificar emociones experimentadas por ellos y por los demás (pena, rabia, miedo, alegría) y distinguir formas de expresarlas.",
+     "intro": "Aprendo a reconocer lo que siento y lo que sienten los demás, y a expresarlo sin dañar a nadie.",
+     "items": [
+      {
+       "t": "Mis emociones",
+       "d": "Sentir alegría, pena, miedo o rabia es normal. Todas las emociones sirven para algo.",
+       "e": "😊",
+       "en": "My emotions"
+      },
+      {
+       "t": "Reconocer cómo me siento",
+       "d": "Puedo notar si estoy contento o triste mirando mi cuerpo y mi cara.",
+       "e": "💭",
+       "en": "Recognizing how I feel"
+      },
+      {
+       "t": "Expresar con palabras",
+       "d": "Decir 'estoy triste' o 'estoy enojado' ayuda más que gritar o pegar.",
+       "e": "🗣️",
+       "en": "Express with words"
+      },
+      {
+       "t": "Calmarme",
+       "d": "Respirar despacio y contar hasta diez me ayuda cuando estoy muy enojado.",
+       "e": "🧘",
+       "en": "Calming down"
+      },
+      {
+       "t": "Enojarme sin dañar",
+       "d": "Está bien enojarse, pero no está bien pegar ni romper cosas.",
+       "e": "😤",
+       "en": "Anger without harm"
+      },
+      {
+       "t": "Lo que siente el otro",
+       "d": "Los demás también sienten; puedo darme cuenta si un compañero está triste o alegre.",
+       "e": "🤝",
+       "en": "How others feel"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… respirar hondo tres veces envía una señal a tu cerebro para calmarse?",
+      "¿Sabías que… tu cara puede hacer muchos gestos distintos para mostrar cómo te sientes?"
+     ],
+     "retos": [
+      {
+       "q": "Camila llega al colegio con el ceño fruncido y los brazos cruzados. ¿Qué emoción está sintiendo probablemente?",
+       "ops": [
+        "Está enojada o molesta",
+        "Está durmiendo",
+        "Tiene hambre de postre"
+       ],
+       "correcta": 0,
+       "porque": "El ceño fruncido y los brazos cruzados son señales del cuerpo que muestran enojo o molestia."
+      },
+      {
+       "q": "Tomás pierde en un juego y siente mucha rabia. ¿Cuál es la mejor forma de expresar lo que siente?",
+       "ops": [
+        "Empujar al que ganó",
+        "Respirar hondo y decir 'me dio rabia perder'",
+        "Romper el juego"
+       ],
+       "correcta": 1,
+       "porque": "Sentir rabia es normal, pero expresarla con palabras y calmarnos respeta a los demás y a nosotros mismos."
+      }
+     ]
+    },
+    {
+     "id": "afecto-y-familia",
+     "nombre": "Afecto y vida en familia",
+     "emoji": "👨‍👩‍👧‍👦",
+     "oa": "OA 3 y OA 7: Valorar las expresiones de afecto que doy y recibo, y reconocer y participar en mis grupos de pertenencia (familia, curso, pares).",
+     "intro": "Descubro cómo doy y recibo cariño, y por qué mi familia y mi curso son importantes.",
+     "items": [
+      {
+       "t": "Mi familia me cuida",
+       "d": "En mi familia me protegen, me alimentan y me enseñan cosas nuevas.",
+       "e": "🏠",
+       "en": "My family cares for me"
+      },
+      {
+       "t": "Hay muchas familias",
+       "d": "Todas las familias son distintas y todas son valiosas.",
+       "e": "💞",
+       "en": "Many kinds of families"
+      },
+      {
+       "t": "Dar y recibir cariño",
+       "d": "Un abrazo, una sonrisa o ayudar son formas de mostrar afecto.",
+       "e": "🤗",
+       "en": "Giving and receiving affection"
+      },
+      {
+       "t": "Mi curso también es mi grupo",
+       "d": "En mi curso tengo compañeros y profesores que son parte de mi vida.",
+       "e": "🏫",
+       "en": "My class is my group too"
+      },
+      {
+       "t": "Participar y colaborar",
+       "d": "Ordenar mis juguetes o poner la mesa es mi forma de aportar en casa.",
+       "e": "🧹",
+       "en": "Taking part and helping"
+      },
+      {
+       "t": "Dar las gracias",
+       "d": "Agradecer lo que otros hacen por mí es una forma de cariño.",
+       "e": "🙏",
+       "en": "Saying thank you"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Chile muchas familias viven con abuelos, tíos o primos en la misma casa?",
+      "¿Sabías que… un abrazo puede hacer que te sientas más tranquilo y contento?"
+     ],
+     "retos": [
+      {
+       "q": "Tu abuela te teje un chaleco con mucho cariño. ¿Cuál es una buena forma de mostrarle afecto de vuelta?",
+       "ops": [
+        "Guardarlo sin decir nada",
+        "Darle las gracias y un abrazo",
+        "Decir que no te gusta"
+       ],
+       "correcta": 1,
+       "porque": "Agradecer y abrazar es dar afecto a quien nos entrega cariño; así valoramos lo que recibimos."
+      },
+      {
+       "q": "Tu mamá cocinó la cena para toda la familia. ¿Cómo participas y colaboras en casa?",
+       "ops": [
+        "Irme a jugar y dejar todo",
+        "Ayudar a poner o levantar la mesa",
+        "Pedir otra comida distinta"
+       ],
+       "correcta": 1,
+       "porque": "Colaborar en las tareas del hogar es participar en mi familia y agradecer a quienes me cuidan."
+      }
+     ]
+    },
+    {
+     "id": "amigos-y-convivencia",
+     "nombre": "Amigos y buena convivencia",
+     "emoji": "🤝",
+     "oa": "OA 5 y OA 6: Manifestar actitudes de solidaridad y buen trato, e identificar conflictos entre pares y practicar formas de solucionarlos.",
+     "intro": "Aprendo a tratar bien a los demás, compartir y resolver problemas conversando.",
+     "items": [
+      {
+       "t": "Buen trato",
+       "d": "Saludar, despedirse y pedir las cosas 'por favor' es tratar bien a los demás.",
+       "e": "🙂",
+       "en": "Good manners"
+      },
+      {
+       "t": "Compartir",
+       "d": "Prestar mis cosas y esperar mi turno hace que todos jueguen felices.",
+       "e": "🎁",
+       "en": "Sharing"
+      },
+      {
+       "t": "Escuchar al otro",
+       "d": "Cuando hay un problema, escuchar y ponerme en el lugar del otro ayuda mucho.",
+       "e": "👂",
+       "en": "Listening to others"
+      },
+      {
+       "t": "Buscar un acuerdo",
+       "d": "Conversar y buscar una solución juntos es mejor que pelear.",
+       "e": "💬",
+       "en": "Finding an agreement"
+      },
+      {
+       "t": "Pedir perdón y reconciliarse",
+       "d": "Si hago algo mal, decir 'perdón' ayuda a arreglar las cosas.",
+       "e": "🤗",
+       "en": "Saying sorry and making up"
+      },
+      {
+       "t": "Incluir a todos",
+       "d": "Molestar o dejar solo a un compañero no es un juego; incluir a todos es solidaridad.",
+       "e": "🌍",
+       "en": "Including everyone"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… decir 'por favor' y 'gracias' hace que la gente quiera jugar más contigo?",
+      "¿Sabías que… cuando incluyes a alguien que está solo, ambos se sienten más felices?"
+     ],
+     "retos": [
+      {
+       "q": "Dos compañeros quieren el mismo columpio al mismo tiempo. ¿Cuál es la mejor forma de solucionar el conflicto?",
+       "ops": [
+        "Empujarse hasta que uno gane",
+        "Turnarse: uno primero y luego el otro",
+        "Nadie lo usa y se quedan enojados"
+       ],
+       "correcta": 1,
+       "porque": "Turnarse y conversar resuelve el conflicto de forma pacífica y respeta a los dos."
+      },
+      {
+       "q": "Ves que unos niños dejan solo a Matías y no lo dejan jugar. ¿Qué es lo solidario?",
+       "ops": [
+        "Reírme con los demás",
+        "Invitar a Matías a jugar conmigo",
+        "Irme sin decir nada"
+       ],
+       "correcta": 1,
+       "porque": "Incluir a quien está excluido es un acto de solidaridad y favorece la buena convivencia."
+      }
+     ]
+    },
+    {
+     "id": "me-cuido",
+     "nombre": "Me cuido y estoy seguro",
+     "emoji": "🛡️",
+     "oa": "OA 4: Identificar y practicar, en forma guiada, conductas protectoras y de autocuidado (higiene, descanso, alimentación, resguardo del cuerpo y la intimidad, información personal).",
+     "intro": "Aprendo a cuidar mi cuerpo, mi salud y mi seguridad.",
+     "items": [
+      {
+       "t": "Lavarme las manos",
+       "d": "Lavarme bien las manos me protege de los gérmenes que enferman.",
+       "e": "🧼",
+       "en": "Washing my hands"
+      },
+      {
+       "t": "Comer sano",
+       "d": "Comer frutas, verduras y tomar agua me mantiene sano y fuerte.",
+       "e": "🍎",
+       "en": "Eating healthy"
+      },
+      {
+       "t": "Descansar y jugar",
+       "d": "Dormir bien y jugar al aire libre le hacen bien a mi cuerpo.",
+       "e": "😴",
+       "en": "Rest and play"
+      },
+      {
+       "t": "Mi cuerpo es mío",
+       "d": "Nadie debe tocar mi cuerpo sin mi permiso; hay partes que son privadas.",
+       "e": "🚫",
+       "en": "My body is mine"
+      },
+      {
+       "t": "Cuidar mis datos",
+       "d": "No doy mi nombre completo, dirección ni teléfono a desconocidos.",
+       "e": "🔒",
+       "en": "Protecting my information"
+      },
+      {
+       "t": "Pedir ayuda a un adulto",
+       "d": "Si algo me incomoda o me da miedo, aviso a un adulto de confianza.",
+       "e": "🙋",
+       "en": "Asking a trusted adult"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… lavarte las manos por 20 segundos elimina muchos gérmenes que causan enfermedades?",
+      "¿Sabías que… dormir bien ayuda a tu cerebro a recordar lo que aprendiste en el día?"
+     ],
+     "retos": [
+      {
+       "q": "Un adulto que no conoces te pregunta dónde vives y cómo te llamas. ¿Qué haces?",
+       "ops": [
+        "Le doy mi dirección y mi nombre completo",
+        "No le doy mis datos y aviso a un adulto de confianza",
+        "Lo acompaño a su auto"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar mi información personal y avisar a un adulto de confianza me mantiene seguro."
+      },
+      {
+       "q": "Vas a comer y no te lavaste las manos después de jugar en el patio. ¿Qué es lo más protector?",
+       "ops": [
+        "Comer igual, no pasa nada",
+        "Lavarme las manos antes de comer",
+        "Limpiarme solo en la ropa"
+       ],
+       "correcta": 1,
+       "porque": "Lavarse las manos antes de comer es una conducta de autocuidado que evita enfermedades."
+      }
+     ]
+    },
+    {
+     "id": "soy-buen-estudiante",
+     "nombre": "Aprendo con esfuerzo",
+     "emoji": "📚",
+     "oa": "OA 8: Practicar hábitos y actitudes que favorezcan el aprendizaje, como cuidar los útiles, mantener el orden y reconocer lo que voy aprendiendo.",
+     "intro": "Aprendo a cuidar mis materiales, mantener el orden y esforzarme para aprender.",
+     "items": [
+      {
+       "t": "Traer y cuidar mis útiles",
+       "d": "Cuidar mis lápices y cuadernos y traerlos me ayuda a trabajar mejor.",
+       "e": "✏️",
+       "en": "Bringing and caring for my supplies"
+      },
+      {
+       "t": "Mantener el orden",
+       "d": "Tener ordenada mi sala y mi puesto hace más fácil encontrar mis cosas.",
+       "e": "🧺",
+       "en": "Keeping things tidy"
+      },
+      {
+       "t": "Esfuerzo",
+       "d": "Aunque algo sea difícil, intentarlo con ganas me ayuda a aprender.",
+       "e": "🚀",
+       "en": "Effort"
+      },
+      {
+       "t": "Perseverancia",
+       "d": "Si no me sale a la primera, sigo intentando hasta lograrlo.",
+       "e": "🧗",
+       "en": "Perseverance"
+      },
+      {
+       "t": "Ser honesto",
+       "d": "Decir la verdad, aunque cueste, muestra que soy honesto.",
+       "e": "🫱",
+       "en": "Honesty"
+      },
+      {
+       "t": "Aprender de mis errores",
+       "d": "Equivocarse está bien; lo importante es aprender y mejorar.",
+       "e": "🌟",
+       "en": "Learning from mistakes"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… equivocarse ayuda a tu cerebro a aprender mejor la próxima vez?",
+      "¿Sabías que… tener ordenado tu puesto te hace perder menos tiempo buscando tus cosas?"
+     ],
+     "retos": [
+      {
+       "q": "Mañana tienes que traer tus témperas para la clase de arte. ¿Qué hábito muestra responsabilidad?",
+       "ops": [
+        "Dejarlas listas hoy en mi mochila",
+        "Esperar que la profesora me las preste",
+        "Olvidarlas, no importa"
+       ],
+       "correcta": 0,
+       "porque": "Preparar y cuidar mis útiles con anticipación es un hábito que favorece mi aprendizaje."
+      },
+      {
+       "q": "Un ejercicio de matemáticas te sale mal la primera vez. ¿Qué actitud te ayuda a aprender?",
+       "ops": [
+        "Rendirme y no seguir",
+        "Volver a intentarlo con esfuerzo",
+        "Copiar la respuesta de otro"
+       ],
+       "correcta": 1,
+       "porque": "El esfuerzo y la perseverancia me ayudan a aprender; copiar no me enseña ni es honesto."
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "me-conozco",
+     "nombre": "Me conozco y me cuido",
+     "emoji": "🌟",
+     "oa": "OA 1: Observar, describir y valorar sus características personales, sus habilidades e intereses. OA 4: Identificar y practicar, en forma guiada, conductas protectoras y de autocuidado (higiene, descanso, alimentación, resguardo del cuerpo).",
+     "intro": "Aprendemos quiénes somos, qué nos gusta y qué hacemos bien, y cómo cuidar nuestro cuerpo con cariño.",
+     "items": [
+      {
+       "t": "Características personales",
+       "d": "Son las cosas que te hacen ser tú: tu nombre, tu forma de ser y tus gustos.",
+       "e": "🪞",
+       "en": "Personal traits"
+      },
+      {
+       "t": "Habilidades",
+       "d": "Son las cosas que haces bien, como dibujar, correr o ayudar a otros.",
+       "e": "💪",
+       "en": "Skills"
+      },
+      {
+       "t": "Intereses",
+       "d": "Son los temas y juegos que te gustan y te dan curiosidad.",
+       "e": "🔎",
+       "en": "Interests"
+      },
+      {
+       "t": "Autocuidado",
+       "d": "Es cuidar tu cuerpo: dormir bien, lavarte las manos y comer sano.",
+       "e": "🧼",
+       "en": "Self-care"
+      },
+      {
+       "t": "Higiene",
+       "d": "Es mantenerte limpio, como lavarte los dientes y las manos.",
+       "e": "🪥",
+       "en": "Hygiene"
+      },
+      {
+       "t": "Descanso",
+       "d": "Es dormir y hacer pausas para que tu cuerpo tenga energía.",
+       "e": "😴",
+       "en": "Rest"
+      }
+     ],
+     "datos": [
+      "¿Sabías que cada persona en el mundo tiene una huella en sus dedos distinta, igual que tú eres único?",
+      "¿Sabías que dormir bien ayuda a tu cerebro a recordar mejor lo que aprendes en el colegio?"
+     ],
+     "retos": [
+      {
+       "q": "Camila quiere presentarse al curso, pero cree que no tiene nada especial. ¿Qué le dirías?",
+       "ops": [
+        "Que todos tienen habilidades e intereses distintos, como los suyos",
+        "Que copie los gustos de otra compañera",
+        "Que mejor no se presente"
+       ],
+       "correcta": 0,
+       "porque": "Cada persona tiene características, habilidades e intereses propios que la hacen valiosa y única; reconocerlos es parte de conocerse."
+      },
+      {
+       "q": "Es tarde en la noche y Martín quiere seguir jugando en vez de dormir. ¿Qué es autocuidado?",
+       "ops": [
+        "Jugar hasta muy tarde aunque quede cansado",
+        "Ir a dormir para descansar y tener energía mañana",
+        "Comer dulces para no tener sueño"
+       ],
+       "correcta": 1,
+       "porque": "El autocuidado incluye descansar bien; dormir lo suficiente cuida el cuerpo y ayuda a aprender mejor al día siguiente."
+      }
+     ]
+    },
+    {
+     "id": "mis-emociones",
+     "nombre": "Mis emociones y las de los demás",
+     "emoji": "❤️",
+     "oa": "OA 2: Identificar emociones experimentadas por ellos y por los demás (pena, rabia, miedo, alegría) y distinguir diversas formas de expresarlas.",
+     "intro": "Descubrimos qué sentimos, cómo expresarlo de buena forma y cómo entender lo que sienten los demás.",
+     "items": [
+      {
+       "t": "Emociones",
+       "d": "Son lo que sientes por dentro: alegría, pena, rabia o miedo.",
+       "e": "😊",
+       "en": "Emotions"
+      },
+      {
+       "t": "Alegría",
+       "d": "Emoción que sientes cuando algo bueno te pasa y quieres sonreír.",
+       "e": "😄",
+       "en": "Joy"
+      },
+      {
+       "t": "Pena",
+       "d": "Emoción de tristeza; está bien sentirla y buscar consuelo.",
+       "e": "😢",
+       "en": "Sadness"
+      },
+      {
+       "t": "Rabia",
+       "d": "Emoción que sientes cuando algo te molesta o es injusto.",
+       "e": "😠",
+       "en": "Anger"
+      },
+      {
+       "t": "Miedo",
+       "d": "Emoción que sientes cuando algo te asusta; avisa que hay que cuidarse.",
+       "e": "😨",
+       "en": "Fear"
+      },
+      {
+       "t": "Expresar",
+       "d": "Es contar con palabras lo que sientes, sin gritar ni golpear.",
+       "e": "🗣️",
+       "en": "To express"
+      }
+     ],
+     "datos": [
+      "¿Sabías que las personas podemos sentir más de una emoción a la vez, como estar contentos y nerviosos al mismo tiempo?",
+      "¿Sabías que poner nombre a lo que sientes, como decir 'tengo rabia', ayuda a tu cerebro a calmarse?"
+     ],
+     "retos": [
+      {
+       "q": "Estás muy enojado porque no te sale un dibujo. ¿Cuál es la mejor forma de expresar esa rabia?",
+       "ops": [
+        "Romper el dibujo y gritar",
+        "Decir 'me siento con rabia' y pedir ayuda o descansar un poco",
+        "Tirarle el lápiz a un compañero"
+       ],
+       "correcta": 1,
+       "porque": "Expresar la emoción con palabras y buscar una solución es una forma sana de expresarla, sin hacernos daño ni dañar a otros."
+      },
+      {
+       "q": "Tu amiga tiene miedo de participar frente al curso. ¿Cómo la ayudas a entender su emoción?",
+       "ops": [
+        "Le dices que el miedo es normal y que puedes acompañarla",
+        "Te ríes porque tiene miedo",
+        "Le dices que es una tonta por asustarse"
+       ],
+       "correcta": 0,
+       "porque": "Reconocer las emociones de los demás y acompañarlas ayuda a que aprendan a expresarlas; el miedo es una emoción normal que todos sentimos."
+      }
+     ]
+    },
+    {
+     "id": "afecto-convivencia",
+     "nombre": "Afecto y buen trato",
+     "emoji": "🤝",
+     "oa": "OA 3: Observar, describir y valorar las expresiones de afecto y cariño que dan y reciben en los ámbitos familiar, escolar y social. OA 5: Manifestar actitudes de solidaridad y respeto que favorezcan la convivencia (buen trato, respetar turnos, compartir).",
+     "intro": "Aprendemos a dar y recibir cariño, y a tratar bien a los demás para convivir en paz.",
+     "items": [
+      {
+       "t": "Afecto",
+       "d": "Es el cariño que damos y recibimos, como un abrazo o una palabra amable.",
+       "e": "🫂",
+       "en": "Affection"
+      },
+      {
+       "t": "Respeto",
+       "d": "Es tratar bien a los demás y valorar sus diferencias.",
+       "e": "🙏",
+       "en": "Respect"
+      },
+      {
+       "t": "Buen trato",
+       "d": "Hablar con amabilidad y sin apodos que hagan sentir mal.",
+       "e": "😌",
+       "en": "Kindness"
+      },
+      {
+       "t": "Solidaridad",
+       "d": "Ayudar a los demás cuando lo necesitan, sin esperar nada a cambio.",
+       "e": "💞",
+       "en": "Solidarity"
+      },
+      {
+       "t": "Turno",
+       "d": "Esperar tu momento para hablar o jugar, sin quitarle a otros.",
+       "e": "⏳",
+       "en": "Turn"
+      },
+      {
+       "t": "Compartir",
+       "d": "Prestar tus cosas y jugar junto a los demás.",
+       "e": "👐",
+       "en": "To share"
+      }
+     ],
+     "datos": [
+      "¿Sabías que decir 'por favor' y 'gracias' hace que las personas quieran ayudarte más?",
+      "¿Sabías que escuchar a alguien con atención es una forma de demostrarle cariño y respeto?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero le pone un apodo feo a otro y este se pone triste. ¿Qué haces?",
+       "ops": [
+        "Te ríes también del apodo",
+        "Le pides que pare y acompañas al que está triste",
+        "No dices nada y te vas"
+       ],
+       "correcta": 1,
+       "porque": "El buen trato y la solidaridad incluyen defender a quien sufre; pedir que paren y acompañar cuida la sana convivencia."
+      },
+      {
+       "q": "Tu abuela te da un abrazo cuando llegas a casa. ¿Cómo respondes a esa muestra de afecto?",
+       "ops": [
+        "Le devuelves el cariño con un abrazo o unas gracias",
+        "La ignoras y sigues de largo",
+        "Le dices que no te moleste"
+       ],
+       "correcta": 0,
+       "porque": "Valorar y devolver las expresiones de afecto fortalece los vínculos con la familia y quienes nos quieren."
+      }
+     ]
+    },
+    {
+     "id": "convivencia-conflictos",
+     "nombre": "Resuelvo conflictos en paz",
+     "emoji": "🕊️",
+     "oa": "OA 6: Identificar conflictos que surgen entre pares y practicar formas de solucionarlos, como escuchar al otro, ponerse en su lugar, buscar un acuerdo y reconciliarse.",
+     "intro": "Aprendemos que todos tenemos problemas a veces, y que se pueden resolver conversando y sin pelear.",
+     "items": [
+      {
+       "t": "Conflicto",
+       "d": "Es un problema o desacuerdo entre dos o más personas.",
+       "e": "⚡",
+       "en": "Conflict"
+      },
+      {
+       "t": "Diálogo",
+       "d": "Conversar con calma para resolver un problema sin pelear.",
+       "e": "💬",
+       "en": "Dialogue"
+      },
+      {
+       "t": "Ponerse en su lugar",
+       "d": "Es imaginar cómo se siente el otro para entenderlo.",
+       "e": "🔄",
+       "en": "To empathize"
+      },
+      {
+       "t": "Acuerdo",
+       "d": "Es una solución que deja contentas a las dos personas.",
+       "e": "🤝",
+       "en": "Agreement"
+      },
+      {
+       "t": "Reconciliarse",
+       "d": "Volver a estar bien con alguien después de un enojo.",
+       "e": "🫱🏻‍🫲🏽",
+       "en": "To make up"
+      },
+      {
+       "t": "Escuchar",
+       "d": "Prestar atención a lo que dice el otro sin interrumpir.",
+       "e": "👂",
+       "en": "To listen"
+      }
+     ],
+     "datos": [
+      "¿Sabías que muchos problemas se solucionan solo conversando con calma en vez de pelear?",
+      "¿Sabías que pedir perdón y perdonar ayuda a que la rabia desaparezca más rápido?"
+     ],
+     "retos": [
+      {
+       "q": "Dos compañeros quieren la misma pelota en el recreo y empiezan a discutir. ¿Cuál es la mejor solución?",
+       "ops": [
+        "Que se quede con la pelota el más grande",
+        "Conversar y llegar a un acuerdo para turnarse",
+        "Esconder la pelota para que nadie la use"
+       ],
+       "correcta": 1,
+       "porque": "El diálogo y buscar un acuerdo permiten que ambos disfruten; así se resuelve el conflicto en paz, escuchándose y respetándose."
+      },
+      {
+       "q": "Te enojaste con tu amiga y ahora los dos están tristes. ¿Qué ayuda a reconciliarse?",
+       "ops": [
+        "No hablarle nunca más",
+        "Conversar, pedir perdón y ponerse en su lugar",
+        "Contarles a todos que es mala"
+       ],
+       "correcta": 1,
+       "porque": "Reconciliarse implica escuchar, ponerse en el lugar del otro y buscar un acuerdo; así se recupera la amistad y la buena convivencia."
+      }
+     ]
+    },
+    {
+     "id": "pertenencia-trabajo",
+     "nombre": "Mis grupos y mi trabajo escolar",
+     "emoji": "🏡",
+     "oa": "OA 7: Reconocer, describir y valorar sus grupos de pertenencia (familia, curso, pares) y participar activamente en ellos. OA 8: Practicar hábitos y actitudes que favorezcan el proceso de aprendizaje (cuidar los útiles, mantener el orden, valorar lo aprendido).",
+     "intro": "Descubrimos los grupos a los que pertenecemos y cómo ayudar en casa y en la sala para aprender mejor.",
+     "items": [
+      {
+       "t": "Familia",
+       "d": "Las personas que te cuidan y te quieren en tu hogar.",
+       "e": "👨‍👩‍👧",
+       "en": "Family"
+      },
+      {
+       "t": "Grupo de pertenencia",
+       "d": "Un grupo del que eres parte, como tu familia, tu curso o tus amigos.",
+       "e": "👥",
+       "en": "Group you belong to"
+      },
+      {
+       "t": "Participar",
+       "d": "Aportar y colaborar en las tareas de tu grupo.",
+       "e": "🙋",
+       "en": "To take part"
+      },
+      {
+       "t": "Colaborar",
+       "d": "Ayudar en las tareas del hogar y de la escuela.",
+       "e": "🤲",
+       "en": "To help out"
+      },
+      {
+       "t": "Orden",
+       "d": "Mantener tus útiles y tu espacio ordenados para encontrarlos.",
+       "e": "🧹",
+       "en": "Tidiness"
+      },
+      {
+       "t": "Gratitud",
+       "d": "Dar las gracias a quienes te ayudan y te cuidan.",
+       "e": "🙌",
+       "en": "Gratitude"
+      }
+     ],
+     "datos": [
+      "¿Sabías que ayudar en casa, como poner la mesa, hace que tu familia funcione mejor como un equipo?",
+      "¿Sabías que cuidar y ordenar tus útiles escolares te ayuda a encontrarlos rápido y aprender mejor?"
+     ],
+     "retos": [
+      {
+       "q": "Tu abuela te preparó una once rica después de un día de trabajo. ¿Cómo participas y agradeces en tu familia?",
+       "ops": [
+        "Comes y te vas sin decir nada",
+        "Le das las gracias y ayudas a recoger la mesa",
+        "Le reclamas que querías otra cosa"
+       ],
+       "correcta": 1,
+       "porque": "Valorar a tu familia y colaborar en las tareas del hogar demuestra pertenencia y agradece el esfuerzo de quienes te cuidan."
+      },
+      {
+       "q": "Terminaste de trabajar y tu mesa quedó con lápices y papeles por todas partes. ¿Qué hábito favorece tu aprendizaje?",
+       "ops": [
+        "Dejar todo desordenado y salir corriendo",
+        "Ordenar y cuidar tus útiles antes de terminar",
+        "Botar los lápices para no ordenarlos"
+       ],
+       "correcta": 1,
+       "porque": "Mantener el orden y cuidar los útiles es un hábito de trabajo escolar que ayuda a que la sala y tú estén listos para aprender."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "me-conozco",
+     "nombre": "Me conozco y me cuido",
+     "emoji": "🪞",
+     "oa": "Crecimiento personal: Reconocer y valorar sus características, intereses, fortalezas y emociones para favorecer su autoestima y autoconocimiento.",
+     "intro": "Descubrimos quiénes somos, qué sentimos y cómo cuidarnos con cariño.",
+     "items": [
+      {
+       "t": "Autoestima",
+       "d": "Es quererte y sentir que vales mucho tal como eres.",
+       "e": "💖",
+       "en": "Self-esteem"
+      },
+      {
+       "t": "Fortalezas",
+       "d": "Son las cosas que haces bien, como dibujar, correr o ayudar.",
+       "e": "💪",
+       "en": "Strengths"
+      },
+      {
+       "t": "Emociones",
+       "d": "Lo que sientes por dentro: alegría, pena, rabia o miedo.",
+       "e": "😊",
+       "en": "Emotions"
+      },
+      {
+       "t": "Autoconocimiento",
+       "d": "Conocerte a ti mismo: lo que te gusta, lo que sientes y cómo eres.",
+       "e": "🔍",
+       "en": "Self-awareness"
+      },
+      {
+       "t": "Identidad",
+       "d": "Todo lo que te hace ser tú: tu nombre, tu familia y tus gustos.",
+       "e": "🧑",
+       "en": "Identity"
+      },
+      {
+       "t": "Confianza",
+       "d": "Creer que puedes intentar cosas nuevas aunque cueste.",
+       "e": "🌟",
+       "en": "Confidence"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… respirar despacio tres veces ayuda a calmar la rabia y el miedo?",
+      "¿Sabías que… cada persona del mundo tiene fortalezas distintas, y por eso nadie es igual a ti?"
+     ],
+     "retos": [
+      {
+       "q": "Sofía se equivocó en una prueba y piensa 'soy muy tonta'. ¿Qué le dirías para cuidar su autoestima?",
+       "ops": [
+        "Que se rinda porque no sirve",
+        "Que un error no la hace tonta y puede aprender de él",
+        "Que copie la próxima vez"
+       ],
+       "correcta": 1,
+       "porque": "Equivocarse es parte de aprender; una buena autoestima nos ayuda a intentarlo de nuevo sin sentirnos menos."
+      },
+      {
+       "q": "Sientes mucha rabia porque perdiste un juego. ¿Cuál es la mejor forma de cuidarte?",
+       "ops": [
+        "Respirar hondo y calmarte antes de actuar",
+        "Gritar y empujar a los demás",
+        "Guardar la rabia sin decir nada nunca"
+       ],
+       "correcta": 0,
+       "porque": "Reconocer la emoción y respirar te ayuda a calmarte y a decidir bien, sin hacer daño a otros ni a ti."
+      }
+     ]
+    },
+    {
+     "id": "respeto-convivencia",
+     "nombre": "Respeto y buena convivencia",
+     "emoji": "🤝",
+     "oa": "Relaciones interpersonales: Practicar el respeto, el diálogo y actitudes de buena convivencia con las personas de su entorno.",
+     "intro": "Aprendemos a tratar bien a los demás para vivir juntos en paz.",
+     "items": [
+      {
+       "t": "Respeto",
+       "d": "Tratar a los demás con buen trato, como te gusta que te traten a ti.",
+       "e": "🙏",
+       "en": "Respect"
+      },
+      {
+       "t": "Convivencia",
+       "d": "Compartir y llevarse bien con las personas que te rodean.",
+       "e": "👫",
+       "en": "Living together"
+      },
+      {
+       "t": "Escuchar",
+       "d": "Poner atención cuando otro habla, sin interrumpir.",
+       "e": "👂",
+       "en": "Listening"
+      },
+      {
+       "t": "Tolerancia",
+       "d": "Aceptar que los demás piensan o son distintos a ti.",
+       "e": "🌈",
+       "en": "Tolerance"
+      },
+      {
+       "t": "Amabilidad",
+       "d": "Decir palabras suaves y ayudar con una sonrisa.",
+       "e": "😇",
+       "en": "Kindness"
+      },
+      {
+       "t": "Acuerdo",
+       "d": "Ponerse de acuerdo para que todos queden contentos.",
+       "e": "✅",
+       "en": "Agreement"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… decir 'por favor' y 'gracias' hace que las personas quieran ayudarte más?",
+      "¿Sabías que… en Chile las culturas mapuche y aymara enseñan a respetar a los mayores y a la naturaleza?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero nuevo habla distinto porque viene de otro país. Algunos se ríen de él. ¿Qué haces tú?",
+       "ops": [
+        "Te ríes también para no quedar fuera",
+        "Lo saludas y le muestras respeto por ser diferente",
+        "Lo ignoras todo el día"
+       ],
+       "correcta": 1,
+       "porque": "El respeto y la tolerancia significan tratar bien a todos, aunque hablen o sean distintos a nosotros."
+      },
+      {
+       "q": "Dos amigos quieren jugar cosas diferentes en el recreo y empiezan a pelear. ¿Cuál es la mejor idea?",
+       "ops": [
+        "Que gane el más fuerte",
+        "Llegar a un acuerdo y turnarse los juegos",
+        "Que cada uno juegue solo enojado"
+       ],
+       "correcta": 1,
+       "porque": "Buscar un acuerdo y turnarse es una forma justa de convivir bien y que ambos queden contentos."
+      }
+     ]
+    },
+    {
+     "id": "responsabilidad-honestidad",
+     "nombre": "Responsabilidad y honestidad",
+     "emoji": "🎯",
+     "oa": "Trabajo escolar: Practicar la responsabilidad en sus deberes y actuar con honestidad en la escuela y el hogar.",
+     "intro": "Cumplir lo que prometemos y decir la verdad nos hace personas confiables.",
+     "items": [
+      {
+       "t": "Responsabilidad",
+       "d": "Cumplir tus tareas y deberes aunque nadie te esté mirando.",
+       "e": "📋",
+       "en": "Responsibility"
+      },
+      {
+       "t": "Honestidad",
+       "d": "Decir siempre la verdad y no engañar a los demás.",
+       "e": "🕊️",
+       "en": "Honesty"
+      },
+      {
+       "t": "Compromiso",
+       "d": "Cumplir lo que prometes hacer.",
+       "e": "🤞",
+       "en": "Commitment"
+      },
+      {
+       "t": "Esfuerzo",
+       "d": "Poner ganas y no rendirse aunque algo sea difícil.",
+       "e": "🧗",
+       "en": "Effort"
+      },
+      {
+       "t": "Deberes",
+       "d": "Las cosas que te toca hacer, como estudiar u ordenar.",
+       "e": "📚",
+       "en": "Duties"
+      },
+      {
+       "t": "Confiable",
+       "d": "Ser alguien en quien los demás pueden confiar.",
+       "e": "🛡️",
+       "en": "Trustworthy"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cuando cumples lo que prometes, las personas confían más en ti?",
+      "¿Sabías que… decir la verdad aunque cueste te ayuda a dormir tranquilo y sin preocupaciones?"
+     ],
+     "retos": [
+      {
+       "q": "Rompiste sin querer el florero de tu abuela y nadie te vio. ¿Qué es lo honesto?",
+       "ops": [
+        "Esconderlo y decir que fue el gato",
+        "Contar la verdad y ofrecer ayudar a arreglarlo",
+        "Culpar a tu hermano"
+       ],
+       "correcta": 1,
+       "porque": "La honestidad es decir la verdad aunque cueste; reconocer el error muestra responsabilidad y valentía."
+      },
+      {
+       "q": "Prometiste cuidar la mascota de un amigo, pero llegó un panorama divertido. ¿Qué haces?",
+       "ops": [
+        "Cumplo mi compromiso de cuidarla primero",
+        "Me voy al panorama y olvido la mascota",
+        "Dejo la mascota sola encerrada"
+       ],
+       "correcta": 0,
+       "porque": "Ser responsable es cumplir lo que prometiste; un compromiso se respeta aunque aparezca algo más entretenido."
+      }
+     ]
+    },
+    {
+     "id": "empatia-amistad",
+     "nombre": "Empatía y amistad",
+     "emoji": "💞",
+     "oa": "Relaciones interpersonales: Reconocer y respetar las emociones de los demás, actuando con empatía y solidaridad.",
+     "intro": "Ponernos en el lugar del otro nos ayuda a ser mejores amigos.",
+     "items": [
+      {
+       "t": "Empatía",
+       "d": "Entender y sentir lo que le pasa a otra persona.",
+       "e": "🫂",
+       "en": "Empathy"
+      },
+      {
+       "t": "Solidaridad",
+       "d": "Ayudar a quien lo necesita sin esperar nada a cambio.",
+       "e": "🤲",
+       "en": "Solidarity"
+      },
+      {
+       "t": "Amistad",
+       "d": "Un cariño especial entre personas que se cuidan.",
+       "e": "🧑‍🤝‍🧑",
+       "en": "Friendship"
+      },
+      {
+       "t": "Compañerismo",
+       "d": "Apoyar a tus compañeros y trabajar en equipo.",
+       "e": "🤗",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Consuelo",
+       "d": "Acompañar y dar ánimo a quien está triste.",
+       "e": "🥲",
+       "en": "Comfort"
+      },
+      {
+       "t": "Perdón",
+       "d": "Dejar de estar enojado y reconciliarse.",
+       "e": "🕊️",
+       "en": "Forgiveness"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cuando ayudas a alguien, tu cerebro libera algo que te hace sentir feliz a ti también?",
+      "¿Sabías que… un simple abrazo puede bajar la tristeza y el estrés de una persona?"
+     ],
+     "retos": [
+      {
+       "q": "Ves que un compañero está solo y triste en el recreo. Usando la empatía, ¿qué harías?",
+       "ops": [
+        "Lo dejas solo, no es tu problema",
+        "Te acercas, le preguntas cómo está y lo invitas a jugar",
+        "Le dices que deje de estar triste"
+       ],
+       "correcta": 1,
+       "porque": "La empatía es entender lo que siente el otro; acercarte e invitarlo muestra compañerismo y cariño."
+      },
+      {
+       "q": "Tu amiga se cayó y se le rompió su colación. Tú tienes dos. ¿Qué te dice la solidaridad?",
+       "ops": [
+        "Compartir una de tus colaciones con ella",
+        "Comerte las dos rápido",
+        "Reírte de su caída"
+       ],
+       "correcta": 0,
+       "porque": "La solidaridad es ayudar a quien lo necesita; compartir tu colación demuestra empatía y amistad."
+      }
+     ]
+    },
+    {
+     "id": "cuido-mi-planeta",
+     "nombre": "Cuido mi entorno y mi planeta",
+     "emoji": "🌎",
+     "oa": "Participación y pertenencia: Reconocer su responsabilidad en el cuidado del entorno, la escuela y el medioambiente.",
+     "intro": "Cuidar la naturaleza y nuestro colegio es tarea de todos.",
+     "items": [
+      {
+       "t": "Medioambiente",
+       "d": "Todo lo que nos rodea: el aire, el agua, las plantas y animales.",
+       "e": "🌿",
+       "en": "Environment"
+      },
+      {
+       "t": "Reciclar",
+       "d": "Separar la basura para volver a usar los materiales.",
+       "e": "♻️",
+       "en": "Recycling"
+      },
+      {
+       "t": "Cuidar el agua",
+       "d": "No malgastar el agua, como cerrar la llave al lavarte.",
+       "e": "💧",
+       "en": "Saving water"
+      },
+      {
+       "t": "Naturaleza",
+       "d": "Las plantas, ríos, cerros y animales que debemos proteger.",
+       "e": "🏔️",
+       "en": "Nature"
+      },
+      {
+       "t": "Basura",
+       "d": "Los desechos que debemos botar en su lugar y reducir.",
+       "e": "🗑️",
+       "en": "Trash"
+      },
+      {
+       "t": "Respeto animal",
+       "d": "Tratar con cariño a los animales y no hacerles daño.",
+       "e": "🐾",
+       "en": "Animal care"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… una botella de plástico puede tardar cientos de años en desaparecer si no se recicla?",
+      "¿Sabías que… en Chile vive el pudú, el ciervo más pequeño del mundo, y debemos cuidar su bosque?"
+     ],
+     "retos": [
+      {
+       "q": "En el patio del colegio ves papeles y latas en el suelo. ¿Qué es lo responsable con el planeta?",
+       "ops": [
+        "Dejarlos, alguien los recogerá",
+        "Recogerlos y ponerlos en el reciclaje que corresponde",
+        "Patearlos a otro rincón"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar el entorno es responsabilidad de todos; reciclar bien ayuda a mantener limpio y sano nuestro planeta."
+      },
+      {
+       "q": "Te lavas los dientes y dejas la llave abierta todo el rato. ¿Qué decisión cuida el medioambiente?",
+       "ops": [
+        "Cerrar la llave mientras cepillas y abrirla al enjuagar",
+        "Dejarla abierta, hay agua de sobra",
+        "Abrir también otra llave"
+       ],
+       "correcta": 0,
+       "porque": "El agua es un recurso valioso; cerrar la llave evita malgastarla y cuida el medioambiente."
+      }
+     ]
+    },
+    {
+     "id": "seguro-y-sano",
+     "nombre": "Vivo seguro y saludable",
+     "emoji": "🛡️",
+     "oa": "Bienestar y autocuidado: Practicar hábitos de vida saludable y conductas de autocuidado y seguridad personal.",
+     "intro": "Aprendemos hábitos sanos y a pedir ayuda para estar seguros.",
+     "items": [
+      {
+       "t": "Hábitos sanos",
+       "d": "Comer frutas, dormir bien y moverte cada día.",
+       "e": "🥗",
+       "en": "Healthy habits"
+      },
+      {
+       "t": "Higiene",
+       "d": "Lavarte las manos y los dientes para no enfermarte.",
+       "e": "🧼",
+       "en": "Hygiene"
+      },
+      {
+       "t": "Actividad física",
+       "d": "Jugar y moverte para tener un cuerpo fuerte y sano.",
+       "e": "🏃",
+       "en": "Physical activity"
+      },
+      {
+       "t": "Pedir ayuda",
+       "d": "Avisar a un adulto de confianza cuando algo te asusta o duele.",
+       "e": "🙋",
+       "en": "Asking for help"
+      },
+      {
+       "t": "Seguridad",
+       "d": "Cuidarte de peligros, como cruzar la calle mirando.",
+       "e": "🚸",
+       "en": "Safety"
+      },
+      {
+       "t": "Tiempo de pantalla",
+       "d": "Usar la tele o el celular por un rato, no todo el día.",
+       "e": "📱",
+       "en": "Screen time"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… dormir bien ayuda a tu cerebro a recordar lo que aprendiste en el día?",
+      "¿Sabías que… lavarse las manos con jabón por 20 segundos elimina muchos gérmenes que enferman?"
+     ],
+     "retos": [
+      {
+       "q": "Un desconocido por internet te pide una foto y que no le cuentes a nadie. ¿Qué haces?",
+       "ops": [
+        "Le mandas la foto para no ser grosero",
+        "No respondes y avisas de inmediato a un adulto de confianza",
+        "Guardas el secreto como te pidió"
+       ],
+       "correcta": 1,
+       "porque": "Nunca debes compartir fotos ni secretos con desconocidos; pedir ayuda a un adulto te mantiene seguro."
+      },
+      {
+       "q": "Llevas horas frente a la pantalla y te duele la cabeza. ¿Qué es lo más saludable?",
+       "ops": [
+        "Seguir jugando hasta terminar el nivel",
+        "Apagar un rato, descansar la vista y salir a moverte",
+        "Cambiar a otra pantalla más grande"
+       ],
+       "correcta": 1,
+       "porque": "Controlar el tiempo de pantalla y hacer actividad física cuida tu cuerpo, tu vista y tu salud."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "me-conozco",
+     "nombre": "Me conozco y me cuido",
+     "emoji": "🪞",
+     "oa": "Eje Crecimiento personal y Bienestar/Autocuidado (Orientación 4° básico): Observar, describir y valorar las propias características, emociones, habilidades y fortalezas, y proponerse acciones para los aspectos que se quieren mejorar, practicando el autocuidado.",
+     "intro": "Aprendemos a mirar hacia adentro para conocer quiénes somos, cómo nos sentimos y cómo cuidarnos.",
+     "items": [
+      {
+       "t": "Autoconocimiento",
+       "d": "Es saber cómo soy: mis gustos, lo que hago bien y lo que quiero mejorar.",
+       "e": "🧠",
+       "en": "Self-knowledge"
+      },
+      {
+       "t": "Emociones",
+       "d": "Lo que sentimos por dentro, como alegría, pena, rabia o miedo. Todas son normales.",
+       "e": "😊",
+       "en": "Emotions"
+      },
+      {
+       "t": "Autoestima",
+       "d": "Es quererme y valorarme tal como soy, con mis cualidades y mis errores.",
+       "e": "💛",
+       "en": "Self-esteem"
+      },
+      {
+       "t": "Fortalezas",
+       "d": "Las cosas que se me dan bien y me hacen sentir orgulloso de mí.",
+       "e": "💪",
+       "en": "Strengths"
+      },
+      {
+       "t": "Autocuidado",
+       "d": "Cuidar mi cuerpo y mi mente: dormir bien, comer sano y pedir ayuda cuando lo necesito.",
+       "e": "🧴",
+       "en": "Self-care"
+      },
+      {
+       "t": "Calma",
+       "d": "Respirar profundo y esperar antes de actuar cuando estoy muy enojado o nervioso.",
+       "e": "🌬️",
+       "en": "Calmness"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… respirar lento y profundo tres veces ayuda a que tu cerebro se calme cuando sientes rabia?",
+      "¿Sabías que… ponerle nombre a lo que sientes (por ejemplo 'estoy frustrado') ya te ayuda a sentirte mejor?"
+     ],
+     "retos": [
+      {
+       "q": "Martín está muy enojado porque perdió un juego y quiere gritarle a su amigo. ¿Qué es lo mejor que puede hacer?",
+       "ops": [
+        "Respirar profundo y esperar un momento antes de hablar",
+        "Tirar el juego al suelo",
+        "Gritarle a su amigo para desahogarse"
+       ],
+       "correcta": 0,
+       "porque": "Respirar y darse una pausa ayuda a calmar la rabia y a tomar mejores decisiones sin dañar a nadie."
+      },
+      {
+       "q": "Sofía cree que 'no sirve para nada' porque le costó una prueba. ¿Cómo puede cuidar su autoestima?",
+       "ops": [
+        "Repetirse que es tonta",
+        "Reconocer su esfuerzo y pensar cómo mejorar la próxima vez",
+        "Dejar de estudiar para siempre"
+       ],
+       "correcta": 1,
+       "porque": "Valorar el esfuerzo y buscar cómo mejorar cuida la autoestima; un error no define quién eres."
+      }
+     ]
+    },
+    {
+     "id": "convivencia",
+     "nombre": "Sana convivencia",
+     "emoji": "🤝",
+     "oa": "Eje Relaciones interpersonales (Orientación 4° básico): Aplicar estrategias para resolver conflictos de forma pacífica (identificar el problema, buscar alternativas de solución, elegir una y aplicarla), favoreciendo una buena convivencia y el buen trato.",
+     "intro": "Descubrimos cómo vivir juntos con respeto, resolviendo los problemas sin dañarnos.",
+     "items": [
+      {
+       "t": "Respeto",
+       "d": "Tratar a los demás como me gustaría que me trataran a mí, aunque piensen distinto.",
+       "e": "🙏",
+       "en": "Respect"
+      },
+      {
+       "t": "Convivencia",
+       "d": "Es la forma en que compartimos y nos llevamos con los demás cada día.",
+       "e": "👫",
+       "en": "Coexistence"
+      },
+      {
+       "t": "Conflicto",
+       "d": "Un desacuerdo entre personas. Se puede resolver hablando y buscando acuerdos.",
+       "e": "⚖️",
+       "en": "Conflict"
+      },
+      {
+       "t": "Diálogo",
+       "d": "Conversar con calma y escuchar al otro para entendernos y resolver problemas.",
+       "e": "💬",
+       "en": "Dialogue"
+      },
+      {
+       "t": "Tolerancia",
+       "d": "Aceptar que las personas son diferentes y respetar sus ideas y costumbres.",
+       "e": "🌈",
+       "en": "Tolerance"
+      },
+      {
+       "t": "Acuerdo",
+       "d": "Cuando dos personas ceden un poco y encuentran una solución justa para ambas.",
+       "e": "✅",
+       "en": "Agreement"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… escuchar sin interrumpir es una de las claves para resolver una discusión?",
+      "¿Sabías que… en muchos colegios hay 'mediadores', compañeros que ayudan a otros a resolver peleas hablando?"
+     ],
+     "retos": [
+      {
+       "q": "Dos compañeros se pelean porque los dos quieren usar la misma pelota en el recreo. ¿Cuál es la mejor solución?",
+       "ops": [
+        "Que el más fuerte se quede con la pelota",
+        "Conversar y acordar turnos para que ambos jueguen",
+        "Esconder la pelota para que nadie la use"
+       ],
+       "correcta": 1,
+       "porque": "Llegar a un acuerdo con turnos es una solución justa y pacífica donde ambos ganan, sin usar la fuerza."
+      },
+      {
+       "q": "Un nuevo compañero come una comida distinta a la tuya y algunos se ríen. ¿Qué actitud demuestra respeto?",
+       "ops": [
+        "Reírte también para no quedar fuera del grupo",
+        "Ignorarlo por completo",
+        "Pedir a los demás que paren y mostrar interés por su cultura"
+       ],
+       "correcta": 2,
+       "porque": "La tolerancia significa respetar las diferencias; defender al compañero y mostrar interés demuestra respeto y empatía."
+      }
+     ]
+    },
+    {
+     "id": "empatia",
+     "nombre": "Empatía y amistad",
+     "emoji": "💞",
+     "oa": "Eje Relaciones interpersonales (Orientación 4° básico): Reconocer y respetar las emociones de los demás, actuar con empatía y solidaridad, y cuidar los vínculos de amistad evitando toda forma de discriminación.",
+     "intro": "Nos ponemos en el lugar del otro para cuidar a nuestros amigos y a quienes nos rodean.",
+     "items": [
+      {
+       "t": "Empatía",
+       "d": "Ponerme en el lugar del otro para entender cómo se siente.",
+       "e": "🫶",
+       "en": "Empathy"
+      },
+      {
+       "t": "Amistad",
+       "d": "Un lazo de cariño y confianza donde nos apoyamos y respetamos.",
+       "e": "👭",
+       "en": "Friendship"
+      },
+      {
+       "t": "Solidaridad",
+       "d": "Ayudar a quien lo necesita sin esperar nada a cambio.",
+       "e": "🤲",
+       "en": "Solidarity"
+      },
+      {
+       "t": "Escuchar",
+       "d": "Prestar atención de verdad cuando alguien habla, sin distraerse.",
+       "e": "👂",
+       "en": "Listening"
+      },
+      {
+       "t": "Inclusión",
+       "d": "Invitar a todos a participar, para que nadie se sienta dejado de lado.",
+       "e": "🌍",
+       "en": "Inclusion"
+      },
+      {
+       "t": "Bondad",
+       "d": "Hacer cosas buenas por los demás con cariño y sin presumir.",
+       "e": "😇",
+       "en": "Kindness"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… ayudar a otra persona también te hace sentir más feliz a ti mismo?",
+      "¿Sabías que… una sonrisa amable puede cambiar por completo el día de un compañero que está triste?"
+     ],
+     "retos": [
+      {
+       "q": "Ves que un compañero está solo en el recreo y se ve triste. ¿Qué haría una persona empática?",
+       "ops": [
+        "Acercarse e invitarlo a jugar con el grupo",
+        "Seguir jugando y no darle importancia",
+        "Reírse de que está solo"
+       ],
+       "correcta": 0,
+       "porque": "La empatía nos lleva a notar cómo se siente el otro, y la inclusión invita a todos a participar para que nadie quede fuera."
+      },
+      {
+       "q": "Tu mejor amiga te cuenta un secreto triste y te pide que la escuches. ¿Qué es lo correcto?",
+       "ops": [
+        "Contarlo a todo el curso porque es interesante",
+        "Escucharla con atención y guardar su confianza",
+        "Cambiar de tema porque te aburre"
+       ],
+       "correcta": 1,
+       "porque": "La amistad se basa en la confianza; escuchar con atención y guardar el secreto cuida ese lazo. (Si el secreto revela un peligro, sí es correcto pedir ayuda a un adulto de confianza)."
+      }
+     ]
+    },
+    {
+     "id": "responsabilidad",
+     "nombre": "Responsabilidad y honestidad",
+     "emoji": "⭐",
+     "oa": "Ejes Crecimiento personal y Pertenencia/Participación (Orientación 4° básico): Practicar hábitos y actitudes responsables, honestas y de esfuerzo en el trabajo escolar, el hogar y la comunidad, haciéndose cargo de los propios actos.",
+     "intro": "Aprendemos a cumplir nuestros deberes y a decir siempre la verdad.",
+     "items": [
+      {
+       "t": "Responsabilidad",
+       "d": "Cumplir con mis deberes y hacerme cargo de mis actos.",
+       "e": "📋",
+       "en": "Responsibility"
+      },
+      {
+       "t": "Honestidad",
+       "d": "Decir la verdad y actuar con sinceridad, aunque cueste.",
+       "e": "🗣️",
+       "en": "Honesty"
+      },
+      {
+       "t": "Esfuerzo",
+       "d": "Dar lo mejor de mí y no rendirme cuando algo es difícil.",
+       "e": "🎯",
+       "en": "Effort"
+      },
+      {
+       "t": "Deberes",
+       "d": "Las tareas que me tocan, como estudiar u ordenar mis cosas.",
+       "e": "📚",
+       "en": "Duties"
+      },
+      {
+       "t": "Compromiso",
+       "d": "Cumplir lo que prometo y hacerlo bien.",
+       "e": "🤝",
+       "en": "Commitment"
+      },
+      {
+       "t": "Autonomía",
+       "d": "Hacer las cosas por mí mismo, sin que me lo tengan que recordar siempre.",
+       "e": "🚶",
+       "en": "Autonomy"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… anotar tus tareas en una agenda te ayuda a ser más responsable y a no olvidar nada?",
+      "¿Sabías que… reconocer un error y decir la verdad genera más confianza que esconderlo?"
+     ],
+     "retos": [
+      {
+       "q": "Rompiste sin querer el trabajo de un compañero y nadie te vio. ¿Qué haría una persona honesta?",
+       "ops": [
+        "Quedarse callado para no meterse en problemas",
+        "Contar lo que pasó y ofrecer ayudar a arreglarlo",
+        "Culpar a otro compañero"
+       ],
+       "correcta": 1,
+       "porque": "La honestidad es decir la verdad aunque cueste, y la responsabilidad es hacerse cargo de los propios actos y repararlos."
+      },
+      {
+       "q": "Tienes una prueba mañana pero tus amigos te invitan a jugar toda la tarde. ¿Qué decisión es responsable?",
+       "ops": [
+        "Estudiar un rato primero y luego jugar un tiempo",
+        "Jugar toda la tarde y no estudiar",
+        "Copiar en la prueba al día siguiente"
+       ],
+       "correcta": 0,
+       "porque": "Organizar el tiempo para cumplir los deberes y también descansar demuestra responsabilidad y autonomía; copiar sería deshonesto."
+      }
+     ]
+    },
+    {
+     "id": "cuido-mi-entorno",
+     "nombre": "Cuido mi entorno",
+     "emoji": "🌱",
+     "oa": "Eje Pertenencia y participación democrática (Orientación 4° básico): Participar de forma responsable y solidaria en el cuidado del medioambiente y de los espacios comunes, cooperando por el bien común de la comunidad.",
+     "intro": "Descubrimos cómo nuestras acciones cuidan la naturaleza y ayudan a la comunidad.",
+     "items": [
+      {
+       "t": "Medioambiente",
+       "d": "Todo lo que nos rodea: el aire, el agua, las plantas y los animales.",
+       "e": "🌳",
+       "en": "Environment"
+      },
+      {
+       "t": "Reciclar",
+       "d": "Separar y reutilizar los residuos para no contaminar y cuidar el planeta.",
+       "e": "♻️",
+       "en": "Recycling"
+      },
+      {
+       "t": "Cuidado del agua",
+       "d": "No malgastar el agua, porque es un recurso muy valioso y limitado.",
+       "e": "💧",
+       "en": "Saving water"
+      },
+      {
+       "t": "Comunidad",
+       "d": "El grupo de personas con quienes compartimos el barrio, el colegio y la ciudad.",
+       "e": "🏘️",
+       "en": "Community"
+      },
+      {
+       "t": "Bien común",
+       "d": "Cuidar lo que es de todos, como las plazas, los parques y las salas.",
+       "e": "🏞️",
+       "en": "Common good"
+      },
+      {
+       "t": "Cooperación",
+       "d": "Trabajar juntos por una meta que nos beneficia a todos.",
+       "e": "🤝",
+       "en": "Cooperation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cerrar la llave mientras te lavas los dientes puede ahorrar muchos litros de agua al día?",
+      "¿Sabías que… en Chile existe la Ley de Reciclaje (Ley REP) que hace que las empresas se hagan cargo de los envases de sus productos?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso ve que la plaza cerca del colegio está llena de basura. ¿Qué acción demuestra cuidado del bien común?",
+       "ops": [
+        "Dejar más basura porque ya está sucia",
+        "Organizar entre todos una jornada para limpiarla",
+        "Decir que es problema de la municipalidad y no hacer nada"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar los espacios de todos y cooperar por el bien común es responsabilidad de cada miembro de la comunidad, no solo de la municipalidad."
+      },
+      {
+       "q": "En la sala hay tres basureros: papel, plástico y orgánico. Terminas de comer una fruta. ¿Dónde va la cáscara?",
+       "ops": [
+        "En el basurero de plástico",
+        "En el basurero orgánico",
+        "En el basurero de papel"
+       ],
+       "correcta": 1,
+       "porque": "La cáscara de fruta es un residuo orgánico, porque proviene de un ser vivo y se descompone; reciclar bien ayuda a cuidar el medioambiente."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "conocerme-crecer",
+     "nombre": "Conocerme y crecer",
+     "emoji": "🌱",
+     "oa": "OA1 – Reconocer sus emociones, fortalezas y aspectos por mejorar para desarrollar su identidad y autoestima.",
+     "intro": "Descubre quién eres, qué sientes y cómo puedes crecer como persona.",
+     "items": [
+      {
+       "t": "Identidad",
+       "d": "Es todo lo que te hace único: tus gustos, tu historia, tu familia y tu forma de ser.",
+       "e": "🪞",
+       "en": "Identity"
+      },
+      {
+       "t": "Autoestima",
+       "d": "Es quererte y valorarte tal como eres, reconociendo lo bueno de ti.",
+       "e": "💖",
+       "en": "Self-esteem"
+      },
+      {
+       "t": "Emociones",
+       "d": "Son señales internas como alegría, miedo o rabia que te avisan cómo estás.",
+       "e": "😊",
+       "en": "Emotions"
+      },
+      {
+       "t": "Fortalezas",
+       "d": "Son las cosas que haces bien y que te ayudan a lograr tus metas.",
+       "e": "💪",
+       "en": "Strengths"
+      },
+      {
+       "t": "Autocuidado",
+       "d": "Es tomar decisiones que protegen tu cuerpo, tu mente y tus sentimientos.",
+       "e": "🛡️",
+       "en": "Self-care"
+      },
+      {
+       "t": "Metas personales",
+       "d": "Son objetivos que te propones y en los que trabajas paso a paso.",
+       "e": "🎯",
+       "en": "Personal goals"
+      }
+     ],
+     "datos": [
+      "¿Sabías que ponerle nombre a lo que sientes (como 'estoy frustrado') ayuda a tu cerebro a calmarse más rápido?",
+      "¿Sabías que en Chile cada niño y niña tiene derecho a ser escuchado, según la Convención sobre los Derechos del Niño?"
+     ],
+     "retos": [
+      {
+       "q": "Martín sacó una mala nota y piensa 'soy malo para todo'. ¿Qué pensamiento le ayuda más a crecer?",
+       "ops": [
+        "'No sirvo, mejor no lo intento de nuevo'",
+        "'Esta vez me fue mal; puedo estudiar distinto y mejorar'",
+        "'La prueba estaba mala, no fue mi culpa'"
+       ],
+       "correcta": 1,
+       "porque": "Reconocer que puede mejorar con esfuerzo fortalece su autoestima y lo motiva a intentarlo de nuevo, en vez de rendirse o culpar a otros."
+      },
+      {
+       "q": "Camila quiere conocer mejor sus fortalezas. ¿Qué acción la ayuda más a lograrlo?",
+       "ops": [
+        "Compararse con sus compañeros para ver quién es mejor",
+        "Fijarse en qué actividades disfruta y le salen bien, y preguntar a personas de confianza",
+        "Elegir al azar una cualidad que suene bonita"
+       ],
+       "correcta": 1,
+       "porque": "Observar lo que disfruta y pedir la opinión de personas de confianza le da información real sobre sí misma, mientras que compararse no muestra sus propias fortalezas."
+      }
+     ]
+    },
+    {
+     "id": "convivir-en-paz",
+     "nombre": "Convivir en paz",
+     "emoji": "🤝",
+     "oa": "OA3 – Establecer relaciones interpersonales positivas basadas en el respeto, la empatía y la sana convivencia.",
+     "intro": "Aprende a llevarte bien con los demás y a resolver conflictos con respeto.",
+     "items": [
+      {
+       "t": "Respeto",
+       "d": "Es tratar a los demás con amabilidad, aunque piensen distinto a ti.",
+       "e": "🙏",
+       "en": "Respect"
+      },
+      {
+       "t": "Empatía",
+       "d": "Es ponerte en el lugar del otro para entender cómo se siente.",
+       "e": "❤️",
+       "en": "Empathy"
+      },
+      {
+       "t": "Sana convivencia",
+       "d": "Es compartir un espacio cuidándonos y colaborando entre todos.",
+       "e": "🌈",
+       "en": "Healthy coexistence"
+      },
+      {
+       "t": "Resolución de conflictos",
+       "d": "Es buscar soluciones justas cuando hay un desacuerdo, sin agredir.",
+       "e": "🕊️",
+       "en": "Conflict resolution"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Es unir esfuerzos y que cada uno aporte para lograr una meta común.",
+       "e": "👥",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Diálogo",
+       "d": "Es conversar escuchando y hablando con calma para entenderse.",
+       "e": "💬",
+       "en": "Dialogue"
+      }
+     ],
+     "datos": [
+      "¿Sabías que escuchar sin interrumpir puede resolver la mayoría de las peleas entre amigos?",
+      "¿Sabías que en muchos colegios de Chile existe la 'mediación escolar', donde estudiantes ayudan a resolver conflictos entre compañeros?"
+     ],
+     "retos": [
+      {
+       "q": "Dos compañeros discuten porque ambos quieren usar la pelota en el recreo. ¿Cuál es la mejor solución para una sana convivencia?",
+       "ops": [
+        "El más fuerte se queda con la pelota",
+        "Ninguno juega, así nadie se enoja",
+        "Acordar turnos para que ambos puedan jugar"
+       ],
+       "correcta": 2,
+       "porque": "Acordar turnos es una solución justa que respeta a ambos y muestra diálogo y colaboración, en vez de imponer la fuerza o dejar a los dos sin jugar."
+      },
+      {
+       "q": "Ves que a un compañero nuevo nadie lo invita a jugar. ¿Qué acción muestra más empatía?",
+       "ops": [
+        "Esperar a que él se acerque solo",
+        "Invitarlo a jugar con tu grupo",
+        "Seguir jugando y no fijarte en él"
+       ],
+       "correcta": 1,
+       "porque": "Invitarlo demuestra empatía porque te pones en su lugar y actúas para que se sienta incluido y acompañado, en vez de dejar que se resuelva solo."
+      }
+     ]
+    },
+    {
+     "id": "valores-que-guian",
+     "nombre": "Valores que me guían",
+     "emoji": "⭐",
+     "oa": "OA4 – Practicar en la vida cotidiana valores como la honestidad, la responsabilidad y la solidaridad.",
+     "intro": "Conoce los valores que te ayudan a tomar buenas decisiones cada día.",
+     "items": [
+      {
+       "t": "Honestidad",
+       "d": "Es decir la verdad y actuar con sinceridad, aunque cueste.",
+       "e": "🤝",
+       "en": "Honesty"
+      },
+      {
+       "t": "Responsabilidad",
+       "d": "Es cumplir con tus deberes y hacerte cargo de tus acciones.",
+       "e": "✅",
+       "en": "Responsibility"
+      },
+      {
+       "t": "Solidaridad",
+       "d": "Es ayudar a quien lo necesita sin esperar nada a cambio.",
+       "e": "🫶",
+       "en": "Solidarity"
+      },
+      {
+       "t": "Justicia",
+       "d": "Es dar a cada uno lo que le corresponde y tratar a todos con equidad.",
+       "e": "⚖️",
+       "en": "Justice"
+      },
+      {
+       "t": "Perseverancia",
+       "d": "Es seguir intentándolo aunque las cosas sean difíciles.",
+       "e": "🧗",
+       "en": "Perseverance"
+      },
+      {
+       "t": "Gratitud",
+       "d": "Es reconocer y agradecer lo bueno que recibes de los demás.",
+       "e": "🙌",
+       "en": "Gratitude"
+      }
+     ],
+     "datos": [
+      "¿Sabías que decir la verdad libera tu mente de la preocupación de que descubran una mentira?",
+      "¿Sabías que ayudar a otras personas activa en tu cerebro zonas relacionadas con el bienestar y la recompensa?"
+     ],
+     "retos": [
+      {
+       "q": "Encuentras un estuche con dinero en el patio del colegio. ¿Qué decisión muestra honestidad?",
+       "ops": [
+        "Guardarlo, total nadie te vio",
+        "Entregarlo en inspectoría para buscar a su dueño",
+        "Repartir el dinero con tus amigos"
+       ],
+       "correcta": 1,
+       "porque": "Entregarlo demuestra honestidad y responsabilidad: haces lo correcto aunque nadie te esté mirando y ayudas a quien lo perdió."
+      },
+      {
+       "q": "Tu curso tiene una tarea grupal y un compañero no trae su parte porque 'se le olvidó'. ¿Qué respuesta muestra responsabilidad y solidaridad?",
+       "ops": [
+        "Contarle a la profesora para que solo a él lo castiguen",
+        "Ayudarlo a organizarse y recordarle la fecha para la próxima vez",
+        "Hacer tú toda su parte y no decir nada"
+       ],
+       "correcta": 1,
+       "porque": "Ayudarlo a organizarse une la solidaridad con la responsabilidad, porque lo apoyas sin hacer su trabajo por él ni buscar solo un castigo."
+      }
+     ]
+    },
+    {
+     "id": "cuido-mi-entorno",
+     "nombre": "Cuido mi entorno",
+     "emoji": "🌍",
+     "oa": "OA5 – Asumir compromisos con el cuidado del medioambiente y el bien común de su comunidad.",
+     "intro": "Descubre cómo tus acciones cuidan el planeta y a tu comunidad.",
+     "items": [
+      {
+       "t": "Conciencia ecológica",
+       "d": "Es darte cuenta de que tus acciones afectan la naturaleza y actuar para cuidarla.",
+       "e": "🌿",
+       "en": "Ecological awareness"
+      },
+      {
+       "t": "Reciclaje",
+       "d": "Es separar los residuos para reutilizar materiales y generar menos desechos.",
+       "e": "♻️",
+       "en": "Recycling"
+      },
+      {
+       "t": "Bien común",
+       "d": "Es lo que beneficia a todos en la comunidad, no solo a uno mismo.",
+       "e": "🏘️",
+       "en": "Common good"
+      },
+      {
+       "t": "Consumo responsable",
+       "d": "Es usar solo lo que necesitas y no desperdiciar agua, luz ni comida.",
+       "e": "💧",
+       "en": "Responsible consumption"
+      },
+      {
+       "t": "Ciudadanía",
+       "d": "Es participar y cuidar tu barrio, escuela y país de forma activa.",
+       "e": "🏛️",
+       "en": "Citizenship"
+      },
+      {
+       "t": "Compromiso",
+       "d": "Es cumplir aquello a lo que te comprometes por el bien de todos.",
+       "e": "🌟",
+       "en": "Commitment"
+      }
+     ],
+     "datos": [
+      "¿Sabías que reciclar una lata de aluminio ahorra gran parte de la energía que se necesita para fabricar una nueva?",
+      "¿Sabías que en Chile existe la Ley REP, que obliga a las empresas a hacerse cargo de reciclar los envases que producen?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso hace una campaña de reciclaje, pero un compañero bota una botella al basurero común por flojera. ¿Qué haces por el bien común?",
+       "ops": [
+        "Nada, cada uno hace lo que quiere",
+        "Le explicas con respeto dónde va y lo invitas a cuidar el planeta juntos",
+        "Lo retas fuerte delante de todos"
+       ],
+       "correcta": 1,
+       "porque": "Explicar con respeto e invitar a colaborar cuida el bien común y enseña, mientras que ignorar el hecho o retarlo no ayuda a crear el hábito."
+      },
+      {
+       "q": "En tu casa dejan corriendo el agua mientras lavan los platos. ¿Qué muestra un consumo más responsable?",
+       "ops": [
+        "Dejarla correr, total el agua no se acaba",
+        "Cerrar la llave mientras enjabonas y abrirla solo para enjuagar",
+        "Lavar con agua caliente para terminar más rápido"
+       ],
+       "correcta": 1,
+       "porque": "Cerrar la llave mientras enjabonas evita desperdiciar agua, un recurso limitado, y cuida el medioambiente sin dejar de hacer la tarea."
+      }
+     ]
+    },
+    {
+     "id": "decido-con-cabeza",
+     "nombre": "Decido con cabeza",
+     "emoji": "🧭",
+     "oa": "OA2 – Tomar decisiones de manera reflexiva, anticipando sus consecuencias y actuando de forma segura.",
+     "intro": "Aprende a pensar antes de actuar y a decidir de forma segura y responsable.",
+     "items": [
+      {
+       "t": "Toma de decisiones",
+       "d": "Es elegir una opción pensando en lo que puede pasar después.",
+       "e": "🤔",
+       "en": "Decision-making"
+      },
+      {
+       "t": "Consecuencias",
+       "d": "Son los resultados, buenos o malos, que provoca lo que decides hacer.",
+       "e": "🔄",
+       "en": "Consequences"
+      },
+      {
+       "t": "Autocontrol",
+       "d": "Es manejar tus impulsos y calmarte antes de reaccionar.",
+       "e": "🧘",
+       "en": "Self-control"
+      },
+      {
+       "t": "Presión de grupo",
+       "d": "Es cuando otros te empujan a hacer algo; puedes decir 'no' si no está bien.",
+       "e": "🚫",
+       "en": "Peer pressure"
+      },
+      {
+       "t": "Seguridad personal",
+       "d": "Es cuidarte de los riesgos y pedir ayuda a un adulto de confianza.",
+       "e": "🆘",
+       "en": "Personal safety"
+      },
+      {
+       "t": "Pensamiento reflexivo",
+       "d": "Es detenerte a pensar en las opciones antes de actuar apurado.",
+       "e": "💡",
+       "en": "Reflective thinking"
+      }
+     ],
+     "datos": [
+      "¿Sabías que contar hasta diez antes de reaccionar le da tiempo a tu cerebro para pensar mejor?",
+      "¿Sabías que decir 'no' a algo que sabes que está mal es una señal de valentía, no de debilidad?"
+     ],
+     "retos": [
+      {
+       "q": "Unos compañeros te presionan para saltarte una clase 'solo por esta vez'. ¿Qué decisión es la más reflexiva?",
+       "ops": [
+        "Ir con ellos para no quedar mal",
+        "Decir que no y quedarte en clases, avisando a un adulto si insisten",
+        "Esconderte y esperar a ver qué pasa"
+       ],
+       "correcta": 1,
+       "porque": "Decir que no muestra autocontrol y pensamiento reflexivo: anticipas las consecuencias y actúas de forma segura, sin dejarte llevar por la presión de grupo."
+      },
+      {
+       "q": "Estás muy enojado porque un amigo rompió tu juguete. ¿Qué muestra mejor autocontrol?",
+       "ops": [
+        "Romper algo de él para que sienta lo mismo",
+        "Respirar, calmarte y luego conversar sobre lo que pasó",
+        "Gritarle hasta que se vaya"
+       ],
+       "correcta": 1,
+       "porque": "Respirar y conversar con calma demuestra autocontrol y te permite resolver el problema sin causar un daño mayor del que después te arrepentirías."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "autoconocimiento",
+     "nombre": "Me conozco y crezco",
+     "emoji": "🪞",
+     "oa": "OA 1 (Crecimiento personal) - Identificar y describir emociones, fortalezas, intereses y aspectos por mejorar, reconociéndolos como parte de una identidad personal en desarrollo.",
+     "intro": "Conocerte a ti mismo es el primer paso para crecer como persona y tomar buenas decisiones.",
+     "items": [
+      {
+       "t": "Autoconocimiento",
+       "d": "Saber cómo eres, qué sientes y qué piensas. Te ayuda a entender por qué actúas de cierta forma.",
+       "e": "🔍",
+       "en": "Self-knowledge"
+      },
+      {
+       "t": "Autoestima",
+       "d": "Es el cariño y respeto que sientes por ti mismo. Una buena autoestima te ayuda a intentar cosas sin miedo.",
+       "e": "💛",
+       "en": "Self-esteem"
+      },
+      {
+       "t": "Fortalezas",
+       "d": "Las cosas que haces bien o que te hacen especial, como ser buen amigo o esforzado.",
+       "e": "💪",
+       "en": "Strengths"
+      },
+      {
+       "t": "Emociones",
+       "d": "Lo que sientes por dentro: alegría, rabia, miedo, tristeza. Todas son válidas y se pueden manejar.",
+       "e": "😊",
+       "en": "Emotions"
+      },
+      {
+       "t": "Autorregulación",
+       "d": "Poder calmarte y pensar antes de actuar cuando sientes rabia o nervios.",
+       "e": "🧘",
+       "en": "Self-regulation"
+      },
+      {
+       "t": "Identidad",
+       "d": "Es todo lo que te hace ser tú: tus gustos, tu familia, tu historia y tus valores.",
+       "e": "🌟",
+       "en": "Identity"
+      }
+     ],
+     "datos": [
+      "¿Sabías que ponerle nombre a lo que sientes (\"tengo rabia\", \"estoy nervioso\") ayuda a tu cerebro a calmarse más rápido?",
+      "¿Sabías que respirar lento contando hasta 4 baja los latidos del corazón y te ayuda a pensar mejor cuando estás enojado?"
+     ],
+     "retos": [
+      {
+       "q": "Sacaste una mala nota en una prueba que estudiaste. Sientes mucha frustración. ¿Qué muestra mejor la autorregulación?",
+       "ops": [
+        "Respirar hondo, aceptar que te fue mal y pensar qué puedes mejorar la próxima vez",
+        "Romper la prueba y decir que la profesora te tiene mala",
+        "Guardar la rabia por dentro y no contarle a nadie nunca"
+       ],
+       "correcta": 0,
+       "porque": "Autorregularse es calmar la emoción y usarla para aprender, no explotar ni tampoco esconderla y quedarte mal."
+      },
+      {
+       "q": "Un compañero se burla de tu forma de hablar. ¿Qué respuesta demuestra buena autoestima?",
+       "ops": [
+        "Creerle y pensar que hablas mal de verdad",
+        "Recordar que tu forma de ser es valiosa y decirle con firmeza que pare, sin ofenderlo",
+        "Burlarte tú de él para que sienta lo mismo"
+       ],
+       "correcta": 1,
+       "porque": "Una buena autoestima te permite defenderte con respeto sin dejar que otros definan tu valor ni caer en la venganza."
+      }
+     ]
+    },
+    {
+     "id": "convivencia",
+     "nombre": "Vivir juntos en paz",
+     "emoji": "🤝",
+     "oa": "OA 4 (Relaciones interpersonales) - Practicar la sana convivencia respetando normas acordadas, resolviendo conflictos de forma pacífica y valorando la diversidad de las personas.",
+     "intro": "En el curso y en la vida convivimos con muchas personas distintas, y hacerlo bien requiere respeto y buenos acuerdos.",
+     "items": [
+      {
+       "t": "Sana convivencia",
+       "d": "Vivir y compartir en armonía con los demás, cuidando el bienestar de todos.",
+       "e": "🕊️",
+       "en": "Peaceful coexistence"
+      },
+      {
+       "t": "Respeto",
+       "d": "Tratar a los demás con buenos modos y valorar que piensen o sean distintos a ti.",
+       "e": "🙏",
+       "en": "Respect"
+      },
+      {
+       "t": "Resolución de conflictos",
+       "d": "Solucionar peleas o desacuerdos conversando y buscando acuerdos, sin violencia.",
+       "e": "☮️",
+       "en": "Conflict resolution"
+      },
+      {
+       "t": "Diálogo",
+       "d": "Hablar y escuchar por turnos para entenderse, aunque no estén de acuerdo.",
+       "e": "💬",
+       "en": "Dialogue"
+      },
+      {
+       "t": "Normas de convivencia",
+       "d": "Acuerdos del curso que nos ayudan a estar seguros y respetarnos entre todos.",
+       "e": "📋",
+       "en": "Rules of coexistence"
+      },
+      {
+       "t": "Diversidad",
+       "d": "Las diferencias entre las personas (cultura, ideas, gustos) que hacen al grupo más rico.",
+       "e": "🌈",
+       "en": "Diversity"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en Chile la Ley sobre Violencia Escolar exige que cada colegio tenga un encargado de convivencia para prevenir el bullying y promover el buen trato?",
+      "¿Sabías que escuchar de verdad a la otra persona antes de responder resuelve la mayoría de los conflictos entre compañeros?"
+     ],
+     "retos": [
+      {
+       "q": "Dos amigos tuyos empiezan a discutir a gritos por un partido de fútbol en el recreo. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Grabar la pelea con tu celular para reírte después",
+        "Invitarlos a calmarse y conversar por turnos, o buscar ayuda de un adulto si no paran",
+        "Elegir un bando y ponerte a gritar tú también"
+       ],
+       "correcta": 1,
+       "porque": "La convivencia pacífica busca calmar y dialogar; si el conflicto crece, pedir ayuda a un adulto es responsable, no soplón."
+      },
+      {
+       "q": "Llega un compañero nuevo de otro país que habla distinto. Algunos se ríen de su acento. ¿Qué actitud respeta la diversidad?",
+       "ops": [
+        "Acercarte, presentarte y ayudarlo a integrarse al curso",
+        "Reírte con los demás para no quedar fuera del grupo",
+        "Ignorarlo hasta que aprenda a hablar como ustedes"
+       ],
+       "correcta": 0,
+       "porque": "Respetar la diversidad es acoger las diferencias como algo valioso; la empatía y la inclusión construyen una sana convivencia."
+      }
+     ]
+    },
+    {
+     "id": "responsabilidad",
+     "nombre": "Soy responsable",
+     "emoji": "✅",
+     "oa": "OA 5 (Pertenencia y participación) - Asumir responsabilidades y compromisos con el propio trabajo, el curso y el entorno, reconociendo las consecuencias de las propias acciones.",
+     "intro": "Ser responsable significa hacerte cargo de tus deberes y de lo que decides, en la casa, el colegio y con el planeta.",
+     "items": [
+      {
+       "t": "Responsabilidad",
+       "d": "Cumplir con tus deberes y hacerte cargo de lo que haces, aunque nadie te esté mirando.",
+       "e": "✔️",
+       "en": "Responsibility"
+      },
+      {
+       "t": "Compromiso",
+       "d": "Una promesa que decides cumplir, como entregar una tarea o cuidar a tu mascota.",
+       "e": "🤞",
+       "en": "Commitment"
+      },
+      {
+       "t": "Consecuencias",
+       "d": "Lo que pasa después de tus acciones, sea bueno o malo. Toda decisión tiene un resultado.",
+       "e": "🔄",
+       "en": "Consequences"
+      },
+      {
+       "t": "Autonomía",
+       "d": "Poder hacer tus cosas por ti mismo sin que te lo tengan que recordar siempre.",
+       "e": "🎒",
+       "en": "Autonomy"
+      },
+      {
+       "t": "Organización",
+       "d": "Planificar tu tiempo y tus tareas para cumplir sin estresarte a última hora.",
+       "e": "🗓️",
+       "en": "Organization"
+      },
+      {
+       "t": "Responsabilidad ecológica",
+       "d": "Cuidar el medioambiente con acciones diarias como reciclar y ahorrar agua.",
+       "e": "🌍",
+       "en": "Environmental responsibility"
+      }
+     ],
+     "datos": [
+      "¿Sabías que anotar tus tareas en una agenda ayuda a tu memoria porque el cerebro no puede recordar todo a la vez?",
+      "¿Sabías que en Chile la Ley de Reciclaje (Ley REP) obliga a las empresas a hacerse responsables de los envases que producen?"
+     ],
+     "retos": [
+      {
+       "q": "Olvidaste hacer un trabajo en grupo y tus compañeros te reclaman. ¿Qué es asumir la responsabilidad?",
+       "ops": [
+        "Decir que la profesora nunca lo explicó bien",
+        "Reconocer tu error, disculparte y proponer terminar tu parte hoy mismo",
+        "Echarle la culpa al compañero que tenía que recordártelo"
+       ],
+       "correcta": 1,
+       "porque": "Ser responsable es hacerse cargo del propio error y buscar una solución, no inventar excusas ni culpar a otros."
+      },
+      {
+       "q": "Tu curso decide cuidar el medioambiente. ¿Qué acción muestra mejor la responsabilidad ecológica en el día a día?",
+       "ops": [
+        "Hacer un solo afiche bonito y no cambiar ningún hábito",
+        "Separar la basura, apagar luces y cerrar la llave del agua todos los días",
+        "Esperar a que el municipio lo solucione todo por ustedes"
+       ],
+       "correcta": 1,
+       "porque": "La responsabilidad ecológica se demuestra con acciones concretas y constantes, no solo con buenas intenciones o afiches."
+      }
+     ]
+    },
+    {
+     "id": "honestidad",
+     "nombre": "La verdad y el bien",
+     "emoji": "⚖️",
+     "oa": "OA 2 (Crecimiento personal) - Reconocer y aplicar valores como la honestidad, la justicia y la integridad para orientar el propio comportamiento en situaciones cotidianas.",
+     "intro": "Actuar con honestidad y justicia nos convierte en personas de confianza y hace más justo el mundo que nos rodea.",
+     "items": [
+      {
+       "t": "Honestidad",
+       "d": "Decir la verdad y actuar con sinceridad, aunque a veces cueste.",
+       "e": "🗝️",
+       "en": "Honesty"
+      },
+      {
+       "t": "Integridad",
+       "d": "Hacer lo correcto siempre, incluso cuando nadie te está viendo.",
+       "e": "🛡️",
+       "en": "Integrity"
+      },
+      {
+       "t": "Justicia",
+       "d": "Dar a cada uno lo que le corresponde y tratar a todos con equidad.",
+       "e": "⚖️",
+       "en": "Justice"
+      },
+      {
+       "t": "Confianza",
+       "d": "Cuando los demás creen en ti porque cumples y no engañas.",
+       "e": "🤝",
+       "en": "Trust"
+      },
+      {
+       "t": "Dilema moral",
+       "d": "Una situación difícil donde debes elegir entre dos opciones que te ponen a prueba.",
+       "e": "🤔",
+       "en": "Moral dilemma"
+      },
+      {
+       "t": "Coherencia",
+       "d": "Que lo que dices y lo que haces vayan de la mano.",
+       "e": "🎯",
+       "en": "Consistency"
+      }
+     ],
+     "datos": [
+      "¿Sabías que las personas honestas suelen tener menos estrés, porque no tienen que recordar mentiras ni preocuparse de que las descubran?",
+      "¿Sabías que la palabra \"integridad\" viene del latín integer, que significa \"entero\" o \"completo\", como una persona que no se parte según le convenga?"
+     ],
+     "retos": [
+      {
+       "q": "Encuentras un estuche con dinero en el patio del colegio. Nadie te vio. ¿Qué muestra integridad?",
+       "ops": [
+        "Quedarte el dinero porque nadie sabrá que fuiste tú",
+        "Llevar el estuche a inspectoría para que busquen a su dueño",
+        "Repartir el dinero con tus amigos para que guarden el secreto"
+       ],
+       "correcta": 1,
+       "porque": "La integridad es hacer lo correcto aunque nadie te vea; devolver lo que no es tuyo demuestra honestidad verdadera."
+      },
+      {
+       "q": "En un trabajo grupal, un integrante no hizo nada pero pide que pongan su nombre igual. ¿Qué decisión es más justa?",
+       "ops": [
+        "Poner su nombre para evitar problemas y quedar bien con él",
+        "Conversar con él y con la profesora para que la nota refleje lo que cada uno aportó",
+        "Sacarlo del grupo sin decirle nada a nadie"
+       ],
+       "correcta": 1,
+       "porque": "La justicia da a cada uno según su esfuerzo; dialogar honestamente es mejor que mentir o actuar por venganza a escondidas."
+      }
+     ]
+    },
+    {
+     "id": "empatia",
+     "nombre": "Me pongo en tu lugar",
+     "emoji": "💗",
+     "oa": "OA 3 (Relaciones interpersonales) - Desarrollar empatía, solidaridad y buen trato, reconociendo y respetando las emociones y necesidades de los demás.",
+     "intro": "La empatía es entender lo que siente el otro, y de ahí nacen la solidaridad y el buen trato.",
+     "items": [
+      {
+       "t": "Empatía",
+       "d": "Ponerte en el lugar del otro para entender cómo se siente.",
+       "e": "💗",
+       "en": "Empathy"
+      },
+      {
+       "t": "Solidaridad",
+       "d": "Ayudar a quien lo necesita sin esperar nada a cambio.",
+       "e": "🫶",
+       "en": "Solidarity"
+      },
+      {
+       "t": "Buen trato",
+       "d": "Relacionarnos con amabilidad, cuidado y respeto por los demás.",
+       "e": "😊",
+       "en": "Kindness"
+      },
+      {
+       "t": "Escucha activa",
+       "d": "Prestar atención completa cuando alguien te habla, sin interrumpir ni distraerte.",
+       "e": "👂",
+       "en": "Active listening"
+      },
+      {
+       "t": "Bullying",
+       "d": "Molestar o dañar a alguien una y otra vez a propósito. Nunca es un juego y hay que detenerlo.",
+       "e": "🚫",
+       "en": "Bullying"
+      },
+      {
+       "t": "Compañerismo",
+       "d": "Apoyarse entre compañeros y alegrarse por los logros de los demás.",
+       "e": "🧑‍🤝‍🧑",
+       "en": "Companionship"
+      }
+     ],
+     "datos": [
+      "¿Sabías que tu cerebro tiene \"neuronas espejo\" que hacen que sientas un poquito lo que le pasa a otra persona? Por eso a veces bostezas cuando alguien bosteza.",
+      "¿Sabías que en el bullying el testigo que decide ayudar a la víctima puede detener la situación más rápido que cualquier adulto?"
+     ],
+     "retos": [
+      {
+       "q": "Ves que a un compañero lo molestan por internet en el grupo del curso. ¿Qué es lo más empático y valiente?",
+       "ops": [
+        "Reenviar los mensajes a otros para que también se rían",
+        "No decir nada porque no es tu problema",
+        "Apoyar a tu compañero, no seguir el juego y avisar a un adulto de confianza"
+       ],
+       "correcta": 2,
+       "porque": "La empatía te lleva a defender a quien sufre; ser testigo que actúa y pide ayuda detiene el ciberbullying."
+      },
+      {
+       "q": "Una compañera está sola y triste en el recreo porque se cambió de colegio hace poco. ¿Qué acción muestra solidaridad?",
+       "ops": [
+        "Invitarla a jugar y presentarle a tu grupo de amigos",
+        "Dejarla tranquila porque seguro quiere estar sola",
+        "Comentarle a los demás que es rara por estar sola"
+       ],
+       "correcta": 0,
+       "porque": "La solidaridad y el buen trato se demuestran acercándose y ayudando a alguien a sentirse incluido y acompañado."
+      }
+     ]
+    },
+    {
+     "id": "proyecto-vida",
+     "nombre": "Mis metas y mi futuro",
+     "emoji": "🚀",
+     "oa": "OA 6 (Bienestar y autocuidado) - Reflexionar sobre metas personales, hábitos saludables y toma de decisiones responsables para el propio bienestar físico, emocional y social.",
+     "intro": "Pensar en tus metas y cuidarte hoy te prepara para el futuro que quieres construir.",
+     "items": [
+      {
+       "t": "Proyecto de vida",
+       "d": "Imaginar quién quieres ser y qué quieres lograr, para trabajar por ello paso a paso.",
+       "e": "🌱",
+       "en": "Life project"
+      },
+      {
+       "t": "Metas",
+       "d": "Objetivos que te propones alcanzar, grandes o pequeños, con esfuerzo y tiempo.",
+       "e": "🎯",
+       "en": "Goals"
+      },
+      {
+       "t": "Toma de decisiones",
+       "d": "Elegir con cuidado entre varias opciones, pensando en las consecuencias.",
+       "e": "🧭",
+       "en": "Decision making"
+      },
+      {
+       "t": "Perseverancia",
+       "d": "No rendirse ante las dificultades y seguir intentándolo.",
+       "e": "🧗",
+       "en": "Perseverance"
+      },
+      {
+       "t": "Hábitos saludables",
+       "d": "Costumbres que cuidan tu cuerpo y mente: dormir bien, comer sano, moverte.",
+       "e": "🍎",
+       "en": "Healthy habits"
+      },
+      {
+       "t": "Bienestar",
+       "d": "Sentirte bien física, emocional y socialmente; el equilibrio de una vida sana.",
+       "e": "☀️",
+       "en": "Well-being"
+      }
+     ],
+     "datos": [
+      "¿Sabías que dividir una meta grande en pasos pequeños hace que tu cerebro sienta que sí puedes lograrla y te motiva a seguir?",
+      "¿Sabías que dormir entre 9 y 11 horas a tu edad ayuda a tu memoria, tu ánimo y tu concentración en el colegio?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres aprender a tocar guitarra pero cuesta y quieres rendirte en la primera semana. ¿Qué muestra perseverancia?",
+       "ops": [
+        "Dejarlo porque si no sale al tiro es que no eres bueno para eso",
+        "Practicar un poco cada día y celebrar los pequeños avances",
+        "Pedir que te compren un instrumento más fácil cada vez"
+       ],
+       "correcta": 1,
+       "porque": "Perseverar es seguir con esfuerzo constante; los avances pequeños y diarios llevan a cumplir metas grandes."
+      },
+      {
+       "q": "Tienes prueba mañana pero también quieres jugar toda la tarde en la consola. ¿Qué es una decisión responsable para tu bienestar?",
+       "ops": [
+        "Jugar toda la tarde y estudiar de madrugada casi sin dormir",
+        "Organizar tu tiempo: estudiar primero, luego jugar un rato y dormir bien",
+        "No estudiar y confiar en que te irá bien igual"
+       ],
+       "correcta": 1,
+       "porque": "Tomar buenas decisiones es equilibrar tus deberes y tu descanso; organizar el tiempo cuida tu bienestar y tus metas."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "tecnologia": {
+  "nombre": "Tecnología",
+  "emoji": "💻",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "objetos-tecnologicos",
+     "nombre": "Los objetos tecnológicos que nos rodean",
+     "emoji": "🔧",
+     "oa": "OA 1: Crear diseños de objetos tecnológicos, representando sus ideas a través de dibujos a mano alzada o modelos concretos, desde sus propias experiencias, con orientación del profesor.",
+     "intro": "Descubrimos que muchos objetos de nuestro día fueron creados por personas para resolver un problema o una necesidad.",
+     "items": [
+      {
+       "t": "Objeto tecnológico",
+       "d": "Cosa que las personas crearon para resolver un problema, como una cuchara o un lápiz.",
+       "e": "🥄",
+       "en": "Technological object"
+      },
+      {
+       "t": "Objeto natural",
+       "d": "Cosa que existe en la naturaleza sin que la haga una persona, como una piedra o una hoja.",
+       "e": "🍃",
+       "en": "Natural object"
+      },
+      {
+       "t": "Necesidad",
+       "d": "Algo que nos hace falta, como comer, dormir o abrigarnos.",
+       "e": "🍎",
+       "en": "Need"
+      },
+      {
+       "t": "Problema",
+       "d": "Una dificultad que queremos resolver, como que llueve y nos mojamos.",
+       "e": "🌧️",
+       "en": "Problem"
+      },
+      {
+       "t": "Función",
+       "d": "Para qué sirve un objeto; la tijera sirve para cortar.",
+       "e": "✂️",
+       "en": "Function"
+      },
+      {
+       "t": "Crear",
+       "d": "Hacer algo nuevo con nuestras ideas para ayudar a las personas.",
+       "e": "💡",
+       "en": "To create"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el paraguas se usó hace miles de años primero para dar sombra del sol antes que para la lluvia?",
+      "¿Sabías que el velcro se inventó al observar cómo unas semillas espinosas se pegaban al pelo de un perro?"
+     ],
+     "retos": [
+      {
+       "q": "En el patio del colegio ves una piedra, un balón y una flor. ¿Cuál de estos es un objeto tecnológico hecho por personas?",
+       "ops": [
+        "La piedra",
+        "El balón",
+        "La flor"
+       ],
+       "correcta": 1,
+       "porque": "El balón lo fabricaron personas para poder jugar; la piedra y la flor son objetos naturales que ya existen en la naturaleza sin que nadie los haga."
+      },
+      {
+       "q": "Está lloviendo y no quieres mojarte camino a la sala. ¿Qué objeto tecnológico resuelve mejor ese problema?",
+       "ops": [
+        "Un paraguas",
+        "Una pelota",
+        "Un espejo"
+       ],
+       "correcta": 0,
+       "porque": "El paraguas fue creado justamente para cubrirnos de la lluvia; la pelota sirve para jugar y el espejo para vernos, así que no resuelven ese problema."
+      }
+     ]
+    },
+    {
+     "id": "materiales-y-herramientas",
+     "nombre": "Materiales y herramientas",
+     "emoji": "🧱",
+     "oa": "OA 2: Distinguir las tareas para elaborar un objeto tecnológico, identificando los materiales y las herramientas necesarias para lograr el resultado deseado.",
+     "intro": "Conocemos los materiales con que se hacen las cosas, qué herramienta usar en cada tarea y cómo trabajar con cuidado.",
+     "items": [
+      {
+       "t": "Material",
+       "d": "Aquello de lo que está hecho un objeto, como papel, madera o plástico.",
+       "e": "🪵",
+       "en": "Material"
+      },
+      {
+       "t": "Papel",
+       "d": "Material liviano que se dobla y se corta fácil; sirve para dibujar y crear.",
+       "e": "📄",
+       "en": "Paper"
+      },
+      {
+       "t": "Plástico",
+       "d": "Material resistente y liviano; muchos juguetes y botellas son de plástico.",
+       "e": "🧴",
+       "en": "Plastic"
+      },
+      {
+       "t": "Herramienta",
+       "d": "Objeto que nos ayuda a hacer una tarea, como el pegamento o las tijeras.",
+       "e": "🛠️",
+       "en": "Tool"
+      },
+      {
+       "t": "Tarea",
+       "d": "Cada paso del trabajo, como cortar, doblar o pegar para armar un objeto.",
+       "e": "📋",
+       "en": "Task"
+      },
+      {
+       "t": "Trabajar con cuidado",
+       "d": "Usar las herramientas con atención para no hacernos daño ni dañar a otros.",
+       "e": "🧤",
+       "en": "To work safely"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el papel se inventó en China hace casi 2.000 años y se hacía con plantas machacadas?",
+      "¿Sabías que para cada tarea hay una herramienta distinta? Para cortar usamos tijeras y para unir usamos pegamento."
+     ],
+     "retos": [
+      {
+       "q": "Vas a unir dos hojas de papel para tu trabajo. ¿Qué herramienta necesitas para esa tarea?",
+       "ops": [
+        "El pegamento",
+        "Un vaso de agua",
+        "Una regla"
+       ],
+       "correcta": 0,
+       "porque": "La tarea de unir se hace con pegamento; el agua mojaría el papel y la regla sirve para medir o trazar líneas, no para pegar."
+      },
+      {
+       "q": "Vas a usar tijeras para tu trabajo. ¿Cuál es la forma más segura de trabajar en tu mesa?",
+       "ops": [
+        "Correr con las tijeras abiertas hacia un amigo",
+        "Cortar tranquilo, sentado y con la punta hacia la mesa",
+        "Cortar apurado sin mirar"
+       ],
+       "correcta": 1,
+       "porque": "Trabajar sentado, con calma y la punta hacia abajo cuida tu seguridad y la de tus compañeros; correr con tijeras o cortar sin mirar es peligroso."
+      }
+     ]
+    },
+    {
+     "id": "diseno-y-pasos",
+     "nombre": "Diseñar mi idea",
+     "emoji": "📝",
+     "oa": "OA 1: Crear diseños de objetos tecnológicos, representando sus ideas a través de dibujos a mano alzada o modelos concretos, con orientación del profesor.",
+     "intro": "Aprendemos que para crear algo primero imaginamos nuestra idea y la dibujamos a mano alzada antes de construirla.",
+     "items": [
+      {
+       "t": "Diseño",
+       "d": "Dibujo o plan de cómo queremos que quede un objeto antes de hacerlo.",
+       "e": "✏️",
+       "en": "Design"
+      },
+      {
+       "t": "Idea",
+       "d": "Lo que imaginamos crear, como un títere o un portalápices.",
+       "e": "💭",
+       "en": "Idea"
+      },
+      {
+       "t": "Dibujo a mano alzada",
+       "d": "Dibujar nuestra idea con el lápiz, sin regla, tal como la imaginamos.",
+       "e": "🖊️",
+       "en": "Freehand drawing"
+      },
+      {
+       "t": "Modelo",
+       "d": "Un objeto de prueba que armamos para mostrar cómo será nuestra idea.",
+       "e": "🧩",
+       "en": "Model"
+      },
+      {
+       "t": "Paso a paso",
+       "d": "Hacer las cosas en orden, una parte después de la otra.",
+       "e": "👣",
+       "en": "Step by step"
+      },
+      {
+       "t": "Mejorar",
+       "d": "Cambiar algo para que quede mejor si no resultó a la primera.",
+       "e": "🔁",
+       "en": "To improve"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los arquitectos que diseñan casas hacen muchos dibujos antes de construir de verdad?",
+      "¿Sabías que equivocarse y volver a intentar es parte de crear? ¡Casi ningún invento sale perfecto a la primera!"
+     ],
+     "retos": [
+      {
+       "q": "Vas a construir un títere con una bolsa de papel. ¿Qué es lo primero que conviene hacer?",
+       "ops": [
+        "Pegar todo apurado sin pensar",
+        "Dibujar a mano alzada cómo quiero que quede mi títere",
+        "Botar la bolsa y empezar de nuevo"
+       ],
+       "correcta": 1,
+       "porque": "Dibujar primero nuestra idea nos ayuda a imaginar el objeto y a saber qué materiales usaremos, así el trabajo sale más ordenado."
+      },
+      {
+       "q": "Terminaste tu títere, pero un brazo quedó suelto. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Dejarlo así aunque no funcione",
+        "Mirar qué falló y mejorarlo pegando bien el brazo",
+        "Enojarme y no seguir"
+       ],
+       "correcta": 1,
+       "porque": "Probar, ver qué podría hacerse de otra manera y mejorarlo es parte de crear; equivocarse nos ayuda a que el objeto quede mejor."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-en-mi-vida",
+     "nombre": "Aparatos tecnológicos y el computador",
+     "emoji": "💻",
+     "oa": "OA 5 y OA 6: Usar software de dibujo y explorar software educativos para crear, representar ideas y aprender con las tecnologías (TIC).",
+     "intro": "Reconocemos aparatos tecnológicos de la sala y aprendemos a usar el computador para dibujar y aprender.",
+     "items": [
+      {
+       "t": "Computador",
+       "d": "Aparato que nos ayuda a escribir, dibujar y aprender cosas nuevas.",
+       "e": "💻",
+       "en": "Computer"
+      },
+      {
+       "t": "Tablet",
+       "d": "Pantalla que se toca con el dedo para dibujar, aprender y jugar.",
+       "e": "📱",
+       "en": "Tablet"
+      },
+      {
+       "t": "Teclado",
+       "d": "Parte del computador con letras y números para escribir.",
+       "e": "⌨️",
+       "en": "Keyboard"
+      },
+      {
+       "t": "Mouse o ratón",
+       "d": "Objeto que movemos para mover la flecha en la pantalla.",
+       "e": "🖱️",
+       "en": "Mouse"
+      },
+      {
+       "t": "Programa de dibujo",
+       "d": "Software que usamos en el computador para dibujar y pintar nuestras ideas.",
+       "e": "🎨",
+       "en": "Drawing software"
+      },
+      {
+       "t": "Aprender con tecnología",
+       "d": "La tecnología nos ayuda a estudiar y crear, no solo a jugar.",
+       "e": "📚",
+       "en": "Learning tool"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los primeros computadores eran tan grandes que ocupaban una sala completa?",
+      "¿Sabías que en un programa de dibujo puedes pintar y borrar todas las veces que quieras sin gastar papel?"
+     ],
+     "retos": [
+      {
+       "q": "La profesora te pide dibujar un animal en el computador. ¿Qué usas para dibujar en la pantalla?",
+       "ops": [
+        "Un programa de dibujo, moviendo el mouse",
+        "El teclado, escribiendo muchas letras",
+        "El botón de apagar"
+       ],
+       "correcta": 0,
+       "porque": "Un programa de dibujo con el mouse nos deja crear y pintar nuestras ideas en la pantalla; el teclado sirve para escribir y el botón de apagar cierra el computador."
+      },
+      {
+       "q": "Estás usando el computador para tu tarea. ¿Cuál es un buen uso de este aparato?",
+       "ops": [
+        "Golpear el teclado fuerte",
+        "Usarlo con cuidado para aprender y hacer la tarea",
+        "Apagarlo enojado"
+       ],
+       "correcta": 1,
+       "porque": "El computador es una herramienta para aprender y crear; usarlo con cuidado lo mantiene bien y nos ayuda a hacer mejor nuestro trabajo."
+      }
+     ]
+    },
+    {
+     "id": "uso-seguro-y-responsable",
+     "nombre": "Uso seguro y responsable de la tecnología",
+     "emoji": "🛡️",
+     "oa": "OA 6 (uso responsable de las TIC): Usar la tecnología e internet de forma segura y responsable, cumpliendo las reglas del profesor y cuidando a las personas.",
+     "intro": "Aprendemos a usar pantallas e internet con respeto, seguridad, siguiendo reglas y en un tiempo saludable.",
+     "items": [
+      {
+       "t": "Tiempo de pantalla",
+       "d": "El rato que pasamos frente a pantallas; conviene que no sea demasiado.",
+       "e": "⏰",
+       "en": "Screen time"
+      },
+      {
+       "t": "Pedir permiso",
+       "d": "Avisar a un adulto antes de usar la tablet o el computador.",
+       "e": "🙋",
+       "en": "To ask permission"
+      },
+      {
+       "t": "Adulto de confianza",
+       "d": "Papá, mamá o profesor a quien le contamos si algo nos incomoda en internet.",
+       "e": "🧑‍🏫",
+       "en": "Trusted adult"
+      },
+      {
+       "t": "Seguir las reglas",
+       "d": "Usar la tecnología cumpliendo lo que nos indica el profesor o un adulto.",
+       "e": "✅",
+       "en": "To follow the rules"
+      },
+      {
+       "t": "Respeto en línea",
+       "d": "Tratar bien a los demás también cuando usamos la tecnología.",
+       "e": "💛",
+       "en": "Online respect"
+      },
+      {
+       "t": "Cuidar mis datos",
+       "d": "No dar mi nombre, foto o dirección a desconocidos en pantallas.",
+       "e": "🔒",
+       "en": "To protect my data"
+      }
+     ],
+     "datos": [
+      "¿Sabías que jugar al aire libre después de la pantalla ayuda a que tus ojos y tu cuerpo descansen?",
+      "¿Sabías que en internet nunca debemos compartir nuestro nombre o dirección con desconocidos?"
+     ],
+     "retos": [
+      {
+       "q": "Llevas mucho rato con la tablet y te empiezan a doler los ojos. ¿Qué es lo más responsable?",
+       "ops": [
+        "Seguir jugando aunque me duela",
+        "Avisar a un adulto, apagar y salir a jugar un rato",
+        "Esconderme para que no me vean"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar el tiempo de pantalla y descansar los ojos es una decisión responsable y saludable; esconderse o seguir jugando con dolor no cuida tu cuerpo."
+      },
+      {
+       "q": "En un juego, alguien que no conoces te pide tu nombre, tu foto y dónde vives. ¿Qué haces?",
+       "ops": [
+        "Le doy todos mis datos",
+        "No comparto mis datos y le aviso a un adulto de confianza",
+        "Le mando también mi dirección"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar tus datos y avisar a un adulto de confianza te mantiene seguro; nunca compartimos información privada con desconocidos en internet."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-y-planeta",
+     "nombre": "Crear cuidando el planeta",
+     "emoji": "🌍",
+     "oa": "OA 3 (materiales y cuidado del entorno): Elaborar objetos experimentando con materiales diversos, incluidos desechos, reutilizando y reciclando para cuidar el medio ambiente.",
+     "intro": "Descubrimos cómo crear objetos usando materiales de desecho y cuidando la naturaleza sin hacer basura.",
+     "items": [
+      {
+       "t": "Reutilizar",
+       "d": "Volver a usar un material para no botarlo, como una caja para guardar lápices.",
+       "e": "🔁",
+       "en": "To reuse"
+      },
+      {
+       "t": "Reciclar",
+       "d": "Separar materiales usados para convertirlos en algo nuevo.",
+       "e": "♻️",
+       "en": "To recycle"
+      },
+      {
+       "t": "Desecho",
+       "d": "Un material que ibas a botar, como un tarro o una caja, y que puedes volver a usar.",
+       "e": "📦",
+       "en": "Waste material"
+      },
+      {
+       "t": "Reducir",
+       "d": "Usar menos cosas para hacer menos basura, como no gastar papel de más.",
+       "e": "📉",
+       "en": "To reduce"
+      },
+      {
+       "t": "Ahorrar energía",
+       "d": "Apagar luces y aparatos que no usamos para cuidar el planeta.",
+       "e": "💡",
+       "en": "To save energy"
+      },
+      {
+       "t": "Cuidar el agua",
+       "d": "Cerrar la llave para no desperdiciar agua, un tesoro de la naturaleza.",
+       "e": "💧",
+       "en": "To save water"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en Chile existen contenedores de distintos colores para separar el papel, el plástico y el vidrio?",
+      "¿Sabías que con cajas y tarros que ibas a botar puedes crear juguetes y objetos nuevos y ayudar al planeta?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres hacer un portalápices reutilizando un desecho en vez de comprarlo. ¿Qué material te conviene usar?",
+       "ops": [
+        "Un tarro vacío y limpio",
+        "Un vaso de vidrio lleno de agua",
+        "Una hoja de árbol"
+       ],
+       "correcta": 0,
+       "porque": "Reutilizar un tarro vacío evita botarlo, es firme y seguro para los lápices; el vidrio con agua se puede quebrar y la hoja no aguanta el peso."
+      },
+      {
+       "q": "Terminaste tu jugo y la botella de plástico está vacía. ¿Qué decisión cuida mejor el planeta?",
+       "ops": [
+        "Botarla al suelo del patio",
+        "Reutilizarla o ponerla en el contenedor de reciclaje",
+        "Tirarla al río"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar o reciclar la botella evita basura y cuida el medio ambiente; botarla al suelo o al río contamina la naturaleza."
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "que-es-tecnologia",
+     "nombre": "¿Qué es la tecnología?",
+     "emoji": "💡",
+     "oa": "TE02 OA 01: Organizar las tareas para elaborar un objeto tecnológico, distinguiendo las acciones, los materiales y las herramientas necesarias. (Reconocemos primero qué es la tecnología del entorno.)",
+     "intro": "Descubrimos que la tecnología son los objetos que las personas crean para resolver problemas del día a día.",
+     "items": [
+      {
+       "t": "Tecnología",
+       "d": "Todo objeto que las personas inventan para hacer más fácil una tarea, como una tijera o una bicicleta.",
+       "e": "🔧",
+       "en": "Technology"
+      },
+      {
+       "t": "Objeto tecnológico",
+       "d": "Una cosa creada por personas con un propósito, como un lápiz, un reloj o una silla.",
+       "e": "⌚",
+       "en": "Technological object"
+      },
+      {
+       "t": "Necesidad",
+       "d": "Algo que nos falta y queremos resolver, como abrigarnos del frío o guardar la comida.",
+       "e": "🧣",
+       "en": "Need"
+      },
+      {
+       "t": "Herramienta",
+       "d": "Un objeto que usamos con las manos para trabajar mejor, como un martillo o una regla.",
+       "e": "🔨",
+       "en": "Tool"
+      },
+      {
+       "t": "Natural o artificial",
+       "d": "Lo natural viene de la naturaleza (una roca); lo artificial lo hacen las personas (una casa).",
+       "e": "🌳",
+       "en": "Natural or artificial"
+      },
+      {
+       "t": "Función",
+       "d": "Es para qué sirve un objeto; la función de un paraguas es protegernos de la lluvia.",
+       "e": "☂️",
+       "en": "Function"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la rueda es uno de los inventos más antiguos y aún la usamos en autos, bicicletas y hasta en tu mochila con ruedas?",
+      "¿Sabías que… con un solo lápiz común se puede dibujar una línea larguísima, de muchos kilómetros, antes de que se gaste por completo?"
+     ],
+     "retos": [
+      {
+       "q": "Martín tiene que cargar muchos libros pesados hasta su sala. ¿Qué objeto tecnológico le ayudaría mejor a resolver ese problema?",
+       "ops": [
+        "Una mochila con ruedas para arrastrarlos",
+        "Un vaso de agua para tomar en el camino",
+        "Un espejo para mirarse"
+       ],
+       "correcta": 0,
+       "porque": "La mochila con ruedas fue creada para resolver la necesidad de transportar cosas pesadas sin cansarse. Esa es su función."
+      },
+      {
+       "q": "En la sala hay una roca, un árbol afuera de la ventana y una silla. ¿Cuál es un objeto tecnológico hecho por personas?",
+       "ops": [
+        "La roca",
+        "La silla",
+        "El árbol"
+       ],
+       "correcta": 1,
+       "porque": "La silla es artificial: fue diseñada y construida por personas para cumplir la función de sentarnos. La roca y el árbol son naturales."
+      }
+     ]
+    },
+    {
+     "id": "disenar-y-construir",
+     "nombre": "Diseñar y construir",
+     "emoji": "✏️",
+     "oa": "TE02 OA 02: Crear diseños de objetos tecnológicos mediante dibujos a mano alzada o modelos. TE02 OA 03: Elaborar un objeto seleccionando técnicas, herramientas y materiales (papel, cartón, desechos).",
+     "intro": "Aprendemos a planear una idea con un dibujo y luego construirla paso a paso.",
+     "items": [
+      {
+       "t": "Diseño",
+       "d": "Es el plan o dibujo que hacemos antes de construir algo, para saber cómo será.",
+       "e": "📐",
+       "en": "Design"
+      },
+      {
+       "t": "Materiales",
+       "d": "Las cosas con que construimos, como papel, cartón, lana, palitos o plasticina.",
+       "e": "🧵",
+       "en": "Materials"
+      },
+      {
+       "t": "Boceto",
+       "d": "Un dibujo rápido y simple de nuestra idea antes de empezar a construir.",
+       "e": "🖍️",
+       "en": "Sketch"
+      },
+      {
+       "t": "Paso a paso",
+       "d": "Hacer las cosas en orden, una parte después de la otra, para que salga bien.",
+       "e": "🔢",
+       "en": "Step by step"
+      },
+      {
+       "t": "Modelo",
+       "d": "Una versión de nuestro objeto que podemos ver, probar y mejorar.",
+       "e": "🧩",
+       "en": "Model"
+      },
+      {
+       "t": "Reutilizar",
+       "d": "Usar de nuevo materiales que ibas a botar, como cajas o botellas, para crear algo.",
+       "e": "♻️",
+       "en": "Reuse"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… antes de construir un puente de verdad, los ingenieros hacen modelos pequeños de cartón o madera para probar si aguantan?",
+      "¿Sabías que… con una botella de plástico reutilizada puedes hacer un macetero, un comedero para pájaros o un portalápices?"
+     ],
+     "retos": [
+      {
+       "q": "El curso quiere construir un portalápices para la sala. ¿Cuál es el mejor primer paso antes de cortar y pegar?",
+       "ops": [
+        "Hacer un dibujo del portalápices para planear cómo será",
+        "Botar todos los materiales que sobran",
+        "Empezar a pegar sin saber qué haremos"
+       ],
+       "correcta": 0,
+       "porque": "El diseño o boceto va primero: planear con un dibujo nos ayuda a saber qué materiales necesitamos y evitar errores."
+      },
+      {
+       "q": "Para hacer un juguete y cuidar el planeta, ¿qué material sería la mejor elección?",
+       "ops": [
+        "Una caja de cartón que iba a la basura",
+        "Muchas hojas nuevas de cartulina cara",
+        "Materiales que no se pueden reutilizar"
+       ],
+       "correcta": 0,
+       "porque": "Reutilizar la caja de cartón cuida el medio ambiente porque le damos una nueva vida a algo que íbamos a botar."
+      }
+     ]
+    },
+    {
+     "id": "probar-y-mejorar",
+     "nombre": "Probar y mejorar",
+     "emoji": "🔍",
+     "oa": "TE02 OA 04: Probar y explicar los resultados de los trabajos propios y de otros, en equipo, dialogando sobre sus ideas y señalando cómo podría mejorar el trabajo.",
+     "intro": "Después de construir, probamos nuestro objeto, conversamos con el equipo y buscamos cómo hacerlo aún mejor.",
+     "items": [
+      {
+       "t": "Probar",
+       "d": "Usar el objeto que hicimos para ver si funciona y cumple su función.",
+       "e": "🧑‍🔬",
+       "en": "Test"
+      },
+      {
+       "t": "Explicar",
+       "d": "Contar a los demás cómo hicimos nuestro trabajo y por qué quedó así.",
+       "e": "🗣️",
+       "en": "Explain"
+      },
+      {
+       "t": "Error",
+       "d": "Cuando algo no funciona como esperábamos; no es malo, nos enseña a mejorar.",
+       "e": "🙂",
+       "en": "Mistake"
+      },
+      {
+       "t": "Mejorar",
+       "d": "Cambiar o arreglar una parte para que el objeto funcione mejor que antes.",
+       "e": "⬆️",
+       "en": "Improve"
+      },
+      {
+       "t": "Comparar",
+       "d": "Ver dos versiones y decidir cuál cumple mejor su propósito.",
+       "e": "⚖️",
+       "en": "Compare"
+      },
+      {
+       "t": "Perseverancia",
+       "d": "Seguir intentando con paciencia aunque algo no salga a la primera.",
+       "e": "💪",
+       "en": "Perseverance"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el inventor de la ampolleta hizo muchísimos intentos antes de que una funcionara, y cada error le enseñó algo nuevo?",
+      "¿Sabías que… los astronautas prueban sus trajes muchísimas veces bajo el agua antes de usarlos en el espacio de verdad?"
+     ],
+     "retos": [
+      {
+       "q": "El barquito de papel de Martín se hunde en el agua. ¿Qué es lo mejor que puede hacer?",
+       "ops": [
+        "Enojarse y botar el barquito para siempre",
+        "Pensar por qué se hundió y probar con otro papel o forma",
+        "Decir que él no sirve para construir"
+       ],
+       "correcta": 1,
+       "porque": "Un error es una oportunidad para mejorar. Probar de nuevo, explicar qué falló y seguir con perseverancia es lo que hacen los buenos creadores."
+      },
+      {
+       "q": "Dos grupos hicieron un puente de palitos. Uno aguanta 3 autitos y el otro solo 1. ¿Cómo probamos cuál cumple mejor su propósito?",
+       "ops": [
+        "El que se ve más colorido gana siempre",
+        "Probamos y comparamos cuántos autitos aguanta cada uno",
+        "No importa, los dos son iguales"
+       ],
+       "correcta": 1,
+       "porque": "Probar es comprobar si el objeto cumple su función. El puente que aguanta más peso cumple mejor su propósito de sostener autos."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-digital",
+     "nombre": "Tecnología digital",
+     "emoji": "💻",
+     "oa": "TE02 OA 05: Usar software de dibujo para crear y representar ideas mediante imágenes. TE02 OA 06: Usar procesador de textos para crear, editar y guardar información.",
+     "intro": "Conocemos el computador y sus partes para dibujar, escribir y guardar nuestro trabajo.",
+     "items": [
+      {
+       "t": "Computador",
+       "d": "Una máquina que nos ayuda a escribir, dibujar, jugar y guardar nuestro trabajo.",
+       "e": "🖥️",
+       "en": "Computer"
+      },
+      {
+       "t": "Teclado",
+       "d": "Las teclas con letras y números que usamos para escribir en el computador.",
+       "e": "⌨️",
+       "en": "Keyboard"
+      },
+      {
+       "t": "Mouse o ratón",
+       "d": "El objeto que movemos con la mano para señalar y hacer clic en la pantalla.",
+       "e": "🖱️",
+       "en": "Mouse"
+      },
+      {
+       "t": "Software de dibujo",
+       "d": "Un programa del computador para dibujar y pintar con líneas, formas y colores.",
+       "e": "🎨",
+       "en": "Drawing software"
+      },
+      {
+       "t": "Procesador de textos",
+       "d": "Un programa para escribir palabras, corregirlas y darles forma en el computador.",
+       "e": "📝",
+       "en": "Word processor"
+      },
+      {
+       "t": "Guardar",
+       "d": "Dejar bien guardado nuestro dibujo o texto para no perderlo y verlo después.",
+       "e": "💾",
+       "en": "Save"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los primeros computadores eran tan grandes que ocupaban una habitación completa, y hoy uno más potente cabe en tu bolsillo?",
+      "¿Sabías que… la palabra 'mouse' significa 'ratón' en inglés, y le pusieron ese nombre porque el cable parecía la colita de un ratón?"
+     ],
+     "retos": [
+      {
+       "q": "Martín hizo un dibujo en el computador y quiere mostrarlo mañana. ¿Qué debe hacer al terminar?",
+       "ops": [
+        "Apagar el computador de inmediato sin hacer nada más",
+        "Usar la opción 'Guardar' antes de cerrar el programa",
+        "Borrar el dibujo para empezar de nuevo"
+       ],
+       "correcta": 1,
+       "porque": "Guardar el trabajo permite recuperarlo después. Si cierras sin guardar, el dibujo se pierde y hay que empezar de nuevo."
+      },
+      {
+       "q": "Martín escribió un cuento en el procesador de textos y se dio cuenta de que una palabra quedó mal. ¿Qué es lo mejor que puede hacer?",
+       "ops": [
+        "Borrar todo el cuento y no escribir más",
+        "Editar solo esa palabra para corregirla y luego guardar",
+        "Apagar el computador sin arreglar nada"
+       ],
+       "correcta": 1,
+       "porque": "El procesador de textos sirve para crear, editar y guardar: podemos corregir una palabra sin borrar todo, y luego guardamos el trabajo."
+      }
+     ]
+    },
+    {
+     "id": "internet-seguro",
+     "nombre": "Internet seguro y responsable",
+     "emoji": "🛡️",
+     "oa": "Actitud del programa (uso de TIC): Demostrar un uso seguro y responsable de internet, cumpliendo las reglas del profesor y cuidando la información personal.",
+     "intro": "Aprendemos a usar internet y las pantallas de forma segura, cuidándonos a nosotros y a los demás.",
+     "items": [
+      {
+       "t": "Datos personales",
+       "d": "Información tuya que debes cuidar: tu nombre completo, dirección, colegio o foto.",
+       "e": "🔒",
+       "en": "Personal data"
+      },
+      {
+       "t": "Contraseña",
+       "d": "Una clave secreta que solo tú y tus papás conocen; no se comparte con nadie.",
+       "e": "🔑",
+       "en": "Password"
+      },
+      {
+       "t": "Tiempo de pantalla",
+       "d": "El rato que usamos pantallas; hay que descansar los ojos y jugar afuera también.",
+       "e": "⏰",
+       "en": "Screen time"
+      },
+      {
+       "t": "Pedir ayuda",
+       "d": "Si algo en la pantalla te asusta o incomoda, avisas de inmediato a un adulto.",
+       "e": "🙋",
+       "en": "Ask for help"
+      },
+      {
+       "t": "Respeto en línea",
+       "d": "Tratar bien a los demás también cuando escribimos por internet, sin burlarnos.",
+       "e": "💙",
+       "en": "Online respect"
+      },
+      {
+       "t": "Reglas del profesor",
+       "d": "Seguir las normas que nos da el profesor para navegar seguros en internet.",
+       "e": "📋",
+       "en": "Teacher's rules"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… mirar la pantalla mucho rato cansa los ojos, y los expertos recomiendan mirar algo lejano cada cierto rato para descansarlos?",
+      "¿Sabías que… nunca debes compartir tu contraseña con un compañero, ni siquiera con tu mejor amigo, para que tus cosas estén seguras?"
+     ],
+     "retos": [
+      {
+       "q": "Mientras juega en un tablet, aparece un mensaje de un desconocido que le pide a Martín su dirección y una foto. ¿Qué debe hacer?",
+       "ops": [
+        "Enviar la dirección y la foto de inmediato",
+        "No responder y avisar enseguida a un adulto de confianza",
+        "Compartir también el nombre de su colegio"
+       ],
+       "correcta": 1,
+       "porque": "Los datos personales se cuidan y no se comparten con desconocidos. Lo correcto y seguro es no responder y pedir ayuda a un adulto."
+      },
+      {
+       "q": "La profesora dio la regla de entrar solo a las páginas que ella indica. Martín ve un enlace llamativo que no es de la lista. ¿Qué es lo responsable?",
+       "ops": [
+        "Entrar igual porque se ve entretenido",
+        "Respetar la regla y usar solo las páginas que indicó la profesora",
+        "Entrar a cualquier página sin avisar"
+       ],
+       "correcta": 1,
+       "porque": "Usar internet de forma segura y responsable significa cumplir las reglas del profesor, así entramos solo a páginas apropiadas y confiables."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-y-cuidado",
+     "nombre": "Tecnología y cuidado del planeta",
+     "emoji": "🌎",
+     "oa": "Actitud del programa: Trabajar en equipo y demostrar disposición a cuidar el entorno, usando materiales y la tecnología de forma responsable con el medio ambiente.",
+     "intro": "Descubrimos cómo usar la tecnología y los materiales cuidando la naturaleza y trabajando en equipo.",
+     "items": [
+      {
+       "t": "Reciclar",
+       "d": "Separar papel, plástico y latas para que se conviertan en objetos nuevos.",
+       "e": "♻️",
+       "en": "Recycle"
+      },
+      {
+       "t": "Ahorrar energía",
+       "d": "Apagar luces y aparatos que no usamos para no gastar electricidad de más.",
+       "e": "🔌",
+       "en": "Save energy"
+      },
+      {
+       "t": "Energía limpia",
+       "d": "Energía que cuida el planeta, como la del sol (solar) o la del viento.",
+       "e": "☀️",
+       "en": "Clean energy"
+      },
+      {
+       "t": "Basura electrónica",
+       "d": "Aparatos viejos que no se botan a la basura común; se llevan a lugares especiales.",
+       "e": "🔋",
+       "en": "Electronic waste"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Construir y cuidar el planeta juntos, compartiendo ideas y ayudándonos.",
+       "e": "🤝",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Responsabilidad",
+       "d": "Hacernos cargo de usar bien las cosas y cuidar lo que compartimos con todos.",
+       "e": "🌱",
+       "en": "Responsibility"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… hay paneles solares que atrapan la luz del sol para dar electricidad sin contaminar, y algunos colegios en Chile ya los usan?",
+      "¿Sabías que… reciclar una lata de aluminio ahorra tanta energía que con ella un televisor podría funcionar por varias horas?"
+     ],
+     "retos": [
+      {
+       "q": "El curso terminó un proyecto y sobraron cajas, botellas y papeles. ¿Qué decisión cuida mejor el planeta?",
+       "ops": [
+        "Botar todo junto al basurero común",
+        "Separar en reciclaje: papel, plástico y latas por su lado",
+        "Dejar todo tirado en la sala"
+       ],
+       "correcta": 1,
+       "porque": "Reciclar separando los materiales permite que se transformen en objetos nuevos y genera menos basura. Es una forma responsable de cuidar el medio ambiente."
+      },
+      {
+       "q": "La sala quedó vacía a la hora de almuerzo con las luces y el computador encendidos. ¿Qué es lo responsable?",
+       "ops": [
+        "Dejar todo encendido porque no importa",
+        "Apagar las luces y el computador para ahorrar energía",
+        "Encender más aparatos"
+       ],
+       "correcta": 1,
+       "porque": "Apagar lo que no usamos ahorra energía y cuida el planeta. Ser responsable con la tecnología significa no gastar recursos de más."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "que-es-tecnologia",
+     "nombre": "¿Qué es la tecnología?",
+     "emoji": "💡",
+     "oa": "TE03 OA 01: Crear diseños de objetos o sistemas tecnológicos simples para resolver problemas, representando las ideas a través de dibujos a mano alzada, modelos concretos o TIC, y explorando productos existentes.",
+     "intro": "Descubrimos que la tecnología son los objetos e inventos que las personas crean y diseñan para resolver problemas de la vida diaria.",
+     "items": [
+      {
+       "t": "Tecnología",
+       "d": "Todo lo que las personas inventan o construyen para resolver un problema o hacer la vida más fácil.",
+       "e": "🛠️",
+       "en": "Technology"
+      },
+      {
+       "t": "Necesidad",
+       "d": "Algo que nos falta o un problema que queremos resolver, como abrigarnos del frío.",
+       "e": "🤔",
+       "en": "Need"
+      },
+      {
+       "t": "Objeto tecnológico",
+       "d": "Una cosa creada por el ser humano, como una silla, un lápiz o una bicicleta.",
+       "e": "🪑",
+       "en": "Technological object"
+      },
+      {
+       "t": "Invento",
+       "d": "Un objeto nuevo que alguien creó por primera vez para solucionar algo.",
+       "e": "🔦",
+       "en": "Invention"
+      },
+      {
+       "t": "Función",
+       "d": "Para qué sirve un objeto; el trabajo que hace, como una tijera que sirve para cortar.",
+       "e": "✂️",
+       "en": "Function"
+      },
+      {
+       "t": "Idea",
+       "d": "El primer pensamiento o plan que tenemos antes de crear algo nuevo.",
+       "e": "🧠",
+       "en": "Idea"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la rueda es uno de los inventos más antiguos del mundo y se creó hace más de 5.000 años?",
+      "¿Sabías que el lápiz que usas en clases también es tecnología, porque alguien lo inventó para poder escribir y borrar?"
+     ],
+     "retos": [
+      {
+       "q": "En tu sala hace mucho calor y tus compañeros no pueden concentrarse. ¿Cuál sería una solución tecnológica que responde a esa necesidad?",
+       "ops": [
+        "Diseñar un ventilador o abanico de cartón para mover el aire",
+        "Cerrar los ojos y esperar a que pase el calor",
+        "Salir corriendo de la sala sin avisar a la profesora"
+       ],
+       "correcta": 0,
+       "porque": "La tecnología nace de una necesidad. Diseñar un abanico usa el ingenio para resolver el problema del calor, mientras que las otras opciones no lo solucionan y una rompe la sana convivencia."
+      },
+      {
+       "q": "Quieres inventar un objeto para que tu perro tome agua fresca. ¿Qué es lo PRIMERO que debes hacer como buen creador?",
+       "ops": [
+        "Pensar la idea y para qué servirá el objeto (su función)",
+        "Pedirle a otra persona que lo haga todo por ti",
+        "Empezar a pegar cosas al azar sin ningún plan"
+       ],
+       "correcta": 0,
+       "porque": "Todo invento comienza con una idea clara y pensando en su función. Planificar con responsabilidad antes de construir ayuda a crear un mejor objeto tecnológico."
+      },
+      {
+       "q": "Antes de construir un objeto nuevo, ¿de qué manera un creador representa su idea para mostrarla a los demás?",
+       "ops": [
+        "Con un dibujo a mano alzada o un modelo del objeto",
+        "Guardando la idea en secreto sin contarla nunca",
+        "Diciendo que ya está listo aunque no haya nada hecho"
+       ],
+       "correcta": 0,
+       "porque": "Los creadores representan sus ideas con dibujos o modelos para explicarlas y mejorarlas. Así todos pueden entender cómo será el objeto antes de fabricarlo."
+      }
+     ]
+    },
+    {
+     "id": "materiales-y-herramientas",
+     "nombre": "Materiales y herramientas",
+     "emoji": "🧰",
+     "oa": "TE03 OA 03: Elaborar un objeto tecnológico para resolver problemas, seleccionando y demostrando dominio de técnicas y herramientas para medir, cortar, plegar, unir y pegar, y usando materiales como papeles, cartones, fibras y desechos de manera segura.",
+     "intro": "Aprendemos a reconocer los materiales con que se hacen los objetos y a usar las herramientas y técnicas de forma segura.",
+     "items": [
+      {
+       "t": "Material",
+       "d": "Aquello de lo que está hecho un objeto, como madera, plástico, papel o metal.",
+       "e": "🪵",
+       "en": "Material"
+      },
+      {
+       "t": "Herramienta",
+       "d": "Un objeto que nos ayuda a hacer un trabajo, como una tijera, un martillo o un pincel.",
+       "e": "🔨",
+       "en": "Tool"
+      },
+      {
+       "t": "Reciclable",
+       "d": "Material que podemos volver a usar para cuidar el planeta, como el cartón o las botellas.",
+       "e": "♻️",
+       "en": "Recyclable"
+      },
+      {
+       "t": "Seguridad",
+       "d": "Cuidarnos y cuidar a los demás para no hacernos daño mientras trabajamos.",
+       "e": "🦺",
+       "en": "Safety"
+      },
+      {
+       "t": "Medir",
+       "d": "Usar una regla o huincha para saber el tamaño exacto de algo antes de cortarlo.",
+       "e": "📏",
+       "en": "To measure"
+      },
+      {
+       "t": "Unir",
+       "d": "Juntar dos partes con pegamento, cinta o clips para armar un objeto.",
+       "e": "🔗",
+       "en": "To join"
+      }
+     ],
+     "datos": [
+      "¿Sabías que una botella de plástico puede tardar más de 400 años en desaparecer, por eso es tan importante reciclarla y reutilizarla?",
+      "¿Sabías que muchos artesanos chilenos crean juguetes y adornos hermosos usando solo lana, greda y madera de la naturaleza?"
+     ],
+     "retos": [
+      {
+       "q": "Vas a construir un portalápices para tu escritorio y quieres cuidar el medioambiente. ¿Qué material es la mejor decisión?",
+       "ops": [
+        "Un tarro o tubo de cartón que ya no usas en casa",
+        "Comprar plástico nuevo y botar el resto a la basura",
+        "Arrancar hojas de un árbol del patio del colegio"
+       ],
+       "correcta": 0,
+       "porque": "Reutilizar cartón que ya tienes cuida el planeta y evita gastar materiales nuevos. Dañar un árbol o generar más basura muestra falta de conciencia ecológica."
+      },
+      {
+       "q": "Tu compañero va a cortar cartón con una tijera. ¿Qué acción demuestra un uso seguro y respetuoso de la herramienta?",
+       "ops": [
+        "Pasarle la tijera con la punta hacia sí mismo y con cuidado",
+        "Lanzarle la tijera por el aire para ir más rápido",
+        "Apuntar a un compañero con la tijera para asustarlo"
+       ],
+       "correcta": 0,
+       "porque": "Entregar la tijera con la punta hacia uno mismo protege a los demás. Usar herramientas con cuidado es responsabilidad y respeto por la seguridad de todos."
+      },
+      {
+       "q": "Necesitas que dos piezas de cartón queden del mismo largo para tu objeto. ¿Qué técnica te ayuda a que salga bien?",
+       "ops": [
+        "Medir con la regla antes de cortar cada pieza",
+        "Cortar a la rápida con los ojos cerrados",
+        "Adivinar el tamaño sin usar ninguna herramienta"
+       ],
+       "correcta": 0,
+       "porque": "Medir antes de cortar es una técnica que evita errores y desperdicio de material. Trabajar con orden y cuidado nos da un mejor resultado."
+      }
+     ]
+    },
+    {
+     "id": "diseno-paso-a-paso",
+     "nombre": "Diseño paso a paso",
+     "emoji": "📐",
+     "oa": "TE03 OA 01 y OA 02: Crear diseños representando ideas con dibujos y modelos, y planificar la elaboración de un objeto tecnológico incorporando la secuencia de acciones, materiales, herramientas y medidas de seguridad.",
+     "intro": "Descubrimos que antes de construir algo, los buenos creadores dibujan un plan y siguen una secuencia de pasos ordenados.",
+     "items": [
+      {
+       "t": "Diseño",
+       "d": "El plan o dibujo que hacemos para mostrar cómo será un objeto antes de crearlo.",
+       "e": "✏️",
+       "en": "Design"
+      },
+      {
+       "t": "Boceto",
+       "d": "Un dibujo rápido y sencillo de nuestra idea, con sus partes principales.",
+       "e": "🖼️",
+       "en": "Sketch"
+      },
+      {
+       "t": "Paso",
+       "d": "Cada una de las etapas ordenadas que seguimos para llegar a un resultado.",
+       "e": "👣",
+       "en": "Step"
+      },
+      {
+       "t": "Prototipo",
+       "d": "El primer modelo de prueba que hacemos para ver si nuestra idea funciona.",
+       "e": "🧪",
+       "en": "Prototype"
+      },
+      {
+       "t": "Mejorar",
+       "d": "Cambiar y arreglar algo de nuestro diseño para que quede aún mejor.",
+       "e": "⬆️",
+       "en": "To improve"
+      },
+      {
+       "t": "Planificar",
+       "d": "Ordenar antes de empezar los pasos, materiales y herramientas que vamos a usar.",
+       "e": "📋",
+       "en": "To plan"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los arquitectos que diseñan casas y puentes primero hacen muchos dibujos y maquetas pequeñas antes de construir de verdad?",
+      "¿Sabías que casi ningún invento sale perfecto la primera vez? Los creadores prueban y mejoran su prototipo muchas veces."
+     ],
+     "retos": [
+      {
+       "q": "Vas a construir un puente de palos de helado con tu grupo. ¿Qué deberían hacer PRIMERO para trabajar bien juntos?",
+       "ops": [
+        "Dibujar un boceto del puente y repartir las tareas con respeto",
+        "Que cada uno construya solo lo que quiera sin conversar",
+        "Empezar a pegar palos rápido para terminar antes que los demás"
+       ],
+       "correcta": 0,
+       "porque": "Un buen diseño empieza con un boceto y con acuerdos en equipo. Planificar y repartir tareas fomenta la sana convivencia y un mejor resultado."
+      },
+      {
+       "q": "Al planificar tu objeto, ¿qué información NO puede faltar en tu plan para que todo salga bien?",
+       "ops": [
+        "Los pasos en orden, los materiales y las medidas de seguridad",
+        "Solo el color favorito que le quieres poner al final",
+        "Nada, porque planificar hace perder el tiempo"
+       ],
+       "correcta": 0,
+       "porque": "Planificar significa ordenar la secuencia de pasos, los materiales y la seguridad antes de construir. Un buen plan evita errores y accidentes."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-en-la-vida",
+     "nombre": "La tecnología en la vida diaria",
+     "emoji": "🏠",
+     "oa": "TE03 OA 01: Explorar productos y sistemas tecnológicos existentes en el entorno para comprender cómo resuelven problemas y necesidades de las personas en la casa, la escuela y la ciudad.",
+     "intro": "Miramos a nuestro alrededor y descubrimos cuántos objetos y sistemas tecnológicos nos ayudan cada día en la casa, la escuela y la ciudad.",
+     "items": [
+      {
+       "t": "Transporte",
+       "d": "Objetos que nos llevan de un lugar a otro, como la micro, el metro o la bicicleta.",
+       "e": "🚌",
+       "en": "Transport"
+      },
+      {
+       "t": "Electrodoméstico",
+       "d": "Aparato que funciona con electricidad y ayuda en casa, como el refrigerador.",
+       "e": "🧊",
+       "en": "Home appliance"
+      },
+      {
+       "t": "Comunicación",
+       "d": "Objetos que nos ayudan a hablar con personas lejanas, como el teléfono.",
+       "e": "📞",
+       "en": "Communication"
+      },
+      {
+       "t": "Energía",
+       "d": "La fuerza que hace funcionar muchos objetos; puede venir del sol o la electricidad.",
+       "e": "⚡",
+       "en": "Energy"
+      },
+      {
+       "t": "Sistema",
+       "d": "Varias partes que trabajan juntas para cumplir una tarea, como un semáforo.",
+       "e": "🚦",
+       "en": "System"
+      },
+      {
+       "t": "Ahorro",
+       "d": "Usar solo lo necesario de agua o luz para cuidar el planeta y no gastar de más.",
+       "e": "🌱",
+       "en": "Saving"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en el norte de Chile hay enormes plantas solares que usan la luz del sol para crear electricidad limpia?",
+      "¿Sabías que apagar la luz al salir de una pieza ayuda a ahorrar energía y a cuidar el medioambiente de todos?"
+     ],
+     "retos": [
+      {
+       "q": "En tu casa dejaron el televisor y las luces encendidas sin que nadie los use. Como niño responsable con el planeta, ¿qué haces?",
+       "ops": [
+        "Apago lo que no se está usando para ahorrar energía",
+        "Enciendo aún más aparatos porque se ve más entretenido",
+        "No hago nada porque no es mi problema"
+       ],
+       "correcta": 0,
+       "porque": "Apagar los aparatos que no usamos ahorra energía y cuida el medioambiente. Ser responsable con la tecnología también es cuidar nuestro planeta."
+      },
+      {
+       "q": "Tu abuela vive lejos y quieres saludarla en su cumpleaños. ¿Qué objeto tecnológico responde mejor a esa necesidad?",
+       "ops": [
+        "Un teléfono para llamarla o hacer una videollamada",
+        "Un refrigerador para enfriar el saludo",
+        "Una bicicleta para pedalear en el patio"
+       ],
+       "correcta": 0,
+       "porque": "Cada objeto responde a una necesidad distinta. El teléfono sirve para la comunicación, y así puedes demostrar tu cariño aunque estén lejos."
+      },
+      {
+       "q": "Un semáforo tiene luces, cables y un temporizador que trabajan juntos. ¿Por qué decimos que es un sistema tecnológico?",
+       "ops": [
+        "Porque varias partes funcionan juntas para cumplir una tarea",
+        "Porque tiene un solo color y nada más",
+        "Porque no sirve para nada en la ciudad"
+       ],
+       "correcta": 0,
+       "porque": "Un sistema es un conjunto de partes que trabajan unidas para lograr algo. El semáforo ordena el tránsito y cuida la seguridad de todos."
+      }
+     ]
+    },
+    {
+     "id": "computador-y-software",
+     "nombre": "El computador y sus programas",
+     "emoji": "💻",
+     "oa": "TE03 OA 05 y OA 06: Usar software de presentación para organizar y comunicar ideas, y usar procesador de textos para crear, editar, dar formato y guardar información.",
+     "intro": "Conocemos las partes del computador y aprendemos a usar programas para escribir, organizar y comunicar nuestras ideas, siempre con cuidado y responsabilidad.",
+     "items": [
+      {
+       "t": "Computador",
+       "d": "Máquina que nos ayuda a escribir, dibujar, organizar ideas y aprender.",
+       "e": "🖥️",
+       "en": "Computer"
+      },
+      {
+       "t": "Teclado",
+       "d": "La parte con letras y números que usamos para escribir en el computador.",
+       "e": "⌨️",
+       "en": "Keyboard"
+      },
+      {
+       "t": "Software",
+       "d": "Los programas y aplicaciones que hacen funcionar el computador, como un editor de texto.",
+       "e": "🧩",
+       "en": "Software"
+      },
+      {
+       "t": "Procesador de textos",
+       "d": "Un programa para escribir, corregir y dar formato a un texto, como un cuento o una carta.",
+       "e": "📝",
+       "en": "Word processor"
+      },
+      {
+       "t": "Presentación",
+       "d": "Un programa con diapositivas para organizar y mostrar nuestras ideas a los demás.",
+       "e": "📊",
+       "en": "Presentation"
+      },
+      {
+       "t": "Guardar",
+       "d": "Almacenar nuestro trabajo en el computador para no perderlo y usarlo después.",
+       "e": "💾",
+       "en": "To save"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el primer computador ocupaba una sala entera y pesaba más que un elefante? Hoy uno cabe en tu mochila.",
+      "¿Sabías que en un procesador de textos puedes cambiar el tamaño y color de las letras para que tu trabajo se vea más ordenado?"
+     ],
+     "retos": [
+      {
+       "q": "Escribiste un cuento en el computador y falta poco para que suene el timbre. ¿Qué debes hacer para no perder tu trabajo?",
+       "ops": [
+        "Guardar el archivo antes de apagar el computador",
+        "Apagar el computador de golpe sin guardar",
+        "Dejarlo así y esperar que se guarde solo por arte de magia"
+       ],
+       "correcta": 0,
+       "porque": "Guardar el trabajo lo protege para poder seguirlo después. Trabajar con responsabilidad incluye cuidar lo que hemos creado."
+      },
+      {
+       "q": "Tienes que mostrar a tu curso lo que investigaste sobre los animales de Chile. ¿Qué programa te ayuda a organizar y comunicar mejor tus ideas?",
+       "ops": [
+        "Un programa de presentación con diapositivas e imágenes",
+        "Una calculadora para sumar los animales",
+        "El control del televisor para cambiar de canal"
+       ],
+       "correcta": 0,
+       "porque": "Un software de presentación ordena las ideas en diapositivas y ayuda a comunicarlas al curso. Cada programa sirve para una tarea distinta."
+      }
+     ]
+    },
+    {
+     "id": "internet-seguro",
+     "nombre": "Navego seguro y respetuoso",
+     "emoji": "🛡️",
+     "oa": "TE03 OA 07: Usar internet y buscadores para localizar, extraer y almacenar información, considerando la seguridad de la fuente y el respeto hacia las demás personas.",
+     "intro": "Aprendemos a usar internet como herramienta para buscar información y a cuidarnos en el mundo digital: proteger nuestros datos, revisar fuentes confiables y tratar bien a los demás.",
+     "items": [
+      {
+       "t": "Internet",
+       "d": "Una gran red que conecta computadores del mundo para buscar y compartir información.",
+       "e": "🌐",
+       "en": "Internet"
+      },
+      {
+       "t": "Buscador",
+       "d": "Un programa de internet que nos ayuda a encontrar páginas con la información que buscamos.",
+       "e": "🔍",
+       "en": "Search engine"
+      },
+      {
+       "t": "Fuente confiable",
+       "d": "Un sitio serio y verdadero de donde sacamos información segura, no inventada.",
+       "e": "✅",
+       "en": "Reliable source"
+      },
+      {
+       "t": "Datos personales",
+       "d": "Información privada tuya, como tu nombre, dirección o colegio, que debes cuidar.",
+       "e": "🪪",
+       "en": "Personal data"
+      },
+      {
+       "t": "Adulto de confianza",
+       "d": "Una persona mayor que te quiere y a quien puedes pedir ayuda si algo te incomoda.",
+       "e": "🧑‍🏫",
+       "en": "Trusted adult"
+      },
+      {
+       "t": "Respeto en línea",
+       "d": "Tratar bien a los demás por internet, sin burlas ni palabras que hieran.",
+       "e": "🤝",
+       "en": "Online respect"
+      }
+     ],
+     "datos": [
+      "¿Sabías que cuando buscas algo en internet, en un segundo el buscador revisa millones de páginas para ayudarte?",
+      "¿Sabías que ser amable en internet es tan importante como serlo en persona? Detrás de cada pantalla hay una persona con sentimientos."
+     ],
+     "retos": [
+      {
+       "q": "Tienes que hacer una tarea sobre los animales de Chile y buscas en internet. ¿Cómo lo haces de forma responsable?",
+       "ops": [
+        "Reviso que la página sea una fuente confiable y escribo con mis palabras",
+        "Copio la primera página sin fijarme de dónde viene",
+        "Miro videos de juegos hasta que se acabe el tiempo de la tarea"
+       ],
+       "correcta": 0,
+       "porque": "Usar fuentes confiables y revisar de dónde viene la información es un uso seguro y honesto de internet. No toda página dice la verdad, por eso hay que elegir bien."
+      },
+      {
+       "q": "Un desconocido te escribe por internet y te pide tu nombre completo, tu colegio y una foto tuya. ¿Qué haces?",
+       "ops": [
+        "No comparto mis datos y le aviso de inmediato a un adulto de confianza",
+        "Le envío todo lo que pide para no ser descortés",
+        "Le doy solo mi dirección porque parece simpático"
+       ],
+       "correcta": 0,
+       "porque": "Nunca debes compartir tus datos personales con desconocidos en línea. Cuidar tu privacidad y avisar a un adulto de confianza te protege del peligro."
+      },
+      {
+       "q": "Ves que en un grupo de mensajes se están burlando de un compañero de tu curso. ¿Cómo actúas con empatía?",
+       "ops": [
+        "No participo de la burla y le cuento a un adulto para ayudar a mi compañero",
+        "Me río y sigo la burla para que no me molesten a mí",
+        "Guardo silencio y hago como si no hubiera visto nada"
+       ],
+       "correcta": 0,
+       "porque": "Las burlas por internet hacen mucho daño. Actuar con empatía, no participar y pedir ayuda a un adulto protege a tu compañero y cuida la sana convivencia."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "diseno-y-soluciones",
+     "nombre": "Diseño y creación de soluciones",
+     "emoji": "💡",
+     "oa": "OA 1: Crear diseños de objetos o sistemas tecnológicos simples para resolver problemas, representando sus ideas mediante dibujos a mano alzada, modelos o TIC.",
+     "intro": "Aprenderás cómo las personas inventan y diseñan objetos para resolver problemas de la vida diaria.",
+     "items": [
+      {
+       "t": "Problema",
+       "d": "Una necesidad o dificultad que queremos solucionar, como que la mochila pese demasiado.",
+       "e": "🧩",
+       "en": "Problem"
+      },
+      {
+       "t": "Diseño",
+       "d": "El plan o dibujo que hacemos antes de crear un objeto, para pensar cómo será.",
+       "e": "✏️",
+       "en": "Design"
+      },
+      {
+       "t": "Prototipo",
+       "d": "Un primer modelo de prueba de un invento, hecho con materiales simples para ver si funciona.",
+       "e": "🛠️",
+       "en": "Prototype"
+      },
+      {
+       "t": "Lluvia de ideas",
+       "d": "Momento en que decimos muchas ideas sin miedo a equivocarnos, para elegir la mejor.",
+       "e": "🌧️",
+       "en": "Brainstorming"
+      },
+      {
+       "t": "Boceto",
+       "d": "Un dibujo rápido y sencillo, a mano alzada, que muestra cómo se verá nuestra idea.",
+       "e": "🖊️",
+       "en": "Sketch"
+      },
+      {
+       "t": "Mejora",
+       "d": "Cambiar algo de nuestro diseño para que funcione mejor después de probarlo.",
+       "e": "🔧",
+       "en": "Improvement"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el velcro fue inventado por un ingeniero que observó cómo se pegaban los cardos a su ropa al pasear con su perro?",
+      "¿Sabías que… casi ningún invento funciona perfecto a la primera? Los inventores prueban y corrigen muchas veces antes de lograrlo."
+     ],
+     "retos": [
+      {
+       "q": "Tu curso quiere crear un basurero de reciclaje para la sala. Antes de construirlo, ¿qué conviene hacer primero?",
+       "ops": [
+        "Construirlo de inmediato con lo primero que se nos ocurra",
+        "Hacer una lluvia de ideas y un boceto para planificar cómo será",
+        "Comprar uno ya hecho en la tienda"
+       ],
+       "correcta": 1,
+       "porque": "Diseñar primero con ideas y un boceto nos ayuda a pensar bien la solución y evitar errores antes de construir."
+      },
+      {
+       "q": "Probaste tu prototipo de portalápices y se cae fácilmente. ¿Qué actitud muestra un buen diseñador?",
+       "ops": [
+        "Rendirse porque no salió perfecto la primera vez",
+        "Observar por qué falla y mejorar el diseño con una base más ancha",
+        "Esconderlo para que nadie vea el error"
+       ],
+       "correcta": 1,
+       "porque": "Un buen diseñador aprende de los errores con responsabilidad y mejora su trabajo; equivocarse es parte de crear."
+      },
+      {
+       "q": "Dos compañeros proponen ideas distintas para el mismo problema. ¿Qué muestra un buen trabajo en equipo al diseñar?",
+       "ops": [
+        "Imponer mi idea porque es la mía",
+        "Escuchar ambas ideas, probarlas y elegir juntos la que mejor resuelve el problema",
+        "Descartar las dos y no hacer nada"
+       ],
+       "correcta": 1,
+       "porque": "Diseñar en equipo significa escuchar, comparar ideas según cómo resuelven el problema y decidir en conjunto con respeto."
+      }
+     ]
+    },
+    {
+     "id": "materiales-y-herramientas",
+     "nombre": "Materiales y herramientas",
+     "emoji": "🧰",
+     "oa": "OA 2: Elaborar un objeto o sistema tecnológico, seleccionando y demostrando dominio en el uso de técnicas y herramientas, y trabajando de manera segura.",
+     "intro": "Descubrirás distintos materiales y herramientas, y cómo usarlos con cuidado y seguridad.",
+     "items": [
+      {
+       "t": "Material",
+       "d": "Aquello con lo que fabricamos objetos, como madera, papel, plástico o tela.",
+       "e": "📦",
+       "en": "Material"
+      },
+      {
+       "t": "Herramienta",
+       "d": "Un objeto que nos ayuda a trabajar, como tijeras, martillo o pegamento.",
+       "e": "🔨",
+       "en": "Tool"
+      },
+      {
+       "t": "Reciclable",
+       "d": "Material que se puede reutilizar para crear algo nuevo, como cartón o botellas.",
+       "e": "♻️",
+       "en": "Recyclable"
+      },
+      {
+       "t": "Resistente",
+       "d": "Que es fuerte y no se rompe fácilmente, como el metal o la madera dura.",
+       "e": "💪",
+       "en": "Durable"
+      },
+      {
+       "t": "Seguridad",
+       "d": "Cuidarnos al usar herramientas para no hacernos daño ni dañar a otros.",
+       "e": "🦺",
+       "en": "Safety"
+      },
+      {
+       "t": "Medir",
+       "d": "Usar una regla o huincha para saber el tamaño exacto de lo que haremos.",
+       "e": "📏",
+       "en": "To measure"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… con botellas plásticas recicladas se pueden fabricar poleras, mochilas y hasta pelotas?",
+      "¿Sabías que… la madera es un material renovable porque proviene de árboles que podemos volver a plantar?"
+     ],
+     "retos": [
+      {
+       "q": "Debes cortar cartón grueso para tu proyecto y el pegamento no lo sostiene. ¿Qué decisión es la más adecuada?",
+       "ops": [
+        "Usar más y más pegamento hasta que quede empapado",
+        "Elegir una herramienta y material apropiados, como cinta resistente, y pedir ayuda si uso algo con filo",
+        "Forzar el cartón doblándolo con toda mi fuerza"
+       ],
+       "correcta": 1,
+       "porque": "Seleccionar el material y la herramienta correctos, y pedir ayuda con objetos filosos, es trabajar de forma segura y responsable."
+      },
+      {
+       "q": "Para un proyecto ecológico del colegio necesitas material para un macetero. ¿Cuál elección cuida mejor el medio ambiente?",
+       "ops": [
+        "Comprar un macetero nuevo de plástico",
+        "Reutilizar un tarro o botella que ibas a botar a la basura",
+        "Usar un material distinto para cada macetero aunque sobre mucho"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales que íbamos a desechar cuida el planeta y muestra conciencia ecológica."
+      },
+      {
+       "q": "Necesitas que una repisa de cartón aguante varios libros. ¿Qué material eliges y por qué?",
+       "ops": [
+        "Papel de seda, porque es bonito y de colores",
+        "Cartón grueso o corrugado, porque es más resistente y soporta peso",
+        "Servilletas, porque hay muchas en la sala"
+       ],
+       "correcta": 1,
+       "porque": "Elegir el material según sus características, como la resistencia, permite que el objeto cumpla bien su función."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-en-el-entorno",
+     "nombre": "La tecnología en nuestro entorno",
+     "emoji": "🏙️",
+     "oa": "OA 6: Examinar y evaluar objetos o sistemas tecnológicos del entorno, considerando su utilidad, forma de uso y su impacto sobre las personas y el medio ambiente.",
+     "intro": "Verás cómo los objetos tecnológicos que nos rodean facilitan la vida y cómo han cambiado en el tiempo.",
+     "items": [
+      {
+       "t": "Objeto tecnológico",
+       "d": "Algo creado por las personas para cumplir una función, como un reloj o una bicicleta.",
+       "e": "⌚",
+       "en": "Technological object"
+      },
+      {
+       "t": "Función",
+       "d": "Para qué sirve un objeto; por ejemplo, la función de un paraguas es protegernos de la lluvia.",
+       "e": "🎯",
+       "en": "Function"
+      },
+      {
+       "t": "Invento",
+       "d": "Un objeto nuevo que alguien creó por primera vez para resolver algo.",
+       "e": "🚀",
+       "en": "Invention"
+      },
+      {
+       "t": "Evolución",
+       "d": "Cómo un objeto ha ido cambiando y mejorando con el paso del tiempo.",
+       "e": "📈",
+       "en": "Evolution"
+      },
+      {
+       "t": "Impacto",
+       "d": "El efecto que un objeto tiene en las personas y en el medio ambiente.",
+       "e": "🌍",
+       "en": "Impact"
+      },
+      {
+       "t": "Sistema",
+       "d": "Un conjunto de partes que trabajan juntas, como el semáforo que ordena el tránsito.",
+       "e": "🚦",
+       "en": "System"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el primer teléfono no tenía pantalla ni cámara, solo servía para hablar y era del tamaño de una caja?",
+      "¿Sabías que… en Chile el Metro de Santiago es un sistema tecnológico que mueve a millones de personas cada día?"
+     ],
+     "retos": [
+      {
+       "q": "Comparas una bicicleta común con una eléctrica. ¿Qué afirmación muestra que evalúas bien su impacto?",
+       "ops": [
+        "La eléctrica es mejor solo porque es más nueva",
+        "Ambas ayudan a moverse sin contaminar el aire como los autos, y la eléctrica facilita subir cerros",
+        "La bicicleta común no sirve para nada hoy"
+       ],
+       "correcta": 1,
+       "porque": "Evaluar un objeto es mirar su utilidad real y su impacto, no solo si es nuevo; ambas opciones cuidan el aire."
+      },
+      {
+       "q": "Observas cómo el teléfono cambió del aparato antiguo al celular actual. ¿Qué conclusión muestra que entiendes su evolución?",
+       "ops": [
+        "Los objetos antiguos nunca sirvieron para nada",
+        "Los objetos se van mejorando con el tiempo para cumplir mejor su función y agregar nuevos usos",
+        "El celular actual siempre existió tal como es hoy"
+       ],
+       "correcta": 1,
+       "porque": "La tecnología evoluciona: cada versión mejora la función anterior y a veces suma usos nuevos, como cámara o mapas."
+      }
+     ]
+    },
+    {
+     "id": "internet-seguro",
+     "nombre": "Internet seguro y responsable",
+     "emoji": "🛡️",
+     "oa": "OA 5: Usar internet y comunicación en línea para colaborar e intercambiar ideas, aplicando medidas de seguridad y cuidando la información personal.",
+     "intro": "Aprenderás a navegar por internet de forma segura, respetuosa y cuidando tu información.",
+     "items": [
+      {
+       "t": "Contraseña",
+       "d": "Una clave secreta que protege tus cuentas; no se comparte con nadie salvo tus papás.",
+       "e": "🔑",
+       "en": "Password"
+      },
+      {
+       "t": "Datos personales",
+       "d": "Información tuya como tu nombre, dirección o teléfono que no debes dar a desconocidos en internet.",
+       "e": "🪪",
+       "en": "Personal data"
+      },
+      {
+       "t": "Ciberseguridad",
+       "d": "Todo lo que hacemos para protegernos de peligros en internet.",
+       "e": "🔒",
+       "en": "Cybersecurity"
+      },
+      {
+       "t": "Respeto en línea",
+       "d": "Tratar bien a los demás en internet, sin insultar ni molestar.",
+       "e": "🤝",
+       "en": "Online respect"
+      },
+      {
+       "t": "Ciberacoso",
+       "d": "Cuando alguien molesta o hace daño a otra persona por internet; hay que avisar a un adulto.",
+       "e": "🚫",
+       "en": "Cyberbullying"
+      },
+      {
+       "t": "Fuente confiable",
+       "d": "Una página seria y verdadera de donde sacar información correcta.",
+       "e": "✅",
+       "en": "Reliable source"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… una contraseña segura mezcla letras, números y símbolos, y es mucho más difícil de adivinar que '1234'?",
+      "¿Sabías que… no todo lo que aparece en internet es verdad? Por eso conviene revisar más de una fuente confiable."
+     ],
+     "retos": [
+      {
+       "q": "Jugando en línea, un desconocido te pide tu nombre completo, tu colegio y una foto. ¿Qué haces?",
+       "ops": [
+        "Se los envío porque parece simpático",
+        "No comparto mis datos personales y le cuento a un adulto de confianza",
+        "Le doy solo mi dirección para que me visite"
+       ],
+       "correcta": 1,
+       "porque": "Proteger tus datos personales y avisar a un adulto te mantiene seguro; nunca debes compartir información privada con desconocidos."
+      },
+      {
+       "q": "Ves que en un grupo de chat molestan y se burlan de un compañero. ¿Cuál es la respuesta empática y correcta?",
+       "ops": [
+        "Reírme y sumarme a las burlas para no quedar fuera",
+        "No hacer nada porque no es mi problema",
+        "No participar del maltrato, apoyar a mi compañero y avisar a un adulto"
+       ],
+       "correcta": 2,
+       "porque": "Actuar con empatía frente al ciberacoso, apoyar a quien sufre y avisar a un adulto ayuda a una sana convivencia dentro y fuera de internet."
+      },
+      {
+       "q": "Para una tarea encuentras un dato raro en una sola página de internet. ¿Qué es lo más responsable antes de creerlo?",
+       "ops": [
+        "Copiarlo de inmediato porque salió primero en el buscador",
+        "Revisarlo en otra fuente confiable para ver si es verdad",
+        "Inventar mi propia versión del dato"
+       ],
+       "correcta": 1,
+       "porque": "No todo en internet es verdad; comparar con otra fuente confiable te ayuda a distinguir la información correcta."
+      }
+     ]
+    },
+    {
+     "id": "creando-con-tecnologia",
+     "nombre": "Creando con herramientas digitales",
+     "emoji": "💻",
+     "oa": "OA 4: Usar procesador de textos, programas de presentación e internet para crear, editar y comunicar información e ideas.",
+     "intro": "Explorarás programas del computador para crear textos, dibujos y presentaciones con tus ideas.",
+     "items": [
+      {
+       "t": "Procesador de texto",
+       "d": "Programa para escribir y ordenar textos en el computador, como una carta o un cuento.",
+       "e": "📝",
+       "en": "Word processor"
+      },
+      {
+       "t": "Presentación",
+       "d": "Diapositivas con imágenes y texto para mostrar un tema a los demás.",
+       "e": "📊",
+       "en": "Presentation"
+      },
+      {
+       "t": "Guardar",
+       "d": "Almacenar tu trabajo en el computador para no perderlo y poder seguir después.",
+       "e": "💾",
+       "en": "To save"
+      },
+      {
+       "t": "Editar",
+       "d": "Cambiar, corregir o mejorar un texto o imagen que ya creaste.",
+       "e": "✂️",
+       "en": "To edit"
+      },
+      {
+       "t": "Archivo digital",
+       "d": "Un documento, foto o dibujo guardado en el computador con su propio nombre.",
+       "e": "📁",
+       "en": "Digital file"
+      },
+      {
+       "t": "Tiempo de pantalla",
+       "d": "El rato que pasamos frente a pantallas; conviene equilibrarlo con jugar y descansar.",
+       "e": "⏰",
+       "en": "Screen time"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… guardar tu trabajo cada cierto rato evita que lo pierdas si el computador se apaga de repente?",
+      "¿Sabías que… descansar la vista mirando lejos cada 20 minutos ayuda a que tus ojos no se cansen frente a la pantalla?"
+     ],
+     "retos": [
+      {
+       "q": "Llevas media hora haciendo una presentación y aún no la guardas. ¿Qué es lo más responsable?",
+       "ops": [
+        "Seguir sin guardar hasta terminar todo de una vez",
+        "Guardar el archivo con un nombre para no perder mi trabajo si algo falla",
+        "Apagar el computador para descansar sin guardar"
+       ],
+       "correcta": 1,
+       "porque": "Guardar tu archivo con frecuencia protege tu esfuerzo; es una forma responsable de cuidar tu trabajo."
+      },
+      {
+       "q": "Terminaste tu tarea en el computador, pero llevas dos horas seguidas frente a la pantalla. ¿Qué hábito saludable eliges?",
+       "ops": [
+        "Quedarme jugando otras dos horas más",
+        "Tomar un descanso, mover el cuerpo y equilibrar mi tiempo de pantalla",
+        "Acercar mucho la cara a la pantalla para ver mejor"
+       ],
+       "correcta": 1,
+       "porque": "Equilibrar el tiempo de pantalla con descanso y movimiento cuida tu salud y tus ojos; el uso responsable de la tecnología incluye saber cuándo parar."
+      },
+      {
+       "q": "Debes presentar un tema al curso. ¿Qué herramienta digital comunica mejor tus ideas con imágenes y poco texto?",
+       "ops": [
+        "Un procesador de texto lleno de párrafos largos",
+        "Un programa de presentación con diapositivas de imágenes y frases cortas",
+        "Escribirlo todo a mano en una hoja"
+       ],
+       "correcta": 1,
+       "porque": "Elegir la herramienta adecuada a la tarea, como una presentación, ayuda a comunicar las ideas de forma clara al público."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "que-es-tecnologia",
+     "nombre": "¿Qué es la Tecnología?",
+     "emoji": "💡",
+     "oa": "OA 1: Crear diseños de objetos o sistemas tecnológicos que resuelvan necesidades o aprovechen oportunidades detectadas en el entorno.",
+     "intro": "Descubrimos que la tecnología es todo lo que las personas creamos para resolver problemas de la vida diaria.",
+     "items": [
+      {
+       "t": "Tecnología",
+       "d": "Son los objetos, herramientas y conocimientos que inventamos para resolver problemas y hacer la vida más fácil.",
+       "e": "🛠️",
+       "en": "Technology"
+      },
+      {
+       "t": "Necesidad",
+       "d": "Un problema o falta que buscamos solucionar, como tener agua limpia o comunicarnos a distancia.",
+       "e": "🙋",
+       "en": "Need"
+      },
+      {
+       "t": "Objeto tecnológico",
+       "d": "Cualquier cosa creada por personas para cumplir una función, como una silla, un lápiz o un celular.",
+       "e": "📱",
+       "en": "Technological object"
+      },
+      {
+       "t": "Oportunidad",
+       "d": "Una buena ocasión para mejorar algo o crear una solución nueva que ayude a la gente.",
+       "e": "✨",
+       "en": "Opportunity"
+      },
+      {
+       "t": "Innovación",
+       "d": "Crear algo nuevo o mejorar lo que ya existe para que funcione mejor.",
+       "e": "🚀",
+       "en": "Innovation"
+      },
+      {
+       "t": "Función",
+       "d": "Para qué sirve un objeto: la tarea que cumple, como un paraguas que sirve para no mojarse.",
+       "e": "🎯",
+       "en": "Function"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la rueda es uno de los inventos más antiguos y revolucionó el transporte hace más de 5.000 años?",
+      "¿Sabías que… muchos inventos nacieron por accidente, como el pegamento de los Post-it, que primero fue considerado un error?"
+     ],
+     "retos": [
+      {
+       "q": "En tu curso, muchos compañeros olvidan sus útiles en casa. Quieres crear una solución tecnológica. ¿Cuál es el mejor primer paso?",
+       "ops": [
+        "Identificar bien la necesidad real preguntando por qué olvidan los útiles",
+        "Comprar el objeto más caro que encuentres en la tienda",
+        "Copiar el invento de otro país sin revisar si sirve aquí"
+       ],
+       "correcta": 0,
+       "porque": "Toda solución tecnológica parte de entender bien la necesidad. Si no sabemos por qué ocurre el problema, no podremos resolverlo de verdad."
+      },
+      {
+       "q": "Un abuelo del barrio no alcanza los frascos de la repisa alta de su cocina. ¿Cuándo esto se convierte en una 'oportunidad' para diseñar algo?",
+       "ops": [
+        "Cuando le decimos que compre una repisa más baja y ya",
+        "Cuando notamos ese problema y pensamos en crear una solución que lo ayude",
+        "Cuando ignoramos el problema porque no es nuestro"
+       ],
+       "correcta": 1,
+       "porque": "Una oportunidad aparece cuando detectamos una necesidad real y decidimos crear o mejorar algo para resolverla. Observar el entorno nos permite diseñar soluciones útiles."
+      }
+     ]
+    },
+    {
+     "id": "proceso-diseno",
+     "nombre": "El Proceso de Diseño",
+     "emoji": "📐",
+     "oa": "OA 2 y OA 4: Planificar la elaboración de un objeto tecnológico seleccionando materiales, y probar y evaluar el producto para mejorarlo.",
+     "intro": "Aprendemos a crear soluciones paso a paso, como lo hacen los ingenieros y diseñadores.",
+     "items": [
+      {
+       "t": "Planificar",
+       "d": "Pensar y organizar antes de hacer: qué necesito, cómo lo haré y en qué orden.",
+       "e": "🗺️",
+       "en": "To plan"
+      },
+      {
+       "t": "Boceto",
+       "d": "Un dibujo rápido y sencillo que muestra cómo será nuestra idea antes de construirla.",
+       "e": "✏️",
+       "en": "Sketch"
+      },
+      {
+       "t": "Prototipo",
+       "d": "Una primera versión de prueba de nuestro objeto para ver si funciona.",
+       "e": "🧩",
+       "en": "Prototype"
+      },
+      {
+       "t": "Materiales",
+       "d": "Los elementos que usamos para construir, como cartón, madera, plástico o tela.",
+       "e": "📦",
+       "en": "Materials"
+      },
+      {
+       "t": "Evaluar",
+       "d": "Revisar si nuestra solución funcionó bien y pensar cómo mejorarla.",
+       "e": "🔍",
+       "en": "To evaluate"
+      },
+      {
+       "t": "Mejora",
+       "d": "Cambiar y corregir nuestro trabajo para que funcione mejor la próxima vez.",
+       "e": "🔧",
+       "en": "Improvement"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los diseñadores de autos construyen muchos prototipos antes de fabricar el modelo final que se vende?",
+      "¿Sabías que… equivocarse al probar un prototipo no es un fracaso, sino una pista para mejorar el diseño?"
+     ],
+     "retos": [
+      {
+       "q": "Tu grupo construyó un puente de palitos que se cae con peso. Según el proceso de diseño, ¿qué deberían hacer?",
+       "ops": [
+        "Entregarlo igual aunque no funcione",
+        "Evaluar por qué falló y mejorar el diseño reforzando los puntos débiles",
+        "Culpar a un compañero y empezar todo de cero sin analizar el error"
+       ],
+       "correcta": 1,
+       "porque": "Evaluar y mejorar son etapas clave del diseño. Analizar por qué falló nos permite corregir con respeto y responsabilidad, trabajando en equipo."
+      },
+      {
+       "q": "Antes de construir una maceta para el huerto del colegio, ¿qué conviene hacer primero?",
+       "ops": [
+        "Empezar a pegar materiales al azar rápidamente",
+        "Hacer un boceto y planificar qué materiales se necesitan",
+        "Pedirle a otro que lo haga por ti"
+       ],
+       "correcta": 1,
+       "porque": "Planificar y bocetar antes de construir evita desperdiciar materiales y nos ayuda a lograr un mejor resultado, cuidando también el medioambiente."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-y-medioambiente",
+     "nombre": "Tecnología y Medioambiente",
+     "emoji": "🌱",
+     "oa": "OA 3 y OA 4: Elaborar y evaluar productos tecnológicos usando materiales y técnicas, considerando su impacto en el entorno y el uso responsable de los recursos.",
+     "intro": "Reflexionamos sobre cómo la tecnología afecta a la naturaleza y cómo cuidarla al crear.",
+     "items": [
+      {
+       "t": "Reciclar",
+       "d": "Transformar materiales usados en objetos nuevos para no botar tanta basura.",
+       "e": "♻️",
+       "en": "To recycle"
+      },
+      {
+       "t": "Reutilizar",
+       "d": "Volver a usar un objeto para otra cosa en vez de tirarlo, como un frasco para guardar lápices.",
+       "e": "🔁",
+       "en": "To reuse"
+      },
+      {
+       "t": "Materiales sustentables",
+       "d": "Materiales que dañan poco a la naturaleza, como el bambú o el papel reciclado.",
+       "e": "🎍",
+       "en": "Sustainable materials"
+      },
+      {
+       "t": "Impacto ambiental",
+       "d": "El efecto, bueno o malo, que un objeto o acción tiene sobre el planeta.",
+       "e": "🌍",
+       "en": "Environmental impact"
+      },
+      {
+       "t": "Residuo",
+       "d": "Lo que sobra o desechamos al fabricar o usar algo; hay que manejarlo con cuidado.",
+       "e": "🗑️",
+       "en": "Waste"
+      },
+      {
+       "t": "Energía renovable",
+       "d": "Energía que no se acaba y contamina poco, como la del sol o el viento.",
+       "e": "☀️",
+       "en": "Renewable energy"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Chile hay grandes parques solares en el desierto de Atacama, uno de los lugares con más sol del mundo?",
+      "¿Sabías que… reciclar una tonelada de papel puede evitar cortar cerca de 17 árboles?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso hará adornos para la fiesta de fin de año. ¿Qué opción cuida más el medioambiente?",
+       "ops": [
+        "Comprar mucho plástico desechable nuevo",
+        "Reutilizar cartón, botellas y papel que ya tienen en casa",
+        "Usar globos y botarlos todos después de una hora"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales que ya existen reduce los residuos y el impacto ambiental. Cuidar el planeta es una forma de responsabilidad y respeto por todos."
+      },
+      {
+       "q": "Una fábrica cercana arroja sus desechos al río. Analizando el impacto ambiental, ¿por qué es un problema grave?",
+       "ops": [
+        "Porque el río se ve menos bonito solamente",
+        "Porque contamina el agua que usan personas, animales y plantas",
+        "Porque hace ruido al botar la basura"
+       ],
+       "correcta": 1,
+       "porque": "El impacto ambiental va más allá de lo visible: contaminar el agua afecta la salud de toda la comunidad y el ecosistema. Debemos crear tecnología sin dañar el entorno."
+      }
+     ]
+    },
+    {
+     "id": "tecnologias-de-la-informacion",
+     "nombre": "Tecnologías de la Información",
+     "emoji": "💻",
+     "oa": "OA 5: Usar software para crear, representar y comunicar ideas e información, como procesadores de texto y programas de presentación.",
+     "intro": "Exploramos cómo los computadores y programas nos ayudan a buscar, crear y compartir información.",
+     "items": [
+      {
+       "t": "Software",
+       "d": "Los programas y aplicaciones que hacen funcionar al computador, como un procesador de texto.",
+       "e": "🖥️",
+       "en": "Software"
+      },
+      {
+       "t": "Hardware",
+       "d": "Las partes físicas del computador que puedes tocar, como el teclado o la pantalla.",
+       "e": "⌨️",
+       "en": "Hardware"
+      },
+      {
+       "t": "Buscador",
+       "d": "Herramienta de internet que nos ayuda a encontrar información escribiendo lo que queremos saber.",
+       "e": "🔎",
+       "en": "Search engine"
+      },
+      {
+       "t": "Archivo digital",
+       "d": "Documento, imagen o video guardado en el computador o en la nube.",
+       "e": "📄",
+       "en": "Digital file"
+      },
+      {
+       "t": "Presentación",
+       "d": "Diapositivas que combinan texto e imágenes para explicar un tema a otros.",
+       "e": "📊",
+       "en": "Presentation"
+      },
+      {
+       "t": "Fuente confiable",
+       "d": "Un sitio o autor serio y verdadero de donde sacamos información segura.",
+       "e": "✅",
+       "en": "Reliable source"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la primera programadora de la historia fue Ada Lovelace, hace casi 200 años, antes de que existieran los computadores modernos?",
+      "¿Sabías que… no toda la información en internet es verdadera, por eso siempre hay que revisar varias fuentes confiables?"
+     ],
+     "retos": [
+      {
+       "q": "Debes hacer un trabajo sobre los volcanes de Chile y encuentras dos páginas con datos distintos. ¿Qué haces?",
+       "ops": [
+        "Copio la primera que aparezca sin revisar",
+        "Comparo varias fuentes confiables para saber cuál es correcta",
+        "Elijo la que tenga los colores más bonitos"
+       ],
+       "correcta": 1,
+       "porque": "No toda la información de internet es verdadera. Comparar fuentes confiables nos ayuda a aprender de verdad y a ser honestos con la información que entregamos."
+      },
+      {
+       "q": "Vas a crear una presentación para exponer en clase. ¿Qué la hace más clara y respetuosa con tu público?",
+       "ops": [
+        "Llenar cada diapositiva con muchísimo texto pequeño",
+        "Usar poco texto, imágenes claras y citar de dónde sacaste la información",
+        "Copiar y pegar todo de una página sin decir de dónde viene"
+       ],
+       "correcta": 1,
+       "porque": "Una buena presentación es clara y ordenada, y citar las fuentes es un acto de honestidad que respeta el trabajo de otras personas."
+      }
+     ]
+    },
+    {
+     "id": "uso-seguro-y-responsable",
+     "nombre": "Uso Seguro y Responsable",
+     "emoji": "🛡️",
+     "oa": "OA 6: Usar internet y comunicación en línea de manera responsable y segura, respetando la privacidad, los datos personales y a las demás personas.",
+     "intro": "Aprendemos a navegar y usar la tecnología cuidándonos a nosotros mismos y a los demás.",
+     "items": [
+      {
+       "t": "Ciberseguridad",
+       "d": "Cuidados para protegernos de peligros en internet, como virus o personas desconocidas.",
+       "e": "🔒",
+       "en": "Cybersecurity"
+      },
+      {
+       "t": "Datos personales",
+       "d": "Información privada tuya, como tu nombre completo, dirección o teléfono, que no debes compartir con extraños.",
+       "e": "🪪",
+       "en": "Personal data"
+      },
+      {
+       "t": "Contraseña segura",
+       "d": "Una clave secreta y difícil de adivinar que protege tus cuentas.",
+       "e": "🔑",
+       "en": "Strong password"
+      },
+      {
+       "t": "Tiempo de pantalla",
+       "d": "Las horas que pasamos frente a dispositivos; conviene equilibrarlo con jugar, dormir y estar con la familia.",
+       "e": "⏰",
+       "en": "Screen time"
+      },
+      {
+       "t": "Ciberconvivencia",
+       "d": "Tratar a los demás en internet con el mismo respeto y empatía que en persona.",
+       "e": "🤝",
+       "en": "Digital coexistence"
+      },
+      {
+       "t": "Huella digital",
+       "d": "El rastro que dejamos en internet con lo que publicamos, buscamos o compartimos.",
+       "e": "👣",
+       "en": "Digital footprint"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… lo que publicas en internet puede quedar guardado por mucho tiempo, aunque lo borres? Por eso hay que pensar antes de subir algo.",
+      "¿Sabías que… los expertos recomiendan hacer pausas cada cierto tiempo para descansar la vista y el cuerpo cuando usamos pantallas?"
+     ],
+     "retos": [
+      {
+       "q": "Un desconocido te escribe por un juego en línea y te pide tu dirección y una foto tuya. ¿Qué haces?",
+       "ops": [
+        "Le doy los datos porque parece simpático",
+        "No comparto mis datos personales y aviso a un adulto de confianza",
+        "Le mando la foto pero no la dirección"
+       ],
+       "correcta": 1,
+       "porque": "Nunca debemos compartir datos personales con desconocidos en internet. Avisar a un adulto de confianza nos protege y es una decisión responsable y segura."
+      },
+      {
+       "q": "Ves que en un grupo del curso se burlan de un compañero con mensajes. ¿Qué actitud demuestra empatía y sana convivencia?",
+       "ops": [
+        "Sumarme a las burlas para no quedar afuera",
+        "No decir nada porque no es asunto mío",
+        "No participar de las burlas, apoyar al compañero y avisar a un adulto"
+       ],
+       "correcta": 2,
+       "porque": "El respeto y la empatía valen igual en internet que en persona. Frenar el ciberacoso y apoyar a quien lo sufre construye una sana convivencia."
+      },
+      {
+       "q": "Necesitas crear una contraseña para tu cuenta escolar. ¿Cuál es la más segura?",
+       "ops": [
+        "Tu nombre y fecha de nacimiento, fáciles de recordar",
+        "Una mezcla larga de letras, números y símbolos que solo tú sepas",
+        "La palabra '1234' porque es rápida de escribir"
+       ],
+       "correcta": 1,
+       "porque": "Una contraseña segura combina letras, números y símbolos, y no usa datos obvios. Así protegemos nuestra información con responsabilidad."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "sistemas-tecnologicos",
+     "nombre": "Objetos y Sistemas Tecnológicos",
+     "emoji": "⚙️",
+     "oa": "OA1 - Crear diseños de objetos y sistemas tecnológicos para resolver problemas o aprovechar oportunidades, reconociendo cómo la tecnología responde a necesidades humanas.",
+     "intro": "Todo lo que usamos a diario fue creado por personas para resolver un problema o una necesidad. Antes de crear algo, hay que entender bien qué necesidad queremos resolver.",
+     "items": [
+      {
+       "t": "Objeto tecnológico",
+       "d": "Cosa creada por personas para resolver un problema o necesidad, como un lápiz, una bicicleta o un celular.",
+       "e": "📱",
+       "en": "Technological object"
+      },
+      {
+       "t": "Sistema tecnológico",
+       "d": "Conjunto de partes conectadas que trabajan juntas para cumplir una función, como el sistema de agua potable que lleva agua a tu casa.",
+       "e": "🔧",
+       "en": "Technological system"
+      },
+      {
+       "t": "Problema o necesidad",
+       "d": "Situación que se puede mejorar o algo que a las personas les falta, y que impulsa a crear una solución tecnológica.",
+       "e": "💡",
+       "en": "Problem or need"
+      },
+      {
+       "t": "Función",
+       "d": "El trabajo o tarea que un objeto está hecho para cumplir, por ejemplo cortar, unir o iluminar.",
+       "e": "🎯",
+       "en": "Function"
+      },
+      {
+       "t": "Materiales",
+       "d": "Elementos con que se fabrica un objeto: madera, plástico, metal o vidrio, cada uno con propiedades distintas que sirven para usos distintos.",
+       "e": "🪵",
+       "en": "Materials"
+      },
+      {
+       "t": "Oportunidad tecnológica",
+       "d": "Situación en que se puede crear o mejorar algo aunque no haya un problema grave, como hacer una tarea más rápida o cómoda.",
+       "e": "🚀",
+       "en": "Opportunity"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el primer celular de mano que se vendió, el Motorola DynaTAC de 1983, pesaba unos 790 gramos (casi como un ladrillo) y costaba cerca de 4.000 dólares? Hoy un celular pesa poco más de 150 gramos.",
+      "¿Sabías que el velcro fue inventado inspirándose en cómo los frutos espinosos de una planta se pegaban al pelo de un perro? A eso se le llama copiar ideas de la naturaleza."
+     ],
+     "retos": [
+      {
+       "q": "En tu curso muchos compañeros olvidan qué tareas tienen para cada día. Quieres crear una solución tecnológica sencilla. ¿Cuál sería la mejor decisión?",
+       "ops": [
+        "Diseñar un sistema de agenda o pizarra compartida donde todos anoten y revisen las tareas",
+        "Pedir que cada uno memorice todo sin anotar nada",
+        "Ignorar el problema porque no es tan importante"
+       ],
+       "correcta": 0,
+       "porque": "Un sistema de agenda compartida resuelve la necesidad real (organizarse) coordinando a varias personas, y eso es justo lo que hace un sistema tecnológico: varias partes trabajando juntas para cumplir una función."
+      },
+      {
+       "q": "Vas a diseñar un soporte para dejar el celular firme mientras estudias. Debe ser resistente y no rayar la mesa. ¿Qué material es la mejor elección?",
+       "ops": [
+        "Papel delgado, porque es fácil de conseguir",
+        "Cartón o madera con base de goma, porque es firme y no raya la mesa",
+        "Vidrio, porque se ve bonito y transparente"
+       ],
+       "correcta": 1,
+       "porque": "Elegir el material según sus propiedades es clave en el diseño: el cartón o la madera dan firmeza y la goma protege la mesa, mientras que el papel no aguanta y el vidrio se quiebra con facilidad."
+      }
+     ]
+    },
+    {
+     "id": "diseno-y-proyectos",
+     "nombre": "Planificación y Elaboración de Proyectos",
+     "emoji": "📐",
+     "oa": "OA2, OA3 y OA4 - Planificar la elaboración de objetos considerando pasos, tiempos y recursos; elaborarlos con técnicas y herramientas; y probar y evaluar su calidad.",
+     "intro": "Crear algo nuevo requiere planificar los pasos y recursos, construir con cuidado, y luego probar y mejorar el resultado.",
+     "items": [
+      {
+       "t": "Planificación",
+       "d": "Ordenar la secuencia de pasos, los tiempos y los materiales antes de empezar, para no perder recursos ni tiempo.",
+       "e": "🗓️",
+       "en": "Planning"
+      },
+      {
+       "t": "Boceto",
+       "d": "Dibujo rápido y sencillo que muestra la idea inicial de un proyecto antes de construirlo.",
+       "e": "🖊️",
+       "en": "Sketch"
+      },
+      {
+       "t": "Prototipo",
+       "d": "Primera versión de prueba de un objeto, hecha para ver si funciona antes de la versión final.",
+       "e": "🛠️",
+       "en": "Prototype"
+      },
+      {
+       "t": "Herramientas",
+       "d": "Instrumentos que ayudan a fabricar y trabajar los materiales, como tijeras, regla, pegamento o destornillador.",
+       "e": "🔨",
+       "en": "Tools"
+      },
+      {
+       "t": "Recursos",
+       "d": "Todo lo que necesitas para el proyecto: materiales, herramientas, tiempo y trabajo de las personas.",
+       "e": "📦",
+       "en": "Resources"
+      },
+      {
+       "t": "Probar y evaluar",
+       "d": "Revisar cómo quedó el objeto usando criterios (si funciona, si es seguro, si es resistente) y corregir las fallas para mejorarlo.",
+       "e": "🔁",
+       "en": "Test and evaluate"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los hermanos Wright construyeron y probaron muchísimos prototipos y modelos antes de lograr el primer vuelo con motor en 1903? Cada prueba les enseñaba algo para mejorar.",
+      "¿Sabías que muchos inventores llevan un cuaderno de bocetos para no olvidar sus ideas? Leonardo da Vinci llenó miles de páginas con dibujos de máquinas y proyectos."
+     ],
+     "retos": [
+      {
+       "q": "Estás construyendo un porta-lápices de cartón y al probarlo se cae porque la base es muy angosta. Según el proceso de evaluar y mejorar, ¿qué haces?",
+       "ops": [
+        "Lo dejo así porque ya trabajé mucho en él",
+        "Evalúo la falla y rediseño la base más ancha para que quede estable",
+        "Boto todo y empiezo un proyecto totalmente distinto"
+       ],
+       "correcta": 1,
+       "porque": "Probar y evaluar sirve para detectar fallas y corregirlas: ampliar la base es la forma correcta de mejorar el prototipo aprovechando el trabajo ya hecho, sin partir de cero."
+      },
+      {
+       "q": "Tu grupo tiene poco tiempo y varios materiales. Antes de construir, ¿cuál es la mejor primera acción?",
+       "ops": [
+        "Empezar a cortar y pegar de inmediato a ver qué sale",
+        "Hacer un boceto y una lista con la secuencia de pasos y los materiales",
+        "Esperar a que el profesor lo haga por ustedes"
+       ],
+       "correcta": 1,
+       "porque": "Planificar con un boceto y una secuencia de pasos evita errores, ahorra materiales y tiempo, y permite repartir el trabajo del equipo de forma ordenada."
+      },
+      {
+       "q": "Al evaluar la calidad de una lámpara de cartón que hiciste, notas que la ampolleta calienta el cartón. ¿Qué criterio te está avisando de un problema?",
+       "ops": [
+        "El criterio estético, porque el color no combina",
+        "El criterio de seguridad, porque el calor podría ser un riesgo",
+        "Ningún criterio, mientras encienda está bien"
+       ],
+       "correcta": 1,
+       "porque": "Evaluar la calidad incluye el criterio de seguridad: si un material se puede calentar demasiado, hay riesgo, así que se debe rediseñar antes de usarlo, aunque el objeto funcione."
+      }
+     ]
+    },
+    {
+     "id": "tecnologias-digitales",
+     "nombre": "Software para Crear y Comunicar (TIC)",
+     "emoji": "💻",
+     "oa": "OA5 y OA6 - Usar software (procesador de texto, planillas y presentaciones) para crear documentos y comunicar resultados e ideas con distintos propósitos.",
+     "intro": "Las herramientas digitales nos permiten crear documentos, organizar datos y comunicar nuestras ideas de forma clara.",
+     "items": [
+      {
+       "t": "Software",
+       "d": "Programas que hacen funcionar un computador, como un procesador de texto o un editor de imágenes.",
+       "e": "🖥️",
+       "en": "Software"
+      },
+      {
+       "t": "Hardware",
+       "d": "Las partes físicas del computador que puedes tocar: teclado, pantalla, mouse.",
+       "e": "⌨️",
+       "en": "Hardware"
+      },
+      {
+       "t": "Procesador de texto",
+       "d": "Programa para escribir, editar y dar formato a documentos, como Word o Google Docs.",
+       "e": "📝",
+       "en": "Word processor"
+      },
+      {
+       "t": "Planilla de cálculo",
+       "d": "Programa para ordenar datos en tablas y hacer cálculos automáticos, como Excel o Google Sheets.",
+       "e": "📊",
+       "en": "Spreadsheet"
+      },
+      {
+       "t": "Presentación",
+       "d": "Diapositivas con texto e imágenes para exponer un tema ante otros, como PowerPoint o Google Slides.",
+       "e": "📽️",
+       "en": "Presentation"
+      },
+      {
+       "t": "Gráfico",
+       "d": "Dibujo que representa datos con barras, líneas o sectores para verlos y compararlos con facilidad.",
+       "e": "📈",
+       "en": "Chart"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la primera planilla de cálculo, llamada VisiCalc, se creó en 1979 y fue tan útil que muchas personas compraron un computador solo para poder usarla?",
+      "¿Sabías que guardar tu archivo cada pocos minutos evita perder tu trabajo si el computador se apaga de repente? Muchos programas hoy lo guardan solos en la nube."
+     ],
+     "retos": [
+      {
+       "q": "Debes presentar a tu curso los resultados de una encuesta con muchos números de forma clara. ¿Qué herramienta es la más adecuada?",
+       "ops": [
+        "Una planilla de cálculo para ordenar los datos y crear un gráfico",
+        "Un dibujo hecho a mano sin ordenar los números",
+        "Solo leer los números en voz alta sin mostrarlos"
+       ],
+       "correcta": 0,
+       "porque": "La planilla de cálculo permite organizar datos numéricos y transformarlos en un gráfico, lo que hace la información mucho más clara para el público que un montón de números sueltos."
+      },
+      {
+       "q": "Tienes que entregar un informe escrito con título, subtítulos y párrafos ordenados. ¿Qué software usarías y por qué?",
+       "ops": [
+        "Una planilla de cálculo, porque sirve para escribir textos largos",
+        "Un procesador de texto, porque permite escribir y dar formato con títulos y párrafos",
+        "Un editor de imágenes, porque hace ver bonito el informe"
+       ],
+       "correcta": 1,
+       "porque": "El procesador de texto está hecho para crear, editar y dar formato a documentos escritos (títulos, subtítulos, párrafos), que es exactamente lo que necesita un informe."
+      }
+     ]
+    },
+    {
+     "id": "ciudadania-digital",
+     "nombre": "Internet Seguro y Ciudadanía Digital",
+     "emoji": "🛡️",
+     "oa": "OA7 - Usar Internet y la comunicación en línea de forma responsable y segura para compartir información, respetando normas de privacidad, seguridad y buen trato.",
+     "intro": "Ser un buen ciudadano digital significa cuidar tu información, respetar a los demás y actuar con responsabilidad en Internet.",
+     "items": [
+      {
+       "t": "Privacidad",
+       "d": "Derecho a decidir qué información tuya compartes y con quién; en Internet conviene proteger lo que es privado.",
+       "e": "🔐",
+       "en": "Privacy"
+      },
+      {
+       "t": "Contraseña segura",
+       "d": "Clave difícil de adivinar, con letras, números y símbolos, que no se comparte con nadie.",
+       "e": "🔑",
+       "en": "Secure password"
+      },
+      {
+       "t": "Datos personales",
+       "d": "Información privada como tu nombre completo, dirección o teléfono, que no debes dar a desconocidos.",
+       "e": "🪪",
+       "en": "Personal data"
+      },
+      {
+       "t": "Huella digital",
+       "d": "Rastro que dejas en Internet con todo lo que publicas, comentas o compartes, y que puede quedar guardado.",
+       "e": "👣",
+       "en": "Digital footprint"
+      },
+      {
+       "t": "Ciberacoso",
+       "d": "Molestar, humillar o amenazar a alguien por Internet; es una falta de respeto que se debe denunciar.",
+       "e": "🚫",
+       "en": "Cyberbullying"
+      },
+      {
+       "t": "Fuente confiable",
+       "d": "Sitio o autor serio del que se obtiene información verdadera; conviene revisar la fuente antes de creer o compartir algo.",
+       "e": "✅",
+       "en": "Reliable source"
+      }
+     ],
+     "datos": [
+      "¿Sabías que lo que publicas en Internet puede quedar guardado para siempre, aunque lo borres? Por eso conviene pensar antes de compartir.",
+      "¿Sabías que no todo lo que aparece en Internet es verdad? Antes de compartir una noticia, conviene revisar si viene de una fuente confiable."
+     ],
+     "retos": [
+      {
+       "q": "Un compañero comparte en el grupo del curso una foto burlándose de otro niño. ¿Cuál es la respuesta más responsable y empática?",
+       "ops": [
+        "Reenviarla a más gente porque da risa",
+        "No decir nada para no meterse en problemas",
+        "No compartirla, avisar a un adulto de confianza y apoyar al compañero afectado"
+       ],
+       "correcta": 2,
+       "porque": "Reenviar la foto sería ciberacoso; lo correcto es no difundirla, buscar ayuda de un adulto y mostrar empatía, cuidando el buen trato y la sana convivencia en línea."
+      },
+      {
+       "q": "Un desconocido te escribe por un juego online y te pide tu dirección y una foto tuya. ¿Qué debes hacer?",
+       "ops": [
+        "Dársela porque parece amable",
+        "No entregar datos personales, bloquearlo y contarle a un adulto",
+        "Darle solo la dirección pero no la foto"
+       ],
+       "correcta": 1,
+       "porque": "Nunca se deben entregar datos personales a desconocidos en Internet; protegerte, bloquear y avisar a un adulto es la decisión segura y responsable."
+      },
+      {
+       "q": "Para una tarea encuentras un dato sorprendente en un sitio que no dice quién lo escribió ni de dónde salió. ¿Qué es lo más responsable?",
+       "ops": [
+        "Copiarlo igual, porque estaba en Internet",
+        "Contrastarlo con una fuente confiable antes de usarlo o compartirlo",
+        "Compartirlo de inmediato para que todos lo sepan"
+       ],
+       "correcta": 1,
+       "porque": "En Internet no todo es verdadero; revisar si la información viene de una fuente confiable evita difundir datos falsos y es parte de usar la red de forma responsable."
+      }
+     ]
+    },
+    {
+     "id": "tecnologia-y-medioambiente",
+     "nombre": "Tecnología, Sociedad y Medio Ambiente",
+     "emoji": "🌍",
+     "oa": "OA2 y OA4 (criterios ambientales y sociales) - Considerar y evaluar el impacto ambiental y social de los objetos tecnológicos, promoviendo un uso sustentable.",
+     "intro": "La tecnología mejora nuestra vida, pero al planificar y evaluar un objeto también debemos pensar en cómo afecta al planeta y a las personas.",
+     "items": [
+      {
+       "t": "Impacto ambiental",
+       "d": "Efecto que la fabricación o el uso de un objeto tiene sobre la naturaleza, como la contaminación del aire o del agua.",
+       "e": "🏭",
+       "en": "Environmental impact"
+      },
+      {
+       "t": "Reciclaje",
+       "d": "Transformar residuos en nuevos materiales u objetos para no botarlos a la basura.",
+       "e": "♻️",
+       "en": "Recycling"
+      },
+      {
+       "t": "Residuo electrónico",
+       "d": "Aparatos viejos como celulares o pilas que contaminan si no se desechan en lugares especiales.",
+       "e": "🔋",
+       "en": "E-waste"
+      },
+      {
+       "t": "Sustentabilidad",
+       "d": "Usar los recursos de forma que también alcancen para las futuras generaciones.",
+       "e": "🌱",
+       "en": "Sustainability"
+      },
+      {
+       "t": "Reutilización",
+       "d": "Volver a usar un objeto para el mismo u otro fin antes de desecharlo.",
+       "e": "🔄",
+       "en": "Reuse"
+      },
+      {
+       "t": "Consumo responsable",
+       "d": "Comprar y usar solo lo necesario, evitando el desperdicio de recursos y energía.",
+       "e": "🛒",
+       "en": "Responsible consumption"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en Chile existen puntos limpios donde puedes llevar pilas, celulares y aparatos viejos para reciclarlos sin contaminar la tierra?",
+      "¿Sabías que fabricar un solo celular usa cientos de litros de agua y muchos minerales? Por eso cuidar y reutilizar los aparatos ayuda al planeta."
+     ],
+     "retos": [
+      {
+       "q": "Tu familia va a cambiar el computador antiguo por uno nuevo. El viejo todavía enciende. ¿Cuál es la opción más sustentable?",
+       "ops": [
+        "Botarlo a la basura común porque ya no lo quieren",
+        "Donarlo o repararlo para que otra persona lo use, y si no sirve llevarlo a un punto limpio",
+        "Guardarlo tirado en el patio a la intemperie"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar o reciclar correctamente el aparato evita la contaminación por residuos electrónicos y refleja un consumo responsable y el cuidado del medio ambiente."
+      },
+      {
+       "q": "Vas a diseñar un juguete y puedes elegir entre dos planes. Pensando en el impacto ambiental, ¿cuál es mejor?",
+       "ops": [
+        "Usar mucho plástico nuevo y desechable porque es más rápido",
+        "Usar materiales reutilizados o reciclables y solo lo necesario",
+        "Usar la mayor cantidad de materiales posible para que se vea grande"
+       ],
+       "correcta": 1,
+       "porque": "Al planificar también se evalúa el impacto ambiental: elegir materiales reutilizados o reciclables y no desperdiciar recursos reduce la contaminación y es una decisión sustentable."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "artes": {
+  "nombre": "Artes Visuales",
+  "emoji": "🎨",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "colores-magia",
+     "nombre": "La Magia de los Colores",
+     "emoji": "🎨",
+     "oa": "OA2: Experimentar y aplicar el color como elemento del lenguaje visual, a partir de la observación del entorno.",
+     "intro": "Descubrimos cómo los colores nos rodean y aprendemos a mezclarlos para crear colores nuevos.",
+     "items": [
+      {
+       "t": "Colores primarios",
+       "d": "El rojo, el amarillo y el azul son colores especiales: no se pueden crear mezclando otros, pero con ellos formamos muchos más.",
+       "e": "🔴",
+       "en": "Primary colors"
+      },
+      {
+       "t": "Colores secundarios",
+       "d": "Aparecen al mezclar dos primarios: azul y amarillo dan verde, como el pasto.",
+       "e": "🟢",
+       "en": "Secondary colors"
+      },
+      {
+       "t": "Mezclar colores",
+       "d": "Juntar pinturas de distintos colores para inventar un color nuevo, como un pequeño experimento.",
+       "e": "🖌️",
+       "en": "Mixing colors"
+      },
+      {
+       "t": "Colores cálidos",
+       "d": "El rojo, el naranjo y el amarillo nos recuerdan al sol y al fuego; dan sensación de calor.",
+       "e": "☀️",
+       "en": "Warm colors"
+      },
+      {
+       "t": "Colores fríos",
+       "d": "El azul, el verde y el morado nos recuerdan al mar y al hielo; dan sensación de frescura.",
+       "e": "❄️",
+       "en": "Cool colors"
+      },
+      {
+       "t": "Colores en la naturaleza",
+       "d": "Las flores, las hojas y el cielo tienen muchos colores que podemos observar y usar en nuestros dibujos.",
+       "e": "🌸",
+       "en": "Colors in nature"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el arcoíris tiene siete colores y siempre aparecen en el mismo orden?",
+      "¿Sabías que… mezclando solo tres colores (rojo, amarillo y azul) se pueden crear muchísimos colores distintos?"
+     ],
+     "retos": [
+      {
+       "q": "Sofía quiere pintar el pasto de su dibujo, pero solo tiene pintura amarilla y azul. ¿Qué puede hacer?",
+       "ops": [
+        "Mezclar amarillo con azul para obtener verde",
+        "Dejar el pasto sin pintar",
+        "Pintar el pasto de color rojo"
+       ],
+       "correcta": 0,
+       "porque": "Al mezclar dos colores primarios, amarillo y azul, se crea el verde, que es el color del pasto."
+      },
+      {
+       "q": "Martín dibuja un sol muy brillante y cálido. ¿Qué colores le convienen más?",
+       "ops": [
+        "Azul y morado",
+        "Amarillo y naranjo",
+        "Verde y celeste"
+       ],
+       "correcta": 1,
+       "porque": "El amarillo y el naranjo son colores cálidos que nos recuerdan al sol y transmiten calor."
+      },
+      {
+       "q": "Emilia quiere pintar el mar y el hielo para que se vean frescos. ¿Qué grupo de colores le conviene?",
+       "ops": [
+        "Colores cálidos como rojo y naranjo",
+        "Colores fríos como azul y celeste",
+        "Solo el color negro"
+       ],
+       "correcta": 1,
+       "porque": "Los colores fríos, como el azul y el celeste, dan sensación de frescura y nos recuerdan al mar y al hielo."
+      }
+     ]
+    },
+    {
+     "id": "lineas-formas",
+     "nombre": "Líneas y Formas",
+     "emoji": "✏️",
+     "oa": "OA2: Experimentar y aplicar líneas y formas como elementos del lenguaje visual, a partir del entorno cercano.",
+     "intro": "Aprendemos que con líneas y formas simples podemos dibujar todo lo que imaginamos.",
+     "items": [
+      {
+       "t": "Línea recta",
+       "d": "Una raya derecha, sin curvas, como el borde de una mesa o un lápiz acostado.",
+       "e": "📏",
+       "en": "Straight line"
+      },
+      {
+       "t": "Línea curva",
+       "d": "Una línea que se dobla suavemente, como una ola del mar o una sonrisa.",
+       "e": "〰️",
+       "en": "Curved line"
+      },
+      {
+       "t": "Círculo",
+       "d": "Una forma redonda y cerrada, como el sol, una pelota o la luna llena.",
+       "e": "⭕",
+       "en": "Circle"
+      },
+      {
+       "t": "Cuadrado",
+       "d": "Una forma con cuatro lados iguales, como una ventana o una galleta cuadrada.",
+       "e": "⬜",
+       "en": "Square"
+      },
+      {
+       "t": "Triángulo",
+       "d": "Una forma con tres lados y tres puntas, como el techo de una casa o una montaña.",
+       "e": "🔺",
+       "en": "Triangle"
+      },
+      {
+       "t": "Punto",
+       "d": "Una pequeña marca; muchos puntos juntos pueden formar dibujos y texturas.",
+       "e": "⚫",
+       "en": "Dot"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… casi todo lo que dibujamos empieza con líneas y formas sencillas como círculos y triángulos?",
+      "¿Sabías que… algunos artistas hacen cuadros enteros usando solo puntitos de colores muy juntos?"
+     ],
+     "retos": [
+      {
+       "q": "Ana quiere dibujar una casa con su techo. ¿Qué formas le sirven mejor?",
+       "ops": [
+        "Un cuadrado con un triángulo arriba",
+        "Solo círculos",
+        "Solo líneas curvas"
+       ],
+       "correcta": 0,
+       "porque": "El cuadrado sirve para las paredes y el triángulo para el techo, así se forma una casa."
+      },
+      {
+       "q": "Lucas quiere dibujar el sol y una pelota. ¿Qué forma le conviene usar?",
+       "ops": [
+        "El triángulo, porque tiene puntas",
+        "El círculo, porque es redondo y cerrado",
+        "El cuadrado, porque tiene esquinas"
+       ],
+       "correcta": 1,
+       "porque": "El sol y la pelota son redondos, y el círculo es la forma redonda y cerrada que se parece a ellos."
+      },
+      {
+       "q": "Isidora dibuja el mar con olas suaves. ¿Qué tipo de línea representa mejor las olas?",
+       "ops": [
+        "La línea recta",
+        "La línea curva",
+        "El punto"
+       ],
+       "correcta": 1,
+       "porque": "Las olas se doblan suavemente, y la línea curva es la que se dobla, igual que una ola del mar."
+      }
+     ]
+    },
+    {
+     "id": "manos-materiales",
+     "nombre": "Manos a la Obra",
+     "emoji": "🖐️",
+     "oa": "OA3: Crear trabajos de arte explorando distintos materiales, herramientas y procedimientos.",
+     "intro": "Exploramos distintos materiales para crear con nuestras manos y cuidamos lo que usamos.",
+     "items": [
+      {
+       "t": "Pincel",
+       "d": "Una herramienta con pelitos para pintar; lo mojamos en pintura y deslizamos suave sobre el papel.",
+       "e": "🖌️",
+       "en": "Paintbrush"
+      },
+      {
+       "t": "Témpera",
+       "d": "Pintura de colores que se usa con agua y pincel; hay que compartirla y cuidarla.",
+       "e": "🎨",
+       "en": "Tempera paint"
+      },
+      {
+       "t": "Collage",
+       "d": "Pegar trozos de papel, tela o materiales sobre una hoja para formar una imagen.",
+       "e": "✂️",
+       "en": "Collage"
+      },
+      {
+       "t": "Modelar",
+       "d": "Dar forma con las manos a la plasticina o la greda para crear figuras.",
+       "e": "🟤",
+       "en": "Modeling"
+      },
+      {
+       "t": "Reciclar para crear",
+       "d": "Usar cajas, tapas o papeles usados para hacer arte y cuidar el planeta.",
+       "e": "♻️",
+       "en": "Recycling to create"
+      },
+      {
+       "t": "Ordenar y limpiar",
+       "d": "Al terminar, guardamos los materiales y limpiamos la mesa; así cuidamos y respetamos el espacio.",
+       "e": "🧽",
+       "en": "Tidy up and clean"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… con cajas y tapas viejas puedes crear robots, animales o autos, y así cuidas el medio ambiente?",
+      "¿Sabías que… la greda es una tierra especial que, al secarse, se pone dura y guarda la forma que le diste?"
+     ],
+     "retos": [
+      {
+       "q": "El curso terminó de pintar y quedaron pinceles con témpera en la mesa. ¿Qué es lo correcto hacer?",
+       "ops": [
+        "Dejar todo tirado e irse a jugar",
+        "Lavar los pinceles y ordenar los materiales",
+        "Esconder los pinceles sucios"
+       ],
+       "correcta": 1,
+       "porque": "Lavar y ordenar los materiales muestra responsabilidad y cuidado del espacio que compartimos con todos."
+      },
+      {
+       "q": "Benjamín quiere hacer un robot, pero no tiene juguetes nuevos. En casa hay cajas y tapas usadas. ¿Qué puede hacer?",
+       "ops": [
+        "Pedir que le compren un robot nuevo",
+        "Usar las cajas y tapas para construir su robot",
+        "No hacer nada"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales usados le permite crear su robot y además cuida el planeta reciclando."
+      },
+      {
+       "q": "Antonia quiere hacer una imagen pegando trozos de papel de colores sobre una hoja. ¿Qué técnica está usando?",
+       "ops": [
+        "Modelar con greda",
+        "Hacer un collage",
+        "Pintar con témpera"
+       ],
+       "correcta": 1,
+       "porque": "El collage consiste en pegar trozos de papel u otros materiales sobre una hoja para formar una imagen."
+      }
+     ]
+    },
+    {
+     "id": "mundo-natural",
+     "nombre": "Arte del Mundo Natural",
+     "emoji": "🌳",
+     "oa": "OA1: Expresar y crear trabajos de arte a partir de la observación del entorno natural, como el paisaje y los seres vivos de Chile.",
+     "intro": "Miramos la naturaleza de Chile con atención para inspirarnos y crear nuestras propias obras.",
+     "items": [
+      {
+       "t": "Paisaje",
+       "d": "Un dibujo o pintura de un lugar de la naturaleza, como el mar, un cerro o un bosque.",
+       "e": "🏞️",
+       "en": "Landscape"
+      },
+      {
+       "t": "Animales",
+       "d": "Podemos dibujar animales de Chile como el cóndor, el puma o el pingüino, observando su forma.",
+       "e": "🦅",
+       "en": "Animals"
+      },
+      {
+       "t": "Plantas y flores",
+       "d": "El copihue, los árboles y las flores nos dan formas y colores para crear.",
+       "e": "🌺",
+       "en": "Plants and flowers"
+      },
+      {
+       "t": "Texturas naturales",
+       "d": "Lo áspero de la corteza o lo suave de un pétalo; podemos sentirlas y representarlas.",
+       "e": "🍂",
+       "en": "Natural textures"
+      },
+      {
+       "t": "Cuidar la naturaleza",
+       "d": "Observamos sin dañar: no arrancamos flores ni molestamos a los animales para inspirarnos.",
+       "e": "🌱",
+       "en": "Caring for nature"
+      },
+      {
+       "t": "Arte con la naturaleza",
+       "d": "Crear arte con elementos del suelo como hojas, piedras y palitos, ordenándolos con cuidado.",
+       "e": "🪨",
+       "en": "Nature art"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el copihue es la flor nacional de Chile y tiene forma de campanita roja?",
+      "¿Sabías que… el cóndor es una de las aves voladoras más grandes del mundo y aparece en el escudo de Chile?"
+     ],
+     "retos": [
+      {
+       "q": "En un paseo, Valentina ve unas flores muy bonitas y quiere dibujarlas. ¿Cuál es la mejor forma de inspirarse cuidando la naturaleza?",
+       "ops": [
+        "Arrancar todas las flores para llevárselas",
+        "Observar y dibujar las flores sin arrancarlas",
+        "Pisar las flores"
+       ],
+       "correcta": 1,
+       "porque": "Podemos observar y dibujar la naturaleza sin dañarla; así la cuidamos y otros también pueden disfrutarla."
+      },
+      {
+       "q": "Matías quiere crear un dibujo inspirado en un lugar de la naturaleza de Chile. ¿Cuál de estas ideas es un paisaje?",
+       "ops": [
+        "Un cerro con árboles y el mar al fondo",
+        "Un solo círculo rojo",
+        "Una letra grande"
+       ],
+       "correcta": 0,
+       "porque": "Un paisaje muestra un lugar de la naturaleza, como un cerro con árboles y el mar, tal como lo observamos."
+      }
+     ]
+    },
+    {
+     "id": "mirar-obras",
+     "nombre": "Miramos Obras de Arte",
+     "emoji": "🖼️",
+     "oa": "OA4: Expresar y comunicar con respeto lo que les gusta y lo que sienten frente a obras de arte, propias y de otros.",
+     "intro": "Aprendemos a mirar obras de arte con calma y a decir con respeto lo que nos hacen sentir.",
+     "items": [
+      {
+       "t": "Obra de arte",
+       "d": "Una creación hecha por un artista, como una pintura, una escultura o un dibujo.",
+       "e": "🎨",
+       "en": "Artwork"
+      },
+      {
+       "t": "Artista",
+       "d": "La persona que crea arte usando su imaginación, sus manos y distintos materiales.",
+       "e": "👩‍🎨",
+       "en": "Artist"
+      },
+      {
+       "t": "Escultura",
+       "d": "Una obra de arte con volumen que podemos ver por todos lados, como una figura de greda.",
+       "e": "🗿",
+       "en": "Sculpture"
+      },
+      {
+       "t": "Museo",
+       "d": "Un lugar donde se cuidan y muestran muchas obras de arte para que las visitemos.",
+       "e": "🏛️",
+       "en": "Museum"
+      },
+      {
+       "t": "Opinar con respeto",
+       "d": "Podemos decir si una obra nos gusta o no, pero siempre con palabras amables.",
+       "e": "💬",
+       "en": "Respectful opinion"
+      },
+      {
+       "t": "¿Qué siento?",
+       "d": "Una obra puede darnos alegría, calma o curiosidad; aprendemos a nombrar lo que sentimos.",
+       "e": "😊",
+       "en": "How I feel"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en los museos las obras no se tocan para poder cuidarlas y que duren muchos años?",
+      "¿Sabías que… una misma pintura puede hacer sentir cosas distintas a cada persona, y todas son válidas?"
+     ],
+     "retos": [
+      {
+       "q": "A Tomás le gusta mucho un dibujo, pero a su amigo José no le gustó. ¿Qué debería hacer Tomás?",
+       "ops": [
+        "Enojarse y decirle que está equivocado",
+        "Escuchar la opinión de José con respeto",
+        "Romper el dibujo de José"
+       ],
+       "correcta": 1,
+       "porque": "Cada persona puede sentir cosas distintas frente al arte; escuchar con respeto es una sana convivencia."
+      },
+      {
+       "q": "El curso visita un museo y ven una escultura muy linda. ¿Cómo deben comportarse?",
+       "ops": [
+        "Tocar y trepar la escultura",
+        "Observarla sin tocarla y hablar bajito",
+        "Correr y gritar por las salas"
+       ],
+       "correcta": 1,
+       "porque": "En el museo cuidamos las obras observando sin tocar y nos comportamos con respeto por todos los visitantes."
+      },
+      {
+       "q": "La profesora pide a Josefa que cuente qué siente al ver una pintura del mar. ¿Cuál es una buena respuesta?",
+       "ops": [
+        "\"Esta pintura me da calma, porque el mar se ve tranquilo\"",
+        "\"No quiero decir nada\"",
+        "\"La pintura de mi compañero es fea\""
+       ],
+       "correcta": 0,
+       "porque": "Comunicar con respeto lo que sentimos, como la calma que nos da el mar, es apreciar y hablar del arte."
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "elementos-visuales",
+     "nombre": "Los elementos del arte: línea, forma y color",
+     "emoji": "🎨",
+     "oa": "OA2: Experimentar y aplicar elementos del lenguaje visual (línea, color) en trabajos de arte, a partir de la observación del entorno.",
+     "intro": "Descubrimos que todo dibujo empieza con líneas, formas y colores que podemos combinar.",
+     "items": [
+      {
+       "t": "Línea",
+       "d": "Es la marca que deja el lápiz al moverse. Puede ser recta, curva, gruesa o delgada.",
+       "e": "➰",
+       "en": "Line"
+      },
+      {
+       "t": "Forma",
+       "d": "El contorno de las cosas: círculos, cuadrados, triángulos y formas libres.",
+       "e": "🔺",
+       "en": "Shape"
+      },
+      {
+       "t": "Color primario",
+       "d": "El rojo, el amarillo y el azul. No se hacen mezclando otros colores.",
+       "e": "🔴",
+       "en": "Primary color"
+      },
+      {
+       "t": "Color secundario",
+       "d": "Nacen al mezclar dos primarios: verde, naranjo y morado.",
+       "e": "🟢",
+       "en": "Secondary color"
+      },
+      {
+       "t": "Textura",
+       "d": "Cómo se ve o se siente una superficie: suave, rugosa, áspera o blanda.",
+       "e": "🧽",
+       "en": "Texture"
+      },
+      {
+       "t": "Contorno",
+       "d": "La línea que rodea una figura y la separa del fondo.",
+       "e": "✏️",
+       "en": "Outline"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… mezclando solo tres colores primarios puedes crear casi todos los demás colores?",
+      "¿Sabías que… con puntos muy juntitos, sin líneas, también se puede dibujar? Esa técnica se llama puntillismo."
+     ],
+     "retos": [
+      {
+       "q": "Quieres pintar un pasto verde para tu dibujo, pero en tu caja solo hay colores primarios. ¿Qué haces?",
+       "ops": [
+        "Mezclo amarillo con azul para obtener verde",
+        "Uso rojo porque es mi color favorito",
+        "Dejo el pasto en blanco porque no tengo verde"
+       ],
+       "correcta": 0,
+       "porque": "El verde es un color secundario que nace al mezclar dos primarios: amarillo y azul. Por eso no necesitas comprar verde."
+      },
+      {
+       "q": "Tu compañero dibujó un gato, pero se pierde y no se distingue del fondo. ¿Qué le sugieres para ayudarlo?",
+       "ops": [
+        "Borrar todo el gato y empezar de nuevo",
+        "Marcar bien el contorno del gato con una línea",
+        "Pintar el gato y el fondo del mismo color"
+       ],
+       "correcta": 1,
+       "porque": "El contorno es la línea que separa la figura del fondo y ayuda a que el gato se distinga con claridad."
+      },
+      {
+       "q": "Dibujaste el mar con líneas y quieres que se vea movido, como con olas. ¿Qué tipo de línea usarías?",
+       "ops": [
+        "Líneas rectas y derechas",
+        "Líneas curvas y onduladas",
+        "No dibujo ninguna línea"
+       ],
+       "correcta": 1,
+       "porque": "Las líneas curvas y onduladas dan sensación de movimiento, como las olas del mar, mientras que las rectas se ven quietas."
+      }
+     ]
+    },
+    {
+     "id": "colores-emociones",
+     "nombre": "Colores, luz y emociones",
+     "emoji": "🌈",
+     "oa": "OA3: Crear trabajos de arte con un propósito expresivo personal, usando el color para comunicar emociones e ideas.",
+     "intro": "Los colores no solo se ven bonitos: también nos hacen sentir cosas.",
+     "items": [
+      {
+       "t": "Colores cálidos",
+       "d": "El rojo, el naranjo y el amarillo. Recuerdan al sol y al fuego.",
+       "e": "🔥",
+       "en": "Warm colors"
+      },
+      {
+       "t": "Colores fríos",
+       "d": "El azul, el verde y el morado. Recuerdan al agua y al hielo.",
+       "e": "❄️",
+       "en": "Cool colors"
+      },
+      {
+       "t": "Tono claro y oscuro",
+       "d": "Un mismo color puede ser más clarito o más oscurito según cuánta luz tenga.",
+       "e": "🌗",
+       "en": "Light and dark tone"
+      },
+      {
+       "t": "Arcoíris",
+       "d": "La luz del sol se separa en muchos colores después de la lluvia.",
+       "e": "🌈",
+       "en": "Rainbow"
+      },
+      {
+       "t": "Color y emoción",
+       "d": "Los colores pueden mostrar alegría, calma, enojo o tristeza en un dibujo.",
+       "e": "😊",
+       "en": "Color and emotion"
+      },
+      {
+       "t": "Contraste",
+       "d": "Cuando un color claro está junto a uno oscuro, ambos se ven más.",
+       "e": "⚫",
+       "en": "Contrast"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el arcoíris siempre tiene los colores en el mismo orden: rojo, naranjo, amarillo, verde, azul y morado?",
+      "¿Sabías que… muchos pintores usan colores fríos para transmitir calma y colores cálidos para dar energía?"
+     ],
+     "retos": [
+      {
+       "q": "Debes dibujar un día de playa con mucho sol y alegría. ¿Qué colores usarías principalmente?",
+       "ops": [
+        "Colores fríos como el azul y el morado",
+        "Colores cálidos como el amarillo y el naranjo",
+        "Solo negro y gris"
+       ],
+       "correcta": 1,
+       "porque": "Los colores cálidos como el amarillo y el naranjo recuerdan al sol y transmiten energía y alegría."
+      },
+      {
+       "q": "Quieres que una estrella amarilla resalte en tu cielo nocturno. ¿De qué color pintas el fondo?",
+       "ops": [
+        "Amarillo, igual que la estrella",
+        "Azul oscuro, para crear contraste",
+        "Blanco, como la hoja"
+       ],
+       "correcta": 1,
+       "porque": "Un fondo azul oscuro crea contraste con el amarillo claro y hace que la estrella resalte mucho más."
+      },
+      {
+       "q": "Quieres dibujar cómo te sientes cuando estás tranquilo y en calma. ¿Qué colores elegirías?",
+       "ops": [
+        "Colores cálidos como el rojo y el naranjo",
+        "Colores fríos como el azul y el verde",
+        "Muchos colores fuertes y mezclados"
+       ],
+       "correcta": 1,
+       "porque": "Los colores fríos como el azul y el verde recuerdan al agua y suelen transmitir calma y tranquilidad."
+      }
+     ]
+    },
+    {
+     "id": "naturaleza-entorno",
+     "nombre": "Arte de la naturaleza y mi entorno",
+     "emoji": "🌿",
+     "oa": "OA1: Expresar y crear trabajos de arte a partir de la observación del entorno natural y cultural, cuidando el medioambiente.",
+     "intro": "Observamos la naturaleza de Chile para inspirarnos y aprender a cuidarla mientras creamos.",
+     "items": [
+      {
+       "t": "Paisaje",
+       "d": "Un dibujo o pintura de un lugar: el mar, la cordillera, el campo o la ciudad.",
+       "e": "🏞️",
+       "en": "Landscape"
+      },
+      {
+       "t": "Materiales naturales",
+       "d": "Hojas, ramitas, piedras y semillas que sirven para crear arte.",
+       "e": "🍂",
+       "en": "Natural materials"
+      },
+      {
+       "t": "Reciclaje creativo",
+       "d": "Usar cosas que ya no sirven, como cajas o tapas, para hacer arte nuevo.",
+       "e": "♻️",
+       "en": "Creative recycling"
+      },
+      {
+       "t": "Observar",
+       "d": "Mirar con atención los colores y formas de plantas, animales y cielos.",
+       "e": "👀",
+       "en": "To observe"
+      },
+      {
+       "t": "Estampado de hojas",
+       "d": "Pintar una hoja y presionarla en el papel para dejar su forma.",
+       "e": "🌱",
+       "en": "Leaf print"
+      },
+      {
+       "t": "Colores de Chile",
+       "d": "El azul del mar, el café de la cordillera y el verde de los bosques del sur.",
+       "e": "🇨🇱",
+       "en": "Colors of Chile"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en el norte de Chile florece el desierto con flores de colores después de la lluvia?",
+      "¿Sabías que… puedes hacer pinceles con ramitas y hojas para pintar de formas divertidas?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres hacer una manualidad y encuentras una caja de cartón vacía en tu casa. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Botarla a la basura de inmediato",
+        "Reutilizarla para crear un robot o una casita de arte",
+        "Pedir que compren una caja nueva"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar la caja es reciclaje creativo: cuidamos el medioambiente y creamos algo nuevo sin gastar."
+      },
+      {
+       "q": "Recoges materiales del patio para tu collage. ¿Cuál es la forma más responsable de hacerlo?",
+       "ops": [
+        "Arrancar plantas vivas y flores del jardín",
+        "Juntar hojas y ramitas que ya se cayeron al suelo",
+        "Cortar todas las ramas de un árbol"
+       ],
+       "correcta": 1,
+       "porque": "Recoger lo que ya cayó al suelo cuida las plantas vivas y respeta la naturaleza mientras creamos."
+      },
+      {
+       "q": "Vas a pintar un paisaje del sur de Chile con sus bosques. ¿Qué colores observarías para usar?",
+       "ops": [
+        "Mucho verde para los árboles y azul para los ríos",
+        "Solo rojo y amarillo, como el desierto",
+        "Solo blanco, porque el sur es aburrido"
+       ],
+       "correcta": 0,
+       "porque": "Observar bien el entorno nos muestra que los bosques del sur tienen mucho verde y agua azul; el arte parte de mirar con atención."
+      }
+     ]
+    },
+    {
+     "id": "tecnicas-manos",
+     "nombre": "Técnicas y materiales del artista",
+     "emoji": "🖌️",
+     "oa": "OA5: Aplicar y combinar diferentes materiales, herramientas y técnicas de las artes visuales en trabajos y diseños del entorno cercano.",
+     "intro": "Probamos distintas herramientas y técnicas para crear de muchas maneras.",
+     "items": [
+      {
+       "t": "Pincel",
+       "d": "Herramienta con pelitos para pintar con témpera o acuarela.",
+       "e": "🖌️",
+       "en": "Paintbrush"
+      },
+      {
+       "t": "Collage",
+       "d": "Pegar papeles, telas o recortes para crear una imagen nueva.",
+       "e": "✂️",
+       "en": "Collage"
+      },
+      {
+       "t": "Modelar",
+       "d": "Dar forma con las manos a la plasticina o la greda.",
+       "e": "🟤",
+       "en": "To mold"
+      },
+      {
+       "t": "Témpera",
+       "d": "Pintura de colores fuertes que se mezcla con un poco de agua.",
+       "e": "🎨",
+       "en": "Tempera paint"
+      },
+      {
+       "t": "Dibujo con lápiz",
+       "d": "Crear líneas y sombras usando lápiz grafito o de colores.",
+       "e": "✏️",
+       "en": "Pencil drawing"
+      },
+      {
+       "t": "Estampar",
+       "d": "Presionar un objeto con pintura para repetir su forma en el papel.",
+       "e": "🫐",
+       "en": "To stamp"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la greda es un tipo de tierra especial que los pueblos originarios de Chile usan para hacer vasijas?",
+      "¿Sabías que… puedes estampar figuras usando una papa cortada y pintura?"
+     ],
+     "retos": [
+      {
+       "q": "Terminaste de pintar y tu mesa y pinceles quedaron sucios. ¿Qué es lo responsable?",
+       "ops": [
+        "Dejar todo sucio y salir a jugar",
+        "Limpiar mi lugar y lavar los pinceles antes de irme",
+        "Esconder los pinceles sucios en el estante"
+       ],
+       "correcta": 1,
+       "porque": "Ordenar y limpiar nuestro lugar es ser responsables y cuidar los materiales que usamos todos."
+      },
+      {
+       "q": "Quieres crear un árbol usando papeles de colores en vez de dibujarlo. ¿Qué técnica eliges?",
+       "ops": [
+        "Modelar con greda",
+        "Hacer un collage pegando papeles recortados",
+        "Estampar con una papa"
+       ],
+       "correcta": 1,
+       "porque": "El collage consiste en pegar y combinar recortes de papel para formar una imagen nueva."
+      },
+      {
+       "q": "Quieres hacer una vasija con volumen que se pueda tomar con las manos. ¿Qué material y técnica usas?",
+       "ops": [
+        "Modelar con greda o plasticina",
+        "Pintar una hoja plana con témpera",
+        "Pegar papeles en una cartulina"
+       ],
+       "correcta": 0,
+       "porque": "Para dar volumen se modela con las manos usando greda o plasticina; así la vasija tiene forma por todos lados."
+      }
+     ]
+    },
+    {
+     "id": "apreciar-arte",
+     "nombre": "Mirar y disfrutar el arte",
+     "emoji": "🖼️",
+     "oa": "OA6/OA7: Observar, describir y comunicar sus impresiones sobre obras de arte usando el lenguaje visual, respetando distintas opiniones.",
+     "intro": "Aprendemos a mirar obras de arte, a describirlas y a respetar lo que otros sienten al verlas.",
+     "items": [
+      {
+       "t": "Obra de arte",
+       "d": "Una creación hecha por un artista, como un cuadro o una escultura.",
+       "e": "🖼️",
+       "en": "Artwork"
+      },
+      {
+       "t": "Museo",
+       "d": "Un lugar donde se cuidan y muestran obras de arte para todos.",
+       "e": "🏛️",
+       "en": "Museum"
+      },
+      {
+       "t": "Escultura",
+       "d": "Una obra de arte con volumen que se puede ver por todos lados.",
+       "e": "🗿",
+       "en": "Sculpture"
+      },
+      {
+       "t": "Describir",
+       "d": "Contar con palabras qué colores, formas y cosas vemos en una obra.",
+       "e": "💬",
+       "en": "To describe"
+      },
+      {
+       "t": "Opinión respetuosa",
+       "d": "Decir qué me gusta y escuchar lo que sienten los demás sin burlarme.",
+       "e": "🤝",
+       "en": "Respectful opinion"
+      },
+      {
+       "t": "Artista",
+       "d": "La persona que crea obras de arte usando su imaginación.",
+       "e": "👩‍🎨",
+       "en": "Artist"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la artista chilena Violeta Parra, además de cantar, creaba arpilleras de colores con telas y lanas?",
+      "¿Sabías que… en un museo no se pueden tocar las obras para cuidarlas y que duren muchos años?"
+     ],
+     "retos": [
+      {
+       "q": "En clase, a un compañero le gusta un cuadro que a ti no te gusta. ¿Cómo actúas?",
+       "ops": [
+        "Me río y le digo que su gusto es malo",
+        "Escucho su opinión con respeto y le cuento la mía con calma",
+        "Le digo que se calle porque yo tengo la razón"
+       ],
+       "correcta": 1,
+       "porque": "Cada persona siente el arte distinto. Escuchar con respeto es sana convivencia y empatía."
+      },
+      {
+       "q": "Visitas un museo con tu curso y ves una escultura muy linda. ¿Qué haces?",
+       "ops": [
+        "La toco con las manos para sentirla mejor",
+        "La observo con atención sin tocarla para cuidarla",
+        "Me apoyo en ella para descansar"
+       ],
+       "correcta": 1,
+       "porque": "Las obras de un museo se cuidan mirándolas sin tocar, para que duren y todos puedan disfrutarlas."
+      },
+      {
+       "q": "La profesora te pide describir un cuadro del mar. ¿Qué respuesta describe mejor usando el lenguaje visual?",
+       "ops": [
+        "\"Es feo\", y nada más",
+        "\"Veo líneas curvas azules y formas de barcos; me da sensación de calma\"",
+        "\"No sé, no quiero mirarlo\""
+       ],
+       "correcta": 1,
+       "porque": "Describir es contar los colores, líneas y formas que vemos y también lo que sentimos; así comunicamos nuestra impresión de la obra."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "linea-forma-color",
+     "nombre": "Línea, forma y color",
+     "emoji": "🎨",
+     "oa": "OA2: Aplicar y combinar elementos del lenguaje visual (línea, forma, color y textura) en sus trabajos de arte.",
+     "intro": "Descubrimos los ingredientes básicos de toda obra de arte: líneas, formas y colores.",
+     "items": [
+      {
+       "t": "Línea",
+       "d": "Es la marca que deja el lápiz al moverse; puede ser recta, curva, gruesa o delgada.",
+       "e": "➰",
+       "en": "Line"
+      },
+      {
+       "t": "Forma",
+       "d": "Es una figura cerrada, como un círculo, un cuadrado o la silueta de una hoja.",
+       "e": "⬜",
+       "en": "Shape"
+      },
+      {
+       "t": "Colores primarios",
+       "d": "El rojo, el azul y el amarillo; con ellos se crean casi todos los demás colores.",
+       "e": "🔴",
+       "en": "Primary colors"
+      },
+      {
+       "t": "Colores secundarios",
+       "d": "Nacen al mezclar dos primarios: verde, naranjo y morado.",
+       "e": "🟢",
+       "en": "Secondary colors"
+      },
+      {
+       "t": "Textura",
+       "d": "Es cómo se siente o se ve una superficie: áspera, suave, rugosa o lisa.",
+       "e": "🧱",
+       "en": "Texture"
+      },
+      {
+       "t": "Contorno",
+       "d": "Es la línea que rodea una figura y marca su borde.",
+       "e": "✏️",
+       "en": "Outline"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… mezclando solo rojo, azul y amarillo puedes crear cientos de colores diferentes?",
+      "¿Sabías que… algunas personas ciegas usan la textura para 'ver' esculturas con las manos?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres pintar un pasto verde pero solo tienes témpera azul y amarilla. ¿Qué haces cuidando tus materiales?",
+       "ops": [
+        "Mezclo azul y amarillo para crear verde y uso solo lo necesario",
+        "Boto la témpera azul porque no sirve",
+        "Exijo gritando que me den témpera verde"
+       ],
+       "correcta": 0,
+       "porque": "El azul y el amarillo son primarios y al mezclarse forman verde (secundario); además cuidar los materiales es ser responsable."
+      },
+      {
+       "q": "Observas dos dibujos: uno con líneas curvas suaves y otro con líneas rectas y filosas. ¿Cuál transmite más calma?",
+       "ops": [
+        "El de líneas rectas y filosas",
+        "El de líneas curvas suaves",
+        "Ninguno transmite nada, las líneas dan igual"
+       ],
+       "correcta": 1,
+       "porque": "Las líneas curvas y suaves suelen dar sensación de tranquilidad, mientras las rectas y filosas transmiten tensión o energía."
+      }
+     ]
+    },
+    {
+     "id": "paisaje-y-naturaleza",
+     "nombre": "Paisajes y naturaleza",
+     "emoji": "🏞️",
+     "oa": "OA1: Crear trabajos de arte con un propósito expresivo personal, basados en la observación del entorno natural y el paisaje chileno.",
+     "intro": "Miramos la naturaleza de Chile para inspirarnos y crear nuestros propios paisajes.",
+     "items": [
+      {
+       "t": "Paisaje",
+       "d": "Es una obra que representa un lugar natural, como un cerro, el mar o un bosque.",
+       "e": "⛰️",
+       "en": "Landscape"
+      },
+      {
+       "t": "Primer plano",
+       "d": "Es lo que está más cerca de nosotros y se dibuja más grande y abajo.",
+       "e": "🌳",
+       "en": "Foreground"
+      },
+      {
+       "t": "Fondo",
+       "d": "Es lo que está lejos; se dibuja más pequeño y arriba de la hoja.",
+       "e": "🏔️",
+       "en": "Background"
+      },
+      {
+       "t": "Colores cálidos",
+       "d": "Rojos, naranjos y amarillos que recuerdan el sol y el fuego.",
+       "e": "🌅",
+       "en": "Warm colors"
+      },
+      {
+       "t": "Colores fríos",
+       "d": "Azules, verdes y morados que recuerdan el agua y el hielo.",
+       "e": "❄️",
+       "en": "Cool colors"
+      },
+      {
+       "t": "Paisaje chileno",
+       "d": "Nuestro país tiene desierto, cordillera, mar y bosques que podemos representar.",
+       "e": "🇨🇱",
+       "en": "Chilean landscape"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Chile podemos pintar el desierto más seco del mundo (Atacama) y también glaciares de hielo?",
+      "¿Sabías que… los pintores usan colores fríos en el fondo para que parezca más lejano?"
+     ],
+     "retos": [
+      {
+       "q": "Dibujas el mar de Valparaíso. ¿Dónde ubicas un barco que está muy lejos en el horizonte?",
+       "ops": [
+        "Grande y abajo, en el primer plano",
+        "Pequeño y arriba, cerca del fondo",
+        "En una esquina, del mismo tamaño que una casa cercana"
+       ],
+       "correcta": 1,
+       "porque": "Lo que está lejos se dibuja pequeño y hacia arriba (el fondo); lo cercano, grande y abajo (el primer plano)."
+      },
+      {
+       "q": "En una salida a dibujar plantas al patio encuentras una flor bonita. ¿Cómo actúas con conciencia ecológica?",
+       "ops": [
+        "La arranco para llevarla a la sala",
+        "La observo y la dibujo sin arrancarla",
+        "Piso las demás plantas para acercarme"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar la naturaleza es respetarla; podemos inspirarnos observando sin dañar los seres vivos."
+      }
+     ]
+    },
+    {
+     "id": "arte-y-pueblos-originarios",
+     "nombre": "Arte de los pueblos originarios",
+     "emoji": "🪶",
+     "oa": "OA3: Crear trabajos de arte a partir de temas del entorno cultural, como el arte de los pueblos originarios de Chile y América.",
+     "intro": "Conocemos y respetamos el arte de los pueblos originarios de Chile y América.",
+     "items": [
+      {
+       "t": "Patrimonio",
+       "d": "Es la herencia cultural que nos dejaron nuestros antepasados y debemos cuidar.",
+       "e": "🏛️",
+       "en": "Heritage"
+      },
+      {
+       "t": "Greca",
+       "d": "Un patrón de líneas y formas que se repite, muy usado por los pueblos andinos.",
+       "e": "🔷",
+       "en": "Fret pattern"
+      },
+      {
+       "t": "Simetría",
+       "d": "Cuando un dibujo se ve igual a ambos lados, como en un reflejo de espejo.",
+       "e": "🦋",
+       "en": "Symmetry"
+      },
+      {
+       "t": "Telar mapuche",
+       "d": "Tejido con lana que usa colores y símbolos con significado en la cultura mapuche.",
+       "e": "🧶",
+       "en": "Mapuche weaving"
+      },
+      {
+       "t": "Cerámica",
+       "d": "Objetos de arte hechos con arcilla y luego cocidos, como vasijas y figuras.",
+       "e": "🏺",
+       "en": "Pottery"
+      },
+      {
+       "t": "Símbolo",
+       "d": "Una figura que representa una idea, como el sol o la tierra.",
+       "e": "☀️",
+       "en": "Symbol"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el pueblo mapuche teje mantas con símbolos que cuentan historias y creencias?",
+      "¿Sabías que… la cultura Diaguita en Chile hacía cerámica con dibujos de líneas repetidas hace más de 800 años?"
+     ],
+     "retos": [
+      {
+       "q": "En la sala hacen una muestra de arte mapuche y un compañero se burla de los diseños. ¿Cómo demuestras respeto por otras culturas?",
+       "ops": [
+        "Me río también para no quedar mal",
+        "Le explico que es un arte valioso que merece respeto",
+        "Ignoro todo y sigo en lo mío"
+       ],
+       "correcta": 1,
+       "porque": "Respetar el patrimonio y las culturas de otros pueblos es un valor importante para una sana convivencia."
+      },
+      {
+       "q": "Quieres crear una greca como las andinas. ¿Qué característica es clave para que sea una greca?",
+       "ops": [
+        "Un patrón de formas que se repite ordenadamente",
+        "Colores puestos al azar sin ningún orden",
+        "Una sola figura grande en el centro"
+       ],
+       "correcta": 0,
+       "porque": "La greca se basa en la repetición ordenada de un patrón de líneas y formas, típica del arte andino."
+      }
+     ]
+    },
+    {
+     "id": "escultura-y-volumen",
+     "nombre": "Escultura y volumen",
+     "emoji": "🗿",
+     "oa": "OA4: Explorar y experimentar con materiales y procedimientos de escultura y artesanía, creando obras con volumen.",
+     "intro": "Pasamos del papel al espacio: creamos obras que se pueden mirar por todos lados.",
+     "items": [
+      {
+       "t": "Escultura",
+       "d": "Es una obra de arte con volumen que ocupa espacio y se ve desde varios lados.",
+       "e": "🗿",
+       "en": "Sculpture"
+      },
+      {
+       "t": "Volumen",
+       "d": "Es el 'cuerpo' de un objeto; ocupa alto, ancho y profundidad.",
+       "e": "📦",
+       "en": "Volume"
+      },
+      {
+       "t": "Modelar",
+       "d": "Dar forma a un material blando como la arcilla o la plasticina con las manos.",
+       "e": "🙌",
+       "en": "To model"
+      },
+      {
+       "t": "Material reciclado",
+       "d": "Cosas usadas, como cajas o botellas, que reutilizamos para crear arte.",
+       "e": "♻️",
+       "en": "Recycled material"
+      },
+      {
+       "t": "Tridimensional",
+       "d": "Que tiene tres dimensiones y no es plano, como una pelota o una estatua.",
+       "e": "⚽",
+       "en": "Three-dimensional"
+      },
+      {
+       "t": "Ensamblar",
+       "d": "Unir varias piezas para formar una obra más grande.",
+       "e": "🧩",
+       "en": "To assemble"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los moáis de Rapa Nui (Isla de Pascua) son esculturas gigantes talladas en piedra hace cientos de años?",
+      "¿Sabías que… con cajas y tapas que ibas a botar puedes crear robots, animales y castillos de arte?"
+     ],
+     "retos": [
+      {
+       "q": "Van a hacer una escultura en grupo con material reciclado. ¿Qué decisión cuida el planeta y ayuda al equipo?",
+       "ops": [
+        "Compramos materiales nuevos y caros",
+        "Reutilizamos cajas y tapas limpias que teníamos en casa",
+        "Cada uno trabaja solo sin compartir materiales"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales cuida el medioambiente y compartir favorece el trabajo en equipo y la sana convivencia."
+      },
+      {
+       "q": "Tu compañero hizo una escultura y quieres verla completa. ¿Qué característica de la escultura te lo permite?",
+       "ops": [
+        "Que es tridimensional y se puede mirar por todos sus lados",
+        "Que es plana como un dibujo",
+        "Que solo se ve de frente"
+       ],
+       "correcta": 0,
+       "porque": "La escultura tiene volumen y es tridimensional, por eso se puede observar desde muchos ángulos."
+      }
+     ]
+    },
+    {
+     "id": "apreciar-y-cuidar-el-arte",
+     "nombre": "Apreciar y comunicar el arte",
+     "emoji": "🖼️",
+     "oa": "OA5/OA6: Describir y comparar trabajos de arte, y comunicar con respeto las impresiones que provocan.",
+     "intro": "Aprendemos a mirar obras de arte, expresar lo que sentimos y respetar el trabajo de todos.",
+     "items": [
+      {
+       "t": "Apreciar",
+       "d": "Observar con atención una obra para entenderla y disfrutarla.",
+       "e": "👀",
+       "en": "To appreciate"
+      },
+      {
+       "t": "Museo",
+       "d": "Un lugar que guarda y muestra obras de arte para que todos las conozcan.",
+       "e": "🏛️",
+       "en": "Museum"
+      },
+      {
+       "t": "Opinión respetuosa",
+       "d": "Decir lo que pienso de una obra con palabras amables, sin ofender.",
+       "e": "💬",
+       "en": "Respectful opinion"
+      },
+      {
+       "t": "Emoción",
+       "d": "Lo que sentimos al ver una obra: alegría, calma, sorpresa o curiosidad.",
+       "e": "😊",
+       "en": "Emotion"
+      },
+      {
+       "t": "Autor",
+       "d": "La persona que creó la obra de arte.",
+       "e": "🧑‍🎨",
+       "en": "Author"
+      },
+      {
+       "t": "Autoevaluación",
+       "d": "Mirar mi propio trabajo con honestidad para saber qué hice bien y qué mejorar.",
+       "e": "🔍",
+       "en": "Self-assessment"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en los museos no se pueden tocar las obras para protegerlas y que duren muchos años?",
+      "¿Sabías que… una misma obra puede hacer sentir cosas distintas a cada persona, y todas son válidas?"
+     ],
+     "retos": [
+      {
+       "q": "En una exposición de la sala, no te gusta el dibujo de un compañero. ¿Cómo das tu opinión con respeto?",
+       "ops": [
+        "Digo en voz alta que es feo",
+        "Comento algo que sí me gustó y sugiero una idea con amabilidad",
+        "Me río del dibujo con otros compañeros"
+       ],
+       "correcta": 1,
+       "porque": "Dar una opinión respetuosa cuida los sentimientos del autor y ayuda a una sana convivencia."
+      },
+      {
+       "q": "Al revisar tu propio trabajo, notas que te apuraste y quedó incompleto. Con honestidad, ¿qué haces?",
+       "ops": [
+        "Digo que quedó perfecto para que no me reten",
+        "Reconozco que puedo mejorarlo y le dedico más tiempo",
+        "Culpo a mi compañero de mesa"
+       ],
+       "correcta": 1,
+       "porque": "La honestidad al autoevaluarnos nos ayuda a aprender de verdad y a mejorar nuestro trabajo."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "lenguaje-visual",
+     "nombre": "El lenguaje visual",
+     "emoji": "🎨",
+     "oa": "OA1: Aplicar elementos del lenguaje visual (línea, color, forma y textura) en sus trabajos de arte, con diversos propósitos expresivos y creativos.",
+     "intro": "Descubrimos los elementos básicos que usan los artistas para crear: línea, forma, color y textura.",
+     "items": [
+      {
+       "t": "Línea de contorno",
+       "d": "Marca que dibujas al mover el lápiz y que delimita el borde de una figura; puede ser recta, curva, gruesa o delgada.",
+       "e": "➰",
+       "en": "Contour line"
+      },
+      {
+       "t": "Forma",
+       "d": "El contorno de un objeto; puede ser figurativa, como una hoja, o no figurativa, como una mancha abstracta.",
+       "e": "🔷",
+       "en": "Shape"
+      },
+      {
+       "t": "Textura",
+       "d": "Cómo se ve o se siente una superficie: suave, rugosa, áspera o peluda.",
+       "e": "🧶",
+       "en": "Texture"
+      },
+      {
+       "t": "Punto",
+       "d": "La marca más pequeña; muchos puntos juntos pueden formar una imagen completa.",
+       "e": "⚫",
+       "en": "Dot"
+      },
+      {
+       "t": "Observación",
+       "d": "Mirar con atención el entorno para descubrir detalles antes de dibujarlos.",
+       "e": "👀",
+       "en": "Observation"
+      },
+      {
+       "t": "Boceto",
+       "d": "Un dibujo rápido y sencillo que haces para planear una obra más grande.",
+       "e": "✏️",
+       "en": "Sketch"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… con solo puntos, el pintor Georges Seurat creaba cuadros enteros? A esa técnica se le llama puntillismo.",
+      "¿Sabías que… en la naturaleza casi no existen líneas rectas perfectas? Por eso los artistas se inspiran en las curvas de las plantas y los ríos."
+     ],
+     "retos": [
+      {
+       "q": "Quieres dibujar la corteza rugosa de un árbol del patio del colegio para que se vea real. ¿Qué elemento del lenguaje visual deberías trabajar con más cuidado?",
+       "ops": [
+        "La textura, para mostrar lo áspero de la corteza",
+        "El punto, para que el árbol quede pequeño",
+        "Ninguno, basta con pintar todo de café"
+       ],
+       "correcta": 0,
+       "porque": "La textura es lo que transmite cómo se siente una superficie; trabajarla hace que la corteza rugosa se vea realista, mientras que el punto no cambia el tamaño y pintar plano no muestra el relieve."
+      },
+      {
+       "q": "Antes de pintar un mural grande sobre tu comuna, tu profesora sugiere planear la idea. ¿Qué conviene hacer primero?",
+       "ops": [
+        "Pintar directo con témpera sin pensar",
+        "Hacer un boceto a lápiz para organizar las formas",
+        "Copiar el mural del compañero de al lado"
+       ],
+       "correcta": 1,
+       "porque": "El boceto permite planear y corregir la composición antes de usar pintura, mientras que pintar sin pensar dificulta corregir y copiar al compañero no respeta el trabajo propio ni el ajeno."
+      }
+     ]
+    },
+    {
+     "id": "color-y-emociones",
+     "nombre": "El color y las emociones",
+     "emoji": "🌈",
+     "oa": "OA1 y OA4: Aplicar el color (tono y matiz) en los trabajos de arte y describir lo que se siente y se piensa al observarlos.",
+     "intro": "Exploramos los colores, cómo se mezclan y cómo pueden expresar lo que sentimos.",
+     "items": [
+      {
+       "t": "Colores primarios",
+       "d": "Rojo, amarillo y azul; no se pueden crear mezclando otros y de ellos nacen los demás.",
+       "e": "🔴",
+       "en": "Primary colors"
+      },
+      {
+       "t": "Colores secundarios",
+       "d": "Se forman al mezclar dos primarios: verde, naranjo y morado.",
+       "e": "🟢",
+       "en": "Secondary colors"
+      },
+      {
+       "t": "Colores cálidos",
+       "d": "Rojos, naranjos y amarillos; recuerdan el sol y el fuego, y transmiten energía.",
+       "e": "🔥",
+       "en": "Warm colors"
+      },
+      {
+       "t": "Colores fríos",
+       "d": "Azules, verdes y morados; recuerdan el agua y el hielo, y dan calma.",
+       "e": "❄️",
+       "en": "Cool colors"
+      },
+      {
+       "t": "Círculo cromático",
+       "d": "Un dibujo circular que ordena los colores y muestra cómo se relacionan.",
+       "e": "🎡",
+       "en": "Color wheel"
+      },
+      {
+       "t": "Matiz",
+       "d": "Cada variación de un color al aclararlo con blanco o oscurecerlo con negro, como el celeste o el azul marino.",
+       "e": "🎨",
+       "en": "Shade / tint"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… si mezclas amarillo y azul obtienes verde? Los colores secundarios siempre nacen de dos primarios.",
+      "¿Sabías que… muchos pintores usan colores fríos como el azul para transmitir tranquilidad y colores cálidos para dar alegría o emoción?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero está triste porque perdió a su mascota y quiere hacer un dibujo que exprese su pena. ¿Qué colores lo ayudarían mejor y cómo lo acompañarías?",
+       "ops": [
+        "Colores fríos como azules y morados, acompañándolo con empatía",
+        "Colores cálidos y muy brillantes para que se ría a la fuerza",
+        "Decirle que no dibuje porque es una tontera"
+       ],
+       "correcta": 0,
+       "porque": "Los colores fríos ayudan a expresar calma y pena, y acompañar con empatía respeta lo que siente el compañero, a diferencia de forzar una emoción o negar sus sentimientos."
+      },
+      {
+       "q": "Se te acabó el color naranjo y solo tienes témperas rojas, amarillas y azules. ¿Qué haces?",
+       "ops": [
+        "Mezclar rojo con amarillo para crear naranjo",
+        "Usar azul porque es lo que queda",
+        "Dejar el espacio en blanco"
+       ],
+       "correcta": 0,
+       "porque": "El naranjo es un color secundario que se forma mezclando rojo y amarillo, dos colores primarios; usar azul cambia la idea y dejarlo en blanco no resuelve el problema."
+      }
+     ]
+    },
+    {
+     "id": "arte-de-chile",
+     "nombre": "El arte de Chile y sus pueblos",
+     "emoji": "🇨🇱",
+     "oa": "OA3 y OA4: Crear y describir trabajos de arte basados en la observación del entorno cultural y artístico, incluyendo las tradiciones y la artesanía de los pueblos originarios.",
+     "intro": "Conocemos el arte de nuestro país y de los pueblos originarios que viven en Chile.",
+     "items": [
+      {
+       "t": "Pueblos originarios",
+       "d": "Comunidades que habitan Chile desde antes de la llegada de los españoles, como mapuche, aymara y rapa nui, con su propio arte.",
+       "e": "🪶",
+       "en": "Indigenous peoples"
+      },
+      {
+       "t": "Telar mapuche",
+       "d": "Tejido de lana con figuras y colores que cuentan historias del pueblo mapuche.",
+       "e": "🧵",
+       "en": "Mapuche weaving"
+      },
+      {
+       "t": "Moái",
+       "d": "Grandes esculturas de piedra hechas por el pueblo rapa nui en Isla de Pascua.",
+       "e": "🗿",
+       "en": "Moai"
+      },
+      {
+       "t": "Greca",
+       "d": "Patrón geométrico que se repite, muy usado en tejidos y cerámica de los pueblos andinos.",
+       "e": "🔺",
+       "en": "Geometric pattern"
+      },
+      {
+       "t": "Artesanía",
+       "d": "Objetos hechos a mano con materiales naturales, como greda, lana o madera.",
+       "e": "🏺",
+       "en": "Craftwork"
+      },
+      {
+       "t": "Patrimonio cultural",
+       "d": "El arte y las tradiciones que heredamos y debemos cuidar y respetar.",
+       "e": "🏛️",
+       "en": "Cultural heritage"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los moái de Isla de Pascua pesan varias toneladas y el pueblo rapa nui los tallaba en piedra volcánica hace cientos de años?",
+      "¿Sabías que… en los tejidos mapuche cada figura y color puede tener un significado especial, como la naturaleza o la familia?"
+     ],
+     "retos": [
+      {
+       "q": "En una feria del colegio ves una artesanía mapuche hecha a mano. Un niño se ríe y dice que es fea y vieja. ¿Cómo actúas con respeto por el patrimonio?",
+       "ops": [
+        "Me río también para no quedar mal",
+        "Explico que es arte con valor cultural que merece respeto",
+        "La escondo para que nadie la vea"
+       ],
+       "correcta": 1,
+       "porque": "El arte de los pueblos originarios es parte de nuestro patrimonio cultural y merece respeto; reírse falta a la sana convivencia y esconderla no defiende su valor."
+      },
+      {
+       "q": "Quieres crear un diseño inspirado en las grecas andinas para decorar la sala. ¿Qué característica debes tener en cuenta?",
+       "ops": [
+        "Que use figuras geométricas que se repiten",
+        "Que sea un dibujo distinto en cada esquina sin orden",
+        "Que copie exactamente una obra sin nombrar de dónde viene"
+       ],
+       "correcta": 0,
+       "porque": "La greca se basa en patrones geométricos que se repiten; un dibujo sin orden no es una greca y copiar sin reconocer su origen no respeta la cultura de la que nos inspiramos."
+      }
+     ]
+    },
+    {
+     "id": "escultura-y-volumen",
+     "nombre": "Escultura y volumen",
+     "emoji": "🗿",
+     "oa": "OA2 y OA3: Crear trabajos de arte tridimensionales demostrando manejo de materiales de modelado, herramientas y procedimientos como la escultura.",
+     "intro": "Pasamos del dibujo plano a crear obras con volumen que podemos ver desde todos lados.",
+     "items": [
+      {
+       "t": "Escultura",
+       "d": "Obra de arte con volumen que ocupa espacio y se puede mirar por todos sus lados.",
+       "e": "🗿",
+       "en": "Sculpture"
+      },
+      {
+       "t": "Volumen",
+       "d": "Cualidad de un objeto que tiene alto, ancho y profundidad; no es plano.",
+       "e": "🧊",
+       "en": "Volume"
+      },
+      {
+       "t": "Modelado",
+       "d": "Dar forma a un material blando como greda o plasticina con las manos.",
+       "e": "🤲",
+       "en": "Modeling"
+      },
+      {
+       "t": "Greda o arcilla",
+       "d": "Tierra especial y moldeable que, al secarse, mantiene la forma que le diste.",
+       "e": "🏺",
+       "en": "Clay"
+      },
+      {
+       "t": "Tridimensional",
+       "d": "Algo que tiene tres dimensiones y se ve distinto según desde dónde lo mires.",
+       "e": "📦",
+       "en": "Three-dimensional"
+      },
+      {
+       "t": "Relieve",
+       "d": "Figura que sobresale de una superficie plana, como una moneda o un tallado.",
+       "e": "🪙",
+       "en": "Relief"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Chile la greda de Pomaire se usa desde hace mucho para hacer ollas, chanchitos de tres patas y otras figuras a mano?",
+      "¿Sabías que… una escultura se ve diferente según el lado desde donde la mires, por eso los artistas la trabajan por todos sus ángulos?"
+     ],
+     "retos": [
+      {
+       "q": "Vas a modelar un animalito en greda, pero notas que estás usando muchísima agua y desperdiciando material. ¿Qué haces siendo responsable con los recursos?",
+       "ops": [
+        "Uso solo el agua y la greda necesarias, cuidando el material",
+        "Boto la greda sobrante a la basura para terminar rápido",
+        "Uso toda el agua porque no importa gastarla"
+       ],
+       "correcta": 0,
+       "porque": "Ser responsable significa usar solo lo necesario; botar la greda desperdicia un material reutilizable y gastar toda el agua daña un recurso que debemos cuidar."
+      },
+      {
+       "q": "Quieres que tu escultura de un pájaro se vea bien desde cualquier lado de la sala. ¿Qué debes considerar al crearla?",
+       "ops": [
+        "Trabajar solo la parte de adelante",
+        "Trabajarla en sus tres dimensiones y por todos sus ángulos",
+        "Dibujarla plana en una hoja"
+       ],
+       "correcta": 1,
+       "porque": "Una escultura es tridimensional, por eso hay que darle forma y detalle por todos sus lados; trabajar solo el frente o dibujarla plana no logra el volumen que se ve desde cualquier ángulo."
+      }
+     ]
+    },
+    {
+     "id": "apreciar-y-compartir",
+     "nombre": "Apreciar y compartir el arte",
+     "emoji": "🖼️",
+     "oa": "OA4 y OA5: Describir observaciones de obras de arte y describir fortalezas y aspectos a mejorar en los trabajos propios y de los pares.",
+     "intro": "Aprendemos a observar obras de arte, describir lo que vemos y comentar con respeto el trabajo de todos.",
+     "items": [
+      {
+       "t": "Apreciación",
+       "d": "Mirar una obra con atención para descubrir qué usó el artista y qué quiso expresar.",
+       "e": "🔍",
+       "en": "Appreciation"
+      },
+      {
+       "t": "Museo",
+       "d": "Lugar que guarda y muestra obras de arte para que todos puedan visitarlas.",
+       "e": "🏛️",
+       "en": "Museum"
+      },
+      {
+       "t": "Crítica respetuosa",
+       "d": "Comentar una obra diciendo sus fortalezas y lo que se puede mejorar, con amabilidad.",
+       "e": "💬",
+       "en": "Respectful critique"
+      },
+      {
+       "t": "Exposición",
+       "d": "Presentación donde se muestran trabajos para que otros los observen.",
+       "e": "🖼️",
+       "en": "Exhibition"
+      },
+      {
+       "t": "Autoevaluación",
+       "d": "Revisar tu propio trabajo con honestidad para reconocer logros y aspectos a mejorar.",
+       "e": "✅",
+       "en": "Self-assessment"
+      },
+      {
+       "t": "Composición",
+       "d": "La forma en que se organizan los elementos dentro de una obra.",
+       "e": "🧩",
+       "en": "Composition"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Santiago está el Museo Nacional de Bellas Artes, uno de los más antiguos de Sudamérica, con obras de artistas chilenos?",
+      "¿Sabías que… los artistas suelen mostrar sus obras a otros para recibir comentarios y así seguir mejorando su trabajo?"
+     ],
+     "retos": [
+      {
+       "q": "En la exposición de la sala, el dibujo de una compañera te parece que tiene aspectos a mejorar. Ella te pregunta qué opinas. ¿Cómo respondes con honestidad y empatía?",
+       "ops": [
+        "Le digo que está horrible y me río",
+        "Le digo sus fortalezas y con amabilidad qué podría mejorar",
+        "Le miento diciendo que es perfecto para no incomodar"
+       ],
+       "correcta": 1,
+       "porque": "Una crítica respetuosa combina honestidad y empatía: reconoce las fortalezas y sugiere mejoras con amabilidad; burlarse hiere y mentir no ayuda a la compañera a crecer."
+      },
+      {
+       "q": "Al revisar tu propio trabajo notas que no quedó como querías. ¿Qué actitud honesta te ayuda a crecer como artista?",
+       "ops": [
+        "Reconocer qué puedo mejorar y practicar de nuevo",
+        "Echarle la culpa a los materiales",
+        "Decir que quedó perfecto aunque no lo crea"
+       ],
+       "correcta": 0,
+       "porque": "La autoevaluación honesta te permite reconocer fortalezas y aspectos a mejorar para seguir aprendiendo; culpar a los materiales o negarlo impide crecer."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "elementos-lenguaje-visual",
+     "nombre": "El lenguaje visual: línea, color y forma",
+     "emoji": "🎨",
+     "oa": "OA2: Aplicar elementos del lenguaje visual (incluidos los del nivel anterior) y procedimientos de las artes visuales en sus trabajos, con diversos materiales.",
+     "intro": "Antes de crear una obra conocemos los ladrillos básicos con que se construye toda imagen: la línea, el color y la forma.",
+     "items": [
+      {
+       "t": "Línea",
+       "d": "Es el trazo más simple; puede ser recta, curva, gruesa o fina, y sirve para dibujar contornos y dar movimiento.",
+       "e": "➰",
+       "en": "Line"
+      },
+      {
+       "t": "Forma",
+       "d": "Es el espacio cerrado que crea una línea; puede ser geométrica (círculo, cuadrado) u orgánica (como una hoja).",
+       "e": "🔷",
+       "en": "Shape"
+      },
+      {
+       "t": "Color primario",
+       "d": "El amarillo, el azul y el rojo; no se obtienen mezclando otros y con ellos se crean casi todos los demás.",
+       "e": "🔴",
+       "en": "Primary color"
+      },
+      {
+       "t": "Color secundario",
+       "d": "Nace al mezclar dos primarios: verde, naranjo y morado.",
+       "e": "🟢",
+       "en": "Secondary color"
+      },
+      {
+       "t": "Textura",
+       "d": "Es cómo se ve o se siente una superficie: áspera, suave o rugosa; se puede representar en un dibujo.",
+       "e": "🪵",
+       "en": "Texture"
+      },
+      {
+       "t": "Contraste",
+       "d": "La diferencia fuerte entre elementos, como claro y oscuro, que ayuda a destacar lo importante de una obra.",
+       "e": "⚫",
+       "en": "Contrast"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… con solo tres colores primarios se puede crear una enorme cantidad de los colores que ves en una pintura?",
+      "¿Sabías que… los artistas usan líneas diagonales para dar sensación de movimiento y acción en un dibujo?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres que en tu afiche resalte una ballena azul sobre el mar. ¿Qué decisión de color la hará destacar más?",
+       "ops": [
+        "Pintar el fondo del mar de un azul muy parecido al de la ballena",
+        "Usar contraste: un fondo claro o cálido detrás de la ballena azul",
+        "Pintar todo el afiche del mismo tono de azul"
+       ],
+       "correcta": 1,
+       "porque": "El contraste entre la ballena azul y un fondo diferente hace que la figura se separe del fondo y llame la atención."
+      },
+      {
+       "q": "Dibujas un paisaje y quieres mostrar un tronco áspero sin poder tocarlo. ¿Qué elemento visual usas?",
+       "ops": [
+        "La textura, con trazos que imiten lo rugoso de la corteza",
+        "Solo un color plano y liso",
+        "Una única línea recta muy delgada"
+       ],
+       "correcta": 0,
+       "porque": "La textura visual, lograda con trazos que imitan la superficie, permite representar cómo se sentiría un objeto al tocarlo."
+      },
+      {
+       "q": "Vas a dibujar la forma de una hoja de árbol. ¿Qué tipo de forma es y por qué?",
+       "ops": [
+        "Una forma geométrica, porque tiene lados y ángulos exactos",
+        "Una forma orgánica, porque tiene bordes irregulares como los de la naturaleza",
+        "No es ninguna forma, porque solo las líneas son formas"
+       ],
+       "correcta": 1,
+       "porque": "Las formas orgánicas tienen contornos libres e irregulares inspirados en la naturaleza, a diferencia de las geométricas, que son regulares."
+      }
+     ]
+    },
+    {
+     "id": "arte-pueblos-originarios",
+     "nombre": "Arte de los pueblos originarios de Chile",
+     "emoji": "🪶",
+     "oa": "OA1: Crear trabajos de arte a partir de la observación del entorno cultural, apreciando manifestaciones visuales de los pueblos originarios de Chile y del patrimonio.",
+     "intro": "Descubrimos el arte de los primeros habitantes de Chile y aprendemos a apreciar y respetar nuestro patrimonio cultural.",
+     "items": [
+      {
+       "t": "Pueblos originarios",
+       "d": "Comunidades que habitaban Chile antes de la llegada de los españoles, como mapuche, aymara, rapa nui y diaguita.",
+       "e": "🌎",
+       "en": "Indigenous peoples"
+      },
+      {
+       "t": "Textilería mapuche",
+       "d": "Arte de tejer mantas y fajas con lana teñida con plantas, usando símbolos con significado propio.",
+       "e": "🧶",
+       "en": "Mapuche weaving"
+      },
+      {
+       "t": "Platería mapuche",
+       "d": "Joyas de plata como el trapelakucha y los aros, que muestran identidad y protección espiritual.",
+       "e": "💍",
+       "en": "Mapuche silverwork"
+      },
+      {
+       "t": "Petroglifo",
+       "d": "Dibujo grabado sobre una roca por pueblos antiguos; es un mensaje del pasado que hoy es patrimonio.",
+       "e": "🪨",
+       "en": "Petroglyph"
+      },
+      {
+       "t": "Cerámica diaguita",
+       "d": "Vasijas y jarros decorados con figuras geométricas y colores, hechos por el pueblo diaguita del norte.",
+       "e": "🏺",
+       "en": "Diaguita pottery"
+      },
+      {
+       "t": "Patrimonio cultural",
+       "d": "La herencia de arte, tradiciones y objetos que recibimos de quienes vivieron antes y debemos cuidar.",
+       "e": "🏛️",
+       "en": "Cultural heritage"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los moáis de Rapa Nui fueron tallados en roca volcánica y algunos pesan más de 80 toneladas, como muchos autos juntos?",
+      "¿Sabías que… en el arte textil mapuche muchas figuras tienen un significado propio y no son solo decoración?"
+     ],
+     "retos": [
+      {
+       "q": "En un museo ves petroglifos de miles de años. Un compañero quiere tocarlos y rayar su nombre al lado. ¿Qué es lo correcto?",
+       "ops": [
+        "Tocarlos suave, total ya son muy antiguos",
+        "Explicarle que son patrimonio y hay que respetarlos, mirando sin dañarlos",
+        "Rayar solo un poquito para dejar un recuerdo"
+       ],
+       "correcta": 1,
+       "porque": "El patrimonio es herencia de todos; respetarlo y cuidarlo asegura que las futuras generaciones también puedan conocerlo."
+      },
+      {
+       "q": "Observas una cerámica diaguita con figuras que se repiten en orden. ¿Qué aprecias del pueblo que la hizo?",
+       "ops": [
+        "Que dibujaban al azar, sin ninguna intención",
+        "Que dominaban patrones geométricos y tenían una identidad artística propia",
+        "Que solo copiaban lo que hacían los españoles"
+       ],
+       "correcta": 1,
+       "porque": "La cerámica diaguita muestra un manejo cuidadoso de patrones geométricos, reflejo de una tradición e identidad visual propia y anterior a la llegada española."
+      }
+     ]
+    },
+    {
+     "id": "arte-precolombino-americano",
+     "nombre": "Grandes culturas del arte americano",
+     "emoji": "🌄",
+     "oa": "OA1: Crear trabajos de arte apreciando manifestaciones visuales de culturas precolombinas de América como fuente de inspiración.",
+     "intro": "Viajamos por América para conocer el arte de culturas antiguas y llenarnos de ideas para nuestras propias creaciones.",
+     "items": [
+      {
+       "t": "Cultura precolombina",
+       "d": "Pueblos americanos que existieron antes de la llegada de Colón, como incas, mayas y aztecas.",
+       "e": "🗿",
+       "en": "Pre-Columbian culture"
+      },
+      {
+       "t": "Mural",
+       "d": "Pintura grande hecha sobre un muro para contar historias o mostrar la vida de un pueblo.",
+       "e": "🖼️",
+       "en": "Mural"
+      },
+      {
+       "t": "Patrón geométrico",
+       "d": "Diseño que repite figuras como rombos y líneas de forma ordenada, muy usado en tejidos andinos.",
+       "e": "🔺",
+       "en": "Geometric pattern"
+      },
+      {
+       "t": "Símbolo",
+       "d": "Imagen que representa una idea; por ejemplo, el sol podía significar una divinidad o la vida.",
+       "e": "☀️",
+       "en": "Symbol"
+      },
+      {
+       "t": "Máscara",
+       "d": "Objeto que cubre el rostro, usado en ceremonias para representar dioses, animales o antepasados.",
+       "e": "🎭",
+       "en": "Mask"
+      },
+      {
+       "t": "Orfebrería",
+       "d": "Arte de trabajar metales preciosos como el oro para crear objetos ceremoniales y adornos.",
+       "e": "🏵️",
+       "en": "Goldsmithing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los incas construyeron Machu Picchu encajando piedras enormes tan perfectas que casi no cabe una hoja de papel entre ellas?",
+      "¿Sabías que… en muchas culturas americanas cada color tenía un significado sagrado y especial, no se usaba solo por gusto?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres crear un diseño inspirado en los tejidos andinos usando figuras que se repiten en orden. ¿Qué recurso aplicas?",
+       "ops": [
+        "Un patrón geométrico con rombos y líneas repetidas",
+        "Manchas de color al azar sin ningún orden",
+        "Una sola figura muy grande en el centro"
+       ],
+       "correcta": 0,
+       "porque": "Los patrones geométricos, con figuras que se repiten ordenadamente, son característicos del arte textil andino y dan ritmo visual."
+      },
+      {
+       "q": "Analizas una máscara ceremonial de una cultura antigua. ¿Cuál es la mejor forma de valorarla?",
+       "ops": [
+        "Pensar que es fea porque no se parece a lo actual",
+        "Reconocer que expresa creencias y respetar su significado cultural",
+        "Copiarla exactamente y decir que la inventé yo"
+       ],
+       "correcta": 1,
+       "porque": "Apreciar el arte de otras culturas con respeto significa comprender su significado y no juzgarlo ni apropiárselo como propio."
+      }
+     ]
+    },
+    {
+     "id": "pintura-y-composicion",
+     "nombre": "Pintura y composición",
+     "emoji": "🖌️",
+     "oa": "OA2 / OA3: Aplicar procedimientos de pintura y elementos de composición para crear trabajos con un propósito expresivo personal.",
+     "intro": "Aprendemos a organizar los elementos dentro de una obra y a manejar la pintura para expresar lo que sentimos.",
+     "items": [
+      {
+       "t": "Composición",
+       "d": "La manera de ubicar los elementos dentro de la obra para que se vea equilibrada y expresiva.",
+       "e": "🧩",
+       "en": "Composition"
+      },
+      {
+       "t": "Primer plano y fondo",
+       "d": "Lo que está adelante y cerca (primer plano) y lo que está atrás y lejos (fondo).",
+       "e": "🏞️",
+       "en": "Foreground and background"
+      },
+      {
+       "t": "Equilibrio",
+       "d": "Repartir el peso visual para que la obra no se sienta cargada toda hacia un solo lado.",
+       "e": "⚖️",
+       "en": "Balance"
+      },
+      {
+       "t": "Color cálido y frío",
+       "d": "Los cálidos (rojo, naranjo) dan calor y cercanía; los fríos (azul, verde) dan calma y lejanía.",
+       "e": "🔥",
+       "en": "Warm and cool colors"
+      },
+      {
+       "t": "Pincelada",
+       "d": "El trazo que deja el pincel; puede ser suave, seca o con puntos, y cambia el efecto de la pintura.",
+       "e": "🖌️",
+       "en": "Brushstroke"
+      },
+      {
+       "t": "Punto focal",
+       "d": "El lugar de la obra que más llama la atención y hacia donde el artista quiere que mires primero.",
+       "e": "🎯",
+       "en": "Focal point"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… muchos artistas dividen su obra en tercios imaginarios y ubican lo importante en esas líneas para que se vea más equilibrada?",
+      "¿Sabías que… los colores cálidos parecen acercarse a ti y los fríos alejarse, por eso se usan para dar profundidad en un paisaje?"
+     ],
+     "retos": [
+      {
+       "q": "Pintas un atardecer y quieres que el sol sea lo primero que se mire. ¿Qué haces con el punto focal?",
+       "ops": [
+        "Ubicar el sol en un buen lugar y usar contraste de color para destacarlo",
+        "Pintar todo del mismo color para que nada resalte",
+        "Poner el sol pequeñito en una esquina escondida"
+       ],
+       "correcta": 0,
+       "porque": "Un punto focal bien ubicado y con contraste guía la mirada del espectador hacia lo más importante de la obra."
+      },
+      {
+       "q": "Quieres que en tu paisaje las montañas del fondo se vean lejanas. ¿Qué recurso de color te ayuda?",
+       "ops": [
+        "Pintar las montañas con colores fríos y más suaves que el primer plano",
+        "Pintar las montañas con rojos y naranjos muy intensos",
+        "Usar el mismo color y fuerza que en el primer plano"
+       ],
+       "correcta": 0,
+       "porque": "Los colores fríos y menos intensos parecen alejarse, así que ayudan a crear sensación de profundidad y distancia en el fondo."
+      }
+     ]
+    },
+    {
+     "id": "escultura-y-materiales-reciclados",
+     "nombre": "Escultura y arte con materiales reciclados",
+     "emoji": "♻️",
+     "oa": "OA2 / OA3: Crear trabajos tridimensionales aplicando procedimientos de escultura, a partir de intereses del entorno y con cuidado del medioambiente.",
+     "intro": "Damos vida a objetos en tres dimensiones y descubrimos cómo transformar materiales reciclados en arte para cuidar el planeta.",
+     "items": [
+      {
+       "t": "Escultura",
+       "d": "Obra de arte con volumen que se puede mirar por todos lados, hecha en tres dimensiones.",
+       "e": "🗿",
+       "en": "Sculpture"
+      },
+      {
+       "t": "Volumen",
+       "d": "El espacio que ocupa un objeto; lo que le da su forma de ancho, alto y profundidad.",
+       "e": "📦",
+       "en": "Volume"
+      },
+      {
+       "t": "Modelado",
+       "d": "Técnica de dar forma a un material blando como la greda o la plasticina con las manos.",
+       "e": "🤲",
+       "en": "Modeling"
+      },
+      {
+       "t": "Ensamblaje",
+       "d": "Unir distintos objetos o materiales para crear una obra nueva, como un robot con tapas y cajas.",
+       "e": "🔧",
+       "en": "Assemblage"
+      },
+      {
+       "t": "Arte reciclado",
+       "d": "Crear obras reutilizando materiales que iban a la basura, cuidando el medioambiente.",
+       "e": "♻️",
+       "en": "Recycled art"
+      },
+      {
+       "t": "Relieve",
+       "d": "Figura que sobresale de una superficie plana, entre el dibujo y la escultura completa.",
+       "e": "🪙",
+       "en": "Relief"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… hay artistas que crean enormes esculturas de animales marinos con plástico recogido de las playas para crear conciencia ecológica?",
+      "¿Sabías que… la greda o arcilla usada para modelar es una de las materias primas más antiguas del arte, usada hace miles de años?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso quiere hacer una escultura para la feria y ser responsable con el planeta. ¿Qué opción es la mejor?",
+       "ops": [
+        "Comprar muchos materiales nuevos de plástico y botarlos después",
+        "Reutilizar botellas, cajas y tapas mediante ensamblaje para crear la obra",
+        "Usar materiales que contaminan porque quedan más brillantes"
+       ],
+       "correcta": 1,
+       "porque": "El arte reciclado con ensamblaje aprovecha materiales que serían basura, uniendo creatividad y responsabilidad con el medioambiente."
+      },
+      {
+       "q": "Quieres que tu figura de greda muestre detalles de la cara sin que se rompa. ¿Qué técnica te conviene?",
+       "ops": [
+        "Modelar con cuidado, presionando y dando forma con los dedos",
+        "Golpear la greda fuerte hasta aplastarla",
+        "Dejar la greda como una bola sin trabajarla"
+       ],
+       "correcta": 0,
+       "porque": "El modelado permite dar forma controlada al material blando, logrando detalles sin dañar la estructura de la escultura."
+      }
+     ]
+    },
+    {
+     "id": "apreciacion-y-difusion",
+     "nombre": "Apreciar, comentar y difundir el arte",
+     "emoji": "🖼️",
+     "oa": "OA4 / OA5: Analizar y comparar obras de arte considerando el lenguaje visual y el propósito expresivo, y difundir los trabajos usando TIC y espacios de exposición.",
+     "intro": "Aprendemos a observar obras con atención, dar opiniones respetuosas y compartir el arte con los demás.",
+     "items": [
+      {
+       "t": "Apreciación artística",
+       "d": "Observar una obra con calma para descubrir qué elementos usa y qué nos transmite.",
+       "e": "👀",
+       "en": "Art appreciation"
+      },
+      {
+       "t": "Crítica constructiva",
+       "d": "Opinión respetuosa que explica lo que gusta y sugiere mejoras sin ofender al autor.",
+       "e": "💬",
+       "en": "Constructive criticism"
+      },
+      {
+       "t": "Curador",
+       "d": "Persona que selecciona y ordena las obras de una exposición para que se entiendan mejor.",
+       "e": "🧑‍🏫",
+       "en": "Curator"
+      },
+      {
+       "t": "Exposición",
+       "d": "Muestra donde se presentan obras de arte para que el público las observe y disfrute.",
+       "e": "🏛️",
+       "en": "Exhibition"
+      },
+      {
+       "t": "Galería virtual",
+       "d": "Espacio en internet donde se comparten obras usando la tecnología de forma segura y responsable.",
+       "e": "💻",
+       "en": "Virtual gallery"
+      },
+      {
+       "t": "Autoría y derechos",
+       "d": "Reconocer quién creó una obra y respetar su trabajo, sin copiarla ni decir que es nuestra.",
+       "e": "✍️",
+       "en": "Authorship and rights"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… muchos museos, como el Bellas Artes de Santiago, ofrecen recorridos virtuales gratis para ver sus obras desde casa?",
+      "¿Sabías que… el trabajo de un curador puede cambiar por completo cómo entiendes una obra, solo por el orden y los textos que elige?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero muestra su pintura y no te gustó del todo. ¿Cómo das tu opinión de forma respetuosa?",
+       "ops": [
+        "Decirle que está fea y reírte",
+        "Destacar lo que hizo bien y sugerir con amabilidad qué podría mejorar",
+        "No decir nada y burlarte por detrás"
+       ],
+       "correcta": 1,
+       "porque": "La crítica constructiva reconoce lo positivo y propone mejoras con respeto, ayudando al autor y cuidando la sana convivencia."
+      },
+      {
+       "q": "Vas a subir tus obras a una galería virtual del curso. ¿Qué es lo más responsable al usar la tecnología?",
+       "ops": [
+        "Publicar fotos de compañeros sin pedir permiso",
+        "Compartir solo tus obras, dar crédito a los autores y cuidar tu privacidad",
+        "Copiar dibujos de internet y decir que son míos"
+       ],
+       "correcta": 1,
+       "porque": "El uso responsable de la tecnología implica respetar la autoría, pedir permiso y proteger la privacidad de todos."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "elementos-lenguaje-visual",
+     "nombre": "El lenguaje visual",
+     "emoji": "🎨",
+     "oa": "OA2 — Aplicar y combinar elementos del lenguaje visual (línea, forma, color, textura) en trabajos de arte a partir de la observación del entorno.",
+     "intro": "Todo lo que vemos se puede describir con los elementos básicos del arte: línea, forma, color y textura. Aprender a reconocerlos nos ayuda a observar mejor y a crear.",
+     "items": [
+      {
+       "t": "Línea",
+       "d": "Es la huella que deja un lápiz al moverse; puede ser recta, curva, gruesa o delgada y sirve para dibujar contornos.",
+       "e": "➰",
+       "en": "Line"
+      },
+      {
+       "t": "Forma",
+       "d": "El área cerrada que crea una línea; puede ser geométrica (círculo, cuadrado) u orgánica (como una hoja o una nube).",
+       "e": "🔷",
+       "en": "Shape"
+      },
+      {
+       "t": "Color",
+       "d": "Lo que vemos gracias a la luz reflejada; se organiza en primarios, secundarios y en cálidos o fríos.",
+       "e": "🌈",
+       "en": "Colour"
+      },
+      {
+       "t": "Textura",
+       "d": "Cómo se siente o se ve una superficie: áspera, suave o rugosa; puede ser real (se toca) o simulada (se dibuja).",
+       "e": "🪵",
+       "en": "Texture"
+      },
+      {
+       "t": "Punto",
+       "d": "La marca más pequeña del dibujo; muchos puntos juntos pueden formar sombras o imágenes completas.",
+       "e": "⚫",
+       "en": "Dot"
+      },
+      {
+       "t": "Espacio",
+       "d": "El área de la obra, sea vacía o llena; ayuda a mostrar qué está cerca y qué está lejos.",
+       "e": "🔳",
+       "en": "Space"
+      }
+     ],
+     "datos": [
+      "El pintor francés Georges Seurat pintaba con miles de puntitos de color que se mezclan en nuestro ojo. Esa técnica se llama puntillismo.",
+      "Solo con líneas de distinto grosor un artista puede hacer que un dibujo parezca tener luz y sombra, sin usar color."
+     ],
+     "retos": [
+      {
+       "q": "Quieres dibujar un tronco de árbol para que se vea viejo y rugoso. ¿Qué elemento del lenguaje visual debes trabajar más?",
+       "ops": [
+        "La textura, con líneas cortas y quebradas que imiten la corteza",
+        "El color, pintando todo de un solo tono plano",
+        "El espacio vacío alrededor del árbol"
+       ],
+       "correcta": 0,
+       "porque": "La textura es lo que nos hace sentir cómo es una superficie; las líneas quebradas simulan la corteza rugosa de un árbol viejo, mientras que un color plano o el espacio vacío no dan esa sensación."
+      },
+      {
+       "q": "Un compañero dice que un círculo perfecto y una mancha con forma de nube son 'la misma forma'. ¿Por qué no es así?",
+       "ops": [
+        "Porque el círculo es una forma geométrica (regular) y la nube es una forma orgánica (irregular)",
+        "Porque el círculo es una línea y la nube es un color",
+        "Porque tienen razón: toda forma cerrada es igual"
+       ],
+       "correcta": 0,
+       "porque": "El círculo es una forma geométrica de bordes regulares y medibles, mientras que la nube es una forma orgánica, irregular y libre como las que aparecen en la naturaleza; por eso no son la misma forma."
+      }
+     ]
+    },
+    {
+     "id": "el-color",
+     "nombre": "El mundo del color",
+     "emoji": "🌈",
+     "oa": "OA2 — Aplicar y combinar el color con diferentes propósitos expresivos en creaciones personales.",
+     "intro": "El color tiene reglas propias que nos permiten mezclarlo, combinarlo y transmitir emociones a quien mira la obra.",
+     "items": [
+      {
+       "t": "Colores primarios",
+       "d": "Rojo, azul y amarillo; no se obtienen mezclando otros y con ellos se forman los demás colores.",
+       "e": "🔴",
+       "en": "Primary colours"
+      },
+      {
+       "t": "Colores secundarios",
+       "d": "Nacen de mezclar dos primarios: verde (azul + amarillo), naranjo (rojo + amarillo) y morado (rojo + azul).",
+       "e": "🟢",
+       "en": "Secondary colours"
+      },
+      {
+       "t": "Colores cálidos",
+       "d": "Rojos, naranjos y amarillos; recuerdan al fuego y al sol y dan sensación de energía.",
+       "e": "🔥",
+       "en": "Warm colours"
+      },
+      {
+       "t": "Colores fríos",
+       "d": "Azules, verdes y morados; recuerdan al agua y al hielo y dan sensación de calma.",
+       "e": "❄️",
+       "en": "Cool colours"
+      },
+      {
+       "t": "Círculo cromático",
+       "d": "Rueda que ordena los colores y muestra cuáles combinan bien entre sí.",
+       "e": "🎡",
+       "en": "Colour wheel"
+      },
+      {
+       "t": "Colores complementarios",
+       "d": "Están frente a frente en el círculo cromático (como azul y naranjo) y al juntarse se resaltan mucho entre sí.",
+       "e": "↔️",
+       "en": "Complementary colours"
+      }
+     ],
+     "datos": [
+      "El ojo humano puede distinguir alrededor de un millón de matices de color diferentes.",
+      "Muchos museos pintan sus paredes de colores neutros o fríos para que las obras destaquen mejor."
+     ],
+     "retos": [
+      {
+       "q": "Haces un afiche para la campaña de reciclaje y quieres que las letras resalten al máximo sobre un fondo verde. ¿Qué color conviene para el texto?",
+       "ops": [
+        "Rojo o naranjo, que son complementarios del verde y generan contraste",
+        "Verde, para que combine con el fondo",
+        "Un verde un poco más claro"
+       ],
+       "correcta": 0,
+       "porque": "Los colores complementarios se ubican frente a frente en el círculo cromático (naranjo frente al verde) y generan el mayor contraste, por eso el texto resalta y se lee mejor; un verde sobre verde casi no se distinguiría."
+      },
+      {
+       "q": "Quieres que tu dibujo de un lago en invierno transmita calma y frío. ¿Qué paleta eliges y por qué?",
+       "ops": [
+        "Colores fríos como azules y verdes, que se asocian al agua y al hielo",
+        "Colores cálidos como rojo y naranjo, que dan energía",
+        "Solo negro y blanco, que no transmiten temperatura"
+       ],
+       "correcta": 0,
+       "porque": "Los colores fríos (azules y verdes) se asocian con el agua y el hielo y transmiten calma, por eso son los ideales para expresar una escena invernal; los cálidos darían la sensación contraria de energía o calor."
+      }
+     ]
+    },
+    {
+     "id": "composicion",
+     "nombre": "Componer una obra",
+     "emoji": "🖼️",
+     "oa": "OA2 — Organizar y combinar los elementos visuales en el espacio para crear trabajos equilibrados y expresivos.",
+     "intro": "Componer es decidir dónde va cada cosa en la hoja para que la obra se vea ordenada, equilibrada y atractiva.",
+     "items": [
+      {
+       "t": "Composición",
+       "d": "La manera de ordenar y distribuir los elementos dentro del espacio de la obra.",
+       "e": "🧩",
+       "en": "Composition"
+      },
+      {
+       "t": "Equilibrio",
+       "d": "Repartir el peso visual para que ningún lado se vea demasiado vacío ni demasiado cargado.",
+       "e": "⚖️",
+       "en": "Balance"
+      },
+      {
+       "t": "Primer plano y fondo",
+       "d": "El primer plano es lo que está adelante y más grande; el fondo es lo que está atrás y más lejano.",
+       "e": "🏞️",
+       "en": "Foreground and background"
+      },
+      {
+       "t": "Punto focal",
+       "d": "El lugar de la obra que más llama la atención y guía la mirada de quien observa.",
+       "e": "🎯",
+       "en": "Focal point"
+      },
+      {
+       "t": "Simetría",
+       "d": "Cuando un lado de la imagen es casi el reflejo del otro, lo que da orden y calma.",
+       "e": "🦋",
+       "en": "Symmetry"
+      },
+      {
+       "t": "Ritmo visual",
+       "d": "Repetir formas o colores para que la mirada se mueva por la obra, como una melodía.",
+       "e": "🎵",
+       "en": "Visual rhythm"
+      }
+     ],
+     "datos": [
+      "Muchos artistas y fotógrafos usan la 'regla de los tercios', dividiendo la imagen en 9 partes con dos líneas horizontales y dos verticales para ubicar lo importante.",
+      "Las alas de una mariposa son un ejemplo perfecto de simetría, algo que muchos artistas imitan en sus obras."
+     ],
+     "retos": [
+      {
+       "q": "Dibujaste una casa justo en una esquina y el resto de la hoja quedó vacío, por lo que la obra se ve desequilibrada. ¿Qué haces?",
+       "ops": [
+        "Agregar elementos como un árbol o nubes para repartir el peso visual",
+        "Dejarla así porque ya la terminé",
+        "Borrar todo y no dibujar nada"
+       ],
+       "correcta": 0,
+       "porque": "Agregar elementos que llenen el espacio vacío reparte el peso visual entre los dos lados, y así la composición se ve más equilibrada y armónica."
+      },
+      {
+       "q": "Quieres que quien mire tu obra note primero al personaje protagonista. ¿Cómo creas un punto focal?",
+       "ops": [
+        "Destacándolo con mayor tamaño, un color contrastante o una ubicación que guíe la mirada",
+        "Haciéndolo del mismo tamaño y color que todo lo demás",
+        "Escondiéndolo en una esquina pequeña"
+       ],
+       "correcta": 0,
+       "porque": "El punto focal se logra con contraste de tamaño, color o ubicación estratégica; eso atrae la mirada hacia lo importante. Si el protagonista se ve igual que el resto, nada destacaría."
+      }
+     ]
+    },
+    {
+     "id": "arte-y-culturas",
+     "nombre": "Arte y culturas",
+     "emoji": "🗿",
+     "oa": "OA1 — Crear y apreciar trabajos de arte a partir de la observación del entorno cultural: arte de pueblos originarios de Chile, latinoamericano y universal.",
+     "intro": "El arte cuenta la historia de los pueblos: en Chile y en el mundo cada cultura crea con su propio estilo, materiales y símbolos.",
+     "items": [
+      {
+       "t": "Pueblos originarios",
+       "d": "Comunidades como mapuche, aymara o rapa nui, con textiles, cerámica y símbolos propios muy valiosos.",
+       "e": "🪶",
+       "en": "Indigenous peoples"
+      },
+      {
+       "t": "Patrimonio cultural",
+       "d": "Las obras y tradiciones heredadas de generaciones anteriores que debemos cuidar y respetar entre todos.",
+       "e": "🏛️",
+       "en": "Cultural heritage"
+      },
+      {
+       "t": "Moái",
+       "d": "Grandes esculturas de piedra de Rapa Nui (Isla de Pascua), símbolo del arte chileno ante el mundo.",
+       "e": "🗿",
+       "en": "Moai"
+      },
+      {
+       "t": "Simbolismo",
+       "d": "Cuando una figura representa una idea; por ejemplo, en el textil mapuche los diseños tienen significados.",
+       "e": "🔺",
+       "en": "Symbolism"
+      },
+      {
+       "t": "Muralismo",
+       "d": "Arte pintado en muros y espacios públicos para contar historias a toda la comunidad.",
+       "e": "🧱",
+       "en": "Muralism"
+      },
+      {
+       "t": "Artesanía",
+       "d": "Objetos hechos a mano con técnicas tradicionales, como la greda de Pomaire o los tejidos de Chiloé.",
+       "e": "🏺",
+       "en": "Handicraft"
+      }
+     ],
+     "datos": [
+      "Los moái de Rapa Nui pesan varias toneladas y fueron tallados y trasladados hace cientos de años sin máquinas modernas.",
+      "En el textil mapuche, los diseños llamados 'ñimin' guardan significados sobre la naturaleza, la familia y la comunidad."
+     ],
+     "retos": [
+      {
+       "q": "En una feria, un turista se ríe de los diseños de una artesanía mapuche diciendo que 'no significan nada'. ¿Cómo actúas con empatía y respeto por el patrimonio?",
+       "ops": [
+        "Le explico con respeto que esos diseños tienen significados culturales importantes para el pueblo mapuche",
+        "Me río también para no quedar mal delante de otros",
+        "Le digo que se calle de mala forma"
+       ],
+       "correcta": 0,
+       "porque": "Respetar el patrimonio implica valorar el significado cultural de cada obra y compartirlo con empatía; explicar es más respetuoso y educativo que reírse o responder con agresividad."
+      },
+      {
+       "q": "Tu curso hará un mural sobre los pueblos originarios de Chile. ¿Cuál es la mejor forma de representarlos con respeto?",
+       "ops": [
+        "Investigar sus símbolos reales y representarlos valorando su significado",
+        "Copiar sin permiso cualquier imagen de internet",
+        "Inventar dibujos al azar sin informarme"
+       ],
+       "correcta": 0,
+       "porque": "Representar una cultura con respeto exige investigar y comprender el significado real de sus símbolos; inventarlos o copiarlos sin sentido puede distorsionar y faltar el respeto a esa cultura."
+      }
+     ]
+    },
+    {
+     "id": "tecnicas-materiales",
+     "nombre": "Técnicas y materiales",
+     "emoji": "🖌️",
+     "oa": "OA3 — Crear trabajos de arte y diseño con diferentes materiales y técnicas, usándolos de forma segura y responsable con el entorno.",
+     "intro": "Cada material y cada técnica ofrece posibilidades distintas para expresar nuestras ideas.",
+     "items": [
+      {
+       "t": "Técnica",
+       "d": "El modo o procedimiento para crear una obra, como pintar, modelar o hacer collage.",
+       "e": "🛠️",
+       "en": "Technique"
+      },
+      {
+       "t": "Collage",
+       "d": "Técnica de pegar recortes de papel, tela u otros materiales para armar una imagen nueva.",
+       "e": "✂️",
+       "en": "Collage"
+      },
+      {
+       "t": "Modelado",
+       "d": "Dar forma a materiales blandos como greda o plasticina para crear volumen.",
+       "e": "🏺",
+       "en": "Modelling"
+      },
+      {
+       "t": "Acuarela",
+       "d": "Pintura hecha con agua que se ve transparente y luminosa.",
+       "e": "💧",
+       "en": "Watercolour"
+      },
+      {
+       "t": "Arte con reciclaje",
+       "d": "Crear obras reutilizando materiales que ibas a botar, cuidando el planeta.",
+       "e": "♻️",
+       "en": "Recycled art"
+      },
+      {
+       "t": "Boceto",
+       "d": "Dibujo rápido y sencillo que se hace antes de la obra final para planear ideas.",
+       "e": "✏️",
+       "en": "Sketch"
+      }
+     ],
+     "datos": [
+      "El artista Pablo Picasso creó una escultura llamada 'Cabeza de toro' uniendo un asiento y un manubrio de bicicleta reciclados.",
+      "La acuarela es una de las técnicas más antiguas: ya se usaba en pinturas y manuscritos de hace muchos siglos."
+     ],
+     "retos": [
+      {
+       "q": "Tu curso quiere hacer una escultura cuidando el medioambiente. ¿Qué opción es más responsable con el planeta?",
+       "ops": [
+        "Reutilizar cartones, botellas y tapas para hacer arte con reciclaje",
+        "Comprar muchos materiales nuevos de plástico",
+        "Usar y botar el doble de material para terminar rápido"
+       ],
+       "correcta": 0,
+       "porque": "El arte con reciclaje reutiliza materiales que ya existen, reduce los residuos y demuestra conciencia ecológica; comprar plástico nuevo o botar material genera más basura."
+      },
+      {
+       "q": "Vas a crear una obra compleja con pintura. ¿Qué haces primero para trabajar con orden?",
+       "ops": [
+        "Hacer un boceto para probar la composición antes de la obra final",
+        "Empezar de inmediato sobre la hoja final sin planear",
+        "Copiar exactamente el trabajo de un compañero"
+       ],
+       "correcta": 0,
+       "porque": "El boceto permite planear y corregir la composición antes de la obra final, evitando errores; empezar sin planear o copiar a otro no ayuda a expresar tus propias ideas."
+      }
+     ]
+    },
+    {
+     "id": "apreciacion-y-difusion",
+     "nombre": "Apreciar y compartir el arte",
+     "emoji": "👀",
+     "oa": "OA4 — Analizar, interpretar y valorar trabajos de arte propios y de otros, considerando el lenguaje visual, con respeto y argumentos.",
+     "intro": "Apreciar el arte es aprender a mirarlo con atención, comprenderlo y opinar sobre él con respeto y argumentos.",
+     "items": [
+      {
+       "t": "Apreciación artística",
+       "d": "Observar una obra con atención para entender qué expresa y cómo está hecha.",
+       "e": "🔍",
+       "en": "Art appreciation"
+      },
+      {
+       "t": "Interpretación",
+       "d": "Explicar qué crees que quiso decir el artista y qué te hace sentir la obra.",
+       "e": "💭",
+       "en": "Interpretation"
+      },
+      {
+       "t": "Crítica constructiva",
+       "d": "Opinar sobre un trabajo destacando lo bueno y sugiriendo mejoras con amabilidad.",
+       "e": "🗣️",
+       "en": "Constructive criticism"
+      },
+      {
+       "t": "Exposición",
+       "d": "Muestra donde se presentan obras para que otras personas las observen.",
+       "e": "🖼️",
+       "en": "Exhibition"
+      },
+      {
+       "t": "Curaduría",
+       "d": "Elegir y ordenar qué obras se muestran y cómo, para que la exposición tenga sentido.",
+       "e": "📋",
+       "en": "Curation"
+      },
+      {
+       "t": "Autoevaluación",
+       "d": "Revisar con honestidad tu propio trabajo para reconocer tus logros y qué mejorar.",
+       "e": "🪞",
+       "en": "Self-assessment"
+      }
+     ],
+     "datos": [
+      "La persona que elige y organiza las obras de una exposición se llama curador o curadora.",
+      "El Museo Nacional de Bellas Artes de Chile, en Santiago, es uno de los museos de arte más antiguos de Sudamérica."
+     ],
+     "retos": [
+      {
+       "q": "Un compañero muestra su obra y no te convence del todo. ¿Cómo das una crítica constructiva y respetuosa?",
+       "ops": [
+        "Destaco algo que hizo bien y luego sugiero con amabilidad qué podría mejorar",
+        "Le digo que está fea y me río",
+        "Prefiero criticarla a sus espaldas con otros"
+       ],
+       "correcta": 0,
+       "porque": "La crítica constructiva reconoce primero lo positivo y luego propone mejoras con respeto; eso ayuda a que el compañero aprenda y cuida la sana convivencia, a diferencia de la burla o el comentario a espaldas."
+      },
+      {
+       "q": "Al autoevaluar tu obra notas un error que nadie más vio. ¿Qué es lo más honesto?",
+       "ops": [
+        "Reconocerlo con honestidad y anotar cómo mejorarlo la próxima vez",
+        "Ocultarlo para conseguir una mejor nota",
+        "Culpar a un compañero del error"
+       ],
+       "correcta": 0,
+       "porque": "La honestidad en la autoevaluación permite aprender de verdad: reconocer los propios errores es el primer paso para mejorar, mientras que ocultarlos o culpar a otro impide crecer."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "musica": {
+  "nombre": "Música",
+  "emoji": "🎵",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "sonido-silencio",
+     "nombre": "Sonido y Silencio",
+     "emoji": "🔊",
+     "oa": "OA 01 — Escuchar cualidades y elementos del sonido, y el silencio",
+     "intro": "Aprendemos a escuchar con atención los sonidos que nos rodean y también el silencio.",
+     "items": [
+      {
+       "t": "Sonido",
+       "d": "Es todo lo que podemos escuchar, como el canto de un pájaro o un tambor.",
+       "e": "🔊",
+       "en": "Sound"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es cuando no hay sonido; en la música las pausas también son importantes y nos dejan descansar los oídos.",
+       "e": "🤫",
+       "en": "Silence"
+      },
+      {
+       "t": "Sonidos de la naturaleza",
+       "d": "El viento, la lluvia y los animales hacen sonidos que podemos escuchar y cuidar.",
+       "e": "🌿",
+       "en": "Nature sounds"
+      },
+      {
+       "t": "Sonidos hechos por personas",
+       "d": "Autos, campanas y voces son sonidos que creamos los seres humanos.",
+       "e": "🔔",
+       "en": "Human-made sounds"
+      },
+      {
+       "t": "Escucha atenta",
+       "d": "Cerrar los ojos y poner atención para descubrir qué sonidos hay a nuestro alrededor.",
+       "e": "👂",
+       "en": "Careful listening"
+      },
+      {
+       "t": "Fuente sonora",
+       "d": "Es el objeto o ser que produce el sonido, como una guitarra o un perro.",
+       "e": "🎸",
+       "en": "Sound source"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el silencio total casi no existe? Siempre hay algún sonido, aunque sea muy suave.",
+      "¿Sabías que… los murciélagos usan sonidos que nosotros no podemos escuchar para volar sin chocar?"
+     ],
+     "retos": [
+      {
+       "q": "En la sala de clases todos escuchan un audio de sonidos de la naturaleza. ¿Qué debes hacer para escuchar bien y respetar a tus compañeros?",
+       "ops": [
+        "Hablar fuerte para contar lo que escucho",
+        "Hacer silencio y escuchar con atención",
+        "Golpear la mesa para hacer más ruido"
+       ],
+       "correcta": 1,
+       "porque": "Hacer silencio nos permite escuchar mejor y respetar a los demás, mostrando sana convivencia."
+      },
+      {
+       "q": "Estás en un parque y escuchas pájaros, viento y un auto. ¿Cuál de estos sonidos es de la naturaleza?",
+       "ops": [
+        "El auto",
+        "El viento",
+        "Una bocina"
+       ],
+       "correcta": 1,
+       "porque": "El viento es un sonido de la naturaleza; el auto y la bocina son sonidos hechos por personas."
+      }
+     ]
+    },
+    {
+     "id": "cualidades-sonido",
+     "nombre": "Las Cualidades del Sonido",
+     "emoji": "🎚️",
+     "oa": "OA 01 — Escuchar cualidades del sonido: altura, timbre, intensidad y duración",
+     "intro": "Descubrimos que los sonidos pueden ser altos o bajos, fuertes o suaves, largos o cortos.",
+     "items": [
+      {
+       "t": "Fuerte y suave",
+       "d": "La intensidad: un trueno es fuerte y un susurro es suave.",
+       "e": "📢",
+       "en": "Loud and soft"
+      },
+      {
+       "t": "Agudo y grave",
+       "d": "La altura: un pajarito suena agudo (fino) y un tambor grande suena grave (grueso).",
+       "e": "🎵",
+       "en": "High and low"
+      },
+      {
+       "t": "Largo y corto",
+       "d": "La duración: un sonido puede durar mucho tiempo o solo un instante.",
+       "e": "⏱️",
+       "en": "Long and short"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el color del sonido; nos ayuda a saber si suena una flauta o un tambor.",
+       "e": "🎨",
+       "en": "Timbre"
+      },
+      {
+       "t": "Rápido y lento",
+       "d": "La velocidad: la música puede ir de prisa o ir despacio.",
+       "e": "🐢",
+       "en": "Fast and slow"
+      },
+      {
+       "t": "Voz",
+       "d": "Nuestra voz también tiene cualidades: podemos hablar agudo, grave, fuerte o suave.",
+       "e": "🗣️",
+       "en": "Voice"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cada persona tiene un timbre de voz distinto? Por eso reconoces a tu mamá o papá aunque no los veas.",
+      "¿Sabías que… los elefantes hacen sonidos tan graves que nosotros a veces no los podemos oír?"
+     ],
+     "retos": [
+      {
+       "q": "Tu compañero está descansando con dolor de cabeza. Quieres mostrarle una canción. ¿Cómo debes usar el sonido para cuidarlo?",
+       "ops": [
+        "Poner la música muy fuerte",
+        "Poner la música suave y cerca",
+        "Cantar gritando la canción"
+       ],
+       "correcta": 1,
+       "porque": "Usar un sonido suave (poca intensidad) muestra empatía y cuida a quien no se siente bien."
+      },
+      {
+       "q": "Quieres imitar el sonido de un ratoncito pequeño con tu voz. ¿Qué cualidad debes usar?",
+       "ops": [
+        "Una voz grave y fuerte",
+        "Una voz aguda y suave",
+        "Una voz muy larga y grave"
+       ],
+       "correcta": 1,
+       "porque": "Los animales pequeños suelen hacer sonidos agudos y suaves, por eso imitamos con una voz fina."
+      }
+     ]
+    },
+    {
+     "id": "pulso-ritmo",
+     "nombre": "Pulso y Ritmo",
+     "emoji": "🥁",
+     "oa": "OA 01 / OA 04 — Reconocer el pulso y el acento, y tocar instrumentos de percusión",
+     "intro": "Sentimos el latido de la música con nuestro cuerpo y seguimos su ritmo.",
+     "items": [
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante de la música, como los latidos de tu corazón.",
+       "e": "💓",
+       "en": "Beat / Pulse"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Es la combinación de sonidos largos y cortos que van marcando la música.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Percusión corporal",
+       "d": "Usar el cuerpo para hacer música: aplaudir, zapatear o chasquear los dedos.",
+       "e": "👏",
+       "en": "Body percussion"
+      },
+      {
+       "t": "Marcar el pulso",
+       "d": "Golpear o aplaudir de forma pareja para seguir el latido de una canción.",
+       "e": "✋",
+       "en": "Keeping the beat"
+      },
+      {
+       "t": "Acento",
+       "d": "Es el golpe más fuerte del ritmo, como cuando pisamos con más fuerza al marchar.",
+       "e": "👣",
+       "en": "Accent"
+      },
+      {
+       "t": "Instrumentos de percusión",
+       "d": "Tambores, panderos y claves que suenan al golpearlos o agitarlos.",
+       "e": "🪘",
+       "en": "Percussion instruments"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón también tiene un pulso, igual que la música? Late más rápido cuando corres.",
+      "¿Sabías que… antiguamente los pueblos usaban tambores para enviarse mensajes a lo lejos?"
+     ],
+     "retos": [
+      {
+       "q": "En el curso van a tocar una canción con tambores todos juntos. ¿Qué debes hacer para que suene bien en grupo?",
+       "ops": [
+        "Tocar cada uno a su propia velocidad",
+        "Seguir el mismo pulso que mis compañeros",
+        "Tocar lo más fuerte que pueda solo yo"
+       ],
+       "correcta": 1,
+       "porque": "Seguir el mismo pulso permite tocar en equipo y muestra respeto y trabajo colaborativo."
+      },
+      {
+       "q": "Marchas con tu curso marcando el pulso con los pies. ¿Cuándo pisas con más fuerza?",
+       "ops": [
+        "En el acento del ritmo",
+        "En cualquier momento sin orden",
+        "Cuando quiero adelantarme a los demás"
+       ],
+       "correcta": 0,
+       "porque": "El acento es el golpe más fuerte, por eso pisamos con más fuerza ahí y mantenemos el orden del grupo."
+      }
+     ]
+    },
+    {
+     "id": "la-voz-canto",
+     "nombre": "La Voz y el Canto",
+     "emoji": "🎤",
+     "oa": "OA 04 — Cantar al unísono y expresarse con la voz",
+     "intro": "Descubrimos nuestra voz como un instrumento para cantar y expresar emociones.",
+     "items": [
+      {
+       "t": "Cantar",
+       "d": "Usar la voz para hacer una melodía con palabras y sentimientos.",
+       "e": "🎤",
+       "en": "To sing"
+      },
+      {
+       "t": "Canto al unísono",
+       "d": "Cuando todos cantamos la misma melodía juntos, como un solo sonido.",
+       "e": "👨‍👩‍👧‍👦",
+       "en": "Singing in unison"
+      },
+      {
+       "t": "Respiración",
+       "d": "Tomar aire por la nariz nos ayuda a cantar sin cansarnos.",
+       "e": "🌬️",
+       "en": "Breathing"
+      },
+      {
+       "t": "Letra de la canción",
+       "d": "Son las palabras que cantamos y que cuentan una historia.",
+       "e": "📝",
+       "en": "Lyrics"
+      },
+      {
+       "t": "Canciones tradicionales chilenas",
+       "d": "Rondas y canciones de Chile que aprendemos de nuestros abuelos.",
+       "e": "🇨🇱",
+       "en": "Traditional Chilean songs"
+      },
+      {
+       "t": "Cuidar la voz",
+       "d": "No gritar y tomar agua ayuda a mantener nuestra voz sana.",
+       "e": "💧",
+       "en": "Voice care"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cuando cantas en grupo tu cerebro se pone contento y compartes alegría con los demás?",
+      "¿Sabías que… la ronda 'Arroz con leche' se canta en muchos países de habla hispana con distintas letras?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase de música todos cantan al unísono una ronda chilena. Un compañero canta muy fuerte y tapa a los demás. ¿Qué es lo correcto hacer?",
+       "ops": [
+        "Gritar más fuerte que él para ganarle",
+        "Cantar con voz pareja para sonar todos juntos",
+        "Dejar de cantar y molestarme"
+       ],
+       "correcta": 1,
+       "porque": "Cantar al unísono es escucharse y unir las voces; hacerlo parejo muestra sana convivencia y respeto."
+      },
+      {
+       "q": "Después de gritar mucho en el recreo, te toca clase de canto. ¿Cómo cuidas tu voz?",
+       "ops": [
+        "Sigo gritando la canción",
+        "Canto suave y tomo agua",
+        "Aguanto la respiración al cantar"
+       ],
+       "correcta": 1,
+       "porque": "Cantar suave y tomar agua cuida la voz; gritar la puede lastimar. Cuidar nuestro cuerpo es responsabilidad."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos-musicales",
+     "nombre": "Los Instrumentos Musicales",
+     "emoji": "🎻",
+     "oa": "OA 04 / OA 05 — Tocar y explorar instrumentos y objetos sonoros",
+     "intro": "Conocemos distintos instrumentos y cómo hacen música al tocarlos.",
+     "items": [
+      {
+       "t": "Instrumento musical",
+       "d": "Objeto creado para hacer música, como un piano o una guitarra.",
+       "e": "🎹",
+       "en": "Musical instrument"
+      },
+      {
+       "t": "Instrumentos de viento",
+       "d": "Suenan al soplar aire dentro de ellos, como la flauta o la trompeta.",
+       "e": "🎺",
+       "en": "Wind instruments"
+      },
+      {
+       "t": "Instrumentos de cuerda",
+       "d": "Suenan al tocar sus cuerdas, como la guitarra o el violín.",
+       "e": "🎻",
+       "en": "String instruments"
+      },
+      {
+       "t": "Instrumentos de percusión",
+       "d": "Suenan al golpearlos o agitarlos, como el tambor o las maracas.",
+       "e": "🥁",
+       "en": "Percussion instruments"
+      },
+      {
+       "t": "Instrumentos chilenos",
+       "d": "El charango, la trutruca y el kultrún son instrumentos de nuestra tierra.",
+       "e": "🪗",
+       "en": "Chilean instruments"
+      },
+      {
+       "t": "Instrumentos reciclados",
+       "d": "Podemos crear instrumentos con material reciclado y cuidar el planeta.",
+       "e": "♻️",
+       "en": "Recycled instruments"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el kultrún es un instrumento sagrado del pueblo mapuche que se toca en ceremonias?",
+      "¿Sabías que… puedes hacer una maraca con una botella y semillas, reutilizando en vez de botar basura?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso quiere hacer instrumentos, pero no hay dinero para comprarlos. Tienes botellas y tapas usadas. ¿Qué decides hacer para cuidar el planeta?",
+       "ops": [
+        "Botar las botellas y pedir instrumentos nuevos",
+        "Crear instrumentos reciclados con lo que tengo",
+        "No hacer música porque falta material"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales cuida el medio ambiente y muestra creatividad y responsabilidad ecológica."
+      },
+      {
+       "q": "Encuentras una guitarra en la sala. Quieres saber cómo suena sin dañarla. ¿Qué haces?",
+       "ops": [
+        "La toco con cuidado por sus cuerdas",
+        "La golpeo fuerte contra el suelo",
+        "La lanzo para ver si suena"
+       ],
+       "correcta": 0,
+       "porque": "La guitarra es de cuerda y suena al tocar sus cuerdas con cuidado; cuidar los objetos muestra respeto y responsabilidad."
+      }
+     ]
+    },
+    {
+     "id": "musica-emociones",
+     "nombre": "Música y Emociones",
+     "emoji": "😊",
+     "oa": "OA 02 — Expresar sensaciones y emociones al escuchar y crear música",
+     "intro": "Sentimos y expresamos emociones cuando escuchamos, cantamos y bailamos música.",
+     "items": [
+      {
+       "t": "Emoción",
+       "d": "Es lo que sentimos por dentro: alegría, tristeza, calma o entusiasmo.",
+       "e": "😊",
+       "en": "Emotion"
+      },
+      {
+       "t": "Música alegre",
+       "d": "Suele ser rápida y fuerte, y nos dan ganas de saltar y bailar.",
+       "e": "🎉",
+       "en": "Happy music"
+      },
+      {
+       "t": "Música tranquila",
+       "d": "Es suave y lenta, y nos ayuda a relajarnos y descansar.",
+       "e": "😌",
+       "en": "Calm music"
+      },
+      {
+       "t": "Bailar",
+       "d": "Mover el cuerpo al ritmo de la música para expresar lo que sentimos.",
+       "e": "💃",
+       "en": "To dance"
+      },
+      {
+       "t": "Expresar con el cuerpo",
+       "d": "Usar gestos y movimientos para mostrar la emoción de la música.",
+       "e": "🙆",
+       "en": "Body expression"
+      },
+      {
+       "t": "Escuchar al otro",
+       "d": "Respetar los gustos musicales de los demás, aunque sean distintos a los míos.",
+       "e": "🤝",
+       "en": "Respecting others"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la música puede cambiar cómo te sientes? Una canción tranquila puede calmarte cuando estás nervioso.",
+      "¿Sabías que… en todo el mundo las personas usan música para celebrar, y cada cultura tiene sus propias canciones?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero se siente triste. Quieres ayudarlo con música. ¿Qué tipo de canción eliges para acompañarlo?",
+       "ops": [
+        "Una canción muy fuerte y rápida para asustarlo",
+        "Una canción suave y tranquila para calmarlo",
+        "No hacer nada porque no es mi problema"
+       ],
+       "correcta": 1,
+       "porque": "Elegir música tranquila para calmar a un amigo triste muestra empatía y cariño por los demás."
+      },
+      {
+       "q": "En la fiesta del curso ponen una canción que no es tu favorita, pero a tus compañeros les encanta. ¿Qué haces?",
+       "ops": [
+        "Reclamo y apago la música",
+        "Respeto su gusto y bailo con ellos",
+        "Me burlo de la canción que les gusta"
+       ],
+       "correcta": 1,
+       "porque": "Respetar los gustos musicales de los demás muestra sana convivencia y empatía en el grupo."
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "escuchar-sonidos",
+     "nombre": "Escuchar y descubrir sonidos",
+     "emoji": "👂",
+     "oa": "OA 1 y OA 7 - Escuchar sonidos del entorno con atención e identificar experiencias sonoras de la vida",
+     "intro": "Aprendemos a escuchar con atención los sonidos que nos rodean y a describirlos.",
+     "items": [
+      {
+       "t": "Sonido",
+       "d": "Es todo lo que podemos escuchar con nuestros oídos, como un pájaro o un tambor.",
+       "e": "🔊",
+       "en": "Sound"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es cuando no hay sonido; también es parte de la música y ayuda a descansar el oído.",
+       "e": "🤫",
+       "en": "Silence"
+      },
+      {
+       "t": "Ruido",
+       "d": "Es un sonido fuerte y desordenado que a veces molesta, como una bocina muy cerca.",
+       "e": "📢",
+       "en": "Noise"
+      },
+      {
+       "t": "Escuchar con atención",
+       "d": "Es poner toda nuestra concentración en lo que oímos, sin distraernos ni hablar encima.",
+       "e": "🎧",
+       "en": "Active listening"
+      },
+      {
+       "t": "Sonidos de la naturaleza",
+       "d": "Son los que hacen los animales, el viento, la lluvia o el mar.",
+       "e": "🌿",
+       "en": "Nature sounds"
+      },
+      {
+       "t": "Sonidos de la ciudad",
+       "d": "Son los que hacen los autos, las personas y las máquinas donde vivimos.",
+       "e": "🏙️",
+       "en": "City sounds"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… nuestros oídos siguen escuchando incluso cuando dormimos?",
+      "¿Sabías que… algunos animales, como los elefantes, escuchan sonidos que las personas no pueden oír?"
+     ],
+     "retos": [
+      {
+       "q": "En la sala, la profesora va a poner una canción suave para escuchar. Tu compañero quiere seguir conversando fuerte contigo. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Seguir conversando porque la música igual suena",
+        "Guardar silencio y escuchar con atención, respetando a los demás",
+        "Taparte los oídos y no participar"
+       ],
+       "correcta": 1,
+       "porque": "Escuchar con atención y en silencio muestra respeto por la clase y por tus compañeros, y así disfrutamos mejor la música."
+      },
+      {
+       "q": "Vas caminando por el patio y escuchas el canto de un pájaro, el viento y también la bocina de un auto. ¿Cuáles son sonidos de la naturaleza?",
+       "ops": [
+        "La bocina del auto",
+        "El canto del pájaro y el viento",
+        "Todos son de la naturaleza"
+       ],
+       "correcta": 1,
+       "porque": "El pájaro y el viento son sonidos de la naturaleza; la bocina la fabrican las personas, así que es un sonido de la ciudad."
+      }
+     ]
+    },
+    {
+     "id": "cualidades-sonido",
+     "nombre": "Las cualidades del sonido",
+     "emoji": "🎵",
+     "oa": "OA 1 - Escuchar y reconocer las cualidades del sonido: altura, intensidad, timbre y duración",
+     "intro": "Descubrimos que los sonidos pueden ser fuertes o suaves, altos o bajos, largos o cortos.",
+     "items": [
+      {
+       "t": "Intensidad",
+       "d": "Nos dice si un sonido es fuerte o suave, como gritar o susurrar.",
+       "e": "💪",
+       "en": "Intensity / Loudness"
+      },
+      {
+       "t": "Altura",
+       "d": "Nos dice si un sonido es agudo (fino, como un pito) o grave (grueso, como un trueno).",
+       "e": "📈",
+       "en": "Pitch"
+      },
+      {
+       "t": "Duración",
+       "d": "Nos dice si un sonido es largo o corto, como una campana que suena mucho rato.",
+       "e": "⏱️",
+       "en": "Duration"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el color del sonido; nos permite saber si suena una guitarra o una flauta aunque toquen la misma nota.",
+       "e": "🎨",
+       "en": "Timbre"
+      },
+      {
+       "t": "Sonido agudo",
+       "d": "Es un sonido finito y alto, como el de un pajarito o un silbato.",
+       "e": "🐤",
+       "en": "High-pitched sound"
+      },
+      {
+       "t": "Sonido grave",
+       "d": "Es un sonido grueso y bajo, como el de un tambor grande o un león.",
+       "e": "🦁",
+       "en": "Low-pitched sound"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los sonidos muy fuertes pueden dañar tus oídos, por eso conviene cuidar el volumen?",
+      "¿Sabías que… puedes reconocer la voz de tu mamá o papá entre muchas personas gracias al timbre?"
+     ],
+     "retos": [
+      {
+       "q": "En una obra de teatro musical, un compañero debe hacer el sonido de un ratoncito chiquito y otro el de un oso grande. ¿Qué cualidad del sonido tienen que usar para diferenciarlos?",
+       "ops": [
+        "La duración: uno largo y otro corto",
+        "La altura: agudo para el ratón y grave para el oso",
+        "El silencio, para que no se escuche nada"
+       ],
+       "correcta": 1,
+       "porque": "El ratón hace un sonido agudo (fino y alto) y el oso uno grave (grueso y bajo); esa diferencia entre agudo y grave es la altura del sonido."
+      },
+      {
+       "q": "La profesora toca una nota muy suavecita, casi como un susurro, y luego la misma nota muy fuerte. La nota no cambió de agudo a grave, solo cambió otra cosa. ¿Qué cualidad del sonido cambió?",
+       "ops": [
+        "La altura",
+        "La intensidad",
+        "El timbre"
+       ],
+       "correcta": 1,
+       "porque": "Como pasó de suave a fuerte sin cambiar de agudo a grave, lo que cambió fue la intensidad, que nos dice si un sonido es fuerte o suave."
+      }
+     ]
+    },
+    {
+     "id": "ritmo-pulso",
+     "nombre": "Ritmo y pulso",
+     "emoji": "🥁",
+     "oa": "OA 1 y OA 4 - Reconocer el pulso y los patrones rítmicos, y tocar percusión al unísono",
+     "intro": "Sentimos el pulso de la música con nuestro cuerpo y creamos ritmos con palmas y percusión.",
+     "items": [
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante de la música, como los pasos al marchar; siempre va parejo.",
+       "e": "❤️",
+       "en": "Beat / Pulse"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Es la combinación de sonidos largos y cortos que hacemos sobre el pulso.",
+       "e": "🎶",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Percusión corporal",
+       "d": "Es hacer música con nuestro propio cuerpo: palmas, pisadas y palmadas en las piernas.",
+       "e": "👏",
+       "en": "Body percussion"
+      },
+      {
+       "t": "Tempo",
+       "d": "Es la velocidad de la música; puede ser rápida o lenta.",
+       "e": "🏃",
+       "en": "Tempo"
+      },
+      {
+       "t": "Instrumento de percusión",
+       "d": "Suena al golpearlo o sacudirlo, como el tambor, el pandero o las claves.",
+       "e": "🪘",
+       "en": "Percussion instrument"
+      },
+      {
+       "t": "Imitar un patrón",
+       "d": "Es repetir un ritmo que escuchamos, poniendo atención y esperando nuestro turno.",
+       "e": "🔁",
+       "en": "Echo / Repeat a pattern"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón tiene su propio pulso, igual que la música?",
+      "¿Sabías que… en Chile la cueca se baila con un ritmo alegre que se marca con palmas y zapateo?"
+     ],
+     "retos": [
+      {
+       "q": "En un juego de eco musical, la profesora hace un ritmo con palmas y luego cada niño lo repite por turnos. Cuando le toca a tu compañero, tú quieres adelantarte. ¿Qué es lo correcto?",
+       "ops": [
+        "Adelantarte para hacerlo tú primero",
+        "Esperar tu turno y repetir cuando te corresponda",
+        "Hacer un ritmo distinto para llamar la atención"
+       ],
+       "correcta": 1,
+       "porque": "Esperar el turno muestra respeto y responsabilidad; así todos participan y la actividad funciona en sana convivencia."
+      },
+      {
+       "q": "Están marchando en la sala al ritmo de un tambor que suena parejo y constante. ¿A qué corresponde ese golpe que se repite igual todo el rato?",
+       "ops": [
+        "Al timbre del instrumento",
+        "Al pulso de la música",
+        "Al silencio"
+       ],
+       "correcta": 1,
+       "porque": "El golpe constante y parejo que se repite es el pulso; sobre él construimos los ritmos."
+      }
+     ]
+    },
+    {
+     "id": "voz-canto",
+     "nombre": "Mi voz y el canto",
+     "emoji": "🎤",
+     "oa": "OA 4 - Cantar al unísono canciones infantiles y folclóricas usando bien la voz",
+     "intro": "Cuidamos y usamos nuestra voz para cantar juntos canciones de Chile y del mundo.",
+     "items": [
+      {
+       "t": "Voz cantada",
+       "d": "Es cuando usamos nuestra voz para hacer música y melodías, no solo para hablar.",
+       "e": "🎙️",
+       "en": "Singing voice"
+      },
+      {
+       "t": "Cantar al unísono",
+       "d": "Es cuando todos cantamos juntos la misma melodía y al mismo tiempo.",
+       "e": "👥",
+       "en": "Sing in unison"
+      },
+      {
+       "t": "Melodía",
+       "d": "Es la sucesión de notas que forman una canción y que podemos tararear.",
+       "e": "🎼",
+       "en": "Melody"
+      },
+      {
+       "t": "Cuidar la voz",
+       "d": "Es no gritar, tomar agua y calentar la voz para no lastimarla.",
+       "e": "💧",
+       "en": "Vocal care"
+      },
+      {
+       "t": "Canción folclórica",
+       "d": "Es una canción tradicional que pasa de abuelos a nietos, como las rondas chilenas.",
+       "e": "🇨🇱",
+       "en": "Folk song"
+      },
+      {
+       "t": "Respiración",
+       "d": "Es tomar aire por la nariz para tener fuerza al cantar frases largas.",
+       "e": "🌬️",
+       "en": "Breathing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… gritar mucho puede dejar tu voz ronca y cansada?",
+      "¿Sabías que… en Chile hay muchas rondas y canciones tradicionales que los niños cantan desde hace muchísimos años?"
+     ],
+     "retos": [
+      {
+       "q": "El curso está cantando una ronda todos juntos. Un compañero canta muy fuerte, tapando a los demás y forzando su voz. ¿Qué consejo le darías?",
+       "ops": [
+        "Que cante aún más fuerte para que lo escuchen",
+        "Que escuche al grupo y cante al unísono, cuidando su voz",
+        "Que deje de cantar y solo mire"
+       ],
+       "correcta": 1,
+       "porque": "Cantar al unísono significa mezclarse con el grupo, no taparlo; además cuidar la voz evita lastimarla y muestra empatía con los compañeros."
+      },
+      {
+       "q": "Antes de cantar una canción con frases largas, la profesora les pide tomar aire por la nariz. ¿Para qué sirve respirar bien antes de cantar?",
+       "ops": [
+        "Para cantar más fuerte que los demás",
+        "Para tener aire y fuerza y terminar las frases largas sin cansarse",
+        "Para que la canción sea más rápida"
+       ],
+       "correcta": 1,
+       "porque": "Respirar bien nos da el aire necesario para sostener las frases largas al cantar y cuidar la voz sin forzarla."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos-familias",
+     "nombre": "Instrumentos y sus familias",
+     "emoji": "🎻",
+     "oa": "OA 1 y OA 4 - Explorar y reconocer instrumentos, sus sonidos y su timbre",
+     "intro": "Conocemos distintos instrumentos, cómo suenan y cómo cuidarlos con responsabilidad.",
+     "items": [
+      {
+       "t": "Instrumento de viento",
+       "d": "Suena al soplar dentro de él, como la flauta o la trompeta.",
+       "e": "🎺",
+       "en": "Wind instrument"
+      },
+      {
+       "t": "Instrumento de cuerda",
+       "d": "Suena al tocar sus cuerdas, como la guitarra o el violín.",
+       "e": "🎸",
+       "en": "String instrument"
+      },
+      {
+       "t": "Instrumento de percusión",
+       "d": "Suena al golpearlo o sacudirlo, como el tambor o las maracas.",
+       "e": "🥁",
+       "en": "Percussion instrument"
+      },
+      {
+       "t": "Instrumento chileno",
+       "d": "Instrumentos de nuestro país, como la trutruca o el guitarrón chileno.",
+       "e": "🪈",
+       "en": "Chilean instrument"
+      },
+      {
+       "t": "Cuidar los instrumentos",
+       "d": "Es usarlos con cuidado y guardarlos bien, porque son de todos y hay que respetarlos.",
+       "e": "🤲",
+       "en": "Care for instruments"
+      },
+      {
+       "t": "Instrumento reciclado",
+       "d": "Es uno que hacemos con materiales reutilizados, como una maraca con una botella y semillas.",
+       "e": "♻️",
+       "en": "Recycled instrument"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la trutruca es un instrumento mapuche muy largo que suena grave y potente?",
+      "¿Sabías que… puedes crear instrumentos musicales reutilizando tarros y botellas, cuidando así el planeta?"
+     ],
+     "retos": [
+      {
+       "q": "En el curso van a construir maracas usando botellas plásticas vacías y semillas en vez de comprarlas. ¿Por qué esta es una buena idea?",
+       "ops": [
+        "Porque así ensuciamos menos la sala",
+        "Porque reutilizamos materiales y cuidamos el medio ambiente",
+        "Porque las botellas nuevas suenan mejor"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales para crear instrumentos cuida el medio ambiente y nos enseña a no botar cosas que aún sirven."
+      },
+      {
+       "q": "Un compañero deja tirada la guitarra del colegio en el suelo y se va a jugar. ¿Qué deberías hacer para actuar con responsabilidad?",
+       "ops": [
+        "Dejarla ahí, no es tuya",
+        "Recogerla con cuidado y guardarla en su lugar, avisando al profesor",
+        "Tocarla fuerte para ver si todavía sirve"
+       ],
+       "correcta": 1,
+       "porque": "Los instrumentos son de todos; cuidarlos y guardarlos bien es una muestra de responsabilidad y respeto por lo compartido."
+      }
+     ]
+    },
+    {
+     "id": "crear-expresar",
+     "nombre": "Crear y expresar con música",
+     "emoji": "🎨",
+     "oa": "OA 2, OA 5 y OA 6 - Expresar emociones, improvisar ideas musicales y presentar al público",
+     "intro": "Usamos la música para expresar lo que sentimos, inventar sonidos y presentarnos ante los demás.",
+     "items": [
+      {
+       "t": "Expresar emociones",
+       "d": "Es mostrar con la música si estamos alegres, tranquilos o con energía.",
+       "e": "😊",
+       "en": "Express emotions"
+      },
+      {
+       "t": "Improvisar",
+       "d": "Es inventar sonidos o ritmos en el momento, usando nuestra imaginación.",
+       "e": "✨",
+       "en": "Improvise"
+      },
+      {
+       "t": "Música alegre",
+       "d": "Suele ser rápida y con sonidos brillantes que dan ganas de moverse.",
+       "e": "🎉",
+       "en": "Happy music"
+      },
+      {
+       "t": "Música tranquila",
+       "d": "Suele ser lenta y suave, y sirve para relajarse y calmarse.",
+       "e": "🌙",
+       "en": "Calm music"
+      },
+      {
+       "t": "Presentación musical",
+       "d": "Es mostrar lo que preparamos frente a un público, con respeto y confianza.",
+       "e": "🎭",
+       "en": "Musical performance"
+      },
+      {
+       "t": "Ser buen público",
+       "d": "Es escuchar en silencio y aplaudir a quienes se presentan, apoyándolos.",
+       "e": "👏",
+       "en": "Good audience"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la música puede cambiar cómo te sientes: una canción alegre puede subirte el ánimo?",
+      "¿Sabías que… muchos músicos famosos inventan melodías improvisando, jugando con los sonidos?"
+     ],
+     "retos": [
+      {
+       "q": "Tu compañera está muy nerviosa antes de cantar frente al curso y le tiembla la voz. Cuando termina, se equivocó en una parte. ¿Qué haces tú desde el público?",
+       "ops": [
+        "Te ríes de ella por equivocarse",
+        "La aplaudes y la felicitas por atreverse a presentarse",
+        "Le dices que lo hizo pésimo"
+       ],
+       "correcta": 1,
+       "porque": "Ser buen público significa apoyar con empatía y respeto; aplaudir el esfuerzo ayuda a que todos se atrevan a participar."
+      },
+      {
+       "q": "Quieres crear una música para acompañar un cuento donde el personaje está durmiendo tranquilo. ¿Qué tipo de música te conviene inventar?",
+       "ops": [
+        "Música rápida y muy fuerte con tambores",
+        "Música lenta y suave que dé calma",
+        "Muchos ruidos desordenados y gritos"
+       ],
+       "correcta": 1,
+       "porque": "Para una escena de calma conviene música tranquila, lenta y suave, porque expresa esa emoción de descanso y paz."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "escuchar-sonidos",
+     "nombre": "Escuchar y explorar sonidos",
+     "emoji": "👂",
+     "oa": "OA1 y OA7: escuchar cualidades del sonido con atención e identificar experiencias sonoras del entorno.",
+     "intro": "Aprendemos a escuchar con atención y a descubrir los sonidos que nos rodean cada día.",
+     "items": [
+      {
+       "t": "Sonido",
+       "d": "Es todo lo que podemos oír, como una voz, un pájaro o un tambor.",
+       "e": "🔊",
+       "en": "Sound"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es cuando no hay sonido; también es parte de la música y nos ayuda a descansar el oído.",
+       "e": "🤫",
+       "en": "Silence"
+      },
+      {
+       "t": "Paisaje sonoro",
+       "d": "Son todos los sonidos de un lugar juntos, como la feria, el bosque o la sala de clases.",
+       "e": "🌳",
+       "en": "Soundscape"
+      },
+      {
+       "t": "Sonido natural",
+       "d": "Lo produce la naturaleza, como la lluvia, el viento o el canto de un pájaro.",
+       "e": "🌧️",
+       "en": "Natural sound"
+      },
+      {
+       "t": "Sonido artificial",
+       "d": "Lo hacen las personas o las máquinas, como un auto, un timbre o un teléfono.",
+       "e": "🚗",
+       "en": "Human-made sound"
+      },
+      {
+       "t": "Escucha atenta",
+       "d": "Es oír con concentración y en silencio para descubrir todos los detalles de la música.",
+       "e": "🎧",
+       "en": "Attentive listening"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en Chile hay músicos que graban los sonidos del bosque nativo, como el canto del chucao, para crear paisajes sonoros?",
+      "¿Sabías que… el silencio en la música también \"suena\"? Los compositores lo usan para dar sorpresas y emoción a una canción."
+     ],
+     "retos": [
+      {
+       "q": "En la sala, la profesora pide escuchar en silencio una canción. Un compañero sigue conversando fuerte. ¿Qué es lo mejor que puedes hacer para respetar la actividad?",
+       "ops": [
+        "Gritarle que se calle para que todos lo escuchen",
+        "Escuchar con atención y, con respeto, invitarlo en voz baja a hacer silencio",
+        "Conversar tú también porque igual no se escucha nada"
+       ],
+       "correcta": 1,
+       "porque": "La escucha atenta necesita silencio y respeto. Invitar en voz baja cuida la sana convivencia sin interrumpir a los demás."
+      },
+      {
+       "q": "Haces un paisaje sonoro del patio de tu colegio. ¿Cuál es un sonido natural que podrías incluir?",
+       "ops": [
+        "El timbre del recreo",
+        "El canto de los pájaros en el árbol",
+        "El motor de un auto en la calle"
+       ],
+       "correcta": 1,
+       "porque": "El canto de los pájaros lo produce la naturaleza, por eso es un sonido natural. El timbre y el motor son sonidos artificiales, hechos por personas o máquinas."
+      }
+     ]
+    },
+    {
+     "id": "cualidades-sonido",
+     "nombre": "Las cualidades del sonido",
+     "emoji": "🎚️",
+     "oa": "OA1: escuchar y reconocer las cualidades del sonido (altura, timbre, intensidad, duración).",
+     "intro": "Descubrimos que los sonidos pueden ser altos o bajos, largos o cortos, fuertes o suaves.",
+     "items": [
+      {
+       "t": "Altura",
+       "d": "Nos dice si un sonido es agudo (fino, como un pajarito) o grave (grueso, como un tambor).",
+       "e": "📏",
+       "en": "Pitch"
+      },
+      {
+       "t": "Agudo",
+       "d": "Sonido alto y fino, como un silbato o el canto de un pájaro pequeño.",
+       "e": "🐤",
+       "en": "High-pitched"
+      },
+      {
+       "t": "Grave",
+       "d": "Sonido bajo y grueso, como un trueno o un tambor grande.",
+       "e": "🥁",
+       "en": "Low-pitched"
+      },
+      {
+       "t": "Duración",
+       "d": "Nos dice si un sonido es largo (dura mucho) o corto (dura poco).",
+       "e": "⏱️",
+       "en": "Duration"
+      },
+      {
+       "t": "Intensidad",
+       "d": "Nos dice si un sonido es fuerte (forte) o suave (piano).",
+       "e": "📢",
+       "en": "Intensity / Dynamics"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el \"color\" de cada sonido; nos deja reconocer si toca una guitarra o una flauta aunque no las veamos.",
+       "e": "🎨",
+       "en": "Timbre"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los elefantes se comunican con sonidos tan graves que las personas casi no podemos oírlos, pero ellos los sienten a kilómetros de distancia?",
+      "¿Sabías que… cada persona tiene un timbre de voz diferente? Por eso reconoces a tu mamá o a tu amigo solo con oírlos hablar."
+     ],
+     "retos": [
+      {
+       "q": "Tu grupo debe representar el sonido de un ratoncito pequeño y el de un oso grande con la voz. ¿Cómo lo harían mejor?",
+       "ops": [
+        "El ratón con voz grave y el oso con voz aguda",
+        "El ratón con voz aguda (fina) y el oso con voz grave (gruesa)",
+        "Los dos con la misma voz porque suena igual"
+       ],
+       "correcta": 1,
+       "porque": "Los animales pequeños suelen tener sonidos agudos (altos y finos) y los grandes, sonidos graves (bajos y gruesos). Así se distingue la altura del sonido."
+      },
+      {
+       "q": "En un concierto en tu colegio, tocas un instrumento muy fuerte y no dejas escuchar a los demás. ¿Qué cualidad del sonido debes controlar para tocar en equipo?",
+       "ops": [
+        "La intensidad, tocando más suave para que todos se escuchen",
+        "El timbre, cambiando de instrumento",
+        "La duración, tocando más rápido"
+       ],
+       "correcta": 0,
+       "porque": "La intensidad es lo fuerte o suave de un sonido. Tocar más suave (piano) permite escucharse en grupo y muestra respeto y trabajo en equipo."
+      }
+     ]
+    },
+    {
+     "id": "pulso-ritmo",
+     "nombre": "El pulso y el ritmo",
+     "emoji": "🥁",
+     "oa": "OA1 y OA4: reconocer elementos del lenguaje musical (pulso, ritmo, patrones) e interpretarlos con percusión corporal.",
+     "intro": "Sentimos el latido de la música con el cuerpo y creamos ritmos con manos y pies.",
+     "items": [
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante de la música, como los latidos del corazón; nos ayuda a marchar o aplaudir a tiempo.",
+       "e": "❤️",
+       "en": "Beat / Pulse"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Es la combinación de sonidos largos y cortos que se organizan en el tiempo, como al decir una palabra cantando.",
+       "e": "🎵",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Tempo",
+       "d": "Es la velocidad de la música: puede ser rápida o lenta.",
+       "e": "🏃",
+       "en": "Tempo"
+      },
+      {
+       "t": "Percusión corporal",
+       "d": "Es hacer música con el propio cuerpo: aplausos, pisadas, chasquidos o palmadas en las piernas.",
+       "e": "👏",
+       "en": "Body percussion"
+      },
+      {
+       "t": "Patrón rítmico",
+       "d": "Es un ritmo corto que se repite, como \"ta-ta-titi-ta\".",
+       "e": "🔁",
+       "en": "Rhythmic pattern"
+      },
+      {
+       "t": "Acento",
+       "d": "Es el golpe más fuerte del ritmo, el que resalta entre los demás pulsos.",
+       "e": "❗",
+       "en": "Accent"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca, nuestro baile nacional, tiene un pulso que los bailarines siguen con los pañuelos y los pies?",
+      "¿Sabías que… puedes hacer una canción entera solo con tu cuerpo? A eso se le llama percusión corporal y no necesita ningún instrumento."
+     ],
+     "retos": [
+      {
+       "q": "Tu curso marcha siguiendo el pulso de una canción, pero la música se pone más rápida. ¿Qué cambió y qué debes hacer?",
+       "ops": [
+        "Cambió el timbre; debes cantar más fuerte",
+        "Cambió el tempo; debes marchar más rápido para seguir el pulso",
+        "Cambió el silencio; debes detenerte"
+       ],
+       "correcta": 1,
+       "porque": "El tempo es la velocidad de la música. Si se acelera, el pulso va más rápido y hay que acompañarlo marchando más rápido, escuchando con atención."
+      },
+      {
+       "q": "Trabajas en grupo un patrón rítmico con percusión corporal, pero cada uno lo hace a su propia velocidad. ¿Qué necesitan para sonar juntos?",
+       "ops": [
+        "Que cada uno haga su ritmo distinto y más fuerte",
+        "Escucharse y seguir todos el mismo pulso",
+        "Que el más rápido mande y los demás lo alcancen"
+       ],
+       "correcta": 1,
+       "porque": "Para tocar en conjunto todos deben compartir el mismo pulso y escucharse. El trabajo en equipo y la escucha logran que el ritmo suene coordinado."
+      }
+     ]
+    },
+    {
+     "id": "voz-canto",
+     "nombre": "La voz y el canto",
+     "emoji": "🎤",
+     "oa": "OA4: cantar al unísono y cánones simples, expresándose con la voz y cuidándola.",
+     "intro": "Usamos nuestra voz para cantar en grupo, expresar emociones y cuidarla como un tesoro.",
+     "items": [
+      {
+       "t": "Voz cantada",
+       "d": "Es cuando usamos la voz para hacer melodías, distinta de la voz que usamos al hablar.",
+       "e": "🎶",
+       "en": "Singing voice"
+      },
+      {
+       "t": "Al unísono",
+       "d": "Es cuando todos cantan la misma melodía al mismo tiempo, como una sola voz.",
+       "e": "👥",
+       "en": "In unison"
+      },
+      {
+       "t": "Canon",
+       "d": "Es cantar la misma melodía, pero cada grupo empieza en un momento distinto, como \"Fray Santiago\".",
+       "e": "🔄",
+       "en": "Canon / Round"
+      },
+      {
+       "t": "Afinación",
+       "d": "Es cantar en la altura correcta de las notas, ni muy alto ni muy bajo.",
+       "e": "🎯",
+       "en": "Pitch / Intonation"
+      },
+      {
+       "t": "Respiración",
+       "d": "Tomar aire por la nariz nos ayuda a cantar frases largas sin cansarnos.",
+       "e": "🌬️",
+       "en": "Breathing"
+      },
+      {
+       "t": "Cuidado de la voz",
+       "d": "No gritar y tomar agua ayuda a mantener la voz sana para cantar.",
+       "e": "💧",
+       "en": "Voice care"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… Violeta Parra, una gran artista chilena, escribió \"Gracias a la vida\", una canción conocida en todo el mundo?",
+      "¿Sabías que… gritar mucho puede lastimar tu voz? Los cantantes cuidan su voz tomando agua y descansando, igual que un deportista cuida su cuerpo."
+     ],
+     "retos": [
+      {
+       "q": "En el ensayo del coro, algunos compañeros gritan para escucharse más que los demás. ¿Por qué no es una buena idea?",
+       "ops": [
+        "Porque gritar daña la voz y rompe el sonido del grupo al no cantar al unísono",
+        "Porque el que grita más es el mejor cantante",
+        "Porque hay que gritar solo al final de la canción"
+       ],
+       "correcta": 0,
+       "porque": "Cantar en coro es al unísono: todos aportan parejo. Gritar lastima la voz y arruina el conjunto. Cuidar la voz y escucharse muestra respeto y trabajo en equipo."
+      },
+      {
+       "q": "Vas a cantar una frase larga de una canción y te quedas sin aire a la mitad. ¿Qué te ayudaría?",
+       "ops": [
+        "Cantar más fuerte y rápido para terminar antes",
+        "Tomar aire por la nariz antes de empezar la frase",
+        "Dejar de cantar esa parte para siempre"
+       ],
+       "correcta": 1,
+       "porque": "Una buena respiración, tomando aire por la nariz, permite cantar frases largas sin cansarse. Es una técnica que todo cantante practica."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos",
+     "nombre": "Instrumentos y familias musicales",
+     "emoji": "🎻",
+     "oa": "OA4 y OA3: reconocer y clasificar instrumentos de diversas culturas e interpretar con ellos.",
+     "intro": "Conocemos los instrumentos musicales, cómo suenan y a qué familia pertenecen.",
+     "items": [
+      {
+       "t": "Instrumento de percusión",
+       "d": "Suena al golpearlo o sacudirlo, como el tambor, la pandereta o el triángulo.",
+       "e": "🥁",
+       "en": "Percussion instrument"
+      },
+      {
+       "t": "Instrumento de viento",
+       "d": "Suena al soplar aire dentro de él, como la flauta, la trompeta o la zampoña.",
+       "e": "🎺",
+       "en": "Wind instrument"
+      },
+      {
+       "t": "Instrumento de cuerda",
+       "d": "Suena al tocar o frotar sus cuerdas, como la guitarra, el charango o el violín.",
+       "e": "🎸",
+       "en": "String instrument"
+      },
+      {
+       "t": "Charango",
+       "d": "Instrumento de cuerda pequeño del norte de Chile y los Andes, de sonido agudo y alegre.",
+       "e": "🪕",
+       "en": "Charango"
+      },
+      {
+       "t": "Trutruca",
+       "d": "Instrumento de viento largo del pueblo mapuche, de sonido grave y potente.",
+       "e": "📯",
+       "en": "Trutruca"
+      },
+      {
+       "t": "Familia de instrumentos",
+       "d": "Es un grupo de instrumentos que suenan de forma parecida, como la familia de percusión.",
+       "e": "👨‍👩‍👧",
+       "en": "Instrument family"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el charango antiguamente se hacía con el caparazón de un animalito llamado quirquincho? Hoy se hace de madera para cuidar a los animales.",
+      "¿Sabías que… la trutruca mapuche puede medir varios metros de largo y su sonido grave se escucha muy lejos, entre los cerros?"
+     ],
+     "retos": [
+      {
+       "q": "Quieres agregar un instrumento de percusión a tu grupo musical. ¿Cuál elegirías?",
+       "ops": [
+        "Una flauta, porque se sopla",
+        "Una pandereta, porque suena al sacudirla o golpearla",
+        "Una guitarra, porque tiene cuerdas"
+       ],
+       "correcta": 1,
+       "porque": "Los instrumentos de percusión suenan al golpearlos o sacudirlos, como la pandereta. La flauta es de viento y la guitarra es de cuerda."
+      },
+      {
+       "q": "Escuchas una canción con un instrumento de sonido grave y potente, hecho por el pueblo mapuche. Probablemente es…",
+       "ops": [
+        "Un charango, de sonido agudo",
+        "Una trutruca, de sonido grave",
+        "Un triángulo, de sonido metálico y agudo"
+       ],
+       "correcta": 1,
+       "porque": "La trutruca es un instrumento de viento mapuche de sonido grave y potente. El charango y el triángulo tienen sonidos más agudos."
+      }
+     ]
+    },
+    {
+     "id": "musica-chilena-expresion",
+     "nombre": "Música de Chile y expresión",
+     "emoji": "🇨🇱",
+     "oa": "OA3 y OA2: escuchar y valorar música de Chile y expresar emociones e ideas con la música.",
+     "intro": "Conocemos la música de nuestro país y aprendemos a expresar lo que sentimos con ella.",
+     "items": [
+      {
+       "t": "Folclore",
+       "d": "Es la música, los bailes y las tradiciones que se pasan de abuelos a nietos en un país.",
+       "e": "💃",
+       "en": "Folklore"
+      },
+      {
+       "t": "Cueca",
+       "d": "Es el baile nacional de Chile; se baila con pañuelo imitando a un gallo y una gallina.",
+       "e": "🐓",
+       "en": "Cueca"
+      },
+      {
+       "t": "Instrumento típico",
+       "d": "Es un instrumento propio de una cultura, como el charango, la zampoña o el guitarrón chileno.",
+       "e": "🎶",
+       "en": "Traditional instrument"
+      },
+      {
+       "t": "Música de los pueblos originarios",
+       "d": "Es la música de los primeros habitantes de Chile, como mapuche, aymara y rapa nui.",
+       "e": "🌎",
+       "en": "Indigenous peoples' music"
+      },
+      {
+       "t": "Expresión musical",
+       "d": "Es usar la música para mostrar lo que sentimos: alegría, calma, sorpresa o pena.",
+       "e": "😊",
+       "en": "Musical expression"
+      },
+      {
+       "t": "Emoción en la música",
+       "d": "La música rápida y fuerte puede dar alegría, y la lenta y suave, calma o nostalgia.",
+       "e": "💗",
+       "en": "Emotion in music"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca fue declarada el baile nacional de Chile en 1979 y se baila especialmente en Fiestas Patrias, en septiembre?",
+      "¿Sabías que… en Rapa Nui (Isla de Pascua) hay cantos y bailes antiguos como el \"sau sau\" que cuentan historias de su pueblo?"
+     ],
+     "retos": [
+      {
+       "q": "En las Fiestas Patrias tu curso presenta un baile. Un compañero nuevo, de otro país, no sabe bailar cueca. ¿Qué actitud muestra buena convivencia y empatía?",
+       "ops": [
+        "Reírse de él porque no sabe",
+        "Enseñarle con paciencia los pasos y hacerlo sentir parte del grupo",
+        "Sacarlo del baile para que no equivoque al curso"
+       ],
+       "correcta": 1,
+       "porque": "Enseñar con paciencia e incluir al compañero muestra empatía y respeto. Compartir nuestra música es también compartir cultura y hacer sentir bienvenidos a todos."
+      },
+      {
+       "q": "Quieres crear una música para acompañar un cuento sobre una noche tranquila y estrellada. ¿Cómo debería sonar para expresar esa calma?",
+       "ops": [
+        "Rápida y muy fuerte, con muchos golpes",
+        "Lenta y suave, con sonidos delicados",
+        "Con gritos y ruidos sorpresa todo el tiempo"
+       ],
+       "correcta": 1,
+       "porque": "La música expresa emociones. Una música lenta y suave transmite calma y tranquilidad, que es justo lo que necesita una noche estrellada y en paz."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "pulso-y-ritmo",
+     "nombre": "Pulso y Ritmo",
+     "emoji": "🥁",
+     "oa": "OA 1 y OA 4: Escuchar y reconocer elementos del lenguaje musical (pulso, acento, tempo, patrones rítmicos) e interpretarlos con percusión corporal e instrumentos.",
+     "intro": "Toda la música se mueve sobre un latido escondido: el pulso, y sobre él bailan los ritmos.",
+     "items": [
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante y regular de la música, como los pasos al caminar. Siempre va parejo.",
+       "e": "❤️",
+       "en": "Beat / Pulse"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Es la combinación de sonidos largos y cortos que se organizan sobre el pulso.",
+       "e": "🎵",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Tempo",
+       "d": "Es la velocidad de la música: puede ir lenta, media o rápida.",
+       "e": "⏱️",
+       "en": "Tempo"
+      },
+      {
+       "t": "Percusión corporal",
+       "d": "Hacer sonidos con el propio cuerpo: palmas, chasquidos, pisadas y golpes en las piernas.",
+       "e": "👏",
+       "en": "Body percussion"
+      },
+      {
+       "t": "Acento",
+       "d": "Es el pulso más fuerte o marcado dentro de un grupo, como el primer paso de una marcha.",
+       "e": "💥",
+       "en": "Accent"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es una pausa en la música. El silencio también es parte del ritmo y se cuenta.",
+       "e": "🤫",
+       "en": "Rest"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón tiene su propio pulso, y cuando corres se acelera igual que el tempo de una canción rápida?",
+      "¿Sabías que… en Chile el ritmo de la cueca marca un pulso claro que ayuda a los bailarines a mover el pañuelo al mismo tiempo?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase, el curso debe acompañar una canción con palmas siguiendo el pulso, pero Martín va cada vez más rápido y se adelanta a todos. ¿Qué debería hacer para tocar en equipo?",
+       "ops": [
+        "Seguir a su propia velocidad porque suena más entretenido",
+        "Escuchar el pulso constante de la canción y ajustar sus palmas al mismo latido que el curso",
+        "Dejar de tocar y quedarse en silencio todo el rato"
+       ],
+       "correcta": 1,
+       "porque": "El pulso es constante y compartido: tocar en conjunto exige escuchar a los demás y ajustarse al mismo latido, lo que también practica el respeto y la sana convivencia."
+      },
+      {
+       "q": "Un compañero marca con un golpe fuerte cada tres pulsos: FUERTE-suave-suave, FUERTE-suave-suave. ¿Qué elemento del ritmo está usando?",
+       "ops": [
+        "El acento, porque destaca un pulso más fuerte dentro del grupo",
+        "El silencio, porque deja de tocar",
+        "El tempo, porque cambia la velocidad"
+       ],
+       "correcta": 0,
+       "porque": "El acento es el pulso marcado o más fuerte dentro de un grupo; aquí cae cada tres pulsos, organizando el ritmo como en una marcha o vals."
+      }
+     ]
+    },
+    {
+     "id": "cualidades-del-sonido",
+     "nombre": "Las Cualidades del Sonido",
+     "emoji": "👂",
+     "oa": "OA 1: Escuchar y reconocer las cualidades del sonido (altura, timbre, intensidad, duración) y representarlas de distintas formas.",
+     "intro": "Todos los sonidos son distintos, y aprender a escucharlos con atención nos ayuda a comprender la música.",
+     "items": [
+      {
+       "t": "Altura",
+       "d": "Indica si un sonido es agudo (fino, como un pajarito) o grave (grueso, como un trueno).",
+       "e": "📏",
+       "en": "Pitch"
+      },
+      {
+       "t": "Intensidad",
+       "d": "Es qué tan fuerte o suave suena algo: un susurro es suave y un grito es fuerte.",
+       "e": "🔊",
+       "en": "Dynamics"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el 'color' del sonido que permite reconocer qué instrumento o voz suena, aunque toquen la misma nota.",
+       "e": "🎨",
+       "en": "Timbre / Tone color"
+      },
+      {
+       "t": "Duración",
+       "d": "Indica si un sonido es largo o corto en el tiempo.",
+       "e": "⏳",
+       "en": "Duration"
+      },
+      {
+       "t": "Sonido y ruido",
+       "d": "El sonido es organizado y agradable; el ruido es desordenado y molesto para el oído.",
+       "e": "🔇",
+       "en": "Sound and noise"
+      },
+      {
+       "t": "Paisaje sonoro",
+       "d": "Son todos los sonidos que escuchamos en un lugar, como el patio, la plaza o el bosque.",
+       "e": "🌳",
+       "en": "Soundscape"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… puedes reconocer la voz de tu mamá entre muchas otras gracias al timbre, que es único como una huella digital sonora?",
+      "¿Sabías que… el ruido muy fuerte y constante puede dañar tus oídos, por eso cuidar el volumen es cuidar tu salud?"
+     ],
+     "retos": [
+      {
+       "q": "Martín graba el paisaje sonoro de un bosque para su clase. Escucha el canto agudo de un pajarito y el sonido grave del viento entre los árboles. ¿En qué cualidad se diferencian principalmente estos dos sonidos?",
+       "ops": [
+        "En la intensidad, porque uno es más largo",
+        "En la altura, porque uno es agudo y el otro grave",
+        "En el timbre, porque los dos son iguales"
+       ],
+       "correcta": 1,
+       "porque": "La altura distingue sonidos agudos (finos, como el pajarito) de graves (gruesos, como el viento); es la cualidad que separa esos dos sonidos."
+      },
+      {
+       "q": "En una película, un mismo 'do' suena primero en piano y luego en flauta, y aun así reconoces cuál es cuál. ¿Qué cualidad te permite diferenciarlos?",
+       "ops": [
+        "El timbre, porque cada instrumento tiene su propio color de sonido",
+        "La duración, porque uno dura más",
+        "La altura, porque son notas distintas"
+       ],
+       "correcta": 0,
+       "porque": "El timbre es el color propio de cada instrumento o voz; por eso reconocemos piano y flauta aunque toquen la misma nota con la misma altura."
+      }
+     ]
+    },
+    {
+     "id": "la-voz-y-el-canto",
+     "nombre": "La Voz y el Canto",
+     "emoji": "🎤",
+     "oa": "OA 4: Cantar al unísono y en cánones simples, cuidando la afinación, la respiración y la expresión.",
+     "intro": "La voz es el primer instrumento que llevamos siempre con nosotros y podemos cuidarla para cantar mejor.",
+     "items": [
+      {
+       "t": "Afinación",
+       "d": "Es cantar en la altura correcta de cada nota, ni más alto ni más bajo.",
+       "e": "🎯",
+       "en": "Tuning / Pitch accuracy"
+      },
+      {
+       "t": "Respiración",
+       "d": "Tomar aire con calma antes de cantar ayuda a sostener las frases sin cansarse.",
+       "e": "🌬️",
+       "en": "Breathing"
+      },
+      {
+       "t": "Unísono",
+       "d": "Es cuando muchas personas cantan exactamente la misma melodía al mismo tiempo.",
+       "e": "👥",
+       "en": "Unison"
+      },
+      {
+       "t": "Coro",
+       "d": "Es un grupo de personas que cantan juntas, a veces con distintas voces.",
+       "e": "🎶",
+       "en": "Choir"
+      },
+      {
+       "t": "Dicción",
+       "d": "Es pronunciar bien las palabras al cantar para que se entienda el mensaje.",
+       "e": "🗣️",
+       "en": "Diction"
+      },
+      {
+       "t": "Cuidado de la voz",
+       "d": "Tomar agua, no gritar y descansar la voz la mantiene sana para cantar.",
+       "e": "💧",
+       "en": "Vocal care"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… antes de cantar, los coros hacen ejercicios de calentamiento vocal, igual que un deportista estira sus músculos?",
+      "¿Sabías que… Violeta Parra, una gran artista chilena, recopiló y cantó cientos de canciones del folclor para que no se perdieran?"
+     ],
+     "retos": [
+      {
+       "q": "El coro del curso ensaya una canción para el acto. Algunos compañeros gritan para escucharse más y desafinan al resto. ¿Qué es lo mejor para lograr un buen unísono?",
+       "ops": [
+        "Que cada uno cante lo más fuerte posible para destacar",
+        "Escucharse entre todos y cantar afinados al mismo volumen para sonar como un solo grupo",
+        "Cantar cada uno una canción diferente"
+       ],
+       "correcta": 1,
+       "porque": "El unísono y el buen canto grupal se logran escuchando a los demás y equilibrando el volumen; gritar desafina y rompe la armonía, mientras que escucharse refuerza el respeto y el trabajo en equipo."
+      },
+      {
+       "q": "Antes de una presentación importante, Martín siente que le falta aire a mitad de las frases y se cansa. ¿Qué le ayudaría más a sostener mejor el canto?",
+       "ops": [
+        "Tomar aire con calma antes de cada frase y controlar la respiración",
+        "Cantar más rápido para terminar antes de quedarse sin aire",
+        "Beber un vaso de bebida muy fría justo antes"
+       ],
+       "correcta": 0,
+       "porque": "Una buena respiración, tomando aire pausadamente antes de las frases, permite sostener el canto sin cansarse y es un hábito clave para cuidar la voz."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos-musicales",
+     "nombre": "Instrumentos Musicales",
+     "emoji": "🎸",
+     "oa": "OA 1 y OA 4: Reconocer familias de instrumentos por su timbre e interpretar con instrumentos de percusión y melódicos.",
+     "intro": "Los instrumentos se agrupan en familias según cómo producen su sonido y cada uno aporta su color a la música.",
+     "items": [
+      {
+       "t": "Cuerdas",
+       "d": "Producen sonido al vibrar sus cuerdas, como la guitarra, el violín o el charango.",
+       "e": "🎻",
+       "en": "Strings"
+      },
+      {
+       "t": "Viento",
+       "d": "Suenan al soplar aire dentro de ellos, como la flauta, la trompeta o la quena.",
+       "e": "🎺",
+       "en": "Wind instruments"
+      },
+      {
+       "t": "Percusión",
+       "d": "Producen sonido al golpearlos o agitarlos, como el tambor, el bombo o las maracas.",
+       "e": "🪘",
+       "en": "Percussion"
+      },
+      {
+       "t": "Instrumentos chilenos",
+       "d": "El folclor chileno usa la guitarra, el bombo, el tormento y en el norte la quena y el charango.",
+       "e": "🇨🇱",
+       "en": "Chilean instruments"
+      },
+      {
+       "t": "Melodía",
+       "d": "Es la sucesión de notas que forman una canción y que solemos recordar y tararear.",
+       "e": "🎼",
+       "en": "Melody"
+      },
+      {
+       "t": "Acompañamiento",
+       "d": "Son los sonidos que apoyan a la melodía, como los acordes de la guitarra en una canción.",
+       "e": "🎹",
+       "en": "Accompaniment"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el charango, muy usado en el norte de Chile, tradicionalmente se hacía con el caparazón de un armadillo? Hoy se fabrica con madera para proteger a los animales.",
+      "¿Sabías que… el piano puede pertenecer a dos familias a la vez, porque tiene cuerdas por dentro que se golpean con martillos?"
+     ],
+     "retos": [
+      {
+       "q": "En una peña folclórica chilena, Martín escucha una quena, un charango y un bombo. ¿A qué familias pertenecen respectivamente estos instrumentos?",
+       "ops": [
+        "Viento, cuerdas y percusión",
+        "Percusión, viento y cuerdas",
+        "Cuerdas, percusión y viento"
+       ],
+       "correcta": 0,
+       "porque": "La quena suena al soplar aire (viento), el charango al vibrar sus cuerdas (cuerdas) y el bombo al golpearlo (percusión); reconocer familias ayuda a entender cómo se crea cada sonido."
+      },
+      {
+       "q": "El curso quiere hacer una versión ecológica de instrumentos de percusión para una presentación. ¿Cuál sería la mejor decisión responsable con el medioambiente?",
+       "ops": [
+        "Comprar muchos instrumentos nuevos de plástico y botarlos después",
+        "Fabricar maracas y tambores reutilizando envases, semillas y materiales reciclados",
+        "Usar animales o sus partes para hacerlos, como se hacía antiguamente"
+       ],
+       "correcta": 1,
+       "porque": "Reutilizar materiales reciclados para crear instrumentos cuida el medioambiente y demuestra conciencia ecológica, además de fomentar la creatividad."
+      }
+     ]
+    },
+    {
+     "id": "expresion-y-creacion",
+     "nombre": "Expresión y Creación Musical",
+     "emoji": "✨",
+     "oa": "OA 2, OA 5 y OA 6: Expresar emociones e ideas que sugiere la música, improvisar y crear con un propósito, y presentar el trabajo musical.",
+     "intro": "La música también sirve para inventar, expresar lo que sentimos y contar historias con sonidos.",
+     "items": [
+      {
+       "t": "Improvisación",
+       "d": "Es crear música en el momento, inventando sonidos o ritmos sin tenerlos escritos antes.",
+       "e": "💫",
+       "en": "Improvisation"
+      },
+      {
+       "t": "Composición",
+       "d": "Es crear una música propia pensándola con calma y organizándola paso a paso.",
+       "e": "📝",
+       "en": "Composition"
+      },
+      {
+       "t": "Sonorización",
+       "d": "Es agregar sonidos y música a un cuento o historia para hacerlo más emocionante.",
+       "e": "📖",
+       "en": "Sound illustration"
+      },
+      {
+       "t": "Emoción musical",
+       "d": "La música puede transmitir alegría, calma, miedo o tristeza según cómo suene.",
+       "e": "😊",
+       "en": "Musical emotion"
+      },
+      {
+       "t": "Matices",
+       "d": "Son los cambios de intensidad, de suave (piano) a fuerte (forte), que dan expresión.",
+       "e": "🎚️",
+       "en": "Dynamics / Nuances"
+      },
+      {
+       "t": "Interpretación",
+       "d": "Es la forma personal en que cada músico toca o canta una obra, poniéndole su sello.",
+       "e": "🌟",
+       "en": "Interpretation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en las películas la música cambia para avisarte si viene algo alegre o algo aterrador, aunque no veas la escena todavía?",
+      "¿Sabías que… muchos músicos de jazz improvisan en vivo, inventando melodías nuevas que nunca antes habían tocado?"
+     ],
+     "retos": [
+      {
+       "q": "El curso sonoriza el cuento de una tormenta en el mar. Para la parte en que llega la tormenta, ¿qué combinación de sonidos sería la más adecuada para expresar esa emoción?",
+       "ops": [
+        "Sonidos suaves y lentos, como una canción de cuna",
+        "Sonidos fuertes, graves y rápidos, como truenos y golpes de tambor",
+        "Silencio total durante toda la escena"
+       ],
+       "correcta": 1,
+       "porque": "Los matices fuertes, los sonidos graves y el ritmo rápido transmiten tensión y fuerza, ayudando a expresar la emoción de una tormenta al sonorizar el relato."
+      },
+      {
+       "q": "En una improvisación grupal, cada estudiante debe aportar un sonido por turno para crear música juntos. Una compañera se equivoca y hace un sonido inesperado. ¿Cuál es la mejor actitud musical y de convivencia?",
+       "ops": [
+        "Reírse de ella para que no lo vuelva a hacer",
+        "Aceptar el sonido como parte de la creación e integrarlo con respeto, porque en la improvisación no hay errores",
+        "Detener toda la actividad y empezar de nuevo sin ella"
+       ],
+       "correcta": 1,
+       "porque": "En la improvisación los sonidos inesperados pueden enriquecer la creación; integrarlos con respeto fomenta la empatía, la sana convivencia y la confianza para crear en equipo."
+      }
+     ]
+    },
+    {
+     "id": "musica-de-chile-y-el-mundo",
+     "nombre": "Música de Chile y el Mundo",
+     "emoji": "🌎",
+     "oa": "OA 2, OA 3 y OA 7: Escuchar y apreciar música de distintos contextos y culturas, expresar lo que sugiere y reconocer experiencias musicales de la propia vida y sociedad.",
+     "intro": "La música cuenta la historia y la cultura de los pueblos, en Chile y en todo el mundo.",
+     "items": [
+      {
+       "t": "Folclor",
+       "d": "Es la música tradicional de un pueblo que pasa de generación en generación, como la cueca.",
+       "e": "💃",
+       "en": "Folklore"
+      },
+      {
+       "t": "Cueca",
+       "d": "Es el baile nacional de Chile; una pareja se corteja moviendo un pañuelo al ritmo de la música.",
+       "e": "💃",
+       "en": "Cueca (national dance)"
+      },
+      {
+       "t": "Música del norte",
+       "d": "En el norte de Chile suenan la quena, el charango y ritmos andinos alegres.",
+       "e": "⛰️",
+       "en": "Northern music"
+      },
+      {
+       "t": "Música del sur",
+       "d": "Los pueblos originarios del sur, como los mapuche, tienen instrumentos como la trutruca y el kultrún.",
+       "e": "🌲",
+       "en": "Southern music"
+      },
+      {
+       "t": "Géneros musicales",
+       "d": "Son estilos distintos de música, como el folclor, el rock, la música clásica o el pop.",
+       "e": "🎶",
+       "en": "Music genres"
+      },
+      {
+       "t": "Música del mundo",
+       "d": "Cada país y cultura tiene su música propia, con instrumentos y ritmos únicos.",
+       "e": "🗺️",
+       "en": "World music"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca fue declarada baile nacional de Chile en 1979 y se baila especialmente en septiembre, en las Fiestas Patrias?",
+      "¿Sabías que… el kultrún, tambor sagrado del pueblo mapuche, lleva dibujos que representan el universo y la naturaleza?"
+     ],
+     "retos": [
+      {
+       "q": "El colegio hará una muestra de música de distintas culturas y llegan estudiantes de otros países con sus propias canciones y bailes. ¿Cuál es la mejor actitud frente a esta diversidad musical?",
+       "ops": [
+        "Pensar que solo la música chilena vale la pena escuchar",
+        "Escuchar y valorar con respeto la música de cada cultura, porque toda música cuenta la historia de un pueblo",
+        "Cambiar todas las canciones por las que ya conocemos"
+       ],
+       "correcta": 1,
+       "porque": "Apreciar la música de distintas culturas con respeto y curiosidad fomenta la empatía y el valor de la diversidad; toda música tiene significado para su comunidad."
+      },
+      {
+       "q": "Martín escucha una melodía con quena y charango, de ritmo andino alegre. ¿De qué zona de Chile proviene más probablemente esta música?",
+       "ops": [
+        "Del norte de Chile",
+        "Del extremo sur, del pueblo mapuche",
+        "De ningún lugar de Chile"
+       ],
+       "correcta": 0,
+       "porque": "La quena y el charango con ritmos andinos son característicos de la música del norte de Chile, ligada a la cultura andina; reconocer estos rasgos ayuda a valorar el folclor nacional."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "elementos-musica",
+     "nombre": "Los Elementos de la Música",
+     "emoji": "🎵",
+     "oa": "OA1: Escuchar y reconocer cualidades del sonido (altura, timbre, intensidad, duración) y elementos del lenguaje musical (pulso, acento, patrones).",
+     "intro": "Descubrimos los ingredientes básicos que forman toda la música que escuchamos.",
+     "items": [
+      {
+       "t": "Ritmo",
+       "d": "Es la organización de los sonidos y silencios en el tiempo, como los latidos de una canción.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Melodía",
+       "d": "Es la sucesión de notas que podemos cantar o silbar; la parte que se te queda en la cabeza.",
+       "e": "🎶",
+       "en": "Melody"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el color del sonido que nos deja distinguir una guitarra de una flauta aunque toquen la misma nota.",
+       "e": "🎨",
+       "en": "Timbre"
+      },
+      {
+       "t": "Altura",
+       "d": "Indica si un sonido es agudo (alto) o grave (bajo), como comparar un pajarito con un tambor.",
+       "e": "📈",
+       "en": "Pitch"
+      },
+      {
+       "t": "Intensidad",
+       "d": "Es qué tan fuerte o suave suena la música; los músicos la llaman dinámica.",
+       "e": "🔊",
+       "en": "Dynamics"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es la pausa sin sonido; también forma parte de la música y le da respiro y sentido.",
+       "e": "🤫",
+       "en": "Rest"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el silencio es tan importante que en las partituras tiene sus propios símbolos, igual que las notas?",
+      "¿Sabías que… tu oído puede distinguir el timbre de la voz de tu mamá entre miles de voces gracias a esta cualidad del sonido?"
+     ],
+     "retos": [
+      {
+       "q": "En la sala de clases, tu grupo debe crear un patrón con las manos y los pies para acompañar una canción. ¿Qué elemento de la música están trabajando principalmente?",
+       "ops": [
+        "El ritmo, porque organizan sonidos y silencios en el tiempo",
+        "El timbre, porque cambian el color del sonido",
+        "La melodía, porque cantan notas distintas"
+       ],
+       "correcta": 0,
+       "porque": "Al golpear manos y pies siguiendo un patrón en el tiempo están creando ritmo, que es la organización de sonidos y silencios."
+      },
+      {
+       "q": "Escuchas una canción donde una voz suena muy suave en la estrofa y muy fuerte en el coro. ¿Qué elemento cambió el músico para lograr ese efecto?",
+       "ops": [
+        "La altura, pasando de grave a agudo",
+        "La intensidad o dinámica, de suave a fuerte",
+        "El timbre, cambiando de instrumento"
+       ],
+       "correcta": 1,
+       "porque": "El cambio de suave a fuerte es una variación de intensidad o dinámica, que da emoción y contraste a la música."
+      },
+      {
+       "q": "Un compañero dice que en una canción hay un momento con silencio y por eso 'no está pasando nada musical'. ¿Qué le responderías con lo aprendido?",
+       "ops": [
+        "Tiene razón, el silencio es un error de la grabación",
+        "El silencio también es parte de la música porque organiza el tiempo y da sentido",
+        "El silencio solo sirve para que el cantante respire, no es musical"
+       ],
+       "correcta": 1,
+       "porque": "El silencio es un elemento musical con valor propio: crea contraste, tensión y respiro dentro del ritmo, igual que las notas."
+      }
+     ]
+    },
+    {
+     "id": "voz-y-canto",
+     "nombre": "La Voz y el Canto",
+     "emoji": "🎤",
+     "oa": "OA4: Cantar al unísono y en canon repertorio diverso, desarrollando la voz como instrumento. OA6: Presentar su trabajo musical al curso o la comunidad.",
+     "intro": "Aprendemos a usar nuestra voz como instrumento y a cantar juntos en armonía.",
+     "items": [
+      {
+       "t": "Afinación",
+       "d": "Es cantar las notas en su altura correcta, sin quedar por encima ni por debajo del tono.",
+       "e": "🎯",
+       "en": "Pitch accuracy"
+      },
+      {
+       "t": "Respiración",
+       "d": "Es tomar aire desde el abdomen para sostener la voz y no quedarnos sin aliento al cantar.",
+       "e": "🫁",
+       "en": "Breathing"
+      },
+      {
+       "t": "Coro",
+       "d": "Es un grupo de personas que cantan juntas, a veces con distintas voces que se combinan.",
+       "e": "👥",
+       "en": "Choir"
+      },
+      {
+       "t": "Voz aguda y grave",
+       "d": "Las voces altas suelen ser agudas y las más profundas graves; ambas se necesitan en un coro.",
+       "e": "↕️",
+       "en": "High and low voice"
+      },
+      {
+       "t": "Dicción",
+       "d": "Es pronunciar bien las palabras al cantar para que se entienda el mensaje de la canción.",
+       "e": "🗣️",
+       "en": "Diction"
+      },
+      {
+       "t": "Canon",
+       "d": "Es una forma de cantar donde los grupos empiezan la misma melodía en momentos distintos.",
+       "e": "🔄",
+       "en": "Round (canon)"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cantar en grupo libera endorfinas y ayuda a sentirnos más felices y conectados con los demás?",
+      "¿Sabías que… la voz humana es el único instrumento que llevamos dentro y nunca tenemos que guardar en un estuche?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso ensaya una canción para el acto del colegio, pero algunos compañeros cantan más fuerte y tapan a los demás. Aplicando el respeto y la sana convivencia, ¿qué es lo mejor para el coro?",
+       "ops": [
+        "Que cada uno cante lo más fuerte que pueda para destacar",
+        "Escucharse entre todos y equilibrar las voces para lograr un solo sonido",
+        "Que solo canten los que tienen mejor voz"
+       ],
+       "correcta": 1,
+       "porque": "Un buen coro se basa en escucharse y equilibrar las voces; así todos participan con respeto y el resultado es armónico."
+      },
+      {
+       "q": "Vas a cantar un canon con tu grupo, donde cada fila empieza la melodía después de la anterior. ¿Qué habilidad es más importante para que suene bien?",
+       "ops": [
+        "Mantener tu parte firme sin dejarte llevar por las otras voces",
+        "Cantar lo más rápido posible para terminar primero",
+        "Cambiar la melodía para que sea distinta a las demás"
+       ],
+       "correcta": 0,
+       "porque": "En un canon todos cantan la misma melodía pero desfasada; hay que sostener la propia parte con concentración para que se combinen bien."
+      },
+      {
+       "q": "Antes de cantar una canción larga, tu profesora insiste en practicar la respiración desde el abdomen. ¿Por qué es tan importante esto?",
+       "ops": [
+        "Porque así se canta siempre más fuerte que los demás",
+        "Porque da aire suficiente para sostener las frases y afinar sin quedarse sin aliento",
+        "Porque reemplaza la necesidad de conocer la melodía"
+       ],
+       "correcta": 1,
+       "porque": "Una buena respiración abdominal entrega el aire necesario para sostener las frases largas y mantener la afinación hasta el final."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos-familias",
+     "nombre": "Instrumentos y sus Familias",
+     "emoji": "🎻",
+     "oa": "OA4: Tocar instrumentos de percusión y melódicos. OA1: Reconocer el timbre de distintas familias de instrumentos al escuchar música.",
+     "intro": "Conocemos las grandes familias de instrumentos y cómo producen sus sonidos.",
+     "items": [
+      {
+       "t": "Cuerdas",
+       "d": "Producen sonido al vibrar sus cuerdas, como la guitarra, el violín o el arpa.",
+       "e": "🎸",
+       "en": "Strings"
+      },
+      {
+       "t": "Viento",
+       "d": "Suenan cuando soplamos aire dentro de ellos, como la flauta, la trompeta o el clarinete.",
+       "e": "🎺",
+       "en": "Wind instruments"
+      },
+      {
+       "t": "Percusión",
+       "d": "Se hacen sonar al golpearlos o agitarlos, como el tambor, la pandereta o el xilófono.",
+       "e": "🥁",
+       "en": "Percussion"
+      },
+      {
+       "t": "Flauta dulce",
+       "d": "Instrumento de viento muy usado en la escuela para aprender a leer y tocar melodías.",
+       "e": "🎼",
+       "en": "Recorder"
+      },
+      {
+       "t": "Orquesta",
+       "d": "Es un gran conjunto de instrumentos de distintas familias que tocan juntos guiados por un director.",
+       "e": "🎻",
+       "en": "Orchestra"
+      },
+      {
+       "t": "Instrumentos chilenos",
+       "d": "Nuestro país tiene instrumentos propios como el charango, el bombo, la trutruca y la zampoña.",
+       "e": "🇨🇱",
+       "en": "Chilean instruments"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la trutruca es un instrumento de viento mapuche que puede medir más de dos metros de largo?",
+      "¿Sabías que… el piano se considera de percusión y de cuerda a la vez, porque unos martillos golpean sus cuerdas?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase reciben instrumentos reciclados: una caja con semillas adentro y una botella para soplar. ¿A qué familias pertenecen según cómo producen el sonido?",
+       "ops": [
+        "Ambas son de percusión porque hacen ruido",
+        "La caja con semillas es percusión y la botella para soplar es de viento",
+        "Ambas son de viento porque tienen aire adentro"
+       ],
+       "correcta": 1,
+       "porque": "La familia se define por cómo se produce el sonido: agitar la caja es percusión, y soplar la botella genera sonido de viento."
+      },
+      {
+       "q": "Para una presentación sobre música chilena, tu grupo quiere representar la Zona Sur con instrumentos típicos. ¿Cuál elegirías para ser fiel a esa cultura?",
+       "ops": [
+        "La trutruca, instrumento del pueblo mapuche del sur",
+        "El charango, típico del altiplano del norte",
+        "El violín de orquesta europea"
+       ],
+       "correcta": 0,
+       "porque": "La trutruca es un instrumento mapuche del sur de Chile; elegirla muestra respeto y conocimiento de nuestra diversidad cultural."
+      },
+      {
+       "q": "Escuchas una obra y, sin ver a los músicos, reconoces que suena un violín y no una flauta aunque toquen la misma nota. ¿Qué cualidad del sonido te permite distinguirlos?",
+       "ops": [
+        "La altura, porque el violín es más agudo",
+        "El timbre, porque cada instrumento tiene su propio color de sonido",
+        "La intensidad, porque uno suena más fuerte"
+       ],
+       "correcta": 1,
+       "porque": "El timbre es el color característico de cada instrumento; por eso distinguimos un violín de una flauta aunque toquen la misma altura."
+      }
+     ]
+    },
+    {
+     "id": "lenguaje-notacion",
+     "nombre": "El Lenguaje Musical",
+     "emoji": "🎼",
+     "oa": "OA1: Reconocer elementos del lenguaje musical como pulso, acento y patrones. OA5: Leer y usar notación para crear e interpretar ideas musicales.",
+     "intro": "Aprendemos a leer y escribir música como si fuera un idioma con sus propias letras.",
+     "items": [
+      {
+       "t": "Pentagrama",
+       "d": "Son las cinco líneas y cuatro espacios donde se escriben las notas musicales.",
+       "e": "📊",
+       "en": "Staff"
+      },
+      {
+       "t": "Clave de sol",
+       "d": "Es el signo al inicio del pentagrama que nos dice la altura de las notas.",
+       "e": "🔑",
+       "en": "Treble clef"
+      },
+      {
+       "t": "Notas musicales",
+       "d": "Son do, re, mi, fa, sol, la, si; los siete nombres que se repiten en toda la música.",
+       "e": "🎵",
+       "en": "Musical notes"
+      },
+      {
+       "t": "Figuras rítmicas",
+       "d": "Símbolos como la negra o la corchea que indican cuánto dura cada sonido.",
+       "e": "⏱️",
+       "en": "Note values"
+      },
+      {
+       "t": "Compás",
+       "d": "Es la forma de agrupar los tiempos de la música en partes iguales, marcadas por barras.",
+       "e": "📏",
+       "en": "Measure (bar)"
+      },
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante y regular de la música, como un reloj que marca el tiempo.",
+       "e": "💓",
+       "en": "Beat"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… los nombres de las notas do, re, mi vienen de las primeras sílabas de un antiguo himno en latín de hace más de mil años?",
+      "¿Sabías que… antes de inventarse el pentagrama, la música se aprendía solo de memoria y muchas melodías se perdieron para siempre?"
+     ],
+     "retos": [
+      {
+       "q": "Estás leyendo una partitura y ves varias figuras: una negra dura un tiempo y una corchea dura medio tiempo. Si tienes dos corcheas seguidas, ¿cuánto duran juntas?",
+       "ops": [
+        "Medio tiempo en total",
+        "Un tiempo, igual que una negra",
+        "Dos tiempos"
+       ],
+       "correcta": 1,
+       "porque": "Cada corchea dura medio tiempo, así que dos corcheas suman un tiempo completo, lo mismo que una negra."
+      },
+      {
+       "q": "Tu profesora escribe una melodía en el pentagrama y te pide identificar por qué usó la clave de sol al inicio. ¿Cuál es su función?",
+       "ops": [
+        "Adornar el comienzo de la partitura",
+        "Indicar la altura de las notas para saber cuáles leer",
+        "Marcar cuándo termina la canción"
+       ],
+       "correcta": 1,
+       "porque": "La clave de sol es una referencia que nos dice la altura de las notas; sin ella no sabríamos qué nota es cada símbolo en el pentagrama."
+      },
+      {
+       "q": "Al acompañar una canción con palmas, tu grupo marca un latido constante y parejo de principio a fin. ¿Qué elemento del lenguaje musical están siguiendo?",
+       "ops": [
+        "El timbre, porque cambian de sonido",
+        "El pulso, porque es el latido regular que ordena la música en el tiempo",
+        "La melodía, porque cantan notas distintas"
+       ],
+       "correcta": 1,
+       "porque": "El pulso es el latido constante y regular que sirve de base para el ritmo; marcarlo con palmas ayuda a mantener a todos juntos en el tiempo."
+      }
+     ]
+    },
+    {
+     "id": "musica-culturas",
+     "nombre": "Música, Culturas y Emociones",
+     "emoji": "🌍",
+     "oa": "OA2: Expresar emociones e ideas que sugiere la música. OA3: Escuchar música de diversos contextos y culturas. OA7: Identificar y describir experiencias musicales.",
+     "intro": "Exploramos cómo la música expresa sentimientos y refleja distintas culturas del mundo y de Chile.",
+     "items": [
+      {
+       "t": "Folclor chileno",
+       "d": "Es la música tradicional de nuestro país, como la cueca, la tonada y las danzas de cada zona.",
+       "e": "💃",
+       "en": "Chilean folklore"
+      },
+      {
+       "t": "Cueca",
+       "d": "Es el baile nacional de Chile, que representa el cortejo entre dos personas con pañuelos.",
+       "e": "🤍",
+       "en": "Cueca"
+      },
+      {
+       "t": "Música y emociones",
+       "d": "La música puede ponernos alegres, tranquilos o nostálgicos según su ritmo y melodía.",
+       "e": "❤️",
+       "en": "Music and emotions"
+      },
+      {
+       "t": "Música del mundo",
+       "d": "Cada cultura tiene sonidos propios; conocerlos nos ayuda a respetar la diversidad.",
+       "e": "🌐",
+       "en": "World music"
+      },
+      {
+       "t": "Función de la música",
+       "d": "La música sirve para celebrar, trabajar, bailar o consolar; acompaña toda la vida.",
+       "e": "🎉",
+       "en": "Function of music"
+      },
+      {
+       "t": "Paisaje sonoro",
+       "d": "Son todos los sonidos de un lugar, como el mar, el viento o la ciudad; también inspiran música.",
+       "e": "🏞️",
+       "en": "Soundscape"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca fue declarada baile nacional de Chile en 1979 y tiene versiones distintas en el norte, el centro, el sur y hasta en la ciudad?",
+      "¿Sabías que… muchos compositores imitan sonidos de la naturaleza, como el canto de aves o la lluvia, para celebrar y cuidar nuestro medio ambiente?"
+     ],
+     "retos": [
+      {
+       "q": "Para las Fiestas Patrias tu curso preparará una presentación de folclor. Un compañero nuevo viene de otro país y no conoce la cueca. Aplicando la empatía y la sana convivencia, ¿qué harían?",
+       "ops": [
+        "Dejarlo fuera porque no sabe bailar cueca",
+        "Enseñarle con paciencia e invitarlo a participar y a compartir también su cultura",
+        "Pedirle que solo mire desde su asiento"
+       ],
+       "correcta": 1,
+       "porque": "Enseñarle e invitarlo a compartir su propia cultura demuestra empatía y respeto por la diversidad, valores centrales de la sana convivencia."
+      },
+      {
+       "q": "Tu profe pone dos piezas: una lenta con melodía suave y otra rápida con ritmo fuerte. Les pide relacionarlas con emociones. ¿Cuál es una interpretación razonable?",
+       "ops": [
+        "La lenta y suave transmite calma o nostalgia, y la rápida y fuerte transmite alegría o energía",
+        "Ambas transmiten exactamente lo mismo",
+        "La música no puede transmitir ninguna emoción"
+       ],
+       "correcta": 0,
+       "porque": "El tempo y la intensidad influyen en cómo sentimos la música: lo lento y suave suele dar calma, mientras lo rápido y fuerte suele dar energía."
+      },
+      {
+       "q": "Tu grupo debe grabar el paisaje sonoro de su barrio para inspirar una creación musical. ¿Cuál sería la mejor forma de hacerlo bien?",
+       "ops": [
+        "Inventar sonidos que no existen en el lugar para que suene más interesante",
+        "Escuchar y registrar con atención los sonidos reales del entorno, como el viento, autos o pájaros",
+        "Copiar el paisaje sonoro de otro país cualquiera"
+       ],
+       "correcta": 1,
+       "porque": "Un paisaje sonoro son los sonidos reales de un lugar; escucharlos con atención y registrarlos permite representarlo con fidelidad y usarlo como inspiración."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "elementos-musica",
+     "nombre": "Los elementos de la música",
+     "emoji": "🎵",
+     "oa": "OA1 - Reconocer y describir sonidos y música por medio de sus cualidades y elementos",
+     "intro": "Descubre los ingredientes básicos que forman toda la música que escuchas.",
+     "items": [
+      {
+       "t": "Ritmo",
+       "d": "Es el orden de los sonidos en el tiempo, como los latidos que marcan el pulso de una canción.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Melodía",
+       "d": "Es la sucesión de notas que puedes cantar o tararear; la parte que se te queda en la cabeza.",
+       "e": "🎶",
+       "en": "Melody"
+      },
+      {
+       "t": "Armonía",
+       "d": "Ocurre cuando varios sonidos suenan juntos al mismo tiempo y combinan bien, como los acordes de una guitarra.",
+       "e": "🎹",
+       "en": "Harmony"
+      },
+      {
+       "t": "Timbre",
+       "d": "Es el color del sonido que te permite distinguir una flauta de una trompeta aunque toquen la misma nota.",
+       "e": "🎨",
+       "en": "Timbre"
+      },
+      {
+       "t": "Altura",
+       "d": "Indica si un sonido es agudo (fino) o grave (grueso), como la diferencia entre un pajarito y un tambor grande.",
+       "e": "⬆️",
+       "en": "Pitch"
+      },
+      {
+       "t": "Intensidad",
+       "d": "Es el volumen del sonido: puede ser fuerte (forte) o suave (piano).",
+       "e": "🔊",
+       "en": "Dynamics"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón también tiene ritmo? Late unas 80 veces por minuto, parecido al pulso de muchas canciones tranquilas.",
+      "¿Sabías que… cada persona reconoce la voz de sus seres queridos gracias al timbre, que es único como una huella digital?"
+     ],
+     "retos": [
+      {
+       "q": "En la banda del curso, Martín toca la flauta y Ana la trompeta. Tocan exactamente la misma nota, pero igual puedes saber quién es quién con los ojos cerrados. ¿Qué elemento musical te lo permite?",
+       "ops": [
+        "El ritmo, porque cada uno toca a su propia velocidad",
+        "El timbre, porque cada instrumento tiene un color de sonido distinto",
+        "La intensidad, porque uno toca más fuerte que el otro"
+       ],
+       "correcta": 1,
+       "porque": "El timbre es el color propio de cada instrumento o voz. Aunque toquen la misma nota (misma altura) y al mismo volumen, la flauta y la trompeta suenan diferentes por su timbre."
+      },
+      {
+       "q": "El profesor quiere que una canción transmita calma al inicio y emoción al final. ¿Qué decisión sobre la intensidad ayudaría a lograrlo?",
+       "ops": [
+        "Empezar suave (piano) e ir creciendo hacia fuerte (forte)",
+        "Tocar todo siempre al mismo volumen fuerte",
+        "Empezar fuerte y terminar en silencio total"
+       ],
+       "correcta": 0,
+       "porque": "Ir de suave a fuerte (un crescendo) crea sensación de crecimiento. Comenzar piano da calma y aumentar la intensidad genera emoción hacia el final."
+      },
+      {
+       "q": "Escuchas una melodía que sube y baja de altura, pero siempre al mismo volumen y sin acordes de fondo. ¿Qué elementos musicales están presentes con seguridad?",
+       "ops": [
+        "Solo armonía, porque hay una única línea de notas",
+        "Melodía y altura, porque son notas que suben y bajan una tras otra",
+        "Solo timbre, porque el volumen no cambia"
+       ],
+       "correcta": 1,
+       "porque": "Una sola línea de notas que sube y baja es melodía, y esos cambios de agudo a grave son la altura. No hay armonía porque no suenan varios sonidos a la vez, y la intensidad no cambia."
+      }
+     ]
+    },
+    {
+     "id": "lectura-musical",
+     "nombre": "Leer y escribir música",
+     "emoji": "🎼",
+     "oa": "OA6 - Practicar la lecto-escritura musical para leer y representar la música",
+     "intro": "Aprende el código secreto que permite guardar y compartir cualquier canción por escrito.",
+     "items": [
+      {
+       "t": "Pentagrama",
+       "d": "Son las cinco líneas horizontales donde se escriben las notas musicales.",
+       "e": "📏",
+       "en": "Staff"
+      },
+      {
+       "t": "Clave de sol",
+       "d": "Es el símbolo al inicio del pentagrama que indica dónde está la nota sol y organiza las demás.",
+       "e": "🎼",
+       "en": "Treble clef"
+      },
+      {
+       "t": "Notas (do re mi)",
+       "d": "Son los nombres de los sonidos musicales: do, re, mi, fa, sol, la, si.",
+       "e": "🎵",
+       "en": "Notes"
+      },
+      {
+       "t": "Figuras rítmicas",
+       "d": "Símbolos como la negra o la corchea que indican cuánto dura cada sonido.",
+       "e": "⏱️",
+       "en": "Note values"
+      },
+      {
+       "t": "Compás",
+       "d": "Divide la música en partes iguales para organizar el ritmo, separadas por líneas verticales.",
+       "e": "➗",
+       "en": "Measure/Bar"
+      },
+      {
+       "t": "Silencio",
+       "d": "Es una pausa donde no suena nada, pero que igual forma parte de la música.",
+       "e": "🤫",
+       "en": "Rest"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la notación musical que usamos hoy fue creada hace casi mil años por un monje italiano llamado Guido d'Arezzo?",
+      "¿Sabías que… los nombres 'do, re, mi' vienen de las primeras sílabas de un antiguo canto religioso en latín?"
+     ],
+     "retos": [
+      {
+       "q": "Escribes una melodía y en medio dejas una figura de silencio. Un compañero dice que 'sobra porque ahí no suena nada'. ¿Cómo le explicas con respeto por qué el silencio sí importa?",
+       "ops": [
+        "Tiene razón, hay que borrar los silencios para no perder tiempo",
+        "El silencio da respiro y crea tensión o expectativa; también es música",
+        "Los silencios solo sirven cuando la canción es muy larga"
+       ],
+       "correcta": 1,
+       "porque": "El silencio es un elemento musical tan importante como el sonido. Las pausas dan respiración, marcan el ritmo y crean expectativa. Explicárselo con respeto ayuda a la sana convivencia y al aprendizaje mutuo."
+      },
+      {
+       "q": "Ves una partitura con un compás de 4/4. Un compás está lleno con una negra, una negra y dos corcheas. ¿Está completo correctamente si en 4/4 caben 4 tiempos de negra?",
+       "ops": [
+        "No, porque hay demasiadas figuras en el compás",
+        "No: negra (1) + negra (1) + dos corcheas (1) suman 3, falta 1 tiempo",
+        "Sí, siempre que suene bonito no importan los tiempos"
+       ],
+       "correcta": 1,
+       "porque": "En 4/4 caben 4 tiempos. Una negra vale 1 tiempo y dos corcheas juntas valen 1 tiempo. Aquí suman 3 tiempos (1+1+1), así que falta completar 1 tiempo más para llenar el compás."
+      },
+      {
+       "q": "Quieres que dos personas en distintos lugares toquen la misma melodía exactamente igual, sin que tú estés presente. ¿Cuál es la mejor solución?",
+       "ops": [
+        "Escribirla en un pentagrama con clave, notas y figuras rítmicas",
+        "Contarles de memoria cómo suena por teléfono",
+        "Dibujar corazones donde va cada nota"
+       ],
+       "correcta": 0,
+       "porque": "La notación musical (pentagrama, clave, notas y figuras) es un código universal que guarda la altura y la duración de cada sonido. Así cualquier músico puede leerla y tocar la melodía igual, aunque no conozca al compositor."
+      }
+     ]
+    },
+    {
+     "id": "voz-canto",
+     "nombre": "La voz y el canto",
+     "emoji": "🎤",
+     "oa": "OA4 - Cantar al unísono y a más voces, y OA8 - evaluar la propia interpretación y la de otros",
+     "intro": "Tu voz es un instrumento que siempre llevas contigo; aprende a cuidarla y usarla bien.",
+     "items": [
+      {
+       "t": "Respiración",
+       "d": "Tomar aire desde el diafragma (la barriga) para sostener el sonido sin cansarte.",
+       "e": "🫁",
+       "en": "Breathing"
+      },
+      {
+       "t": "Afinación",
+       "d": "Cantar en la altura correcta, ni muy agudo ni muy grave respecto a la nota real.",
+       "e": "🎯",
+       "en": "Tuning/Pitch"
+      },
+      {
+       "t": "Unísono",
+       "d": "Cuando todo un grupo canta exactamente la misma melodía al mismo tiempo.",
+       "e": "👥",
+       "en": "Unison"
+      },
+      {
+       "t": "Canon",
+       "d": "Una forma de cantar en la que las voces entran una tras otra repitiendo la misma melodía.",
+       "e": "🔄",
+       "en": "Canon/Round"
+      },
+      {
+       "t": "Dicción",
+       "d": "Pronunciar bien las palabras para que se entienda la letra de la canción.",
+       "e": "👄",
+       "en": "Diction"
+      },
+      {
+       "t": "Coro",
+       "d": "Grupo de personas que cantan juntas, a veces divididas en distintas voces.",
+       "e": "🎶",
+       "en": "Choir"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tus cuerdas vocales miden apenas unos dos centímetros pero pueden producir cientos de notas distintas?",
+      "¿Sabías que… tomar agua y no gritar son clave para cuidar tu voz, igual que un deportista cuida su cuerpo?"
+     ],
+     "retos": [
+      {
+       "q": "En el ensayo del coro, un compañero canta más fuerte que todos y tapa a los demás. Cantar en coro requiere escucharse mutuamente. ¿Qué actitud favorece la sana convivencia y un mejor resultado?",
+       "ops": [
+        "Cantar todos aún más fuerte para competir con él",
+        "Bajar la intensidad de la propia voz para escucharse y sonar como un solo grupo",
+        "Pedir que ese compañero deje de cantar"
+       ],
+       "correcta": 1,
+       "porque": "El canto coral se trata de escucharse y equilibrar las voces, no de destacar individualmente. Ajustar el volumen para sonar como un conjunto muestra empatía y responsabilidad con el grupo."
+      },
+      {
+       "q": "El curso ensaya un canon a dos voces. La segunda mitad debe entrar cuando la primera ya avanzó un poco. ¿Qué es más importante para que el canon suene bien?",
+       "ops": [
+        "Que cada grupo cante lo más rápido que pueda",
+        "Que cada grupo entre en el momento justo y mantenga su parte sin apurarse",
+        "Que todos empiecen exactamente al mismo tiempo"
+       ],
+       "correcta": 1,
+       "porque": "En un canon las voces entran en momentos distintos y deben mantener su tempo con responsabilidad. Si todos entraran juntos sería un unísono, no un canon; el efecto se logra con la entrada escalonada y precisa."
+      },
+      {
+       "q": "Después de una presentación, la profesora pide que evalúen cómo cantaron. Notas que en varias partes el curso desafinó al subir a las notas agudas. ¿Cuál es una evaluación útil y respetuosa?",
+       "ops": [
+        "Decir que todo salió perfecto para no incomodar a nadie",
+        "Reconocer lo bueno y proponer practicar la afinación y la respiración en las notas agudas",
+        "Culpar a un solo compañero por los errores de todos"
+       ],
+       "correcta": 1,
+       "porque": "Evaluar bien una interpretación significa reconocer los logros y también identificar qué mejorar, de forma respetuosa. Señalar la afinación y la respiración como foco de práctica ayuda a todo el grupo a crecer."
+      }
+     ]
+    },
+    {
+     "id": "instrumentos-familias",
+     "nombre": "Instrumentos y sus familias",
+     "emoji": "🎸",
+     "oa": "OA3 - Escuchar y apreciar música de distintas fuentes sonoras y agrupaciones instrumentales",
+     "intro": "Conoce las grandes familias de instrumentos y cómo cada una produce su sonido.",
+     "items": [
+      {
+       "t": "Cuerdas",
+       "d": "Producen sonido al vibrar sus cuerdas, como la guitarra, el violín o el charango.",
+       "e": "🎻",
+       "en": "Strings"
+      },
+      {
+       "t": "Viento",
+       "d": "Suenan al soplar aire dentro de ellos, como la flauta, la trompeta o la quena andina.",
+       "e": "🎺",
+       "en": "Winds"
+      },
+      {
+       "t": "Percusión",
+       "d": "Generan sonido al golpearlos o sacudirlos, como el tambor, el bombo o el cajón.",
+       "e": "🥁",
+       "en": "Percussion"
+      },
+      {
+       "t": "Instrumentos folclóricos chilenos",
+       "d": "Como el charango, la quena, el bombo y el guitarrón, usados en nuestra música tradicional.",
+       "e": "🇨🇱",
+       "en": "Chilean folk instruments"
+      },
+      {
+       "t": "Instrumentos electrónicos",
+       "d": "Producen o modifican sonidos usando electricidad, como el teclado o la guitarra eléctrica.",
+       "e": "🎹",
+       "en": "Electronic instruments"
+      },
+      {
+       "t": "Orquesta",
+       "d": "Gran agrupación que reúne muchos instrumentos de distintas familias dirigidos por una persona.",
+       "e": "🎼",
+       "en": "Orchestra"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el charango, un instrumento típico de los Andes, se hacía antiguamente con el caparazón del quirquincho (un armadillo)? Hoy se fabrica con madera para proteger a ese animal.",
+      "¿Sabías que… una orquesta sinfónica puede tener más de 80 músicos tocando coordinados al mismo tiempo?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso quiere armar un conjunto que represente la música tradicional chilena para el 18 de septiembre. ¿Qué combinación de instrumentos sería la más apropiada?",
+       "ops": [
+        "Guitarra eléctrica, batería y sintetizador",
+        "Guitarra, guitarrón, bombo y pandero",
+        "Violín, chelo y flauta traversa de orquesta"
+       ],
+       "correcta": 1,
+       "porque": "La cueca y la música tradicional chilena usan instrumentos como la guitarra, el guitarrón, el bombo y el pandero. Valorar y conocer nuestro folclore fortalece la identidad cultural."
+      },
+      {
+       "q": "Escuchas una grabación con los ojos cerrados: un sonido se produce soplando aire y otro golpeando un parche con las manos. ¿A qué familias pertenecen esos dos instrumentos?",
+       "ops": [
+        "Ambos son de cuerdas, porque suenan fuerte",
+        "Viento el primero y percusión el segundo",
+        "Ambos son de percusión, porque se tocan con aire"
+       ],
+       "correcta": 1,
+       "porque": "Los instrumentos de viento suenan al soplar aire dentro de ellos, como la quena. Los de percusión suenan al golpearlos o sacudirlos, como un tambor. Clasificar por cómo se produce el sonido permite reconocer cada familia."
+      }
+     ]
+    },
+    {
+     "id": "musica-culturas",
+     "nombre": "Música de nuestras culturas",
+     "emoji": "🌎",
+     "oa": "OA7 - Identificar y comparar música de diversos contextos y valorar el patrimonio",
+     "intro": "Viaja por los sonidos de Chile y el mundo para valorar la diversidad musical.",
+     "items": [
+      {
+       "t": "Folclore chileno",
+       "d": "Música tradicional de nuestro país, como la cueca, la tonada y el canto a lo poeta.",
+       "e": "🇨🇱",
+       "en": "Chilean folklore"
+      },
+      {
+       "t": "Cueca",
+       "d": "El baile nacional de Chile, con pañuelo, que representa un cortejo entre la pareja.",
+       "e": "💃",
+       "en": "Cueca"
+      },
+      {
+       "t": "Música de pueblos originarios",
+       "d": "Sonidos de los mapuche, aymara y rapa nui, con instrumentos y cantos propios.",
+       "e": "🪘",
+       "en": "Indigenous music"
+      },
+      {
+       "t": "Géneros del mundo",
+       "d": "Estilos de otras culturas como el jazz, el rock, la salsa o la música africana.",
+       "e": "🌐",
+       "en": "World music genres"
+      },
+      {
+       "t": "Música docta",
+       "d": "También llamada clásica, compuesta por autores como Mozart o el chileno Vicente Bianchi.",
+       "e": "🎻",
+       "en": "Classical music"
+      },
+      {
+       "t": "Patrimonio musical",
+       "d": "La herencia de canciones y sonidos que un pueblo transmite de generación en generación.",
+       "e": "🏛️",
+       "en": "Musical heritage"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca fue declarada oficialmente danza nacional de Chile en 1979 y se baila en todo el país?",
+      "¿Sabías que… los rapa nui de Isla de Pascua tienen cantos ancestrales llamados 'riu' que cuentan historias de sus antepasados?"
+     ],
+     "retos": [
+      {
+       "q": "Llega al curso un estudiante de otro país que no conoce la cueca y se siente algo perdido en las clases de música. Desde la empatía, ¿cuál es la mejor actitud?",
+       "ops": [
+        "Reírse porque no sabe bailar cueca como los demás",
+        "Enseñarle con paciencia y también pedirle que comparta música de su país",
+        "Ignorarlo porque no forma parte de nuestra tradición"
+       ],
+       "correcta": 1,
+       "porque": "La empatía y el respeto por la diversidad hacen que todos se sientan incluidos. Compartir nuestra cultura y aprender de la suya enriquece a todo el curso y valora el patrimonio de cada uno."
+      },
+      {
+       "q": "Comparas una cueca chilena con una pieza de música docta europea. ¿Cuál es una diferencia de contexto que las distingue?",
+       "ops": [
+        "La cueca nace del folclore popular chileno y se baila en fiestas; la música docta se creó para conciertos y salas formales",
+        "No hay ninguna diferencia, toda la música es igual",
+        "La cueca es mejor porque es chilena y la docta es aburrida"
+       ],
+       "correcta": 0,
+       "porque": "Comparar música de distintos contextos es reconocer de dónde viene y para qué se usa. La cueca es folclore popular ligado a celebraciones, mientras la música docta surgió para conciertos formales. Ambas tienen valor, solo pertenecen a contextos distintos."
+      }
+     ]
+    },
+    {
+     "id": "crear-musica",
+     "nombre": "Crear e improvisar música",
+     "emoji": "✨",
+     "oa": "OA5 - Improvisar y crear ideas musicales para expresar sentimientos e ideas propias",
+     "intro": "Ahora te toca a ti: transforma tus ideas en sonidos y crea tu propia música.",
+     "items": [
+      {
+       "t": "Improvisación",
+       "d": "Crear música en el momento, inventando sonidos sin tenerlos escritos de antemano.",
+       "e": "🎲",
+       "en": "Improvisation"
+      },
+      {
+       "t": "Composición",
+       "d": "Inventar y organizar una música pensándola con calma, para poder repetirla o escribirla.",
+       "e": "✍️",
+       "en": "Composition"
+      },
+      {
+       "t": "Patrón rítmico",
+       "d": "Una secuencia de sonidos que se repite y que puedes crear con palmas o instrumentos.",
+       "e": "🔁",
+       "en": "Rhythmic pattern"
+      },
+      {
+       "t": "Letra de canción",
+       "d": "Las palabras que acompañan la melodía y cuentan una historia o transmiten un mensaje.",
+       "e": "📝",
+       "en": "Lyrics"
+      },
+      {
+       "t": "Arreglo",
+       "d": "Decidir qué instrumentos y voces participan y cómo se organizan en una pieza musical.",
+       "e": "🎚️",
+       "en": "Arrangement"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Crear música junto a otros, aportando ideas y respetando las de los demás.",
+       "e": "🤝",
+       "en": "Teamwork"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… muchos músicos de jazz componen improvisando en vivo, creando melodías únicas que nunca se repiten igual?",
+      "¿Sabías que… puedes hacer música con objetos cotidianos, como tarros, botellas o lápices, reutilizando materiales en vez de botarlos?"
+     ],
+     "retos": [
+      {
+       "q": "Tu grupo crea una canción, pero un integrante propone una idea que a ti no te gusta mucho. ¿Cómo actúas para un buen trabajo en equipo?",
+       "ops": [
+        "Rechazar su idea de inmediato porque la tuya es mejor",
+        "Escuchar su propuesta con respeto, probarla y decidir juntos qué funciona mejor",
+        "Hacer tu propia versión aparte sin contarle al grupo"
+       ],
+       "correcta": 1,
+       "porque": "El trabajo en equipo requiere escuchar con respeto y probar las ideas de todos. Decidir juntos, valorando cada aporte, mejora la creación y fortalece la sana convivencia."
+      },
+      {
+       "q": "Quieres inventar un acompañamiento que se pueda repetir muchas veces igual durante una canción. ¿Qué recurso musical te conviene crear?",
+       "ops": [
+        "Un patrón rítmico que se repita con palmas o percusión",
+        "Una improvisación distinta en cada vuelta",
+        "Un silencio largo durante toda la canción"
+       ],
+       "correcta": 0,
+       "porque": "Un patrón rítmico es una secuencia de sonidos que se repite igual, ideal para acompañar. La improvisación cambia cada vez, así que no serviría para repetir lo mismo, y un silencio no daría acompañamiento."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "edfisica": {
+  "nombre": "Educación Física y Salud",
+  "emoji": "⛹️",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "mi-cuerpo-en-movimiento",
+     "nombre": "Mi Cuerpo en Movimiento",
+     "emoji": "🏃",
+     "oa": "OA 1 y OA 2 - Habilidades motrices básicas de locomoción, manipulación y estabilidad",
+     "intro": "Descubrimos todas las formas divertidas en que nuestro cuerpo puede moverse.",
+     "items": [
+      {
+       "t": "Correr",
+       "d": "Mover las piernas rápido para desplazarnos de un lugar a otro.",
+       "e": "🏃",
+       "en": "To run"
+      },
+      {
+       "t": "Saltar",
+       "d": "Empujar con los pies para elevarnos del suelo y caer con cuidado.",
+       "e": "🦘",
+       "en": "To jump"
+      },
+      {
+       "t": "Lanzar",
+       "d": "Soltar una pelota con la mano hacia un lugar o una persona.",
+       "e": "🤾",
+       "en": "To throw"
+      },
+      {
+       "t": "Atrapar",
+       "d": "Recibir con las manos una pelota que viene hacia nosotros.",
+       "e": "🧤",
+       "en": "To catch"
+      },
+      {
+       "t": "Equilibrio",
+       "d": "Mantener el cuerpo firme sin caernos, por ejemplo parados en un pie.",
+       "e": "🤸",
+       "en": "Balance"
+      },
+      {
+       "t": "Gatear",
+       "d": "Movernos apoyando manos y rodillas en el suelo, como los bebés.",
+       "e": "🐛",
+       "en": "To crawl"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… al saltar usas los músculos más grandes de tu cuerpo, que están en tus piernas?",
+      "¿Sabías que… cuando corres tu corazón late más rápido para darle más energía a tu cuerpo?"
+     ],
+     "retos": [
+      {
+       "q": "Vas a lanzar una pelota a tu compañero que está lejos. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Lanzar sin mirar para ir más rápido",
+        "Mirar a mi compañero y avisarle antes de lanzar",
+        "Lanzar la pelota lo más fuerte posible sin avisar"
+       ],
+       "correcta": 1,
+       "porque": "Mirar y avisar ayuda a que tu compañero esté listo para atrapar y nadie se lastime. ¡Es jugar seguro y con respeto!"
+      },
+      {
+       "q": "Estás caminando sobre una línea haciendo equilibrio y sientes que te vas a caer. ¿Qué haces?",
+       "ops": [
+        "Abro los brazos para ayudar a mi cuerpo a mantenerse firme",
+        "Cierro los ojos para concentrarme mejor",
+        "Corro muy rápido para no caer"
+       ],
+       "correcta": 0,
+       "porque": "Abrir los brazos ayuda a tu cuerpo a encontrar el equilibrio. ¡Tus brazos son como las alas que te mantienen firme!"
+      },
+      {
+       "q": "Vas a saltar hacia abajo desde un escalón bajito. ¿Cómo caes para cuidar tu cuerpo?",
+       "ops": [
+        "Caigo con las piernas muy estiradas y duras",
+        "Caigo doblando un poco las rodillas, suave como un resorte",
+        "Caigo de cualquier forma, no importa"
+       ],
+       "correcta": 1,
+       "porque": "Doblar un poco las rodillas al caer amortigua el golpe y protege tus piernas. ¡Así saltas seguro!"
+      }
+     ]
+    },
+    {
+     "id": "juego-limpio",
+     "nombre": "Jugamos Limpio",
+     "emoji": "🤝",
+     "oa": "OA 11 - Practicar actividades físicas siguiendo reglas y con buena convivencia",
+     "intro": "Aprendemos a jugar juntos respetando las reglas y a nuestros amigos.",
+     "items": [
+      {
+       "t": "Reglas del juego",
+       "d": "Acuerdos que todos seguimos para que el juego sea justo y divertido.",
+       "e": "📋",
+       "en": "Rules"
+      },
+      {
+       "t": "Turnos",
+       "d": "Esperar con paciencia hasta que sea nuestro momento de jugar.",
+       "e": "⏳",
+       "en": "Taking turns"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Jugar ayudándonos entre todos para lograr una meta juntos.",
+       "e": "👥",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Respeto",
+       "d": "Tratar bien a mis compañeros, gane o pierda el juego.",
+       "e": "💚",
+       "en": "Respect"
+      },
+      {
+       "t": "Ganar y perder",
+       "d": "A veces gano y a veces pierdo; lo importante es divertirse y aprender.",
+       "e": "🏅",
+       "en": "Winning and losing"
+      },
+      {
+       "t": "Honestidad",
+       "d": "Decir la verdad en el juego, aunque a veces no me convenga.",
+       "e": "✋",
+       "en": "Honesty"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en los juegos de equipo, ayudar a un amigo hace que todos jueguen mejor?",
+      "¿Sabías que… saludar y agradecer a los otros jugadores al final es una tradición del deporte que muestra respeto?"
+     ],
+     "retos": [
+      {
+       "q": "Durante un juego, la pelota tocó tu mano pero el profesor no lo vio. ¿Qué haces?",
+       "ops": [
+        "No digo nada porque nadie se dio cuenta",
+        "Aviso con honestidad que la pelota me tocó",
+        "Me río y sigo jugando como si nada"
+       ],
+       "correcta": 1,
+       "porque": "Ser honesto aunque nadie mire es lo correcto. El juego limpio hace que todos confíen en ti y se diviertan más."
+      },
+      {
+       "q": "Tu equipo perdió el partido y un compañero está triste. ¿Qué es lo mejor?",
+       "ops": [
+        "Enojarme y decir que fue su culpa",
+        "Consolarlo y decirle que jugamos bien y seguiremos practicando",
+        "Decirle que no sabe jugar"
+       ],
+       "correcta": 1,
+       "porque": "Apoyar a un amigo cuando perdemos muestra empatía. Perder también es parte de aprender, y los amigos se cuidan."
+      },
+      {
+       "q": "Están por empezar un juego nuevo y no todos entienden las reglas. ¿Qué es lo mejor?",
+       "ops": [
+        "Empezar rápido aunque algunos no sepan",
+        "Escuchar juntos las reglas y ponernos de acuerdo antes de jugar",
+        "Cambiar las reglas cuando me conviene"
+       ],
+       "correcta": 1,
+       "porque": "Acordar las reglas antes de jugar hace que el juego sea justo para todos. ¡Así nadie se enoja y todos se divierten!"
+      }
+     ]
+    },
+    {
+     "id": "habitos-saludables",
+     "nombre": "Hábitos Saludables",
+     "emoji": "🍎",
+     "oa": "OA 8 - Practicar hábitos de higiene, posturales y de vida saludable",
+     "intro": "Cuidamos nuestro cuerpo con buenos hábitos para estar sanos y fuertes.",
+     "items": [
+      {
+       "t": "Lavarse las manos",
+       "d": "Limpiar nuestras manos con agua y jabón para quitar los microbios.",
+       "e": "🧼",
+       "en": "To wash your hands"
+      },
+      {
+       "t": "Tomar agua",
+       "d": "Beber agua durante el día, especialmente al hacer ejercicio.",
+       "e": "💧",
+       "en": "To drink water"
+      },
+      {
+       "t": "Comer frutas y verduras",
+       "d": "Alimentos de colores que le dan vitaminas y energía a nuestro cuerpo.",
+       "e": "🥕",
+       "en": "Fruits and vegetables"
+      },
+      {
+       "t": "Dormir bien",
+       "d": "Descansar en la noche para que el cuerpo recupere energía.",
+       "e": "😴",
+       "en": "To sleep well"
+      },
+      {
+       "t": "Moverse cada día",
+       "d": "Jugar y hacer ejercicio todos los días para mantenernos activos.",
+       "e": "⚽",
+       "en": "To be active"
+      },
+      {
+       "t": "Higiene",
+       "d": "Mantener limpio nuestro cuerpo, como bañarnos y cepillarnos los dientes.",
+       "e": "🦷",
+       "en": "Hygiene"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… lavarse las manos por 20 segundos, mientras cantas una canción, quita casi todos los microbios?",
+      "¿Sabías que… en Chile las frutas como la manzana y la uva crecen en muchos huertos y son muy saludables?"
+     ],
+     "retos": [
+      {
+       "q": "Acabas de jugar en el patio y vas a comer tu colación. ¿Qué haces primero?",
+       "ops": [
+        "Como de inmediato porque tengo mucha hambre",
+        "Me lavo las manos con agua y jabón antes de comer",
+        "Me limpio las manos en la ropa"
+       ],
+       "correcta": 1,
+       "porque": "Lavarse las manos antes de comer quita los microbios que pueden enfermarnos. ¡Es un hábito que cuida tu salud!"
+      },
+      {
+       "q": "Hiciste mucho ejercicio y tienes calor y sed. ¿Qué es lo mejor para tu cuerpo?",
+       "ops": [
+        "Tomar agua para recuperar lo que perdí al sudar",
+        "Tomar mucha bebida con azúcar",
+        "No tomar nada y seguir jugando"
+       ],
+       "correcta": 0,
+       "porque": "El agua repone lo que perdemos al sudar y nos mantiene con energía. ¡Es la mejor amiga de tu cuerpo cuando haces deporte!"
+      },
+      {
+       "q": "Es de noche y mañana tienes clase de educación física. ¿Qué te ayuda a tener energía?",
+       "ops": [
+        "Quedarme despierto hasta muy tarde jugando",
+        "Dormir bien para que mi cuerpo descanse",
+        "Levantarme muchas veces en la noche"
+       ],
+       "correcta": 1,
+       "porque": "Dormir bien deja que tu cuerpo recupere energía. ¡Así amaneces con fuerzas para correr y jugar!"
+      }
+     ]
+    },
+    {
+     "id": "juegos-y-deportes",
+     "nombre": "Juegos y Deportes",
+     "emoji": "⚽",
+     "oa": "OA 4 y OA 5 - Ejecutar juegos motores y actividades pre-deportivas variadas",
+     "intro": "Conocemos distintos juegos y deportes que nos hacen felices y activos.",
+     "items": [
+      {
+       "t": "Juegos tradicionales",
+       "d": "Juegos de siempre como el pillarse, la escondida y el luche.",
+       "e": "🤾",
+       "en": "Traditional games"
+      },
+      {
+       "t": "Fútbol",
+       "d": "Deporte donde pateamos una pelota para hacer goles en equipo.",
+       "e": "⚽",
+       "en": "Soccer"
+      },
+      {
+       "t": "Saltar la cuerda",
+       "d": "Saltar una cuerda que gira, solos o con amigos.",
+       "e": "🪢",
+       "en": "Jump rope"
+      },
+      {
+       "t": "Carreras",
+       "d": "Competir corriendo para llegar primero a una meta, de forma divertida.",
+       "e": "🏁",
+       "en": "Races"
+      },
+      {
+       "t": "Baile y ritmo",
+       "d": "Mover el cuerpo siguiendo la música y el compás.",
+       "e": "💃",
+       "en": "Dance and rhythm"
+      },
+      {
+       "t": "Juegos con pelota",
+       "d": "Actividades donde lanzamos, atrapamos o pateamos una pelota.",
+       "e": "🏀",
+       "en": "Ball games"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el 'luche' o rayuela es un juego muy antiguo que se juega en muchos países del mundo?",
+      "¿Sabías que… bailar también es ejercicio y ayuda a tu corazón y a tu coordinación?"
+     ],
+     "retos": [
+      {
+       "q": "Un compañero nuevo no sabe jugar 'el pillarse' y se queda solo mirando. ¿Qué haces?",
+       "ops": [
+        "Sigo jugando sin él porque no sabe",
+        "Lo invito a jugar y le explico las reglas con amabilidad",
+        "Me río porque no sabe jugar"
+       ],
+       "correcta": 1,
+       "porque": "Incluir y enseñar a un compañero muestra empatía y buena convivencia. ¡Jugar es más divertido cuando todos participan!"
+      },
+      {
+       "q": "Van a saltar la cuerda por turnos y a ti te toca esperar. ¿Qué es lo mejor?",
+       "ops": [
+        "Empujar a los demás para saltar primero",
+        "Esperar mi turno y animar a mis amigos",
+        "Enojarme porque no salto de inmediato"
+       ],
+       "correcta": 1,
+       "porque": "Respetar los turnos y animar a los demás hace que el juego sea justo y alegre para todos. ¡Todos tendrán su momento de saltar!"
+      }
+     ]
+    },
+    {
+     "id": "cuido-mi-cuerpo",
+     "nombre": "Cuido Mi Cuerpo y Mi Entorno",
+     "emoji": "🌿",
+     "oa": "OA 6 y OA 9 - Seguridad, autocuidado y prevención en la actividad física",
+     "intro": "Aprendemos a cuidarnos a nosotros mismos y al lugar donde jugamos.",
+     "items": [
+      {
+       "t": "Calentar el cuerpo",
+       "d": "Mover el cuerpo suavemente antes de jugar para no lastimarnos.",
+       "e": "🤗",
+       "en": "Warm-up"
+      },
+      {
+       "t": "Respirar y descansar",
+       "d": "Tomar aire y hacer pausas cuando el cuerpo está cansado.",
+       "e": "😮‍💨",
+       "en": "To rest"
+      },
+      {
+       "t": "Espacio seguro",
+       "d": "Jugar en un lugar limpio y sin obstáculos para no caernos.",
+       "e": "🚧",
+       "en": "Safe space"
+      },
+      {
+       "t": "Cuidar la naturaleza",
+       "d": "Botar la basura en su lugar y respetar las plantas del patio.",
+       "e": "🌱",
+       "en": "To care for nature"
+      },
+      {
+       "t": "Escuchar a mi cuerpo",
+       "d": "Saber cuándo tengo sed, cansancio o dolor y avisar a un adulto.",
+       "e": "👂",
+       "en": "To listen to my body"
+      },
+      {
+       "t": "Ropa adecuada",
+       "d": "Usar buzo y zapatillas cómodas para moverme con libertad.",
+       "e": "👟",
+       "en": "Proper clothing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… calentar el cuerpo antes de jugar es como despertar tus músculos para que trabajen mejor?",
+      "¿Sabías que… un patio limpio y cuidado es un lugar más seguro y bonito para jugar con tus amigos?"
+     ],
+     "retos": [
+      {
+       "q": "Vas a empezar a correr y saltar en la clase de educación física. ¿Qué haces primero?",
+       "ops": [
+        "Corro lo más rápido posible de inmediato",
+        "Caliento mi cuerpo con movimientos suaves",
+        "Me siento a descansar"
+       ],
+       "correcta": 1,
+       "porque": "Calentar prepara tus músculos y evita que te lastimes. ¡Es cuidar tu cuerpo antes de la diversión!"
+      },
+      {
+       "q": "Ves un papel de tu colación en el patio donde juegan. ¿Qué haces?",
+       "ops": [
+        "Lo dejo ahí porque no es mi problema",
+        "Lo recojo y lo boto en el basurero",
+        "Lo pateo para otro lado"
+       ],
+       "correcta": 1,
+       "porque": "Recoger la basura cuida la naturaleza y mantiene el patio seguro y limpio para todos. ¡Ser responsable con el entorno es cuidar tu escuela!"
+      },
+      {
+       "q": "Estás jugando y de repente te empieza a doler mucho una pierna. ¿Qué haces?",
+       "ops": [
+        "Sigo jugando aunque me duela mucho",
+        "Paro y le aviso a mi profesor o a un adulto",
+        "No le digo a nadie y aguanto"
+       ],
+       "correcta": 1,
+       "porque": "Escuchar a tu cuerpo y avisar a un adulto cuando algo duele te ayuda a cuidarte. ¡Es lo más inteligente y seguro que puedes hacer!"
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "mi-cuerpo-se-mueve",
+     "nombre": "Mi cuerpo se mueve",
+     "emoji": "🤸",
+     "oa": "OA 1: Demostrar habilidades motrices básicas de locomoción, manipulación y estabilidad en diferentes direcciones, alturas y niveles.",
+     "intro": "Descubrimos todas las formas en que nuestro cuerpo se puede mover y controlar.",
+     "items": [
+      {
+       "t": "Locomoción",
+       "d": "Es moverse de un lugar a otro: caminar, correr, saltar o galopar.",
+       "e": "🏃",
+       "en": "Locomotion"
+      },
+      {
+       "t": "Manipulación",
+       "d": "Usar manos y pies para lanzar, atrapar, patear o botear una pelota.",
+       "e": "⚽",
+       "en": "Manipulation"
+      },
+      {
+       "t": "Equilibrio",
+       "d": "Mantener el cuerpo firme sin caerse, como pararse en un solo pie.",
+       "e": "🧍",
+       "en": "Balance"
+      },
+      {
+       "t": "Saltar",
+       "d": "Empujar con las piernas para despegar del suelo y caer con cuidado.",
+       "e": "🦘",
+       "en": "To jump"
+      },
+      {
+       "t": "Coordinación",
+       "d": "Hacer que brazos, piernas y ojos trabajen juntos al mismo tiempo.",
+       "e": "🤹",
+       "en": "Coordination"
+      },
+      {
+       "t": "Reptar",
+       "d": "Avanzar apoyando el cuerpo en el suelo, como una lagartija.",
+       "e": "🦎",
+       "en": "To crawl"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… saltar la cuerda usa casi todos los músculos de tu cuerpo al mismo tiempo?",
+      "¿Sabías que… los flamencos duermen parados en una sola pata porque tienen un equilibrio increíble?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase van a jugar a lanzar y atrapar la pelota en parejas. ¿Qué habilidad estás practicando más?",
+       "ops": [
+        "Manipulación (lanzar y atrapar)",
+        "Solo equilibrio",
+        "Solo reptar"
+       ],
+       "correcta": 0,
+       "porque": "Lanzar y atrapar usa las manos para controlar la pelota, y eso es manipulación."
+      },
+      {
+       "q": "Tienes que caminar por una línea delgada en el suelo sin salirte. ¿Qué habilidad te ayuda más a lograrlo?",
+       "ops": [
+        "Correr muy rápido",
+        "El equilibrio",
+        "Lanzar una pelota"
+       ],
+       "correcta": 1,
+       "porque": "Caminar sobre una línea sin caerte necesita equilibrio para mantener el cuerpo firme."
+      }
+     ]
+    },
+    {
+     "id": "juego-limpio-y-companeros",
+     "nombre": "Juego limpio y compañeros",
+     "emoji": "🤝",
+     "oa": "OA 10: Practicar juegos o actividades motrices para aprender a trabajar en equipo, asumiendo diferentes roles, con respeto y colaboración.",
+     "intro": "Aprendemos a jugar en equipo respetando las reglas y a nuestros compañeros.",
+     "items": [
+      {
+       "t": "Juego limpio",
+       "d": "Jugar siguiendo las reglas y siendo honesto, sin hacer trampa.",
+       "e": "🏅",
+       "en": "Fair play"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Ayudarnos entre todos para lograr una meta juntos.",
+       "e": "👥",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Respeto",
+       "d": "Tratar bien a compañeros y árbitros, ganes o pierdas.",
+       "e": "🙌",
+       "en": "Respect"
+      },
+      {
+       "t": "Reglas del juego",
+       "d": "Acuerdos que todos siguen para que el juego sea justo y seguro.",
+       "e": "📋",
+       "en": "Game rules"
+      },
+      {
+       "t": "Roles en el equipo",
+       "d": "Cada uno cumple una tarea distinta, como defender o pasar la pelota.",
+       "e": "🎽",
+       "en": "Team roles"
+      },
+      {
+       "t": "Turnos",
+       "d": "Esperar mi momento para que todos puedan participar.",
+       "e": "🔁",
+       "en": "Taking turns"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en muchos deportes los jugadores se dan la mano al final para mostrar respeto?",
+      "¿Sabías que… un equipo que se anima entre sí suele jugar mejor que uno que se pelea?"
+     ],
+     "retos": [
+      {
+       "q": "Tu equipo pierde un partido de pinta y un compañero quiere burlarse de los que ganaron. ¿Qué es lo correcto?",
+       "ops": [
+        "Burlarse también para no quedar mal",
+        "Felicitar al otro equipo y seguir jugando contentos",
+        "Acusar de que hicieron trampa sin saber"
+       ],
+       "correcta": 1,
+       "porque": "El juego limpio es felicitar a quien gana; así mostramos respeto y buena convivencia."
+      },
+      {
+       "q": "En un juego de equipo te toca el rol de defender el arco, pero prefieres ir a atacar. ¿Qué decisión ayuda más a tu equipo?",
+       "ops": [
+        "Cumplir mi rol de defensa como acordamos",
+        "Irme a atacar y dejar el arco solo",
+        "Dejar de jugar porque no me gustó el rol"
+       ],
+       "correcta": 0,
+       "porque": "Trabajar en equipo es cumplir el rol que me toca; si cada uno hace su parte, todos jugamos mejor."
+      }
+     ]
+    },
+    {
+     "id": "cuerpo-sano-corazon-feliz",
+     "nombre": "Cuerpo sano, corazón feliz",
+     "emoji": "❤️",
+     "oa": "OA 8: Describir las sensaciones y respuestas corporales provocadas por la práctica de actividad física, como la respiración, el sudor y los latidos.",
+     "intro": "Sentimos cómo cambia nuestro cuerpo cuando hacemos ejercicio y por qué es bueno.",
+     "items": [
+      {
+       "t": "Latidos del corazón",
+       "d": "Cuando corremos el corazón late más rápido para dar fuerza al cuerpo.",
+       "e": "💓",
+       "en": "Heartbeats"
+      },
+      {
+       "t": "Respiración",
+       "d": "Al hacer ejercicio respiramos más rápido para tomar más aire.",
+       "e": "🌬️",
+       "en": "Breathing"
+      },
+      {
+       "t": "Sudor",
+       "d": "El cuerpo suda para refrescarse cuando tiene calor por el esfuerzo.",
+       "e": "💦",
+       "en": "Sweat"
+      },
+      {
+       "t": "Calentamiento",
+       "d": "Mover el cuerpo suave antes de jugar para no lastimarse.",
+       "e": "🤾",
+       "en": "Warm-up"
+      },
+      {
+       "t": "Descanso",
+       "d": "Después del esfuerzo el cuerpo necesita parar y recuperar energía.",
+       "e": "😮‍💨",
+       "en": "Rest"
+      },
+      {
+       "t": "Energía",
+       "d": "La fuerza que usamos para movernos y jugar todo el día.",
+       "e": "⚡",
+       "en": "Energy"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón late más de 100 veces por minuto cuando corres rápido?",
+      "¿Sabías que… hacer ejercicio también pone contento tu cerebro y te ayuda a dormir mejor?"
+     ],
+     "retos": [
+      {
+       "q": "Después de correr mucho en el recreo sientes tu corazón latir rápido y respiras agitado. ¿Qué está pasando?",
+       "ops": [
+        "Estás enfermo y debes acostarte",
+        "Tu cuerpo trabaja más para darte energía al hacer ejercicio",
+        "Algo malo le pasa a tu corazón"
+       ],
+       "correcta": 1,
+       "porque": "Es normal: al hacer ejercicio el corazón y la respiración se aceleran para dar más energía."
+      },
+      {
+       "q": "La profe dice que antes de jugar fútbol hagan un calentamiento. ¿Para qué sirve?",
+       "ops": [
+        "Para preparar el cuerpo y evitar lesiones",
+        "Para cansarse antes de jugar",
+        "Para perder tiempo del recreo"
+       ],
+       "correcta": 0,
+       "porque": "El calentamiento prepara los músculos poco a poco y ayuda a no lastimarse."
+      }
+     ]
+    },
+    {
+     "id": "habitos-saludables",
+     "nombre": "Hábitos saludables",
+     "emoji": "🍎",
+     "oa": "OA 9: Practicar actividades físicas en forma segura, demostrando la adquisición de hábitos de higiene, posturales, de alimentación e hidratación.",
+     "intro": "Cuidamos nuestro cuerpo con buenos hábitos de higiene, comida y agua.",
+     "items": [
+      {
+       "t": "Higiene",
+       "d": "Lavarnos las manos y la cara para estar limpios y sanos.",
+       "e": "🧼",
+       "en": "Hygiene"
+      },
+      {
+       "t": "Hidratación",
+       "d": "Tomar agua para no cansarnos y sentirnos bien al jugar.",
+       "e": "💧",
+       "en": "Hydration"
+      },
+      {
+       "t": "Alimentación sana",
+       "d": "Comer frutas y verduras para tener energía y crecer fuertes.",
+       "e": "🥕",
+       "en": "Healthy eating"
+      },
+      {
+       "t": "Dormir bien",
+       "d": "Descansar de noche para que el cuerpo se recupere y crezca.",
+       "e": "😴",
+       "en": "Good sleep"
+      },
+      {
+       "t": "Lavado de manos",
+       "d": "Limpiar las manos con agua y jabón antes de comer.",
+       "e": "🖐️",
+       "en": "Handwashing"
+      },
+      {
+       "t": "Postura",
+       "d": "Sentarnos y pararnos derechos para cuidar la espalda.",
+       "e": "🧍‍♂️",
+       "en": "Posture"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu cuerpo tiene tanta agua que necesita que la repongas tomando líquido cada día?",
+      "¿Sabías que… lavarse las manos con jabón espanta a muchos microbios que causan enfermedades?"
+     ],
+     "retos": [
+      {
+       "q": "Terminaste de jugar y vas a comer tu colación. Antes de comer, ¿qué es lo más saludable hacer?",
+       "ops": [
+        "Comer de inmediato sin lavarme",
+        "Lavarme las manos con agua y jabón",
+        "Secarme las manos en la ropa"
+       ],
+       "correcta": 1,
+       "porque": "Lavarse las manos antes de comer quita los microbios y nos ayuda a no enfermarnos."
+      },
+      {
+       "q": "Hace mucho calor y jugaste mucho rato. ¿Qué eliges para cuidar tu cuerpo?",
+       "ops": [
+        "Tomar agua para hidratarme",
+        "Tomar mucha bebida con azúcar",
+        "No tomar nada para aguantar"
+       ],
+       "correcta": 0,
+       "porque": "El agua repone lo que perdemos al sudar y nos mantiene con energía; es la mejor opción."
+      }
+     ]
+    },
+    {
+     "id": "expresion-y-ritmo",
+     "nombre": "Expresión y ritmo",
+     "emoji": "💃",
+     "oa": "OA 5: Ejecutar movimientos corporales, expresando sensaciones, ideas, estados de ánimo y emociones, siguiendo el ritmo de la música.",
+     "intro": "Usamos el cuerpo para bailar, seguir ritmos y expresar lo que sentimos.",
+     "items": [
+      {
+       "t": "Ritmo",
+       "d": "Seguir el compás de la música con palmas o pasos.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Danza",
+       "d": "Mover el cuerpo con la música para expresar alegría.",
+       "e": "🕺",
+       "en": "Dance"
+      },
+      {
+       "t": "Expresión corporal",
+       "d": "Mostrar emociones e ideas usando el cuerpo sin hablar.",
+       "e": "🙆",
+       "en": "Body expression"
+      },
+      {
+       "t": "Coreografía",
+       "d": "Una serie de pasos ordenados que bailamos en grupo.",
+       "e": "👯",
+       "en": "Choreography"
+      },
+      {
+       "t": "Espacio",
+       "d": "El lugar donde nos movemos sin chocar con los demás.",
+       "e": "↔️",
+       "en": "Space"
+      },
+      {
+       "t": "Bailes tradicionales",
+       "d": "Bailes chilenos como la cueca, que se baila con un pañuelo.",
+       "e": "🪗",
+       "en": "Traditional dances"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca es el baile nacional de Chile y se baila con un pañuelo?",
+      "¿Sabías que… bailar mejora la memoria porque hay que recordar los pasos y el ritmo?"
+     ],
+     "retos": [
+      {
+       "q": "En una coreografía en grupo, un compañero se equivoca de paso frente a todos. ¿Qué actitud muestra empatía?",
+       "ops": [
+        "Reírme de él delante del curso",
+        "Ayudarlo con una sonrisa a seguir el paso",
+        "Sacarlo del grupo"
+       ],
+       "correcta": 1,
+       "porque": "La empatía es apoyar al compañero cuando se equivoca, para que todos disfruten juntos."
+      },
+      {
+       "q": "Están bailando en la sala y hay poco espacio. ¿Qué haces para cuidar a todos?",
+       "ops": [
+        "Moverme rápido sin mirar a los demás",
+        "Fijarme en el espacio para no chocar con nadie",
+        "Empujar a los que están cerca"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar el espacio propio y el de los demás evita choques y muestra respeto por el grupo."
+      }
+     ]
+    },
+    {
+     "id": "aventura-al-aire-libre",
+     "nombre": "Aventura al aire libre",
+     "emoji": "🌳",
+     "oa": "OA 4: Ejecutar habilidades motrices básicas en diferentes entornos, como plazas activas, patio del colegio o parques, de forma segura y cuidando el medio.",
+     "intro": "Jugamos y exploramos al aire libre cuidando nuestro cuerpo y la naturaleza.",
+     "items": [
+      {
+       "t": "Aire libre",
+       "d": "Jugar afuera, en el patio, plaza o parque, con sol y aire fresco.",
+       "e": "☀️",
+       "en": "Outdoors"
+      },
+      {
+       "t": "Seguridad",
+       "d": "Fijarnos dónde jugamos para no tropezar ni hacernos daño.",
+       "e": "🦺",
+       "en": "Safety"
+      },
+      {
+       "t": "Explorar",
+       "d": "Descubrir el entorno caminando y observando con cuidado.",
+       "e": "🔎",
+       "en": "To explore"
+      },
+      {
+       "t": "Cuidar la naturaleza",
+       "d": "No botar basura y respetar plantas y animales.",
+       "e": "🌱",
+       "en": "Caring for nature"
+      },
+      {
+       "t": "Protección solar",
+       "d": "Usar gorro y protector para cuidar la piel del sol fuerte.",
+       "e": "🧢",
+       "en": "Sun protection"
+      },
+      {
+       "t": "Excursión",
+       "d": "Una salida a caminar y jugar en un lugar natural.",
+       "e": "🥾",
+       "en": "Hike / outing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… jugar al aire libre ayuda a que tus huesos crezcan fuertes gracias al sol?",
+      "¿Sabías que… los árboles nos dan el oxígeno que respiramos cuando jugamos afuera?"
+     ],
+     "retos": [
+      {
+       "q": "Durante una excursión al parque, encuentras un envoltorio de galletas después de tu colación. ¿Qué haces?",
+       "ops": [
+        "Lo dejo en el pasto, alguien lo recogerá",
+        "Lo guardo y lo boto en un basurero",
+        "Lo escondo bajo una piedra"
+       ],
+       "correcta": 1,
+       "porque": "Cuidar la naturaleza es no dejar basura; guardarla y botarla en un basurero protege el medio ambiente."
+      },
+      {
+       "q": "Es un día de mucho sol y van a jugar afuera toda la mañana. ¿Qué decisión cuida tu cuerpo?",
+       "ops": [
+        "Usar gorro y tomar agua seguido",
+        "Jugar sin gorro para tener más calor",
+        "No tomar agua para no ir al baño"
+       ],
+       "correcta": 0,
+       "porque": "El gorro protege del sol y el agua te hidrata; así cuidas tu piel y tu energía al jugar afuera."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "habilidades-motrices",
+     "nombre": "Habilidades Motrices",
+     "emoji": "🏃",
+     "oa": "OA 1: Demostrar capacidad para ejecutar de forma combinada las habilidades motrices básicas de locomoción, manipulación y estabilidad en diferentes direcciones, alturas y niveles.",
+     "intro": "Aprendemos a mover nuestro cuerpo de muchas formas y a combinarlas: correr y lanzar, o caminar y girar sin perder el equilibrio.",
+     "items": [
+      {
+       "t": "Locomoción",
+       "d": "Es moverse de un lugar a otro, como correr, saltar, galopar o trepar.",
+       "e": "🏃",
+       "en": "Locomotion"
+      },
+      {
+       "t": "Manipulación",
+       "d": "Es usar las manos o los pies para lanzar, atrapar, patear o rebotar un objeto como una pelota.",
+       "e": "⚽",
+       "en": "Manipulation"
+      },
+      {
+       "t": "Estabilidad",
+       "d": "Es mantener el cuerpo firme y controlado, como pararse en un pie, girar o caminar sobre una línea sin caerse.",
+       "e": "🤸",
+       "en": "Stability"
+      },
+      {
+       "t": "Coordinación",
+       "d": "Es lograr que distintas partes del cuerpo trabajen juntas al mismo tiempo, como los ojos y las manos al atrapar.",
+       "e": "🙆",
+       "en": "Coordination"
+      },
+      {
+       "t": "Lateralidad",
+       "d": "Es reconocer tu lado derecho e izquierdo para moverte con más control y en distintas direcciones.",
+       "e": "↔️",
+       "en": "Laterality"
+      },
+      {
+       "t": "Habilidad combinada",
+       "d": "Es unir dos movimientos en uno, como correr y lanzar, o caminar y girar sobre un pie.",
+       "e": "🔗",
+       "en": "Combined skill"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… saltar la cuerda combina locomoción, manipulación y estabilidad al mismo tiempo, por eso mejora tanto tu coordinación?",
+      "¿Sabías que… los gatos son expertos en estabilidad gracias a su cola, que usan como timón para no caerse cuando saltan?"
+     ],
+     "retos": [
+      {
+       "q": "El profe pide correr hasta el cono y, al llegar, lanzar la pelota al aro con una mano sin detenerte. ¿Qué habilidad estás poniendo en práctica?",
+       "ops": [
+        "Solo locomoción, porque estás corriendo",
+        "Una habilidad combinada: locomoción (correr) más manipulación (lanzar)",
+        "Solo estabilidad, porque no te caes"
+       ],
+       "correcta": 1,
+       "porque": "Unir correr con lanzar en un mismo movimiento es una habilidad combinada; el OA 1 de 3° básico pide justamente ejecutar la locomoción y la manipulación de forma combinada."
+      },
+      {
+       "q": "Martín camina bien sobre la línea del patio, pero se cae cada vez que intenta girar 180° sobre un pie. ¿Qué habilidad le conviene entrenar para lograrlo?",
+       "ops": [
+        "Correr más rápido en línea recta",
+        "La estabilidad, practicando pararse y girar sobre un pie",
+        "Lanzar la pelota más lejos con una mano"
+       ],
+       "correcta": 1,
+       "porque": "Girar sobre un pie sin caer depende de la estabilidad; entrenar el equilibrio parado en un pie prepara el cuerpo para controlar el giro paso a paso."
+      }
+     ]
+    },
+    {
+     "id": "juegos-y-deportes",
+     "nombre": "Juegos y Deportes",
+     "emoji": "⚽",
+     "oa": "OA 3 y OA 10: Practicar juegos pre-deportivos con reglas y espacios adaptados aplicando principios de juego, y participar con responsabilidad, honestidad y cumplimiento de las reglas.",
+     "intro": "Jugamos en equipo aprendiendo reglas, estrategias sencillas y a respetar a todos los compañeros y rivales.",
+     "items": [
+      {
+       "t": "Juego limpio",
+       "d": "Es jugar respetando las reglas, sin hacer trampa y cuidando a los demás.",
+       "e": "🤝",
+       "en": "Fair play"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Es cooperar con tus compañeros para lograr una meta juntos.",
+       "e": "👥",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Reglas del juego",
+       "d": "Son los acuerdos que todos siguen para que el juego sea justo y ordenado.",
+       "e": "📋",
+       "en": "Rules"
+      },
+      {
+       "t": "Estrategia",
+       "d": "Es pensar un plan para jugar mejor, como pasar la pelota al compañero que está libre.",
+       "e": "🧠",
+       "en": "Strategy"
+      },
+      {
+       "t": "Juego pre-deportivo",
+       "d": "Es un juego con reglas adaptadas que prepara para un deporte, como mini-fútbol o pelota al aro.",
+       "e": "🥅",
+       "en": "Pre-sport game"
+      },
+      {
+       "t": "Respeto al rival",
+       "d": "Es tratar bien al equipo contrario, aunque estemos compitiendo por ganar.",
+       "e": "💚",
+       "en": "Respect for opponents"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en muchos partidos los jugadores se dan la mano al final para mostrar respeto, aunque hayan competido con mucha fuerza?",
+      "¿Sabías que… 'Las Naciones' y 'El Luche' son juegos tradicionales chilenos que se juegan desde hace más de 100 años?"
+     ],
+     "retos": [
+      {
+       "q": "En un juego pre-deportivo, un jugador del otro equipo se cae y le duele la rodilla. La pelota queda libre cerca de ti. ¿Qué es lo correcto?",
+       "ops": [
+        "Aprovechar y meter un gol rápido antes que se levante",
+        "Detener el juego y avisar para ayudar al compañero lastimado",
+        "Reírte porque tu equipo va ganando el partido"
+       ],
+       "correcta": 1,
+       "porque": "El OA 10 pide honestidad y responsabilidad al jugar; la seguridad de una persona lastimada siempre va primero que meter un punto."
+      },
+      {
+       "q": "Tu equipo pierde por un punto en el último minuto. ¿Cuál es la mejor actitud al terminar el juego?",
+       "ops": [
+        "Enojarse y salir sin saludar al otro equipo",
+        "Felicitar al equipo ganador y proponer volver a jugar otro día",
+        "Acusar al árbitro de que hizo todo mal"
+       ],
+       "correcta": 1,
+       "porque": "Saber perder con respeto es parte del juego limpio; felicitar al rival demuestra deportividad y ayuda a que todos quieran seguir jugando."
+      }
+     ]
+    },
+    {
+     "id": "vida-activa-saludable",
+     "nombre": "Vida Activa y Saludable",
+     "emoji": "💪",
+     "oa": "OA 6, OA 7 y OA 8: Realizar actividad física de intensidad moderada a vigorosa de forma regular e identificar las respuestas del cuerpo, como los cambios en la frecuencia cardíaca y respiratoria.",
+     "intro": "Descubrimos por qué movernos todos los días hace bien al cuerpo, y aprendemos a notar cómo responde nuestro cuerpo al ejercicio.",
+     "items": [
+      {
+       "t": "Actividad física",
+       "d": "Es cualquier movimiento que hace trabajar tu cuerpo, como jugar, correr o andar en bici.",
+       "e": "🚴",
+       "en": "Physical activity"
+      },
+      {
+       "t": "Frecuencia cardíaca",
+       "d": "Es la cantidad de veces que late tu corazón por minuto; late más rápido cuando te mueves mucho.",
+       "e": "❤️",
+       "en": "Heart rate"
+      },
+      {
+       "t": "Frecuencia respiratoria",
+       "d": "Es cuántas veces respiras por minuto; respiras más rápido cuando haces mucho ejercicio.",
+       "e": "🌬️",
+       "en": "Breathing rate"
+      },
+      {
+       "t": "Resistencia cardiovascular",
+       "d": "Es poder moverte durante más tiempo sin cansarte tan rápido, gracias a un corazón fuerte.",
+       "e": "🏃",
+       "en": "Cardiovascular endurance"
+      },
+      {
+       "t": "Sedentarismo",
+       "d": "Es pasar demasiado tiempo sentado o quieto, lo que no es bueno para la salud.",
+       "e": "🛋️",
+       "en": "Sedentary lifestyle"
+      },
+      {
+       "t": "Descanso",
+       "d": "Dormir bien y descansar ayuda a que tu cuerpo se recupere y crezca después del ejercicio.",
+       "e": "😴",
+       "en": "Rest"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el corazón de un niño late unas 90 veces por minuto en reposo, pero al correr fuerte puede pasar de 150 latidos por minuto?",
+      "¿Sabías que… hacer ejercicio libera en tu cerebro unas sustancias llamadas endorfinas, que te ponen de buen humor?"
+     ],
+     "retos": [
+      {
+       "q": "Después de correr un rato sientes tu corazón latir muy rápido y respiras agitado. ¿Qué te dice tu cuerpo con esas señales?",
+       "ops": [
+        "Que estás enfermo y no debes volver a hacer ejercicio",
+        "Que tu corazón y tus pulmones están trabajando más para darte energía",
+        "Que el ejercicio le hace daño a tu cuerpo"
+       ],
+       "correcta": 1,
+       "porque": "Que suban la frecuencia cardíaca y la respiratoria al ejercitarte es una respuesta normal y sana del cuerpo (OA 8): estás fortaleciendo tu corazón como un músculo."
+      },
+      {
+       "q": "Sofía pasa toda la tarde viendo pantallas y casi no se mueve. ¿Qué consejo saludable le darías para tener una vida activa?",
+       "ops": [
+        "Que se siente aún más rato para descansar mejor",
+        "Que sume juego activo cada día y deje ratos cortos de pantalla",
+        "Que no duerma en la noche para tener más tiempo de jugar"
+       ],
+       "correcta": 1,
+       "porque": "El sedentarismo daña la salud; la vida activa mezcla actividad física regular con buen descanso, y el sueño también es necesario para recuperar el cuerpo."
+      }
+     ]
+    },
+    {
+     "id": "higiene-y-cuidado",
+     "nombre": "Higiene y Cuidado del Cuerpo",
+     "emoji": "🧼",
+     "oa": "OA 9 y OA 11: Practicar actividad física de forma segura demostrando hábitos de higiene, posturales y de vida saludable, incluyendo el calentamiento apropiado.",
+     "intro": "Cuidamos nuestro cuerpo con hábitos de higiene, hidratación y preparación antes, durante y después de la actividad física.",
+     "items": [
+      {
+       "t": "Higiene personal",
+       "d": "Es mantener limpio tu cuerpo, como lavarte las manos y ducharte después de hacer deporte.",
+       "e": "🚿",
+       "en": "Personal hygiene"
+      },
+      {
+       "t": "Hidratación",
+       "d": "Es tomar agua para reponer lo que sudas y que tu cuerpo funcione bien.",
+       "e": "💧",
+       "en": "Hydration"
+      },
+      {
+       "t": "Alimentación saludable",
+       "d": "Es comer frutas, verduras y alimentos nutritivos que dan energía a tu cuerpo.",
+       "e": "🥗",
+       "en": "Healthy eating"
+      },
+      {
+       "t": "Calentamiento",
+       "d": "Son ejercicios suaves antes de jugar para preparar los músculos y evitar lesiones.",
+       "e": "🤸",
+       "en": "Warm-up"
+      },
+      {
+       "t": "Vuelta a la calma",
+       "d": "Es relajar el cuerpo con estiramientos suaves después de la actividad física.",
+       "e": "🧘",
+       "en": "Cool-down"
+      },
+      {
+       "t": "Ropa adecuada",
+       "d": "Es usar ropa cómoda y zapatillas para moverte con seguridad y sin lastimarte.",
+       "e": "👟",
+       "en": "Proper clothing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… lavarte las manos con agua y jabón por 20 segundos elimina la mayoría de los gérmenes que causan enfermedades?",
+      "¿Sabías que… tu cuerpo es más de la mitad agua, por eso beber agua durante el día es tan importante para tu salud?"
+     ],
+     "retos": [
+      {
+       "q": "Vas a jugar fútbol en un día muy caluroso. ¿Qué debes preparar para cuidar tu cuerpo de forma segura?",
+       "ops": [
+        "Solo una bebida azucarada bien fría para tener energía",
+        "Una botella de agua y hacer un calentamiento antes de empezar",
+        "Correr al máximo de inmediato sin preparar los músculos"
+       ],
+       "correcta": 1,
+       "porque": "El agua te mantiene hidratado con el calor y el calentamiento prepara los músculos para evitar lesiones; así practicas de forma segura, como pide el OA 11."
+      },
+      {
+       "q": "Terminaste la clase de educación física sudado y con las manos sucias, y viene la colación. ¿Qué es lo mejor antes de comer?",
+       "ops": [
+        "Comer de inmediato sin lavarte para no perder tiempo",
+        "Lavarte las manos y refrescarte antes de tomar la colación",
+        "No tomar agua para no interrumpir el recreo"
+       ],
+       "correcta": 1,
+       "porque": "Lavarse las manos evita que los gérmenes lleguen a la comida; los hábitos de higiene después del ejercicio protegen tu salud (OA 9)."
+      }
+     ]
+    },
+    {
+     "id": "expresion-corporal",
+     "nombre": "Expresión Corporal y Ritmo",
+     "emoji": "🕺",
+     "oa": "OA 5: Ejecutar movimientos o elementos de danzas tradicionales de forma coordinada, utilizando actividades rítmicas y lúdicas.",
+     "intro": "Usamos nuestro cuerpo para expresarnos y bailar, siguiendo el ritmo de la música y aprendiendo danzas tradicionales.",
+     "items": [
+      {
+       "t": "Expresión corporal",
+       "d": "Es comunicar emociones e ideas usando el movimiento del cuerpo.",
+       "e": "🎭",
+       "en": "Body expression"
+      },
+      {
+       "t": "Danza",
+       "d": "Es moverse siguiendo una música con pasos ordenados y coreografías.",
+       "e": "💃",
+       "en": "Dance"
+      },
+      {
+       "t": "Secuencia de movimientos",
+       "d": "Es un orden de pasos que se repiten en el mismo turno, como en una coreografía.",
+       "e": "🔢",
+       "en": "Movement sequence"
+      },
+      {
+       "t": "Pulso",
+       "d": "Es el latido constante y parejo de la música que guía tus movimientos.",
+       "e": "🥁",
+       "en": "Beat"
+      },
+      {
+       "t": "Danzas tradicionales",
+       "d": "Son bailes propios de un país o pueblo, como la cueca en Chile.",
+       "e": "🇨🇱",
+       "en": "Traditional dances"
+      },
+      {
+       "t": "Coordinación rítmica",
+       "d": "Es mover el cuerpo justo al compás de la música, sin adelantarte ni atrasarte.",
+       "e": "🎵",
+       "en": "Rhythmic coordination"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca es el baile nacional de Chile y sus pasos imitan el cortejo del gallo y la gallina?",
+      "¿Sabías que… bailar activa muchas partes del cerebro a la vez, por eso mejora la memoria y el ánimo?"
+     ],
+     "retos": [
+      {
+       "q": "Tu curso prepara una cueca para el 18 de septiembre, pero un compañero se equivoca en la secuencia de pasos. ¿Qué es lo mejor que puedes hacer?",
+       "ops": [
+        "Reírte de él frente a todo el curso",
+        "Ayudarlo con paciencia a aprender la secuencia de pasos",
+        "Sacarlo del baile para que el grupo no falle"
+       ],
+       "correcta": 1,
+       "porque": "Apoyar a un compañero con paciencia ayuda a que todos aprendan la danza y fortalece la sana convivencia del curso."
+      },
+      {
+       "q": "Debes inventar una coreografía corta con una canción. ¿Qué es lo más importante para que se vea bien coordinada?",
+       "ops": [
+        "Moverte sin fijarte en la música, como salga",
+        "Seguir el pulso de la música y ordenar tus pasos en una secuencia",
+        "Bailar lo más rápido posible sin parar en ningún momento"
+       ],
+       "correcta": 1,
+       "porque": "Una danza coordinada sigue el pulso de la música y organiza los movimientos en una secuencia clara, tal como pide el OA 5 de 3° básico."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "habilidades-motrices",
+     "nombre": "Habilidades Motrices",
+     "emoji": "🤸",
+     "oa": "OA 1 y OA 2: Demostrar control en la ejecución de habilidades motrices básicas de locomoción, manipulación y estabilidad en diferentes direcciones, alturas y niveles; y ejecutar juegos colectivos creando estrategias para resolver problemas de tiempo, espacio y número de personas.",
+     "intro": "Aprende a mover tu cuerpo con control, equilibrio y coordinación en muchas formas distintas.",
+     "items": [
+      {
+       "t": "Locomoción",
+       "d": "Formas de trasladar tu cuerpo de un lugar a otro, como correr, saltar, galopar o rodar.",
+       "e": "🏃",
+       "en": "Locomotion"
+      },
+      {
+       "t": "Manipulación",
+       "d": "Mover objetos con el cuerpo: lanzar, atrapar, patear, botar o golpear una pelota.",
+       "e": "🏐",
+       "en": "Manipulation"
+      },
+      {
+       "t": "Estabilidad",
+       "d": "Mantener el cuerpo firme y controlado, como al equilibrarte en un pie o girar sin caer.",
+       "e": "🧘",
+       "en": "Stability"
+      },
+      {
+       "t": "Coordinación",
+       "d": "Usar varias partes del cuerpo juntas y a tiempo, como saltar la cuerda mientras cuentas.",
+       "e": "🪢",
+       "en": "Coordination"
+      },
+      {
+       "t": "Equilibrio",
+       "d": "Capacidad de no caerte cuando estás quieto o en movimiento, ayudado por tu oído interno.",
+       "e": "⚖️",
+       "en": "Balance"
+      },
+      {
+       "t": "Lateralidad",
+       "d": "Reconocer tu lado derecho e izquierdo y usar ambos lados del cuerpo.",
+       "e": "↔️",
+       "en": "Laterality"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… dentro de tu oído hay unos canales con líquido que ayudan a tu cerebro a saber si estás derecho o de cabeza? Por eso te mareas al dar muchas vueltas.",
+      "¿Sabías que… saltar la cuerda mejora tanto tu coordinación que muchos boxeadores y futbolistas lo usan en sus entrenamientos?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase, Martín debe cruzar una viga de equilibrio angosta. Siente que se va a caer hacia un lado. ¿Qué le ayuda MÁS a mantener el equilibrio?",
+       "ops": [
+        "Cerrar los ojos y caminar rápido para terminar antes",
+        "Abrir los brazos, mirar al frente y avanzar despacio",
+        "Correr y saltar hasta el final sin mirar"
+       ],
+       "correcta": 1,
+       "porque": "Abrir los brazos ayuda a repartir el peso, mirar al frente da un punto fijo al cerebro y avanzar despacio da control. Correr o cerrar los ojos hace perder el equilibrio."
+      },
+      {
+       "q": "Un compañero lanza la pelota muy fuerte y a otros les cuesta atraparla. ¿Qué habilidad motriz deberían practicar juntos y con juego limpio?",
+       "ops": [
+        "Solo la locomoción, corriendo más rápido",
+        "La manipulación: lanzar más suave y atrapar con las dos manos",
+        "La estabilidad, quedándose quietos"
+       ],
+       "correcta": 1,
+       "porque": "Atrapar y lanzar son habilidades de manipulación. Lanzar con suavidad y atrapar con ambas manos permite que todos participen y jueguen limpio, con respeto."
+      }
+     ]
+    },
+    {
+     "id": "vida-activa-saludable",
+     "nombre": "Vida Activa y Saludable",
+     "emoji": "💚",
+     "oa": "OA 6 y OA 9: Ejecutar actividad física de intensidad moderada a vigorosa; y practicar actividades físicas en forma segura, demostrando la adquisición de hábitos de higiene, posturales y de vida saludable.",
+     "intro": "Descubre por qué moverte cada día, comer bien y cuidar tu cuerpo te hacen sentir mejor.",
+     "items": [
+      {
+       "t": "Actividad física",
+       "d": "Cualquier movimiento que hace trabajar tu cuerpo, como jugar, correr o andar en bici. Se recomienda al menos 60 minutos al día.",
+       "e": "🚴",
+       "en": "Physical activity"
+      },
+      {
+       "t": "Alimentación saludable",
+       "d": "Comer frutas, verduras, agua y comida variada; evitar el exceso de azúcar y frituras.",
+       "e": "🥗",
+       "en": "Healthy eating"
+      },
+      {
+       "t": "Hidratación",
+       "d": "Tomar agua antes, durante y después de hacer ejercicio para reponer lo que sudas.",
+       "e": "💧",
+       "en": "Hydration"
+      },
+      {
+       "t": "Higiene",
+       "d": "Lavarte las manos, ducharte y usar ropa limpia después de la actividad física para cuidar tu salud.",
+       "e": "🧼",
+       "en": "Hygiene"
+      },
+      {
+       "t": "Descanso y sueño",
+       "d": "Dormir bien (unas 9 a 11 horas) ayuda a tu cuerpo a recuperarse y crecer.",
+       "e": "😴",
+       "en": "Rest and sleep"
+      },
+      {
+       "t": "Postura",
+       "d": "Sentarte y pararte con la espalda derecha para cuidar tus huesos y músculos.",
+       "e": "🧍",
+       "en": "Posture"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… cuando haces ejercicio tu cerebro libera unas sustancias llamadas endorfinas que te ponen de buen humor?",
+      "¿Sabías que… más de la mitad de tu cuerpo es agua? Por eso tomar agua es tan importante cuando juegas y sudas."
+     ],
+     "retos": [
+      {
+       "q": "Antes de un partido en el recreo, un amigo te ofrece una bebida muy azucarada y dice que da 'energía'. Hace mucho calor. ¿Qué decisión saludable tomas?",
+       "ops": [
+        "Tomar la bebida azucarada porque da energía rápida",
+        "Elegir agua, que hidrata mejor sin tanto azúcar",
+        "No tomar nada para no perder tiempo"
+       ],
+       "correcta": 1,
+       "porque": "El agua es la mejor opción para hidratarte cuando haces ejercicio con calor. Las bebidas muy azucaradas no hidratan bien, y no tomar nada puede deshidratarte."
+      },
+      {
+       "q": "Después de correr en Educación Física, Martín está sudado y quiere ir directo a comer. ¿Qué hábito de higiene debería hacer primero?",
+       "ops": [
+        "Nada, comer así está bien",
+        "Lavarse las manos con agua y jabón",
+        "Secarse el sudor con la ropa del compañero"
+       ],
+       "correcta": 1,
+       "porque": "Lavarse las manos elimina gérmenes antes de comer y previene enfermedades. Usar la ropa de otro no es higiénico ni respetuoso."
+      }
+     ]
+    },
+    {
+     "id": "condicion-fisica",
+     "nombre": "Mi Condición Física",
+     "emoji": "💪",
+     "oa": "OA 6 y OA 8: Ejecutar actividades físicas que desarrollen la condición física (resistencia, fuerza, flexibilidad y velocidad); y medir y registrar las respuestas corporales al ejercicio mediante el pulso o escalas de percepción de esfuerzo.",
+     "intro": "Conoce cómo tu cuerpo se fortalece y responde cuando lo entrenas con esfuerzo y cuidado.",
+     "items": [
+      {
+       "t": "Resistencia",
+       "d": "Capacidad de mantener una actividad por harto tiempo sin cansarte demasiado, como trotar varias vueltas.",
+       "e": "🏃‍♀️",
+       "en": "Endurance"
+      },
+      {
+       "t": "Fuerza",
+       "d": "Capacidad de tus músculos para empujar, tirar o levantar, como saltar o trepar.",
+       "e": "🏋️",
+       "en": "Strength"
+      },
+      {
+       "t": "Flexibilidad",
+       "d": "Capacidad de estirar tu cuerpo sin lastimarte, como tocarte los pies con las manos.",
+       "e": "🤸‍♂️",
+       "en": "Flexibility"
+      },
+      {
+       "t": "Frecuencia cardíaca",
+       "d": "Las veces que late tu corazón por minuto; sube cuando haces ejercicio y baja al descansar.",
+       "e": "❤️",
+       "en": "Heart rate"
+      },
+      {
+       "t": "Calentamiento",
+       "d": "Ejercicios suaves al empezar para preparar el cuerpo y evitar lesiones.",
+       "e": "🔥",
+       "en": "Warm-up"
+      },
+      {
+       "t": "Elongación",
+       "d": "Estirar los músculos al final de la actividad para relajarlos y recuperarte.",
+       "e": "🧎",
+       "en": "Stretching"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu corazón es un músculo del tamaño de tu puño y late más de 100.000 veces al día?",
+      "¿Sabías que… puedes sentir tu frecuencia cardíaca poniendo dos dedos en tu muñeca o cuello? Late más rápido cuando corres."
+     ],
+     "retos": [
+      {
+       "q": "El profe pide correr varias vueltas a la cancha. Martín parte a toda velocidad y a la segunda vuelta ya está agotado. ¿Qué debería haber hecho para mejorar su resistencia?",
+       "ops": [
+        "Correr a un ritmo constante que pueda mantener",
+        "Correr aún más rápido al principio",
+        "No calentar para guardar energía"
+       ],
+       "correcta": 0,
+       "porque": "La resistencia mejora dosificando el esfuerzo con un ritmo constante. Partir muy rápido agota, y no calentar aumenta el riesgo de lesión."
+      },
+      {
+       "q": "Después de correr, Martín se pone dos dedos en el cuello y cuenta 30 latidos en 30 segundos, mientras que en reposo contaba muchos menos. ¿Qué le dice esto sobre su cuerpo?",
+       "ops": [
+        "Que su corazón late más rápido porque el cuerpo necesita más oxígeno al hacer ejercicio",
+        "Que su corazón se enfermó por correr",
+        "Que contó mal, porque el pulso no cambia"
+       ],
+       "correcta": 0,
+       "porque": "Al hacer ejercicio los músculos necesitan más oxígeno, así que el corazón late más rápido para llevarlo. Por eso el pulso sube al esfuerzo y baja en reposo; medirlo es normal y saludable."
+      }
+     ]
+    },
+    {
+     "id": "juegos-deportivos",
+     "nombre": "Juegos y Deportes",
+     "emoji": "⚽",
+     "oa": "OA 7 y OA 10: Practicar juegos predeportivos con reglas y espacios adaptados, aplicando principios de juego; y jugar con responsabilidad y honestidad, cumpliendo las reglas y los roles asignados.",
+     "intro": "Aprende a jugar en equipo, seguir reglas y disfrutar el deporte con respeto y estrategia.",
+     "items": [
+      {
+       "t": "Trabajo en equipo",
+       "d": "Cooperar con tus compañeros para lograr una meta común, pasando y apoyando a otros.",
+       "e": "🤝",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Reglas del juego",
+       "d": "Acuerdos que todos siguen para que el juego sea justo y ordenado.",
+       "e": "📋",
+       "en": "Game rules"
+      },
+      {
+       "t": "Estrategia",
+       "d": "Plan para jugar mejor, como avanzar en ataque o replegarse en defensa y decidir cuándo pasar la pelota.",
+       "e": "🧠",
+       "en": "Strategy"
+      },
+      {
+       "t": "Juego predeportivo",
+       "d": "Juegos sencillos que preparan para deportes reales, como las quemadas o la pinta.",
+       "e": "🎯",
+       "en": "Pre-sport game"
+      },
+      {
+       "t": "Roles en el equipo",
+       "d": "Cada jugador tiene una tarea, como defender, atacar o ser arquero.",
+       "e": "🥅",
+       "en": "Team roles"
+      },
+      {
+       "t": "Comunicación",
+       "d": "Hablar y hacer señas con tus compañeros para coordinarse durante el juego.",
+       "e": "🗣️",
+       "en": "Communication"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en muchos deportes el capitán del equipo saluda al equipo rival antes de jugar como señal de respeto?",
+      "¿Sabías que… en el fútbol el árbitro usa una tarjeta amarilla para advertir y una roja para expulsar a quien no respeta las reglas?"
+     ],
+     "retos": [
+      {
+       "q": "En un partido de quemadas, Martín ve que la pelota le pegó a un compañero de su equipo, pero el otro equipo no se dio cuenta. Nadie más lo vio. ¿Qué hace un buen deportista honesto?",
+       "ops": [
+        "Callarse para que su equipo gane",
+        "Avisar con honestidad que su compañero fue tocado",
+        "Discutir para confundir al otro equipo"
+       ],
+       "correcta": 1,
+       "porque": "La honestidad y el juego limpio importan más que ganar. Un buen deportista reconoce la verdad aunque no lo beneficie, cuidando la sana convivencia."
+      },
+      {
+       "q": "Tu equipo siempre le pasa la pelota a la misma persona y los demás casi no participan. ¿Qué estrategia mejora el trabajo en equipo?",
+       "ops": [
+        "Seguir pasándole solo al más hábil",
+        "Repartir los pases para que todos jueguen y aporten",
+        "Que cada uno juegue por su cuenta"
+       ],
+       "correcta": 1,
+       "porque": "Un buen equipo incluye a todos. Repartir los pases usa mejor la estrategia, fomenta la empatía y hace que cada compañero se sienta parte del grupo."
+      }
+     ]
+    },
+    {
+     "id": "expresion-ritmica",
+     "nombre": "Expresión y Ritmo",
+     "emoji": "🎵",
+     "oa": "OA 5: Ejecutar movimientos y elementos de danzas tradicionales de forma coordinada, usando actividades rítmicas y recreativas, de manera individual o grupal.",
+     "intro": "Usa tu cuerpo para expresar ideas y emociones siguiendo el ritmo de la música.",
+     "items": [
+      {
+       "t": "Ritmo",
+       "d": "Seguir el pulso o compás de la música con tus movimientos, como aplaudir a tiempo.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Expresión corporal",
+       "d": "Comunicar emociones e ideas con el cuerpo, sin usar palabras.",
+       "e": "🎭",
+       "en": "Body expression"
+      },
+      {
+       "t": "Danza",
+       "d": "Bailar con pasos coordinados; en Chile tenemos la cueca, nuestro baile nacional.",
+       "e": "💃",
+       "en": "Dance"
+      },
+      {
+       "t": "Espacio",
+       "d": "El lugar por donde te mueves: adelante, atrás, en círculos o cambiando de dirección.",
+       "e": "🧭",
+       "en": "Space"
+      },
+      {
+       "t": "Secuencia de movimientos",
+       "d": "Serie de pasos en orden que se repiten formando una coreografía.",
+       "e": "🔁",
+       "en": "Movement sequence"
+      },
+      {
+       "t": "Coordinación con la música",
+       "d": "Ajustar tus movimientos a la velocidad de la canción, rápida o lenta.",
+       "e": "🎶",
+       "en": "Musical coordination"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca es el baile nacional de Chile y se baila con un pañuelo que representa el cortejo, como un gallo y una gallina?",
+      "¿Sabías que… bailar activa muchas partes del cerebro a la vez, por eso ayuda a la memoria y a la coordinación?"
+     ],
+     "retos": [
+      {
+       "q": "En una presentación de cueca, una compañera se equivoca de paso y se pone nerviosa frente al curso. ¿Qué actitud muestra empatía y buena convivencia?",
+       "ops": [
+        "Reírse de ella con los demás",
+        "Animarla y seguir bailando juntos con respeto",
+        "Detener el baile para reclamarle"
+       ],
+       "correcta": 1,
+       "porque": "La empatía significa apoyar a un compañero cuando se equivoca. Animarla y seguir cuida la sana convivencia; reírse o reclamar la hace sentir mal."
+      },
+      {
+       "q": "El profe pone una canción que primero va lenta y de repente se vuelve rápida. ¿Cómo debes mover tu cuerpo para bailar con ritmo?",
+       "ops": [
+        "Moverme siempre igual sin escuchar la música",
+        "Ajustar mis movimientos: lentos cuando la música es lenta y rápidos cuando es rápida",
+        "Quedarme quieto hasta que termine"
+       ],
+       "correcta": 1,
+       "porque": "Bailar con ritmo es coordinar el cuerpo con la música. Si la canción cambia de velocidad, mis movimientos también cambian para seguir el compás."
+      }
+     ]
+    },
+    {
+     "id": "seguridad-y-entorno",
+     "nombre": "Seguridad y Juego Limpio",
+     "emoji": "🛡️",
+     "oa": "OA 11: Practicar actividades físicas demostrando comportamientos seguros, como calentar de forma apropiada, usar bien los materiales e instalaciones, seguir instrucciones y asegurar un espacio libre de obstáculos. (Se refuerza la actitud de cuidar el entorno y a los demás).",
+     "intro": "Aprende a moverte con seguridad, prevenir accidentes y cuidar los espacios donde jugamos.",
+     "items": [
+      {
+       "t": "Prevención de lesiones",
+       "d": "Cuidados para no lastimarte, como calentar, usar buen calzado y no correr riesgos.",
+       "e": "🩹",
+       "en": "Injury prevention"
+      },
+      {
+       "t": "Espacio seguro",
+       "d": "Revisar que la cancha o patio esté libre de obstáculos antes de jugar.",
+       "e": "🚧",
+       "en": "Safe space"
+      },
+      {
+       "t": "Respeto por el compañero",
+       "d": "Jugar sin empujar ni hacer trampas para que nadie salga herido.",
+       "e": "🫱",
+       "en": "Respect for others"
+      },
+      {
+       "t": "Seguir instrucciones",
+       "d": "Escuchar y cumplir lo que indica el profesor para que la clase sea segura.",
+       "e": "👂",
+       "en": "Following instructions"
+      },
+      {
+       "t": "Pedir ayuda",
+       "d": "Saber avisar a un adulto y qué hacer si alguien se golpea o cae.",
+       "e": "🚑",
+       "en": "Asking for help"
+      },
+      {
+       "t": "Autocuidado",
+       "d": "Escuchar a tu cuerpo: descansar si te duele algo y avisar si te sientes mal.",
+       "e": "🧑‍⚕️",
+       "en": "Self-care"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el número de emergencias en Chile es el 131 para la ambulancia (SAMU)? Es bueno que un adulto lo conozca.",
+      "¿Sabías que… calentar antes de jugar sube poco a poco la temperatura de tus músculos y así se estiran mejor y se lesionan menos?"
+     ],
+     "retos": [
+      {
+       "q": "Durante un juego, un compañero se cae y se raspa la rodilla, y le sale un poco de sangre. ¿Cuál es la reacción más segura y responsable?",
+       "ops": [
+        "Seguir jugando y dejarlo solo",
+        "Avisar de inmediato al profesor o a un adulto y acompañarlo",
+        "Tratar de que corra con él para que se le pase"
+       ],
+       "correcta": 1,
+       "porque": "Ante un accidente, lo responsable es avisar a un adulto que sabe qué hacer y acompañar al compañero con empatía. Nunca dejarlo solo ni forzarlo a seguir."
+      },
+      {
+       "q": "Antes de empezar a jugar en la cancha, Martín ve que hay piedras y una botella tirada en el suelo. ¿Qué es lo más seguro que puede hacer?",
+       "ops": [
+        "Empezar a jugar igual, seguramente no pasa nada",
+        "Retirar los obstáculos y avisar al profesor antes de jugar",
+        "Saltar sobre las piedras para no perder tiempo"
+       ],
+       "correcta": 1,
+       "porque": "Un espacio seguro es un espacio libre de obstáculos. Retirar peligros y avisar al adulto evita caídas y lesiones para todos los que van a jugar."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "habilidades-motrices",
+     "nombre": "Habilidades Motrices y Juego",
+     "emoji": "🤸",
+     "oa": "OA 1: Demostrar la aplicación de las habilidades motrices básicas adquiridas (locomoción, manipulación y estabilidad) en una variedad de actividades y juegos deportivos.",
+     "intro": "Descubre cómo tu cuerpo se mueve, salta, corre y se coordina para dominar juegos y deportes.",
+     "items": [
+      {
+       "t": "Locomoción",
+       "d": "Moverte de un lugar a otro: correr, saltar, galopar o trepar.",
+       "e": "🏃",
+       "en": "Locomotion"
+      },
+      {
+       "t": "Manipulación",
+       "d": "Controlar objetos con el cuerpo: lanzar, atrapar, patear o driblar una pelota.",
+       "e": "⚽",
+       "en": "Manipulation"
+      },
+      {
+       "t": "Estabilidad",
+       "d": "Mantener el equilibrio del cuerpo al girar, balancearte o quedarte firme sin caer.",
+       "e": "🧘",
+       "en": "Stability / Balance"
+      },
+      {
+       "t": "Coordinación",
+       "d": "Hacer que distintas partes del cuerpo trabajen juntas al mismo tiempo, como saltar la cuerda.",
+       "e": "🪢",
+       "en": "Coordination"
+      },
+      {
+       "t": "Combinación motriz",
+       "d": "Unir dos o más movimientos, como correr y luego lanzar, para lograr una acción completa.",
+       "e": "🔗",
+       "en": "Motor combination"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Moverte siguiendo un pulso o compás, como en bailes folclóricos chilenos.",
+       "e": "🎵",
+       "en": "Rhythm"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… al aprender a andar en bicicleta, tu cerebro nunca olvida ese movimiento? Se llama memoria motriz.",
+      "¿Sabías que… la cueca, nuestro baile nacional, combina ritmo, coordinación y equilibrio al mismo tiempo?"
+     ],
+     "retos": [
+      {
+       "q": "En un partido de básquetbol, quieres avanzar hacia el aro sin que te quiten la pelota. ¿Qué combinación de habilidades te sirve mejor?",
+       "ops": [
+        "Solo correr muy rápido mirando el suelo",
+        "Driblar la pelota mientras corres y miras hacia el aro",
+        "Quedarte quieto sosteniendo la pelota con los pies"
+       ],
+       "correcta": 1,
+       "porque": "Combinar manipulación (driblar) con locomoción (correr) y mantener la mirada al frente te permite avanzar controlando la pelota, tal como se aplican las habilidades motrices combinadas en el juego."
+      },
+      {
+       "q": "En gimnasia debes caminar por una viga de equilibrio angosta sin caerte. ¿Qué habilidad motriz estás poniendo a prueba principalmente?",
+       "ops": [
+        "La manipulación, porque agarras un objeto",
+        "La estabilidad, porque controlas el equilibrio del cuerpo",
+        "La locomoción rápida, porque debes correr por la viga"
+       ],
+       "correcta": 1,
+       "porque": "Caminar por una viga exige controlar el centro de gravedad para no caer: eso es estabilidad o equilibrio. Correr sería peligroso y no hay ningún objeto que manipular."
+      }
+     ]
+    },
+    {
+     "id": "condicion-fisica",
+     "nombre": "Condición Física y Vida Activa",
+     "emoji": "💪",
+     "oa": "OA 6: Ejecutar actividades físicas de intensidad moderada a vigorosa que desarrollen la condición física por medio del ejercicio de la resistencia cardiovascular, la fuerza, la flexibilidad y la velocidad, estableciendo metas de superación personal.",
+     "intro": "Aprende a cuidar tu cuerpo entrenando resistencia, fuerza, flexibilidad y velocidad para sentirte con energía.",
+     "items": [
+      {
+       "t": "Resistencia",
+       "d": "La capacidad de mantener una actividad, como correr o nadar, durante bastante tiempo sin cansarte demasiado.",
+       "e": "🏊",
+       "en": "Endurance"
+      },
+      {
+       "t": "Fuerza",
+       "d": "Lo que usan tus músculos para empujar, levantar o sostener algo.",
+       "e": "🏋️",
+       "en": "Strength"
+      },
+      {
+       "t": "Flexibilidad",
+       "d": "La capacidad de estirar tu cuerpo y mover las articulaciones sin lastimarte.",
+       "e": "🤸",
+       "en": "Flexibility"
+      },
+      {
+       "t": "Velocidad",
+       "d": "La rapidez con que tu cuerpo se mueve o reacciona, como en una carrera corta.",
+       "e": "⚡",
+       "en": "Speed"
+      },
+      {
+       "t": "Frecuencia cardíaca",
+       "d": "Cuántas veces late tu corazón por minuto; sube cuando haces ejercicio.",
+       "e": "❤️",
+       "en": "Heart rate"
+      },
+      {
+       "t": "Calentamiento",
+       "d": "Ejercicios suaves al inicio para preparar el cuerpo y evitar lesiones.",
+       "e": "🔥",
+       "en": "Warm-up"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el corazón de un niño puede latir hasta unas 200 veces por minuto durante un ejercicio muy intenso, mientras que en reposo late alrededor de 90 veces?",
+      "¿Sabías que… la OMS recomienda que niños y niñas hagan al menos 60 minutos de actividad física al día?"
+     ],
+     "retos": [
+      {
+       "q": "Antes de una carrera en la clase de educación física, tu amigo quiere partir corriendo a toda velocidad de inmediato. ¿Qué le recomiendas para cuidar su cuerpo?",
+       "ops": [
+        "Que corra fuerte al tiro, así ahorra tiempo",
+        "Que haga un calentamiento suave primero para preparar los músculos",
+        "Que no haga nada porque calentar cansa"
+       ],
+       "correcta": 1,
+       "porque": "El calentamiento prepara los músculos y el corazón de a poco, reduciendo el riesgo de lesiones. Partir en frío puede provocar tirones o desgarros."
+      },
+      {
+       "q": "Quieres mejorar en un deporte de fondo como el atletismo de larga distancia. ¿Qué capacidad física deberías entrenar más para no cansarte tan rápido?",
+       "ops": [
+        "La fuerza máxima, levantando pesas muy pesadas",
+        "La resistencia cardiovascular, corriendo tiempos cada vez más largos",
+        "La flexibilidad, estirando las piernas antes de correr"
+       ],
+       "correcta": 1,
+       "porque": "Correr largas distancias sin agotarte depende de la resistencia cardiovascular, que se entrena manteniendo el esfuerzo por más tiempo. La fuerza y la flexibilidad ayudan, pero no son lo que evita cansarte en el fondo."
+      }
+     ]
+    },
+    {
+     "id": "vida-saludable",
+     "nombre": "Vida Saludable e Higiene",
+     "emoji": "🥗",
+     "oa": "OA 9: Practicar actividades físicas en forma segura, demostrando la adquisición de hábitos de higiene, posturales y de vida saludable, como usar ropa adecuada, mantener una postura correcta, hidratarse con agua y usar protector solar.",
+     "intro": "Conoce los hábitos que mantienen tu cuerpo sano: comer bien, hidratarte, dormir y cuidar tu higiene.",
+     "items": [
+      {
+       "t": "Alimentación saludable",
+       "d": "Comer variado: frutas, verduras, cereales y proteínas para tener energía y crecer.",
+       "e": "🍎",
+       "en": "Healthy eating"
+      },
+      {
+       "t": "Hidratación",
+       "d": "Tomar agua, sobre todo al hacer deporte, para reponer lo que pierdes al sudar.",
+       "e": "💧",
+       "en": "Hydration"
+      },
+      {
+       "t": "Higiene personal",
+       "d": "Lavarte las manos, ducharte y cambiarte ropa después de hacer ejercicio.",
+       "e": "🧼",
+       "en": "Personal hygiene"
+      },
+      {
+       "t": "Descanso y sueño",
+       "d": "Dormir bien (unas 9 a 11 horas) ayuda a tu cuerpo y mente a recuperarse.",
+       "e": "😴",
+       "en": "Rest and sleep"
+      },
+      {
+       "t": "Postura correcta",
+       "d": "Mantener la espalda y el cuerpo bien alineados al sentarte, pararte o cargar peso.",
+       "e": "🧍",
+       "en": "Correct posture"
+      },
+      {
+       "t": "Sedentarismo",
+       "d": "Pasar mucho tiempo sentado sin moverse; hay que evitarlo para estar sano.",
+       "e": "🛋️",
+       "en": "Sedentary lifestyle"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… tu cuerpo es alrededor de un 60% agua, por eso hidratarte es tan importante al hacer deporte?",
+      "¿Sabías que… lavarse las manos con jabón por 20 segundos elimina la mayoría de los microbios que causan enfermedades?"
+     ],
+     "retos": [
+      {
+       "q": "Es un día caluroso y jugaste fútbol durante una hora sudando mucho. Al terminar tienes mucha sed. ¿Qué es lo más saludable?",
+       "ops": [
+        "Tomar una bebida gaseosa azucarada bien fría",
+        "Tomar agua para reponer el líquido que perdiste",
+        "No tomar nada para no cortar la digestión"
+       ],
+       "correcta": 1,
+       "porque": "El agua repone el líquido perdido por el sudor sin azúcares añadidos. Las gaseosas tienen mucha azúcar y no hidratan bien; el cuerpo necesita reponer agua después del esfuerzo."
+      },
+      {
+       "q": "Después de la clase de educación física quedaste transpirado y con la polera mojada antes de volver a la sala. ¿Qué hábito de higiene es el más adecuado?",
+       "ops": [
+        "Quedarte con la ropa sudada porque igual se seca sola",
+        "Lavarte y cambiarte a una polera seca antes de seguir la jornada",
+        "Ponerte más ropa encima para tapar el sudor"
+       ],
+       "correcta": 1,
+       "porque": "Cambiarse la ropa sudada y asearse evita malos olores, resfríos y la proliferación de microbios en la piel. Es parte de los hábitos de higiene que se practican después de la actividad física."
+      }
+     ]
+    },
+    {
+     "id": "juego-limpio",
+     "nombre": "Juego Limpio y Trabajo en Equipo",
+     "emoji": "🤝",
+     "oa": "OA 10: Practicar actividades físicas y/o juegos colectivos, demostrando responsabilidad, liderazgo, respeto por las reglas y los compañeros, y actitudes de juego limpio al participar.",
+     "intro": "En el deporte ganamos y perdemos, pero siempre con respeto, honestidad y compañerismo.",
+     "items": [
+      {
+       "t": "Juego limpio (Fair play)",
+       "d": "Jugar con honestidad, respetando las reglas aunque nadie te vigile.",
+       "e": "⚖️",
+       "en": "Fair play"
+      },
+      {
+       "t": "Respeto al rival",
+       "d": "Tratar bien al equipo contrario; sin ellos no habría partido.",
+       "e": "🙌",
+       "en": "Respect for opponents"
+      },
+      {
+       "t": "Trabajo en equipo",
+       "d": "Colaborar y apoyar a tus compañeros para lograr una meta común.",
+       "e": "👥",
+       "en": "Teamwork"
+      },
+      {
+       "t": "Liderazgo",
+       "d": "Guiar y motivar a tu equipo con el ejemplo, ayudando a que todos participen.",
+       "e": "🧭",
+       "en": "Leadership"
+      },
+      {
+       "t": "Reglas del juego",
+       "d": "Acuerdos que todos siguen para que el juego sea justo y seguro.",
+       "e": "📋",
+       "en": "Game rules"
+      },
+      {
+       "t": "Empatía",
+       "d": "Ponerte en el lugar del otro y ayudar a un compañero que lo necesita.",
+       "e": "💗",
+       "en": "Empathy"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en muchos deportes existe el premio al 'Fair Play', que reconoce al equipo más respetuoso, no al que más goles hizo?",
+      "¿Sabías que… en los Juegos Olímpicos, los deportistas hacen un juramento de competir con honestidad y respeto por las reglas?"
+     ],
+     "retos": [
+      {
+       "q": "En un partido, el árbitro no vio que la pelota tocó tu mano antes del gol. Tu equipo va perdiendo. ¿Qué decides hacer?",
+       "ops": [
+        "Callarte, porque el árbitro no lo vio y así ganan",
+        "Avisar honestamente que tocaste la pelota con la mano",
+        "Discutir con el rival para distraer a todos"
+       ],
+       "correcta": 1,
+       "porque": "La honestidad y el juego limpio valen más que un resultado. Reconocer la verdad aunque el árbitro no lo viera demuestra integridad y respeto por el deporte y tus compañeros."
+      },
+      {
+       "q": "Un compañero de tu equipo falla un tiro importante y se siente muy mal. ¿Cuál es la mejor actitud como equipo?",
+       "ops": [
+        "Retarlo y decirle que jugó pésimo",
+        "Animarlo y recordarle que todos fallan a veces",
+        "Ignorarlo el resto del partido"
+       ],
+       "correcta": 1,
+       "porque": "La empatía y el apoyo mantienen unido al equipo. Animar a un compañero que falló ayuda a que siga esforzándose; el buen trabajo en equipo y el liderazgo se demuestran en los momentos difíciles."
+      }
+     ]
+    },
+    {
+     "id": "deportes-expresion",
+     "nombre": "Deportes, Estrategia y Expresión",
+     "emoji": "⚽",
+     "oa": "OA 2 y OA 3: Ejecutar juegos colectivos y deportes creando tácticas y estrategias para resolver problemas de juego, y practicar deportes individuales y colectivos con reglas y espacios adaptados (se relaciona con OA 5, danza folclórica, para la expresión corporal).",
+     "intro": "Explora distintos deportes, crea estrategias con tu equipo y aprende a expresarte con tu cuerpo.",
+     "items": [
+      {
+       "t": "Deporte colectivo",
+       "d": "Deportes de equipo como fútbol, básquetbol o vóleibol donde cooperas con otros.",
+       "e": "🏐",
+       "en": "Team sport"
+      },
+      {
+       "t": "Deporte individual",
+       "d": "Deportes donde compites solo, como atletismo, natación o tenis.",
+       "e": "🎾",
+       "en": "Individual sport"
+      },
+      {
+       "t": "Táctica y estrategia",
+       "d": "Un plan para jugar mejor, como marcar a un rival o buscar espacios libres.",
+       "e": "🧠",
+       "en": "Tactics and strategy"
+      },
+      {
+       "t": "Expresión corporal",
+       "d": "Comunicar ideas o emociones con movimientos, como en la danza folclórica o el mimo.",
+       "e": "💃",
+       "en": "Body expression"
+      },
+      {
+       "t": "Juego pre-deportivo",
+       "d": "Juegos que preparan para un deporte, como 'quemados' antes del vóleibol.",
+       "e": "🎯",
+       "en": "Pre-sport game"
+      },
+      {
+       "t": "Rol dentro del equipo",
+       "d": "La función que cumples: arquero, defensa o delantero, cada uno importante.",
+       "e": "🥅",
+       "en": "Team role"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el 'palín' es un deporte ancestral del pueblo mapuche, parecido al hockey, que se juega en Chile desde hace siglos?",
+      "¿Sabías que… el vóleibol lo inventó un profesor de educación física en 1895 para tener un deporte menos brusco que el básquetbol?"
+     ],
+     "retos": [
+      {
+       "q": "Tu equipo de fútbol siempre pierde la pelota porque todos corren hacia ella al mismo tiempo. ¿Qué estrategia mejoraría el juego?",
+       "ops": [
+        "Que todos persigan la pelota juntos con más ganas",
+        "Que cada jugador cubra su posición y se pasen la pelota",
+        "Que solo el más rápido juegue y los demás miren"
+       ],
+       "correcta": 1,
+       "porque": "Respetar los roles y las posiciones permite cubrir mejor la cancha y pasar la pelota con estrategia. Amontonarse deja espacios libres para el rival; el juego organizado resuelve mejor el problema del espacio."
+      },
+      {
+       "q": "En vóleibol, el equipo rival deja siempre un rincón de la cancha sin defender. ¿Qué táctica conviene usar para ganar el punto?",
+       "ops": [
+        "Lanzar la pelota siempre al centro donde hay más jugadores rivales",
+        "Dirigir el remate hacia el rincón libre que nadie está cubriendo",
+        "Golpear la pelota lo más fuerte posible sin mirar la cancha"
+       ],
+       "correcta": 1,
+       "porque": "Crear una táctica implica leer los espacios: enviar la pelota al lugar sin defensa aprovecha la debilidad del rival, tal como se resuelven los problemas de espacio y adversario en el juego."
+      }
+     ]
+    },
+    {
+     "id": "seguridad-entorno",
+     "nombre": "Seguridad, Naturaleza y Entorno",
+     "emoji": "🌿",
+     "oa": "OA 4 y OA 11: Ejecutar actividades físicas y/o deportivas en distintos entornos aplicando medidas para mantenerlos limpios, y demostrar comportamientos seguros y autocuidado, como calentar, usar ropa adecuada y manipular con cuidado implementos e instalaciones.",
+     "intro": "Aprende a disfrutar del ejercicio al aire libre cuidándote a ti mismo y protegiendo la naturaleza.",
+     "items": [
+      {
+       "t": "Autocuidado",
+       "d": "Tomar decisiones para proteger tu cuerpo y evitar accidentes o lesiones.",
+       "e": "🛡️",
+       "en": "Self-care"
+      },
+      {
+       "t": "Actividad al aire libre",
+       "d": "Hacer ejercicio en la naturaleza: caminatas, trekking o andar en bici.",
+       "e": "🥾",
+       "en": "Outdoor activity"
+      },
+      {
+       "t": "Protección solar",
+       "d": "Usar gorro, bloqueador y ropa adecuada para cuidar tu piel del sol.",
+       "e": "🧴",
+       "en": "Sun protection"
+      },
+      {
+       "t": "Prevención de lesiones",
+       "d": "Usar el calzado y equipo correcto y calentar para evitar hacerte daño.",
+       "e": "🩹",
+       "en": "Injury prevention"
+      },
+      {
+       "t": "Respeto ambiental",
+       "d": "No botar basura y cuidar plantas y animales cuando haces deporte al aire libre.",
+       "e": "♻️",
+       "en": "Environmental respect"
+      },
+      {
+       "t": "Señales de fatiga",
+       "d": "Reconocer cuando tu cuerpo pide descanso: cansancio, mareo o dolor.",
+       "e": "🚦",
+       "en": "Signs of fatigue"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el sol en Chile es muy fuerte, sobre todo en verano y en el norte, por eso siempre debes usar bloqueador al hacer deporte al aire libre?",
+      "¿Sabías que… caminar en la naturaleza no solo ejercita el cuerpo, sino que también reduce el estrés y mejora el ánimo?"
+     ],
+     "retos": [
+      {
+       "q": "Vas de excursión con tu curso a un cerro. Encuentras envoltorios de comida en el camino y hace mucho sol. ¿Qué haces para cuidarte y cuidar el entorno?",
+       "ops": [
+        "Dejar la basura ahí y quitarte el gorro porque estorba",
+        "Recoger la basura, guardarla, y mantener puesto tu gorro y bloqueador",
+        "Botar tu propia basura al lado de la que ya había"
+       ],
+       "correcta": 1,
+       "porque": "El respeto ambiental significa no dejar rastro y ayudar a limpiar. La protección solar (gorro y bloqueador) cuida tu piel del fuerte sol chileno. Ambos son parte del autocuidado y el cuidado del entorno."
+      },
+      {
+       "q": "Durante una caminata larga empiezas a sentir mareo, mucho cansancio y la cara acalorada. ¿Qué es lo más seguro y responsable?",
+       "ops": [
+        "Seguir igual sin avisar para no atrasar al grupo",
+        "Detenerte a la sombra, hidratarte y avisar al profesor cómo te sientes",
+        "Acelerar el paso para terminar antes la caminata"
+       ],
+       "correcta": 1,
+       "porque": "El mareo y el cansancio extremo son señales de fatiga que el cuerpo envía para pedir descanso. Detenerse, hidratarse y avisar a un adulto es autocuidado; ignorarlas o exigirse más puede causar un accidente."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "habilidades-motrices",
+     "nombre": "Habilidades Motrices y Juegos",
+     "emoji": "🤾",
+     "oa": "OA 1: Demostrar la aplicación de las habilidades motrices básicas (locomoción, manipulación y estabilidad) en una variedad de actividades deportivas, como giros, lanzamientos y carreras con obstáculos.",
+     "intro": "Descubre cómo tu cuerpo combina correr, saltar, lanzar y equilibrarse para jugar y practicar deportes.",
+     "items": [
+      {
+       "t": "Locomoción",
+       "d": "Formas de desplazar tu cuerpo: correr, saltar, galopar o esquivar a un rival en un partido.",
+       "e": "🏃",
+       "en": "Locomotion"
+      },
+      {
+       "t": "Manipulación",
+       "d": "Controlar objetos con manos o pies: lanzar, atrapar, botear o golpear una pelota.",
+       "e": "⚽",
+       "en": "Manipulation"
+      },
+      {
+       "t": "Estabilidad y equilibrio",
+       "d": "Mantener el cuerpo firme y controlado al girar, frenar o quedarte en una pierna.",
+       "e": "🤸",
+       "en": "Stability and balance"
+      },
+      {
+       "t": "Coordinación",
+       "d": "Unir varios movimientos a la vez, como driblar mientras corres y miras a un compañero.",
+       "e": "🎯",
+       "en": "Coordination"
+      },
+      {
+       "t": "Combinación de habilidades",
+       "d": "Encadenar dos o más habilidades en una jugada: correr, saltar y lanzar sin detenerte.",
+       "e": "🔗",
+       "en": "Skill combination"
+      },
+      {
+       "t": "Carreras con obstáculos",
+       "d": "Correr sorteando barreras o conos, controlando la velocidad, el salto y el equilibrio.",
+       "e": "🏅",
+       "en": "Obstacle races"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… coordinar ojos, manos y pies al atrapar una pelota activa varias zonas del cerebro al mismo tiempo, y por eso el deporte también te ayuda a estudiar mejor?",
+      "¿Sabías que… encadenar habilidades como correr, saltar y lanzar en una sola jugada es lo que separa a un buen deportista de uno principiante, y se entrena con la práctica?"
+     ],
+     "retos": [
+      {
+       "q": "En una carrera con obstáculos, un compañero salta muy alto sobre cada valla y llega cansado y último. ¿Qué le recomiendas para mejorar?",
+       "ops": [
+        "Que salte todavía más alto para no chocar nunca",
+        "Que salte lo justo para librar la valla y ahorre energía para correr",
+        "Que corra alrededor de las vallas en vez de saltarlas"
+       ],
+       "correcta": 1,
+       "porque": "Combinar habilidades de forma eficiente significa gastar solo la energía necesaria: un salto justo mantiene la velocidad y el equilibrio, mientras que saltar de más agota y frena la carrera."
+      },
+      {
+       "q": "Quieres mejorar tu lanzamiento para llegar más lejos. ¿Qué combinación de movimientos es más efectiva?",
+       "ops": [
+        "Lanzar solo con la fuerza del brazo, quieto y con los pies juntos",
+        "Dar un paso, girar el tronco y acompañar el lanzamiento con todo el cuerpo",
+        "Cerrar los ojos y lanzar con toda tu fuerza de golpe"
+       ],
+       "correcta": 1,
+       "porque": "Un buen lanzamiento no depende solo del brazo: coordinar el paso, el giro del tronco y el impulso del cuerpo suma toda tu energía al objeto y lo hace llegar más lejos."
+      }
+     ]
+    },
+    {
+     "id": "vida-activa-saludable",
+     "nombre": "Vida Activa y Saludable",
+     "emoji": "💪",
+     "oa": "OA 6 y OA 7: Ejecutar actividades físicas de intensidad moderada a vigorosa que desarrollen la condición física, y practicar y planificar de forma regular actividad física para la salud.",
+     "intro": "Aprende por qué moverte cada día cuida tu corazón, tu ánimo y tu energía.",
+     "items": [
+      {
+       "t": "Actividad física regular",
+       "d": "Moverte al menos 60 minutos al día: caminar, andar en bici, jugar o hacer deporte.",
+       "e": "🚴",
+       "en": "Regular physical activity"
+      },
+      {
+       "t": "Intensidad moderada a vigorosa",
+       "d": "Esfuerzo que te hace respirar más rápido y sudar, como trotar o jugar un partido.",
+       "e": "🔥",
+       "en": "Moderate to vigorous intensity"
+      },
+      {
+       "t": "Resistencia",
+       "d": "La capacidad de sostener el esfuerzo por más tiempo sin cansarte demasiado rápido.",
+       "e": "🏃‍♀️",
+       "en": "Endurance"
+      },
+      {
+       "t": "Calentamiento",
+       "d": "Mover y estirar el cuerpo suavemente antes de esforzarte para no lesionarte.",
+       "e": "🤾‍♂️",
+       "en": "Warm-up"
+      },
+      {
+       "t": "Vuelta a la calma",
+       "d": "Bajar la intensidad al final con estiramientos suaves para recuperar el cuerpo.",
+       "e": "🧘",
+       "en": "Cool-down"
+      },
+      {
+       "t": "Sedentarismo",
+       "d": "Pasar muchas horas sentado o frente a pantallas sin moverte; daña la salud a la larga.",
+       "e": "🛋️",
+       "en": "Sedentary behavior"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la Organización Mundial de la Salud recomienda que niños y niñas hagan al menos 60 minutos de actividad física de intensidad moderada a vigorosa cada día?",
+      "¿Sabías que… al hacer ejercicio tu cuerpo libera endorfinas, unas sustancias que te ponen de mejor humor y ayudan a reducir el estrés?"
+     ],
+     "retos": [
+      {
+       "q": "Tu amigo quiere empezar a jugar un partido intenso saltando directo desde el sillón, sin calentar. ¿Qué le recomiendas?",
+       "ops": [
+        "Que juegue de inmediato para no perder tiempo",
+        "Que haga un calentamiento primero para preparar músculos y corazón",
+        "Que tome mucha agua fría y ya está listo"
+       ],
+       "correcta": 1,
+       "porque": "El calentamiento sube gradualmente el esfuerzo y prepara los músculos y el corazón, reduciendo el riesgo de lesiones. Pasar del reposo al esfuerzo máximo es peligroso."
+      },
+      {
+       "q": "Después de clases pasas 4 horas seguidas frente a la tablet sin moverte. ¿Cómo mejorarías este hábito?",
+       "ops": [
+        "Está bien mientras hagas las tareas",
+        "Cortar el tiempo de pantalla con pausas activas y algo de ejercicio",
+        "Cambiar la tablet por el celular para variar"
+       ],
+       "correcta": 1,
+       "porque": "El sedentarismo prolongado afecta la salud. Intercalar pausas activas y actividad física de intensidad moderada combate sus efectos y equilibra el uso de pantallas."
+      }
+     ]
+    },
+    {
+     "id": "esfuerzo-hidratacion",
+     "nombre": "Esfuerzo, Pulso e Hidratación",
+     "emoji": "❤️",
+     "oa": "OA 8 y OA 9: Determinar la intensidad del esfuerzo físico de forma manual mediante el pulso, y practicar actividad física en forma segura con hábitos de higiene e hidratación.",
+     "intro": "Aprende a escuchar a tu cuerpo: mide tu esfuerzo, hidrátate y cuídate al ejercitarte.",
+     "items": [
+      {
+       "t": "Frecuencia cardíaca (pulso)",
+       "d": "Los latidos de tu corazón por minuto; suben al ejercitarte porque trabaja más fuerte.",
+       "e": "❤️",
+       "en": "Heart rate"
+      },
+      {
+       "t": "Medir el pulso",
+       "d": "Contar los latidos apoyando dos dedos en el cuello o la muñeca para saber cuánto te esfuerzas.",
+       "e": "⏱️",
+       "en": "Measuring the pulse"
+      },
+      {
+       "t": "Percepción del esfuerzo",
+       "d": "Notar qué tan cansado estás por tu respiración y sudor, aunque no midas el pulso.",
+       "e": "😮‍💨",
+       "en": "Perceived effort"
+      },
+      {
+       "t": "Hidratación",
+       "d": "Tomar agua antes, durante y después del ejercicio para reponer lo que sudas.",
+       "e": "💧",
+       "en": "Hydration"
+      },
+      {
+       "t": "Higiene tras el ejercicio",
+       "d": "Ducharse, cambiarse de ropa y refrescarse después de sudar para cuidar tu cuerpo.",
+       "e": "🚿",
+       "en": "Hygiene after exercise"
+      },
+      {
+       "t": "Recuperación",
+       "d": "El descanso que tu corazón y músculos necesitan para volver a la normalidad tras el esfuerzo.",
+       "e": "😌",
+       "en": "Recovery"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… en reposo el corazón de un niño late unas 70 a 100 veces por minuto, pero durante un ejercicio intenso puede superar los 170 latidos?",
+      "¿Sabías que… puedes medir tu esfuerzo con la 'prueba del habla': si puedes hablar pero no cantar, tu intensidad es moderada; si apenas hablas, es vigorosa?"
+     ],
+     "retos": [
+      {
+       "q": "Después de trotar sientes el corazón muy acelerado. Quieres saber si te esforzaste mucho sin usar aparatos. ¿Qué haces?",
+       "ops": [
+        "Adivinar cómo te sientes, sin más",
+        "Tomarte el pulso en la muñeca o el cuello y contar los latidos por un minuto",
+        "Preguntarle a un compañero cuántas veces late su corazón"
+       ],
+       "correcta": 1,
+       "porque": "Medir el pulso de forma manual es la manera que enseña el curso para conocer la intensidad real de tu esfuerzo, en lugar de solo adivinar o comparar con otra persona."
+      },
+      {
+       "q": "Es un día caluroso y vas a jugar un partido largo. ¿Cuándo deberías tomar agua?",
+       "ops": [
+        "Solo al final, cuando termines de jugar",
+        "Antes, durante las pausas y después del partido",
+        "Nunca durante el juego, para no cortar el ritmo"
+       ],
+       "correcta": 1,
+       "porque": "Al sudar pierdes agua todo el tiempo, no solo al final. Hidratarte antes, durante y después mantiene tu cuerpo funcionando bien y previene golpes de calor."
+      }
+     ]
+    },
+    {
+     "id": "deportes-colectivos",
+     "nombre": "Deportes Colectivos e Individuales",
+     "emoji": "🏀",
+     "oa": "OA 2 y OA 3: Ejecutar juegos colectivos y deportes que requieran tomar decisiones y evaluar estrategias, y practicar deportes individuales y colectivos aplicando reglas y estrategias específicas.",
+     "intro": "Conoce los deportes de equipo e individuales y las estrategias para jugarlos, decidir y respetarlos.",
+     "items": [
+      {
+       "t": "Deporte colectivo",
+       "d": "Se juega en equipo, como el básquetbol, el vóleibol o el fútbol; la cooperación es clave.",
+       "e": "🏐",
+       "en": "Team sport"
+      },
+      {
+       "t": "Deporte individual",
+       "d": "Compites por ti mismo, como atletismo, natación o tenis; dependes de tu propio esfuerzo.",
+       "e": "🏊",
+       "en": "Individual sport"
+      },
+      {
+       "t": "Toma de decisiones",
+       "d": "Elegir rápido qué hacer en el juego: pasar, driblar o lanzar según lo que ves en la cancha.",
+       "e": "🧠",
+       "en": "Decision making"
+      },
+      {
+       "t": "Estrategia de ataque y defensa",
+       "d": "Atacar es buscar anotar; defender es evitar que el rival lo logre. Ambos se planifican.",
+       "e": "🛡️",
+       "en": "Attack and defense strategy"
+      },
+      {
+       "t": "Reglas del juego",
+       "d": "Acuerdos que hacen justo el juego para todos; conocerlas evita conflictos y trampas.",
+       "e": "📋",
+       "en": "Rules of the game"
+      },
+      {
+       "t": "Rol dentro del equipo",
+       "d": "La función que cumples: armador, defensa, arquero; cada rol suma al conjunto.",
+       "e": "🎽",
+       "en": "Team role"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… el básquetbol fue inventado en 1891 por James Naismith usando dos canastas de duraznos colgadas en un gimnasio?",
+      "¿Sabías que… en el vóleibol nadie puede sujetar la pelota, y por eso un punto puede durar solo unos segundos con hasta tres toques por equipo?"
+     ],
+     "retos": [
+      {
+       "q": "Vas subiendo la pelota en básquetbol: un rival te bloquea el camino a la canasta, pero un compañero está libre a un lado. ¿Qué decisión es mejor?",
+       "ops": [
+        "Forzar el avance contra el rival aunque te tapen",
+        "Pasar la pelota al compañero libre para crear una mejor opción de anotar",
+        "Detenerte y esperar a que el rival se canse"
+       ],
+       "correcta": 1,
+       "porque": "Tomar decisiones en el juego es leer la cancha: si tu camino está bloqueado y hay un compañero libre, pasar la pelota abre una jugada con más posibilidades de éxito que forzar."
+      },
+      {
+       "q": "Tu equipo pierde siempre porque cada uno juega solo. ¿Qué estrategia propondrías?",
+       "ops": [
+        "Que el más rápido haga todo el trabajo solo",
+        "Repartir posiciones y pasarse la pelota para armar jugadas juntos",
+        "Gritar más fuerte que el equipo rival"
+       ],
+       "correcta": 1,
+       "porque": "En un deporte colectivo la estrategia se basa en repartir roles y cooperar. Coordinarse multiplica las opciones de anotar más que el esfuerzo individual aislado."
+      }
+     ]
+    },
+    {
+     "id": "expresion-danza",
+     "nombre": "Expresión Corporal y Danza Nacional",
+     "emoji": "💃",
+     "oa": "OA 5: Demostrar la correcta ejecución de una danza nacional utilizando pasos básicos y música folclórica de diferentes regiones de Chile.",
+     "intro": "Tu cuerpo también comunica y crea: baila, sigue ritmos y expresa nuestra cultura en movimiento.",
+     "items": [
+      {
+       "t": "Expresión corporal",
+       "d": "Comunicar emociones o ideas con el cuerpo, sin palabras, mediante gestos y movimientos.",
+       "e": "🎭",
+       "en": "Body expression"
+      },
+      {
+       "t": "Ritmo",
+       "d": "Seguir un pulso o compás con tus movimientos, como al bailar al son de la música.",
+       "e": "🥁",
+       "en": "Rhythm"
+      },
+      {
+       "t": "Pasos básicos",
+       "d": "Los movimientos fundamentales de una danza que, ordenados, forman el baile completo.",
+       "e": "🦶",
+       "en": "Basic steps"
+      },
+      {
+       "t": "Danza nacional (cueca)",
+       "d": "La cueca, baile nacional de Chile, expresa nuestra cultura e identidad con su pañuelo.",
+       "e": "🪗",
+       "en": "National dance"
+      },
+      {
+       "t": "Música folclórica",
+       "d": "Melodías tradicionales de distintas regiones de Chile que acompañan cada danza.",
+       "e": "🎵",
+       "en": "Folk music"
+      },
+      {
+       "t": "Trabajo colaborativo",
+       "d": "Crear o ejecutar un baile en grupo requiere escuchar, aportar ideas y coordinarse.",
+       "e": "👯",
+       "en": "Collaborative work"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… la cueca fue declarada baile nacional de Chile en 1979 y representa el cortejo entre el huaso y la china con su pañuelo?",
+      "¿Sabías que… bailar mejora la memoria y el equilibrio, porque tu cerebro debe recordar secuencias mientras coordina todo tu cuerpo con la música?"
+     ],
+     "retos": [
+      {
+       "q": "En la clase deben bailar cueca, pero un compañero se salta el zapateo y el escobillado porque le da vergüenza. ¿Qué le dirías para ejecutarla bien?",
+       "ops": [
+        "Que invente sus propios pasos, da igual la cueca",
+        "Que practique los pasos básicos como el escobillado y el zapateo, que son parte de la danza",
+        "Que solo dé vueltas con el pañuelo y ya está"
+       ],
+       "correcta": 1,
+       "porque": "Ejecutar correctamente una danza nacional significa respetar sus pasos básicos. El escobillado y el zapateo son esenciales de la cueca; practicarlos es lo que da identidad al baile."
+      },
+      {
+       "q": "Debes marcar los pasos al ritmo de la música folclórica, pero vas siempre adelantado al compás. ¿Cómo lo corriges?",
+       "ops": [
+        "Ignoras la música y sigues a tu propio ritmo",
+        "Escuchas el pulso de la música y ajustas tus pasos para coincidir con el compás",
+        "Bailas más rápido para terminar antes"
+       ],
+       "correcta": 1,
+       "porque": "El ritmo consiste en sincronizar el movimiento con el pulso de la música. Escuchar atentamente y ajustar tu velocidad es la forma de bailar coordinado con el compás."
+      }
+     ]
+    },
+    {
+     "id": "vida-al-aire-libre",
+     "nombre": "Entornos, Seguridad y Liderazgo",
+     "emoji": "🏕️",
+     "oa": "OA 4, OA 10 y OA 11: Planificar y ejecutar actividades físicas en diversos entornos cuidando el espacio, demostrando responsabilidad, liderazgo y respeto, y practicando comportamientos seguros con los materiales.",
+     "intro": "Moverse en distintos entornos es divertido y saludable; hazlo con seguridad, respeto y cuidando el lugar.",
+     "items": [
+      {
+       "t": "Actividad en diversos entornos",
+       "d": "Caminatas, senderismo o juegos en parques y cerros que combinan ejercicio y naturaleza.",
+       "e": "🥾",
+       "en": "Activity in diverse environments"
+      },
+      {
+       "t": "Comportamiento seguro",
+       "d": "Usar bien los materiales e instalaciones y no correr riesgos innecesarios al ejercitarte.",
+       "e": "⚠️",
+       "en": "Safe behavior"
+      },
+      {
+       "t": "Liderazgo y responsabilidad",
+       "d": "Guiar y apoyar al grupo, cumplir tu parte y cuidar a los demás durante la actividad.",
+       "e": "🧭",
+       "en": "Leadership and responsibility"
+      },
+      {
+       "t": "Respeto y juego limpio",
+       "d": "Respetar reglas, compañeros y rivales; ganar o perder con honestidad y sin trampas.",
+       "e": "🤝",
+       "en": "Fair play"
+      },
+      {
+       "t": "Cuidado del entorno",
+       "d": "No dejar basura, mantener el espacio limpio y ordenado, y respetar plantas y animales.",
+       "e": "🌱",
+       "en": "Environmental care"
+      },
+      {
+       "t": "Protección solar e hidratación",
+       "d": "Usar bloqueador, gorro y agua para prevenir quemaduras y golpes de calor al aire libre.",
+       "e": "🧴",
+       "en": "Sun protection"
+      }
+     ],
+     "datos": [
+      "¿Sabías que… Chile tiene más de 40 parques nacionales, desde el desierto de Atacama hasta la Patagonia, ideales para hacer actividad física en distintos entornos?",
+      "¿Sabías que… la FIFA entrega un premio al Juego Limpio en cada Mundial, porque el respeto a las reglas y a los rivales es tan valioso como ganar?"
+     ],
+     "retos": [
+      {
+       "q": "En un partido del recreo marcas un gol con la mano y el árbitro (un compañero) no lo vio. ¿Qué haces?",
+       "ops": [
+        "Callas, porque igual el árbitro no se dio cuenta",
+        "Avisas que fue con la mano y pides anular el gol",
+        "Celebras rápido para que nadie reclame"
+       ],
+       "correcta": 1,
+       "porque": "El juego limpio y la honestidad valen más que un gol. Avisar demuestra respeto por las reglas y por tus compañeros, aunque te cueste el punto."
+      },
+      {
+       "q": "Planificas una caminata a un cerro con tu curso un día muy soleado de verano. ¿Qué medidas de seguridad no pueden faltar?",
+       "ops": [
+        "Solo llevar el celular para tomar fotos",
+        "Llevar agua, bloqueador solar y gorro, avisar la ruta a un adulto y no dejar basura",
+        "Ir lo más rápido posible para volver antes de que haga calor"
+       ],
+       "correcta": 1,
+       "porque": "Planificar una actividad en un entorno natural exige prevención: hidratación y protección solar evitan golpes de calor, avisar la ruta permite auxilio, y no dejar basura cuida el lugar."
       }
      ]
     }
