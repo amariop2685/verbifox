@@ -1,4 +1,4 @@
-/* VerbiFox · Motor de contenidos (todas las materias) · MINEDUC + sello Boston College */
+/* VerbiFox · Motor de contenidos (todas las materias) · MINEDUC + sello Boston College · con bancos avanzados IA */
 window.CONTENIDO = {
  "ciencias": {
   "nombre": "Ciencias Naturales",
@@ -2415,6 +2415,468 @@ window.CONTENIDO = {
        "porque": "Mantener plantas protege el suelo de la erosión y evitar desechos dañinos previene su contaminación; quitar la vegetación lo deja expuesto."
       }
      ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En Valdivia llueve mucho y hace frío en invierno. Martín ve que su perro Choco tiene el pelo más largo y espeso que en verano. ¿Por qué le pasa esto a Choco?",
+     "ops": [
+      "El pelo grueso lo abriga y lo protege del frío del invierno",
+      "El pelo le crece porque toma más agua de lluvia",
+      "El pelo largo le sirve para nadar mejor en los charcos"
+     ],
+     "correcta": 0,
+     "porque": "Muchos animales cambian su pelaje según la estación: en invierno el pelo crece más grueso para conservar el calor del cuerpo y protegerse del frío. Es una forma en que los seres vivos se adaptan al ambiente donde viven (OA 1, animales y su entorno)."
+    },
+    {
+     "q": "En el desierto de Atacama casi nunca llueve. El cactus vive ahí y guarda agua dentro de su tallo grueso. Un manzano necesita mucha agua siempre. Si plantaras un manzano en pleno desierto de Atacama, ¿qué pasaría?",
+     "ops": [
+      "El manzano se secaría porque no hay suficiente agua para él",
+      "El manzano crecería más rápido por el sol fuerte del desierto",
+      "El manzano se convertiría en un cactus para sobrevivir"
+     ],
+     "correcta": 0,
+     "porque": "Cada planta necesita condiciones distintas. El cactus está adaptado a vivir con poca agua, pero el manzano necesita mucha agua para vivir, así que en un lugar tan seco como Atacama se secaría. Una planta no puede transformarse en otra especie (OA 2, plantas y sus necesidades)."
+    },
+    {
+     "q": "Sofía deja una lechuga de su huerto dentro del refrigerador y otra igual sobre la mesa de la cocina al sol. Después de tres días, ¿cuál lechuga estará más marchita y por qué?",
+     "ops": [
+      "La de la mesa, porque el calor y el sol le hacen perder agua más rápido",
+      "La del refrigerador, porque el frío quema las hojas",
+      "Las dos igual, porque el lugar no cambia nada"
+     ],
+     "correcta": 0,
+     "porque": "Las plantas cortadas se marchitan al perder agua. El calor y el sol de la mesa hacen que la lechuga pierda agua mucho más rápido, mientras que el frío del refrigerador la conserva. Por eso guardamos las verduras en el refrigerador y así también evitamos botar comida (OA 2 y cuidado de los recursos)."
+    },
+    {
+     "q": "Un caracol se mueve muy lento por el jardín y un colibrí vuela rapidísimo entre las flores. Martín dice que el caracol 'no está vivo porque casi no se mueve'. ¿Tiene razón Martín?",
+     "ops": [
+      "No, porque el caracol nace, crece, come y se reproduce: está vivo aunque sea lento",
+      "Sí, porque solo están vivos los animales que se mueven rápido",
+      "No, porque el caracol en realidad es una piedra que camina"
+     ],
+     "correcta": 0,
+     "porque": "Un ser vivo no se define por su velocidad. El caracol nace, crece, se alimenta y tiene crías, igual que el colibrí; por eso ambos están vivos. Moverse lento no significa estar sin vida. Debemos observar con respeto a todos los seres vivos (OA 1, características de los seres vivos)."
+    },
+    {
+     "q": "En su casa de Chillán, la familia de Sofía separa la basura: restos de comida en un balde y botellas de plástico en otro. Los restos de comida los llevan al jardín para hacer tierra para el huerto. ¿Por qué es una buena idea hacer esto?",
+     "ops": [
+      "Porque los restos de comida se transforman en abono que ayuda a crecer a las plantas",
+      "Porque el plástico también se come y así crecen las plantas",
+      "Porque así la basura desaparece para siempre por arte de magia"
+     ],
+     "correcta": 0,
+     "porque": "Los restos de comida se descomponen y se convierten en abono (compost), que da nutrientes a la tierra para que las plantas crezcan sanas. Separar la basura y compostar cuida el planeta y aprovecha lo que otros botarían. Es una forma de ser responsables con la naturaleza (OA 2 y conciencia ecológica)."
+    },
+    {
+     "q": "Es de día y el sol está muy alto y brillante en el cielo de Santiago. Martín quiere ver las estrellas y la luna llena grande, pero no las encuentra. ¿Por qué no puede verlas ahora?",
+     "ops": [
+      "Porque de día la luz fuerte del sol no nos deja ver bien las estrellas",
+      "Porque las estrellas se apagan durante el día y se encienden de noche",
+      "Porque las estrellas se fueron a otro país a dormir"
+     ],
+     "correcta": 0,
+     "porque": "Las estrellas siguen en el cielo durante el día, pero la luz brillante del sol es tan fuerte que no nos deja verlas. Cuando el sol se esconde y llega la noche, el cielo se oscurece y recién ahí podemos ver las estrellas y la luna (OA 11, cielo diurno y nocturno)."
+    },
+    {
+     "q": "Sofía se lava los dientes y deja la llave del agua abierta y corriendo todo el tiempo mientras se cepilla. Su hermano cierra la llave y solo la abre para enjuagarse. Pensando en el cuidado del agua en Chile, ¿quién lo hace mejor?",
+     "ops": [
+      "El hermano, porque cerrar la llave evita desperdiciar agua, que es un recurso valioso",
+      "Sofía, porque dejar correr el agua limpia mejor los dientes",
+      "Los dos igual, porque el agua nunca se acaba"
+     ],
+     "correcta": 0,
+     "porque": "El agua es un recurso muy valioso y en muchas zonas de Chile hay sequía. Cerrar la llave mientras nos cepillamos evita desperdiciar litros de agua. Cuidar el agua es responsabilidad de todos y ayuda a las personas y a la naturaleza (OA 6 hábitos saludables y cuidado del medio ambiente)."
+    },
+    {
+     "q": "En otoño, Martín ve que las hojas del árbol de su plaza en Temuco se ponen amarillas y cafés y caen al suelo. Su amiga dice que 'el árbol se murió'. ¿Qué le explicarías tú a su amiga?",
+     "ops": [
+      "El árbol no murió: pierde sus hojas en otoño y le crecerán nuevas en primavera",
+      "El árbol murió para siempre y nunca más tendrá hojas",
+      "El árbol se enfermó porque alguien le quitó todas las hojas"
+     ],
+     "correcta": 0,
+     "porque": "Muchos árboles pierden sus hojas en otoño como parte natural del cambio de estaciones; no significa que estén muertos. En primavera vuelven a salirles hojas nuevas y verdes. Observar cómo cambian los árboles con las estaciones nos enseña a cuidar y valorar la naturaleza (OA 7, estaciones del año y sus efectos)."
+    }
+   ],
+   "2": [
+    {
+     "q": "En el sur de Chile, en Chiloé, un pudú (el ciervo más pequeño del mundo) vive en el bosque nativo. Una empresa corta muchos árboles del bosque para vender la madera. ¿Qué le pasará probablemente al pudú y por qué?",
+     "ops": [
+      "Le costará vivir, porque el bosque le da alimento y lugares para esconderse de sus depredadores",
+      "Vivirá mejor, porque tendrá más espacio abierto para correr rápido",
+      "No le pasará nada, porque los animales pueden vivir en cualquier lugar"
+     ],
+     "correcta": 0,
+     "porque": "Los animales dependen de su hábitat para conseguir alimento, refugio y protección. El pudú es tímido y usa el bosque denso para esconderse; si se corta el bosque, pierde su hogar. Cuidar el bosque nativo es cuidar a las especies chilenas que viven en él."
+    },
+    {
+     "q": "Sofía deja un vaso con agua en el patio un día muy soleado de verano en Santiago. Al volver en la tarde, hay menos agua en el vaso. ¿Qué explica mejor lo que ocurrió?",
+     "ops": [
+      "Alguien se tomó el agua sin avisar",
+      "El calor del Sol hizo que parte del agua se transformara en vapor y subiera al aire",
+      "El agua se filtró por el fondo del vaso de vidrio"
+     ],
+     "correcta": 1,
+     "porque": "El Sol entrega luz y calor. Con el calor, el agua se evapora: pasa de líquido a vapor y se va al aire, aunque no lo veamos. Por eso queda menos agua, y no porque el vaso de vidrio deje pasar el agua."
+    },
+    {
+     "q": "Un compañero dice: 'La araña es un insecto porque es chica y camina por el suelo'. Tú aprendiste que los insectos tienen 6 patas y las arañas tienen 8. ¿Cómo lo corriges respetuosamente y con razón?",
+     "ops": [
+      "Tiene razón, todo lo chico que camina es un insecto",
+      "Le explico con amabilidad que la araña no es insecto, porque los insectos tienen 6 patas y la araña tiene 8",
+      "No importa cuántas patas tenga, lo importante es que sea peligrosa"
+     ],
+     "correcta": 1,
+     "porque": "Clasificamos a los animales por sus características, no por su tamaño. Los insectos tienen 6 patas; las arañas tienen 8 patas y son arácnidos. Corregir con respeto y con un buen argumento es una forma valiosa de aprender juntos."
+    },
+    {
+     "q": "En la Patagonia chilena llega el invierno y hace mucho frío. Un niño observa que algunas aves, como las golondrinas, desaparecieron del lugar. ¿Cuál es la mejor explicación?",
+     "ops": [
+      "Las golondrinas se murieron todas de frío al mismo tiempo",
+      "Las golondrinas viajaron (migraron) a lugares más cálidos donde encuentran más alimento",
+      "Las golondrinas se escondieron bajo la nieve hasta la primavera"
+     ],
+     "correcta": 1,
+     "porque": "Las estaciones cambian las condiciones para los seres vivos. En invierno hay menos alimento y más frío, por eso muchas aves migran a lugares más cálidos. No se esconden bajo la nieve; buscan activamente mejores condiciones para sobrevivir."
+    },
+    {
+     "q": "Para un experimento, Martín pone dos plantas iguales. A una la deja junto a la ventana con luz y la riega; a la otra la mete en un clóset oscuro y también la riega. Después de dos semanas, ¿qué esperas y por qué?",
+     "ops": [
+      "La del clóset crecerá más, porque descansó sin luz molestándola",
+      "Las dos crecerán igual, porque solo importa el agua",
+      "La de la ventana estará más sana, porque las plantas necesitan luz además de agua"
+     ],
+     "correcta": 2,
+     "porque": "Las plantas necesitan agua, aire y luz del Sol para vivir y crecer sanas. Al comparar las dos plantas cambiando solo la luz, vemos que la que estuvo a oscuras crece débil. Un buen experimento cambia una sola cosa para descubrir qué la afecta."
+    },
+    {
+     "q": "Una familia en Valparaíso quiere ayudar al medio ambiente en su casa. Tienen estas ideas. ¿Cuál cuida mejor el agua, que es un recurso muy valioso en Chile?",
+     "ops": [
+      "Cerrar la llave mientras se cepillan los dientes y abrirla solo para enjuagarse",
+      "Dejar la llave abierta todo el tiempo para que el agua salga fresca",
+      "Regar las plantas al mediodía cuando hace más calor y se evapora más rápido"
+     ],
+     "correcta": 0,
+     "porque": "El agua es un recurso escaso y debemos cuidarla. Cerrar la llave al cepillarse evita botar litros de agua. Regar al mediodía desperdicia agua porque el calor la evapora antes de que la planta la aproveche; conviene regar temprano o al atardecer."
+    },
+    {
+     "q": "Camila encuentra en su patio una lombriz de tierra. Su hermano quiere pisarla porque 'es fea e inútil'. Camila sabe que las lombrices airean y mejoran la tierra. ¿Qué decisión muestra cuidado por la vida y buen conocimiento?",
+     "ops": [
+      "Pisarla, porque los animales pequeños no sirven para nada",
+      "Dejarla vivir y devolverla a la tierra, porque ayuda a que las plantas crezcan mejor",
+      "Sacarla del patio y tirarla a la basura para que no moleste"
+     ],
+     "correcta": 1,
+     "porque": "Cada ser vivo cumple un rol en la naturaleza. Las lombrices remueven y enriquecen la tierra, ayudando a las plantas a crecer. Respetar incluso a los animales pequeños demuestra cuidado por la vida y comprensión de cómo se conecta la naturaleza."
+    },
+    {
+     "q": "Diego arma un cuadro con el ciclo de vida de una rana: huevo, renacuajo (vive en el agua y respira con branquias) y rana adulta (vive en tierra y agua). Se salta un paso. Si un renacuajo aún no tiene patas, ¿qué le falta para llegar a ser rana adulta?",
+     "ops": [
+      "Le falta crecer, desarrollar patas y pulmones para poder salir del agua",
+      "Ya está listo, un renacuajo y una rana adulta son lo mismo",
+      "Debe volver a ser huevo antes de convertirse en rana"
+     ],
+     "correcta": 0,
+     "porque": "En el ciclo de vida de la rana, el renacuajo cambia poco a poco: le crecen patas y desarrolla pulmones para respirar fuera del agua. Los seres vivos crecen y se transforman en etapas ordenadas; no retroceden a etapas anteriores como volver a ser huevo."
+    }
+   ],
+   "3": [
+    {
+     "q": "Un agricultor de la zona central de Chile riega su campo de tomates al mediodía, cuando el sol es más fuerte. Su vecina riega temprano en la mañana. ¿Por qué la vecina cuida mejor el agua, un recurso escaso en Chile?",
+     "ops": [
+      "Al mediodía el agua se evapora más rápido por el calor, así que se pierde más y la planta aprovecha menos; regar temprano ahorra agua",
+      "Da lo mismo la hora, porque el agua siempre llega igual a la raíz",
+      "Al mediodía el agua está más fría y por eso daña las plantas"
+     ],
+     "correcta": 0,
+     "porque": "El calor del sol hace que el agua se evapore (pase a vapor) más rápido. Al mediodía se pierde mucha agua antes de que la planta la absorba. Regar temprano aprovecha mejor este recurso escaso, cuidando el agua de manera responsable."
+    },
+    {
+     "q": "Martín deja un vaso con agua en el congelador. Al día siguiente el agua se salió por arriba del vaso y está dura como piedra. ¿Qué explica mejor lo que pasó?",
+     "ops": [
+      "Alguien le agregó más agua al vaso durante la noche",
+      "El agua al congelarse se hizo hielo y ocupa MÁS espacio, por eso se rebalsó",
+      "El frío creó agua nueva dentro del vaso"
+     ],
+     "correcta": 1,
+     "porque": "Cuando el agua se congela y pasa a estado sólido (hielo), ocupa más espacio que cuando era líquida. Por eso rebalsa el vaso. Es un cambio de estado por el frío, no aparece agua nueva ni alguien la agregó."
+    },
+    {
+     "q": "Una familia en Valparaíso quiere separar su basura para cuidar el planeta. Tienen: una botella de plástico, restos de cáscara de plátano y una hoja de papel. Un niño dice que la cáscara de plátano va al reciclaje de plástico porque 'es blandita'. ¿Cómo lo corregirías?",
+     "ops": [
+      "Tiene razón, la cáscara blandita es como el plástico",
+      "La cáscara es un resto orgánico (de un ser vivo): sirve para compost, no va con el plástico",
+      "Toda la basura debe ir junta en una sola bolsa"
+     ],
+     "correcta": 1,
+     "porque": "La cáscara de plátano viene de una planta, es material orgánico y se descompone naturalmente; sirve para hacer compost (abono). El plástico es un material distinto que no se descompone. Separar bien la basura por su origen ayuda a reciclar y cuidar el medio ambiente."
+    },
+    {
+     "q": "En el desierto de Atacama, uno de los lugares más secos del mundo, algunas plantas tienen hojas muy pequeñas o parecidas a espinas, en vez de hojas grandes. ¿Por qué esta característica las ayuda a sobrevivir?",
+     "ops": [
+      "Porque las hojas pequeñas se ven más bonitas",
+      "Porque con menos superficie de hoja pierden menos agua, y en el desierto el agua es muy escasa",
+      "Porque las hojas grandes atraen la lluvia"
+     ],
+     "correcta": 1,
+     "porque": "En el desierto casi no hay agua. Las plantas pierden agua por sus hojas cuando hace calor. Con hojas pequeñas o como espinas pierden menos agua y logran sobrevivir. Es una adaptación: los seres vivos tienen características que los ayudan a vivir en su ambiente."
+    }
+   ],
+   "4": [
+    {
+     "q": "En Chiloé, una familia deja afuera una olla con agua para lavar. En la mañana de invierno, el agua amaneció convertida en hielo. Al mediodía, con sol, el hielo desapareció y quedó agua otra vez. ¿Qué explica mejor lo que ocurrió?",
+     "ops": [
+      "El agua se transformó en un material distinto y ya no es la misma sustancia",
+      "El agua cambió de estado por el frío y luego por el calor, pero sigue siendo agua",
+      "El agua se evaporó completamente en la noche y volvió a caer como lluvia"
+     ],
+     "correcta": 1,
+     "porque": "Los cambios de estado (solido, liquido, gaseoso) son cambios FISICOS provocados por la temperatura: el frio la congela y el calor la derrite, pero la sustancia sigue siendo agua. No se convierte en otro material ni desaparece."
+    },
+    {
+     "q": "Un curso de Valdivia investiga por que el rio Calle-Calle tiene menos peces cerca de una fabrica. Miden que el agua junto a la fabrica esta mas caliente y turbia. Como cientificos responsables, cual es la mejor conclusion basada en evidencia?",
+     "ops": [
+      "La fabrica no tiene relacion con los peces porque los peces se fueron solos",
+      "El agua caliente y turbia altera el habitat, por eso conviene investigar si la fabrica contamina",
+      "Hay que sacar todos los peces del rio para protegerlos de la fabrica"
+     ],
+     "correcta": 1,
+     "porque": "El pensamiento cientifico se basa en la EVIDENCIA: agua mas caliente y turbia cambia las condiciones del habitat que los peces necesitan. Lo correcto es concluir con cautela e investigar mas, cuidando el ecosistema, no ignorar el dato ni tomar medidas apresuradas."
+    },
+    {
+     "q": "En el desierto de Atacama casi no hay plantas, pero en el bosque de la Araucania hay muchisimas. Un estudiante quiere explicar la diferencia. Que factor explica MEJOR por que crecen tan pocas plantas en Atacama?",
+     "ops": [
+      "En Atacama hace demasiado calor de dia y por eso las plantas se queman siempre",
+      "En Atacama casi no llueve, y sin agua la mayoria de las plantas no pueden vivir",
+      "En Atacama el suelo tiene demasiada agua y las raices se pudren"
+     ],
+     "correcta": 1,
+     "porque": "El agua es un recurso esencial para los seres vivos. Atacama es uno de los lugares mas secos del mundo, y sin agua la mayoria de las plantas no sobreviven. Por eso hay pocas, no por el calor ni por exceso de agua."
+    },
+    {
+     "q": "Martin observa que la Luna se ve llena un dia y una semana despues se ve como media luna. Su hermano dice: 'Es que la Luna cambia de forma'. Que le explicarias a su hermano usando lo que sabes?",
+     "ops": [
+      "La Luna si cambia de forma cada semana porque se va gastando",
+      "La Luna no cambia de forma; vemos distintas partes iluminadas por el Sol segun su posicion",
+      "La Luna se esconde detras de las nubes y por eso se ve distinta"
+     ],
+     "correcta": 1,
+     "porque": "Las fases de la Luna ocurren porque el Sol ilumina siempre la mitad de la Luna, pero desde la Tierra vemos distintas porciones iluminadas segun donde esta la Luna en su orbita. La Luna no cambia de forma ni se gasta."
+    },
+    {
+     "q": "Una comunidad de Puerto Montt quiere elegir un material para hacer botellas que puedan reutilizar muchas veces y luego reciclar. Comparan tres opciones. Cual eleccion es la mas adecuada segun las propiedades de los materiales y el cuidado del ambiente?",
+     "ops": [
+      "Botellas de vidrio, porque se pueden lavar, reutilizar y reciclar muchas veces",
+      "Botellas de plastico de un solo uso, porque son livianas y baratas",
+      "Botellas de papel, porque el papel es resistente al agua por mucho tiempo"
+     ],
+     "correcta": 0,
+     "porque": "Se comparan propiedades de los materiales: el vidrio es resistente, se puede lavar, reutilizar y reciclar muchas veces, generando menos basura. El plastico de un solo uso contamina mas, y el papel se deshace con el agua, asi que no sirve para botellas."
+    },
+    {
+     "q": "En un huerto escolar de Rancagua, las plantas de tomate cercanas a un muro alto crecieron debiles y palidas, mientras las del centro del patio crecieron fuertes y verdes. Que explica mejor la diferencia?",
+     "ops": [
+      "Las plantas del muro recibieron menos luz solar, que necesitan para fabricar su alimento",
+      "Las plantas del muro recibieron demasiada luz y se quemaron por eso estan palidas",
+      "El muro les quito el aire y por eso no pudieron crecer bien"
+     ],
+     "correcta": 0,
+     "porque": "Las plantas necesitan luz solar para fabricar su alimento y crecer sanas y verdes. Junto al muro reciben sombra la mayor parte del dia, por eso crecen debiles y palidas. No es por exceso de luz ni por falta de aire."
+    },
+    {
+     "q": "Despues del terremoto de 2010, en el borde costero de Chile se vieron rocas del fondo del mar que quedaron al descubierto. Que idea sobre la Tierra ayuda a entender por que ocurrio esto?",
+     "ops": [
+      "La superficie de la Tierra es fija y nunca se mueve, fue solo una casualidad",
+      "La superficie de la Tierra puede moverse en los sismos, levantando o hundiendo el terreno",
+      "El mar se seco por unos minutos y por eso aparecieron las rocas"
+     ],
+     "correcta": 1,
+     "porque": "Chile es un pais con muchos sismos porque la superficie terrestre esta formada por partes que se mueven. En un terremoto el terreno puede levantarse o hundirse, dejando ver el fondo marino. La superficie NO es fija ni el mar se seco."
+    },
+    {
+     "q": "Un grupo de amigos deja restos de comida (cascaras de fruta) y una bolsa plastica en el patio del colegio por un mes. Al volver, las cascaras casi desaparecieron y se hicieron tierra, pero la bolsa sigue igual. Que conclusion es correcta y que decision responsable tomarian?",
+     "ops": [
+      "Ambas cosas son iguales para la naturaleza, asi que da lo mismo donde botarlas",
+      "Los restos de comida se descomponen y vuelven a la tierra, pero el plastico no; por eso conviene separar y reducir el plastico",
+      "La bolsa tambien se convirtio en tierra, solo que mas lento, asi que se puede botar en cualquier parte"
+     ],
+     "correcta": 1,
+     "porque": "Los restos organicos se descomponen y se integran al suelo (como en el compost), pero el plastico permanece mucho tiempo sin degradarse y contamina. La decision responsable, cuidando el ambiente, es separar los residuos, compostar lo organico y reducir el plastico."
+    }
+   ],
+   "5": [
+    {
+     "q": "En el Parque Nacional Torres del Paine, un guardaparques observa que los pumas cazan guanacos, y que los guanacos comen coirón (un pasto). Un verano, una sequía severa mata gran parte del coirón. ¿Qué es MÁS probable que ocurra primero en esta cadena alimentaria?",
+     "ops": [
+      "La población de guanacos disminuirá por falta de alimento, y luego los pumas tendrán menos presas",
+      "La población de pumas aumentará de inmediato porque hay menos coirón que los estorbe",
+      "El coirón se recuperará solo si los pumas dejan de cazar guanacos"
+     ],
+     "correcta": 0,
+     "porque": "El coirón es el productor y la base de la cadena. Si escasea, primero se afectan los guanacos (consumidores primarios) que dependen de él; con menos guanacos, los pumas (consumidores secundarios) tendrán menos alimento. La energía fluye desde los productores hacia los consumidores, así que un daño en la base afecta hacia arriba, no al revés.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Sofía arma un circuito con una pila, cables y dos ampolletas. Cuando desenrosca UNA ampolleta, la otra también se apaga. ¿Qué puede concluir sobre cómo están conectadas?",
+     "ops": [
+      "Están en serie: la corriente pasa por una y luego por la otra, así que al cortar una se corta todo",
+      "Están en paralelo: cada ampolleta tiene su propio camino independiente",
+      "La pila está descargada y por eso se apagan ambas al tocarlas"
+     ],
+     "correcta": 0,
+     "porque": "En un circuito en serie hay un solo camino para la corriente, que pasa por una ampolleta y después por la otra. Si se interrumpe en cualquier punto (al desenroscar una), toda la corriente se detiene y ambas se apagan. En paralelo cada una tendría su propio camino y seguiría encendida de forma independiente.",
+     "porque_extra": ""
+    },
+    {
+     "q": "En Chile, la Cordillera de los Andes tiene volcanes activos como el Villarrica. Un modelo de las capas de la Tierra muestra que el magma proviene de una capa específica. ¿En qué capa se origina el magma y por qué puede subir?",
+     "ops": [
+      "En el manto, donde las altas temperaturas mantienen la roca parcialmente fundida, y sube por la presión hacia zonas más débiles de la corteza",
+      "En la corteza, porque es la capa más fría y sólida de todas",
+      "En el núcleo interno, que es líquido y empuja el magma directamente a la superficie"
+     ],
+     "correcta": 0,
+     "porque": "El magma se origina principalmente en el manto, donde el calor es tan alto que la roca está parcialmente fundida. La presión lo empuja hacia arriba, saliendo por zonas debilitadas de la corteza como los volcanes. El núcleo interno es sólido (no líquido) y está demasiado profundo; la corteza es la capa exterior sólida por donde el magma escapa, no donde se forma.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Un curso planta un pequeño bosque nativo para capturar CO2. La profesora explica que las plantas realizan fotosíntesis. ¿Cuál afirmación explica MEJOR por qué plantar árboles ayuda contra el cambio climático?",
+     "ops": [
+      "Las plantas absorben CO2 del aire para producir su alimento y liberan oxígeno, reduciendo un gas que atrapa calor",
+      "Las plantas dan sombra y por eso el planeta entero se enfría al haber más árboles",
+      "Las plantas absorben oxígeno del aire y por eso limpian la contaminación de las ciudades"
+     ],
+     "correcta": 0,
+     "porque": "En la fotosíntesis las plantas toman CO2 (dióxido de carbono) y agua, y con la energía del Sol producen su alimento, liberando oxígeno. El CO2 es un gas de efecto invernadero que atrapa calor; al capturarlo, los árboles ayudan a reducir el calentamiento global. Las plantas liberan oxígeno, no lo absorben, y su efecto climático principal es capturar carbono, no dar sombra.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Martín come una manzana. Ordena correctamente por dónde pasan los nutrientes de la manzana en su cuerpo para llegar a alimentar sus células.",
+     "ops": [
+      "Sistema digestivo (absorbe nutrientes) y luego sistema circulatorio (los transporta por la sangre a las células)",
+      "Sistema respiratorio (absorbe nutrientes) y luego sistema digestivo (los reparte)",
+      "Sistema circulatorio (digiere la manzana) y luego sistema respiratorio (la transporta)"
+     ],
+     "correcta": 0,
+     "porque": "El sistema digestivo descompone el alimento y absorbe los nutrientes en el intestino. Luego el sistema circulatorio los transporta por la sangre hasta todas las células del cuerpo. El sistema respiratorio se encarga del oxígeno y del CO2, no de digerir ni absorber nutrientes de la comida.",
+     "porque_extra": ""
+    },
+    {
+     "q": "En Antofagasta, en el desierto de Atacama, un niño deja un vaso con agua al sol y a los días el agua desaparece pero queda un polvo blanco (sal). En la costa cercana, el vapor forma nubes y a veces llueve en la cordillera. ¿Qué procesos del ciclo del agua ocurrieron?",
+     "ops": [
+      "El agua se evaporó (dejando la sal), el vapor se condensó en nubes y luego cayó como precipitación",
+      "El agua se congeló en el vaso y luego se derritió formando nubes",
+      "El agua se filtró por el vidrio del vaso y viajó por el aire hasta la cordillera"
+     ],
+     "correcta": 0,
+     "porque": "El calor del sol evaporó el agua líquida, convirtiéndola en vapor, pero la sal disuelta no se evapora y quedó en el vaso. Ese vapor sube, se enfría y se condensa formando nubes, y luego cae como precipitación (lluvia o nieve). Congelar o filtrar por el vidrio no corresponden a lo observado ni al ciclo del agua.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Una familia en Valdivia quiere reducir la basura que generan. Tienen restos de comida, botellas de vidrio y cartón. Aplicando las 3R (Reducir, Reutilizar, Reciclar) de forma responsable, ¿cuál es la MEJOR estrategia integral?",
+     "ops": [
+      "Compostar los restos de comida, reciclar el vidrio y el cartón, y comprar menos productos con envases para reducir basura desde el origen",
+      "Botar todo junto en una bolsa porque igual el camión lo lleva al vertedero",
+      "Quemar el cartón y las botellas en el patio para que ocupen menos espacio"
+     ],
+     "correcta": 0,
+     "porque": "La estrategia más responsable combina las 3R: reducir comprando menos envases, reutilizar y reciclar el vidrio y el cartón, y compostar los restos orgánicos para devolver nutrientes al suelo. Botar todo junto desaprovecha materiales reciclables, y quemar basura contamina el aire y es peligroso. Cuidar el entorno es un acto de responsabilidad con la comunidad y las futuras generaciones.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Un satélite muestra la Luna en distintas noches: primero un delgado creciente, luego media Luna, después llena. Un estudiante dice que la Luna 'crea su propia luz que crece'. ¿Por qué está equivocado y cuál es la explicación correcta?",
+     "ops": [
+      "La Luna no tiene luz propia: refleja la luz del Sol, y vemos distintas fases según qué parte iluminada nos queda visible al orbitar la Tierra",
+      "La Luna sí produce luz, pero la Tierra la tapa parcialmente cada noche creando las fases",
+      "Las fases ocurren porque las nubes cubren distintas partes de la Luna cada noche"
+     ],
+     "correcta": 0,
+     "porque": "La Luna no emite luz propia; solo refleja la luz del Sol. A medida que la Luna orbita la Tierra, cambia la porción de su cara iluminada que podemos ver desde aquí, y eso produce las fases. No es la sombra de la Tierra la que causa las fases normales (eso sería un eclipse), ni son las nubes.",
+     "porque_extra": ""
+    }
+   ],
+   "6": [
+    {
+     "q": "En el Parque Nacional Torres del Paine, una temporada seca y un incendio provocado por un turista destruyen gran parte de los pastizales. En ese ecosistema la cadena es: pasto -> guanaco -> puma. Un año despues, un guardaparque estudia que ocurrira con las poblaciones. ¿Cual es la prediccion mas correcta y por que?",
+     "ops": [
+      "Como hay menos pasto, primero disminuiran los guanacos por falta de alimento y luego los pumas tendran menos presas y tambien disminuiran",
+      "Los pumas aumentaran de inmediato porque el fuego deja a los guanacos mas debiles y faciles de cazar, sin afectar al pasto",
+      "El pasto quemado hara crecer mas guanacos porque la ceniza es un excelente alimento directo para ellos"
+     ],
+     "correcta": 0,
+     "porque": "En una cadena alimentaria la energia fluye desde los productores (pasto) hacia los consumidores. Si se destruye la base productora, primero baja el consumidor primario (guanaco, herbivoro) por falta de alimento y, en consecuencia, tambien el consumidor secundario (puma), que se queda sin presas. Los guanacos no comen ceniza y el fuego no beneficia a los pumas a largo plazo. El caso muestra ademas por que debemos cuidar la naturaleza y ser responsables al visitar parques."
+    },
+    {
+     "q": "Martin arma un circuito con una pila, cables y tres ampolletas iguales conectadas una despues de otra (en serie). Cuando saca una de las tres ampolletas de su soquete, observa que las otras dos se apagan. ¿Cual es la mejor explicacion?",
+     "ops": [
+      "Al sacar una ampolleta se interrumpe el unico camino cerrado por el que circula la corriente, y sin circuito cerrado no fluye electricidad hacia las otras",
+      "La ampolleta que sacó se llevó consigo la electricidad guardada dentro de ella, dejando a las demas sin energia",
+      "Las otras dos se apagan porque la pila se descarga por completo en el instante en que se saca una ampolleta"
+     ],
+     "correcta": 0,
+     "porque": "En un circuito en serie hay un solo camino para la corriente. Al retirar una ampolleta se abre el circuito, se corta ese unico camino y ninguna corriente puede fluir, por lo que todas se apagan. La electricidad no queda 'guardada' dentro de una ampolleta ni la pila se descarga instantaneamente; simplemente deja de haber un camino cerrado."
+    },
+    {
+     "q": "Durante el invierno en Santiago aumentan los casos de resfrio. Un companero dice: 'me abrigue poco, por eso el frio me metio el virus'. Usando lo que sabes sobre microorganismos y contagio, ¿que respuesta es la mas correcta?",
+     "ops": [
+      "El frio por si solo no crea el virus; el resfrio lo causa un virus que se contagia entre personas, y en invierno nos juntamos mas en espacios cerrados, lo que facilita su transmision",
+      "El frio se transforma dentro del cuerpo en un virus nuevo cuando la temperatura corporal baja demasiado",
+      "Los virus solo aparecen cuando una persona no se abriga; si todos usaran mas ropa, los virus dejarian de existir"
+     ],
+     "correcta": 0,
+     "porque": "Los resfrios son causados por virus, que son microorganismos que se transmiten de persona a persona (por gotitas al toser, estornudar o por contacto). El frio no 'se transforma' en virus ni los crea. En invierno los contagios suben porque pasamos mas tiempo en lugares cerrados y con poca ventilacion, donde el virus pasa mas facil de una persona a otra. Por eso ventilar, lavarse las manos y cuidar a los demas ayuda a prevenir."
+    },
+    {
+     "q": "Un club deportivo escolar compara dos colaciones para despues de entrenar: (A) una manzana con un punado de nueces y agua, y (B) una bebida azucarada con papas fritas. Analizando el aporte a un cuerpo que crece y hace ejercicio, ¿cual es la conclusion mejor fundamentada?",
+     "ops": [
+      "La colacion A es mas saludable porque aporta agua, fibra, vitaminas y grasas buenas, mientras que la B aporta sobre todo azucar, sal y grasas en exceso, poco utiles para recuperarse",
+      "La colacion B es mejor porque el azucar y la sal son los nutrientes principales que el cuerpo necesita para crecer",
+      "Ambas son igual de buenas, porque lo unico que importa despues del ejercicio es sentir el estomago lleno"
+     ],
+     "correcta": 0,
+     "porque": "Una alimentacion saludable aporta agua y una variedad de nutrientes utiles: la manzana da agua, fibra y vitaminas, y las nueces aportan grasas saludables y energia. La bebida azucarada y las papas fritas aportan mucha azucar, sal y grasas en exceso, que en grandes cantidades danan la salud y no ayudan a recuperarse. No basta con 'llenar el estomago': importa la calidad de lo que comemos, especialmente en un cuerpo que crece."
+    },
+    {
+     "q": "En una feria de Valdivia se venden dos aguas: una del rio con tierra y hojas en suspension (turbia) y otra con sal disuelta que se ve transparente. Un estudiante afirma que ambas son mezclas, pero de distinto tipo. ¿Como se clasifican correctamente?",
+     "ops": [
+      "El agua con tierra y hojas es una mezcla heterogenea (se distinguen los componentes), y el agua con sal disuelta es una mezcla homogenea (se ve uniforme aunque la sal siga ahi)",
+      "El agua con sal ya no es una mezcla porque la sal desaparecio para siempre al disolverse",
+      "El agua con tierra es homogenea porque todo es 'agua', y el agua con sal es heterogenea porque tiene dos ingredientes"
+     ],
+     "correcta": 0,
+     "porque": "En una mezcla heterogenea se pueden distinguir sus componentes a simple vista (agua con tierra y hojas). En una mezcla homogenea los componentes estan repartidos de forma uniforme y no se distinguen (agua con sal disuelta), pero la sal NO desaparece: sigue presente y se puede recuperar, por ejemplo evaporando el agua. Por eso el agua con sal se ve transparente pero sigue siendo una mezcla."
+    },
+    {
+     "q": "En una clase se comenta la sequia que afecta al centro y norte de Chile. Los estudiantes proponen acciones para el colegio. Analizando cual combina mejor el cuidado del agua con responsabilidad y trabajo en equipo, ¿cual es la mejor propuesta?",
+     "ops": [
+      "Instalar carteles de cuidado, cerrar bien las llaves, reportar fugas de agua y reutilizar el agua de lavado de manos para regar plantas, involucrando a todo el curso",
+      "Dejar de lavarse las manos para no gastar agua, aunque eso afecte la higiene y la salud de todos",
+      "No hacer nada en el colegio, porque una sola persona no puede cambiar el problema de la sequia del pais"
+     ],
+     "correcta": 0,
+     "porque": "La mejor respuesta cuida un recurso escaso (el agua) con acciones concretas y realistas, sin sacrificar la salud. Dejar de lavarse las manos danaria la higiene y favoreceria contagios, y rendirse ignora que muchas pequenas acciones sumadas si generan un cambio. Reportar fugas, cerrar llaves y reutilizar agua muestra conciencia ecologica, responsabilidad y trabajo en equipo, valores importantes para cuidar la casa comun."
+    },
+    {
+     "q": "Cuando corres para alcanzar una micro en Santiago, tu corazon late mas rapido y respiras mas profundo. Relacionando el sistema respiratorio y el circulatorio, ¿por que ocurre esto al mismo tiempo?",
+     "ops": [
+      "Los musculos que trabajan necesitan mas oxigeno: por eso respiras mas para captar mas oxigeno y el corazon late mas rapido para que la sangre lo transporte con mayor velocidad a esos musculos",
+      "El corazon y los pulmones no tienen relacion; late mas rapido solo por los nervios de correr, sin conexion con la respiracion",
+      "Respiras mas rapido para enfriar el cuerpo, y el corazon se acelera solo para hacer ruido y avisarte que estas cansado"
+     ],
+     "correcta": 0,
+     "porque": "Al hacer ejercicio los musculos consumen mas oxigeno y producen mas desechos como el dioxido de carbono. El sistema respiratorio aumenta el ritmo para captar mas oxigeno y el circulatorio (con el corazon como bomba) late mas rapido para llevar esa sangre oxigenada a los musculos y retirar los desechos. Ambos sistemas trabajan juntos y coordinados; no son independientes ni cumplen funciones inventadas como 'hacer ruido'."
+    },
+    {
+     "q": "Un lago del sur de Chile empieza a llenarse de algas por los desechos que llegan desde campos y casas cercanas. Con el tiempo mueren muchos peces. Un grupo debe explicar la causa mas probable de la muerte de los peces. ¿Cual es?",
+     "ops": [
+      "El exceso de nutrientes hace crecer demasiadas algas; cuando estas mueren y se descomponen, se consume gran parte del oxigeno del agua, y los peces mueren por falta de oxigeno",
+      "Las algas se comen directamente a los peces uno por uno hasta que no queda ninguno vivo en el lago",
+      "Los peces mueren porque el color verde del agua les impide ver, y por eso dejan de nadar y desaparecen"
+     ],
+     "correcta": 0,
+     "porque": "Cuando llegan muchos desechos con nutrientes a un lago, las algas crecen en exceso. Al morir, los microorganismos que las descomponen consumen gran parte del oxigeno disuelto en el agua. Los peces necesitan ese oxigeno para respirar por sus branquias, y al faltar, mueren. Las algas no 'cazan' peces ni el problema es el color: es la falta de oxigeno provocada por la contaminacion. Esto muestra como la actividad humana altera los ecosistemas y por que debemos cuidar el agua."
     }
    ]
   }
@@ -4908,6 +5370,509 @@ window.CONTENIDO = {
        "porque": "Al ser no renovable, el cobre puede agotarse con el tiempo. Diversificar la economía y cuidar los recursos es una decisión responsable y previsora para las próximas generaciones."
       }
      ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "Martín llega nuevo a un curso de 1° básico en Santiago y no conoce a nadie. En el recreo ve a un compañero sentado solo, triste. Segun lo que aprendimos sobre la buena convivencia, ¿que es lo MEJOR que puede hacer Martín?",
+     "ops": [
+      "Acercarse, saludarlo e invitarlo a jugar juntos",
+      "Pasar de largo porque no es su amigo todavía",
+      "Contarle a todos que ese niño esta llorando"
+     ],
+     "correcta": 0,
+     "porque": "La buena convivencia se construye con empatía y respeto. Invitar a jugar al compañero muestra amabilidad y ayuda a incluir a los demas, una virtud clave para vivir bien en comunidad. Pasar de largo lo deja solo y burlarse lo lastima."
+    },
+    {
+     "q": "En el sur de Chile, en la zona mapuche, muchas familias celebran el We Tripantu (el Año Nuevo del pueblo mapuche) en junio, cuando es la noche mas larga del año. Si alguien te invita a esta celebracion, ¿como debes actuar?",
+     "ops": [
+      "Participar con respeto y aprender de sus costumbres",
+      "Reirte porque celebran distinto que tu familia",
+      "Decirles que su fiesta esta mala"
+     ],
+     "correcta": 0,
+     "porque": "Chile tiene muchos pueblos originarios, como el mapuche, con tradiciones valiosas. Respetar y aprender de otras culturas nos hace mejores personas y valora la diversidad de nuestro país. Burlarse es una falta de respeto."
+    },
+    {
+     "q": "Tu abuela te muestra una foto antigua en blanco y negro donde ella era una niña jugando en la calle sin autos. Hoy esa misma calle tiene muchos autos y edificios. ¿Que nos enseña comparar estas dos imagenes?",
+     "ops": [
+      "Que los lugares y la vida cambian con el paso del tiempo",
+      "Que la foto antigua es falsa",
+      "Que antes no existían las calles"
+     ],
+     "correcta": 0,
+     "porque": "Comparar el pasado con el presente nos ayuda a entender que las ciudades y la forma de vivir cambian con el tiempo. Las fotos antiguas son fuentes que nos cuentan como era la vida antes de que nosotros naciéramos."
+    },
+    {
+     "q": "En tu sala hay solo un lápiz rojo y tres compañeros lo necesitan al mismo tiempo para terminar su dibujo. ¿Cual es la mejor forma de resolver este problema respetando a todos?",
+     "ops": [
+      "Turnarse y compartir el lápiz por un ratito cada uno",
+      "Quedarse con el lápiz toda la clase el que lo tomó primero",
+      "Esconder el lápiz para que nadie lo use"
+     ],
+     "correcta": 0,
+     "porque": "Compartir y turnarse son formas justas de resolver conflictos cuando algo es escaso. Así todos pueden usar el lápiz y nadie queda sin dibujar. Vivir en comunidad requiere generosidad y buscar acuerdos que sirvan a todos."
+    },
+    {
+     "q": "Vives en el norte de Chile, en el desierto de Atacama, donde casi nunca llueve y el agua es muy escasa. ¿Que costumbre seria la MAS adecuada para cuidar tu entorno?",
+     "ops": [
+      "Cerrar la llave mientras te cepillas los dientes para no gastar agua",
+      "Dejar la manguera abierta todo el dia regando el patio",
+      "Llenar una piscina enorme cada mañana"
+     ],
+     "correcta": 0,
+     "porque": "En el desierto de Atacama el agua es muy escasa y hay que cuidarla. Cerrar la llave evita desperdiciarla. Cuidar el agua es una forma de proteger la naturaleza y de pensar en los demas que también la necesitan."
+    },
+    {
+     "q": "Chile es un país muy largo y angosto. En el sur hace frío y llueve mucho; en el norte hace calor y casi no llueve. Si viajas de Puerto Montt (sur) hasta Arica (norte), ¿que cambio notarias en el paisaje y el clima?",
+     "ops": [
+      "Pasaria de bosques verdes y lluvia a desierto seco y soleado",
+      "Todo se veria exactamente igual en todo el camino",
+      "Habria mas nieve mientras mas al norte voy"
+     ],
+     "correcta": 0,
+     "porque": "Por su forma larga, Chile tiene climas y paisajes muy distintos: el sur es lluvioso y con bosques, y el norte es desertico y seco. Comparar zonas nos ayuda a entender la geografía diversa de nuestro país."
+    },
+    {
+     "q": "Un grupo de niños quiere elegir a que jugar en el recreo: unos quieren la pelota y otros la cuerda. Discuten y nadie se pone de acuerdo. ¿Como pueden decidir de manera justa, como se decide en una comunidad?",
+     "ops": [
+      "Votando y respetando lo que elija la mayoría, y turnándose otro día",
+      "Peleando hasta que gane el mas fuerte",
+      "Que decida solo el niño que grita mas fuerte"
+     ],
+     "correcta": 0,
+     "porque": "Votar es una forma pacífica y justa de tomar decisiones en grupo, igual que en la vida en comunidad. Respetar a la mayoría y turnarse permite que todos participen sin pelear. Así se practica la democracia desde pequeños."
+    },
+    {
+     "q": "Vas al parque con tu familia y terminas de comer una fruta. No ves ningun basurero cerca. ¿Que es lo correcto que debes hacer con la cáscara y el envoltorio para cuidar la naturaleza?",
+     "ops": [
+      "Guardarlos hasta encontrar un basurero donde botarlos",
+      "Tirarlos al pasto porque nadie te esta viendo",
+      "Dejarlos en el suelo para que otro los recoja"
+     ],
+     "correcta": 0,
+     "porque": "Cuidar los espacios que compartimos es responsabilidad de todos. Guardar la basura hasta encontrar un basurero evita ensuciar y contaminar la naturaleza. Actuar bien aunque nadie mire demuestra honestidad y respeto por el medio ambiente."
+    }
+   ],
+   "2": [
+    {
+     "q": "Amanda vive en Puerto Montt, en el sur de Chile. Su abuela le mandó fotos de una fiesta con lluvia, casas de tejuelas de madera y curanto. Su primo vive en San Pedro de Atacama, en el norte, donde casi nunca llueve y hace mucho calor de día. Si Amanda quiere visitar a su primo y llevar ropa adecuada, ¿qué debería empacar?",
+     "ops": [
+      "Ropa liviana para el calor del día y algo abrigado para la noche fría del desierto",
+      "Solo botas de agua y paraguas grande porque siempre llueve como en su casa",
+      "Traje de baño para nadar en el mar todos los días del viaje"
+     ],
+     "correcta": 0,
+     "porque": "El norte de Chile (desierto de Atacama) es muy seco y cálido de día pero frío de noche, muy distinto al sur lluvioso donde vive Amanda. Reconocer que en Chile hay climas y paisajes diferentes según la zona (norte, centro, sur) es un OA clave. El mar de Atacama es muy frío, así que el traje de baño diario no es lo principal."
+    },
+    {
+     "q": "En el patio del colegio, un grupo quiere jugar a la pelota justo donde otro grupo ya está jugando a la ronda. Empiezan a discutir y a empujarse. Marta, que estudia cómo la gente resolvía problemas en comunidad, propone una idea. ¿Cuál muestra MEJOR una buena convivencia y respeto por los demás?",
+     "ops": [
+      "Turnarse el espacio y ponerse de acuerdo en horarios, escuchando a los dos grupos",
+      "El grupo más grande se queda con todo el patio porque son más",
+      "Cada uno grita más fuerte hasta que alguien se rinde y se va llorando"
+     ],
+     "correcta": 0,
+     "porque": "La convivencia se basa en el diálogo, el respeto y el acuerdo justo, no en la fuerza ni el número. Ponerse de acuerdo y turnarse cuida a todos y resuelve el conflicto sin dañar a nadie, que es lo que enseñan los OA sobre normas, respeto y bien común."
+    },
+    {
+     "q": "El curso de Benjamín estudia cómo vivían los pueblos originarios de Chile antes de que llegaran los españoles. Aprenden que los mapuche cultivaban la tierra, criaban animales y usaban plantas del bosque con cuidado para no agotarlas. ¿Qué enseñanza de los mapuche podríamos aplicar HOY para cuidar el planeta?",
+     "ops": [
+      "Usar los recursos de la naturaleza sin desperdiciarlos, para que duren para el futuro",
+      "Cortar todos los árboles rápido porque siempre vuelven a crecer solos",
+      "Botar la basura al río porque el agua se la lleva lejos"
+     ],
+     "correcta": 0,
+     "porque": "Muchos pueblos originarios, como los mapuche, tomaban de la naturaleza solo lo necesario y la respetaban, una idea muy parecida al cuidado del medioambiente de hoy. Cortar todo o contaminar el agua daña la naturaleza para siempre. El OA busca que los niños valoren estos pueblos y conecten su sabiduría con el cuidado ecológico actual."
+    },
+    {
+     "q": "En clase muestran dos mapas de Chile: uno de hace mucho tiempo, dibujado a mano con pocos detalles, y uno actual hecho con satélites, muy exacto. Sofía dice que el mapa antiguo 'está mal hecho'. ¿Cuál es la mejor forma de pensar sobre esto?",
+     "ops": [
+      "El mapa antiguo no está mal: la gente dibujaba con las herramientas que tenía en su época",
+      "El mapa antiguo es una mentira porque no se parece al de ahora",
+      "Los dos mapas son exactamente iguales y no cambió nada con el tiempo"
+     ],
+     "correcta": 0,
+     "porque": "Las personas del pasado hacían mapas con los conocimientos y herramientas de su tiempo; no estaban 'mal', simplemente tenían menos tecnología. Comparar el pasado y el presente y comprender los cambios en el tiempo es un OA central. Juzgar el pasado con ojos de hoy no es justo ni correcto."
+    },
+    {
+     "q": "Cada 18 de septiembre en Chile se celebran las Fiestas Patrias con cueca, empanadas, volantines y ramadas. Tomás pregunta por qué toda su familia, aunque unos viven en Arica y otros en Punta Arenas, celebra parecido. ¿Cuál es la mejor explicación?",
+     "ops": [
+      "Son tradiciones que compartimos como país y nos ayudan a sentirnos parte de una misma comunidad",
+      "Es obligatorio por ley bailar cueca o te llevan preso",
+      "Solo la gente de Santiago celebra y los demás copian por televisión"
+     ],
+     "correcta": 0,
+     "porque": "Las Fiestas Patrias son tradiciones nacionales que unen a los chilenos de todo el país y fortalecen el sentido de pertenencia e identidad, un OA de este nivel. No son una obligación con castigo ni algo exclusivo de una sola ciudad; se viven en todo Chile."
+    },
+    {
+     "q": "En el pueblo de Isidora, un río que la comunidad usa para tomar agua y regar se está ensuciando con basura. Los vecinos se reúnen para decidir qué hacer. Isidora aprendió sobre trabajar en comunidad por el bien de todos. ¿Qué decisión cuida mejor el bien común y el medioambiente?",
+     "ops": [
+      "Organizar entre todos jornadas de limpieza y acordar no botar basura al río",
+      "Que cada familia solo limpie frente a su casa y no le importe el resto del río",
+      "Comprar agua en botellas y dejar el río sucio porque limpiarlo da trabajo"
+     ],
+     "correcta": 0,
+     "porque": "El bien común significa que la comunidad se organiza y coopera para resolver un problema que afecta a todos, cuidando además un recurso natural compartido como el río. Limpiar solo un pedazo o abandonar el río no soluciona el problema para toda la comunidad. El OA integra convivencia, responsabilidad y cuidado del entorno."
+    },
+    {
+     "q": "Un bombero, una profesora y una recolectora de basura trabajan en la comunidad de Valentina. Ella dice que el trabajo de la recolectora 'no sirve para nada'. Pensándolo bien, ¿por qué se equivoca Valentina?",
+     "ops": [
+      "Todos los trabajos aportan algo a la comunidad; sin recolectores las calles se llenarían de basura y enfermedades",
+      "Tiene razón, solo los bomberos y profesores hacen trabajos importantes",
+      "El trabajo de recolectar basura lo puede hacer una máquina sola, sin personas"
+     ],
+     "correcta": 0,
+     "porque": "Cada oficio cumple una función necesaria y merece respeto; los servicios de la comunidad dependen unos de otros. Sin recolección de residuos habría suciedad y enfermedades, así que ese trabajo cuida la salud y el medioambiente de todos. Valorar los distintos trabajos y a quienes los realizan es un OA de formación ciudadana y respeto."
+    },
+    {
+     "q": "Diego quiere ir desde su casa hasta la plaza. Su mamá le dice: 'Sales por la puerta mirando hacia donde sale el sol en la mañana, avanzas dos cuadras y doblas hacia tu mano derecha'. Si el sol sale por el ESTE, ¿hacia qué dirección camina Diego al salir de su casa?",
+     "ops": [
+      "Hacia el este",
+      "Hacia el oeste",
+      "Hacia el sur"
+     ],
+     "correcta": 0,
+     "porque": "El sol sale por el este, así que si Diego camina mirando hacia donde sale el sol, avanza hacia el este. Usar puntos de referencia y los puntos cardinales para ubicarse y describir trayectos es un OA de orientación espacial. El oeste es justo el lado contrario (donde se esconde el sol) y el sur es otra dirección distinta."
+    }
+   ],
+   "3": [
+    {
+     "q": "Camila dibuja una línea de tiempo de su vida. Marca su nacimiento a la izquierda y HOY a la derecha. Su hermano nació 3 años DESPUÉS que ella. ¿Dónde debe poner la marca del nacimiento de su hermano?",
+     "ops": [
+      "Más cerca de HOY que su propio nacimiento, porque pasó menos tiempo desde que él nació",
+      "En el mismo punto que su nacimiento, porque son hermanos",
+      "A la izquierda de su nacimiento, porque los hermanos van primero"
+     ],
+     "correcta": 0,
+     "porque": "En una línea de tiempo, lo más reciente va hacia la derecha (más cerca de HOY). Como el hermano nació después, su marca queda entre la de Camila y HOY. Esto exige entender el orden temporal, no solo memorizarlo."
+    },
+    {
+     "q": "En un mapa de Chile, el norte está arriba. Si vas desde Santiago hacia Puerto Montt, que está más abajo en el mapa, ¿en qué dirección te mueves realmente?",
+     "ops": [
+      "Hacia el sur",
+      "Hacia el norte",
+      "Hacia el este (la cordillera)"
+     ],
+     "correcta": 0,
+     "porque": "En los mapas el norte va arriba y el sur abajo. Puerto Montt está al sur de Santiago, así que moverte 'hacia abajo' en el mapa significa viajar hacia el sur. Relaciona los puntos cardinales con la geografía real de Chile."
+    },
+    {
+     "q": "Los antiguos griegos crearon los Juegos Olímpicos, donde los pueblos competían pero también hacían una tregua para no pelear en guerra durante los juegos. ¿Qué valor demuestra mejor esta tregua?",
+     "ops": [
+      "La búsqueda de la paz y el respeto entre pueblos distintos",
+      "Que los griegos eran los mejores atletas del mundo",
+      "Que preferían los deportes a la agricultura"
+     ],
+     "correcta": 0,
+     "porque": "La tregua olímpica servía para detener las guerras y competir en paz. Eso muestra el valor de la paz y el respeto entre pueblos, una virtud que también valoramos hoy. La pregunta pide interpretar el sentido de una costumbre, no repetir un dato."
+    },
+    {
+     "q": "Un grupo de niños de tu curso quiere cuidar el patio del colegio, que está lleno de basura. Siguiendo la idea del 'bien común', ¿cuál es la mejor decisión?",
+     "ops": [
+      "Organizarse todos juntos para limpiar y poner basureros, porque el patio es de todos",
+      "Que solo limpie el niño que botó más basura",
+      "Dejar el patio sucio y jugar en otro lado"
+     ],
+     "correcta": 0,
+     "porque": "El bien común significa cuidar lo que beneficia a toda la comunidad. Trabajar juntos para limpiar y prevenir la basura ayuda a todos y cuida el medio ambiente. Requiere aplicar el concepto a un caso real, uniendo convivencia y conciencia ecológica."
+    },
+    {
+     "q": "Los pueblos originarios de Chile, como los mapuche, usaban solo lo que necesitaban del bosque y devolvían semillas a la tierra. Una fábrica moderna corta todos los árboles de una vez para vender la madera. ¿Qué diferencia importante muestra esto?",
+     "ops": [
+      "Los mapuche cuidaban la naturaleza para que durara, pensando en el futuro",
+      "La fábrica trabaja más rápido, así que es siempre mejor",
+      "No hay ninguna diferencia, ambos usan árboles"
+     ],
+     "correcta": 0,
+     "porque": "El pueblo mapuche tenía una relación de respeto y equilibrio con la naturaleza, tomando solo lo necesario. Comparar ambas formas enseña conciencia ecológica y a analizar consecuencias a largo plazo, no solo describir un dato."
+    },
+    {
+     "q": "Roma construyó acueductos, largos canales para llevar agua limpia desde las montañas hasta las ciudades. ¿Qué problema de la gente resolvían principalmente los acueductos?",
+     "ops": [
+      "Que las personas tuvieran agua para beber y lavarse aunque vivieran lejos de un río",
+      "Que los soldados pudieran viajar más rápido a la guerra",
+      "Que hubiera más lugares para hacer teatro"
+     ],
+     "correcta": 0,
+     "porque": "Los acueductos transportaban agua desde lugares lejanos hasta las ciudades, resolviendo la necesidad básica de agua limpia. La pregunta pide deducir para qué servía una obra romana según su función, relacionando tecnología antigua con una necesidad humana."
+    },
+    {
+     "q": "Chile es un país muy largo y angosto. En el mismo día, en el norte (Atacama) puede haber desierto seco y calor, mientras en el sur (Patagonia) hace frío y llueve. ¿Cuál es la mejor explicación?",
+     "ops": [
+      "Como Chile es tan largo de norte a sur, tiene climas y paisajes muy distintos en cada zona",
+      "Porque el norte y el sur son dos países diferentes",
+      "Porque en el sur siempre es de noche y en el norte de día"
+     ],
+     "correcta": 0,
+     "porque": "La gran extensión de Chile de norte a sur hace que tenga zonas naturales muy diferentes: desierto en el norte, lluvias y frío en el sur. Exige relacionar la forma del territorio con la diversidad de climas, analizando causa y efecto."
+    },
+    {
+     "q": "En la antigua Grecia, en Atenas los ciudadanos se reunían para VOTAR y decidir juntos las leyes de la ciudad. Si tu curso tuviera que elegir el juego para el recreo usando esa misma idea, ¿qué harían?",
+     "ops": [
+      "Votarían todos y ganaría la opción con más votos, para decidir en conjunto",
+      "Decidiría solo el niño más alto de la sala",
+      "Nadie jugaría para evitar discusiones"
+     ],
+     "correcta": 0,
+     "porque": "En Atenas nació la idea de que las personas deciden juntas votando: eso es la base de la democracia. Aplicarla al curso muestra el valor de la participación y el respeto por la mayoría. La pregunta pide trasladar un concepto histórico a una situación real de hoy."
+    }
+   ],
+   "4": [
+    {
+     "q": "Un grupo de estudiantes de Arica y otro de Punta Arenas quieren jugar juntos por videollamada a las 6 de la tarde. Chile es un país muy largo de norte a sur, pero, ¿por qué SÍ pueden coordinarse fácilmente a la misma hora?",
+     "ops": [
+      "Porque todo Chile continental usa la misma hora, ya que el territorio es largo de norte a sur pero angosto de este a oeste",
+      "Porque en Arica siempre es de día y en Punta Arenas siempre es de noche",
+      "Porque Arica va tres horas adelantada respecto a Punta Arenas"
+     ],
+     "correcta": 0,
+     "porque": "Las diferencias de hora (husos horarios) dependen de cuánto se extiende un país de ESTE a OESTE (longitud), no de norte a sur. Chile continental es larguísimo de norte a sur pero muy angosto de este a oeste, por eso comparte la misma hora oficial. Distinto es el largo, que sí produce climas y paisajes muy diferentes.",
+     "porque_placeholder": "x"
+    },
+    {
+     "q": "En verano, el río de un pueblo del sur de Chile baja con menos agua y los peces empiezan a morir. Un vecino propone repartir el agua para regar solo lo necesario y cuidar el bosque de la orilla. ¿Por qué esta idea es la más sabia?",
+     "ops": [
+      "Porque cuidar el bosque de la orilla y usar solo el agua necesaria protege el río para todos y para el futuro",
+      "Porque así un solo agricultor se queda con toda el agua y gana más dinero",
+      "Porque los árboles de la orilla secan el río y hay que cortarlos todos"
+     ],
+     "correcta": 0,
+     "porque": "El bosque nativo junto al río (bosque ribereño) da sombra, mantiene el agua fresca y sostiene el suelo, ayudando a que el río no se seque. Compartir el agua con justicia y cuidar la naturaleza es responsabilidad de toda la comunidad, hoy y para las próximas generaciones. Es un ejemplo de bien común y cuidado del medio ambiente."
+    },
+    {
+     "q": "El pueblo mapuche vivía principalmente en el centro-sur de Chile y los rapa nui en Isla de Pascua, en medio del océano. ¿Por qué su forma de alimentarse era tan distinta?",
+     "ops": [
+      "Porque cada pueblo aprovechaba lo que le daba su entorno: los mapuche cultivaban la tierra y los rapa nui dependían más del mar y de cultivos de la isla",
+      "Porque los rapa nui no comían nada y los mapuche comían de todo",
+      "Porque ambos pueblos vivían en el desierto y comían solo cactus"
+     ],
+     "correcta": 0,
+     "porque": "Los pueblos originarios adaptaban su vida al medio geográfico. Los mapuche, en tierras fértiles del centro-sur, cultivaban (papas, maíz) y criaban animales; los rapa nui, rodeados de mar en una isla, dependían mucho de la pesca y de cultivos isleños. Comparar ambos muestra cómo la geografía influye en la cultura y la alimentación."
+    },
+    {
+     "q": "En la zona norte de Chile hay desierto y en la zona sur llueve mucho y hay bosques. Una familia quiere plantar un huerto grande al aire libre solo con agua de lluvia. ¿En qué zona tendría MÁS facilidad y por qué?",
+     "ops": [
+      "En la zona sur, porque llueve con frecuencia y hay más agua disponible para las plantas",
+      "En la zona norte, porque el desierto es el lugar con más lluvia de Chile",
+      "En la zona central, porque ahí nunca sale el sol y las plantas no lo necesitan"
+     ],
+     "correcta": 0,
+     "porque": "El clima y el agua disponible cambian a lo largo de Chile. En el norte está el desierto de Atacama, uno de los más secos del mundo, con muy poca lluvia; en el sur llueve mucho y hay bosques. Un huerto que depende de la lluvia funcionaría mejor en el sur. Analizar el clima ayuda a tomar buenas decisiones sobre el uso del territorio."
+    },
+    {
+     "q": "Los incas construyeron el Camino del Inca, una enorme red de caminos que cruzaba montañas y llegaba hasta el norte de Chile. ¿Para qué le servía a un imperio tan grande tener buenos caminos?",
+     "ops": [
+      "Para comunicar zonas lejanas, mover alimentos, mensajes y personas, y así gobernar mejor un territorio inmenso",
+      "Solo para que los turistas actuales pudieran sacarse fotos",
+      "Para separar a los pueblos y que nunca pudieran hablarse entre ellos"
+     ],
+     "correcta": 0,
+     "porque": "Un imperio extenso como el inca necesitaba conectar sus territorios. Los caminos permitían transportar alimentos, enviar mensajeros (chasquis) y mover soldados y autoridades, lo que hacía posible administrar y unir zonas muy alejadas. Analizar esto muestra cómo la infraestructura fortalece la organización de una sociedad."
+    },
+    {
+     "q": "En un curso, algunos niños quieren decidir el paseo votando entre todos, y otros quieren que solo mande el más popular. La profesora recuerda que en una comunidad democrática las decisiones se toman de cierta forma. ¿Qué opción respeta mejor ese valor?",
+     "ops": [
+      "Votar entre todos y respetar la decisión de la mayoría, escuchando también las ideas de las minorías",
+      "Que decida solo el niño más popular sin preguntar a nadie",
+      "Que no vaya nadie de paseo para no tener que ponerse de acuerdo"
+     ],
+     "correcta": 0,
+     "porque": "La convivencia democrática se basa en participar, escuchar distintas opiniones y respetar la decisión de la mayoría sin ignorar a los demás. Que decida una sola persona por ser popular no es justo ni democrático. Este reto aplica valores como el respeto, la participación y el bien común a una situación real del aula."
+    },
+    {
+     "q": "Los conquistadores españoles y los pueblos originarios de Chile se encontraron hace siglos. Al estudiar ese encuentro, una buena forma de entenderlo con respeto es:",
+     "ops": [
+      "Reconocer que fue un encuentro difícil, con conflictos y también mezcla de culturas, valorando el aporte de ambos mundos",
+      "Pensar que solo un lado era importante y el otro no valía nada",
+      "Creer que nunca hubo contacto entre españoles y pueblos originarios"
+     ],
+     "correcta": 0,
+     "porque": "El encuentro entre españoles y pueblos originarios trajo conflictos y sufrimiento, pero también mezcla de idiomas, comidas y costumbres que hoy forman parte de la identidad chilena (el mestizaje). Mirarlo con respeto significa valorar a ambos pueblos. Esto desarrolla pensamiento histórico y empatía en lugar de juicios simples."
+    },
+    {
+     "q": "El desierto de Atacama, en el norte de Chile, casi no tiene lluvias, pero igual vivieron allí pueblos originarios como los atacameños. ¿Cómo se explica que pudieran sobrevivir en un lugar tan seco?",
+     "ops": [
+      "Aprovechando con ingenio el agua de los ríos y oasis, y cultivando en terrazas para no desperdiciarla",
+      "Trayendo el agua en avión desde el sur todos los días",
+      "No necesitaban agua porque en el desierto las personas no la usan"
+     ],
+     "correcta": 0,
+     "porque": "Aunque el desierto es muy seco, existen oasis y ríos que bajan de la cordillera. Los pueblos atacameños usaron ese agua con inteligencia, construyendo terrazas de cultivo y canales para regar sin desperdiciar. Esto muestra cómo el ser humano se adapta al medio y usa los recursos naturales con cuidado y creatividad."
+    }
+   ],
+   "5": [
+    {
+     "q": "El pueblo mapuche vivía en el sur de Chile y resistió durante casi 300 años tanto al Imperio Inca como a los conquistadores españoles. Un historiador afirma: 'Los mapuche pudieron resistir tanto tiempo por su forma de organizarse'. ¿Cuál dato APOYA mejor esa afirmación?",
+     "ops": [
+      "No tenían un rey ni una capital única: se organizaban en muchos grupos familiares (lof) que se unían solo para la guerra, así que vencer a uno no derrotaba a todos",
+      "Construyeron grandes ciudades de piedra que eran muy difíciles de conquistar",
+      "Tenían armas de fuego y caballos desde antes de que llegaran los españoles"
+     ],
+     "correcta": 0,
+     "porque": "La fortaleza mapuche estaba en su organización descentralizada: al no depender de un solo jefe o ciudad capital (como sí ocurría con los incas y su Cuzco), no había un 'centro' que derribar para derrotarlos. Las otras opciones son falsas: los mapuche no levantaron ciudades de piedra, y los caballos y armas de fuego los trajeron los españoles."
+    },
+    {
+     "q": "Los incas construyeron el Camino del Inca (Qhapaq Ñan), una enorme red de caminos que cruzaba montañas y desiertos, con depósitos de comida (tambos) cada cierto tramo. ¿Qué problema de gobernar un imperio tan grande resolvía MEJOR esta obra?",
+     "ops": [
+      "Servía para que la gente hiciera turismo y conociera el paisaje",
+      "Permitía mover rápido ejércitos, mensajeros y alimentos para controlar y abastecer territorios muy lejanos entre sí",
+      "Evitaba que lloviera sobre los cultivos de las montañas"
+     ],
+     "correcta": 1,
+     "porque": "Un imperio extenso enfrenta el problema de comunicar y controlar zonas distantes. Los caminos y tambos resolvían eso: los chasquis (mensajeros) llevaban noticias con rapidez y el ejército y los alimentos podían desplazarse. No era para turismo ni tenía relación con controlar la lluvia."
+    },
+    {
+     "q": "Chile tiene una geografía muy variada de norte a sur. Una familia quiere instalar una granja para cultivar frutas y verduras al aire libre durante gran parte del año, con agua suficiente y sin el frío extremo del sur ni la sequía del desierto. Según las zonas naturales de Chile, ¿dónde le conviene MÁS instalarse?",
+     "ops": [
+      "En la Zona Norte, en pleno desierto de Atacama, porque casi nunca llueve",
+      "En la Zona Central, con clima mediterráneo (veranos cálidos y secos, inviernos lluviosos) y valles fértiles",
+      "En la Zona Austral, en Magallanes, por sus fuertes vientos y bajas temperaturas"
+     ],
+     "correcta": 1,
+     "porque": "La Zona Central tiene clima mediterráneo y valles fértiles regados por ríos, ideal para la agricultura: de hecho ahí se concentra buena parte de la producción agrícola del país. El desierto de Atacama es uno de los más áridos del mundo (falta agua) y la Zona Austral es demasiado fría y ventosa para cultivar al aire libre gran parte del año."
+    },
+    {
+     "q": "En una comuna del sur de Chile, una empresa quiere talar un gran bosque nativo para vender la madera. Vecinos, un grupo ecologista y el municipio discuten qué hacer. Aplicando el valor del bien común y el cuidado del medio ambiente, ¿cuál es la decisión MÁS responsable?",
+     "ops": [
+      "Talar todo el bosque de inmediato, porque dará dinero rápido a la empresa",
+      "Prohibir para siempre cualquier uso del bosque, aunque la comunidad se quede sin ningún beneficio ni trabajo",
+      "Buscar un acuerdo que permita un uso regulado y sostenible, reforestando y protegiendo las especies nativas para que el bosque siga existiendo en el futuro"
+     ],
+     "correcta": 2,
+     "porque": "El bien común busca beneficiar a toda la comunidad, hoy y en el futuro. Talar todo agota un recurso que tarda siglos en recuperarse y daña el ecosistema; prohibir absolutamente todo ignora las necesidades de la gente. La opción sostenible (uso regulado más reforestación) equilibra el trabajo de hoy con el cuidado del bosque para las próximas generaciones."
+    },
+    {
+     "q": "Chile es un país muy largo y angosto, ubicado en el 'Cinturón de Fuego del Pacífico', por eso tiene muchos volcanes y terremotos. ¿Cuál es la mejor explicación de por qué a Chile le conviene tener normas de construcción muy estrictas para los edificios?",
+     "ops": [
+      "Porque los edificios altos se ven más bonitos en las fotos del país",
+      "Porque al estar sobre una zona donde chocan las placas de la Tierra, ocurren sismos fuertes, y construir bien protege la vida de las personas",
+      "Porque las normas sirven para que los edificios resistan la nieve del desierto de Atacama"
+     ],
+     "correcta": 1,
+     "porque": "Chile está sobre el límite de placas tectónicas (Nazca y Sudamericana), lo que provoca sismos frecuentes y a veces muy fuertes. Por eso las normas antisísmicas buscan proteger la vida de las personas, no la estética. La opción del desierto es incorrecta: en Atacama casi no nieva y no es esa la razón de las normas."
+    },
+    {
+     "q": "Antes de la llegada de los españoles, los atacameños (norte de Chile) desarrollaron la agricultura en pleno desierto usando terrazas y canales, mientras que los changos vivían en la costa de la pesca y la recolección de mariscos. ¿Qué conclusión se puede sacar al COMPARAR a ambos pueblos?",
+     "ops": [
+      "Cada pueblo adaptó su forma de conseguir alimento al ambiente donde vivía: los del interior a la tierra y el agua escasa, los de la costa al mar",
+      "Los dos pueblos vivían exactamente igual porque ambos estaban en el norte de Chile",
+      "El pueblo que vivía en la costa era más inteligente que el del interior"
+     ],
+     "correcta": 0,
+     "porque": "Comparar muestra un patrón: pueblos distintos desarrollaron modos de vida según los recursos de su entorno. Los atacameños, con poca agua, idearon canales y terrazas; los changos aprovecharon el mar. No vivían igual (opción 2 falsa) y las diferencias se deben al ambiente, no a que unos fueran 'más inteligentes' que otros: cada uno resolvió con ingenio los desafíos de su lugar."
+    },
+    {
+     "q": "Un mapa temático de Chile muestra que la mayor parte de la población se concentra en la Zona Central, especialmente en torno a Santiago, mientras que el extremo sur (Aysén, Magallanes) tiene muy pocos habitantes por kilómetro cuadrado. ¿Cuál es la explicación MÁS razonable de esta diferencia?",
+     "ops": [
+      "En el sur la gente no puede vivir porque no existe el agua",
+      "La Zona Central ofrece clima más templado, tierras fértiles, más trabajo y servicios, lo que atrae a más personas que las zonas frías y aisladas del extremo sur",
+      "El gobierno prohíbe por ley que las personas vivan en el sur de Chile"
+     ],
+     "correcta": 1,
+     "porque": "La concentración de población responde a factores que hacen más fácil o atractivo vivir en un lugar: clima templado, suelos fértiles, empleo y servicios en la Zona Central. El extremo sur es más frío, aislado y con menos oportunidades, por eso vive menos gente. No es que falte agua (en el sur abunda) ni que exista una ley que lo prohíba."
+    },
+    {
+     "q": "El profesor pide investigar cómo era la vida de los diaguitas antes de la conquista. Un estudiante encuentra tres fuentes. ¿Cuál es la MEJOR fuente para conocer directamente cómo vivían, y por qué?",
+     "ops": [
+      "Una película de acción inventada con guerreros de fantasía ambientada 'en tiempos antiguos'",
+      "Vasijas de cerámica diaguita auténticas encontradas por arqueólogos, con sus formas y dibujos originales",
+      "Un comentario anónimo en internet que dice 'creo que los diaguitas eran así' sin indicar de dónde saca la información"
+     ],
+     "correcta": 1,
+     "porque": "Las vasijas auténticas son una fuente primaria: objetos reales hechos por los propios diaguitas, que entregan evidencia directa de su arte, tecnología y vida cotidiana. Una película de fantasía es ficción y no evidencia histórica, y un comentario anónimo sin respaldo no es confiable. Elegir buenas fuentes y verificar de dónde viene la información es clave para investigar bien la historia."
+    }
+   ],
+   "6": [
+    {
+     "q": "En 1980 el río Loa (el más largo de Chile, en el norte) tenía cierto caudal. Hoy, comunidades atacameñas y agricultores del desierto denuncian que baja mucho menos agua al mar. En la zona operan grandes faenas mineras de cobre que extraen agua, junto a un clima árido y menos lluvias en la cordillera. Un alcalde propone: 'Prohibamos que la gente riegue sus huertos familiares para salvar el río'. ¿Cuál es el análisis MÁS completo y justo de la situación?",
+     "ops": [
+      "El problema principal es el gran consumo de agua de la minería y la sequía; culpar solo a los pequeños huertos familiares es injusto y no resuelve la causa de fondo",
+      "Los huertos familiares son los que más agua gastan, así que la propuesta del alcalde solucionaría el problema del río",
+      "El río baja porque hay demasiada gente viviendo en el desierto, y la única solución es que las familias se vayan del norte"
+     ],
+     "correcta": 0,
+     "porque": "Este reto exige analizar causas y jerarquizar responsabilidades. En el norte árido de Chile, la gran minería del cobre es un consumidor intensivo de agua, junto con la sequía prolongada. Un huerto familiar consume muchísimo menos que una faena industrial. La virtud de la justicia pide repartir cargas de forma proporcional: es injusto exigir el mayor sacrificio a quien menos contamina o consume, mientras se ignora la causa principal. La conciencia ecológica implica atacar el origen real del problema, no el más fácil de castigar.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "Chile es un país muy largo y angosto. Un empresario quiere instalar UNA sola gran fábrica de ropa de lana para vender a todo el país, y duda entre Arica (extremo norte) y Punta Arenas (extremo sur). Considerando el clima de cada zona y el mercado, ¿qué razonamiento geográfico es correcto?",
+     "ops": [
+      "Arica tiene clima desértico y cálido casi todo el año, por lo que hay poca demanda local de ropa de lana abrigada; Punta Arenas, con su clima frío y ventoso, tiene una necesidad real y constante de ese producto",
+      "Da exactamente lo mismo dónde se instale, porque el clima de Chile es igual de norte a sur",
+      "Conviene Arica porque hace calor, y cuando hace calor la gente compra más ropa de lana para el invierno"
+     ],
+     "correcta": 0,
+     "porque": "El reto integra la relación entre clima, geografía y actividad económica. Chile abarca desde el desierto de Atacama (Arica, árido y cálido) hasta el clima frío y ventoso de la Patagonia (Punta Arenas). La demanda de un bien depende de las necesidades del lugar: ropa de lana abrigada tiene sentido donde hace frío. El alumno debe conectar el rasgo climático de cada zona extrema con el comportamiento del mercado, en vez de asumir un clima uniforme.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "Antes de la llegada de los españoles, los mapuche del sur de Chile vivían de la agricultura, la ganadería y la recolección, y los changos del norte vivían principalmente de la pesca y la caza de lobos marinos en la costa. ¿Cuál es la MEJOR explicación de por qué estos pueblos tenían formas de vida tan distintas?",
+     "ops": [
+      "Cada pueblo adaptó su forma de vida a los recursos y al clima de su territorio: el sur mapuche tenía tierras fértiles y agua, mientras la costa árida del norte ofrecía sobre todo recursos del mar",
+      "Los mapuche eran más inteligentes que los changos y por eso descubrieron la agricultura",
+      "En realidad ambos pueblos vivían igual, y las diferencias las inventaron los españoles al llegar"
+     ],
+     "correcta": 0,
+     "porque": "El reto pide relacionar cultura y medio geográfico, evitando juicios de superioridad entre pueblos. La forma de vida de cada pueblo originario respondía a una adaptación inteligente a su entorno: los mapuche aprovecharon las tierras fértiles y lluviosas del sur para la agricultura y ganadería; los changos, en la costa desértica del norte, dependieron del mar. La respuesta correcta valora la diversidad cultural con respeto, sin caer en el prejuicio de que un pueblo era 'mejor' que otro.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "Un grupo de estudiantes de 6° básico quiere organizar la limpieza del patio y decidir el destino de un fondo del curso. Proponen que 'quien grite más fuerte decide' y que 'los que no ayudan igual reciben el premio'. Según los principios de una convivencia democrática y del bien común, ¿qué propuesta deberían adoptar en su lugar?",
+     "ops": [
+      "Decidir mediante diálogo y votación donde cada estudiante tiene un voto igual, y acordar que las responsabilidades y beneficios se repartan de forma justa entre quienes participan",
+      "Dejar que decida solo el estudiante más popular, porque así se evitan discusiones",
+      "Que decida quien tenga más dinero para poner en el fondo, ya que aporta más"
+     ],
+     "correcta": 0,
+     "porque": "El reto lleva los principios de democracia y bien común a una situación escolar real. Una convivencia democrática se basa en la igualdad de voz (un voto por persona), el diálogo por sobre la fuerza o el grito, y la justicia en repartir deberes y beneficios. Las otras opciones reflejan el autoritarismo (decide el más fuerte o popular) o la desigualdad (decide quien tiene más dinero), ambos contrarios a los valores de respeto, participación y equidad.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "En Chile existen derechos garantizados a los niños, como el derecho a la educación y a la salud. Un compañero dice: 'Yo tengo derecho a educación, así que puedo llegar tarde, no hacer tareas y tratar mal a mis profesores; nadie puede exigirme nada'. ¿Cuál es el razonamiento correcto sobre derechos y deberes?",
+     "ops": [
+      "Los derechos vienen acompañados de deberes: el derecho a la educación implica también el deber de esforzarse, cumplir y respetar a los demás en la comunidad escolar",
+      "Tiene toda la razón: como es un derecho, no existe ningún deber ni límite asociado a él",
+      "Los niños no tienen derechos reales, solo obligaciones que los adultos deciden por ellos"
+     ],
+     "correcta": 0,
+     "porque": "El reto exige comprender la relación entre derechos y deberes, un contenido clave de formación ciudadana. Tener un derecho no significa ausencia de responsabilidades: el derecho a la educación conlleva el deber de aprovecharla con esfuerzo y respeto hacia profesores y compañeros. La primera opción integra la responsabilidad y el respeto como virtudes. Las otras confunden el derecho con un privilegio sin límites, o niegan erróneamente que los niños tengan derechos.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "Santiago concentra una parte muy grande de la población, los empleos y los servicios de Chile, mientras muchas regiones tienen menos oportunidades. Un estudiante propone: 'Para equilibrar el país, el Estado podría llevar más universidades, hospitales y trabajos a las regiones'. ¿Qué análisis de esta propuesta es el más acertado?",
+     "ops": [
+      "Es una idea razonable: al descentralizar servicios y empleos hacia las regiones, se reduce la necesidad de migrar a Santiago y se distribuyen mejor las oportunidades en el territorio",
+      "Es una mala idea, porque lo natural es que todo Chile viva concentrado en una sola ciudad para ahorrar espacio",
+      "No cambiaría nada, porque la cantidad de personas en cada región no tiene relación con dónde hay trabajo y estudios"
+     ],
+     "correcta": 0,
+     "porque": "El reto aborda la distribución de la población y el fenómeno del centralismo chileno. Santiago concentra población y servicios, lo que atrae migración interna y desequilibra el territorio. Descentralizar (llevar universidades, hospitales y empleos a regiones) es una política real discutida en Chile para dar oportunidades más equitativas y frenar la sobreconcentración. El alumno debe conectar la ubicación de los servicios con las decisiones de la gente sobre dónde vivir, valorando la equidad territorial.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "El desierto de Atacama es uno de los más áridos del mundo, pero guarda un patrimonio frágil: geoglifos y momias Chinchorro (las más antiguas del mundo preparadas por el ser humano). Una empresa de turismo quiere llevar miles de vehículos a pasar por encima de los geoglifos para que sea 'más emocionante'. ¿Qué decisión combina mejor el desarrollo con el cuidado del patrimonio?",
+     "ops": [
+      "Permitir el turismo pero con senderos y miradores que protejan los geoglifos, porque el patrimonio es un legado único que, una vez destruido, no se puede recuperar",
+      "Dejar que los vehículos pasen por encima, ya que el dinero del turismo es más importante que unos dibujos antiguos",
+      "Cerrar para siempre toda la zona y prohibir que cualquier persona conozca o estudie ese patrimonio"
+     ],
+     "correcta": 0,
+     "porque": "El reto pide equilibrar desarrollo económico y conservación del patrimonio, un dilema real en el norte de Chile (geoglifos y cultura Chinchorro, reconocida por la UNESCO). La mejor solución no es un extremo (destruir por dinero, o cerrar todo), sino un turismo responsable que permita disfrutar y aprender sin dañar un bien irrecuperable. Se integran las virtudes de responsabilidad y cuidado del legado común de la humanidad, junto a la conciencia de proteger lo frágil.",
+     "correcta_texto": "opcion 0"
+    },
+    {
+     "q": "Chile está en una zona de mucha actividad sísmica y sufre terremotos grandes cada cierto tiempo. Dos comunas parecidas sufren el mismo terremoto: la comuna A había hecho simulacros, tenía construcciones reforzadas y un plan de emergencia; la comuna B no hizo nada 'porque igual nunca pasa nada'. Tras el sismo, la comuna A tuvo muchos menos daños y heridos. ¿Qué conclusión se puede sacar?",
+     "ops": [
+      "La prevención y la organización comunitaria reducen el impacto de los desastres naturales; aunque no se puede evitar un terremoto, sí se puede reducir el daño preparándose con responsabilidad",
+      "El terremoto fue distinto en cada comuna, así que la preparación no tuvo nada que ver con los resultados",
+      "La comuna A tuvo simplemente más suerte, y prepararse para los terremotos es una pérdida de tiempo"
+     ],
+     "correcta": 0,
+     "porque": "El reto conecta un rasgo geográfico de Chile (país sísmico, sobre el Cinturón de Fuego del Pacífico) con la prevención de riesgos. No se puede evitar un terremoto, pero la preparación (simulacros, construcción segura, planes de emergencia) reduce muchísimo los daños, como muestra el caso comparado. El alumno debe inferir la relación causa-efecto entre prevención y resultado, valorando la responsabilidad y la organización comunitaria frente a los desastres naturales.",
+     "correcta_texto": "opcion 0"
     }
    ]
   }
@@ -7474,6 +8439,501 @@ window.CONTENIDO = {
      ]
     }
    ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "Martín ordena estas palabras según cómo suenan al principio: 'sol', 'sapo', 'luna'. ¿Cuáles DOS empiezan con el mismo sonido?",
+     "ops": [
+      "sol y sapo",
+      "sol y luna",
+      "sapo y luna"
+     ],
+     "correcta": 0,
+     "porque": "'Sol' y 'sapo' empiezan ambas con el sonido /s/. 'Luna' empieza con /l/. Reconocer el sonido inicial (conciencia fonológica) es distinto de solo mirar la letra, y aquí hay que comparar tres palabras para hallar la pareja."
+    },
+    {
+     "q": "En el recreo, Sofía ve a un compañero nuevo sentado solo y triste. Ella quiere ayudarlo usando el lenguaje. ¿Qué frase es la MEJOR para acercarse con amabilidad?",
+     "ops": [
+      "\"¿Quieres jugar con nosotros?\"",
+      "\"Estás solo porque nadie te quiere.\"",
+      "\"No me molestes, estoy jugando.\""
+     ],
+     "correcta": 0,
+     "porque": "La empatía se expresa con palabras que invitan e incluyen. Preguntar '¿Quieres jugar con nosotros?' acoge al otro. Las otras frases hieren o rechazan. El lenguaje sirve para cuidar a los demás (virtud del respeto y la solidaridad)."
+    },
+    {
+     "q": "Lee esta parte de un cuento: 'La perrita movía la cola muy rápido, daba saltos y ladraba corriendo hacia la puerta.' ¿Cómo se siente la perrita?",
+     "ops": [
+      "Contenta y emocionada",
+      "Enojada y peleadora",
+      "Asustada y escondida"
+     ],
+     "correcta": 0,
+     "porque": "Hay que INFERIR el sentimiento a partir de las pistas del texto: mover la cola rápido, saltar y correr hacia la puerta son señales de alegría y emoción, no de enojo (no muerde ni gruñe) ni de miedo (no se esconde). Comprender más allá de lo que dice literalmente la palabra 'contenta'."
+    },
+    {
+     "q": "Benjamín va al cerro con su familia y encuentra basura en el sendero. Quiere dejar un cartel escrito para cuidar la naturaleza. ¿Qué mensaje comunica mejor la idea de cuidar el medio ambiente?",
+     "ops": [
+      "\"Cuida el cerro: bota tu basura en el basurero.\"",
+      "\"El cerro es feo cuando llueve.\"",
+      "\"Aquí venían muchas personas antes.\""
+     ],
+     "correcta": 0,
+     "porque": "Un cartel debe comunicar una acción clara para cuidar el entorno. 'Cuida el cerro: bota tu basura en el basurero' pide un comportamiento concreto y ecológico. Las otras frases no ayudan a proteger la naturaleza. Se une escritura con propósito y conciencia ambiental."
+    },
+    {
+     "q": "Camila quiere escribir la palabra 'mesa' pero necesita separarla en sílabas para escribirla bien. ¿Cuál es la separación correcta?",
+     "ops": [
+      "me - sa",
+      "m - esa",
+      "mes - a"
+     ],
+     "correcta": 0,
+     "porque": "'Mesa' se separa en dos sílabas: 'me-sa'. Cada sílaba se pronuncia en un golpe de voz y necesita una vocal. 'M' sola no suena como sílaba y 'mes-a' deja una vocal sola separada de su consonante. Segmentar en sílabas ayuda a leer y escribir correctamente."
+    },
+    {
+     "q": "En una fábula, la hormiga trabaja todo el verano guardando comida y la cigarra solo canta sin prepararse. Llega el invierno y la cigarra no tiene qué comer. ¿Qué nos enseña esta historia?",
+     "ops": [
+      "Es bueno ser responsable y prepararse a tiempo",
+      "Cantar en verano es malo",
+      "Las hormigas son más grandes que las cigarras"
+     ],
+     "correcta": 0,
+     "porque": "Las fábulas dejan una enseñanza (moraleja). Aquí el mensaje es que ser responsable y esforzarse con anticipación nos ayuda después. No trata de que cantar sea malo ni del tamaño de los insectos: hay que interpretar el sentido profundo del relato, no quedarse en lo literal."
+    },
+    {
+     "q": "Vicente escribió: 'mi mama me ama'. La profesora dice que falta algo importante al empezar la oración. ¿Qué debe corregir?",
+     "ops": [
+      "Escribir 'Mi' con mayúscula al principio",
+      "Borrar la palabra 'me'",
+      "Cambiar 'ama' por 'amas'"
+     ],
+     "correcta": 0,
+     "porque": "Toda oración comienza con letra mayúscula. La frase dice bien las palabras, pero 'mi' debe ir con mayúscula: 'Mi'. Borrar 'me' o cambiar 'ama' rompería el sentido. Aplicar la regla de la mayúscula inicial es una convención básica de la escritura."
+    },
+    {
+     "q": "La profesora lee dos textos sobre el mar: uno cuenta la historia de un pez valiente que busca a su familia, y el otro explica qué animales viven en el océano y qué comen. ¿Cuál de los dos es un cuento?",
+     "ops": [
+      "El del pez valiente que busca a su familia",
+      "El que explica qué comen los animales del mar",
+      "Los dos son cuentos"
+     ],
+     "correcta": 0,
+     "porque": "Un cuento narra una historia con personajes que viven aventuras y sentimientos, como el pez que busca a su familia. El otro texto INFORMA datos reales (qué animales hay y qué comen), por eso es un texto informativo. Distinguir el propósito de cada texto es comprensión de orden superior."
+    }
+   ],
+   "2": [
+    {
+     "q": "Camila leyó: \"El zorro chilote corría veloz entre los árboles del bosque valdiviano.\" Su hermano dice que 'veloz' se puede cambiar por otra palabra sin cambiar el sentido. ¿Cuál palabra sirve para reemplazar 'veloz'?",
+     "ops": [
+      "Rápido",
+      "Cansado",
+      "Lento"
+     ],
+     "correcta": 0,
+     "porque": "'Veloz' significa que va con mucha rapidez, por eso su sinónimo es 'rápido'. 'Lento' es lo contrario (antónimo) y 'cansado' cambia por completo lo que dice la oración. Reconocer sinónimos ayuda a entender mejor lo que leemos."
+    },
+    {
+     "q": "En el recreo, Matías encontró la mochila perdida de un compañero con su colación adentro. Nadie lo vio. Según lo que valoramos, ¿qué es lo correcto que debe hacer y por qué?",
+     "ops": [
+      "Devolverla a su dueño o al profesor, porque ser honesto cuida a los demás",
+      "Guardarla en su casillero para usarla después",
+      "Comerse la colación porque tenía hambre en el recreo"
+     ],
+     "correcta": 0,
+     "porque": "La honestidad significa hacer lo correcto aunque nadie nos mire. Devolver lo que no es nuestro cuida al compañero y demuestra respeto. Quedarse con algo ajeno sería deshonesto, aunque tengamos hambre o ganas."
+    },
+    {
+     "q": "Lee este texto: \"Debemos apagar la luz al salir de la sala y no botar papeles al suelo del patio.\" ¿Para qué fue escrito principalmente este texto?",
+     "ops": [
+      "Para invitarnos a cuidar la energía y mantener limpio el colegio",
+      "Para contarnos un cuento sobre una sala de clases",
+      "Para explicar cómo se fabrica una ampolleta"
+     ],
+     "correcta": 0,
+     "porque": "El texto da instrucciones para cuidar el medioambiente y el colegio: ahorrar energía y no ensuciar. No es un cuento (no narra una historia) ni explica cómo se fabrica algo. Identificar el propósito nos ayuda a comprender por qué existe un texto."
+    },
+    {
+     "q": "Sofía escribe en su diario: \"Ayer fui a la playa de Valparaíso y ______ muchas conchitas.\" ¿Qué palabra completa correctamente la oración, que habla de algo que ya pasó?",
+     "ops": [
+      "Recogí",
+      "Recojo",
+      "Recogeré"
+     ],
+     "correcta": 0,
+     "porque": "La oración dice 'ayer', o sea que ya pasó, por eso el verbo debe estar en pasado: 'recogí'. 'Recojo' es presente (ahora) y 'recogeré' es futuro (mañana). Usar bien el tiempo del verbo hace que la escritura tenga sentido."
+    },
+    {
+     "q": "Un cuento dice: \"El lobo sopló y sopló, pero la casa de ladrillos no se movió ni un poquito.\" ¿Qué podemos concluir sobre esa casa aunque el texto no lo diga con esas palabras?",
+     "ops": [
+      "Era fuerte y resistente",
+      "Era débil y frágil",
+      "Estaba hecha de paja"
+     ],
+     "correcta": 0,
+     "porque": "Si el lobo sopló muchas veces y la casa no se movió, podemos deducir que era muy resistente. El texto no lo dice directamente, pero lo entendemos por lo que ocurre. A esto se le llama hacer una inferencia."
+    },
+    {
+     "q": "En una lista de compras para el colegio aparece: \"lápiz, goma, cuaderno, sacapuntas\". Si queremos ordenarlas alfabéticamente para buscarlas más rápido, ¿cuál palabra va primera?",
+     "ops": [
+      "Cuaderno",
+      "Goma",
+      "Lápiz"
+     ],
+     "correcta": 0,
+     "porque": "Para ordenar alfabéticamente miramos la primera letra: c, g, l, s. La letra 'c' de 'cuaderno' viene antes que 'g', 'l' y 's' en el abecedario, por eso va primera. Ordenar por abecedario nos ayuda a buscar palabras en diccionarios y listas."
+    },
+    {
+     "q": "Benjamín quiere convencer a su curso de plantar un árbol en el patio. ¿Cuál oración es la MEJOR para lograr que sus compañeros lo apoyen?",
+     "ops": [
+      "Plantemos un árbol porque dará sombra y aire limpio para todos",
+      "El árbol es una planta que tiene tronco y hojas",
+      "Ayer llovió mucho en Santiago durante la tarde"
+     ],
+     "correcta": 0,
+     "porque": "Para convencer hay que dar una razón que muestre un beneficio: sombra y aire limpio. Las otras oraciones solo dan información o hablan del clima, pero no invitan ni dan un motivo para plantar el árbol. Argumentar es dar razones que apoyen una idea."
+    },
+    {
+     "q": "Antonia escribió: \"mi perro se llama tomás y vive en la casa\". Su profesora le pide corregir el uso de mayúsculas. ¿Cuál es la forma correcta?",
+     "ops": [
+      "Mi perro se llama Tomás y vive en la casa.",
+      "Mi Perro se llama tomás y vive en la Casa.",
+      "mi perro se llama Tomás y vive en la casa."
+     ],
+     "correcta": 0,
+     "porque": "Se usa mayúscula al inicio de la oración ('Mi') y en los nombres propios ('Tomás'). Palabras como 'perro' o 'casa' son comunes y van en minúscula. Escribir bien las mayúsculas hace que el texto se entienda y se vea ordenado."
+    }
+   ],
+   "3": [
+    {
+     "q": "Camila lee: \"El copihue trepaba por el viejo canelo del bosque, como un niño curioso que sube a los brazos de su abuelo.\" ¿Qué recurso usa el autor y para qué sirve?",
+     "ops": [
+      "Una comparación, que ayuda a imaginar cómo el copihue se apoya con cariño en el árbol",
+      "Una pregunta, que sirve para que el lector responda en voz alta",
+      "Una lista de reglas, que sirve para ordenar las partes de la planta"
+     ],
+     "correcta": 0,
+     "porque": "La palabra \"como\" une dos imágenes (el copihue y un niño que trepa a su abuelo): eso es una comparación. Sirve para que el lector imagine mejor la escena y sienta ternura hacia la naturaleza. No hay ninguna pregunta ni una lista de reglas en el texto."
+    },
+    {
+     "q": "En una noticia del diario escolar dice: \"Ayer, los alumnos de 3° B plantaron 20 arbolitos nativos en el patio de la escuela de Temuco.\" Si quieres saber CUÁNDO ocurrió el hecho, ¿en qué palabra te fijas?",
+     "ops": [
+      "En \"Temuco\", porque indica el lugar",
+      "En \"Ayer\", porque indica el momento en que pasó",
+      "En \"arbolitos\", porque indica qué se plantó"
+     ],
+     "correcta": 1,
+     "porque": "Una noticia responde preguntas como qué, quién, cuándo y dónde. La pregunta \"¿cuándo?\" se refiere al tiempo, y la palabra \"Ayer\" es la que marca el momento. \"Temuco\" responde a \"dónde\" y \"arbolitos\" responde a \"qué\", pero no al tiempo."
+    },
+    {
+     "q": "Dos textos hablan del río Mapocho. El Texto 1 dice: \"El río Mapocho nace en la cordillera y cruza Santiago.\" El Texto 2 dice: \"¡Ay, Mapocho querido, cuida tus aguas, no las dejes morir!\" ¿En qué se diferencian?",
+     "ops": [
+      "El Texto 1 informa datos y el Texto 2 expresa sentimientos, como un poema",
+      "Los dos son noticias que cuentan lo mismo con otras palabras",
+      "El Texto 1 es un poema y el Texto 2 da datos exactos del río"
+     ],
+     "correcta": 0,
+     "porque": "El Texto 1 entrega información objetiva (dónde nace y por dónde pasa el río): es informativo. El Texto 2 usa exclamaciones y le habla al río con cariño: expresa emociones, propio de la poesía. Por eso la opción correcta es la primera; las otras confunden qué texto hace cada cosa."
+    },
+    {
+     "q": "Benjamín escribió: \"Mi hermana y yo fuimos a la feria. compramos duraznos y sandías\" Su profesora le pide corregir el uso de mayúsculas. ¿Qué debe cambiar?",
+     "ops": [
+      "Escribir \"Compramos\" con mayúscula, porque empieza una oración nueva después del punto",
+      "Escribir \"Feria\" con mayúscula, porque es un lugar importante",
+      "No cambiar nada, porque la primera palabra ya tiene mayúscula"
+     ],
+     "correcta": 0,
+     "porque": "Después de un punto seguido siempre se empieza la nueva oración con mayúscula, y \"compramos\" viene justo después del punto, así que debe ir \"Compramos\". \"Feria\" es un sustantivo común y va con minúscula. Por eso no es correcto dejarlo sin cambios."
+    },
+    {
+     "q": "En una fábula, la tortuga gana la carrera al conejo porque avanza lento pero sin rendirse, mientras el conejo se duerme confiado. ¿Cuál es la enseñanza (moraleja) de esta fábula?",
+     "ops": [
+      "Que correr rápido siempre es lo mejor para ganar",
+      "Que la constancia y el esfuerzo valen más que confiarse demasiado",
+      "Que dormir la siesta ayuda a ganar las competencias"
+     ],
+     "correcta": 1,
+     "porque": "La fábula muestra que la tortuga gana por su perseverancia, y el conejo pierde por confiarse. La moraleja es una enseñanza sobre cómo actuar: aquí valora la constancia y el esfuerzo. Las otras opciones se quedan en detalles del cuento y no rescatan la lección."
+    },
+    {
+     "q": "Sofía debe buscar en el diccionario las palabras: \"nieve\", \"nube\" y \"nido\". ¿En qué orden las encontrará?",
+     "ops": [
+      "nido, nieve, nube",
+      "nube, nieve, nido",
+      "nieve, nido, nube"
+     ],
+     "correcta": 0,
+     "porque": "En el diccionario las palabras van en orden alfabético. Las tres empiezan con \"ni\" o \"nu\": comparando la segunda y tercera letra, \"nido\" (i-d) va antes que \"nieve\" (i-e), y ambas van antes que \"nube\" (u), porque la \"i\" viene antes que la \"u\". El orden correcto es nido, nieve, nube."
+    },
+    {
+     "q": "En un afiche del colegio se lee: \"¡Cuida el agua! Cierra la llave mientras te lavas los dientes.\" ¿Cuál es el propósito de este texto?",
+     "ops": [
+      "Contar un cuento entretenido sobre el agua",
+      "Convencer a las personas de cuidar el agua con una acción concreta",
+      "Explicar la historia de las cañerías del colegio"
+     ],
+     "correcta": 1,
+     "porque": "El afiche usa una orden y un signo de exclamación para animar a la gente a actuar: quiere convencer y provocar un cambio (cuidar el agua). No narra un cuento ni explica una historia, por eso las otras dos opciones no calzan con su propósito."
+    },
+    {
+     "q": "Matías quiere contar por escrito una anécdota real que le pasó en el recreo. ¿Cuál de estos comienzos es el más adecuado para que se entienda bien qué pasó?",
+     "ops": [
+      "\"Los perros ladran mucho en las noches de invierno.\"",
+      "\"El martes, en el recreo, se me cayó la colación y un compañero me convidó de la suya.\"",
+      "\"Había una vez un dragón que vivía en un castillo encantado.\"",
+      "\"Los planetas giran alrededor del Sol muy lentamente.\""
+     ],
+     "correcta": 1,
+     "porque": "Una anécdota real cuenta algo que le ocurrió a la persona, indicando cuándo y qué pasó. La segunda opción dice el momento (\"el martes, en el recreo\") y un hecho concreto que le sucedió a Matías, además de un gesto de generosidad de un compañero. La opción del dragón es ficción, y las otras dos son datos generales, no una anécdota vivida."
+    }
+   ],
+   "4": [
+    {
+     "q": "En un cuento, la abuela Rosa vive en Chiloé y le dice a su nieta: 'Ándate con cuidado, que estos palafitos guardan más historias que años tengo yo'. ¿Qué quiere decir realmente la abuela con esa frase?",
+     "ops": [
+      "Que los palafitos son lugares antiguos y llenos de memoria, y hay que respetarlos",
+      "Que los palafitos tienen exactamente la misma cantidad de años que la abuela",
+      "Que la nieta se puede caer si camina rápido por los palafitos"
+     ],
+     "correcta": 0,
+     "porque": "La frase es una expresión figurada (no literal): 'guardan más historias que años tengo yo' significa que esos lugares son muy antiguos y guardan mucha memoria y tradición. No se refiere a una cuenta exacta de años ni a un peligro de caída. Interpretar el sentido figurado y valorar el patrimonio cultural chileno es una habilidad de orden superior."
+    },
+    {
+     "q": "Camila escribe una carta al alcalde para pedir más basureros de reciclaje en su plaza. Empieza así: 'Estimado señor alcalde: Le escribo porque en mi barrio hay mucha basura tirada y los perritos se enferman'. ¿Cuál sería la MEJOR forma de continuar para que su carta convenza de verdad?",
+     "ops": [
+      "'Odio cuando la gente ensucia, son unos cochinos y no piensan'",
+      "'Por eso propongo instalar tres basureros de reciclaje, así separamos los residuos y cuidamos a los animales y el ambiente'",
+      "'Mi mamá dice que usted nunca hace nada por el barrio'"
+     ],
+     "correcta": 1,
+     "porque": "Una carta formal que busca convencer debe proponer una solución concreta y dar razones, manteniendo el respeto. La opción correcta plantea una acción clara (instalar basureros de reciclaje) y la conecta con el bien común y el cuidado del medioambiente. Las otras usan insultos o acusaciones, que restan fuerza y no corresponden al registro formal ni al buen trato."
+    },
+    {
+     "q": "Lee estos dos versos: 'La lluvia toca el tejado / como dedos que saludan'. ¿Qué recurso está usando el poeta y para qué?",
+     "ops": [
+      "Una rima, para que el poema suene bonito al final de cada verso",
+      "Una comparación (símil), para ayudarnos a imaginar el sonido de la lluvia",
+      "Una pregunta, para que el lector responda en voz alta"
+     ],
+     "correcta": 1,
+     "porque": "El poeta compara la lluvia con 'dedos que saludan' usando la palabra 'como': eso es un símil o comparación. Sirve para crear una imagen y ayudarnos a imaginar cómo suena y se siente la lluvia. No hay rima entre 'tejado' y 'saludan', y no aparece ninguna pregunta. Reconocer el propósito de un recurso poético exige analizar, no solo memorizar."
+    },
+    {
+     "q": "En un texto informativo sobre el desierto de Atacama se afirma: 'El desierto de Atacama es el más árido del mundo y allí casi nunca llueve'. En otra parte el mismo texto dice: 'Algunos años, una lluvia sorpresiva hace florecer miles de flores en el llamado desierto florido'. ¿Estas dos ideas se contradicen?",
+     "ops": [
+      "Sí, porque si florece significa que llueve mucho y entonces no puede ser árido",
+      "No, porque 'casi nunca llueve' permite que a veces, muy pocas veces, sí llueva y florezca",
+      "Sí, porque un desierto árido nunca puede tener flores de ningún tipo"
+     ],
+     "correcta": 1,
+     "porque": "No hay contradicción: 'casi nunca llueve' no es lo mismo que 'nunca llueve'. En años excepcionales cae algo de lluvia y ocurre el desierto florido, un fenómeno real del norte de Chile. Distinguir entre 'casi nunca' y 'nunca' y relacionar dos partes de un texto es una habilidad de comprensión de orden superior."
+    },
+    {
+     "q": "Matías cuenta: 'Prometí a mi curso que llevaría el material para la campaña de reciclaje, pero se me olvidó y el proyecto se atrasó'. Si Matías quiere actuar con responsabilidad, ¿qué debería hacer y decir?",
+     "ops": [
+      "Culpar a un compañero para que nadie sepa que fue él quien olvidó el material",
+      "Reconocer su error ante el curso, disculparse y ofrecer traerlo mañana sin falta",
+      "No decir nada y esperar que el profesor se olvide del proyecto"
+     ],
+     "correcta": 1,
+     "porque": "Actuar con responsabilidad y honestidad significa reconocer el propio error, disculparse y buscar reparar el daño (traer el material y no atrasar más la campaña). Culpar a otro es deshonesto y callar no resuelve el problema. El reto pide aplicar valores a una situación real, evaluando cuál conducta es correcta."
+    },
+    {
+     "q": "En una fábula, la tortuga le gana la carrera a la liebre porque avanza sin parar mientras la liebre se duerme confiada. ¿Cuál es la enseñanza (moraleja) que mejor resume la fábula?",
+     "ops": [
+      "Las tortugas siempre corren más rápido que las liebres",
+      "La constancia y el esfuerzo valen más que confiarse demasiado en uno mismo",
+      "Nunca hay que dormir durante el día porque es peligroso"
+     ],
+     "correcta": 1,
+     "porque": "La moraleja de una fábula es la enseñanza general que deja la historia, no un hecho literal. Aquí la tortuga gana por su constancia y la liebre pierde por confiarse: la lección es sobre el valor del esfuerzo y la humildad. Las otras opciones toman la historia de forma literal y no captan el mensaje profundo. Inferir la moraleja exige interpretar, no repetir."
+    },
+    {
+     "q": "Un afiche dice en letras grandes: '¡Cuida el agua! En Chile muchas zonas viven en sequía'. Debajo hay un dibujo de una llave goteando y una planta seca. ¿Por qué el afiche pone una llave goteando junto a la frase?",
+     "ops": [
+      "Porque a los diseñadores les gustan los dibujos de llaves aunque no signifiquen nada",
+      "Porque la imagen refuerza el mensaje: hasta una gota que se pierde importa cuando falta agua",
+      "Porque quiere enseñar a arreglar llaves rotas paso a paso"
+     ],
+     "correcta": 1,
+     "porque": "En un afiche, texto e imagen trabajan juntos: la llave goteando y la planta seca refuerzan visualmente el llamado a cuidar el agua, mostrando que incluso pequeños desperdicios importan frente a la sequía que vive gran parte de Chile. No es un adorno sin sentido ni un instructivo de reparación. Relacionar imagen y texto para entender el propósito es análisis de orden superior."
+    },
+    {
+     "q": "Dos noticias hablan del mismo hecho. Una dice: 'Vecinos plantaron 200 árboles nativos en el cerro'. La otra dice: 'Un grupo de valientes vecinos transformó el cerro plantando 200 hermosos árboles nativos'. ¿Qué diferencia importante hay entre las dos?",
+     "ops": [
+      "La segunda agrega opiniones ('valientes', 'hermosos'); la primera solo informa los hechos",
+      "La primera es mentira porque no usa palabras bonitas como la segunda",
+      "No hay ninguna diferencia, dicen exactamente lo mismo con otras palabras"
+     ],
+     "correcta": 0,
+     "porque": "La primera versión es objetiva: informa solo el hecho. La segunda agrega palabras que expresan opinión o valoración ('valientes', 'hermosos'). Distinguir entre hecho y opinión es clave para leer noticias con pensamiento crítico. Que una use adjetivos no la hace verdadera ni falsa; simplemente muestra una postura del autor. Comparar dos textos y detectar la subjetividad es una habilidad exigente."
+    }
+   ],
+   "5": [
+    {
+     "q": "Lees en el diario esta oración de una noticia sobre sequía: \"El alcalde afirmó que la escasez de agua es un problema grave, pero los expertos advierten que la comuna aún desperdicia miles de litros al día\". ¿Qué relación establece la palabra \"pero\" entre las dos ideas?",
+     "ops": [
+      "Suma dos ideas que apuntan en la misma direccion",
+      "Contrasta el reconocimiento del problema con una accion contradictoria",
+      "Explica la causa por la que ocurre la sequia"
+     ],
+     "correcta": 1,
+     "porque": "El conector \"pero\" es adversativo: introduce una idea que se opone o contrasta con la anterior. Aqui contrasta que se reconoce el problema del agua con el hecho contradictorio de que igual se desperdicia. No suma ideas iguales (seria \"y\") ni explica una causa (seria \"porque\")."
+    },
+    {
+     "q": "En una fabula, un zorro engaña a un cuervo para robarle su queso adulandolo. Al final el texto dice: \"No confies en quien te alaba en exceso\". Un lector afirma que esta es la moraleja. ¿Por que tiene razon?",
+     "ops": [
+      "Porque describe con detalle como era el zorro",
+      "Porque es la enseñanza o valor que la fabula quiere dejar sobre como actuar en la vida",
+      "Porque nombra a los dos personajes de la historia"
+     ],
+     "correcta": 1,
+     "porque": "La moraleja es la enseñanza o lección de vida que entrega una fabula. La frase final no describe personajes ni escenario: comunica un valor (la prudencia y no dejarse llevar por la vanidad ante la adulacion), por eso funciona como moraleja."
+    },
+    {
+     "q": "Escribes un afiche para invitar a tu curso a una campaña de reciclaje. ¿Cual titulo cumple MEJOR el proposito de persuadir y llamar a la accion?",
+     "ops": [
+      "El reciclaje es un proceso que existe hace muchos años",
+      "¡Cuida tu planeta: trae tus botellas y salvemos el rio Mapocho juntos!",
+      "Las botellas plasticas estan hechas de un material llamado PET"
+     ],
+     "correcta": 1,
+     "porque": "Un afiche persuasivo busca convencer y movilizar. La opcion correcta usa un llamado directo a la accion (\"trae\", \"salvemos\"), apela a un valor ecologico y a un referente real chileno. Las otras dos solo entregan datos informativos, propios de un texto expositivo, no de un afiche que invita a participar."
+    },
+    {
+     "q": "Comparas dos textos sobre el mismo tema: uno dice \"Los pinguinos de Humboldt viven en la costa de Chile y se alimentan de peces\" y otro dice \"¡Que pena me dan los pinguinitos cuando el mar se ensucia!\". ¿Que diferencia principal hay entre ambos?",
+     "ops": [
+      "El primero es objetivo (informa hechos) y el segundo es subjetivo (expresa emociones)",
+      "Ambos expresan solo la opinion personal del autor",
+      "El primero es un poema y el segundo una noticia"
+     ],
+     "correcta": 0,
+     "porque": "El primer texto entrega informacion verificable sin emociones: es objetivo. El segundo usa una exclamacion y palabras afectivas (\"que pena\", \"pinguinitos\") que muestran el sentimiento del autor: es subjetivo. Distinguir hechos de opiniones es clave para leer criticamente."
+    },
+    {
+     "q": "En un cuento leiste: \"Martina apreto los puños y sintio que la cara le ardia cuando su hermano rompio su dibujo\". El texto NUNCA dice que Martina estaba enojada. ¿Como puedes saber que lo estaba?",
+     "ops": [
+      "Es imposible saberlo si el texto no usa la palabra enojada",
+      "Haciendo una inferencia: sus gestos (puños apretados, cara ardiendo) son señales tipicas del enojo",
+      "Porque todos los hermanos siempre pelean"
+     ],
+     "correcta": 1,
+     "porque": "Inferir es deducir informacion que el texto no dice de forma explicita, usando pistas. Apretar los puños y sentir la cara ardiendo son reacciones fisicas asociadas al enojo, asi que el lector las conecta para concluir el estado de animo. No hace falta que la palabra aparezca escrita."
+    },
+    {
+     "q": "Debes escribir una carta al alcalde de tu comuna pidiendo mas arboles en tu plaza. ¿Cual argumento es el MAS solido para convencerlo?",
+     "ops": [
+      "Quiero mas arboles porque a mi me gustan mucho",
+      "Mas arboles darian sombra, limpiarian el aire y protegerian a las aves del barrio, mejorando la vida de todos los vecinos",
+      "Otras plazas tienen arboles y la nuestra no, no es justo"
+     ],
+     "correcta": 1,
+     "porque": "Un buen argumento se apoya en razones que benefician a la comunidad, no solo en gustos personales. La opcion correcta entrega beneficios concretos y verificables (sombra, aire limpio, cuidado de la fauna) que apelan al bien comun, mucho mas persuasivos ante una autoridad que un gusto individual o una simple comparacion."
+    },
+    {
+     "q": "En un poema aparece el verso: \"El mar es un gigante azul que respira sobre la arena\". ¿Que figura literaria se usa y que efecto logra?",
+     "ops": [
+      "Una metafora, que compara el mar con un gigante que respira para darle vida y fuerza",
+      "Una rima, porque las palabras terminan igual",
+      "Una pregunta al lector para que responda"
+     ],
+     "correcta": 0,
+     "porque": "La metafora identifica una cosa con otra sin usar \"como\": aqui el mar ES un gigante que respira. Ademas se le atribuye una accion humana (respirar), lo que ayuda a imaginar el mar como algo vivo, enorme y poderoso. No hay rima ni pregunta en el verso."
+    },
+    {
+     "q": "Tu grupo debe exponer sobre el cuidado del agua en una sequia. Un compañero quiere empezar diciendo \"Eh... bueno... no se, el agua es como importante po\". Como buen expositor, ¿que le recomiendas para mejorar su presentacion oral?",
+     "ops": [
+      "Que hable exactamente asi, porque es su forma natural de hablar",
+      "Que use un lenguaje mas formal y claro, con datos, respetando el turno y mirando al publico",
+      "Que hable lo mas rapido posible para terminar pronto"
+     ],
+     "correcta": 1,
+     "porque": "Una exposicion oral formal requiere lenguaje claro y adecuado a la situacion, apoyado en informacion, ademas de actitudes de respeto como mirar al publico y esperar el turno. Las muletillas y expresiones muy coloquiales restan claridad; hablar apurado dificulta la comprension. Adaptar el registro segun el contexto es una habilidad clave de comunicacion."
+    }
+   ],
+   "6": [
+    {
+     "q": "En un noticiero de TVN leen: 'El intendente aseguró que la nueva planta de reciclaje 'revolucionará' la gestión de residuos'. Un compañero dice que la palabra 'revolucionará' está en comillas porque el periodista quiere destacar que es algo muy bueno. Analizando el uso de las comillas, ¿tiene razón?",
+     "ops": [
+      "No; las comillas marcan que es una cita textual de lo que dijo el intendente, no una opinión del periodista",
+      "Sí; las comillas siempre sirven para resaltar palabras positivas e importantes",
+      "No; las comillas indican que el periodista se burla y no cree en la planta de reciclaje"
+     ],
+     "correcta": 0,
+     "porque": "En un texto informativo periodístico, las comillas marcan una cita textual: reproducen las palabras exactas de la fuente (el intendente). No expresan la opinión del periodista, que debe mantenerse objetivo. La opción de la ironía sería sobreinterpretar, ya que no hay otras marcas (contexto burlesco) que la sostengan."
+    },
+    {
+     "q": "Lees dos textos sobre el estero de tu comuna. Texto A: 'El estero, herido, susurraba entre las piedras su pena por la basura'. Texto B: 'El estero presenta un caudal reducido y niveles elevados de residuos plásticos'. ¿Qué afirmación compara mejor ambos textos?",
+     "ops": [
+      "El Texto A usa lenguaje literario con personificación para emocionar, mientras el Texto B usa lenguaje objetivo para informar con datos",
+      "Ambos son textos científicos, pero el Texto A está mejor escrito porque usa más adjetivos",
+      "El Texto B es literario porque menciona el estero, y el Texto A es informativo porque describe la basura"
+     ],
+     "correcta": 0,
+     "porque": "El Texto A pertenece al lenguaje literario: personifica el estero ('herido', 'susurraba su pena') para provocar emoción y conciencia. El Texto B usa lenguaje no literario u objetivo, con datos verificables ('caudal reducido', 'niveles elevados'), propio de un texto informativo. La distinción está en la intención y los recursos, no en el tema."
+    },
+    {
+     "q": "Escribes una carta al alcalde para pedir más árboles en tu plaza. Quieres convencerlo. ¿Cuál de estas oraciones es el mejor argumento, y no solo una opinión?",
+     "ops": [
+      "Los árboles dan sombra, absorben CO2 y reducen la temperatura, según estudios de la Universidad de Chile, mejorando la salud del barrio",
+      "Yo creo que la plaza se vería mucho más bonita y verde con hartos árboles nuevos",
+      "Todos mis amigos quieren más árboles y sería genial tener más para jugar entre ellos"
+     ],
+     "correcta": 0,
+     "porque": "Un argumento sólido respalda la postura con razones y evidencia verificable (beneficios ambientales concretos y una fuente confiable). Las otras dos son opiniones personales o apelan al gusto ('se vería bonita') o a la mayoría ('todos mis amigos'), que son menos convincentes en un texto argumentativo formal dirigido a una autoridad."
+    },
+    {
+     "q": "Un compañero afirma: 'La lechuga siempre es más sana que la carne, porque todo lo verde es saludable'. Analizando el razonamiento, ¿cuál es el error de este argumento?",
+     "ops": [
+      "Generaliza indebidamente: de 'algunas cosas verdes son sanas' salta a 'todo lo verde es saludable', lo cual no siempre es cierto",
+      "No tiene error, porque las verduras efectivamente siempre son más sanas que cualquier otro alimento",
+      "El error es de ortografía, ya que 'lechuga' debería escribirse con mayúscula al inicio"
+     ],
+     "correcta": 0,
+     "porque": "El argumento comete una generalización apresurada: usa una premisa demasiado amplia ('todo lo verde es saludable') que no es verdadera (hay cosas verdes no comestibles o dañinas). Detectar este tipo de falla en el razonamiento es pensamiento crítico. No es un error ortográfico ni una verdad absoluta."
+    },
+    {
+     "q": "En 'La Araucana', Ercilla describe el valor de los mapuches frente a los conquistadores. Un lector dice que el poema es solo un relato de batallas sin ningún valor humano. ¿Qué respuesta muestra una mejor interpretación del propósito de la obra?",
+     "ops": [
+      "El poema también reconoce virtudes como la valentía y la dignidad del pueblo mapuche, mostrando respeto por el adversario",
+      "Tiene razón el lector: es solo una lista de peleas y no transmite ninguna idea ni valor",
+      "El poema demuestra que los mapuches eran cobardes y por eso perdieron todas las batallas"
+     ],
+     "correcta": 0,
+     "porque": "Aunque narra la guerra de Arauco, 'La Araucana' es reconocida porque Ercilla, siendo español, destaca virtudes del pueblo mapuche como la valentía, la dignidad y el amor a la libertad. Interpretar el propósito de un texto implica ir más allá de la anécdota. Afirmar que los retrata como cobardes contradice el contenido de la obra."
+    },
+    {
+     "q": "Debes resumir un artículo sobre la sequía en la zona central de Chile. ¿Cuál opción es un buen resumen, que conserva la idea principal sin copiar ni añadir opiniones?",
+     "ops": [
+      "La zona central de Chile enfrenta una sequía prolongada que reduce el agua disponible y afecta la agricultura y a las comunidades",
+      "La sequía es horrible y el gobierno debería hacer mucho más para solucionar este grave problema de inmediato",
+      "El artículo tiene tres párrafos y varias fotos de campos secos con animales y agricultores preocupados"
+     ],
+     "correcta": 0,
+     "porque": "Un buen resumen recoge la idea principal con palabras propias, de forma breve y fiel, sin opiniones ni detalles secundarios. La segunda opción añade una opinión ('es horrible', 'el gobierno debería'), que no corresponde a un resumen objetivo. La tercera describe la forma del texto (párrafos, fotos), no su contenido o idea central."
+    },
+    {
+     "q": "En una reunión de curso planean una campaña de reciclaje. Camila interrumpe cada vez que alguien habla y solo repite su propia idea. Según las normas de una buena participación en un debate o diálogo, ¿qué debería hacer Camila?",
+     "ops": [
+      "Escuchar con respeto los turnos de los demás, y luego aportar su idea considerando también lo que otros propusieron",
+      "Hablar más fuerte y rápido que el resto para asegurarse de que su idea sea la única que se apruebe",
+      "Quedarse totalmente callada el resto de la reunión para no molestar a nadie con sus opiniones"
+     ],
+     "correcta": 0,
+     "porque": "El diálogo democrático exige respetar los turnos de habla, escuchar activamente y construir sobre las ideas de otros. Esto refleja virtudes como el respeto y la colaboración. Imponerse por volumen no es válido, pero tampoco lo es el extremo opuesto de anularse: la buena participación equilibra escuchar y aportar."
+    },
+    {
+     "q": "Analizas este refrán chileno: 'Camarón que se duerme, se lo lleva la corriente'. ¿Cuál es la interpretación correcta de su sentido figurado?",
+     "ops": [
+      "Quien se descuida o no está atento pierde oportunidades; hay que ser diligente y responsable",
+      "Los camarones no deben dormir en el agua porque el mar es peligroso para ellos",
+      "Es mejor dormir mucho durante el día para tener energía y no cansarse en la corriente"
+     ],
+     "correcta": 0,
+     "porque": "Los refranes tienen sentido figurado: no hablan literalmente del camarón, sino que usan esa imagen para transmitir una enseñanza. Aquí significa que quien se descuida o es negligente pierde oportunidades, promoviendo la diligencia y la responsabilidad. La interpretación literal (sobre camarones reales) ignora que es una metáfora."
+    }
+   ]
   }
  },
  "orientacion": {
@@ -9834,6 +11294,500 @@ window.CONTENIDO = {
        "porque": "Tomar buenas decisiones es equilibrar tus deberes y tu descanso; organizar el tiempo cuida tu bienestar y tus metas."
       }
      ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En el recreo, Martín ve que un compañero nuevo está solo y triste junto a la reja del patio. Martín tiene muchas ganas de seguir jugando a la pelota con sus amigos. ¿Qué decisión muestra MEJOR la empatía y el valor de la solidaridad?",
+     "ops": [
+      "Invitar al compañero nuevo a jugar a la pelota con todos",
+      "Seguir jugando y avisarle a la tía después del recreo",
+      "Preguntarle por qué está triste pero sin dejar de jugar"
+     ],
+     "correcta": 0,
+     "porque": "La empatía no es solo darse cuenta de que alguien sufre, sino ACTUAR para incluirlo. Invitarlo a jugar resuelve el problema de raíz (la soledad) y practica la solidaridad de forma concreta. Las otras opciones notan el problema pero no lo solucionan de inmediato."
+    },
+    {
+     "q": "La familia de Sofía prepara la once y sobra bastante pan y palta. Su hermano quiere botar todo a la basura. Pensando en cuidar el planeta y no desperdiciar, ¿cuál es la mejor idea?",
+     "ops": [
+      "Botarlo, porque la basura la retira el camión igual",
+      "Guardar lo que sirva para el desayuno y dar las sobras a las gallinas o al compost",
+      "Dejarlo sobre la mesa hasta mañana para no hacer nada"
+     ],
+     "correcta": 1,
+     "porque": "Cuidar el medio ambiente incluye no desperdiciar alimentos. Reutilizar lo que sirve y transformar las sobras en compost o alimento evita basura y respeta los recursos. Botar todo desperdicia; dejarlo sin guardar lo echaría a perder."
+    },
+    {
+     "q": "Dos amigas, Antonia y Emilia, quieren usar el mismo columpio al mismo tiempo y empiezan a discutir. ¿Cuál es la forma más justa de resolver el conflicto sin que nadie salga perdiendo?",
+     "ops": [
+      "La que llegó primero se queda todo el recreo",
+      "Turnarse: una se columpia un rato y luego la otra",
+      "Ir a acusarse las dos con la profesora"
+     ],
+     "correcta": 1,
+     "porque": "Resolver conflictos de manera pacífica busca que ambas partes ganen. Turnarse es un acuerdo justo que respeta a las dos. Quedarse todo el tiempo deja a una excluida, y acusar sin intentar dialogar no enseña a resolver el problema por sí mismas."
+    },
+    {
+     "q": "En la sala hay tres basureros: uno para papel, uno para plástico y uno para restos de comida. Benjamín termina su caja de jugo de cartón con su bombilla de plástico. ¿Qué hace para reciclar bien?",
+     "ops": [
+      "Pone todo junto en el basurero de papel porque la caja es de cartón",
+      "Separa: la caja de cartón en papel y la bombilla en plástico",
+      "Deja la caja completa en el basurero de restos de comida"
+     ],
+     "correcta": 1,
+     "porque": "Reciclar bien significa separar los materiales según de qué están hechos. La caja de cartón va en papel y la bombilla de plástico va en plástico, aunque vengan juntas. Mezclarlas ensucia el reciclaje y no permite reutilizar los materiales."
+    },
+    {
+     "q": "Vicente rompió sin querer el dibujo de su compañera mientras corría en la sala. Nadie lo vio. ¿Qué actitud demuestra el valor de la honestidad y la responsabilidad?",
+     "ops": [
+      "Quedarse callado porque fue un accidente y nadie lo vio",
+      "Contarle a su compañera lo que pasó, pedir disculpas y ofrecer ayudarla a repararlo",
+      "Culpar a otro compañero para no meterse en problemas"
+     ],
+     "correcta": 1,
+     "porque": "Ser honesto y responsable significa reconocer nuestros errores aunque nadie nos haya visto, y hacernos cargo de repararlos. Callar evita la responsabilidad y culpar a otro es una mentira que daña a un inocente."
+    },
+    {
+     "q": "La abuela de Josefa vive lejos, en el sur, y ella la extraña mucho. En vez de ponerse a llorar sin hacer nada, ¿qué es lo mejor que puede hacer para expresar y manejar lo que siente?",
+     "ops": [
+      "Guardar la pena y no contarle a nadie para no molestar",
+      "Contarle a su mamá cómo se siente y hacerle un dibujo o llamada a la abuela",
+      "Enojarse con sus hermanos porque se siente triste"
+     ],
+     "correcta": 1,
+     "porque": "Manejar las emociones sanamente incluye reconocerlas y expresarlas de forma adecuada. Hablar con alguien de confianza y hacer algo cariñoso por la abuela transforma la pena en acción positiva. Guardar todo o descargar el enojo en otros no ayuda a sentirse mejor."
+    },
+    {
+     "q": "En Chile hay muchas culturas: hay niños con familias mapuche, otros que llegaron de Venezuela o Haití, y otros de distintas regiones. Un compañero se ríe del acento de un niño nuevo. ¿Qué respuesta muestra respeto por la diversidad?",
+     "ops": [
+      "Reírse también, porque su forma de hablar suena distinta",
+      "Decirle al niño nuevo que hable como todos para que no se rían",
+      "Defender al niño y decir que todos hablamos distinto y eso está bien"
+     ],
+     "correcta": 2,
+     "porque": "Respetar la diversidad significa valorar que cada persona tiene su cultura, su origen y su forma de hablar. Defender al compañero y celebrar las diferencias fortalece la buena convivencia. Reírse o pedirle que cambie lo excluye y no respeta quién es."
+    },
+    {
+     "q": "El curso quiere tener una planta en la sala para cuidarla entre todos. Para que la planta viva sana durante todo el año, ¿cuál es la mejor manera de organizarse como grupo?",
+     "ops": [
+      "Que cada semana un grupo distinto se encargue de regarla y darle sol por turnos",
+      "Que la riegue solo quien se acuerde ese día",
+      "Ponerle mucha agua el lunes para no regarla el resto de la semana"
+     ],
+     "correcta": 0,
+     "porque": "Cuidar un ser vivo requiere responsabilidad compartida y constancia. Organizar turnos asegura que la planta reciba cuidado todos los días y enseña trabajo en equipo. Depender de quien se acuerde deja el cuidado al azar, y el exceso de agua de una sola vez puede pudrir las raíces."
+    }
+   ],
+   "2": [
+    {
+     "q": "En el recreo, Matías se cae y se raspa la rodilla. Está llorando en el patio. Tú ibas corriendo a jugar a la pelota con tus amigos, que ya empezaron el partido. ¿Cuál es la mejor decisión y por qué?",
+     "ops": [
+      "Detenerte a ayudar a Matías o avisar a una tía del colegio, aunque pierdas parte del partido, porque cuidar a un compañero que sufre es más importante que ganar",
+      "Seguir corriendo al partido, porque tus amigos te necesitan y alguien más ayudará a Matías",
+      "Reírte con tus amigos de que Matías se cayó, para que el partido no se atrase"
+     ],
+     "correcta": 0,
+     "porque": "El valor de la empatía y la solidaridad nos pide poner el bienestar de una persona que sufre por encima de un juego. Detenerse a ayudar o buscar a un adulto es la respuesta responsable. Seguir de largo ignora el dolor del otro, y reírse es una falta de respeto que hace daño."
+    },
+    {
+     "q": "Tu curso quiere cuidar el medioambiente. En la sala hay tres basureros de colores. Sobra media colación: una cáscara de plátano, un envase de yogur vacío y una hoja de cuaderno arrugada. ¿Cuál afirmación es la CORRECTA sobre cómo separarlos?",
+     "ops": [
+      "Todo va junto al basurero de la basura común, porque igual lo mezclan después",
+      "La cáscara de plátano va a compostaje u orgánico, el envase de yogur a reciclaje de plásticos, y la hoja a reciclaje de papel",
+      "La cáscara y la hoja van juntas porque las dos son de la naturaleza, y solo el yogur se recicla"
+     ],
+     "correcta": 1,
+     "porque": "Separar bien los residuos según su material es clave para reciclar. Lo orgánico (cáscara) puede hacer compost, el plástico (envase) y el papel (hoja) van a reciclajes distintos. La hoja de cuaderno es papel, no un residuo orgánico, aunque venga de un árbol: ya está procesada y se recicla con el papel."
+    },
+    {
+     "q": "Sofía es nueva en el curso y viene de otra región. En el recreo habla distinto y no conoce los juegos de tu grupo. Un compañero dice: 'Habla raro, mejor no la juntemos'. ¿Qué respuesta demuestra respeto por la diversidad?",
+     "ops": [
+      "Estar de acuerdo, porque si habla distinto no va a entender los juegos",
+      "Decirle a Sofía que aprenda a hablar como ustedes antes de jugar",
+      "Invitar a Sofía a jugar y pedirle que enseñe un juego de su región, porque las diferencias nos ayudan a aprender cosas nuevas"
+     ],
+     "correcta": 2,
+     "porque": "Chile tiene muchas culturas y formas de hablar según la región. Respetar la diversidad significa acoger a quien es diferente y ver esa diferencia como algo que enriquece, no como un defecto. Incluir a Sofía y aprender de ella muestra empatía y valora lo distinto."
+    },
+    {
+     "q": "Encuentras en el pasillo del colegio un estuche con lápices bonitos y no hay nadie cerca. Nadie te vio recogerlo. ¿Cuál acción muestra el valor de la honestidad?",
+     "ops": [
+      "Quedártelo, porque quien lo perdió fue descuidado y tú lo encontraste primero",
+      "Llevarlo a la profesora o a inspectoría para que busquen a su dueño, aunque nadie sepa que lo encontraste",
+      "Guardarlo unos días y, si nadie lo reclama, quedártelo sin avisar a nadie"
+     ],
+     "correcta": 1,
+     "porque": "La honestidad se demuestra sobre todo cuando nadie nos observa. El estuche tiene un dueño que lo está extrañando; lo correcto es entregarlo para que se lo devuelvan. Quedárselo, aunque sea 'porque nadie vio', es apropiarse de algo ajeno."
+    },
+    {
+     "q": "En tu grupo de trabajo, Ana quiere hacer el afiche sobre los animales, Pedro también quiere hacer el afiche, y a ti te toca leer en voz alta. Empiezan a discutir y nadie avanza. ¿Cuál es la mejor forma de resolver el conflicto trabajando en equipo?",
+     "ops": [
+      "Proponer que Ana y Pedro hagan el afiche juntos repartiéndose los dibujos, y tú apoyas leyendo, para que todos aporten y terminen la tarea",
+      "Decidir tú solo quién hace cada cosa y enojarte si no obedecen",
+      "Que cada uno haga el afiche por su cuenta y al final elijan el más bonito, aunque sobren dos"
+     ],
+     "correcta": 0,
+     "porque": "Trabajar en equipo significa dialogar y buscar un acuerdo donde todos aporten. Repartir la tarea (Ana y Pedro colaboran en el afiche, tú lees) resuelve el conflicto de forma justa y aprovecha lo que cada uno quiere hacer. Imponer o competir rompe el trabajo colaborativo y desperdicia el esfuerzo."
+    },
+    {
+     "q": "Es un día de mucho calor en verano. Te lavas los dientes y dejas la llave abierta mientras te cepillas por dos minutos. Tu hermano menor te mira y hace lo mismo. ¿Por qué conviene cerrar la llave mientras te cepillas?",
+     "ops": [
+      "No importa dejarla abierta, porque el agua vuelve sola a la llave después",
+      "Solo hay que cerrarla si viene la cuenta muy cara ese mes",
+      "Porque el agua es un recurso que puede escasear, y al cerrarla ahorras mucha agua y le enseñas a tu hermano a cuidarla también"
+     ],
+     "correcta": 2,
+     "porque": "El agua es un recurso valioso y limitado; en Chile hay zonas con sequía. Cerrar la llave mientras te cepillas evita desperdiciar litros de agua. Además, al hacerlo das el ejemplo a tu hermano menor: cuidar el planeta también es enseñar buenos hábitos a los demás."
+    },
+    {
+     "q": "Tienes rabia porque tu amiga tomó tu goma sin pedirla y la perdió. Sientes ganas de gritarle y quitarle sus cosas. ¿Cuál es la forma más sana de manejar esa emoción?",
+     "ops": [
+      "Gritarle fuerte y esconder su cartuchera para que sienta lo mismo que tú",
+      "Respirar hondo para calmarte y luego decirle cómo te sentiste y pedirle que la próxima vez te avise antes de tomar tus cosas",
+      "Guardarte toda la rabia sin decir nada y no volver a hablarle nunca más"
+     ],
+     "correcta": 1,
+     "porque": "Reconocer y manejar las emociones es clave a esta edad. Sentir rabia es normal, pero actuar con gritos o venganza hace más daño. Respirar para calmarse y luego expresar con palabras lo que sentimos ('me sentí mal, avísame antes') resuelve el problema y cuida la amistad. Guardarse todo tampoco ayuda, porque el enojo no se conversa."
+    },
+    {
+     "q": "Tu curso decide, por votación, qué juego harán en la clase de Educación Física. La mayoría vota por jugar a 'las quemadas', pero a ti te gustaba más otro juego y perdiste la votación. ¿Cuál actitud muestra que entiendes vivir en comunidad?",
+     "ops": [
+      "Enojarte y no participar en la clase porque ganó el juego que no querías",
+      "Convencer a la profesora de que cambie la decisión sin preguntarle al resto del curso",
+      "Aceptar la decisión de la mayoría y participar con buena disposición, y proponer tu juego para la próxima vez"
+     ],
+     "correcta": 2,
+     "porque": "Vivir en comunidad implica participar en decisiones justas, como una votación, y respetar el resultado aunque no sea el que uno quería. Aceptar el acuerdo de la mayoría y participar bien muestra responsabilidad; además, proponer tu idea para otra ocasión es la forma sana de que tu voz siga contando sin pasar por encima del grupo."
+    }
+   ],
+   "3": [
+    {
+     "q": "En el recreo, Matías se cae y se raspa la rodilla. Empieza a llorar. Sofía quiere seguir jugando a la pelota con sus amigos, pero ve a Matías solo. ¿Qué acción muestra MEJOR la empatía?",
+     "ops": [
+      "Sofía se acerca, le pregunta cómo está y lo acompaña a buscar a la tía para que lo cure",
+      "Sofía le grita a Matías que no llore, que no es para tanto, y sigue jugando",
+      "Sofía avisa a sus amigos que Matías es llorón y mejor no lo inviten a jugar"
+     ],
+     "correcta": 0,
+     "porque": "La empatía es ponerse en el lugar del otro y actuar para ayudarlo. Acercarse, preguntar cómo se siente y acompañarlo a buscar ayuda demuestra que a Sofía le importa lo que siente Matías. Las otras opciones ignoran o hasta se burlan de su dolor, lo que es lo contrario de la empatía."
+    },
+    {
+     "q": "El curso de 3° B debe decidir el destino de su paseo de fin de año. La mitad quiere ir al cerro y la otra mitad a la playa. Discuten y nadie se pone de acuerdo. ¿Cuál es la forma MÁS justa y democrática de resolverlo?",
+     "ops": [
+      "El profesor elige solo, porque es el adulto y así nadie se enoja con nadie",
+      "Van los que gritan más fuerte, porque demuestran que tienen más ganas",
+      "Conversan las razones de cada grupo y luego votan; gana la opción con más votos y todos la respetan"
+     ],
+     "correcta": 2,
+     "porque": "En una decisión democrática, primero se escuchan los argumentos de todos y luego se vota, respetando el resultado de la mayoría. Que decida solo el profesor no toma en cuenta la opinión del curso, y decidir por quién grita más premia la fuerza, no la justicia ni el respeto."
+    },
+    {
+     "q": "Camila descubre que su mejor amiga Antonia le mintió: dijo que estaba enferma para no ir a su cumpleaños, pero en realidad fue a otra fiesta. Camila está muy triste y enojada. ¿Cuál es la mejor manera de cuidar la amistad?",
+     "ops": [
+      "No decirle nada nunca más y dejar de hablarle para siempre, así aprende",
+      "Contarle a todo el curso que Antonia es mentirosa para que nadie confíe en ella",
+      "Hablar en privado con Antonia, decirle cómo se sintió y escuchar su explicación antes de decidir qué hacer"
+     ],
+     "correcta": 2,
+     "porque": "Resolver un conflicto de manera sana significa expresar los propios sentimientos con respeto y escuchar al otro (comunicación asertiva). Guardar silencio para siempre o hablar mal de Antonia frente a todos no arregla el problema y daña más la relación. Dialogar da la oportunidad de entenderse y reparar la confianza."
+    },
+    {
+     "q": "En la casa de Benjamín, su familia junta el pan que sobra, las cáscaras de frutas y verduras para hacer compost en una compostera. Su primo dice que es una pérdida de tiempo. ¿Cuál es la MEJOR razón para explicarle por qué la familia lo hace?",
+     "ops": [
+      "Los restos de comida se convierten en abono natural para las plantas y así generan menos basura, cuidando el medio ambiente",
+      "Lo hacen solo porque la compostera se veía bonita en la tele y quisieron comprar una",
+      "Es una regla obligatoria: si no compostas, te llega una multa de la municipalidad a la casa"
+     ],
+     "correcta": 0,
+     "porque": "El compostaje transforma los desechos orgánicos en abono natural, reduce la basura que llega al vertedero y devuelve nutrientes a la tierra. Es una acción concreta de conciencia ecológica y responsabilidad con el planeta. Las otras opciones no explican el verdadero beneficio ambiental y una incluso es falsa."
+    },
+    {
+     "q": "Es la Fiesta de la Chilenidad en el colegio. Un compañero nuevo, Joaquín, acaba de llegar desde Venezuela y no conoce la cueca ni los juegos típicos. Algunos niños se ríen porque no sabe bailar. ¿Qué actitud demuestra respeto por la diversidad?",
+     "ops": [
+      "Reírse también, porque si no sabe bailar cueca entonces no puede celebrar el 18",
+      "Invitar a Joaquín a aprender la cueca con ellos y pedirle que después les enseñe un baile o comida de su país",
+      "Dejar a Joaquín solo mirando, porque las tradiciones chilenas son solo para los chilenos"
+     ],
+     "correcta": 1,
+     "porque": "Respetar la diversidad es valorar tanto la cultura propia como la de los demás. Incluir a Joaquín en la cueca y además interesarse por sus tradiciones muestra apertura, empatía y aprecio por lo distinto. Reírse o excluirlo por su origen es discriminación, lo contrario del respeto."
+    },
+    {
+     "q": "A la hora de almuerzo en el colegio, Isidora ve que un grupo de niños mayores le está quitando la colación a un niño más pequeño y no lo dejan tranquilo. Isidora se asusta. ¿Cuál es la acción MÁS responsable y valiente?",
+     "ops": [
+      "Grabar con un celular prestado para reírse después con sus amigas del niño asustado",
+      "No hacer nada y alejarse, porque si dice algo la pueden molestar a ella también",
+      "Avisar de inmediato a un profesor o inspector para que los adultos ayuden al niño"
+     ],
+     "correcta": 2,
+     "porque": "Frente a una situación de matonaje (bullying), lo más responsable es pedir ayuda a un adulto de confianza, porque enfrentar sola a niños mayores puede ser peligroso. Buscar ayuda es un acto de valentía y solidaridad. Quedarse callada permite que el daño continúe, y grabarse para burlarse empeora el maltrato."
+    },
+    {
+     "q": "Cada mañana Vicente llega tarde y sin tareas porque se queda jugando videojuegos hasta muy tarde. Dice que 'no es su culpa, es que el juego es muy entretenido'. ¿Qué le falta desarrollar a Vicente y cómo podría mejorar?",
+     "ops": [
+      "Le falta suerte; debería pedir que le regalen un despertador nuevo y esperar que funcione solo",
+      "Le falta responsabilidad y autocontrol; podría fijarse un horario para jugar y otro para dormir y hacer tareas",
+      "No le falta nada; los videojuegos son más importantes que las tareas del colegio"
+     ],
+     "correcta": 1,
+     "porque": "Vicente necesita hacerse cargo de sus decisiones (responsabilidad) y aprender a manejar sus impulsos (autocontrol), organizando su tiempo con horarios para el juego, el descanso y los deberes. Culpar al juego evita reconocer que él elige cómo usa su tiempo. Reconocer el propio rol es el primer paso para mejorar."
+    },
+    {
+     "q": "El curso de Florencia quiere ayudar al medio ambiente de su colegio. Tienen estas ideas: (1) plantar árboles nativos en el patio, (2) cerrar bien las llaves de agua y apagar luces, (3) usar ambos lados de las hojas y reciclar el papel. ¿Cuál afirmación es la MÁS correcta?",
+     "ops": [
+      "Solo sirve plantar árboles; ahorrar agua, luz y papel son cosas demasiado pequeñas para hacer una diferencia",
+      "Ninguna sirve, porque un solo curso no puede cuidar el planeta y es mejor no intentarlo",
+      "Las tres ideas ayudan, porque cuidar el agua, la energía y los recursos, y aumentar las plantas, protegen el medio ambiente en conjunto"
+     ],
+     "correcta": 2,
+     "porque": "El cuidado del medio ambiente se logra sumando muchas acciones: los árboles nativos dan oxígeno y hogar a la fauna, ahorrar agua y energía cuida recursos, y reutilizar y reciclar papel evita cortar más árboles. Ningún gesto es 'demasiado pequeño'; juntos generan un gran impacto. Pensar que nada sirve lleva a no cuidar el planeta."
+    }
+   ],
+   "4": [
+    {
+     "q": "En el recreo, Matías se equivoca al patear el balón y su equipo pierde. Un compañero grita: '¡Eres pésimo, por tu culpa perdimos!'. Matías siente rabia y ganas de llorar. Según lo que sabes sobre manejar las emociones, ¿cuál es la mejor forma de que Matías actúe?",
+     "ops": [
+      "Reconocer que siente rabia, respirar y decir con calma que se sintió mal por el grito, sin insultar de vuelta",
+      "Guardarse todo lo que siente y no volver a jugar nunca más para evitar equivocarse",
+      "Empujar al compañero que gritó, porque así aprenderá a no burlarse de nadie"
+     ],
+     "correcta": 0,
+     "porque": "Manejar bien las emociones no es esconderlas ni descargarlas con violencia. Lo saludable es identificar lo que se siente (rabia), regularlo (respirar) y expresarlo con respeto. Guardarse todo daña por dentro y agredir de vuelta convierte a la víctima en agresor; ninguna de esas dos opciones resuelve el conflicto."
+    },
+    {
+     "q": "Tu curso de 4° básico debe elegir a un representante para el consejo de curso. Un candidato promete traer dulces todos los días; otra candidata propone organizar turnos para cuidar las plantas del patio y ayudar a los compañeros que faltan a ponerse al día. ¿Cuál propuesta demuestra mejor los valores de bien común y responsabilidad, y por qué?",
+     "ops": [
+      "La de los turnos para cuidar plantas y ayudar a los demás, porque busca el bienestar de todo el curso y del entorno",
+      "La de los dulces, porque hace felices a todos de inmediato y así todos ganan algo",
+      "Ninguna sirve, porque un representante de curso no debería proponer nada y solo obedecer al profesor"
+     ],
+     "correcta": 0,
+     "porque": "El bien común se refiere a acciones que benefician a toda la comunidad y no solo un gusto momentáneo. Cuidar las plantas suma conciencia ecológica y ayudar a los que faltan muestra solidaridad y responsabilidad compartida. Los dulces son un beneficio pasajero e individual, no construyen comunidad; y un representante sí tiene el rol de proponer y organizar."
+    },
+    {
+     "q": "En tu escuela hay dos grupos que siempre discuten en el recreo por usar la única cancha. Un grupo quiere jugar fútbol y el otro lule (elástico). Si te piden ayudar a resolver el conflicto de forma justa, ¿qué solución es la mejor?",
+     "ops": [
+      "Acordar juntos un horario por turnos para que ambos grupos usen la cancha en días o momentos distintos",
+      "Dejar la cancha solo para el fútbol, porque son más y los que juegan luce que busquen otro lugar",
+      "Prohibir que se juegue en la cancha para siempre, así nadie discute nunca más"
+     ],
+     "correcta": 0,
+     "porque": "Resolver un conflicto de forma justa busca que ambas partes ganen algo mediante el diálogo y el acuerdo (turnos). Imponer a la mayoría ignora los derechos de la minoría y no es equitativo. Prohibir todo elimina el problema quitando el derecho a jugar a ambos: es una 'solución' que en realidad castiga a todos y no enseña a convivir."
+    },
+    {
+     "q": "Camila descubre que su mejor amiga copió sus respuestas en una prueba sin que la profesora se diera cuenta. La amiga le pide que no diga nada 'porque son amigas'. Camila valora la honestidad pero no quiere traicionar a su amiga. ¿Cuál es la actitud más coherente con el valor de la honestidad?",
+     "ops": [
+      "Hablar en privado con su amiga, explicarle que copiar no está bien y animarla a reconocerlo ella misma ante la profesora",
+      "No decir nada nunca, porque la lealtad a una amiga siempre está por encima de decir la verdad",
+      "Gritar delante de todo el curso que su amiga es una tramposa para que todos la castiguen"
+     ],
+     "correcta": 0,
+     "porque": "La honestidad y la amistad no son opuestas: una amiga verdadera ayuda a la otra a hacer lo correcto. Lo más maduro es dialogar en privado e invitarla a asumir su responsabilidad, cuidando su dignidad. Callar convierte la amistad en encubrimiento, y exponerla humillándola frente a todos es una agresión que busca castigo, no ayudar a corregir el error."
+    },
+    {
+     "q": "Tu curso quiere reducir la basura que genera cada día durante la colación. Analizan que casi toda la basura son envoltorios de plástico, jugos en caja y servilletas. ¿Cuál medida tendría MAYOR impacto ecológico real y es realista para niños de 4° básico?",
+     "ops": [
+      "Llevar la colación en envases reutilizables y una botella rellenable en vez de productos desechables",
+      "Seguir usando desechables pero botarlos todos juntos en un solo basurero grande",
+      "Dejar de comer colación en la escuela para no generar ninguna basura"
+     ],
+     "correcta": 0,
+     "porque": "El mayor impacto ecológico viene de REDUCIR la basura en su origen, no solo de juntarla. Los envases reutilizables y una botella rellenable evitan que se genere el residuo desde el principio, y es algo que un niño sí puede hacer. Botar todo junto no reduce nada, y dejar de comer no es realista ni saludable: cuidar el planeta no debe dañar la propia salud."
+    },
+    {
+     "q": "En un trabajo grupal de 4 integrantes, Benjamín hace todo solo porque dice que sus compañeros 'lo hacen mal'. Al final entrega un buen trabajo, pero sus compañeros no aprendieron nada y se sienten inútiles. ¿Por qué la actitud de Benjamín NO es un buen trabajo en equipo, aunque el resultado haya salido bien?",
+     "ops": [
+      "Porque el trabajo en equipo busca que todos participen y aprendan, repartiendo las tareas según lo que cada uno puede aportar",
+      "Porque Benjamín debió hacer el trabajo peor a propósito para que sus compañeros no se sintieran mal",
+      "En realidad sí es buen trabajo en equipo, porque lo importante es únicamente sacar una buena nota"
+     ],
+     "correcta": 0,
+     "porque": "Trabajar en equipo no es solo lograr un buen resultado, sino colaborar, confiar en los demás y aprovechar los aportes de cada uno para que todos crezcan. Benjamín consiguió la nota pero rompió la colaboración y dejó a su grupo sin aprender ni valorar. Hacer el trabajo mal a propósito tampoco ayuda; la clave es incluir y repartir tareas de forma justa."
+    },
+    {
+     "q": "Sofía es nueva en el curso, viene de otra región y habla con un acento distinto. Algunos compañeros se ríen cuando ella habla. Si quieres promover el respeto a la diversidad, ¿cuál acción lo demuestra mejor?",
+     "ops": [
+      "Acercarte a Sofía, mostrar interés por su forma de hablar y su región, e invitarla a jugar con el grupo",
+      "Pedirle a Sofía que hable como el resto del curso para que dejen de reírse de ella",
+      "Reírte tú también en voz baja, pero sin que ella te escuche, así no la haces sentir tan mal"
+     ],
+     "correcta": 0,
+     "porque": "Respetar la diversidad significa valorar las diferencias como algo positivo, no pedir que la persona diferente cambie ni disimular la burla. Acercarse con curiosidad e incluir a Sofía muestra empatía y acogida. Exigirle que hable 'como los demás' niega su identidad, y reírse a escondidas sigue siendo una falta de respeto aunque ella no lo note."
+    },
+    {
+     "q": "Tomás quiere sacar buenas notas, así que se queda despierto hasta muy tarde jugando videojuegos y luego estudiando con sueño; casi no desayuna y toma bebidas con mucha azúcar para 'tener energía'. Cada vez está más cansado y le cuesta concentrarse. Analiza: ¿qué debería cambiar primero para cuidar su bienestar y rendir mejor?",
+     "ops": [
+      "Dormir las horas necesarias, desayunar bien y limitar los videojuegos y el azúcar, porque el descanso y la buena alimentación mejoran la concentración",
+      "Tomar aún más bebidas azucaradas para no sentir el sueño mientras estudia de noche",
+      "Estudiar todavía más horas seguidas sin dormir, porque mientras más tiempo estudie, mejor le irá seguro"
+     ],
+     "correcta": 0,
+     "porque": "El cuerpo y la mente necesitan sueño suficiente y alimentación saludable para concentrarse y aprender. El problema de fondo de Tomás no es que estudie poco, sino que descuida hábitos básicos de autocuidado. Más azúcar y menos sueño empeoran el cansancio y la concentración; estudiar sin dormir rinde cada vez menos. Cuidar el bienestar es la base para rendir mejor."
+    }
+   ],
+   "5": [
+    {
+     "q": "En tu curso de 5° básico, un compañero nuevo que llegó desde Haití todavía habla poco español y algunos niños se ríen cuando se equivoca. Tú quieres actuar según el valor del respeto y la empatía. ¿Cuál es la mejor acción?",
+     "ops": [
+      "Acercarte, ayudarlo con las palabras que no sabe e invitarlo a jugar, y pedirle con calma al resto que no se burle",
+      "Reírte también para no quedar fuera del grupo y evitar que se burlen de ti",
+      "No decir nada porque no es tu problema y así evitas meterte en líos"
+     ],
+     "correcta": 0,
+     "porque": "La empatía y el respeto por la diversidad (OA de convivencia) se demuestran con acciones concretas: acoger, ayudar y frenar las burlas. Reírse daña al compañero y callar frente a una injusticia también permite que continúe. Actuar con valentía y bondad protege la dignidad del otro."
+    },
+    {
+     "q": "Analiza dos situaciones: (1) Sientes rabia porque perdiste un partido y respiras hondo antes de hablar; (2) Sientes rabia y le gritas al árbitro. ¿Qué afirmación describe mejor la diferencia según el manejo saludable de emociones?",
+     "ops": [
+      "En la 1 reconoces la emoción y la regulas antes de actuar; en la 2 la emoción controla tu conducta",
+      "En la 1 no sientes ninguna emoción y en la 2 sí, por eso la 1 es mejor",
+      "Ambas son iguales porque en las dos sientes rabia, lo importante es solo el resultado del partido"
+     ],
+     "correcta": 0,
+     "porque": "El OA de expresión y regulación emocional distingue entre SENTIR una emoción (algo natural y válido) y cómo se EXPRESA. En la situación 1 se reconoce la rabia pero se autorregula (respirar); en la 2 la emoción domina la acción. La clave no es dejar de sentir, sino manejar lo que hacemos con lo que sentimos."
+    },
+    {
+     "q": "Tu curso quiere reducir la basura del recreo. Comparan tres ideas. ¿Cuál combina mejor conciencia ecológica Y responsabilidad compartida a largo plazo?",
+     "ops": [
+      "Instalar puntos de reciclaje separados, turnarse por semana para mantenerlos y reducir envases desechables llevando colación en tarros reutilizables",
+      "Poner un basurero enorme para que quepa toda la basura junta y no haya que separarla",
+      "Contratar a alguien para que limpie todo al final del día para no tener que preocuparse"
+     ],
+     "correcta": 0,
+     "porque": "La conciencia ecológica no es solo botar basura, sino reducir, reutilizar y reciclar, y hacerlo con responsabilidad compartida en el tiempo (turnos). Un basurero único no reduce ni separa residuos, y delegar todo en otra persona elimina la responsabilidad propia. La mejor solución previene el problema y compromete a todos."
+    },
+    {
+     "q": "En un trabajo grupal, tú hiciste casi todo y un integrante no aportó. Al presentar, la profesora felicita a todo el grupo. ¿Qué respuesta refleja mejor honestidad Y justicia sin dañar al compañero?",
+     "ops": [
+      "Hablar en privado con el compañero para entender qué pasó y luego contarle con respeto a la profesora cómo se repartió realmente el trabajo",
+      "Acusarlo delante de todo el curso para que quede en evidencia y se sienta avergonzado",
+      "Quedarte callado siempre, aunque te sientas injusto, porque reclamar está mal"
+     ],
+     "correcta": 0,
+     "porque": "La justicia busca que cada uno reciba lo que corresponde, y la honestidad exige decir la verdad, pero el respeto pide hacerlo sin humillar. Hablar primero con el compañero puede revelar razones (quizás tuvo un problema) y luego informar con respeto equilibra verdad y bondad. Humillar en público daña la dignidad; callar perpetúa la injusticia."
+    },
+    {
+     "q": "Un amigo te cuenta en secreto que se siente muy triste y solo, y a veces piensa que a nadie le importaría si desapareciera. Te pide que no le digas a nadie. ¿Qué debes hacer?",
+     "ops": [
+      "Acompañarlo y decirle que lo quieres, y buscar ayuda de un adulto de confianza aunque te haya pedido guardar el secreto",
+      "Guardar el secreto pase lo que pase, porque romper una promesa a un amigo es traicionarlo",
+      "Cambiar de tema y hacerle un chiste para que se le pase la tristeza"
+     ],
+     "correcta": 0,
+     "porque": "Hay secretos que NO se deben guardar: cuando la seguridad o la vida de alguien está en riesgo, buscar a un adulto de confianza es un acto de amor y cuidado, no una traición. Guardar silencio puede poner en peligro al amigo, y minimizar su dolor con un chiste ignora lo que siente. Cuidar la vida está por encima de una promesa."
+    },
+    {
+     "q": "Estás por gastar tus $3.000 ahorrados. Comparas: (A) comprar dulces que se acaban hoy; (B) juntarlos con otros dos meses para un libro que quieres hace tiempo; (C) prestárselos a un amigo que siempre olvida devolver. Según responsabilidad y proyecto personal, ¿qué muestra mejor manejo de metas?",
+     "ops": [
+      "La opción B, porque postergas una satisfacción inmediata para lograr algo que valoras más a largo plazo",
+      "La opción A, porque el dinero es para disfrutarlo al instante sin pensar en el futuro",
+      "La opción C, porque prestar siempre es lo más generoso, sin importar si te devuelven"
+     ],
+     "correcta": 0,
+     "porque": "El OA de proyecto personal y toma de decisiones responsables valora la capacidad de posponer una recompensa inmediata (dulces) por una meta más significativa (el libro). Gastar por impulso no construye un proyecto; y prestar a alguien que nunca devuelve no es generosidad prudente sino falta de responsabilidad con lo propio. Ahorrar con propósito demuestra autocontrol y planificación."
+    },
+    {
+     "q": "En tu grupo de WhatsApp del curso, alguien reenvía una foto vergonzosa de una compañera para reírse. Varios la comparten. ¿Cuál acción combina valentía moral y respeto por la dignidad de la otra persona?",
+     "ops": [
+      "No reenviarla, pedir en el grupo que dejen de compartirla y avisar a un adulto porque le hace daño a la compañera",
+      "Reenviarla solo a un amigo de confianza porque total ya la vieron todos",
+      "Reírte en privado pero sin compartirla, para no ser tú quien la difunde"
+     ],
+     "correcta": 0,
+     "porque": "Difundir imágenes que humillan a alguien es una forma de ciberacoso que daña su dignidad. La valentía moral consiste en no seguir a la mayoría cuando hace daño: no reenviar, pedir que paren y avisar a un adulto. Reenviarla 'solo a uno' igual la difunde, y reírse en silencio valida la agresión aunque no la compartas."
+    },
+    {
+     "q": "Tu comuna sufre escasez de agua y las autoridades piden cuidarla. En tu casa notas: la llave del jardín gotea, tu hermano se ducha 20 minutos y usan agua potable para lavar el auto. ¿Qué plan familiar refleja mejor conciencia ecológica y bien común?",
+     "ops": [
+      "Reparar la llave que gotea, acortar las duchas y reutilizar agua para el auto o las plantas, explicándole a la familia por qué importa",
+      "Comprar agua embotellada para todo y seguir gastando igual, ya que así no usan el agua de la comuna",
+      "Cuidar el agua solo cuando alguien los esté mirando, para no cambiar sus costumbres"
+     ],
+     "correcta": 0,
+     "porque": "Cuidar un recurso escaso es una responsabilidad hacia el bien común: reparar fugas, reducir consumo y reutilizar agua son acciones reales que suman. Comprar embotellada no resuelve el problema (genera más residuos plásticos y sigue consumiendo agua en otro lado), y actuar solo cuando observan revela falta de coherencia. El cuidado ambiental se sostiene en hábitos genuinos y compartidos."
+    }
+   ],
+   "6": [
+    {
+     "q": "En tu curso de 6° básico, un grupo empieza a excluir a Benjamín de los juegos en el recreo porque tiene TDAH y a veces interrumpe. Tú te das cuenta pero no eres parte del grupo. Segun lo que has aprendido sobre convivencia y respeto a la diversidad, cual es la accion que mejor combina EMPATIA y RESPONSABILIDAD, en vez de solo 'no hacer nada malo'?",
+     "ops": [
+      "Acercarte a Benjamín, invitarlo a jugar contigo y conversar con el grupo o la profesora para que entiendan que excluir a alguien por ser distinto es injusto",
+      "Grabar a los compañeros que lo excluyen y subir el video para que todos vean lo que hacen y les de vergüenza",
+      "Ignorar la situación porque tú no lo estás excluyendo directamente, así evitas problemas con el grupo"
+     ],
+     "correcta": 0,
+     "porque": "Ser un espectador pasivo permite que el maltrato continúe. La empatía activa (incluir a Benjamín) sumada a la responsabilidad de buscar ayuda adulta construye convivencia. Grabar y exponer a los compañeros es otra forma de agresión y vulnera su privacidad, no resuelve el conflicto; e ignorar es complicidad silenciosa."
+    },
+    {
+     "q": "Tu curso quiere hacer una campaña para reducir la basura en el colegio. El curso A propone poner carteles con reglas y castigos para quien bote basura. El curso B propone instalar puntos de reciclaje separados, enseñar a separar residuos y hacerlo un juego con desafíos entre cursos. Analizando cuál generará un cambio de HÁBITO más duradero y por qué, ¿qué opción es mejor?",
+     "ops": [
+      "El curso A, porque el miedo al castigo es la forma más rápida y segura de que las personas cambien para siempre",
+      "Ambas dan exactamente el mismo resultado, así que da lo mismo cuál se elija",
+      "El curso B, porque enseñar, dar herramientas concretas y motivar crea un hábito interno, mientras que el castigo solo funciona mientras alguien vigila"
+     ],
+     "correcta": 2,
+     "porque": "Los hábitos ecológicos duraderos nacen de la comprensión y la motivación intrínseca, no del miedo. El castigo (curso A) produce obediencia solo bajo vigilancia y desaparece cuando nadie mira. Educar, facilitar la acción correcta y motivar (curso B) internaliza el valor del cuidado ambiental, generando un cambio real y sostenible."
+    },
+    {
+     "q": "Camila siente mucha rabia porque su hermano rompió su maqueta sin querer. Está a punto de gritarle e insultarlo. Segun el manejo saludable de emociones, ¿cuál es la mejor estrategia que muestra que reconoce su emoción SIN dejar que la emoción la controle?",
+     "ops": [
+      "Guardarse toda la rabia, no decir nada y actuar como si no hubiera pasado nada para no generar conflicto",
+      "Respirar profundo unos segundos, reconocer 'estoy muy enojada', y cuando esté más calmada decirle a su hermano cómo se siente y por qué",
+      "Gritarle de inmediato, porque expresar la rabia al instante es siempre lo más honesto y sano"
+     ],
+     "correcta": 1,
+     "porque": "El manejo emocional saludable no es reprimir ni explotar, sino reconocer la emoción y regular la respuesta. La opción B usa una pausa (respiración) para no reaccionar impulsivamente y luego comunica asertivamente. Reprimir todo (A) acumula malestar; explotar (C) daña la relación y no resuelve nada."
+    },
+    {
+     "q": "En una tarea grupal, Matías siempre termina haciendo casi todo porque a sus compañeros les da lo mismo y él quiere una buena nota. Analizando la situación en términos de RESPONSABILIDAD compartida y trabajo en equipo, ¿qué debería hacer Matías para que sea justo y todos aprendan?",
+     "ops": [
+      "Seguir haciendo todo él solo, porque así asegura la nota y evita depender de gente floja",
+      "Quejarse a la profesora para que a sus compañeros les pongan un 1 y a él un 7",
+      "Proponer al grupo repartir las tareas de forma clara, acordar plazos y, si no funciona, conversarlo con la profesora buscando una solución para todos"
+     ],
+     "correcta": 2,
+     "porque": "El trabajo en equipo implica corresponsabilidad, no que uno cargue con todo ni que se sabotee a los demás. Hacer todo solo (A) refuerza la irresponsabilidad del grupo y lo sobrecarga. Buscar solo castigo (B) es punitivo y no soluciona la organización. Repartir tareas, acordar y luego pedir apoyo (C) promueve justicia, diálogo y aprendizaje colectivo."
+    },
+    {
+     "q": "Un compañero te muestra un juego en el celular donde debes agregar como 'amigo' a un desconocido que dice ser un niño de otra ciudad y que te pide fotos y tu dirección para 'mandarte un regalo'. Aplicando lo que sabes sobre autocuidado y seguridad, ¿cuál es la reacción correcta y por qué?",
+     "ops": [
+      "Mandarle solo la dirección pero no las fotos, porque una dirección sola no es peligrosa",
+      "No compartir ninguna información personal, no aceptar al desconocido y avisar a un adulto de confianza sobre la situación",
+      "Pedirle primero una foto a él para comprobar que de verdad es un niño y recién ahí decidir si le mandas tus datos"
+     ],
+     "correcta": 1,
+     "porque": "Nunca se debe entregar información personal (dirección, fotos, ubicación) a desconocidos en internet, pues no hay forma real de verificar quién está detrás de la pantalla; una foto que envíen puede ser falsa. Dar la dirección (A) es un riesgo grave de seguridad. Lo correcto es proteger los datos y avisar a un adulto de confianza, que es la clave del autocuidado digital."
+    },
+    {
+     "q": "Tu curso debe elegir al presidente de curso. Un candidato es tu mejor amigo pero es desordenado y no cumple lo que promete; el otro candidato casi no lo conoces, pero tiene buenas ideas para mejorar el curso y siempre cumple sus compromisos. Analizando qué significa votar con RESPONSABILIDAD y por el bien común, ¿qué deberías considerar?",
+     "ops": [
+      "Votar por tu mejor amigo, porque la lealtad a los amigos siempre debe estar por encima de cualquier otra cosa",
+      "Evaluar quién realmente puede cumplir y aportar más al bien del curso, aunque eso signifique no votar por tu amigo",
+      "Votar por quien te prometa a ti algún beneficio personal a cambio de tu voto"
+     ],
+     "correcta": 1,
+     "porque": "Votar responsablemente implica pensar en el bien común y en la capacidad real de la persona para cumplir su rol, no solo en lealtades personales o beneficios propios. Priorizar la amistad por sobre el mérito (A) o vender el voto por un interés personal (C) no sirven al curso. Distinguir amistad de responsabilidad cívica es señal de madurez."
+    },
+    {
+     "q": "En el barrio de Valentina hay una plaza que quedó llena de basura y árboles sin cuidado. Ella quiere ayudar pero es solo una niña de 11 años. Analizando cómo una acción pequeña puede generar un impacto real, ¿cuál es la estrategia más efectiva y realista para lograr un cambio que se mantenga?",
+     "ops": [
+      "Ir sola cada tarde a limpiar toda la plaza ella misma, porque si de verdad le importa debe sacrificarse sin pedir ayuda a nadie",
+      "Esperar a ser adulta, porque un niño no puede hacer nada útil por el medioambiente hasta que sea grande",
+      "Organizar a vecinos, compañeros y familia para una jornada de limpieza y cuidado, y proponer a la junta de vecinos turnos para mantener la plaza"
+     ],
+     "correcta": 2,
+     "porque": "El cuidado del entorno es más efectivo y sostenible cuando se hace en comunidad y se organiza para mantenerlo en el tiempo. Limpiar sola (A) es agotador, no sostenible y desaprovecha la fuerza colectiva; esperar a ser adulta (B) subestima que niños y niñas sí pueden liderar cambios reales. Convocar a la comunidad y crear un sistema de mantención (C) multiplica el impacto y lo hace durar."
+    },
+    {
+     "q": "Un compañero te cuenta en secreto que en su casa a veces lo tratan muy mal y le pega un adulto, pero te pide que no le digas a nadie porque le da vergüenza y miedo. Aplicando lo que sabes sobre autocuidado y buscar ayuda, ¿cuál es la acción más correcta aunque sea difícil?",
+     "ops": [
+      "Guardar el secreto pase lo que pase, porque romper la confianza de un amigo es siempre lo peor que puedes hacer",
+      "Acompañarlo y explicarle que esto es demasiado grave para callarlo, y buscar juntos a un adulto de confianza como un profesor, orientadora o la dupla psicosocial para que lo protejan",
+      "Enfrentar tú mismo al adulto que le pega para defender a tu amigo, sin decirle a nadie más"
+     ],
+     "correcta": 1,
+     "porque": "Cuando alguien está en peligro (maltrato o violencia), guardar el secreto no protege, sino que deja a la persona sola frente al daño; hay secretos que un niño no debe cargar. Buscar ayuda de un adulto de confianza o de la dupla psicosocial del colegio es lo correcto y lo protege de verdad. Enfrentar solo al agresor (C) es peligroso e ineficaz. Aquí el verdadero cuidado del amigo es buscar protección adulta."
     }
    ]
   }
@@ -12308,6 +14262,524 @@ window.CONTENIDO = {
      ]
     }
    ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En la sala del colegio hay muchos objetos. La profesora dice: 'Levanten solo los objetos TECNOLÓGICOS, es decir, los que las personas fabricaron para resolver un problema'. ¿Cuál grupo debe levantar Martín?",
+     "ops": [
+      "El lápiz, la tijera y el paraguas",
+      "La piedra, la hoja del árbol y el agua",
+      "La nube, el sol y el viento"
+     ],
+     "correcta": 0,
+     "porque": "Los objetos tecnologicos son los que las personas crean o fabrican para resolver una necesidad o problema. El lapiz sirve para escribir, la tijera para cortar y el paraguas para no mojarse: los tres fueron hechos por personas. La piedra, la hoja, el agua, la nube, el sol y el viento son parte de la naturaleza, nadie los fabrico."
+    },
+    {
+     "q": "Los ninos de 1B quieren regar las plantas del patio, pero el agua es un recurso que debemos cuidar. ¿Cual es la mejor solucion tecnologica que ademas cuida el planeta?",
+     "ops": [
+      "Regar con la manguera abierta todo el dia para que crezcan mas rapido",
+      "Juntar el agua de la lluvia en un balde y usarla para regar las plantas",
+      "Dejar la llave del bano abierta para que corra el agua hasta el patio"
+     ],
+     "correcta": 1,
+     "porque": "Juntar el agua de la lluvia es una solucion inteligente que reutiliza un recurso natural sin gastar agua potable. Cuidar el agua es cuidar la Tierra. Dejar la manguera o la llave abiertas desperdicia mucha agua, que es un recurso escaso que todos debemos proteger."
+    },
+    {
+     "q": "Martin debe unir dos hojas de papel para hacer un afiche. Piensa en cual material es el MAS adecuado para pegarlas sin romperlas ni ensuciarlas. ¿Que deberia usar?",
+     "ops": [
+      "Un clavo y un martillo",
+      "Agua sola echada encima",
+      "Pegamento en barra o cola fria"
+     ],
+     "correcta": 2,
+     "porque": "Para unir papel, el material adecuado es el pegamento en barra o la cola fria, porque une sin romper y es seguro para un nino. El clavo y el martillo son para la madera y podrian romper el papel y ser peligrosos. El agua sola no pega, solo moja y arruga el papel."
+    },
+    {
+     "q": "En su casa, Martin tiene que guardar sus juguetes despues de jugar. Quiere inventar una forma ordenada. ¿Cual es la mejor idea que resuelve el problema de tener todo ordenado y facil de encontrar?",
+     "ops": [
+      "Poner cada tipo de juguete en una caja distinta con un dibujo que diga que va adentro",
+      "Tirar todos los juguetes debajo de la cama sin mirar",
+      "Dejar los juguetes en el suelo donde quedaron"
+     ],
+     "correcta": 0,
+     "porque": "Separar los juguetes por tipo en cajas con un dibujo es una solucion tecnologica que organiza y facilita encontrar las cosas: ese dibujo funciona como una etiqueta. Tirarlos bajo la cama o dejarlos en el suelo no resuelve el problema, ademas de ser desordenado y peligroso para tropezar."
+    },
+    {
+     "q": "La profesora muestra un objeto antiguo y uno nuevo que sirven para lo MISMO: escuchar musica. Compara un tocadiscos antiguo y un celular. ¿Que afirmacion es correcta?",
+     "ops": [
+      "El tocadiscos antiguo es mas facil de llevar en el bolsillo que el celular",
+      "Los dos sirven para escuchar musica, pero el celular es mas pequeno y se puede llevar a todos lados",
+      "El celular no puede reproducir musica, solo el tocadiscos puede"
+     ],
+     "correcta": 1,
+     "porque": "Al comparar objetos que cumplen la misma funcion, vemos como la tecnologia cambia con el tiempo. Ambos sirven para escuchar musica, pero el celular es mucho mas pequeno y portatil. El tocadiscos es grande y pesado, no cabe en un bolsillo, asi que la primera opcion es falsa."
+    },
+    {
+     "q": "Martin ve que su companero va a botar a la basura una botella de plastico vacia. En la clase de Tecnologia aprendieron a reutilizar. ¿Que le conviene proponer para cuidar el medio ambiente?",
+     "ops": [
+      "Botarla al suelo del patio porque asi molesta menos",
+      "Convertir la botella en un macetero para plantar una semilla",
+      "Guardar diez botellas en la mochila sin usarlas"
+     ],
+     "correcta": 1,
+     "porque": "Reutilizar una botella para hacer un macetero le da una nueva vida al objeto en vez de convertirlo en basura, y ademas ayuda a cultivar una planta que da oxigeno. Esto cuida el planeta. Botarla al suelo contamina, y guardarlas sin usarlas no resuelve nada."
+    },
+    {
+     "q": "Para construir una torre firme con bloques que no se caiga facil, Martin debe pensar como ubicar las piezas. ¿Cual es la mejor forma de lograr que la torre sea estable?",
+     "ops": [
+      "Poner los bloques mas grandes y anchos abajo y los mas pequenos arriba",
+      "Poner los bloques mas pequenos abajo y los mas grandes y pesados arriba",
+      "Poner todos los bloques en una sola fila apoyados en el borde de la mesa"
+     ],
+     "correcta": 0,
+     "porque": "Una torre es mas estable cuando la base es ancha y firme: por eso los bloques grandes van abajo y los pequenos arriba. Si se ponen los pesados arriba, la torre queda desequilibrada y se cae. Apoyarla en el borde de la mesa tambien la hace inestable."
+    },
+    {
+     "q": "El curso de Martin va a trabajar en equipo para armar una maqueta de su barrio con material reciclado. Para que el trabajo resulte bien y todos aprendan, ¿que actitud es la mas importante?",
+     "ops": [
+      "Que cada uno haga su parte sin ayudar a nadie y sin compartir los materiales",
+      "Escuchar las ideas de los companeros, compartir los materiales y ayudarse entre todos",
+      "Que uno solo haga toda la maqueta mientras los demas miran"
+     ],
+     "correcta": 1,
+     "porque": "El trabajo en equipo funciona cuando escuchamos, compartimos y nos ayudamos: son valores de respeto y colaboracion. Asi la maqueta sale mejor y todos aprenden. Trabajar sin ayudar, o dejar que uno solo haga todo, no es trabajo en equipo y no es justo con los companeros."
+    }
+   ],
+   "2": [
+    {
+     "q": "En el colegio de Martín, en Santiago, sobran muchas botellas plásticas después del recreo. La profesora pide diseñar un objeto útil reutilizando esas botellas. ¿Cuál idea reutiliza la botella Y ayuda al medio ambiente?",
+     "ops": [
+      "Convertir las botellas en macetas para plantar lechugas en el patio",
+      "Comprar botellas nuevas de colores para que se vean más bonitas",
+      "Botar las botellas a la basura y usar tarros de metal nuevos"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar las botellas como macetas les da una nueva vida, evita que se conviertan en basura y permite cultivar plantas. Comprar o botar botellas gasta recursos nuevos y contamina, lo contrario de cuidar el medio ambiente."
+    },
+    {
+     "q": "Sofía quiere construir un portalápices resistente que dure mucho tiempo sobre su escritorio. Debe elegir el material. ¿Cuál elección muestra el mejor razonamiento?",
+     "ops": [
+      "Papel de diario, porque es blando y fácil de doblar",
+      "Un tarro de conservas limpio, porque es firme y no se aplasta con facilidad",
+      "Algodón, porque es suave y liviano"
+     ],
+     "correcta": 1,
+     "porque": "Un portalápices necesita mantenerse firme y de pie con el peso de los lápices. El tarro es rígido y resistente; el papel y el algodón se doblan o aplastan, así que no sirven para algo que debe durar y sostener peso."
+    },
+    {
+     "q": "Antes de construir un juguete con tijeras y pegamento, ¿cuál es la mejor razón para planificar primero los pasos y ordenar los materiales?",
+     "ops": [
+      "Para trabajar con seguridad y no equivocarse ni perder materiales",
+      "Para terminar sin pensar y ser el primero de la clase",
+      "Porque planificar no sirve, es mejor empezar de inmediato"
+     ],
+     "correcta": 0,
+     "porque": "Planificar los pasos y ordenar los materiales ayuda a trabajar seguro, evitar accidentes con las tijeras y no desperdiciar materiales. Apurarse sin pensar suele causar errores y desorden."
+    },
+    {
+     "q": "El curso usará el computador para escribir y dibujar un afiche que invite a reciclar. ¿Qué programa (software) es el más adecuado para esta tarea?",
+     "ops": [
+      "Una calculadora, porque hace sumas muy rápido",
+      "Un programa para escribir y dibujar, como un procesador de texto o editor de dibujo",
+      "Un programa que solo reproduce canciones"
+     ],
+     "correcta": 1,
+     "porque": "Un afiche necesita texto e imágenes, por eso se usa un programa para escribir y dibujar. La calculadora sirve para números y el reproductor de música solo para canciones; ninguno crea afiches."
+    },
+    {
+     "q": "Tomás terminó de construir un auto de cartón, pero al empujarlo las ruedas se sueltan enseguida. Según los pasos de la tecnología, ¿qué debería hacer ahora?",
+     "ops": [
+      "Guardar el auto tal como está, aunque no funcione bien",
+      "Revisar qué falló y mejorar la unión de las ruedas para que funcione",
+      "Empezar un proyecto totalmente distinto y olvidar el auto"
+     ],
+     "correcta": 1,
+     "porque": "Después de construir se prueba el objeto y, si algo falla, se evalúa y se mejora. Revisar el problema y reforzar las ruedas es corregir el diseño; guardarlo roto o abandonarlo no resuelve nada."
+    },
+    {
+     "q": "La abuela de Emilia, en Chiloé, teje gorros de lana para el invierno frío y lluvioso. ¿Por qué la lana es una buena elección de material para esa necesidad?",
+     "ops": [
+      "Porque la lana abriga y ayuda a mantener el calor del cuerpo",
+      "Porque la lana es transparente y deja pasar el frío",
+      "Porque la lana pesa mucho y por eso enfría"
+     ],
+     "correcta": 0,
+     "porque": "La necesidad es protegerse del frío, y la lana abriga porque conserva el calor del cuerpo, ideal para el invierno lluvioso del sur de Chile. Las otras opciones describen mal a la lana: no es transparente ni enfría."
+    },
+    {
+     "q": "El curso de Valentina hará un huerto y deben transportar tierra desde un rincón del patio hasta los maceteros. Solo pueden usar objetos reutilizados. ¿Cuál herramienta improvisada es la más adecuada?",
+     "ops": [
+      "Una hoja de papel, para llevar la tierra encima",
+      "Un balde plástico viejo pero sin agujeros",
+      "Un colador, porque tiene muchos hoyitos"
+     ],
+     "correcta": 1,
+     "porque": "Transportar tierra requiere un recipiente que la contenga sin que se caiga. El balde reutilizado es firme y cerrado; el papel se dobla y el colador deja pasar la tierra por los hoyos, así que se perdería en el camino."
+    },
+    {
+     "q": "En un trabajo grupal para armar una maqueta, un compañero no encuentra qué hacer y otro no comparte los materiales. ¿Cuál es la mejor forma de trabajar en equipo y con respeto?",
+     "ops": [
+      "Cada uno hace lo suyo en silencio y no se ayudan entre ellos",
+      "Repartir las tareas, compartir los materiales y ayudar al que lo necesita",
+      "El que sabe más hace todo solo y los demás miran"
+     ],
+     "correcta": 1,
+     "porque": "Trabajar en equipo con respeto significa repartir tareas, compartir y ayudarse, así todos aportan y aprenden. Trabajar aislados o dejar que uno haga todo no es colaborar y deja a compañeros fuera del trabajo."
+    }
+   ],
+   "3": [
+    {
+     "q": "En el colegio de Valparaíso quieren guardar el agua de lluvia para regar el huerto escolar en verano. Un grupo diseña un objeto tecnológico para juntarla. ¿Cuál es el mejor diseño según el problema que deben resolver?",
+     "ops": [
+      "Una canaleta en el techo que lleva el agua a un estanque tapado con una tapa",
+      "Un balde pequeño puesto en el patio, sin tapa, en un rincón con sombra",
+      "Un plato ancho sobre una mesa dentro de la sala de clases"
+     ],
+     "correcta": 0,
+     "porque": "Un buen diseño tecnológico responde al problema real: juntar MUCHA agua de lluvia y guardarla. La canaleta del techo recoge toda el agua que cae en una gran superficie y el estanque tapado evita que se evapore o se ensucie. El balde junta muy poca agua y el plato dentro de la sala ni siquiera recibe lluvia. Elegir requiere comparar cuál cumple mejor la función y cuida el recurso.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "María quiere construir un portalápices resistente y quiere cuidar el planeta reutilizando materiales. Tiene estas opciones. ¿Cuál decisión une MEJOR resistencia y cuidado del medio ambiente?",
+     "ops": [
+      "Reutilizar un tarro de lata vacío, limpiarlo y forrarlo con papel de revistas usadas",
+      "Comprar un portalápices nuevo de plástico en el supermercado",
+      "Pegar varias hojas de papel de cuaderno para formar un tubo"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar un tarro de lata cumple las DOS metas a la vez: la lata es un material resistente que aguanta el peso de los lápices, y al reutilizarlo (junto con revistas usadas) se evita generar basura y comprar cosas nuevas. Comprar plástico nuevo no cuida el ambiente, y el tubo de papel no es resistente. La respuesta exige comparar materiales por su resistencia y su impacto ecológico.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "Un curso hará una presentación digital sobre los animales de Chile. Se reparten las tareas para trabajar en equipo. Pedro dibuja en el computador, Ana busca las fotos y Luis escribe los textos. ¿Por qué esta forma de trabajar es la más adecuada?",
+     "ops": [
+      "Porque cada uno usa una habilidad distinta y juntos terminan mejor y más rápido el trabajo",
+      "Porque así solo una persona hace todo el trabajo difícil",
+      "Porque es mejor que nadie se ponga de acuerdo y cada uno haga lo que quiera"
+     ],
+     "correcta": 0,
+     "porque": "El trabajo en equipo funciona cuando se reparten las tareas según lo que cada persona hace bien y luego se juntan las partes. Así se aprovecha el tiempo y el resultado es mejor. Las otras opciones (que uno haga todo, o que nadie se coordine) hacen el trabajo injusto o desordenado. La pregunta pide analizar por qué colaborar y organizarse da mejores resultados.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "En un pueblo del sur de Chile llueve mucho y los niños llegan con los cuadernos mojados. Deben diseñar un objeto que proteja el cuaderno de camino a la escuela. ¿Qué idea resuelve mejor el problema?",
+     "ops": [
+      "Una funda de material plástico impermeable que cierre bien y cubra todo el cuaderno",
+      "Una caja de cartón abierta por arriba para poner el cuaderno adentro",
+      "Una bolsa de género de algodón sin cierre"
+     ],
+     "correcta": 0,
+     "porque": "El problema es la lluvia, así que el objeto debe impedir que entre el agua. Una funda plástica impermeable y cerrada mantiene el cuaderno seco porque el agua resbala y no traspasa. El cartón se moja y se deshace, y el género de algodón absorbe el agua como una esponja. Resolver esto exige elegir el material según su propiedad (impermeable) y la función que debe cumplir.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "Antes de guardar un trabajo en el computador, tu profesora dice que le pongas un nombre al archivo. ¿Cuál es el mejor nombre para poder encontrarlo fácilmente después?",
+     "ops": [
+      "afiche-reciclaje-tercero-basico",
+      "documento1",
+      "aaa123"
+     ],
+     "correcta": 0,
+     "porque": "Un buen nombre de archivo describe lo que contiene, así uno lo reconoce entre muchos otros sin tener que abrirlo. 'afiche-reciclaje-tercero-basico' dice el tipo de trabajo, el tema y el curso. En cambio 'documento1' o 'aaa123' no dicen nada y obligan a abrir todo para buscar. La pregunta pide aplicar el criterio de organizar la información de forma útil.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "Dos grupos hicieron un puente de palos de helado para sostener un autito de juguete. El puente A se dobló y cayó con un solo autito; el puente B aguantó tres autitos. ¿Qué conviene hacer para mejorar el puente A?",
+     "ops": [
+      "Observar cómo está armado el puente B y agregar más palos y pegamento en las partes que se doblaron",
+      "Sacarle palos al puente A para que quede más liviano",
+      "Dejar el puente A igual porque todos los puentes fallan alguna vez"
+     ],
+     "correcta": 0,
+     "porque": "Evaluar un trabajo terminado sirve para mejorarlo. Si el puente B aguantó más, conviene observar qué lo hace más firme (más palos, mejor unión) y aplicar eso al puente A, reforzando justo donde se dobló. Quitarle palos lo dejaría aún más débil, y no hacer nada no soluciona el problema. La pregunta pide analizar la causa de la falla y proponer una mejora basada en la evidencia.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "En la sala hay un solo computador y cinco niños quieren usarlo para su tarea. ¿Cuál es la forma más justa y respetuosa de organizarse?",
+     "ops": [
+      "Hacer una lista con turnos de tiempo para que todos alcancen a usarlo",
+      "Que lo use primero el que llegó corriendo y empujó a los demás",
+      "Que lo use todo el rato el que grita más fuerte"
+     ],
+     "correcta": 0,
+     "porque": "Cuando un recurso es compartido y escaso (un solo computador para cinco), lo justo es organizar turnos para que todos tengan la misma oportunidad. Empujar o gritar es faltar el respeto y deja a algunos sin usarlo. Aquí se practica la virtud de la justicia y el respeto por los demás, decidiendo cómo repartir bien algo que es de todos.",
+     "porque_check": "ok"
+    },
+    {
+     "q": "Tu grupo va a construir un juguete y deben elegir entre estos tres materiales para las ruedas, que tienen que girar bien y ser resistentes. ¿Cuál eligen y por qué?",
+     "ops": [
+      "Tapas de botella redondas y firmes, porque son rígidas, giran bien y se reutilizan de la basura",
+      "Bolitas de plasticina, porque son blandas y se pueden aplastar con la mano",
+      "Cuadrados de cartulina, porque tienen esquinas y son fáciles de recortar"
+     ],
+     "correcta": 0,
+     "porque": "Una rueda necesita ser redonda para girar y firme para aguantar el peso; las tapas de botella cumplen ambas cosas y además se reutilizan, cuidando el ambiente. La plasticina es blanda y se deforma, y un cuadrado de cartulina no rueda porque sus esquinas lo traban. La pregunta exige relacionar la forma y la propiedad del material con la función (girar y resistir) que debe cumplir la pieza.",
+     "porque_check": "ok"
+    }
+   ],
+   "4": [
+    {
+     "q": "En tu casa de Temuco quieres regar las plantas del patio usando el agua que cae cuando llueve. Tienes estos materiales: un balde grande, una manguera, un embudo y una tapa con agujeros. ¿Cuál es la MEJOR manera de diseñar un objeto tecnologico que junte y guarde el agua lluvia?",
+     "ops": [
+      "Poner el balde bajo la bajada del techo con el embudo arriba para que entre mas agua, y taparlo con la tapa con agujeros para que no caigan hojas ni mosquitos",
+      "Dejar el balde en medio del patio sin tapa para que el agua caiga directo del cielo",
+      "Llenar el balde con la manguera del lavaplatos cada vez que necesites regar"
+     ],
+     "correcta": 0,
+     "porque": "Un buen diseno tecnologico resuelve el problema aprovechando el recurso disponible: ubicar el balde bajo la bajada del techo capta MUCHA mas agua que dejarlo suelto en el patio, el embudo aumenta la boca de entrada y la tapa con agujeros filtra hojas y evita mosquitos (cuidado de la salud). Llenarlo con la manguera gasta agua potable, que es justo lo que queremos ahorrar. Reutilizar agua lluvia cuida un recurso escaso.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Tu curso debe elegir el material para fabricar las bandejas del casino de la escuela. Analiza esta tabla:\nPlastico de un solo uso: barato, se rompe rapido, tarda cientos de anos en degradarse.\nMadera reciclada: precio medio, resistente, se puede compostar.\nAluminio: caro, muy durable, se puede reciclar muchas veces.\n¿Que material conviene elegir si el curso quiere gastar poco Y cuidar el medio ambiente al mismo tiempo?",
+     "ops": [
+      "El plastico de un solo uso, porque es el mas barato de todos",
+      "La madera reciclada, porque cuesta un precio medio, es resistente y se puede compostar",
+      "El aluminio, porque es el que mas dura aunque sea el mas caro"
+     ],
+     "correcta": 1,
+     "porque": "La pregunta pide equilibrar DOS criterios a la vez: gastar poco y cuidar el ambiente. El plastico es el mas barato pero contamina por cientos de anos, asi que falla en lo ecologico. El aluminio es el mas ecologico en durabilidad pero es el mas caro, asi que falla en el ahorro. La madera reciclada es la unica que cumple bien ambos: precio medio y ademas se puede compostar. Elegir bien un material es comparar ventajas y desventajas, no quedarse con una sola.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Estas usando un programa de dibujo en el computador (como Paint) para hacer el afiche del dia de la Convivencia Escolar. Por accidente borraste el titulo que te costo mucho escribir. ¿Cual es la accion MAS inteligente antes de volver a escribir todo de nuevo?",
+     "ops": [
+      "Cerrar el programa sin guardar y empezar el afiche completamente de cero",
+      "Usar la funcion Deshacer (Ctrl + Z), que devuelve el trabajo al paso anterior y recupera el titulo",
+      "Apagar el computador de golpe para que se arregle solo"
+     ],
+     "correcta": 1,
+     "porque": "Las herramientas tecnologicas tienen funciones pensadas para corregir errores sin perder el trabajo. Deshacer (Ctrl + Z) devuelve el documento al momento antes del error y recupera el titulo al instante. Cerrar sin guardar borra TODO lo bueno tambien, y apagar de golpe puede danar el archivo y el equipo. Saber usar las funciones de un software es parte de manejar bien la tecnologia.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Un companero de tu curso usa silla de ruedas y no puede subir los tres escalones para entrar a la sala de computacion. El profesor les pide disenar una solucion tecnologica. ¿Cual es la MEJOR propuesta que resuelve el problema y ademas sirve para todos?",
+     "ops": [
+      "Que dos companeros lo levanten en la silla cada vez que quiera entrar",
+      "Construir una rampa con una pendiente suave al lado de los escalones, para que entre por si mismo y tambien sirva para carros de materiales",
+      "Cambiar la clase de computacion a otra sala del primer piso solo para el"
+     ],
+     "correcta": 1,
+     "porque": "Un buen diseno tecnologico resuelve el problema de forma segura, digna y para el mayor numero de personas (diseno para todos). La rampa deja que el companero entre por si mismo con autonomia, es segura, y ademas sirve para carros o cualquier persona. Que lo levanten cada vez es inseguro y depende de otros. Cambiar solo a el de sala lo separa del grupo en vez de incluirlo. La tecnologia bien pensada incluye y respeta a todas las personas.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Vas a plantar un pequeno huerto de lechugas en el patio de la escuela y quieres planificar bien el trabajo. ¿Cual es el ORDEN correcto de los pasos para que el huerto funcione?",
+     "ops": [
+      "Preparar y soltar la tierra, sembrar las semillas, regar, y despues cuidar y sacar las malezas mientras crecen",
+      "Regar la tierra dura, sembrar encima, y recien despues soltar la tierra con la pala",
+      "Cosechar las lechugas, luego sembrar las semillas y al final preparar la tierra"
+     ],
+     "correcta": 0,
+     "porque": "Todo trabajo tecnologico se planifica en una secuencia logica: primero se prepara y suelta la tierra para que las raices crezcan, luego se siembra, despues se riega y finalmente se cuida quitando malezas hasta cosechar. La segunda opcion riega y siembra ANTES de soltar la tierra, entonces las semillas quedan mal plantadas. La tercera pone la cosecha al principio, lo cual es imposible porque aun no hay plantas. Ordenar bien los pasos es clave para que un proyecto resulte.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Estas construyendo un puente de palos de helado para un concurso. Un puente aguanto 5 monedas y otro igual aguanto 15 monedas. El que aguanto mas tenia los palos cruzados formando triangulos. ¿Que conclusion es la correcta despues de PROBAR y comparar los dos puentes?",
+     "ops": [
+      "Los triangulos no sirven de nada; los dos puentes son iguales",
+      "La forma de triangulo hace la estructura mas firme, asi que conviene usarla para que el puente resista mas peso",
+      "El puente que aguanto menos es mejor porque uso menos palos"
+     ],
+     "correcta": 1,
+     "porque": "Probar y comparar es una forma de aprender en tecnologia: si un puente con triangulos aguanto el triple de peso, la evidencia muestra que esa forma reparte mejor la fuerza y hace la estructura mas firme. Por eso los triangulos se usan de verdad en puentes y techos reales. La primera opcion ignora la evidencia; la tercera confunde usar menos material con ser mejor, cuando en un puente lo importante es que resista. Sacar conclusiones a partir de pruebas es pensar como un buen constructor.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Tu grupo debe hacer una presentacion sobre los animales de la Patagonia. Buscas informacion en internet y encuentras tres fuentes. ¿En cual conviene confiar MAS para que la informacion sea correcta?",
+     "ops": [
+      "Un comentario de un desconocido en un video que dice 'yo creo que el puma vuela'",
+      "La pagina de la Conaf (institucion chilena que cuida los parques y la naturaleza)",
+      "Una publicacion de humor con datos inventados para hacer reir"
+     ],
+     "correcta": 1,
+     "porque": "Usar la tecnologia con responsabilidad incluye elegir fuentes confiables. La pagina de la Conaf es de una institucion seria que cuida la naturaleza chilena, asi que su informacion esta revisada por expertos. El comentario de un desconocido no tiene respaldo y ademas dice algo falso (los pumas no vuelan), y la pagina de humor inventa datos a proposito. Comparar y evaluar las fuentes, en vez de creer lo primero que aparece, es una habilidad clave para informarse con honestidad.",
+     "porque_extra": ""
+    },
+    {
+     "q": "Tu familia en Santiago junta la basura toda mezclada en un solo tacho. Quieres proponer un sistema tecnologico simple en casa para reciclar mejor. ¿Cual propuesta ORGANIZA mejor los residuos y ayuda al medio ambiente?",
+     "ops": [
+      "Poner un solo tacho gigante para botar todo junto mas rapido",
+      "Poner tres recipientes marcados: uno para papel y carton, otro para plastico y latas, y otro para restos de comida (compost)",
+      "Quemar la basura en el patio para que ocupe menos espacio"
+     ],
+     "correcta": 1,
+     "porque": "Un sistema tecnologico ordena las cosas para cumplir un objetivo: separar en tres recipientes marcados permite que el papel, los envases y los restos de comida sigan caminos distintos y se puedan reciclar o compostar, reduciendo la basura que va al vertedero. Un solo tacho gigante mezcla todo y hace imposible reciclar. Quemar basura en el patio contamina el aire (muy grave en Santiago, que ya sufre smog) y es peligroso. Separar en el origen es la base del reciclaje y un acto de cuidado por el planeta.",
+     "porque_extra": ""
+    }
+   ],
+   "5": [
+    {
+     "q": "En Valdivia, un curso quiere diseñar un objeto tecnológico para regar las plantas del huerto escolar sin desperdiciar agua durante el verano seco. Antes de construirlo, ¿cuál es el PRIMER paso más importante del proceso de diseño tecnológico?",
+     "ops": [
+      "Definir claramente el problema y las necesidades: cuánta agua se necesita, cada cuánto y con qué materiales cuentan",
+      "Pintar el objeto de colores llamativos para que se vea bonito en el huerto",
+      "Comprar el material más caro de la ferretería para asegurar la calidad"
+     ],
+     "correcta": 0,
+     "porque": "En el proceso de diseño tecnológico, antes de construir hay que identificar y definir el problema y las necesidades (restricciones como agua disponible, tiempo y materiales). Sin entender el problema, cualquier solución es al azar. Lo estético y el costo vienen después de tener claro el propósito."
+    },
+    {
+     "q": "Un grupo debe elegir el material para fabricar un porta-lápices reutilizable para la sala. Comparan tres opciones. Considerando cuidado del medioambiente Y durabilidad, ¿cuál es la mejor decisión?",
+     "ops": [
+      "Reutilizar un tarro de metal que iba a la basura, decorándolo con papel reciclado",
+      "Usar un vaso plástico desechable nuevo porque es más rápido",
+      "Fabricarlo con cartón sin tratar, aunque se deshaga con la humedad en pocas semanas"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar un tarro de metal aplica el principio de reutilizar (reducir residuos) y además es durable, cumpliendo ambos criterios. El vaso plástico desechable genera basura y contradice el cuidado ecológico; el cartón sin tratar no es durable porque se daña con la humedad, así que no resuelve bien el problema."
+    },
+    {
+     "q": "Al construir un puente de palos de helado para una prueba de resistencia, un estudiante nota que su puente se dobla en el centro con poco peso. ¿Qué cambio en el diseño mejoraría MÁS su resistencia sin usar más material del necesario?",
+     "ops": [
+      "Agregar palos formando triángulos (refuerzos diagonales), porque la forma triangular reparte mejor las fuerzas",
+      "Pintar el puente para que el peso resbale y no lo dañe",
+      "Poner todos los palos juntos y horizontales en una sola capa plana"
+     ],
+     "correcta": 0,
+     "porque": "El triángulo es la forma más estable en estructuras porque reparte las fuerzas y no se deforma, a diferencia de un cuadrado o una capa plana que se doblan. Es un principio de estructuras: los refuerzos diagonales triangulan la carga. La pintura no aporta resistencia estructural."
+    },
+    {
+     "q": "Un curso de Puerto Montt evalúa DOS diseños de comedero para pájaros. El diseño A es lindo pero hay que rellenarlo cada día; el diseño B es más simple pero guarda comida para una semana y protege el alimento de la lluvia. ¿Cuál es el mejor criterio para decidir y qué eligen?",
+     "ops": [
+      "Eligen B, porque cumple mejor la FUNCIÓN (alimentar a las aves de forma constante y proteger la comida), que es más importante que solo lo bonito",
+      "Eligen A, porque un objeto tecnológico siempre debe elegirse por lo bonito antes que por lo útil",
+      "No pueden decidir, porque ambos diseños son exactamente iguales en todo"
+     ],
+     "correcta": 0,
+     "porque": "Al evaluar objetos tecnológicos se comparan según qué tan bien cumplen su función y las necesidades del usuario (las aves). El diseño B es más eficiente, protege el alimento y requiere menos mantención, cumpliendo mejor el propósito. La estética importa, pero no por sobre la utilidad cuando el objetivo es alimentar animales."
+    },
+    {
+     "q": "Antes de usar un software para dibujar el plano de un objeto en el computador, un estudiante debe guardar su trabajo. Analiza: ¿por qué es una buena práctica guardar el archivo con un nombre claro y cada cierto tiempo?",
+     "ops": [
+      "Para poder encontrar el archivo después y no perder el trabajo si el computador se apaga o falla",
+      "Porque los archivos con nombre largo funcionan más rápido que los cortos",
+      "Porque guardar seguido hace que el dibujo se vea con mejores colores"
+     ],
+     "correcta": 0,
+     "porque": "Guardar con un nombre claro permite ubicar el archivo entre muchos otros, y guardar periódicamente evita perder el trabajo ante un corte de luz o falla. El nombre y la frecuencia de guardado no afectan la velocidad del programa ni los colores del dibujo; su función es organizar y proteger la información."
+    },
+    {
+     "q": "En un proyecto grupal para construir una maqueta, surge un desacuerdo: dos compañeros quieren usar materiales distintos. ¿Cuál es la forma más responsable y respetuosa de resolverlo y avanzar en el trabajo en equipo?",
+     "ops": [
+      "Escuchar los argumentos de ambos, comparar ventajas y desventajas de cada material y decidir juntos según qué conviene al proyecto",
+      "El que habla más fuerte impone su material y los demás obedecen sin opinar",
+      "Cada uno construye su propia mitad con su material, aunque la maqueta quede sin sentido"
+     ],
+     "correcta": 0,
+     "porque": "El trabajo colaborativo y el respeto exigen escuchar los puntos de vista, argumentar con razones (ventajas y desventajas) y tomar una decisión conjunta orientada al bien del proyecto. Imponerse por la fuerza no es respetuoso, y dividir el trabajo sin coordinación rompe la coherencia de la maqueta y el objetivo común."
+    },
+    {
+     "q": "Un estudiante busca en internet información para su proyecto de tecnología y encuentra dos páginas con datos distintos sobre el mismo tema. ¿Qué debe hacer para usar información confiable de forma responsable?",
+     "ops": [
+      "Comparar varias fuentes, revisar de dónde viene la información y preferir sitios serios (como museos, universidades o instituciones) antes de darla por cierta",
+      "Copiar la primera página que aparezca, porque si está en internet siempre es verdad",
+      "Elegir la página que tenga los colores más bonitos, sin leer quién la escribió"
+     ],
+     "correcta": 0,
+     "porque": "El uso responsable de las TIC implica evaluar la confiabilidad de la información: contrastar fuentes y verificar el origen (instituciones serias). No todo lo que está en internet es verdadero, y el diseño visual de una página no garantiza que sus datos sean correctos. Comparar fuentes es pensamiento crítico."
+    },
+    {
+     "q": "Un curso quiere reducir la basura que genera al construir sus proyectos durante todo el año. Analizando las '3R' (Reducir, Reutilizar, Reciclar), ¿cuál acción tiene MAYOR impacto ecológico y por qué?",
+     "ops": [
+      "Reducir: planificar bien y usar solo el material necesario, porque evita generar el residuo desde el inicio",
+      "Reciclar todo lo que sobre, porque reciclar es siempre mejor que cualquier otra opción",
+      "Comprar más material del necesario 'por si acaso', ya que después se puede botar"
+     ],
+     "correcta": 0,
+     "porque": "Dentro de las 3R, 'Reducir' tiene el mayor impacto porque evita que el residuo exista desde el comienzo, ahorrando materiales y energía. Reciclar es valioso pero requiere gastar energía para transformar el material, por eso va después de reducir y reutilizar. Comprar de más contradice todo cuidado ecológico."
+    }
+   ],
+   "6": [
+    {
+     "q": "Un curso de 6° básico en Temuco quiere diseñar un basurero que separe residuos para el reciclaje en su escuela. Antes de fabricarlo, el profesor les pide identificar bien el PROBLEMA. ¿Cuál de estas frases define correctamente el problema (y no una solución apresurada)?",
+     "ops": [
+      "\"Los estudiantes botan latas, papeles y restos de comida en un mismo tacho, por lo que no se pueden reciclar y todo termina en el vertedero.\"",
+      "\"Hay que comprar tres basureros de colores y ponerlos en el patio central.\"",
+      "\"El problema es que a nadie le gusta reciclar en la escuela.\""
+     ],
+     "correcta": 0,
+     "porque": "En el proceso de diseño tecnologico, definir el problema significa describir la NECESIDAD o dificultad observada con datos concretos, sin saltar a una solucion ni a una opinion sin evidencia. La opcion correcta describe qué pasa y por qué es un problema. La segunda ya es una solucion (comprar basureros) planteada antes de analizar. La tercera es una suposicion sin evidencia. Definir bien el problema evita gastar recursos en soluciones que no lo resuelven.",
+     "correcta_check": 0
+    },
+    {
+     "q": "El curso construyó dos prototipos de maceteros de riego automatico con botellas recicladas para un huerto escolar en Chiloé, donde llueve mucho. Prototipo A riega 200 ml cada 3 horas siempre. Prototipo B tiene un sensor que solo riega si la tierra está seca. Analizando el CONTEXTO climatico y el uso responsable del agua, ¿cuál conviene y por qué?",
+     "ops": [
+      "El Prototipo B, porque adapta el riego a la humedad real y evita desperdiciar agua cuando ya llovió.",
+      "El Prototipo A, porque riega siempre a la misma hora y es más ordenado.",
+      "El Prototipo A, porque usar un sensor es más caro y complicado."
+     ],
+     "correcta": 0,
+     "porque": "Evaluar una solucion tecnologica exige considerar el contexto real de uso. En Chiloé llueve mucho, asi que un riego fijo (A) regaria de más y ahogaria las plantas ademas de malgastar agua. El Prototipo B responde a la necesidad real de la planta, cuidando un recurso escaso: es un uso responsable y ecologico del agua. Que el sensor sea mas complejo no lo hace peor si cumple mejor el objetivo y respeta el entorno.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Un grupo diseñó una app sencilla para que los compañeros con dificultades de lectura escuchen los textos de clase. Al PROBAR el prototipo, descubren que la voz lee muy rápido y algunos no alcanzan a entender. Segun el proceso de diseño tecnologico, ¿qué deberian hacer AHORA?",
+     "ops": [
+      "Volver a la etapa de mejora: ajustar el prototipo agregando control de velocidad y volver a probarlo con esos compañeros.",
+      "Publicar la app igual, porque ya cumplieron con entregar algo terminado.",
+      "Descartar toda la idea, porque si falló una vez no sirve."
+     ],
+     "correcta": 0,
+     "porque": "El diseño tecnologico es un proceso ITERATIVO: probar sirve para detectar fallas y MEJORAR, no para rendirse ni para ignorar el problema. Como la evidencia muestra un defecto (lee muy rapido), corresponde volver atras, corregir el prototipo y volver a evaluarlo con los usuarios reales. Ademas, escuchar a los compañeros con dificultades y ajustar la solucion a ellos es una muestra de empatia e inclusion.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Para elegir el material de una repisa que sostendra libros en la sala, un curso compara madera reciclada de pallets, plastico reciclado y cartón grueso. Considerando RESISTENCIA al peso y cuidado del medioambiente a la vez, ¿cuál es el mejor analisis?",
+     "ops": [
+      "La madera reciclada de pallets, porque resiste bien el peso de los libros y reutiliza material que iba a desecharse.",
+      "El cartón grueso, porque es el más liviano y facil de cortar.",
+      "El plastico reciclado, porque el plastico nunca se dobla ni se rompe."
+     ],
+     "correcta": 0,
+     "porque": "Seleccionar un material exige cruzar VARIOS criterios: aqui, resistencia al peso Y sostenibilidad. La madera de pallets reutilizada cumple ambos: aguanta libros pesados y evita generar residuos nuevos (economia circular). El carton, aunque ecologico y facil de trabajar, no resiste bien el peso y se deforma con la humedad. Afirmar que el plastico 'nunca se rompe' es falso: tambien se fatiga y quiebra. La mejor decision combina funcionalidad y responsabilidad ambiental.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Un curso de Antofagasta debe presentar a la comunidad los resultados de su proyecto de paneles solares de juguete. Quieren COMUNICAR con claridad cuánta energia genero el panel a distintas horas del dia. ¿Qué recurso digital es el MÁS adecuado para mostrar esa informacion?",
+     "ops": [
+      "Un grafico de lineas o barras hecho en una planilla de cálculo, con las horas y la energia medida.",
+      "Un documento de texto largo describiendo hora por hora en párrafos.",
+      "Una sola fotografia del panel sin datos."
+     ],
+     "correcta": 0,
+     "porque": "Comunicar informacion tecnologica implica elegir el formato que mejor permite ENTENDER los datos. Un grafico de barras o lineas en una planilla muestra de un vistazo como cambia la energia segun la hora, permitiendo comparar y sacar conclusiones. Un texto largo obliga a leer mucho para captar la tendencia, y una foto no entrega datos. Elegir la herramienta digital adecuada segun el proposito es parte central del uso de TIC.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Al planificar la fabricacion de 25 portalápices reciclados para regalar a un jardin infantil, el curso hace una LISTA de tareas y tiempos. Se dan cuenta de que pintar debe ir DESPUÉS de cortar y pegar, y que la pintura tarda un dia en secar. ¿Por qué es importante ordenar asi las tareas en la planificacion?",
+     "ops": [
+      "Porque respetar la secuencia y los tiempos evita errores (como pintar antes de armar) y permite cumplir la entrega a tiempo.",
+      "Porque mientras más tareas se hagan al mismo tiempo, mejor, sin importar el orden.",
+      "Porque el orden de las tareas no influye en el resultado final."
+     ],
+     "correcta": 0,
+     "porque": "Planificar la elaboracion de un objeto tecnologico incluye SECUENCIAR las tareas y estimar tiempos, porque algunas dependen de otras (no se puede pintar algo que aun no esta armado, ni usarlo antes de que seque). Un buen orden evita rehacer trabajo, aprovecha mejor el tiempo y permite cumplir el compromiso con el jardin infantil. Ignorar las dependencias (opciones 2 y 3) llevaria a errores y retrasos. Cumplir lo prometido tambien es un acto de responsabilidad.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Una empresa lanza una tablet nueva cada 6 meses y muchas personas botan la anterior aunque funcione. Analizando el IMPACTO de la tecnologia en el ambiente, ¿cuál conclusion es la más correcta y responsable?",
+     "ops": [
+      "El recambio constante genera basura electronica con materiales contaminantes; conviene reparar, reutilizar o reciclar los aparatos antes de desecharlos.",
+      "Está bien botar la tablet vieja porque siempre hay que tener lo más nuevo.",
+      "La basura electronica no es un problema porque los aparatos son pequeños."
+     ],
+     "correcta": 0,
+     "porque": "Evaluar el impacto de la tecnologia en el entorno incluye reconocer que los aparatos electronicos contienen materiales dañinos (metales pesados) y que desecharlos genera basura electronica, un problema ambiental creciente. La postura responsable es alargar la vida util: reparar, donar, reutilizar o reciclar en puntos adecuados. Las otras opciones ignoran el daño ambiental y promueven el consumo irreflexivo. Consumir con conciencia es cuidar la casa comun.",
+     "correcta_check": 0
+    },
+    {
+     "q": "Dos grupos crearon un juego digital sencillo. El Grupo 1 lo probó solo entre ellos y les gustó. El Grupo 2 lo probó con niños de 1° básico, anotó dónde se confundian y corrigió las instrucciones. Al EVALUAR ambos trabajos, ¿cuál hizo una mejor evaluacion de su producto y por qué?",
+     "ops": [
+      "El Grupo 2, porque probó con los usuarios reales del juego y usó lo que observó para mejorarlo.",
+      "El Grupo 1, porque si a ellos les gustó ya es suficiente prueba.",
+      "Ambos igual, porque probar el producto siempre da el mismo resultado."
+     ],
+     "correcta": 0,
+     "porque": "Una buena evaluacion de un producto tecnologico se hace con los USUARIOS REALES para quienes fue diseñado y usa esa retroalimentacion para mejorarlo. El Grupo 2 probó con niños de 1° basico (el publico objetivo), detecto donde se confundian y ajusto el producto: eso es evaluar con criterio. El Grupo 1 solo se probó a si mismo, sin datos del usuario real, por lo que su evaluacion es limitada. Escuchar al usuario y mejorar demuestra rigor y respeto por quien usara el producto.",
+     "correcta_check": 0
+    }
+   ]
   }
  },
  "artes": {
@@ -14697,6 +17169,500 @@ window.CONTENIDO = {
        "porque": "La honestidad en la autoevaluación permite aprender de verdad: reconocer los propios errores es el primer paso para mejorar, mientras que ocultarlos o culpar a otro impide crecer."
       }
      ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En Valparaíso, Sofía mira los cerros llenos de casas de colores. Quiere pintar lo que SIENTE cuando está feliz jugando. ¿Qué colores le sirven mejor para mostrar alegría?",
+     "ops": [
+      "Amarillo, naranjo y rojo, que son cálidos y vivos",
+      "Café y gris, porque son colores tranquilos",
+      "Solo negro, porque es el color más bonito"
+     ],
+     "correcta": 0,
+     "porque": "Los colores cálidos (amarillo, naranjo, rojo) transmiten energía y alegría. El arte sirve para expresar emociones (OA1), y elegir colores según lo que se siente es pensar como artista, no solo pintar por pintar."
+    },
+    {
+     "q": "Martín quiere hacer una escultura de un perrito, pero en su casa no hay plasticina. Mirando lo que iba a botar, ¿qué material reciclado le conviene MÁS para dar forma redonda al cuerpo?",
+     "ops": [
+      "Una hoja de papel plana y lisa",
+      "Papel de diario arrugado y pegado con cinta",
+      "Un palito de helado delgado"
+     ],
+     "correcta": 1,
+     "porque": "El papel de diario arrugado forma bultos y volumen, ideal para un cuerpo redondo (OA2/OA4). Además reutilizar material que se iba a botar cuida el planeta. El papel plano y el palito delgado no dan forma redonda."
+    },
+    {
+     "q": "La profesora muestra dos dibujos: uno con líneas onduladas suaves y otro con líneas puntudas en zigzag. Si un artista quiere mostrar el mar CALMADO de Chile, ¿cuál línea representa mejor esa idea?",
+     "ops": [
+      "Las líneas puntudas en zigzag",
+      "Las líneas onduladas suaves",
+      "Las dos líneas sirven igual"
+     ],
+     "correcta": 1,
+     "porque": "Las líneas onduladas suaves imitan el movimiento tranquilo del agua; el zigzag sugiere algo agitado o peligroso. Observar y relacionar la línea con una idea es analizar imágenes (OA3), no solo mirarlas."
+    },
+    {
+     "q": "En la sala hay cartón, hojas secas del patio, lana y tapitas plásticas. Para hacer un collage del BOSQUE nativo chileno en otoño, ¿qué combinación muestra mejor esa estación?",
+     "ops": [
+      "Hojas secas del patio y cartón café",
+      "Lana de muchos colores brillantes",
+      "Tapitas plásticas azules y blancas"
+     ],
+     "correcta": 0,
+     "porque": "Las hojas secas y el café representan el otoño, cuando las hojas caen. Usar hojas reales del patio conecta el arte con la naturaleza y la reutiliza (OA4). Los otros materiales tienen colores que no dicen 'otoño'."
+    },
+    {
+     "q": "Amanda pintó un sol muy grande arriba y su casa muy chiquita abajo. Su amigo dice que se equivocó. ¿Qué le puedes explicar con respeto?",
+     "ops": [
+      "Que sí se equivocó y debe borrar todo",
+      "Que en el arte cada uno elige los tamaños para mostrar lo que quiere",
+      "Que el sol siempre va chico y la casa grande"
+     ],
+     "correcta": 1,
+     "porque": "En el arte no hay un solo tamaño 'correcto'; el artista decide para expresar su idea (OA1). Además, respetar el trabajo del compañero en vez de burlarse es una virtud importante en el curso."
+    },
+    {
+     "q": "Un pincel grueso y uno delgado están sobre la mesa. Para pintar los detalles finos de los ojos y bigotes de un gato, ¿cuál conviene usar y por qué?",
+     "ops": [
+      "El grueso, porque pinta más rápido",
+      "El delgado, porque hace líneas finas y precisas",
+      "Cualquiera, el pincel no cambia el dibujo"
+     ],
+     "correcta": 1,
+     "porque": "El pincel delgado permite trazos finos para detalles pequeños; el grueso sirve para rellenar espacios grandes. Elegir la herramienta según la tarea es experimentar con conciencia (OA2), no al azar."
+    },
+    {
+     "q": "El curso hará una obra colaborativa: un gran mural del río Mapocho. A cada niño le toca un pedazo. ¿Qué actitud ayuda a que el mural quede bonito y unido?",
+     "ops": [
+      "Que cada uno pinte solo su parte sin mirar a los demás",
+      "Ponerse de acuerdo en los colores del agua para que el río se vea completo",
+      "Que el que pinta más rápido decida todo"
+     ],
+     "correcta": 1,
+     "porque": "Un mural del mismo río necesita que los colores del agua combinen entre los pedazos. Colaborar y ponerse de acuerdo (trabajo en equipo y respeto) logra una obra unida, mejor que trabajar sin coordinarse."
+    },
+    {
+     "q": "Benjamín mezcla pintura azul con pintura amarilla en su plato. ¿Qué color nuevo aparecerá y qué muestra esto sobre el arte?",
+     "ops": [
+      "Aparece verde, y muestra que mezclando colores se crean otros nuevos",
+      "Aparece rojo, y muestra que los colores no cambian",
+      "No aparece nada, los colores no se pueden mezclar"
+     ],
+     "correcta": 0,
+     "porque": "Azul más amarillo da verde: es un hecho de la mezcla de colores. Descubrir esto experimentando (OA2) enseña que el artista crea colores nuevos, no solo usa los que vienen en el estuche."
+    }
+   ],
+   "2": [
+    {
+     "q": "En la clase de Artes Visuales, la profesora pide dibujar un paisaje de la cordillera de los Andes al atardecer. Sofía quiere que su dibujo se sienta cálido, como el sol que baja. ¿Qué colores le conviene usar más?",
+     "ops": [
+      "Naranjo, rojo y amarillo, que son colores cálidos",
+      "Azul, verde y morado, que son colores fríos",
+      "Solo negro y gris, para que se vea oscuro"
+     ],
+     "correcta": 0,
+     "porque": "Los colores cálidos (naranjo, rojo, amarillo) transmiten la sensación del calor y la luz del atardecer. El azul, verde y morado son fríos y darían una sensación distinta; el negro y gris no muestran la calidez del sol."
+    },
+    {
+     "q": "Martín salió a caminar por un bosque nativo del sur de Chile y quiere pintar la textura del tronco de un alerce, que es rugoso y áspero. ¿Cómo puede lograr que su dibujo muestre esa textura sin tocarlo?",
+     "ops": [
+      "Frotando el papel con lápiz encima de la corteza real (calco de textura)",
+      "Pintando el tronco de un color liso y parejo, sin marcas",
+      "Recortando una figura de cartulina y pegándola lisa"
+     ],
+     "correcta": 0,
+     "porque": "La técnica de frotar el lápiz sobre el papel apoyado en una superficie (frottage) copia la textura rugosa real. Un color liso y parejo o una cartulina lisa no muestran lo áspero del tronco, que es lo que se pide representar."
+    },
+    {
+     "q": "La escuela hará una exposición con arte reciclado para cuidar el planeta. Antonia tiene botellas plásticas, cajas de cartón y tapas de colores en la basura. ¿Cuál es la mejor idea que une arte y cuidado del medio ambiente?",
+     "ops": [
+      "Crear un mural con las tapas y cajas reutilizadas en vez de botarlas",
+      "Comprar materiales nuevos y botar todo lo que había",
+      "No hacer nada porque es basura y no sirve"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar materiales para crear una obra une la creatividad artística con el cuidado ecológico, dándole nueva vida a lo que sería basura. Comprar todo nuevo genera más desechos y botar sin usar desaprovecha el material."
+    },
+    {
+     "q": "Diego dibujó una casa muy grande adelante y un cerro muy pequeño atrás. Su compañero le dice que se ve raro. En realidad, ¿qué está mostrando bien el dibujo de Diego?",
+     "ops": [
+      "Que las cosas cercanas se ven más grandes y las lejanas más pequeñas",
+      "Que dibujó mal porque los cerros siempre son pequeños",
+      "Que la casa es de verdad más grande que un cerro"
+     ],
+     "correcta": 0,
+     "porque": "Diego está usando la idea de cercanía y lejanía: lo que está cerca del observador se ve más grande y lo lejano más pequeño, aunque en la realidad el cerro sea enorme. No es un error, sino una forma de mostrar la distancia."
+    },
+    {
+     "q": "En Chile existe el arte mapuche. Al observar un telar mapuche, Valentina ve figuras que se repiten una y otra vez formando un orden. ¿Cómo se llama eso que ella observa?",
+     "ops": [
+      "Un patrón, porque las figuras se repiten con un orden",
+      "Un desorden, porque hay muchas figuras juntas",
+      "Una mancha, porque no significa nada"
+     ],
+     "correcta": 0,
+     "porque": "Cuando una forma o figura se repite siguiendo un orden se llama patrón, muy usado en el arte textil mapuche. No es desorden ni una mancha sin sentido: la repetición ordenada es intencional y tiene significado cultural."
+    },
+    {
+     "q": "La profesora muestra dos obras: en una, un pintor usó líneas suaves y onduladas; en la otra, líneas rectas y quebradas con puntas. ¿Qué obra transmite mejor una sensación de calma, como el mar tranquilo?",
+     "ops": [
+      "La de líneas suaves y onduladas",
+      "La de líneas rectas y quebradas con puntas",
+      "Ninguna, porque las líneas no transmiten sensaciones"
+     ],
+     "correcta": 0,
+     "porque": "Las líneas suaves y onduladas dan sensación de calma y movimiento tranquilo, como olas suaves. Las líneas quebradas con puntas transmiten más tensión o agitación. Las líneas sí comunican sensaciones en el arte."
+    },
+    {
+     "q": "Josefa terminó su pintura pero su compañero Tomás derramó agua sin querer y la manchó. Tomás se siente muy mal. Además de decir perdón, ¿cuál es la mejor actitud de un buen compañero?",
+     "ops": [
+      "Ofrecer ayuda para arreglarla o convertir la mancha en algo nuevo del dibujo",
+      "Reírse porque ya no tiene arreglo",
+      "Esconder la pintura para que nadie la vea"
+     ],
+     "correcta": 0,
+     "porque": "Reparar el daño y ayudar demuestra responsabilidad y respeto por el trabajo del otro; incluso una mancha puede transformarse en parte creativa de la obra. Reírse o esconder el problema no repara ni respeta el esfuerzo de Josefa."
+    },
+    {
+     "q": "Para el 18 de septiembre, el curso pinta un afiche de Fiestas Patrias. Quieren que resalte la copihue, la flor nacional de Chile, que es roja, sobre un fondo. ¿Qué fondo hará que el copihue rojo se destaque más?",
+     "ops": [
+      "Un fondo verde, porque contrasta con el rojo y lo hace resaltar",
+      "Un fondo rojo igual que la flor, para que combine",
+      "Un fondo café oscuro, del mismo tono apagado"
+     ],
+     "correcta": 0,
+     "porque": "El verde contrasta fuertemente con el rojo, haciendo que la flor resalte con claridad. Un fondo del mismo rojo haría que la flor se confunda y desaparezca, y un café oscuro apagaría el color vivo del copihue."
+    }
+   ],
+   "3": [
+    {
+     "q": "En Chile, el otoño pinta los cerros de amarillos, ocres y cafés cuando caen las hojas. Camila quiere dibujar un paisaje otoñal chileno que transmita calma y tibieza. ¿Qué combinación de colores expresa mejor esa sensación?",
+     "ops": [
+      "Colores cálidos como amarillo, naranjo y café",
+      "Colores fríos como azul, celeste y violeta",
+      "Solo blanco y negro sin ningún color"
+     ],
+     "correcta": 0,
+     "porque": "Los colores cálidos (amarillo, naranjo, rojo, café) se asocian al sol, al fuego y a la tibieza, por eso transmiten calma y calidez, justo lo que se ve en un otoño chileno. Los colores fríos comunican frescura o distancia, y el blanco y negro quitarían la sensación de calidez que Camila busca."
+    },
+    {
+     "q": "Para su clase de arte, Matías quiere crear una escultura pequeña usando materiales reciclados, cuidando el medio ambiente. Tiene en su casa: cajas de cartón y tapas plásticas, témperas nuevas compradas en la librería, y greda (arcilla) sacada de un cerro. ¿Cuál opción reutiliza materiales y ayuda al planeta?",
+     "ops": [
+      "Comprar plasticina nueva de muchos colores",
+      "Usar las cajas de cartón y las tapas plásticas que ya tenía",
+      "Pedir a sus papás una escultura ya hecha de la tienda"
+     ],
+     "correcta": 1,
+     "porque": "Reutilizar materiales que ya existen en casa, como cartón y tapas plásticas, evita generar más basura y cuida el medio ambiente (conciencia ecológica). Comprar plasticina nueva no reutiliza nada, y comprar una escultura hecha no cumple con crearla él mismo ni con reciclar."
+    },
+    {
+     "q": "La profesora muestra dos obras: una tiene líneas rectas, gruesas y en zigzag con colores fuertes; la otra tiene líneas curvas, suaves y colores claros. Un compañero dice que la primera obra se ve más 'movida y con energía'. ¿Por qué tiene razón?",
+     "ops": [
+      "Porque las líneas rectas y en zigzag y los colores fuertes dan sensación de movimiento y energía",
+      "Porque toda obra con muchos colores siempre está mal hecha",
+      "Porque las líneas curvas y suaves son las únicas que transmiten energía"
+     ],
+     "correcta": 0,
+     "porque": "Las líneas quebradas o en zigzag, gruesas y con colores intensos generan tensión y dinamismo, por eso 'se sienten' con más energía y movimiento. Las líneas curvas y suaves con colores claros transmiten calma. Analizar cómo las líneas y colores producen sensaciones es pensamiento de orden superior."
+    },
+    {
+     "q": "En el Norte de Chile existen los geoglifos de Cerro Pintados y en las cuevas hay arte rupestre muy antiguo hecho por pueblos originarios. Sofía quiere que su trabajo se inspire en ese arte ancestral chileno. ¿Cuál decisión respeta y valora mejor ese patrimonio?",
+     "ops": [
+      "Copiar exactamente un dibujo de internet sin entender qué significa",
+      "Observar las formas y símbolos, entender que representan su cultura, y crear su propio diseño inspirado en ellos",
+      "Borrar los geoglifos reales para dibujar los suyos encima"
+     ],
+     "correcta": 1,
+     "porque": "Valorar el patrimonio significa comprender su significado cultural y crear algo propio inspirado en él, con respeto por los pueblos originarios. Copiar sin entender no muestra aprecio real, y dañar los geoglifos reales sería destruir un patrimonio que debemos cuidar para las próximas generaciones."
+    },
+    {
+     "q": "Benjamín pintó un mar chileno usando azul, pero quiere lograr un azul más oscuro para el fondo profundo y un azul más claro para la superficie donde llega el sol. Solo tiene témpera azul, blanca y negra. ¿Qué debe hacer?",
+     "ops": [
+      "Agregar blanco al azul para aclararlo y agregar negro al azul para oscurecerlo",
+      "Agregar negro para aclarar y blanco para oscurecer",
+      "Usar el mismo azul en todo porque no se puede cambiar el tono"
+     ],
+     "correcta": 0,
+     "porque": "Al mezclar un color con blanco se obtiene un tono más claro (aclarar), y al mezclarlo con negro se obtiene un tono más oscuro. Así Benjamín logra la profundidad del mar. La opción 1 invierte los efectos y la 2 ignora que mezclando sí se pueden crear muchos tonos de un mismo color."
+    },
+    {
+     "q": "El curso hará un mural en equipo sobre 'Cuidar nuestra naturaleza'. Antonia quiere pintar sola su parte a último minuto sin conversar con nadie, y termina pintando encima del dibujo de otro compañero. ¿Qué valor faltó y qué habría sido mejor?",
+     "ops": [
+      "Faltó el respeto y el trabajo en equipo; habrían debido ponerse de acuerdo y respetar el espacio de cada uno",
+      "No faltó nada, porque en el arte cada uno hace lo que quiere sin avisar",
+      "Faltó rapidez; debió pintar aún más rápido y encima de más dibujos"
+     ],
+     "correcta": 0,
+     "porque": "En un trabajo colaborativo se necesitan respeto, comunicación y colaboración: acordar quién pinta cada parte y cuidar el trabajo de los demás. Pintar encima del dibujo de otro sin avisar rompe ese respeto. El arte en equipo requiere coordinarse, no ignorar a los compañeros."
+    },
+    {
+     "q": "María quiere que en su dibujo un árbol se vea CERCA y una montaña se vea LEJOS, en el mismo paisaje. ¿Qué truco de los artistas puede usar para lograrlo?",
+     "ops": [
+      "Dibujar el árbol pequeño abajo y la montaña grande arriba",
+      "Dibujar el árbol grande y abajo, y la montaña más pequeña y arriba, hacia el fondo",
+      "Dibujar el árbol y la montaña exactamente del mismo tamaño y en el mismo lugar"
+     ],
+     "correcta": 1,
+     "porque": "Para dar sensación de profundidad, los objetos cercanos se dibujan más grandes y hacia abajo, y los lejanos más pequeños y hacia arriba (hacia el horizonte). Así el ojo entiende qué está cerca y qué lejos. Las otras opciones no crean esa sensación de distancia."
+    },
+    {
+     "q": "Después de terminar una obra, la profesora pide a cada niño comentar el trabajo de un compañero. Vicente ve que a Josefa no le quedó muy parejo el coloreado, pero se esforzó mucho y tuvo una idea muy original. ¿Cuál es la mejor forma de dar su opinión?",
+     "ops": [
+      "Decir 'está feo' y reírse frente a todos",
+      "Decir que su idea es muy original y creativa, y con cariño sugerir que la próxima vez pinte con más calma para que quede más parejo",
+      "No decir nada porque opinar sobre arte no sirve para aprender"
+     ],
+     "correcta": 1,
+     "porque": "Apreciar el arte de los demás incluye reconocer lo positivo (la idea original y el esfuerzo) y dar sugerencias con respeto y amabilidad para ayudar a mejorar. Burlarse hiere y no ayuda; callar impide aprender. La crítica constructiva y respetuosa es parte fundamental de valorar el arte propio y ajeno."
+    }
+   ],
+   "4": [
+    {
+     "q": "Camila pinta un atardecer en Valparaíso y quiere que el cielo se vea CÁLIDO y acogedor. Solo tiene témpera azul, roja y amarilla. ¿Qué mezcla debe usar para lograr colores cálidos?",
+     "ops": [
+      "Rojo con amarillo, para obtener naranjos y tonos cálidos",
+      "Azul con amarillo, para obtener verdes",
+      "Azul con rojo, para obtener morados"
+     ],
+     "correcta": 0,
+     "porque": "Los colores cálidos (rojos, naranjos, amarillos) transmiten calidez y energía, como un atardecer. El naranjo se forma mezclando rojo y amarillo. El azul es un color frío: mezclarlo daría verdes o morados, que se sienten fríos, no acogedores."
+    },
+    {
+     "q": "Un curso quiere hacer una escultura para la feria del colegio SIN comprar materiales nuevos, cuidando el medioambiente. ¿Cuál es la mejor decisión que combina arte y respeto por la naturaleza?",
+     "ops": [
+      "Reutilizar cajas de cartón, botellas y tapas que iban a la basura para construir la escultura",
+      "Comprar plumavit nuevo porque es más fácil de cortar",
+      "Cortar ramas de los árboles del patio para armar la figura"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar materiales de desecho (cartón, botellas, tapas) es una forma de arte sustentable: se reduce la basura y se les da nueva vida a los objetos. Comprar plumavit genera más residuos y cortar árboles vivos daña la naturaleza, lo contrario al cuidado ecológico."
+    },
+    {
+     "q": "Matías observa dos obras: en una, las montañas del fondo se ven pequeñas, celestes y borrosas; en primer plano hay un árbol grande y nítido. ¿Qué recurso usó el artista para dar sensación de PROFUNDIDAD?",
+     "ops": [
+      "Pintó lo lejano más pequeño, claro y difuso, y lo cercano más grande y nítido",
+      "Usó solo colores oscuros en toda la obra",
+      "Pintó todo del mismo tamaño para que se vea ordenado"
+     ],
+     "correcta": 0,
+     "porque": "Para crear profundidad, los artistas dibujan lo que está lejos más pequeño, con colores más claros y menos detalle, mientras que lo cercano se ve grande, nítido y con colores intensos. Esto imita cómo nuestros ojos perciben la distancia real."
+    },
+    {
+     "q": "El curso analiza una obra de Violeta Parra, quien creaba arpilleras y pinturas con temas del pueblo chileno. Además de sus colores vivos, ¿qué hace valioso su trabajo desde una mirada cultural?",
+     "ops": [
+      "Rescata y muestra tradiciones y la vida de la gente de Chile, valorando nuestra identidad",
+      "Copia exactamente obras de pintores europeos famosos",
+      "Usa solo materiales caros para que se vea elegante"
+     ],
+     "correcta": 0,
+     "porque": "Violeta Parra es valiosa porque su arte expresa la identidad y las raíces del pueblo chileno (su gente, campos y tradiciones). Apreciar el arte no es solo mirar los colores, sino entender qué mensaje y qué cultura transmite. No copiaba a otros: creaba desde lo propio."
+    },
+    {
+     "q": "Sofía quiere que el personaje principal de su dibujo resalte de inmediato entre muchos elementos. ¿Cuál es la estrategia más efectiva para crear un PUNTO FOCAL?",
+     "ops": [
+      "Pintar al personaje con un color que contraste fuerte con el fondo y ubicarlo destacado",
+      "Pintar al personaje del mismo color y tamaño que todo lo demás",
+      "Llenar toda la hoja de detalles iguales por todas partes"
+     ],
+     "correcta": 0,
+     "porque": "El punto focal es donde el ojo mira primero. Se logra con contraste: un color, tamaño o ubicación que destaque del resto. Si todo es igual o el personaje se confunde con el fondo, nada resalta y la mirada se pierde."
+    },
+    {
+     "q": "En un trabajo grupal, a Benjamín le gusta más su propia idea, pero sus compañeros proponen otra distinta. Como buen compañero y para lograr una obra mejor entre todos, ¿qué debería hacer?",
+     "ops": [
+      "Escuchar con respeto las ideas de todos y combinar lo mejor de cada propuesta",
+      "Hacer solo su idea e ignorar lo que dicen los demás",
+      "Enojarse y negarse a seguir trabajando con el grupo"
+     ],
+     "correcta": 0,
+     "porque": "El trabajo colaborativo requiere respeto, escucha y generosidad. Combinar las ideas del equipo suele producir una obra más rica que la de una sola persona. Imponer la propia idea o abandonar al grupo rompe la colaboración y el buen trato."
+    },
+    {
+     "q": "Un grupo quiere que su pintura transmita CALMA y tranquilidad, como un lago en el sur de Chile. ¿Qué combinación de colores es la más adecuada?",
+     "ops": [
+      "Colores fríos como azules y verdes suaves, que transmiten calma",
+      "Rojos y naranjos intensos, que transmiten energía y agitación",
+      "Muchos colores fuertes y chillones mezclados sin orden"
+     ],
+     "correcta": 0,
+     "porque": "Los colores fríos (azules y verdes) se asocian a la tranquilidad, el agua y la naturaleza serena. Los cálidos intensos como el rojo transmiten energía o emoción fuerte, lo contrario a la calma. Los colores expresan emociones, no solo decoran."
+    },
+    {
+     "q": "Antonia dibuja una casa vista de frente: es un cuadrado con un triángulo encima. Su profesora le pide mostrar la casa de forma más REALISTA, con volumen (que se vea en 3D). ¿Qué debería agregar?",
+     "ops": [
+      "Dibujar una cara lateral de la casa y usar sombras para dar sensación de volumen",
+      "Pintar la casa toda de un solo color plano sin cambios",
+      "Hacer la casa mucho más grande pero igual de plana"
+     ],
+     "correcta": 0,
+     "porque": "Una figura plana (solo el frente) se ve en 2D. Para dar volumen y realismo se muestra más de un lado del objeto y se agregan sombras y luces, que hacen que parezca tridimensional. Solo agrandar o pintar plano no crea la sensación de profundidad ni volumen."
+    }
+   ],
+   "5": [
+    {
+     "q": "Camila pinta un atardecer sobre el mar de Valparaíso. Quiere que el cielo transmita calidez y calma al mismo tiempo. En su caja de témperas solo tiene los colores primarios (rojo, amarillo, azul) y blanco. ¿Qué mezcla le conviene MÁS para lograr un naranja suave y cálido para el cielo?",
+     "ops": [
+      "Rojo + amarillo, y luego agregar un poco de blanco para suavizar",
+      "Azul + amarillo, y luego agregar rojo",
+      "Rojo + azul, y luego agregar amarillo"
+     ],
+     "correcta": 0,
+     "porque": "El naranja es un color secundario que nace de mezclar dos primarios: rojo y amarillo. Agregar blanco lo aclara y lo hace más suave (cálido y calmo). Azul+amarillo da verde y rojo+azul da violeta, que son colores fríos y no sirven para un cielo cálido de atardecer."
+    },
+    {
+     "q": "Un curso de 5° básico visita el Museo Chileno de Arte Precolombino y ve cerámica Diaguita con diseños geométricos y un chemamüll (escultura mapuche de madera). El profesor pregunta por qué estos objetos son considerados PATRIMONIO cultural y no solo 'adornos antiguos'. ¿Cuál es la mejor respuesta?",
+     "ops": [
+      "Porque son muy caros y difíciles de comprar hoy",
+      "Porque expresan la identidad, creencias y modo de vida de pueblos originarios y deben cuidarse para las futuras generaciones",
+      "Porque están hechos con materiales que ya no existen en Chile"
+     ],
+     "correcta": 1,
+     "porque": "El patrimonio cultural son las creaciones que expresan la identidad y la historia de un pueblo (aquí, diaguitas y mapuche) y que se protegen para transmitirlas a las generaciones futuras. Su valor no depende del precio ni del material, sino del significado cultural que representan."
+    },
+    {
+     "q": "Matías quiere hacer una escultura para una feria escolar con el tema 'cuidemos nuestro planeta'. Analiza cuál opción es más coherente con ese mensaje TANTO por lo que representa COMO por los materiales que usa.",
+     "ops": [
+      "Una escultura de un árbol hecha con botellas y tapas plásticas reutilizadas que iba a botar",
+      "Una escultura de un árbol hecha comprando plumavit y plástico nuevo del negocio",
+      "Una escultura de un auto de carrera pintada con muchos aerosoles nuevos"
+     ],
+     "correcta": 0,
+     "porque": "El mensaje ecológico se refuerza cuando la forma (un árbol, la naturaleza) y el material (reutilizar residuos que iban a botarse) apuntan al mismo objetivo: cuidar el planeta. Comprar plumavit o plástico nuevo, o usar muchos aerosoles, contradice el mensaje porque genera más residuos y contaminación."
+    },
+    {
+     "q": "Antonia mira dos obras: 'La Piscina' de Roberto Matta (formas abstractas, muy imaginativas, casi de sueño) y un dibujo realista de una casa donde todo se ve tal como es en la vida real. Si tuviera que EXPLICAR la principal diferencia entre arte abstracto y arte figurativo, ¿cuál afirmación es correcta?",
+     "ops": [
+      "El arte abstracto siempre usa colores y el figurativo siempre es en blanco y negro",
+      "El arte figurativo representa objetos reconocibles del mundo real, mientras que el abstracto no busca copiar la realidad sino expresar ideas, emociones o formas",
+      "El arte abstracto es el que se hace con computador y el figurativo el que se hace a mano"
+     ],
+     "correcta": 1,
+     "porque": "La diferencia clave está en la representación: el arte figurativo muestra elementos reconocibles (una casa, una persona), y el abstracto no intenta copiar la realidad, sino comunicar emociones, ideas o explorar formas y colores. La técnica (color, mano o computador) no define la categoría."
+    },
+    {
+     "q": "El curso creará un mural colaborativo en el patio sobre 'nuestra comunidad'. Cada estudiante aportará una parte. Para que el mural se vea UNIDO como una sola obra y no como pedazos separados, ¿qué acuerdo entre compañeros ayuda MÁS antes de empezar a pintar?",
+     "ops": [
+      "Que cada uno pinte lo que quiera, del tamaño que quiera y sin mirar el resto",
+      "Que se pongan de acuerdo en una paleta de colores común y un tema compartido, respetando el trabajo de cada compañero",
+      "Que solo pinten los tres que dibujan mejor y los demás observen"
+     ],
+     "correcta": 1,
+     "porque": "La unidad visual de una obra colaborativa se logra cuando hay elementos comunes (una paleta de colores y un tema compartido). Además, ponerse de acuerdo y respetar el aporte de cada compañero refleja el trabajo en equipo y la colaboración. Dejar a cada uno por su cuenta rompe la unidad, y excluir compañeros va contra el respeto y la participación."
+    },
+    {
+     "q": "Vicente dibuja un paisaje del valle central chileno con cerros de fondo y un canelo en primer plano. Quiere dar sensación de PROFUNDIDAD (que se vea lo cercano y lo lejano). ¿Qué estrategia logra mejor ese efecto?",
+     "ops": [
+      "Dibujar el canelo grande y con muchos detalles adelante, y los cerros pequeños, más claros y sin detalle al fondo",
+      "Dibujar todo del mismo tamaño y con la misma cantidad de detalle",
+      "Dibujar los cerros del fondo más grandes que el canelo de adelante"
+     ],
+     "correcta": 0,
+     "porque": "La profundidad se crea con recursos como el tamaño y el detalle: lo cercano se ve más grande, nítido y detallado, y lo lejano más pequeño, claro y con menos detalle. Dibujar todo igual aplana la imagen, y hacer los cerros lejanos más grandes que el objeto cercano rompe la sensación de distancia."
+    },
+    {
+     "q": "Un artista chileno quiere denunciar la contaminación del río Mapocho a través de una obra. Josefa dice que 'el arte también puede hacer pensar y transmitir mensajes, no solo decorar'. Para APOYAR esa idea con un ejemplo correcto, ¿cuál elige?",
+     "ops": [
+      "Una fotografía de una flor bonita colgada en una sala de estar",
+      "Una instalación hecha con basura sacada del río, que hace al público reflexionar sobre lo que estamos haciendo con el agua",
+      "Un florero pintado de colores alegres para adornar una mesa"
+     ],
+     "correcta": 1,
+     "porque": "El arte puede tener una función expresiva y crítica: comunicar ideas y hacer reflexionar al espectador. La instalación con basura del río transmite un mensaje sobre el cuidado del agua y del medioambiente. Una flor decorativa o un florero cumplen una función estética o decorativa, pero no ilustran la idea de arte que 'hace pensar'."
+    },
+    {
+     "q": "Ignacia terminó su pintura pero al lado ve la de su compañera Renata y piensa 'la mía es distinta, no sé si está bien'. La profesora les pide APRECIAR las obras de forma respetuosa. ¿Cuál comentario refleja mejor una apreciación artística correcta y respetuosa?",
+     "ops": [
+      "'La mía es fea y la tuya es la única buena'",
+      "'Me gusta cómo usaste los colores fríos para dar calma; yo probé colores cálidos porque quería mostrar energía. Son diferentes y cada una expresa algo distinto'",
+      "'Están las dos malas porque no son idénticas al modelo'"
+     ],
+     "correcta": 1,
+     "porque": "Apreciar arte no es decidir cuál es 'la única buena' ni exigir que todo sea idéntico: es observar decisiones (como el uso del color), reconocer que cada obra expresa algo propio y valorar las diferencias con respeto. Ese comentario describe elecciones concretas y valora ambas obras, mostrando pensamiento crítico y empatía."
+    }
+   ],
+   "6": [
+    {
+     "q": "Un curso de 6° básico de Valdivia quiere crear un mural sobre la biodiversidad del bosque valdiviano. El profesor propone usar solo pintura acrílica comprada en botellas plásticas. Un grupo de estudiantes sugiere una alternativa más coherente con el tema del mural. ¿Cuál propuesta demuestra mejor la coherencia entre el mensaje de la obra y los materiales, integrando conciencia ecológica?",
+     "ops": [
+      "Usar pigmentos naturales de tierras de colores, hojas y semillas locales, reutilizando tarros y cartones como soportes",
+      "Comprar el doble de pintura acrílica para lograr colores más brillantes que llamen la atención",
+      "Imprimir el mural en una lona plástica gigante para que dure más tiempo a la intemperie"
+     ],
+     "correcta": 0,
+     "porque": "La coherencia entre forma y contenido es un criterio clave de las artes visuales: si el mural celebra la biodiversidad y el cuidado del bosque, usar materiales naturales, locales y reutilizados refuerza el mensaje. Comprar más plástico o imprimir en lona contradice el tema ecológico. Esto conecta con los OA de expresar ideas y sentimientos usando diversos materiales de forma reflexiva."
+    },
+    {
+     "q": "Al analizar la obra 'El velorio del angelito' de la tradición popular chilena y compararla con una fotografía documental de la misma costumbre, un estudiante debe explicar la principal diferencia en el propósito artístico. ¿Cuál afirmación es la más correcta?",
+     "ops": [
+      "Ambas son idénticas porque muestran el mismo tema, así que no hay diferencia de propósito",
+      "La fotografía siempre es más artística porque captura la realidad tal cual es, sin interpretación",
+      "La pintura interpreta y expresa emociones y significados culturales mediante decisiones de color y composición, mientras la fotografía documental busca principalmente registrar el hecho"
+     ],
+     "correcta": 2,
+     "porque": "Comparar lenguajes visuales exige entender que la pintura permite al artista interpretar, seleccionar y cargar de emoción una escena mediante color, composición y estilo, mientras la fotografía documental prioriza el registro. Decir que son idénticas ignora el propósito; decir que la foto es 'más artística por capturar la realidad' es falso, pues toda imagen implica decisiones (encuadre, momento). Esto desarrolla el OA de apreciar y comparar obras de distintos medios."
+    },
+    {
+     "q": "Una estudiante quiere transmitir una sensación de CALMA y frescor en un paisaje de la Patagonia. Ya organizó bien la composición, pero duda sobre la paleta de colores. Según la teoría del color, ¿cuál elección es la más adecuada y por qué?",
+     "ops": [
+      "Rojos, naranjos y amarillos intensos, porque son los colores más vistosos y atraen la mirada",
+      "Azules, verdes y violetas suaves (colores fríos), porque se asocian psicológicamente con la tranquilidad, el agua y el hielo",
+      "Blanco y negro puro solamente, porque sin color no existe ninguna emoción posible"
+     ],
+     "correcta": 1,
+     "porque": "Los colores fríos (azules, verdes, violetas) se asocian culturalmente y perceptualmente con la calma, el agua, el hielo y la frescura, ideales para evocar la Patagonia. Los colores cálidos (rojo, naranjo) transmiten energía o calor, contrarios a la intención. El blanco y negro sí pueden expresar emociones, por lo que descartar todo color es incorrecto. Esto aplica el OA sobre el uso expresivo del color."
+    },
+    {
+     "q": "Un grupo prepara una exposición de fin de año con los trabajos del curso. Un compañero con dificultades hizo una obra sencilla pero muy sincera; otro copió exactamente una imagen bajada de internet y la firmó como suya. Como curadores responsables, ¿qué decisión refleja mejor los valores de honestidad y respeto en el arte?",
+     "ops": [
+      "Exponer solo la copia de internet porque se ve más profesional y dejará mejor impresión a los apoderados",
+      "Exponer la obra original y sincera del compañero, y conversar con quien copió para que cree algo propio, valorando el esfuerzo honesto por sobre la apariencia",
+      "Exponer ambas sin decir nada, ya que lo único que importa es llenar las paredes de la sala"
+     ],
+     "correcta": 1,
+     "porque": "La honestidad es un valor central: presentar como propio el trabajo de otro es plagio, aunque se vea 'mejor'. Un buen curador valora la autoría genuina y el esfuerzo real, y acompaña a quien copió para que desarrolle su propia expresión. Premiar la copia enseñaría lo contrario. Esto integra la reflexión ética con el OA de exponer y comentar trabajos propios y de otros con respeto."
+    },
+    {
+     "q": "Analizando una obra de arte precolombino, un estudiante compara la cerámica Diaguita del Norte Chico con un jarrón industrial actual hecho en molde. ¿Cuál es la observación MÁS profunda sobre el valor de la cerámica Diaguita?",
+     "ops": [
+      "El jarrón industrial es superior porque es perfectamente simétrico y todos salen iguales",
+      "La cerámica Diaguita tiene valor cultural e histórico único: sus diseños geométricos y colores expresan una cosmovisión y fueron hechos a mano, transmitiendo identidad de un pueblo originario",
+      "Ambos valen exactamente lo mismo porque los dos sirven para guardar líquidos"
+     ],
+     "correcta": 1,
+     "porque": "La cerámica Diaguita no se valora solo por su función, sino por ser testimonio de una cultura originaria chilena: sus patrones geométricos y su factura manual expresan una cosmovisión e identidad irrepetibles. Reducir el valor a la simetría o a la utilidad ignora la dimensión cultural, histórica y simbólica del patrimonio. Esto conecta con el OA de apreciar el patrimonio artístico de los pueblos originarios."
+    },
+    {
+     "q": "Para una obra sobre la contaminación del río Mapocho, un estudiante quiere que el espectador sienta INCOMODIDAD y tensión al mirarla, no armonía. ¿Qué recurso compositivo logra mejor ese efecto de forma intencional?",
+     "ops": [
+      "Una composición perfectamente centrada, simétrica y con colores pastel suaves",
+      "Usar líneas diagonales, contrastes bruscos y un desequilibrio visual deliberado que genere sensación de inestabilidad y alerta",
+      "Dejar la mayor parte del papel en blanco sin ningún elemento, para que descanse la vista"
+     ],
+     "correcta": 1,
+     "porque": "Las líneas diagonales, los contrastes fuertes y el desequilibrio compositivo generan tensión e inestabilidad visual, coherentes con un mensaje de alerta sobre la contaminación. La simetría y los pastel producen calma, lo opuesto a lo buscado; el vacío total transmite descanso, no incomodidad. El estudiante debe elegir el recurso según la EMOCIÓN que quiere provocar, aplicando el OA sobre uso intencional de elementos del lenguaje visual."
+    },
+    {
+     "q": "Un muralista chileno del estilo de la Brigada Ramona Parra debe comunicar un mensaje social a personas que pasan caminando rápido por la calle. Comparando este contexto con una pintura pequeña colgada en un museo, ¿qué característica del mural es una decisión artística CORRECTA para su contexto?",
+     "ops": [
+      "Detalles muy pequeños y finos que obligan a acercarse mucho para apreciarlos",
+      "Colores planos y vivos, contornos negros gruesos y formas simples y grandes, para que el mensaje se lea rápido y a distancia",
+      "Un tamaño muy reducido y colores apagados para no molestar a los transeúntes"
+     ],
+     "correcta": 1,
+     "porque": "El contexto determina las decisiones visuales: un mural callejero debe leerse en segundos y desde lejos, por eso el estilo brigadista usa colores planos vivos, contornos negros gruesos y formas grandes y simples. Detalles finos o tamaños pequeños funcionan en un museo donde el público se detiene, no en la calle. Esto desarrolla el análisis de cómo el propósito y el contexto influyen en el lenguaje visual."
+    },
+    {
+     "q": "Un estudiante debe elaborar un boceto antes de su obra final, pero dice: 'El boceto es una pérdida de tiempo, mejor empiezo directo la obra buena'. Desde el proceso creativo del arte, ¿cuál respuesta lo corrige mejor?",
+     "ops": [
+      "Tiene razón: los artistas nunca hacen bocetos y siempre logran todo perfecto al primer intento",
+      "El boceto es una etapa valiosa del proceso: permite explorar ideas, probar composiciones y corregir errores antes de la obra final, ahorrando materiales y mejorando el resultado",
+      "El boceto solo sirve para rellenar el cuaderno y no influye en la calidad de la obra final"
+     ],
+     "correcta": 1,
+     "porque": "El boceto es parte esencial del proceso creativo: permite ensayar composiciones, probar colores y detectar errores antes de comprometer materiales en la obra final, lo que además evita desperdicio (dimensión ecológica y de esfuerzo). Afirmar que los artistas no bocetan es falso; los grandes maestros llenaban cuadernos de estudios. Esto conecta con el OA de aplicar un proceso creativo de exploración, desarrollo y evaluación."
     }
    ]
   }
@@ -17283,6 +20249,500 @@ window.CONTENIDO = {
      ]
     }
    ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En la sala, tu profesora toca un tambor MUY fuerte y luego lo toca suavecito, casi sin ruido. ¿Qué cualidad del sonido está cambiando cuando pasa de fuerte a suave?",
+     "ops": [
+      "La intensidad (fuerte y suave)",
+      "La altura (grave y agudo)",
+      "El color de la baqueta"
+     ],
+     "correcta": 0,
+     "porque": "La intensidad es la cualidad que distingue un sonido fuerte de uno suave (piano y forte). La altura (grave/agudo) es otra cosa: depende de si el sonido es 'gordo' o 'delgado', no de cuánta fuerza se toca. El color de la baqueta no afecta al sonido."
+    },
+    {
+     "q": "Sales al patio y escuchas: un pajarito cantando en un arbol y una bocina de micro en la calle. ¿Cual es un sonido de la NATURALEZA que debemos cuidar?",
+     "ops": [
+      "El canto del pajarito",
+      "La bocina del micro",
+      "Los dos son iguales"
+     ],
+     "correcta": 0,
+     "porque": "El canto del pajarito es un sonido natural del entorno, y cuidar los arboles y las aves ayuda a que sigamos escuchandolos. La bocina es un sonido hecho por maquinas (artificial). Diferenciar sonidos naturales y artificiales es parte del OA de escucha, y cuidar la naturaleza es un valor importante."
+    },
+    {
+     "q": "Van a cantar 'Arroz con leche' todos juntos en el curso. Tu companero canta gritando muy fuerte y tapa las voces de los demas. ¿Que es lo mejor para que la cancion suene bonita entre todos?",
+     "ops": [
+      "Escuchar a los demas y cantar con una voz pareja, sin gritar",
+      "Cantar cada vez mas fuerte para ganarle a los otros",
+      "Quedarse callado y no cantar nada"
+     ],
+     "correcta": 0,
+     "porque": "Cantar en grupo necesita escucharse y respetar a los demas para lograr un sonido parejo y bonito; gritar rompe la union del canto. Quedarse callado tampoco sirve porque no participas. Aqui se integra el valor del respeto y el trabajo en equipo."
+    },
+    {
+     "q": "Tu profe hace un juego: cuando la musica suena RAPIDA, saltan como conejos; cuando suena LENTA, caminan como tortugas. Si de repente la musica se pone bien lentita, ¿como te tienes que mover?",
+     "ops": [
+      "Despacito, como tortuga",
+      "Saltando rapido, como conejo",
+      "Sin moverme"
+     ],
+     "correcta": 0,
+     "porque": "El pulso o velocidad de la musica (rapido/lento) guia el movimiento del cuerpo. Musica lenta significa moverse despacio, como la tortuga. Este reto conecta escuchar la musica con responder con el cuerpo, tal como pide el OA de movimiento."
+    },
+    {
+     "q": "Quieren armar instrumentos para la fiesta del curso pero no tienen plata para comprarlos. ¿Cual es una buena idea que ademas cuida el planeta?",
+     "ops": [
+      "Hacer maracas con tarros y botellas reciclados y semillas adentro",
+      "Comprar instrumentos nuevos de plastico",
+      "No usar instrumentos"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar tarros y botellas para hacer instrumentos (como maracas) permite crear musica y ademas reciclar, cuidando el medio ambiente. Comprar plastico nuevo genera mas basura. Esto une la exploracion de sonidos con la conciencia ecologica."
+    },
+    {
+     "q": "Escuchas dos sonidos: el rugido grande de un leon y el pio-pio chiquitito de un pollito. El sonido del leon es GRAVE y el del pollito es AGUDO. ¿Cual de estos sonidos es AGUDO (delgadito y finito)?",
+     "ops": [
+      "El pio-pio del pollito",
+      "El rugido del leon",
+      "Los dos son graves"
+     ],
+     "correcta": 0,
+     "porque": "Un sonido agudo es delgado y fino, como el pio del pollito. El rugido del leon es grave, porque es grueso y profundo. Reconocer sonidos graves y agudos (altura) es una habilidad clave de la escucha musical."
+    },
+    {
+     "q": "En septiembre, para el 18, tu curso baila cueca. Durante la cueca las personas mueven un panuelo en la mano. ¿Que representa la cueca para nosotros?",
+     "ops": [
+      "Es un baile tradicional de Chile, parte de nuestra cultura",
+      "Es una cancion de cumpleanos",
+      "Es musica de otro planeta"
+     ],
+     "correcta": 0,
+     "porque": "La cueca es el baile nacional de Chile y se baila especialmente en Fiestas Patrias (18 de septiembre) con panuelo. Conocer y valorar la musica de nuestro pais es parte del curriculo y fortalece el aprecio por nuestra cultura y raices."
+    },
+    {
+     "q": "Tu profe aplaude un ritmo: 'ta - ta - ti-ti - ta' y te pide que lo repitas igualito. ¿Que tienes que hacer primero para poder repetirlo bien?",
+     "ops": [
+      "Escuchar con atencion el ritmo completo y luego repetirlo",
+      "Aplaudir cualquier cosa lo mas rapido posible",
+      "Taparte los oidos"
+     ],
+     "correcta": 0,
+     "porque": "Para imitar un ritmo hay que escucharlo con atencion y memorizar el patron antes de repetirlo con las palmas. Aplaudir al azar no copia el ritmo, y taparse los oidos impide escucharlo. Esto trabaja la escucha atenta y la interpretacion ritmica del OA."
+    }
+   ],
+   "2": [
+    {
+     "q": "En una presentación del Día de la Chilenidad, tu curso baila cueca. Justo cuando el pañuelo sube y las parejas se acercan, ¿qué debería hacer la música para acompañar bien ese momento del baile?",
+     "ops": [
+      "Ir más rápido y más fuerte, porque es el momento de mayor energía del zapateo",
+      "Quedarse siempre igual, muy lenta y suave, para no confundir a los bailarines",
+      "Detenerse por completo hasta que las parejas terminen de acercarse"
+     ],
+     "correcta": 0,
+     "porque": "La cueca tiene momentos de mayor y menor energía. En el zapateo y el acercamiento final la música se vuelve más rápida y fuerte (más intensa) para acompañar la emoción del baile. Reconocer cómo el tempo y la intensidad se relacionan con el movimiento es analizar la música, no solo escucharla."
+    },
+    {
+     "q": "Quieres crear el sonido de la lluvia cayendo sobre el techo para una canción sobre el sur de Chile, pero SIN usar agua para no desperdiciarla. ¿Cuál es la mejor manera de imitar ese sonido cuidando el planeta?",
+     "ops": [
+      "Golpear suavemente con los dedos sobre una mesa o caja, cada vez más rápido",
+      "Gritar la palabra lluvia muchas veces lo más fuerte posible",
+      "Abrir la llave del agua del baño para que se escuche caer de verdad"
+     ],
+     "correcta": 0,
+     "porque": "Con el cuerpo y objetos cotidianos podemos imitar sonidos de la naturaleza: los dedos tamborileando imitan las gotas. Es creatividad musical y, además, cuida el agua (conciencia ecológica): no hace falta gastar un recurso para representarlo."
+    },
+    {
+     "q": "Escuchas dos canciones: una de cuna para dormir a un bebé y una marcha para un desfile del 21 de mayo. ¿En qué se diferencian principalmente para cumplir su función?",
+     "ops": [
+      "La canción de cuna es lenta y suave; la marcha es más rápida y con pulso firme",
+      "Las dos son igual de rápidas, solo cambian las palabras",
+      "La canción de cuna es más fuerte y rápida para que el bebé despierte"
+     ],
+     "correcta": 0,
+     "porque": "La música cambia según para qué sirve. Una canción de cuna usa tempo lento e intensidad suave para calmar; una marcha usa un pulso firme y regular para que la gente camine junta. Comparar dos músicas por su propósito es pensamiento de orden superior."
+    },
+    {
+     "q": "En el recreo, tu amigo tararea una melodía triste porque perdió su lápiz favorito. Tú quieres animarlo con música. ¿Qué cambio haría que la misma melodía suene más alegre?",
+     "ops": [
+      "Cantarla un poco más rápido y con voz brillante y saltarina",
+      "Cantarla mucho más lento y en voz muy bajita",
+      "Repetir siempre la misma nota sin cambiar nada"
+     ],
+     "correcta": 0,
+     "porque": "El carácter alegre o triste de una música depende del tempo y la manera de cantar. Al hacerla más rápida y con voz brillante, la melodía transmite alegría. Aplicar esto para acompañar y animar a un amigo une la música con la empatía y la amistad."
+    },
+    {
+     "q": "Tu curso arma una orquesta con instrumentos reciclados: un tarro con porotos, una botella con agua y palos de madera. Si quieres el sonido MÁS agudo (más finito), ¿cuál elegirías?",
+     "ops": [
+      "Golpear la botella cuando tiene poca agua adentro",
+      "Golpear la botella cuando está casi llena de agua",
+      "Sacudir el tarro con muchos porotos adentro"
+     ],
+     "correcta": 0,
+     "porque": "En una botella, mientras menos agua tiene, más agudo (finito) es el sonido al golpearla; con más agua el sonido es más grave (grueso). Experimentar con altura del sonido usando materiales reciclados es explorar la música cuidando el planeta."
+    },
+    {
+     "q": "En la fila para presentar una canción, una compañera se equivoca y canta más fuerte que todos, tapando las voces del grupo. ¿Qué consejo musical y de buen compañerismo le darías?",
+     "ops": [
+      "Escuchar a los demás y cantar al mismo volumen para que todas las voces se oigan juntas",
+      "Cantar aún más fuerte para que solo se escuche su voz",
+      "Dejar de cantar y quedarse callada todo el resto de la canción"
+     ],
+     "correcta": 0,
+     "porque": "Cantar en grupo requiere equilibrar la intensidad: escucharse entre todos para que ninguna voz tape a las demás. Esto une un concepto musical (volumen o intensidad) con un valor: el respeto y el trabajo en equipo."
+    },
+    {
+     "q": "El profesor toca un pulso constante con un tambor: PUM-pum-pum-pum, PUM-pum-pum-pum. ¿En cuál sílaba deberías dar una palmada más fuerte para marcar el acento?",
+     "ops": [
+      "En el PUM, porque es el pulso más marcado que se repite al inicio de cada grupo",
+      "En cualquiera, porque todos los golpes suenan exactamente igual",
+      "En el último pum de cada grupo, porque siempre el final es el más fuerte"
+     ],
+     "correcta": 0,
+     "porque": "En un patrón rítmico, el acento cae en el pulso más marcado, que aquí es el PUM al inicio de cada grupo de cuatro. Identificar dónde está el acento dentro de un patrón es analizar el ritmo, no solo seguirlo."
+    },
+    {
+     "q": "Quieres musicalizar el cuento de un río chileno que empieza como un hilito en la cordillera y baja creciendo hasta el mar. ¿Cómo debería cambiar tu música desde el comienzo hasta el final?",
+     "ops": [
+      "Empezar muy suave y poquito, e ir creciendo hasta sonar fuerte y lleno al llegar al mar",
+      "Empezar muy fuerte y terminar en completo silencio de a poco",
+      "Mantener siempre el mismo volumen suave desde el inicio hasta el final"
+     ],
+     "correcta": 0,
+     "porque": "La música puede representar una historia usando cambios de intensidad: el río pequeño se traduce en sonido suave, y al crecer hacia el mar la música aumenta hasta sonar fuerte y llena. Usar esta idea para contar el viaje de un río chileno une creatividad musical y aprecio por la naturaleza."
+    }
+   ],
+   "3": [
+    {
+     "q": "En la clase de música tocan la canción 'Arriba en la Cordillera' de Patricio Manns. Primero la escuchan muy suave y lenta, y luego la misma melodía fuerte y rápida. ¿Qué elementos musicales cambiaron entre las dos versiones?",
+     "ops": [
+      "El timbre y la letra",
+      "La intensidad (fuerte/suave) y el tempo (rápido/lento)",
+      "La altura de las notas y el instrumento"
+     ],
+     "correcta": 1,
+     "porque": "Fuerte y suave se refieren a la INTENSIDAD (dinámica), y rápido y lento se refieren al TEMPO (velocidad). La melodía y la letra siguen siendo las mismas; solo cambia cómo se interpreta. Reconocer estos elementos es clave del OA de música de 3° básico."
+    },
+    {
+     "q": "Para la Fiesta de la Chilenidad, tu curso debe elegir un instrumento típico chileno para acompañar una cueca. ¿Cuál eligirías y por qué es el más apropiado?",
+     "ops": [
+      "El charango, porque da el ritmo alegre y es tradicional de la cueca",
+      "El violín, porque es el instrumento más fuerte",
+      "El pandero o la guitarra, porque acompañan el ritmo de la cueca chilena"
+     ],
+     "correcta": 2,
+     "porque": "La cueca, baile nacional de Chile, se acompaña tradicionalmente con guitarra, pandero (pandereta), acordeón y arpa. El charango es más típico del altiplano andino que de la cueca central. Elegir el instrumento correcto muestra conocimiento del folclor chileno."
+    },
+    {
+     "q": "Un compañero dice que un sonido 'agudo' es lo mismo que un sonido 'fuerte'. Para ayudarlo a entender, ¿qué ejemplo le darías?",
+     "ops": [
+      "El canto de un pajarito es agudo aunque sea suave; un trueno lejano es grave aunque no sea tan fuerte",
+      "El trueno es agudo y el pajarito es grave",
+      "Todos los sonidos agudos son siempre fuertes"
+     ],
+     "correcta": 0,
+     "porque": "Agudo/grave se refiere a la ALTURA del sonido (qué tan alto o bajo), mientras que fuerte/suave se refiere a la INTENSIDAD. Son cosas distintas: un pajarito canta agudo pero suave. Distinguir estas cualidades del sonido es fundamental en 3° básico."
+    },
+    {
+     "q": "Vas a crear un paisaje sonoro del bosque nativo chileno usando solo tu cuerpo y objetos reciclados, cuidando no dañar la naturaleza. ¿Cuál es la mejor manera de imitar el sonido del viento entre los árboles?",
+     "ops": [
+      "Golpeando fuerte una mesa con las manos",
+      "Soplando suavemente o frotando papel de forma lenta y continua",
+      "Cortando ramas de un árbol para hacer ruido"
+     ],
+     "correcta": 1,
+     "porque": "El viento es un sonido suave, continuo y sin golpes; soplar o frotar papel lo imita bien. Golpear produce sonidos secos, no de viento. Cortar ramas dañaría un árbol vivo, lo que va contra el cuidado del medio ambiente. Se pueden crear sonidos con materiales reciclados sin dañar la naturaleza."
+    },
+    {
+     "q": "En un juego rítmico, la profesora marca este patrón con palmas: TA - TA - ti-ti - TA (donde TA es un golpe largo y ti-ti son dos golpes rápidos). Si tuvieras que repetirlo, ¿cuántos golpes de palma harías en total?",
+     "ops": [
+      "Cuatro golpes",
+      "Cinco golpes",
+      "Tres golpes"
+     ],
+     "correcta": 1,
+     "porque": "TA (1) + TA (1) + ti-ti (2 golpes rápidos) + TA (1) = 5 golpes en total. Aunque 'ti-ti' ocupa el mismo tiempo que un 'TA', son dos sonidos. Contar y reproducir patrones rítmicos desarrolla el pulso y la lectura rítmica del OA de 3° básico."
+    },
+    {
+     "q": "Tu grupo cantará en el acto del colegio. Un compañero canta muy fuerte y tapa a los demás, otros cantan bajito. ¿Qué valor y qué acción musical ayudarán a que suene bien como grupo?",
+     "ops": [
+      "Cada uno debe cantar lo más fuerte que pueda para destacar",
+      "El respeto y la cooperación: escucharse entre todos y ajustar la intensidad para cantar unidos",
+      "El más talentoso debe cantar solo y los demás callar"
+     ],
+     "correcta": 1,
+     "porque": "Cantar en grupo requiere escuchar a los demás y equilibrar la intensidad para lograr un sonido unido; esto se logra con respeto y cooperación. Que uno tape a los otros rompe la unidad. El trabajo colaborativo y el respeto son parte del interpretar música en conjunto."
+    },
+    {
+     "q": "Escuchas dos obras: una marcha militar con ritmo firme y repetido, y una nana (canción de cuna) suave y tranquila. ¿Para qué situación usarías cada una?",
+     "ops": [
+      "La marcha para dormir a un bebé y la nana para un desfile",
+      "La marcha para un desfile o caminar en orden, y la nana para calmar y dormir a un bebé",
+      "Ambas sirven igual para cualquier situación"
+     ],
+     "correcta": 1,
+     "porque": "El carácter de la música se relaciona con su función: una marcha tiene ritmo firme y regular ideal para caminar en orden; una nana es lenta y suave para calmar. Relacionar la música con su propósito y expresar cómo nos hace sentir es parte del escuchar y apreciar música."
+    },
+    {
+     "q": "En la clase harás un instrumento de percusión con material reciclado. Tienes un tarro vacío y quieres que suene más grave (más bajo) que otro tarro pequeño. ¿Qué tarro produce el sonido más grave?",
+     "ops": [
+      "El tarro grande, porque los objetos más grandes suelen producir sonidos más graves",
+      "El tarro pequeño, porque siempre suena más bajo",
+      "El tamaño no influye en el sonido"
+     ],
+     "correcta": 0,
+     "porque": "En general, los objetos más grandes vibran más lento y producen sonidos más graves, mientras que los pequeños vibran rápido y suenan más agudos (por eso un tambor grande suena más grave que uno pequeño). Además, reutilizar tarros para crear instrumentos cuida el medio ambiente al reciclar. Explorar cómo se produce el sonido es parte del OA de 3° básico."
+    }
+   ],
+   "4": [
+    {
+     "q": "En la Fiesta de Cuasimodo del Valle Central, escuchas un grupo tocar. Empieza suave (piano) y en la parte del estribillo se vuelve muy fuerte (forte). Si quisieras representar ese cambio con un dibujo para tus compañeros, ¿cuál sirve mejor?",
+     "ops": [
+      "Una línea que empieza delgada y termina gruesa",
+      "Una línea siempre del mismo grosor",
+      "Un círculo perfecto sin cambios"
+     ],
+     "correcta": 0,
+     "porque": "El cambio de piano (suave) a forte (fuerte) es un cambio de INTENSIDAD. Una línea que crece de delgada a gruesa representa ese aumento (crescendo). La línea del mismo grosor mostraría que no hay cambio, y el círculo no representa intensidad. Reconocer matices es un objetivo de apreciación musical."
+    },
+    {
+     "q": "Tu curso prepara una cueca para el 18 de septiembre. Un compañero toca el pandero muy rápido y otro muy lento, así que nadie logra zapatear junto. ¿Qué elemento musical deben corregir primero para bailar coordinados?",
+     "ops": [
+      "El pulso o tempo, para que todos sigan la misma velocidad",
+      "El color de los pañuelos que usarán",
+      "La letra de la canción, cambiándola por otra"
+     ],
+     "correcta": 0,
+     "porque": "El pulso (tempo) es la velocidad constante que permite que músicos y bailarines vayan juntos. Si cada uno lleva una velocidad distinta, es imposible coordinar el zapateo. Los pañuelos y la letra no afectan la sincronización. Tocar en conjunto exige respetar un pulso común, lo que enseña escucha y trabajo en equipo."
+    },
+    {
+     "q": "Quieres crear un paisaje sonoro que represente el bosque valdiviano del sur de Chile usando solo objetos reciclados. ¿Cuál combinación imita MEJOR el sonido de lluvia suave y viento entre los árboles?",
+     "ops": [
+      "Semillas o arroz cayendo dentro de un tubo de cartón y soplar sobre una botella",
+      "Golpear con fuerza dos tapas de metal muy rápido",
+      "Hacer sonar una bocina larga y constante"
+     ],
+     "correcta": 0,
+     "porque": "Las semillas cayendo dentro de un tubo imitan el goteo de la lluvia y soplar una botella produce un sonido de aire parecido al viento. Los golpes metálicos fuertes suenan a truenos o metal, no a lluvia suave, y una bocina constante no evoca la naturaleza. Además, usar material reciclado cuida el medioambiente mientras se crea música."
+    },
+    {
+     "q": "Escuchas dos versiones de 'Gracias a la Vida' de Violeta Parra: una solo con guitarra y voz, y otra con orquesta completa. Ambas son la misma canción. ¿Qué cambió principalmente entre las dos versiones?",
+     "ops": [
+      "La instrumentación o timbre, es decir, qué instrumentos suenan",
+      "La letra, porque dicen palabras diferentes",
+      "El idioma en que está cantada"
+     ],
+     "correcta": 0,
+     "porque": "El timbre es el 'color' del sonido que distingue a cada instrumento. Si la melodía y la letra son iguales pero suenan distinto, lo que cambió es la instrumentación (guitarra sola frente a orquesta). Reconocer que una misma obra chilena se puede arreglar de muchas formas desarrolla la apreciación y valora nuestro patrimonio musical."
+    },
+    {
+     "q": "Tu profesora reparte trozos de una melodía en tarjetas: 'A' es el verso y 'B' es el estribillo. La canción suena así: A - A - B - A - B. ¿Qué te dice esta estructura sobre la parte 'B'?",
+     "ops": [
+      "Se repite y funciona como estribillo que regresa varias veces",
+      "Nunca se repite y solo aparece al final",
+      "Es más lenta que la parte A siempre"
+     ],
+     "correcta": 0,
+     "porque": "En la forma A-A-B-A-B, la 'B' aparece dos veces y alterna con la 'A': ese retorno es justamente la función de un estribillo, que vuelve para que todos lo recuerden y canten. La secuencia muestra que sí se repite, y la estructura no indica nada sobre la velocidad. Analizar la forma ayuda a entender cómo se organizan las canciones."
+    },
+    {
+     "q": "En una presentación del curso, un compañero se pone muy nervioso y se equivoca de nota. Como músico responsable del conjunto, ¿cuál es la mejor reacción para mantener la música y cuidar a tu compañero?",
+     "ops": [
+      "Seguir tocando con calma y con un gesto invitarlo a retomar en la siguiente frase",
+      "Detener toda la música y señalar en voz alta su error",
+      "Tocar más fuerte para tapar y avergonzar su equivocación"
+     ],
+     "correcta": 0,
+     "porque": "En un conjunto, si alguien se equivoca lo correcto es sostener el pulso y darle espacio para reincorporarse; así la obra continúa y el compañero no se siente humillado. Detenerse arruina la presentación y señalar el error en público daña la confianza. Interpretar en grupo exige respeto, empatía y compañerismo, no solo tocar bien."
+    },
+    {
+     "q": "Comparas el sonido de una trutruca mapuche con el de una zampoña andina. La trutruca da un sonido grave y largo, la zampoña notas más agudas y cortas. Si necesitas un instrumento para imitar el llamado profundo de una ballena, ¿cuál se acerca más y por qué?",
+     "ops": [
+      "La trutruca, porque produce sonidos graves y prolongados",
+      "La zampoña, porque sus notas agudas son más fuertes",
+      "Ninguna, porque solo un piano puede sonar grave"
+     ],
+     "correcta": 0,
+     "porque": "El llamado de la ballena es grave (bajo) y largo, igual que el sonido característico de la trutruca. La zampoña produce notas agudas, opuestas a lo que se busca, y afirmar que solo el piano suena grave es falso, pues muchos instrumentos lo hacen. Comparar timbres de instrumentos de pueblos originarios de Chile valora su cultura y afina el oído."
+    },
+    {
+     "q": "Vas a componer una breve pieza para contar una historia: un río de la cordillera que baja tranquilo, llega a una cascada y luego sigue calmo hacia el mar. ¿Qué plan de intensidad y velocidad representa mejor esa historia?",
+     "ops": [
+      "Suave y lento, luego fuerte y rápido, y al final suave y lento otra vez",
+      "Fuerte y rápido todo el tiempo, sin ningún cambio",
+      "Suave y lento de principio a fin, sin la cascada"
+     ],
+     "correcta": 0,
+     "porque": "La historia tiene tres momentos: río tranquilo (suave/lento), cascada (fuerte/rápido) y regreso a la calma (suave/lento). Solo la primera opción refleja ese contraste y retorno. Tocar todo igual no distingue la cascada del río tranquilo. Usar la música para representar la naturaleza desarrolla la creación musical y la conciencia del cuidado del agua y los ríos de Chile."
+    }
+   ],
+   "5": [
+    {
+     "q": "En la Fiesta de La Tirana (norte de Chile), una banda de bronces toca mientras un grupo de bailarines avanza. El director quiere que la música suene MAS FUERTE para el momento culminante de la procesion, pero SIN cambiar la velocidad ni la melodia. Que elemento musical debe modificar?",
+     "ops": [
+      "La intensidad (dinamica), tocando en forte",
+      "El tempo, tocando mas rapido",
+      "La altura, tocando notas mas agudas"
+     ],
+     "correcta": 0,
+     "porque": "La intensidad o dinamica es el elemento que controla que tan fuerte o suave suena la musica (piano/forte). El tempo cambiaria la velocidad y la altura cambiaria lo agudo o grave de las notas, cosas que el director pidio NO modificar. Por eso la respuesta correcta es aumentar la intensidad."
+    },
+    {
+     "q": "Manuel escucha 'El guitarron chileno' y cuenta que tiene 25 cuerdas, mientras que una guitarra comun tiene 6. Ambos se tocan pulsando o rasgueando las cuerdas. A que familia de instrumentos pertenecen los dos y por que?",
+     "ops": [
+      "Cuerdas, porque el sonido se produce al vibrar cuerdas pulsadas",
+      "Percusion, porque se golpean para sonar",
+      "Viento, porque se sopla aire dentro de ellos"
+     ],
+     "correcta": 0,
+     "porque": "Los instrumentos se clasifican por como producen el sonido. Tanto el guitarron como la guitarra generan sonido al hacer vibrar sus cuerdas, asi que ambos son de la familia de cuerdas. La percusion suena al golpear y los de viento al soplar aire, lo que no ocurre aqui."
+    },
+    {
+     "q": "Un curso quiere crear instrumentos de percusion para una presentacion, cuidando el medio ambiente. Tienen tarros, tapas de botellas, semillas secas y cajas de carton. Cual es la mejor decision que une creatividad musical y conciencia ecologica?",
+     "ops": [
+      "Reutilizar esos materiales de desecho para construir sus propios instrumentos",
+      "Pedir a los apoderados comprar instrumentos nuevos de plastico",
+      "Cancelar la presentacion porque no tienen instrumentos reales"
+     ],
+     "correcta": 0,
+     "porque": "Reutilizar materiales de desecho (semillas en un tarro hacen una maraca, tapas hacen sonajas) permite hacer musica y ademas cuida el planeta al reciclar en vez de generar mas basura. Comprar plastico nuevo contradice el cuidado ecologico y cancelar renuncia al aprendizaje musical."
+    },
+    {
+     "q": "En una cueca, la pareja baila con panuelo y la musica tiene un pulso claro para marcar los pasos. Si escuchas la cancion y quieres bailar 'a tiempo', que debes seguir con el cuerpo?",
+     "ops": [
+      "El pulso, que es el latido regular y constante de la musica",
+      "El timbre, que es el color o caracter del sonido",
+      "La letra, memorizando todas las palabras"
+     ],
+     "correcta": 0,
+     "porque": "El pulso es el latido regular y constante que organiza la musica en el tiempo, igual que los latidos del corazon; seguirlo permite bailar coordinadamente. El timbre solo distingue que instrumento suena y la letra no marca el ritmo de los pasos."
+    },
+    {
+     "q": "Josefa canta en un coro. La profesora le dice que en la parte suave debe 'apoyar el aire y no gritar' para cuidar su voz. Que virtud y que cuidado del cuerpo esta practicando al hacerlo bien?",
+     "ops": [
+      "Autocontrol y cuidado de la voz, respirando y regulando la intensidad",
+      "Rapidez, cantando lo mas veloz posible",
+      "Competencia, tratando de tapar la voz de sus companeros"
+     ],
+     "correcta": 0,
+     "porque": "Regular la respiracion y la intensidad para no forzar la garganta es autocontrol y cuida la salud vocal, evitando dañar las cuerdas vocales. Cantar veloz o tapar a los demas ni cuida la voz ni respeta el trabajo en equipo del coro."
+    },
+    {
+     "q": "Un compositor quiere representar con sonidos el 'amanecer en la cordillera de los Andes': primero silencio y calma, luego los pajaros despiertan y al final sale el sol con fuerza. Que recurso musical describe MEJOR ese avance de calma a fuerza?",
+     "ops": [
+      "Un crescendo, aumentando gradualmente la intensidad del sonido",
+      "Un silencio prolongado durante toda la pieza",
+      "Repetir siempre la misma nota con igual volumen"
+     ],
+     "correcta": 0,
+     "porque": "Un crescendo es el aumento gradual de la intensidad, ideal para pasar de la calma inicial a la fuerza del sol saliendo. Un silencio total no representaria el despertar y repetir la misma nota con igual volumen no muestra ningun cambio ni progreso."
+    },
+    {
+     "q": "Dos grupos presentan la misma melodia de 'El condor pasa'. El grupo A la toca con quena (flauta andina) y el grupo B con charango (cuerdas). La melodia y el ritmo son iguales. Que hace que suenen distintas?",
+     "ops": [
+      "El timbre, que es el sonido caracteristico de cada instrumento",
+      "El tempo, porque uno va mas rapido que el otro",
+      "La melodia, porque tocan notas diferentes"
+     ],
+     "correcta": 0,
+     "porque": "El timbre es la cualidad que distingue el sonido propio de cada instrumento, por eso una quena y un charango tocando lo mismo suenan diferentes. El enunciado dice que la melodia y el ritmo (tempo) son iguales, asi que la diferencia no puede estar ahi."
+    },
+    {
+     "q": "El curso preparara una cancion para el aniversario del colegio. Camilo toca muy bien pero siempre se adelanta y no escucha a los demas, entonces el grupo suena desordenado. Que actitud musical y valorica resuelve mejor el problema?",
+     "ops": [
+      "Escuchar a los companeros y ajustarse al pulso comun del grupo",
+      "Tocar aun mas fuerte para que todos lo sigan a el",
+      "Dejar de ensayar porque el grupo no toca a su nivel"
+     ],
+     "correcta": 0,
+     "porque": "Hacer musica en conjunto exige escuchar a los demas y ajustarse a un pulso comun; eso combina la habilidad musical con el respeto y la colaboracion. Tocar mas fuerte impone su ritmo sin escuchar y abandonar al grupo rompe el trabajo en equipo que da sentido a la presentacion."
+    }
+   ],
+   "6": [
+    {
+     "q": "Un curso de 6° básico de un colegio de Valdivia quiere hacer una presentación musical sobre la relación entre la lluvia del sur de Chile y la vida cotidiana. Deciden usar instrumentos hechos con materiales reciclados. Para imitar el sonido suave y continuo de la lluvia cayendo sobre el techo, ¿cuál sería la mejor elección de instrumento y forma de tocarlo?",
+     "ops": [
+      "Un palo de lluvia hecho con un tubo de cartón reciclado y semillas en su interior, girándolo lentamente",
+      "Un tambor grande de tarro metálico, golpeándolo fuerte y rápido con las manos",
+      "Un triángulo metálico, golpeándolo una sola vez y dejándolo sonar"
+     ],
+     "correcta": 0,
+     "porque": "El palo de lluvia produce un sonido continuo, suave y granulado que imita muy bien la lluvia constante; al girarlo lento el sonido se mantiene y decae de a poco. El tambor golpeado fuerte sugiere truenos o golpes secos, no lluvia suave, y el triángulo da un sonido metálico aislado. Además usar materiales reciclados une la música con el cuidado del medioambiente."
+    },
+    {
+     "q": "En una clase, dos grupos cantan la misma canción folclórica chilena. El grupo A la canta muy rápido y fuerte todo el tiempo; el grupo B varía: comienza suave y lento, y crece hacia el final. La profesora felicita al grupo B por usar mejor los elementos expresivos. ¿Qué elementos musicales usó principalmente el grupo B para lograr esa expresión?",
+     "ops": [
+      "El timbre y la altura únicamente",
+      "Los matices (dinámica) y el tempo (velocidad)",
+      "La duración de las figuras y el nombre de las notas"
+     ],
+     "correcta": 1,
+     "porque": "El grupo B varió la intensidad (de suave a fuerte = matices o dinámica) y la velocidad (de lento a crecer = tempo). Estos dos elementos son los que dan expresión y emoción a una interpretación. El timbre es el color del sonido y la altura es agudo/grave, pero no son lo que el grupo B cambió principalmente."
+    },
+    {
+     "q": "Martín escucha una cueca chilena y quiere identificar por qué suena tan característica y distinta de una balada lenta. Analiza el compás y el ritmo. ¿Cuál es la razón principal del carácter alegre y bailable de la cueca?",
+     "ops": [
+      "Su compás de 6/8 con ritmo vivo y marcado, ideal para el zapateo y el pañuelo",
+      "Su compás de 4/4 muy lento, que invita a quedarse quieto",
+      "La ausencia total de percusión y de acompañamiento rítmico"
+     ],
+     "correcta": 0,
+     "porque": "La cueca, baile nacional de Chile, se caracteriza por su compás de 6/8 (a veces alternado con 3/4), con un pulso vivo y marcado que acompaña el zapateo y el juego del pañuelo. Un 4/4 lento daría un carácter calmo, opuesto a la cueca, y la cueca sí tiene acompañamiento rítmico fuerte (guitarra, pandero, palmas)."
+    },
+    {
+     "q": "Un curso prepara un concierto y debe ordenar las voces de un coro de niños de menor a mayor altura (de la voz más grave a la más aguda). ¿Cuál es el orden correcto de estos tipos de voz?",
+     "ops": [
+      "Soprano, contralto, tenor, bajo",
+      "Bajo, tenor, contralto, soprano",
+      "Tenor, soprano, bajo, contralto"
+     ],
+     "correcta": 1,
+     "porque": "De la voz más grave a la más aguda el orden es: bajo (la más grave), tenor, contralto y soprano (la más aguda). Entender la altura de las voces permite ubicar bien a cada cantante y lograr un buen equilibrio en el coro. Las otras opciones desordenan graves y agudos."
+    },
+    {
+     "q": "Para el aniversario del colegio, un grupo debe elegir música de pueblos originarios de Chile para mostrar respeto por las culturas del país. Buscan un instrumento tradicional del pueblo mapuche. ¿Cuál eligen correctamente y qué actitud demuestran?",
+     "ops": [
+      "La trutruca, instrumento de viento mapuche, mostrando respeto y valoración por los pueblos originarios",
+      "La guitarra eléctrica, porque es el instrumento más moderno y llamativo",
+      "El violín europeo, porque suena elegante en cualquier ocasión"
+     ],
+     "correcta": 0,
+     "porque": "La trutruca es un instrumento de viento tradicional del pueblo mapuche, hecho con una caña larga. Elegirla para representar culturas originarias demuestra respeto, valoración y conocimiento del patrimonio cultural chileno. La guitarra eléctrica y el violín europeo no representan la música mapuche."
+    },
+    {
+     "q": "Una compañera del curso toca la flauta dulce, pero siempre la sopla con mucha fuerza y sale un sonido chillón y desafinado. Sus amigos quieren ayudarla con respeto, sin burlarse. ¿Cuál es el mejor consejo musicalmente correcto que pueden darle?",
+     "ops": [
+      "Que sople más suave y controle el aire, porque soplar muy fuerte en la flauta hace subir la afinación y produce un sonido chillón",
+      "Que sople aún más fuerte para que se escuche mejor sobre los demás",
+      "Que tape todos los agujeros a la vez sin importar la nota que quiera tocar"
+     ],
+     "correcta": 0,
+     "porque": "En la flauta dulce, un exceso de aire hace que la nota suba de afinación y suene chillona; controlar y suavizar el soplo mejora el sonido y la afinación. Soplar más fuerte empeora el problema, y tapar todos los agujeros al azar no controla las notas. Ademas, ayudar a un compañero con respeto y sin burla es una virtud importante en el trabajo en equipo."
+    },
+    {
+     "q": "Un curso quiere crear una pieza musical que represente el ciclo del agua para una feria ecológica: nubes, lluvia, río y mar. Deben pensar en cómo cambian el volumen y el ritmo a lo largo de la pieza. ¿Cuál estructura representa mejor esa idea?",
+     "ops": [
+      "Todo el tiempo igual: mismo volumen y mismo ritmo de principio a fin",
+      "Empezar muy suave (nubes), crecer con gotas rítmicas (lluvia), luego un ritmo fluido (río) y terminar amplio y sostenido (mar)",
+      "Empezar fortísimo y con ruido caótico, y ir apagándose hasta el silencio total sin ninguna idea de ciclo"
+     ],
+     "correcta": 1,
+     "porque": "Representar un proceso natural pide una estructura con cambios: partir suave para las nubes, agregar gotas rítmicas para la lluvia, un flujo continuo para el río y un final amplio para el mar. Así los matices y el ritmo cuentan la historia del agua. Mantener todo igual no muestra el cambio, y empezar caótico sin idea de ciclo no representa el proceso ni cuida la intención ecológica."
+    },
+    {
+     "q": "Al escuchar dos versiones de la misma melodía, Martín nota que una la toca un piano y la otra una trompeta, aunque son exactamente las mismas notas, al mismo volumen y velocidad. ¿Qué elemento del sonido le permite distinguir de qué instrumento se trata?",
+     "ops": [
+      "El timbre, que es el color o carácter propio del sonido de cada instrumento",
+      "La intensidad, que es lo fuerte o suave del sonido",
+      "La duración, que es lo largo o corto de cada nota"
+     ],
+     "correcta": 0,
+     "porque": "El timbre es la cualidad que distingue el sonido de un instrumento de otro aunque toquen la misma nota, al mismo volumen y duración; es el color propio de cada fuente sonora. La intensidad se refiere a fuerte/suave y la duración a largo/corto, pero esas eran iguales en ambas versiones, así que lo único que cambia es el timbre."
+    }
+   ]
   }
  },
  "edfisica": {
@@ -19754,6 +23214,500 @@ window.CONTENIDO = {
        "porque": "Planificar una actividad en un entorno natural exige prevención: hidratación y protección solar evitan golpes de calor, avisar la ruta permite auxilio, y no dejar basura cuida el lugar."
       }
      ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En el recreo, Martín juega a la pinta y siente que su corazón late muy rápido y respira fuerte. Su amiga le dice que está enfermo. ¿Qué es lo que de verdad le pasa a su cuerpo?",
+     "ops": [
+      "Su cuerpo trabaja más y por eso el corazón late rápido para dar energía; es normal al correr",
+      "Está enfermo y debe irse a la enfermería de inmediato",
+      "Su corazón se va a romper si sigue jugando"
+     ],
+     "correcta": 0,
+     "porque": "Al hacer actividad física, el corazón late más rápido y la respiración aumenta para llevar más oxígeno a los músculos. Es una respuesta natural y sana del cuerpo, no una enfermedad. Reconocer estos cambios es parte de conocer el propio cuerpo (OA sobre efectos de la actividad física)."
+    },
+    {
+     "q": "La profesora pide saltar como un canguro, reptar como una lagartija y girar como un trompo. Sofía quiere pasar por debajo de una silla sin tocarla. ¿Qué movimiento le sirve mejor?",
+     "ops": [
+      "Saltar alto como el canguro",
+      "Reptar como la lagartija, bien pegada al suelo",
+      "Girar como el trompo, muy rápido"
+     ],
+     "correcta": 1,
+     "porque": "Para pasar por un espacio bajo hay que bajar el cuerpo cerca del suelo. Reptar (arrastrarse) es el movimiento que permite pasar por debajo sin tocar la silla. Esto trabaja la habilidad de resolver un problema motor eligiendo el movimiento adecuado al espacio."
+    },
+    {
+     "q": "Antes de la clase de educación física, el profesor dice: 'primero vamos a mover despacio los brazos, el cuello y las piernas'. ¿Por qué hacen esto ANTES de correr y saltar fuerte?",
+     "ops": [
+      "Para perder tiempo antes de jugar",
+      "Para preparar y calentar el cuerpo y no lastimarse",
+      "Porque hay que estar cansados antes de jugar"
+     ],
+     "correcta": 1,
+     "porque": "El calentamiento prepara los músculos y las articulaciones para el esfuerzo, ayudando a moverse mejor y a evitar lesiones. Cuidar el propio cuerpo es un hábito de vida saludable y también una forma de responsabilidad con uno mismo."
+    },
+    {
+     "q": "Después de correr en el patio en un día caluroso en Santiago, ¿qué es lo MÁS importante y saludable que debe hacer Benjamín?",
+     "ops": [
+      "Tomar una bebida muy azucarada de inmediato",
+      "Tomar agua para recuperar lo que sudó",
+      "No tomar nada para no engordar"
+     ],
+     "correcta": 1,
+     "porque": "Al hacer ejercicio se suda y el cuerpo pierde agua, por eso hay que reponerla tomando agua. El agua es la mejor opción para hidratarse, mejor que las bebidas azucaradas. Beber agua es un hábito de vida saludable."
+    },
+    {
+     "q": "En un juego de equipo, Isidora pasa la pelota a una compañera que estaba sola para que anote, en vez de intentarlo ella. Su equipo gana. ¿Qué demuestra esta jugada?",
+     "ops": [
+      "Que Isidora no sabe jugar bien",
+      "Que trabajó en equipo y ayudó a su compañera a lograr algo juntas",
+      "Que solo importa ganar de cualquier forma"
+     ],
+     "correcta": 1,
+     "porque": "Pasar la pelota para que otra compañera anote muestra trabajo en equipo, generosidad y colaboración. En los juegos colectivos, ayudarse entre todos es una virtud tan valiosa como el resultado, y hace que jugar sea justo y alegre para todos."
+    },
+    {
+     "q": "La profesora lleva al curso a jugar al parque. Antes de irse dice: 'dejemos el lugar como lo encontramos'. Al terminar, ¿qué acción cuida mejor la naturaleza?",
+     "ops": [
+      "Dejar los envases de la colación botados en el pasto",
+      "Recoger la basura y botarla en el basurero o llevarla de vuelta",
+      "Arrancar flores para llevarlas de recuerdo"
+     ],
+     "correcta": 1,
+     "porque": "Cuidar los espacios naturales donde jugamos significa recoger nuestra basura y no dañar plantas ni flores. Así el parque queda limpio para otros niños y para los seres vivos. Jugar al aire libre y cuidar el medioambiente van de la mano."
+    },
+    {
+     "q": "Camila lanza una pelota grande y liviana, y luego una pequeña y pesada, tratando de que caigan dentro de un aro en el suelo. ¿Qué le conviene hacer para acertar mejor?",
+     "ops": [
+      "Lanzar las dos exactamente con la misma fuerza",
+      "Ajustar la fuerza y el apunte según el peso y tamaño de cada pelota",
+      "Lanzar siempre lo más fuerte posible"
+     ],
+     "correcta": 1,
+     "porque": "Objetos de distinto peso y tamaño necesitan distinta fuerza para llegar al mismo lugar. Observar y ajustar el lanzamiento según cómo es cada pelota es resolver un problema motor, no solo lanzar por lanzar. Así se mejora la coordinación y la puntería."
+    },
+    {
+     "q": "Durante un juego, Vicente se cae y se raspa la rodilla; le duele y quiere seguir jugando. ¿Cuál es la decisión más responsable con su cuerpo?",
+     "ops": [
+      "Seguir jugando aunque le duela y sangre, para no perder",
+      "Avisar a un adulto, limpiar la herida y descansar un poco antes de volver",
+      "Esconderse para que nadie sepa que se cayó"
+     ],
+     "correcta": 1,
+     "porque": "Cuando el cuerpo se lastima, hay que atenderlo: avisar a un adulto, limpiar la herida y descansar. Escuchar las señales del cuerpo y pedir ayuda es cuidarse a uno mismo con responsabilidad, y es más importante que ganar un juego."
+    }
+   ],
+   "2": [
+    {
+     "q": "En el patio de tu escuela en Santiago hace mucho calor en verano y el profesor propone jugar 'las quemadas'. Antes de correr y saltar durante 40 minutos, ¿qué es lo MÁS importante que debes hacer para cuidar tu cuerpo?",
+     "ops": [
+      "Hacer un calentamiento suave y tomar agua para preparar el cuerpo",
+      "Comer una marraqueta grande justo antes de empezar a correr",
+      "Sentarme a descansar hasta que termine la clase"
+     ],
+     "correcta": 0,
+     "porque": "El OA de hábitos de vida saludable indica preparar el cuerpo antes del ejercicio. El calentamiento suave activa músculos y corazón poco a poco, y beber agua evita la deshidratación con el calor. Comer mucho justo antes causa malestar, y descansar todo el rato no permite ejercitarse ni cuidar la salud."
+    },
+    {
+     "q": "Camila corre muy rápido pero su amiga Josefa recién está aprendiendo y se cansa. En una carrera de postas por equipos, ¿qué demuestra mejor el compañerismo y el respeto?",
+     "ops": [
+      "Reírme de Josefa porque corre lento",
+      "Animar a Josefa y decirle que lo está haciendo cada vez mejor",
+      "Pedir que saquen a Josefa del equipo para ganar"
+     ],
+     "correcta": 1,
+     "porque": "El respeto y el trabajo en equipo son valores clave en Educación Física. Animar a un compañero que se esfuerza fortalece la confianza de todos y hace que el juego sea justo y entretenido. Burlarse o excluir daña a la persona y rompe el sello de cuidar al otro."
+    },
+    {
+     "q": "Debes lanzar una pelota para que caiga dentro de un aro que está lejos. Tu primer lanzamiento cayó muy corto. Para el segundo intento, ¿qué es lo más inteligente que puedes hacer?",
+     "ops": [
+      "Lanzar exactamente igual que la primera vez",
+      "Lanzar con un poco más de fuerza y hacia arriba para que llegue más lejos",
+      "Lanzar mucho más suave que antes"
+     ],
+     "correcta": 1,
+     "porque": "Esto es resolver un problema motor: si la pelota cayó corta, necesita más fuerza y una trayectoria más alta para alcanzar el aro. Lanzar igual repetiría el error, y lanzar más suave la dejaría aún más cerca. Ajustar el movimiento según lo que pasó es pensar antes de actuar."
+    },
+    {
+     "q": "En la clase el profesor pide moverse 'como un animal que se estira lento' y luego 'como un animal que salta rápido'. ¿Qué pareja de animales representa MEJOR esos dos movimientos?",
+     "ops": [
+      "Un gato que se estira lento y un conejo que salta rápido",
+      "Una tortuga rápida y un caracol saltarín",
+      "Un peuco volando y un pez nadando"
+     ],
+     "correcta": 0,
+     "porque": "El OA de expresión corporal pide representar distintas velocidades y cualidades del movimiento. El gato se estira lento y suave, y el conejo salta rápido: cada uno calza con lo pedido. Las otras opciones no corresponden a la velocidad indicada o son animales que no saltan ni se estiran de esa forma."
+    },
+    {
+     "q": "Tu curso saldrá a una caminata por un cerro cerca de tu casa para hacer actividad física al aire libre. ¿Qué acción cuida tu salud Y también la naturaleza al mismo tiempo?",
+     "ops": [
+      "Botar los envoltorios de colación en el sendero",
+      "Llevar una bolsa para guardar mi basura y devolverla a casa",
+      "Cortar flores y ramas del cerro para llevarlas"
+     ],
+     "correcta": 1,
+     "porque": "Guardar la basura y llevarla de vuelta mantiene el cerro limpio para los animales y las plantas, y permite disfrutar del ejercicio en un ambiente sano. Botar basura contamina y cortar plantas daña la naturaleza. Cuidar el entorno es parte de moverse de forma responsable."
+    },
+    {
+     "q": "Antonio quiere saber si su corazón trabaja más cuando juega. Después de correr y saltar por un rato, ¿qué siente su cuerpo que le muestra que hizo ejercicio de verdad?",
+     "ops": [
+      "El corazón late más rápido y respira más agitado",
+      "El corazón late más lento y le da sueño",
+      "No siente ningún cambio en su cuerpo"
+     ],
+     "correcta": 0,
+     "porque": "Con la actividad física intensa el corazón late más rápido y la respiración se acelera para llevar más oxígeno a los músculos. Reconocer estas señales ayuda a los niños a entender cómo funciona su cuerpo. Latir más lento pasa al descansar, y siempre hay cambios cuando el ejercicio es de verdad."
+    },
+    {
+     "q": "En un juego de equilibrio debes cruzar caminando sobre una línea sin caerte. Sientes que te vas de lado. ¿Qué te ayuda MÁS a mantener el equilibrio?",
+     "ops": [
+      "Cerrar los ojos y caminar muy rápido",
+      "Abrir los brazos y mirar hacia adelante caminando despacio",
+      "Juntar los pies y saltar sobre la línea"
+     ],
+     "correcta": 1,
+     "porque": "Para el equilibrio, abrir los brazos ayuda a estabilizar el cuerpo, mirar al frente da un punto fijo de referencia y avanzar despacio permite corregir. Cerrar los ojos e ir rápido quita el control, y saltar con los pies juntos hace más fácil caerse. Es aplicar lo que sabemos del cuerpo para resolver el reto."
+    },
+    {
+     "q": "En un juego colectivo, tu equipo empieza a discutir y algunos no quieren pasar la pelota a los demás. Como buen compañero, ¿qué es lo mejor que puedes proponer?",
+     "ops": [
+      "Que solo jueguen los que corren más rápido",
+      "Que todos se pasen la pelota y se turnen para que el equipo juegue unido",
+      "Dejar de jugar y enojarse con el equipo"
+     ],
+     "correcta": 1,
+     "porque": "Los juegos colectivos buscan que todos participen y colaboren. Turnarse y compartir la pelota hace que el equipo funcione mejor y todos se sientan incluidos, viviendo valores como la solidaridad y el respeto. Excluir a compañeros o abandonar el juego rompe el trabajo en equipo y el sello de cuidar a los demás."
+    }
+   ],
+   "3": [
+    {
+     "q": "En el recreo, Matías siente el corazón muy acelerado y respira rápido después de jugar a la pinta corriendo por toda la cancha. Su compañera Sofía dice que eso significa que está enfermo y debe ir a la enfermería. ¿Qué es lo correcto?",
+     "ops": [
+      "Es normal: al hacer actividad física intensa el corazón late más rápido para llevar más oxígeno a los músculos",
+      "Sofía tiene razón, un corazón acelerado siempre es señal de enfermedad",
+      "Debe dejar de moverse para siempre porque correr le hace daño al corazón"
+     ],
+     "correcta": 0,
+     "porque": "Durante el ejercicio los músculos necesitan más oxígeno, por eso el corazón late más rápido y la respiración se acelera. Es una respuesta normal y saludable del cuerpo, no un signo de enfermedad. Reconocer estos cambios corporales es un OA de 3° básico."
+    },
+    {
+     "q": "El profesor propone dos formas de calentar antes de jugar fútbol en la clase: (A) empezar corriendo a máxima velocidad de inmediato, o (B) trotar suave, mover brazos y piernas, y luego aumentar de a poco. ¿Cuál es mejor y por qué?",
+     "ops": [
+      "La opción A, porque así se gana tiempo y se juega más rápido",
+      "La opción B, porque preparar el cuerpo de a poco calienta los músculos y ayuda a evitar lesiones",
+      "Las dos dan igual, el calentamiento no sirve para nada"
+     ],
+     "correcta": 1,
+     "porque": "El calentamiento gradual eleva la temperatura de los músculos y prepara al corazón y las articulaciones, reduciendo el riesgo de lesiones. Empezar a máxima intensidad sin preparación puede causar tirones o desgarros. Cuidar el propio cuerpo es también una forma de responsabilidad."
+    },
+    {
+     "q": "En un día caluroso de verano en Santiago, la clase de educación física es al aire libre a las 12 del día. Para cuidar la salud del curso, ¿qué recomendación es la más completa?",
+     "ops": [
+      "Tomar agua solo al final de la clase para no perder tiempo",
+      "Hidratarse antes, durante y después, usar gorro o buscar sombra y protegerse del sol",
+      "No tomar agua para acostumbrar el cuerpo al calor"
+     ],
+     "correcta": 1,
+     "porque": "Con calor el cuerpo pierde agua al transpirar, por eso hay que hidratarse antes, durante y después. El gorro, la sombra y el protector solar previenen golpes de calor e insolación. Cuidar la salud propia y la de los compañeros demuestra responsabilidad y autocuidado."
+    },
+    {
+     "q": "Durante un partido de básquetbol en la clase, el equipo de Camila está perdiendo. Un compañero empuja a un rival para quitarle la pelota y algunos festejan. ¿Cuál es la mejor actitud según el juego limpio?",
+     "ops": [
+      "Empujar está bien si sirve para ganar el partido",
+      "Respetar las reglas y a los rivales; ganar sin respeto no es una verdadera victoria",
+      "Solo importa el resultado, no cómo se juega"
+     ],
+     "correcta": 1,
+     "porque": "El juego limpio (fair play) valora el respeto por las reglas, los rivales y los compañeros por encima del resultado. Empujar es una falta y va contra el valor del respeto y la honestidad. En 3° básico se trabaja aplicar reglas y actitudes de juego limpio en actividades físicas."
+    },
+    {
+     "q": "El curso hará una caminata por un sendero del Cajón del Maipo. Antonia propone llevar snacks para reponer energía. Para cuidar la naturaleza y el propio cuerpo, ¿qué plan es el mejor?",
+     "ops": [
+      "Comer, botar los envoltorios en el camino y seguir, porque la naturaleza los absorbe",
+      "Comer alimentos con energía, guardar toda la basura en la mochila y llevarla de vuelta",
+      "No comer nada durante toda la caminata para no generar basura"
+     ],
+     "correcta": 1,
+     "porque": "En una caminata larga el cuerpo necesita reponer energía, así que comer es correcto. La basura NO se descompone rápido y daña el ecosistema, por eso se lleva de vuelta (principio de no dejar rastro). Cuida la salud del cuerpo y también el medioambiente, uniendo autocuidado y conciencia ecológica."
+    },
+    {
+     "q": "Benjamín come galletas y bebidas azucaradas todos los días y casi no se mueve; pasa las tardes viendo pantallas. Analiza: ¿qué combinación lo ayudaría a tener un cuerpo más sano?",
+     "ops": [
+      "Comer más frutas, verduras y agua, y jugar o moverse activamente varios días a la semana",
+      "Solo dejar de comer galletas, pero seguir sin moverse",
+      "Solo hacer deporte una vez al mes y seguir tomando bebidas azucaradas a diario"
+     ],
+     "correcta": 0,
+     "porque": "La salud depende de dos hábitos juntos: alimentación equilibrada (frutas, verduras, agua en vez de azúcar) y actividad física regular. Cambiar solo una cosa o hacerlo muy de vez en cuando no basta. En 3° básico se relacionan hábitos de alimentación y actividad física con un estilo de vida saludable."
+    },
+    {
+     "q": "En una carrera de postas por equipos, Vicente corre más lento que sus compañeros y está triste porque cree que hará perder al equipo. ¿Cuál es la mejor respuesta de sus compañeros?",
+     "ops": [
+      "Reírse de él y pedir que lo cambien por alguien más rápido",
+      "Animarlo, valorar su esfuerzo y recordar que lo importante es participar y mejorar juntos",
+      "Decirle que mejor no participe para asegurar la victoria"
+     ],
+     "correcta": 1,
+     "porque": "En las actividades físicas colaborativas se valora el esfuerzo, la inclusión y el trabajo en equipo por sobre solo ganar. Apoyar a un compañero que se esfuerza fortalece la solidaridad y la autoestima de todos. Burlarse o excluir daña la convivencia y va contra el respeto."
+    },
+    {
+     "q": "Después de una clase intensa de saltos y carreras, algunos niños quieren irse a sentar de inmediato. ¿Por qué el profesor pide hacer estiramientos suaves y bajar la intensidad al final (vuelta a la calma)?",
+     "ops": [
+      "Para perder tiempo antes del recreo",
+      "Porque bajar de a poco ayuda al cuerpo a recuperarse, relaja los músculos y evita mareos",
+      "Porque estirarse hace que se pierda toda la energía ganada en la clase"
+     ],
+     "correcta": 1,
+     "porque": "La vuelta a la calma permite que el corazón y la respiración vuelvan gradualmente a su ritmo normal, relaja los músculos trabajados y reduce el riesgo de mareos o molestias. Es parte del cuidado del cuerpo, tan importante como el calentamiento inicial."
+    }
+   ],
+   "4": [
+    {
+     "q": "Antonia corre los 50 metros en su clase de Educación Física en Temuco. Al terminar, su corazón late muy rápido y respira agitada. Su compañero dice que eso significa que está enferma. ¿Qué es lo correcto?",
+     "ops": [
+      "Es una respuesta normal: el corazón late más rápido para llevar más oxígeno a los músculos que trabajan",
+      "Está enferma y debe ir de inmediato a la enfermería",
+      "Su corazón está fallando porque late demasiado fuerte"
+     ],
+     "correcta": 0,
+     "porque": "Durante el ejercicio, los músculos necesitan más oxígeno, por eso el corazón late más rápido y la respiración se acelera. Es una respuesta saludable y esperada del cuerpo, no un signo de enfermedad."
+    },
+    {
+     "q": "En un día muy caluroso de enero en Santiago, la profesora planifica una clase de actividad física al aire libre. ¿Cuál es la mejor decisión para cuidar la salud del curso?",
+     "ops": [
+      "Hacer la actividad al mediodía sin agua para que se acostumbren al calor",
+      "Realizarla temprano o a la sombra, con protector solar, gorro y tomando agua frecuentemente",
+      "Suspender toda actividad física para siempre porque el sol es peligroso"
+     ],
+     "correcta": 1,
+     "porque": "Ante altas temperaturas hay que hidratarse, protegerse del sol (gorro, bloqueador, sombra) y evitar las horas de mayor radiación. Así se cuida la salud sin dejar de moverse; suspender del todo o exponerse sin cuidado son extremos incorrectos."
+    },
+    {
+     "q": "Un grupo organiza un partido de fútbol en el recreo, pero llega Matías, que usa silla de ruedas, y quiere jugar. ¿Qué decisión demuestra mejor el valor del respeto y la inclusión?",
+     "ops": [
+      "Adaptar el juego (por ejemplo, pases con las manos o roles donde todos participen) para que Matías juegue con el grupo",
+      "Dejar que Matías solo mire desde un costado porque no puede correr",
+      "Cambiar a otro juego y pedirle a Matías que se retire"
+     ],
+     "correcta": 0,
+     "porque": "La inclusión significa adaptar las reglas para que todos puedan participar según sus posibilidades. Excluir o apartar a un compañero contradice el respeto y el trabajo en equipo; adaptar el juego valora a cada persona."
+    },
+    {
+     "q": "Camila quiere mejorar su resistencia para el cross del colegio en Valdivia. Analiza estas rutinas semanales: ¿cuál la ayudará mejor a lograr su meta?",
+     "ops": [
+      "Correr una sola vez muy rápido hasta agotarse y no volver a entrenar en el mes",
+      "Trotar suave 3 veces por semana aumentando poco a poco el tiempo, con descanso entre días",
+      "Quedarse sentada viendo videos de corredores todos los días"
+     ],
+     "correcta": 1,
+     "porque": "La resistencia mejora con práctica regular y progresiva: entrenar varias veces por semana, aumentando de a poco y descansando para recuperarse. Un solo esfuerzo extremo o solo mirar no desarrollan la capacidad física."
+    },
+    {
+     "q": "Antes de una clase de saltos y carreras, el profesor pide hacer 5 minutos de trote suave y movimientos de brazos y piernas. Un estudiante pregunta por qué no empiezan altiro con los saltos fuertes. ¿Cuál es la mejor explicación?",
+     "ops": [
+      "El calentamiento prepara al cuerpo y los músculos, reduciendo el riesgo de lesiones",
+      "El calentamiento sirve solo para perder tiempo antes de la clase",
+      "Es mejor empezar con el máximo esfuerzo para cansarse rápido y terminar antes"
+     ],
+     "correcta": 0,
+     "porque": "El calentamiento aumenta gradualmente la temperatura de los músculos y la frecuencia cardíaca, preparando al cuerpo para el esfuerzo y disminuyendo el riesgo de lesiones. Empezar en frío con esfuerzo máximo es peligroso."
+    },
+    {
+     "q": "Después de un partido de básquetbol en el gimnasio, quedan botellas plásticas de agua tiradas en la cancha. Pensando en el cuidado del cuerpo y del planeta, ¿qué decisión combina ambas cosas?",
+     "ops": [
+      "Dejar las botellas ahí porque limpiar es tarea del auxiliar",
+      "Recoger las botellas y reciclarlas, y preferir una botella reutilizable para las próximas clases",
+      "Comprar una botella plástica nueva cada clase y botarla al terminar"
+     ],
+     "correcta": 1,
+     "porque": "Hidratarse cuida el cuerpo, y hacerlo con una botella reutilizable y reciclando la basura cuida el medioambiente. Dejar residuos o generar plástico desechable cada clase daña la naturaleza; ambos cuidados pueden ir juntos."
+    },
+    {
+     "q": "En un juego de quemados, el equipo de Sofía va ganando. Un compañero propone hacer trampa moviendo la línea para eliminar más rápido al otro equipo. Sofía debe decidir. ¿Qué opción refleja el juego limpio (fair play)?",
+     "ops": [
+      "Aceptar la trampa porque ganar es lo único que importa",
+      "Respetar las reglas y jugar con honestidad, aunque eso signifique que el partido sea más parejo",
+      "Hacer la trampa solo si el árbitro no está mirando"
+     ],
+     "correcta": 1,
+     "porque": "El juego limpio significa respetar las reglas y a los rivales, valorando el esfuerzo por sobre el resultado. Hacer trampa, incluso a escondidas, rompe la confianza y la honestidad que hacen que el deporte sea justo y entretenido para todos."
+    },
+    {
+     "q": "Para armar una colación saludable antes de un día con mucha actividad física, Benjamín tiene tres opciones en su casa en Chillán. ¿Cuál le dará mejor energía y cuidará su salud?",
+     "ops": [
+      "Una bebida azucarada y papas fritas",
+      "Fruta (como una manzana o plátano), agua y un puñado de frutos secos",
+      "Solo dulces y galletas rellenas para tener azúcar rápida"
+     ],
+     "correcta": 1,
+     "porque": "La fruta aporta energía natural, vitaminas y agua para hidratarse, y los frutos secos dan energía duradera. Los alimentos muy azucarados o fritos dan energía breve y en exceso perjudican la salud; una colación equilibrada sostiene mejor la actividad física."
+    }
+   ],
+   "5": [
+    {
+     "q": "En la Corrida Familiar de Fiestas Patrias, Martín trota 2 km. Antes de partir salta directo a correr sin preparación. A mitad de camino siente una molestia fuerte en la pantorrilla. ¿Qué error cometió y cómo debió prepararse según lo aprendido en clases?",
+     "ops": [
+      "No hizo calentamiento: debió empezar con trote suave y movilidad articular para aumentar de a poco la temperatura del músculo antes del esfuerzo",
+      "Corrió muy lento al inicio: debió partir a máxima velocidad para que los músculos no se enfriaran",
+      "Comió mucho antes: debió correr en ayunas para tener el estómago vacío y rendir más"
+     ],
+     "correcta": 0,
+     "porque": "El calentamiento gradual (trote suave y movilidad articular) prepara los músculos y articulaciones, aumentando la temperatura corporal y el flujo de sangre. Esto reduce el riesgo de lesiones como calambres o desgarros. Partir a máxima velocidad o correr en ayunas son prácticas riesgosas y sin respaldo."
+    },
+    {
+     "q": "Dos cursos juegan un partido de fútbol en el recreo. El equipo de Sofía va ganando y algunos compañeros empiezan a burlarse de los que van perdiendo. Sofía es la capitana. Aplicando el juego limpio (fair play), ¿cuál es la MEJOR decisión?",
+     "ops": [
+      "Dejar que sigan porque ganar es lo más importante en un partido",
+      "Frenar las burlas de su equipo y recordar que se juega para disfrutar y respetar al rival, ganar o perder",
+      "Burlarse ella también para motivar más a su equipo y desconcentrar al rival"
+     ],
+     "correcta": 1,
+     "porque": "El juego limpio y el respeto al adversario son valores centrales de la Educación Física. Un buen líder promueve la sana competencia y el respeto, no la humillación del rival. Ganar no justifica faltar el respeto; el deporte forma el carácter y la convivencia."
+    },
+    {
+     "q": "Al terminar una clase de actividad física intensa en un día caluroso de verano en Santiago, ¿cuál es la decisión más saludable Y más responsable con el medioambiente para hidratarse?",
+     "ops": [
+      "Comprar una bebida gaseosa azucarada bien fría porque repone energía rápido",
+      "Tomar agua de su botella reutilizable, porque hidrata mejor sin azúcar añadida y evita generar basura plástica",
+      "No tomar nada hasta llegar a casa para no cortar la digestión"
+     ],
+     "correcta": 1,
+     "porque": "El agua es la mejor opción para hidratarse tras el ejercicio, sin el azúcar de las gaseosas que no aporta beneficios reales. Usar una botella reutilizable reduce residuos plásticos, cuidando el medioambiente. No hidratarse en calor es peligroso y puede causar deshidratación."
+    },
+    {
+     "q": "Antonia mide su pulso en reposo (sentada) y luego después de correr por 3 minutos. En reposo cuenta 20 latidos en 15 segundos; después de correr cuenta 35 en 15 segundos. ¿Qué demuestra este cambio sobre su cuerpo?",
+     "ops": [
+      "Que su corazón se enfermó por correr, ya que late demasiado rápido",
+      "Que su corazón late más rápido durante el ejercicio para llevar más oxígeno a los músculos que están trabajando",
+      "Que el conteo estuvo mal, porque el pulso siempre debe ser igual en reposo y en movimiento"
+     ],
+     "correcta": 1,
+     "porque": "Durante el ejercicio los músculos necesitan más oxígeno, por eso el corazón late más rápido para bombear más sangre. Es una respuesta normal y saludable del cuerpo (20 latidos en 15s = 80 por minuto en reposo; 35 en 15s = 140 por minuto en esfuerzo). No es enfermedad, es adaptación."
+    },
+    {
+     "q": "En una clase de gimnasia, el profesor pide crear una secuencia con tres cualidades: equilibrio, giro y salto. Diego quiere que su rutina fluya bien. ¿Cuál orden y criterio es MÁS lógico para una buena ejecución?",
+     "ops": [
+      "Empezar con el equilibrio (postura estable y controlada), luego el giro y terminar con el salto, encadenando cada movimiento con control para que la transición sea fluida",
+      "Hacer los tres movimientos al mismo tiempo para que sea más difícil y espectacular",
+      "Hacer primero el salto con toda la fuerza y después intentar quedarse quieto en equilibrio de inmediato"
+     ],
+     "correcta": 0,
+     "porque": "Una secuencia motriz de calidad requiere control y transiciones fluidas entre movimientos. Comenzar estable (equilibrio) permite encadenar el giro y cerrar con el salto de forma controlada. Hacer todo a la vez es imposible de ejecutar bien, y saltar con máxima fuerza justo antes de un equilibrio dificulta el control postural."
+    },
+    {
+     "q": "Un semáforo de la alimentación clasifica alimentos en verde (comer siempre), amarillo (a veces) y rojo (ocasional). Para la colación de un día con clase de Educación Física, ¿cuál elección combina buena energía y respeto por el medioambiente?",
+     "ops": [
+      "Papas fritas en bolsa y una barra de chocolate, porque dan energía rápida antes de moverse",
+      "Una fruta de la estación y frutos secos llevados en un envase reutilizable, porque aportan energía nutritiva y generan menos basura",
+      "Un jugo en caja y galletas rellenas, porque son fáciles de llevar en la mochila"
+     ],
+     "correcta": 1,
+     "porque": "La fruta y los frutos secos son alimentos del grupo verde: aportan energía, vitaminas y fibra ideales antes de la actividad física. Llevarlos en envase reutilizable evita residuos, cuidando el planeta. Las papas fritas, chocolates y galletas rellenas son alimentos rojos (ocasionales) y suelen venir con mucho envoltorio plástico."
+    },
+    {
+     "q": "En una prueba de lanzamiento, Vicente lanza la pelota solo con el brazo y llega poco lejos. El profesor le dice que use todo el cuerpo. ¿Qué explicación es correcta sobre cómo lanzar más lejos?",
+     "ops": [
+      "Debe usar solo la fuerza del brazo, pero apretándolo mucho más fuerte y rígido",
+      "Debe coordinar piernas, tronco y brazo: dar un paso, girar el cuerpo y soltar la pelota al final, sumando la fuerza de todo el cuerpo",
+      "Debe cerrar los ojos y lanzar rápido sin pensar, porque así usa más fuerza"
+     ],
+     "correcta": 1,
+     "porque": "Un lanzamiento eficiente encadena la fuerza desde las piernas, pasa por la rotación del tronco y termina en el brazo. Esta coordinación suma la energía de todo el cuerpo, logrando más distancia. Usar solo el brazo desperdicia potencia; la técnica coordinada rinde más que la fuerza aislada."
+    },
+    {
+     "q": "El curso planifica una caminata de senderismo en un cerro cercano (como el Cerro San Cristóbal). Analizando seguridad, salud y cuidado de la naturaleza, ¿qué plan es el más completo y responsable?",
+     "ops": [
+      "Llevar agua, gorro y protector solar, avanzar a un ritmo que todos puedan seguir, y devolverse con toda la basura para no dejar rastro en el cerro",
+      "Ir lo más rápido posible para llegar primero a la cima, aunque algunos compañeros queden atrás y cansados",
+      "Dejar las envolturas de la colación en el sendero porque la naturaleza las va a absorber sola"
+     ],
+     "correcta": 0,
+     "porque": "Una salida responsable cuida la salud (hidratación, gorro, protector solar), la seguridad grupal (ritmo inclusivo para que nadie quede solo o agotado) y el medioambiente (llevarse toda la basura, principio de no dejar rastro). Apurarse dejando atrás compañeros rompe el trabajo en equipo, y botar basura daña el ecosistema del cerro."
+    }
+   ],
+   "6": [
+    {
+     "q": "En un partido de fútbol en el patio de tu colegio en Rancagua, un compañero corre a máxima velocidad y de repente se detiene para cambiar de dirección y esquivar a un rival. ¿Qué combinación de capacidades físicas está usando principalmente en esa jugada?",
+     "ops": [
+      "Velocidad y agilidad, porque debe desplazarse rápido y cambiar de dirección con control del cuerpo",
+      "Solo flexibilidad, porque estira las piernas al correr",
+      "Solo fuerza máxima, porque empuja el balón con potencia"
+     ],
+     "correcta": 0,
+     "porque": "El cambio brusco de dirección tras una carrera rápida exige velocidad (desplazamiento veloz) y agilidad (reorganizar el cuerpo para cambiar de dirección con equilibrio y control). La flexibilidad y la fuerza máxima aisladas no explican la jugada; lo determinante es coordinar velocidad con control corporal."
+    },
+    {
+     "q": "Antes de la clase de Educación Física haces un calentamiento de 10 minutos con trote suave y movilidad articular. Un compañero dice que es pérdida de tiempo y prefiere partir corriendo al máximo de inmediato. ¿Cuál es el argumento correcto para convencerlo?",
+     "ops": [
+      "Tiene razón: calentar cansa y baja el rendimiento",
+      "El calentamiento eleva gradualmente la frecuencia cardíaca y prepara músculos y articulaciones, reduciendo el riesgo de lesiones",
+      "Da lo mismo, porque el cuerpo rinde igual esté frío o caliente"
+     ],
+     "correcta": 1,
+     "porque": "El calentamiento aumenta progresivamente la temperatura muscular, el flujo sanguíneo y la frecuencia cardíaca, mejorando la elasticidad de músculos y tendones. Esto prepara al cuerpo para el esfuerzo y disminuye el riesgo de lesiones como desgarros. Partir al máximo en frío es justamente lo que más lesiona."
+    },
+    {
+     "q": "Mides tu frecuencia cardíaca en reposo (70 pulsaciones/min) y luego de 5 minutos saltando la cuerda (150 pulsaciones/min). ¿Qué interpretación es la correcta sobre lo que ocurre en tu cuerpo?",
+     "ops": [
+      "El corazón late más rápido porque los músculos necesitan más oxígeno y energía durante el esfuerzo",
+      "El corazón se está debilitando por el ejercicio y por eso late más",
+      "El aumento no tiene relación con el ejercicio, es solo por los nervios"
+     ],
+     "correcta": 0,
+     "porque": "Al hacer ejercicio los músculos consumen más oxígeno y nutrientes; para transportarlos, el corazón bombea más veces por minuto, subiendo la frecuencia cardíaca. No es debilidad sino una respuesta normal y saludable del sistema cardiovascular al esfuerzo, y con entrenamiento el corazón se fortalece."
+    },
+    {
+     "q": "Tu curso organiza una caminata a un cerro cercano en la Región Metropolitana. Para cuidar tanto su salud como el entorno natural, ¿qué decisión combina mejor una vida activa con el respeto ecológico?",
+     "ops": [
+      "Llevar bebidas en muchas botellas plásticas desechables y dejarlas en el cerro para no cargar peso de vuelta",
+      "Llevar agua en botella reutilizable, hidratarse durante la caminata y regresar toda la basura para dejar el sendero limpio",
+      "Ir en auto hasta la cima para no cansarse ni ensuciar"
+     ],
+     "correcta": 1,
+     "porque": "La opción correcta integra el autocuidado (hidratación durante la actividad física) con la conciencia ecológica (no dejar residuos, principio de 'no dejar rastro'). Dejar plástico contamina el ecosistema, y subir en auto elimina el beneficio de la actividad física, que era el propósito de la caminata."
+    },
+    {
+     "q": "Un compañero quiere mejorar su resistencia para correr los 1000 metros de la clase sin agotarse. Otro quiere mejorar su fuerza para trepar la cuerda. ¿Cuál plan de entrenamiento es el más adecuado para cada objetivo?",
+     "ops": [
+      "Ambos deben hacer exactamente lo mismo: solo estiramientos",
+      "Para resistencia: trotes largos y continuos; para fuerza: ejercicios como flexiones, sentadillas o trepar, con esfuerzos más intensos y breves",
+      "Para resistencia: levantar mucho peso pocas veces; para fuerza: trotar despacio una hora"
+     ],
+     "correcta": 1,
+     "porque": "La resistencia aeróbica se desarrolla con esfuerzos prolongados y de intensidad moderada (trotes continuos). La fuerza se desarrolla con esfuerzos intensos y breves contra una resistencia (flexiones, sentadillas, trepar). Cada capacidad física requiere un tipo de estímulo distinto; por eso los planes deben ser diferentes según el objetivo."
+    },
+    {
+     "q": "En un juego colectivo, tu equipo va perdiendo y un compañero comienza a burlarse de otro por fallar un pase. Como parte del equipo, ¿cuál es la actitud que refleja verdadero juego limpio y respeto?",
+     "ops": [
+      "Sumarte a las burlas para que el compañero se esfuerce más por vergüenza",
+      "Detener las burlas, animar al compañero y recordar que el error es parte del juego y todos aprenden en equipo",
+      "Ignorar la situación porque cada uno se defiende solo"
+     ],
+     "correcta": 1,
+     "porque": "El juego limpio y el respeto implican apoyar a los compañeros, especialmente en el error, y mantener un ambiente de colaboración. Burlarse daña la autoestima y rompe el trabajo en equipo; ignorar el maltrato lo permite. Animar y contener refleja las virtudes de solidaridad y respeto que sostienen el deporte formativo."
+    },
+    {
+     "q": "Analiza estos dos desayunos antes de un día con clase de Educación Física: A) un vaso de bebida azucarada y papas fritas; B) avena con fruta, pan integral y agua. ¿Cuál favorece más un buen rendimiento físico y por qué?",
+     "ops": [
+      "El A, porque el azúcar da energía rápida y es lo único que importa",
+      "El B, porque aporta energía más sostenida, nutrientes y buena hidratación para el esfuerzo físico",
+      "Da lo mismo, porque la alimentación no influye en el rendimiento físico"
+     ],
+     "correcta": 1,
+     "porque": "Los carbohidratos complejos de la avena y el pan integral, junto con la fruta y el agua, entregan energía sostenida y nutrientes para el esfuerzo, además de buena hidratación. La bebida azucarada da un pico breve de energía seguido de bajón, y las frituras son difíciles de digerir. La alimentación sí influye directamente en el rendimiento y la salud."
+    },
+    {
+     "q": "Tu profesor propone crear una rutina saludable para tener una vida activa toda la semana, no solo en la clase de Educación Física. ¿Cuál de estas propuestas cumple mejor con las recomendaciones de actividad física para tu edad?",
+     "ops": [
+      "Hacer ejercicio intenso solo una vez a la semana durante tres horas seguidas y estar sentado el resto de los días",
+      "Realizar al menos 60 minutos diarios de actividad física variada, como caminar al colegio, jugar en el recreo y andar en bicicleta",
+      "No hacer nada extra, porque la clase de Educación Física de una vez por semana ya es suficiente"
+     ],
+     "correcta": 1,
+     "porque": "Las recomendaciones para niños y niñas de esta edad indican acumular al menos 60 minutos diarios de actividad física, distribuidos en actividades cotidianas y variadas. Concentrar todo en una sesión larga semanal y pasar el resto sedentario no reemplaza el movimiento diario, y una sola clase a la semana es insuficiente para una vida activa y saludable."
     }
    ]
   }
