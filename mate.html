@@ -605,7 +605,7 @@ function genGemelo(q){
   if(op==='suma'||op==='resta'){ const obj=necesitaLlevar(q); for(let t=0;t<40;t++){ const g=genPregunta(op,q.L); if(necesitaLlevar(g)===obj) return g; } }
   return genPregunta(op,q.L);
 }
-// ===== Contenido de QUINTO BÁSICO (currículum MINEDUC) para el examen progresivo =====
+// ===== Contenido de QUINTO BÁSICO (currículo escolar chileno) para el examen progresivo =====
 function genX10(nivel){ // multiplicar por 10, 100, 1000
   const k=rnd(1,Math.min(3,nivel)); const base=rnd(2,9), a=base*Math.pow(10,k), b=rnd(2,9);
   return {tipo:'multi', texto:`${a} × ${b}`, r:a*b, a, b, L:3};
