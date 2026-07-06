@@ -23711,5 +23711,3068 @@ window.CONTENIDO = {
     }
    ]
   }
+ },
+ "matematicas": {
+  "nombre": "Matemática",
+  "emoji": "➗",
+  "lang": "es-CL",
+  "cursos": {
+   "1": [
+    {
+     "id": "numeros-hasta-100",
+     "nombre": "Números hasta el 100",
+     "emoji": "🔢",
+     "oa": "OA1 a OA6: contar hasta 100 de 1 en 1, de 2 en 2, de 5 en 5 y de 10 en 10; leer, comparar, ordenar, componer y descomponer números hasta 20.",
+     "intro": "Los números nos ayudan a contar, ordenar y comparar todo lo que nos rodea, ¡desde tus juguetes hasta las estrellas!",
+     "items": [
+      {
+       "t": "Número",
+       "d": "Nos dice cuántas cosas hay. Si tienes 7 láminas, el número 7 dice la cantidad exacta.",
+       "e": "7️⃣",
+       "en": "Number"
+      },
+      {
+       "t": "Contar de 1 en 1",
+       "d": "Decir los números en orden sin saltarse ninguno: 1, 2, 3, 4, 5… Cada cosa se cuenta una sola vez.",
+       "e": "👆",
+       "en": "Counting by ones"
+      },
+      {
+       "t": "Contar de 10 en 10",
+       "d": "Un truco para contar rápido: 10, 20, 30, 40… Si hay 3 bolsas con 10 dulces, cuentas 10, 20, 30.",
+       "e": "🚀",
+       "en": "Counting by tens"
+      },
+      {
+       "t": "Mayor y menor",
+       "d": "Comparar números para saber cuál es más grande. 15 es mayor que 12, porque 15 está después de 12 al contar.",
+       "e": "⚖️",
+       "en": "Greater and less"
+      },
+      {
+       "t": "Decena y unidad",
+       "d": "Una decena es un grupo de 10. En el número 14 hay 1 decena (que vale 10) y 4 unidades.",
+       "e": "🔟",
+       "en": "Tens and ones"
+      },
+      {
+       "t": "Cero",
+       "d": "El cero significa que no hay nada. Si tenías 3 galletas y te las comiste todas, ahora tienes 0 galletas.",
+       "e": "⭕",
+       "en": "Zero"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los incas, que también vivieron en el norte de Chile, contaban con nudos en cuerdas de colores llamadas quipus? ¡Cada nudo era un número!",
+      "¿Sabías que el cero tardó miles de años en inventarse? Antes la gente no tenía cómo escribir \"nada\". ¡Hoy lo usamos todos los días!"
+     ],
+     "retos": [
+      {
+       "q": "La abuela compra en la feria 3 bolsas de naranjas. Cada bolsa trae 10 naranjas. ¿Cuántas naranjas compró en total?",
+       "ops": [
+        "13 naranjas",
+        "30 naranjas",
+        "3 naranjas"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: cada bolsa tiene 10 naranjas, así que contamos de 10 en 10. Paso 2: primera bolsa: 10. Segunda bolsa: 20. Tercera bolsa: 30. Paso 3: en total son 30 naranjas. ¡Contar de 10 en 10 es más rápido que de 1 en 1!"
+      },
+      {
+       "q": "Martín juntó tapitas de botellas para reciclar. Juntó un número MAYOR que 12 y MENOR que 14. ¿Cuántas tapitas juntó?",
+       "ops": [
+        "11 tapitas",
+        "13 tapitas",
+        "16 tapitas"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: buscamos un número que esté después del 12 y antes del 14. Paso 2: contamos: 12, 13, 14. El único número entre medio es el 13. Paso 3: 11 no sirve porque es menor que 12, y 16 no sirve porque es mayor que 14. ¡Y reciclar tapitas ayuda a cuidar el planeta!"
+      }
+     ]
+    },
+    {
+     "id": "sumar-y-restar",
+     "nombre": "Sumar y restar hasta 20",
+     "emoji": "➕",
+     "oa": "OA9 y OA10: demostrar que comprende la adición y la sustracción de números del 0 al 20, componiendo y descomponiendo cantidades, y que la suma y la resta son operaciones inversas.",
+     "intro": "Sumar es juntar y restar es quitar: dos superpoderes que usas todos los días, ¡hasta cuando compras pan!",
+     "items": [
+      {
+       "t": "Suma (adición)",
+       "d": "Juntar dos cantidades para saber el total. Si tienes 5 bolitas y ganas 3 más, tienes 5 + 3 = 8 bolitas.",
+       "e": "➕",
+       "en": "Addition"
+      },
+      {
+       "t": "Resta (sustracción)",
+       "d": "Quitar una cantidad de otra. Si tienes 9 galletas y comes 4, quedan 9 − 4 = 5 galletas.",
+       "e": "➖",
+       "en": "Subtraction"
+      },
+      {
+       "t": "Sumandos y total",
+       "d": "Los números que juntamos se llaman sumandos y el resultado es el total. En 6 + 2 = 8, los sumandos son 6 y 2, y el total es 8.",
+       "e": "🧮",
+       "en": "Addends and sum"
+      },
+      {
+       "t": "Descomponer un número",
+       "d": "Separar un número en partes. El 10 se puede descomponer en 7 y 3, o en 5 y 5, ¡como partir una barra de chocolate!",
+       "e": "🍫",
+       "en": "Decomposing a number"
+      },
+      {
+       "t": "Familia de operaciones",
+       "d": "La suma y la resta son amigas: si 4 + 6 = 10, entonces 10 − 6 = 4 y 10 − 4 = 6. ¡Una te ayuda a comprobar la otra!",
+       "e": "👨‍👩‍👧",
+       "en": "Fact family"
+      },
+      {
+       "t": "Contar hacia adelante",
+       "d": "Un truco para sumar: parte del número más grande. Para 8 + 3, di \"8\" y cuenta 3 más: 9, 10, 11.",
+       "e": "🐾",
+       "en": "Counting on"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los signos + y − se empezaron a escribir hace más de 500 años? Antes la gente escribía con palabras: \"cinco más tres\".",
+      "¿Sabías que en Chile hay monedas de $10, $50, $100 y $500? Cuando pagas y te dan el vuelto, ¡el cajero está restando! Y devolver el vuelto correcto es un acto de honestidad."
+     ],
+     "retos": [
+      {
+       "q": "Josefa tenía 12 láminas de su álbum. Le regaló 4 a su hermano y después su mamá le compró 5 más. ¿Cuántas láminas tiene ahora?",
+       "ops": [
+        "13 láminas",
+        "21 láminas",
+        "11 láminas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: Josefa regala 4, entonces restamos: 12 − 4 = 8. Paso 2: su mamá le compra 5 más, entonces sumamos: 8 + 5 = 13. Paso 3: tiene 13 láminas. ¡Ojo! Hay que hacer las dos operaciones en orden, y compartir con el hermano fue un lindo gesto."
+      },
+      {
+       "q": "Tomás quiere comprar un dulce que cuesta $70 en el kiosco. Tiene 5 monedas de $10. ¿Cuántas monedas de $10 le faltan?",
+       "ops": [
+        "2 monedas",
+        "7 monedas",
+        "5 monedas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: $70 son 7 monedas de $10, porque contamos de 10 en 10: 10, 20, 30, 40, 50, 60, 70. Paso 2: Tomás tiene 5 monedas. Paso 3: pensamos 5 + ? = 7. Como 5 + 2 = 7, le faltan 2 monedas de $10."
+      }
+     ]
+    },
+    {
+     "id": "patrones-e-igualdad",
+     "nombre": "Patrones e igualdad",
+     "emoji": "🧩",
+     "oa": "OA11 y OA12: reconocer, describir, crear y continuar patrones repetitivos; describir la igualdad y la desigualdad usando una balanza.",
+     "intro": "Los patrones son secuencias que se repiten y están en todas partes: en la música, en los tejidos y hasta en los días de la semana.",
+     "items": [
+      {
+       "t": "Patrón",
+       "d": "Algo que se repite siempre en el mismo orden. Ejemplo: 🔴🔵🔴🔵🔴… lo que sigue es 🔵.",
+       "e": "🔁",
+       "en": "Pattern"
+      },
+      {
+       "t": "Núcleo del patrón",
+       "d": "La parte que se repite. En 🌟🌙🌟🌙🌟🌙, el núcleo es 🌟🌙 (dos elementos que se repiten una y otra vez).",
+       "e": "💠",
+       "en": "Pattern core"
+      },
+      {
+       "t": "Continuar un patrón",
+       "d": "Descubrir qué viene después. En 2, 4, 6, 8… el patrón suma 2, así que sigue el 10.",
+       "e": "➡️",
+       "en": "Extending a pattern"
+      },
+      {
+       "t": "Igualdad",
+       "d": "Cuando dos lados valen lo mismo, usamos el signo =. Por ejemplo, 3 + 5 = 8, porque los dos lados valen 8.",
+       "e": "🟰",
+       "en": "Equality"
+      },
+      {
+       "t": "Desigualdad",
+       "d": "Cuando dos lados NO valen lo mismo. 6 no es igual a 4 + 3, porque 4 + 3 = 7 y 7 es distinto de 6.",
+       "e": "🚫",
+       "en": "Inequality"
+      },
+      {
+       "t": "Balanza",
+       "d": "Sirve para comparar: si los dos lados pesan igual, queda derecha (igualdad); si un lado baja, ese lado tiene más (desigualdad).",
+       "e": "⚖️",
+       "en": "Balance scale"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los tejidos mapuche tienen hermosos patrones que se repiten? Las tejedoras siguen la secuencia con mucha memoria y esfuerzo, ¡sin equivocarse!",
+      "¿Sabías que los días de la semana son un patrón que se repite? Lunes, martes, miércoles… y después del domingo, ¡el patrón empieza de nuevo!"
+     ],
+     "retos": [
+      {
+       "q": "Para Fiestas Patrias, el curso cuelga banderines siguiendo este patrón: rojo, blanco, azul, rojo, blanco, azul… ¿De qué color será el banderín número 9?",
+       "ops": [
+        "Rojo",
+        "Blanco",
+        "Azul"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: el núcleo del patrón tiene 3 colores: rojo (1), blanco (2), azul (3). Paso 2: el azul cae en las posiciones 3, 6 y 9, porque el patrón se repite cada 3. Paso 3: el banderín número 9 es azul. ¡No hace falta dibujarlos todos si descubres el patrón!"
+      },
+      {
+       "q": "En una balanza, un lado tiene 5 + 3. ¿Cuál de estas opciones debes poner al otro lado para que quede equilibrada?",
+       "ops": [
+        "4 + 4",
+        "6 + 3",
+        "2 + 5"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: calculamos el primer lado: 5 + 3 = 8. Paso 2: revisamos cada opción con honestidad, sin adivinar: 4 + 4 = 8 ✔, 6 + 3 = 9 ✘, 2 + 5 = 7 ✘. Paso 3: solo 4 + 4 vale 8, igual que 5 + 3, así que la balanza queda equilibrada."
+      }
+     ]
+    },
+    {
+     "id": "figuras-y-cuerpos",
+     "nombre": "Figuras y cuerpos geométricos",
+     "emoji": "🔷",
+     "oa": "OA13 y OA14: describir posiciones de objetos y personas; identificar figuras 2D y cuerpos 3D en el entorno.",
+     "intro": "¡La geometría está escondida en todas partes: en una pelota, en una caja de zapatos y hasta en la empanada!",
+     "items": [
+      {
+       "t": "Círculo",
+       "d": "Figura redonda, sin lados ni esquinas. Una moneda de $100 y el kultrún mapuche tienen forma de círculo.",
+       "e": "⚪",
+       "en": "Circle"
+      },
+      {
+       "t": "Cuadrado",
+       "d": "Figura con 4 lados iguales y 4 esquinas. Un tablero de ajedrez está lleno de cuadrados.",
+       "e": "🟥",
+       "en": "Square"
+      },
+      {
+       "t": "Triángulo",
+       "d": "Figura con 3 lados y 3 esquinas. ¡Un pedazo de pizza y muchas montañas de la cordillera parecen triángulos!",
+       "e": "🔺",
+       "en": "Triangle"
+      },
+      {
+       "t": "Rectángulo",
+       "d": "Figura con 4 lados y 4 esquinas, pero 2 lados son largos y 2 son cortos, como una puerta o tu cuaderno.",
+       "e": "🚪",
+       "en": "Rectangle"
+      },
+      {
+       "t": "Cuerpos geométricos",
+       "d": "Formas con volumen que puedes tomar: la pelota es una esfera, un dado es un cubo y una lata de jugo es un cilindro.",
+       "e": "🎲",
+       "en": "3D shapes"
+      },
+      {
+       "t": "Posición",
+       "d": "Palabras que dicen dónde está algo: arriba, abajo, delante, detrás, izquierda y derecha. El lápiz está SOBRE la mesa.",
+       "e": "🧭",
+       "en": "Position"
+      }
+     ],
+     "datos": [
+      "¿Sabías que las abejas construyen sus panales con hexágonos, figuras de 6 lados? ¡Es la forma que aprovecha mejor el espacio y no desperdicia nada!",
+      "¿Sabías que la pelota de fútbol clásica está hecha de pentágonos negros y hexágonos blancos cosidos? ¡La geometría también juega a la pelota!"
+     ],
+     "retos": [
+      {
+       "q": "Camila dibuja una figura para su cometa de septiembre: tiene 4 lados y 4 esquinas, pero 2 lados son largos y 2 son cortos. ¿Qué figura dibujó?",
+       "ops": [
+        "Un cuadrado",
+        "Un rectángulo",
+        "Un triángulo"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: el triángulo se descarta porque tiene solo 3 lados, no 4. Paso 2: el cuadrado tiene 4 lados, pero TODOS iguales. Paso 3: la figura con 4 lados donde 2 son largos y 2 son cortos es el rectángulo. ¡Hay que fijarse en todas las pistas, no solo en una!"
+      },
+      {
+       "q": "En el almacén, don Pedro apila cajas de té una sobre otra sin que se caigan, pero las naranjas ruedan y no se pueden apilar igual. ¿Por qué pasa esto?",
+       "ops": [
+        "Porque las cajas tienen caras planas y las naranjas son como esferas que ruedan",
+        "Porque las naranjas pesan más que las cajas",
+        "Porque las cajas son de color café"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: las cajas son como cubos o cajas rectangulares: tienen caras planas que se apoyan bien una sobre otra. Paso 2: las naranjas son como esferas: son redondas por todos lados y por eso ruedan. Paso 3: el peso y el color no explican por qué ruedan. ¡La forma de los cuerpos cambia cómo se comportan!"
+      }
+     ]
+    },
+    {
+     "id": "medir-y-tiempo",
+     "nombre": "Medición y tiempo",
+     "emoji": "📏",
+     "oa": "OA17 a OA19: comparar la longitud de objetos usando palabras como más largo y más corto; secuenciar eventos en el tiempo e identificar días, semanas y meses.",
+     "intro": "Medir es comparar: podemos comparar cuánto mide algo usando pasos o clips, y también medir el tiempo con días, semanas y meses.",
+     "items": [
+      {
+       "t": "Más largo y más corto",
+       "d": "Comparar longitudes. Un tallarín estirado es más largo que un fideo corbatita; tu brazo es más largo que tu dedo.",
+       "e": "📐",
+       "en": "Longer and shorter"
+      },
+      {
+       "t": "Medir con objetos",
+       "d": "Usar cosas iguales para medir: la mesa mide 10 clips de largo, o tu pieza mide 8 pasos. ¡Los objetos deben ser todos del mismo tamaño!",
+       "e": "🖇️",
+       "en": "Measuring with objects"
+      },
+      {
+       "t": "Días de la semana",
+       "d": "Son 7 y siempre van en el mismo orden: lunes, martes, miércoles, jueves, viernes, sábado y domingo.",
+       "e": "📅",
+       "en": "Days of the week"
+      },
+      {
+       "t": "Meses del año",
+       "d": "El año tiene 12 meses, de enero a diciembre. En Chile, las vacaciones largas son en enero y febrero, ¡en pleno verano!",
+       "e": "🗓️",
+       "en": "Months of the year"
+      },
+      {
+       "t": "Ayer, hoy y mañana",
+       "d": "Palabras para ordenar el tiempo. Si hoy es miércoles, ayer fue martes y mañana será jueves.",
+       "e": "⏰",
+       "en": "Yesterday, today and tomorrow"
+      },
+      {
+       "t": "Antes y después",
+       "d": "Orden de los eventos: ANTES de almorzar te lavas las manos, DESPUÉS de la escuela haces tus tareas.",
+       "e": "🔄",
+       "en": "Before and after"
+      }
+     ],
+     "datos": [
+      "¿Sabías que hace mucho tiempo la gente medía con partes del cuerpo, como el pie o el paso? El problema es que cada persona tiene pies distintos, ¡y las medidas no coincidían!",
+      "¿Sabías que Chile es uno de los países más largos del mundo? De norte a sur mide más de 4.000 kilómetros. ¡Caminarlo entero tomaría meses!"
+     ],
+     "retos": [
+      {
+       "q": "Hoy es martes y el partido de fútbol de Benjamín es en 3 días más. Él entrena un día antes del partido. ¿Qué día es el partido?",
+       "ops": [
+        "Jueves",
+        "Viernes",
+        "Sábado"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: partimos del martes y avanzamos 3 días, contando de a uno: miércoles (1), jueves (2), viernes (3). Paso 2: el partido es el viernes. Paso 3: dato extra: si entrena un día antes, entrena el jueves. ¡Benjamín se prepara con esfuerzo, no solo con suerte!"
+      },
+      {
+       "q": "Pedro midió la mesa de la cocina y le dio 10 clips de largo. Ana midió LA MISMA mesa y le dio 5 lápices de largo. Los dos midieron bien. ¿Cómo puede ser?",
+       "ops": [
+        "Ana se equivocó al contar",
+        "El lápiz es más largo que el clip, por eso se necesitan menos",
+        "La mesa se achicó entre una medida y otra"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: la mesa es la misma, así que su largo no cambió. Paso 2: si un objeto para medir es más largo, caben menos: un lápiz es más largo que un clip, por eso Ana necesitó solo 5. Paso 3: los dos midieron bien y dijeron la verdad; usaron unidades distintas. ¡Por eso es importante medir con la misma unidad para comparar!"
+      }
+     ]
+    },
+    {
+     "id": "datos-y-pictogramas",
+     "nombre": "Datos y pictogramas",
+     "emoji": "📊",
+     "oa": "OA20: recolectar y registrar datos para responder preguntas, usando tablas de conteo y pictogramas.",
+     "intro": "Recolectar datos es como ser detective: haces preguntas, anotas las respuestas y descubres qué prefiere la gente.",
+     "items": [
+      {
+       "t": "Dato",
+       "d": "Una información que recogemos. Si preguntas a tus amigos su fruta favorita, cada respuesta es un dato.",
+       "e": "📝",
+       "en": "Data"
+      },
+      {
+       "t": "Encuesta",
+       "d": "Hacer la misma pregunta a muchas personas para conocer sus respuestas. Ejemplo: \"¿Cuál es tu mascota favorita?\".",
+       "e": "🎤",
+       "en": "Survey"
+      },
+      {
+       "t": "Tabla de conteo",
+       "d": "Tabla donde anotas con rayitas cada respuesta: |||| significa 4 votos. ¡Así no se te olvida ninguno!",
+       "e": "✏️",
+       "en": "Tally chart"
+      },
+      {
+       "t": "Pictograma",
+       "d": "Gráfico que usa dibujos para mostrar cantidades. Si cada 🍎 vale 1 voto y hay 6 manzanas dibujadas, son 6 votos.",
+       "e": "🖼️",
+       "en": "Pictograph"
+      },
+      {
+       "t": "Comparar datos",
+       "d": "Mirar el gráfico y responder preguntas: ¿cuál tiene más?, ¿cuál tiene menos?, ¿cuántos más tiene uno que otro?",
+       "e": "🔍",
+       "en": "Comparing data"
+      },
+      {
+       "t": "El más votado",
+       "d": "La respuesta que más se repite. Si perro tiene 8 votos, gato 5 y pez 2, el más votado es el perro.",
+       "e": "🏆",
+       "en": "Most popular"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en Chile se hace un censo para contar cuántas personas viven en el país? ¡Es la encuesta más grande de todas y sus datos ayudan a construir escuelas y hospitales!",
+      "¿Sabías que las personas que estudian el clima anotan datos del tiempo todos los días? Gracias a esos datos sabemos si mañana necesitaremos paraguas."
+     ],
+     "retos": [
+      {
+       "q": "El curso votó por su fruta favorita para la colación saludable: plátano 9 votos, manzana 7 votos y naranja 4 votos. ¿Cuántos votos MÁS tiene el plátano que la naranja?",
+       "ops": [
+        "5 votos más",
+        "13 votos más",
+        "2 votos más"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: la pregunta pide comparar plátano (9) con naranja (4), la manzana no se usa. Paso 2: para saber \"cuántos más\", restamos: 9 − 4 = 5. Paso 3: el plátano tiene 5 votos más. ¡Ojo!: 13 sería si sumáramos, pero comparar es restar."
+      },
+      {
+       "q": "Amanda cuenta las botellas que su curso recicló y hace un pictograma: cada ♻ vale 1 botella. Al contar de nuevo, ve que dibujó 8 símbolos pero en verdad eran solo 6 botellas. ¿Qué debe hacer?",
+       "ops": [
+        "Borrar 2 símbolos para que el pictograma diga la verdad",
+        "Dejarlo así, porque más botellas se ve mejor",
+        "Agregar 2 símbolos más"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: el pictograma muestra 8, pero las botellas reales son 6. Paso 2: calculamos la diferencia: 8 − 6 = 2 símbolos de más. Paso 3: debe borrar 2 símbolos para que quede en 6. Los datos siempre deben decir la verdad, ¡aunque un número más grande se vea mejor, ser honesto es lo importante!"
+      }
+     ]
+    }
+   ],
+   "2": [
+    {
+     "id": "numeros-hasta-100",
+     "nombre": "Números hasta el 100",
+     "emoji": "🔢",
+     "oa": "Eje Números y Operaciones (OA 1 al 8): contar, leer, comparar y componer números hasta 100 con valor posicional.",
+     "intro": "Los números están en todas partes: aprende a contarlos, ordenarlos y descubrir cuánto vale cada dígito.",
+     "items": [
+      {
+       "t": "Unidad",
+       "d": "Es 1 solo elemento. En el número 74, el 4 son 4 unidades, o sea vale 4.",
+       "e": "1️⃣",
+       "en": "Unit (ones)"
+      },
+      {
+       "t": "Decena",
+       "d": "Un grupo de 10 unidades. En 74, el 7 son 7 decenas y vale 70.",
+       "e": "🔟",
+       "en": "Ten"
+      },
+      {
+       "t": "Valor posicional",
+       "d": "Cuánto vale un dígito según el lugar donde está. En 25 el 2 vale 20, pero en 52 el 2 vale solo 2.",
+       "e": "📍",
+       "en": "Place value"
+      },
+      {
+       "t": "Comparar números",
+       "d": "Decidir cuál número es mayor o menor. 68 es mayor que 59 porque 6 decenas son más que 5 decenas.",
+       "e": "⚖️",
+       "en": "Compare numbers"
+      },
+      {
+       "t": "Conteo a saltos",
+       "d": "Contar avanzando de a 2, de a 5 o de a 10: 5, 10, 15, 20… Sirve para contar rápido sin equivocarse.",
+       "e": "🦘",
+       "en": "Skip counting"
+      },
+      {
+       "t": "Número ordinal",
+       "d": "Indica la posición: 1°, 2°, 3°… Si llegas 3° en una carrera, hay 2 personas antes que tú.",
+       "e": "🥇",
+       "en": "Ordinal number"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los incas, que llegaron hasta el norte de Chile, contaban usando nudos en cuerdas de colores llamadas quipus? ¡Era su calculadora de lana!",
+      "¿Sabías que el cero se inventó en la India hace más de 1.500 años? Sin él no podríamos escribir el 10, el 20 ni el 100."
+     ],
+     "retos": [
+      {
+       "q": "En la feria, doña Rosa vende paltas en bolsas de 10. Tiene 4 bolsas completas y 3 paltas sueltas. ¿Cuántas paltas tiene en total?",
+       "ops": [
+        "43 paltas",
+        "34 paltas",
+        "13 paltas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: cada bolsa tiene 10 paltas, así que 4 bolsas son 4 decenas, es decir 40. Paso 2: sumamos las 3 sueltas: 40 + 3 = 43. Las bolsas son las decenas y las paltas sueltas son las unidades."
+      },
+      {
+       "q": "Martín piensa un número secreto: tiene 6 decenas y sus unidades son más que 7 pero menos que 9. ¿Cuál es el número?",
+       "ops": [
+        "68",
+        "67",
+        "86"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: 6 decenas valen 60. Paso 2: buscamos un dígito mayor que 7 y menor que 9: el único es el 8. Paso 3: juntamos 60 + 8 = 68. El 86 no sirve porque tiene 8 decenas, no 6."
+      }
+     ]
+    },
+    {
+     "id": "suma-resta",
+     "nombre": "Suma y resta hasta 100",
+     "emoji": "➕",
+     "oa": "Eje Números y Operaciones (OA 9 y OA 10): comprender y aplicar la adición y sustracción hasta 100.",
+     "intro": "Sumar es juntar y restar es quitar: con estas dos súper herramientas resuelves problemas de todos los días.",
+     "items": [
+      {
+       "t": "Suma (adición)",
+       "d": "Juntar o agregar cantidades para saber el total. 25 + 13 = 38.",
+       "e": "➕",
+       "en": "Addition"
+      },
+      {
+       "t": "Resta (sustracción)",
+       "d": "Quitar una cantidad o encontrar la diferencia entre dos números. 40 − 15 = 25.",
+       "e": "➖",
+       "en": "Subtraction"
+      },
+      {
+       "t": "Familia de operaciones",
+       "d": "Sumas y restas que usan los mismos tres números. Si 3 + 7 = 10, entonces 10 − 7 = 3 y 10 − 3 = 7.",
+       "e": "👨‍👩‍👧",
+       "en": "Fact family"
+      },
+      {
+       "t": "Canje (reagrupar)",
+       "d": "Cambiar 10 unidades por 1 decena. En 38 + 5: 8 + 5 = 13, anoto el 3 y llevo 1 decena. Resultado: 43.",
+       "e": "🔄",
+       "en": "Regrouping"
+      },
+      {
+       "t": "Cálculo mental",
+       "d": "Trucos para calcular en la cabeza, como usar dobles: si 6 + 6 = 12, entonces 6 + 7 = 13, uno más.",
+       "e": "🧠",
+       "en": "Mental math"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el signo + se empezó a usar hace más de 500 años? Antes las personas escribían la palabra completa para decir 'más'.",
+      "¿Sabías que en los almacenes y ferias de Chile las personas suman y restan todo el día para dar el vuelto? Dar el vuelto justo es un acto de honestidad."
+     ],
+     "retos": [
+      {
+       "q": "Antonia compra un jugo que cuesta $350 y paga con una moneda de $500. La cajera le da $150 de vuelto. ¿El vuelto está correcto?",
+       "ops": [
+        "Sí, porque 350 + 150 = 500",
+        "No, le faltaron $50",
+        "No, le sobraron $100"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: el vuelto correcto se calcula restando: 500 − 350 = 150. Paso 2: comprobamos al revés sumando: 350 + 150 = 500, ¡calza perfecto! Paso 3: el vuelto está correcto. Comprobar con la suma es una buena forma de revisar una resta, y dar el vuelto justo es ser honesto."
+      },
+      {
+       "q": "Pedro tenía 45 láminas del álbum del Mundial. Le regaló 12 a su hermana y después su papá le compró 20 más. ¿Cuántas láminas tiene ahora?",
+       "ops": [
+        "53 láminas",
+        "77 láminas",
+        "13 láminas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: primero regaló, así que restamos: 45 − 12 = 33. Paso 2: después recibió más, así que sumamos: 33 + 20 = 53. Paso 3: hay que hacer las operaciones en orden, ¡y compartir con su hermana fue muy generoso!"
+      }
+     ]
+    },
+    {
+     "id": "multiplicacion",
+     "nombre": "Descubriendo la multiplicación",
+     "emoji": "✖️",
+     "oa": "Eje Números y Operaciones (OA 11): comprender la multiplicación como suma repetida usando las tablas del 2, 5 y 10.",
+     "intro": "Multiplicar es sumar grupos iguales de forma rápida: ¡un atajo genial para contar!",
+     "items": [
+      {
+       "t": "Multiplicación",
+       "d": "Sumar el mismo número varias veces. 3 × 5 significa 3 veces 5: 5 + 5 + 5 = 15.",
+       "e": "✖️",
+       "en": "Multiplication"
+      },
+      {
+       "t": "Grupos iguales",
+       "d": "Conjuntos que tienen la misma cantidad. 4 bolsas con 2 manzanas cada una: 4 × 2 = 8 manzanas.",
+       "e": "🍎",
+       "en": "Equal groups"
+      },
+      {
+       "t": "Tabla del 2",
+       "d": "Multiplicar por 2 da los números pares: 2, 4, 6, 8, 10… Por ejemplo, 6 × 2 = 12.",
+       "e": "✌️",
+       "en": "Two times table"
+      },
+      {
+       "t": "Tabla del 5",
+       "d": "Multiplicar por 5 da números que terminan en 0 o en 5: 5, 10, 15, 20… Por ejemplo, 4 × 5 = 20.",
+       "e": "🖐️",
+       "en": "Five times table"
+      },
+      {
+       "t": "Tabla del 10",
+       "d": "Multiplicar por 10 es agregar un cero al final: 7 × 10 = 70.",
+       "e": "🔟",
+       "en": "Ten times table"
+      },
+      {
+       "t": "Doble",
+       "d": "Dos veces la misma cantidad. El doble de 8 es 8 + 8 = 16, igual que 2 × 8.",
+       "e": "👯",
+       "en": "Double"
+      }
+     ],
+     "datos": [
+      "¿Sabías que contar dedos de 5 en 5 es multiplicar? 3 manos abiertas son 3 × 5 = 15 dedos.",
+      "¿Sabías que las monedas chilenas de $10 sirven para practicar la tabla del 10? Con 5 monedas tienes 5 × 10 = $50."
+     ],
+     "retos": [
+      {
+       "q": "En la feria venden huevos en bandejas de 10. La mamá de Sofía necesita 35 huevos para hacer queques. ¿Cuántas bandejas debe comprar como mínimo?",
+       "ops": [
+        "4 bandejas",
+        "3 bandejas",
+        "35 bandejas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: con 3 bandejas tendría 3 × 10 = 30 huevos, y no le alcanza porque necesita 35. Paso 2: con 4 bandejas tiene 4 × 10 = 40 huevos, ¡sí alcanza! Paso 3: le sobrarán 40 − 35 = 5 huevos, que puede guardar para otra receta y no desperdiciar comida."
+      },
+      {
+       "q": "En el recreo, el equipo de Tomás gana 2 puntos por cada gol en el taca-taca. Hicieron 7 goles. El otro equipo lleva 16 puntos. ¿Quién va ganando?",
+       "ops": [
+        "El otro equipo, porque 16 es más que 14",
+        "El equipo de Tomás, porque hizo 7 goles",
+        "Van empatados"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: cada gol vale 2 puntos, entonces el equipo de Tomás tiene 7 × 2 = 14 puntos. Paso 2: comparamos: 16 es mayor que 14. Paso 3: va ganando el otro equipo por 2 puntos, ¡pero con esfuerzo y un gol más pueden empatar!"
+      }
+     ]
+    },
+    {
+     "id": "patrones-igualdad",
+     "nombre": "Patrones e igualdad",
+     "emoji": "🔁",
+     "oa": "Eje Patrones y Álgebra (OA 12 y OA 13): crear y continuar patrones, y demostrar igualdades y desigualdades.",
+     "intro": "Los patrones son secretos que se repiten: si descubres la regla, ¡puedes adivinar lo que viene después!",
+     "items": [
+      {
+       "t": "Patrón",
+       "d": "Algo que se repite siguiendo una regla. En 2, 4, 6, 8… la regla es sumar 2, así que sigue el 10.",
+       "e": "🔁",
+       "en": "Pattern"
+      },
+      {
+       "t": "Regla del patrón",
+       "d": "Lo que dice cómo continúa el patrón. En 30, 25, 20… la regla es restar 5, entonces sigue el 15.",
+       "e": "🗝️",
+       "en": "Pattern rule"
+      },
+      {
+       "t": "Patrón repetitivo",
+       "d": "Objetos o figuras que se repiten en el mismo orden: círculo, cuadrado, círculo, cuadrado… lo que sigue es un círculo.",
+       "e": "🎨",
+       "en": "Repeating pattern"
+      },
+      {
+       "t": "Igualdad",
+       "d": "Cuando dos lados valen lo mismo y se escribe con =. 4 + 3 = 5 + 2, porque los dos lados dan 7.",
+       "e": "🟰",
+       "en": "Equality"
+      },
+      {
+       "t": "Desigualdad",
+       "d": "Cuando los lados NO valen lo mismo: se usan los signos > (mayor) y < (menor). 6 + 1 < 9, porque 7 es menor que 9.",
+       "e": "🚫",
+       "en": "Inequality"
+      },
+      {
+       "t": "Balanza",
+       "d": "Sirve para comparar cantidades: si un lado pesa más, ese lado baja. Con 5 + 5 en un lado y 10 en el otro, queda equilibrada.",
+       "e": "⚖️",
+       "en": "Balance scale"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los tejidos mapuche tienen hermosos patrones de rombos y zigzag que se repiten? ¡Son matemática convertida en arte chileno!",
+      "¿Sabías que las abejas construyen sus panales con un patrón de hexágonos perfectos que se repite miles de veces?"
+     ],
+     "retos": [
+      {
+       "q": "Amanda hace un collar con este patrón: 2 mostacillas rojas, 1 azul, 2 rojas, 1 azul… Ya puso rojas, rojas, azul, rojas, rojas. ¿Qué mostacilla viene ahora?",
+       "ops": [
+        "1 azul",
+        "1 roja",
+        "2 azules"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: descubrimos la regla: siempre van 2 rojas y después 1 azul, y se repite. Paso 2: revisamos lo que ya puso: rojas-rojas-azul-rojas-rojas. Paso 3: como acaba de poner las 2 rojas, según la regla ahora toca 1 azul."
+      },
+      {
+       "q": "En una balanza, un lado tiene 8 + 4 y el otro lado tiene 7 + un número tapado. ¿Qué número falta para que la balanza quede equilibrada?",
+       "ops": [
+        "5",
+        "4",
+        "12"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: calculamos el lado conocido: 8 + 4 = 12. Paso 2: para equilibrar, el otro lado también debe sumar 12. Paso 3: pensamos 7 + ¿cuánto? = 12, y como 7 + 5 = 12, el número tapado es 5."
+      }
+     ]
+    },
+    {
+     "id": "geometria-figuras",
+     "nombre": "Figuras y cuerpos geométricos",
+     "emoji": "📐",
+     "oa": "Eje Geometría (OA 14, OA 15 y OA 16): describir posiciones, y reconocer figuras 2D y cuerpos geométricos 3D.",
+     "intro": "Mira a tu alrededor: las ventanas, las pelotas y los dados están llenos de formas geométricas.",
+     "items": [
+      {
+       "t": "Figura 2D",
+       "d": "Figura plana, como el cuadrado, el triángulo, el círculo y el rectángulo. Un triángulo tiene 3 lados y 3 vértices.",
+       "e": "🔷",
+       "en": "2D shape"
+      },
+      {
+       "t": "Cuerpo geométrico (3D)",
+       "d": "Forma con volumen, como el cubo, la esfera, el cono y el cilindro. Un dado es un cubo con 6 caras.",
+       "e": "🎲",
+       "en": "3D shape (solid)"
+      },
+      {
+       "t": "Lado",
+       "d": "Cada línea que forma el borde de una figura. Un cuadrado tiene 4 lados, todos del mismo largo.",
+       "e": "📏",
+       "en": "Side"
+      },
+      {
+       "t": "Vértice",
+       "d": "El punto donde se juntan dos lados, como una esquina. Un rectángulo tiene 4 vértices.",
+       "e": "⭐",
+       "en": "Vertex (corner)"
+      },
+      {
+       "t": "Cara",
+       "d": "Cada parte plana de un cuerpo geométrico. El cubo tiene 6 caras y todas son cuadradas.",
+       "e": "🧊",
+       "en": "Face"
+      },
+      {
+       "t": "Posición",
+       "d": "Dónde está algo: arriba, abajo, izquierda, derecha, delante o detrás. Ejemplo: el gato está debajo de la mesa.",
+       "e": "🗺️",
+       "en": "Position"
+      }
+     ],
+     "datos": [
+      "¿Sabías que muchos volcanes de Chile, como el Osorno, tienen una forma muy parecida a un cono gigante?",
+      "¿Sabías que las pelotas de fútbol clásicas están cosidas con pentágonos negros y hexágonos blancos? ¡Cuéntalos la próxima vez que veas una!"
+     ],
+     "retos": [
+      {
+       "q": "Benjamín juega con una pelota, un dado y un tarro de leche vacío que reutiliza como lápicero. ¿Cuál objeto puede rodar Y también quedarse quieto apoyado en una cara plana?",
+       "ops": [
+        "El tarro, porque es un cilindro",
+        "La pelota, porque es una esfera",
+        "El dado, porque es un cubo"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: la pelota (esfera) rueda, pero no tiene caras planas para quedarse quieta. Paso 2: el dado (cubo) tiene caras planas, pero no puede rodar. Paso 3: el cilindro cumple las dos cosas: rueda de lado y se para firme sobre sus caras circulares planas. ¡Y reutilizar el tarro ayuda a cuidar el planeta!"
+      },
+      {
+       "q": "Emilia dibuja una figura de 4 lados: tiene 2 lados largos iguales entre sí y 2 lados cortos iguales entre sí. ¿Qué figura dibujó?",
+       "ops": [
+        "Un rectángulo",
+        "Un cuadrado",
+        "Un triángulo"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: el triángulo tiene solo 3 lados, así que se descarta. Paso 2: el cuadrado tiene sus 4 lados iguales, y aquí hay lados largos y cortos, así que tampoco es. Paso 3: el rectángulo tiene exactamente 2 lados largos iguales y 2 cortos iguales: ¡es un rectángulo!"
+      }
+     ]
+    },
+    {
+     "id": "medicion-datos",
+     "nombre": "Medimos y mostramos datos",
+     "emoji": "📊",
+     "oa": "Ejes Medición (OA 17 al 19) y Datos y Probabilidades (OA 20 al 22): medir longitud y tiempo, y leer pictogramas y gráficos.",
+     "intro": "Medir y ordenar información nos ayuda a responder preguntas: ¿cuánto mide?, ¿cuánto falta?, ¿cuál ganó?",
+     "items": [
+      {
+       "t": "Centímetro (cm)",
+       "d": "Unidad pequeña para medir largos. Tu dedo mide más o menos 1 cm de ancho y un lápiz nuevo mide unos 17 cm.",
+       "e": "📏",
+       "en": "Centimeter"
+      },
+      {
+       "t": "Metro (m)",
+       "d": "Unidad grande para medir: 1 metro = 100 centímetros. Una puerta mide como 2 metros de alto.",
+       "e": "🚪",
+       "en": "Meter"
+      },
+      {
+       "t": "Hora y media hora",
+       "d": "El reloj marca el tiempo: cuando el minutero apunta al 12 es la hora en punto, y al 6 es 'y media', como las 3:30.",
+       "e": "⏰",
+       "en": "Hour and half hour"
+      },
+      {
+       "t": "Calendario",
+       "d": "Ordena el tiempo en días, semanas y meses: una semana tiene 7 días y un año tiene 12 meses.",
+       "e": "📅",
+       "en": "Calendar"
+      },
+      {
+       "t": "Pictograma",
+       "d": "Gráfico que usa dibujos para mostrar cantidades. Si cada dibujo vale 1 voto y hay 5 dibujos, son 5 votos.",
+       "e": "🖼️",
+       "en": "Pictograph"
+      },
+      {
+       "t": "Gráfico de barras",
+       "d": "Muestra cantidades con barras: la más alta es la mayor. Si helado tiene una barra de 8 y jugo una de 6, ganó el helado.",
+       "e": "📊",
+       "en": "Bar graph"
+      }
+     ],
+     "datos": [
+      "¿Sabías que antes las personas medían con partes del cuerpo, como pies y palmas? Como cada persona es distinta, se inventó el metro para que todos midieran igual.",
+      "¿Sabías que Chile es tan largo que mide más de 4.000 kilómetros de norte a sur? ¡Son más de 4 millones de metros!"
+     ],
+     "retos": [
+      {
+       "q": "Josefa mide su mesa con cuadernos: caben 3 a lo largo. Su hermano la mide con clips: caben 30. ¿La mesa cambió de tamaño?",
+       "ops": [
+        "No, es la misma mesa medida con unidades distintas",
+        "Sí, con los clips se hizo más grande",
+        "Sí, con los cuadernos se hizo más chica"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: la mesa mide siempre lo mismo, no cambia. Paso 2: el cuaderno es grande, por eso caben pocos (3); el clip es chico, por eso caben muchos (30). Paso 3: mientras más pequeña es la unidad, más grande es el número que obtienes, pero el tamaño real no cambia. Por eso es útil que todos usemos centímetros y metros."
+      },
+      {
+       "q": "El curso votó por su fruta favorita: manzana 9 votos, plátano 7 votos y frutilla 12 votos. En el pictograma, cada dibujo vale 1 voto. ¿Cuántos dibujos más tiene la frutilla que el plátano?",
+       "ops": [
+        "5 dibujos más",
+        "3 dibujos más",
+        "19 dibujos más"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: la frutilla tiene 12 dibujos y el plátano tiene 7. Paso 2: para encontrar la diferencia, restamos: 12 − 7 = 5. Paso 3: la frutilla tiene 5 dibujos más. ¡Ojo! 19 sería la suma (12 + 7), pero la pregunta pide la diferencia."
+      }
+     ]
+    }
+   ],
+   "3": [
+    {
+     "id": "numeros-hasta-1000",
+     "nombre": "Números hasta el 1.000",
+     "emoji": "🔢",
+     "oa": "OA 1-5: contar, leer, representar, comparar y ordenar números del 0 al 1.000, comprendiendo el valor posicional.",
+     "intro": "Descubre cómo funcionan los números grandes y por qué cada cifra vale distinto según el lugar donde está.",
+     "items": [
+      {
+       "t": "Unidad",
+       "d": "Es la pieza más pequeña para contar: el 1. En el número 347, el 7 son 7 unidades, o sea, vale 7.",
+       "e": "🧱",
+       "en": "Ones (unit)"
+      },
+      {
+       "t": "Decena",
+       "d": "Un grupo de 10 unidades. En 347, el 4 está en el lugar de las decenas y vale 40 (4 grupos de 10).",
+       "e": "📦",
+       "en": "Ten"
+      },
+      {
+       "t": "Centena",
+       "d": "Un grupo de 100 unidades. En 347, el 3 vale 300, porque son 3 grupos de 100.",
+       "e": "🏢",
+       "en": "Hundred"
+      },
+      {
+       "t": "Valor posicional",
+       "d": "El valor de una cifra depende de su lugar. El 5 en 500 vale 500, pero en 350 vale 50 y en 305 vale solo 5.",
+       "e": "📍",
+       "en": "Place value"
+      },
+      {
+       "t": "Comparar números",
+       "d": "Usamos > (mayor), < (menor) o = (igual). Primero miramos las centenas: 482 > 479 porque, con centenas iguales, 8 decenas es más que 7.",
+       "e": "⚖️",
+       "en": "Comparing numbers"
+      },
+      {
+       "t": "Redondear",
+       "d": "Aproximar un número al más cercano para calcular rápido. 687 redondeado a la decena es 690, porque 687 está más cerca de 690 que de 680.",
+       "e": "🎯",
+       "en": "Rounding"
+      }
+     ],
+     "datos": [
+      "¿Sabías que contamos de 10 en 10 porque tenemos 10 dedos en las manos? Por eso nuestro sistema se llama decimal.",
+      "¿Sabías que en mapudungun, la lengua del pueblo mapuche, 'pataka' significa 100 y 'warangka' significa 1.000? Ellos también contaban en grupos de 10."
+     ],
+     "retos": [
+      {
+       "q": "Camila tiene tres tarjetas con los dígitos 3, 7 y 5. Quiere formar el número de tres cifras MÁS GRANDE posible. ¿Cuál es?",
+       "ops": [
+        "735",
+        "753",
+        "573"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: para que el número sea el más grande, la cifra mayor debe ir en el lugar que más vale, las centenas. Paso 2: la cifra mayor es 7, entonces 7 va en las centenas (vale 700). Paso 3: la que sigue es 5, va en las decenas (vale 50). Paso 4: queda el 3 en las unidades. Resultado: 753."
+      },
+      {
+       "q": "Martín rompió su alcancía y encontró 5 monedas de $100 y 8 monedas de $10. ¿Cuánto dinero ahorró en total?",
+       "ops": [
+        "$508",
+        "$130",
+        "$580"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: 5 monedas de $100 son 5 × 100 = $500. Paso 2: 8 monedas de $10 son 8 × 10 = $80. Paso 3: sumamos 500 + 80 = $580. ¡Ahorrar con esfuerzo, moneda a moneda, tiene premio!"
+      }
+     ]
+    },
+    {
+     "id": "cuatro-operaciones",
+     "nombre": "Sumar, restar, multiplicar y dividir",
+     "emoji": "➕",
+     "oa": "OA 6-10: adición y sustracción hasta 1.000; multiplicación y división usando las tablas hasta 10×10, y problemas con dinero.",
+     "intro": "Las cuatro operaciones son herramientas para resolver problemas de verdad: comprar, repartir y calcular el vuelto.",
+     "items": [
+      {
+       "t": "Adición (suma)",
+       "d": "Juntar o agregar cantidades. Si tienes 325 láminas y ganas 142, tienes 325 + 142 = 467 láminas.",
+       "e": "🧮",
+       "en": "Addition"
+      },
+      {
+       "t": "Sustracción (resta)",
+       "d": "Quitar o encontrar la diferencia. Si un juguete cuesta $500 y tienes $230, te faltan 500 − 230 = $270.",
+       "e": "✂️",
+       "en": "Subtraction"
+      },
+      {
+       "t": "Multiplicación",
+       "d": "Una suma repetida del mismo número. 4 × 6 significa 6 + 6 + 6 + 6 = 24: cuatro grupos de 6.",
+       "e": "✖️",
+       "en": "Multiplication"
+      },
+      {
+       "t": "División",
+       "d": "Repartir en partes iguales. Si repartes 15 dulces entre 3 amigos, cada uno recibe 15 ÷ 3 = 5 dulces.",
+       "e": "🍬",
+       "en": "Division"
+      },
+      {
+       "t": "Familia de operaciones",
+       "d": "Operaciones que son 'parientes': si 7 + 5 = 12, entonces 12 − 5 = 7. Y si 3 × 4 = 12, entonces 12 ÷ 4 = 3.",
+       "e": "👨‍👩‍👧",
+       "en": "Fact family"
+      },
+      {
+       "t": "Estimación",
+       "d": "Calcular 'más o menos' redondeando, para revisar si una respuesta tiene sentido. 195 + 310 es cerca de 200 + 300 = 500.",
+       "e": "🤔",
+       "en": "Estimation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el signo + tiene más de 500 años? Apareció por primera vez en un libro impreso en Alemania en 1489.",
+      "¿Sabías que los caseros de las ferias chilenas hacen sumas y restas mentales todo el día para dar el vuelto sin calculadora? ¡Son campeones del cálculo mental!"
+     ],
+     "retos": [
+      {
+       "q": "Antonia compra en el almacén pan por $650 y un jugo por $280. Paga con $1.000 y el señor, por error, le da $170 de vuelto. Antonia quiere ser honesta. ¿Cuál era el vuelto correcto?",
+       "ops": [
+        "$70",
+        "$170",
+        "$130"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: sumamos la compra: 650 + 280 = $930. Paso 2: restamos de lo que pagó: 1.000 − 930 = $70. Paso 3: como le dieron $170, hay $100 de más que no le pertenecen. Lo honesto es avisar y devolverlos: la honestidad vale más que $100."
+      },
+      {
+       "q": "En un campeonato escolar se inscriben 4 equipos de fútbol y cada equipo necesita 11 jugadores en la cancha. Si hay 50 niños inscritos, ¿cuántos quedan de reserva?",
+       "ops": [
+        "44",
+        "6",
+        "39"
+       ],
+       "correcta": 1,
+       "porque": "Este problema tiene dos pasos. Paso 1: calculamos cuántos juegan: 4 × 11 = 44 jugadores. Paso 2: restamos del total: 50 − 44 = 6. Quedan 6 niños de reserva, ¡listos para entrar con esfuerzo cuando el equipo los necesite!"
+      }
+     ]
+    },
+    {
+     "id": "patrones-igualdades",
+     "nombre": "Patrones e igualdades",
+     "emoji": "🔁",
+     "oa": "OA 12-13: descubrir reglas en patrones numéricos y resolver igualdades con un valor desconocido.",
+     "intro": "La matemática es la ciencia de los patrones: si descubres la regla, puedes predecir lo que viene.",
+     "items": [
+      {
+       "t": "Patrón",
+       "d": "Algo que se repite siguiendo una regla, como 🔴🔵🔴🔵🔴… Sabemos que lo que sigue es 🔵.",
+       "e": "🎨",
+       "en": "Pattern"
+      },
+      {
+       "t": "Regla del patrón",
+       "d": "Lo que indica cómo sigue la secuencia. En 3, 6, 9, 12… la regla es 'sumar 3', así que después viene el 15.",
+       "e": "🗝️",
+       "en": "Pattern rule"
+      },
+      {
+       "t": "Patrón en la tabla del 100",
+       "d": "En la tabla del 100, al bajar una fila el número aumenta en 10: debajo del 34 está el 44, y debajo del 44 está el 54.",
+       "e": "💯",
+       "en": "Hundreds chart pattern"
+      },
+      {
+       "t": "Igualdad",
+       "d": "Los dos lados del signo = valen lo mismo, como una balanza equilibrada: 6 + 2 = 8 y también 6 + 2 = 5 + 3.",
+       "e": "⚖️",
+       "en": "Equality"
+      },
+      {
+       "t": "Desigualdad",
+       "d": "Cuando los dos lados NO valen lo mismo, la balanza se inclina: 9 > 4 porque 9 es mayor que 4.",
+       "e": "📉",
+       "en": "Inequality"
+      },
+      {
+       "t": "Incógnita",
+       "d": "El número misterioso que falta en una igualdad. En ☐ + 5 = 12, la incógnita es 7, porque 7 + 5 = 12.",
+       "e": "❓",
+       "en": "Unknown"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los tejidos mapuche, como las mantas y fajas, usan patrones geométricos que se repiten y cada uno tiene un significado?",
+      "¿Sabías que las semillas de los girasoles crecen siguiendo un patrón numérico en espiral? La naturaleza también hace matemática."
+     ],
+     "retos": [
+      {
+       "q": "Benjamín ahorra para una pelota: la semana 1 guarda $200, la semana 2 guarda $400 y la semana 3 guarda $600. Si sigue el mismo patrón, ¿cuánto guardará la semana 5?",
+       "ops": [
+        "$1.000",
+        "$800",
+        "$700"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: buscamos la regla: de 200 a 400 hay +200, y de 400 a 600 también +200. Paso 2: aplicamos la regla: semana 4 = 600 + 200 = $800. Paso 3: semana 5 = 800 + 200 = $1.000. ¡El ahorro constante es un patrón que crece!"
+      },
+      {
+       "q": "Pedro tenía algunas láminas del álbum del Mundial. En el recreo ganó 8 láminas y ahora tiene 15. ¿Cuántas tenía al principio?",
+       "ops": [
+        "23",
+        "8",
+        "7"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: escribimos la igualdad con incógnita: ☐ + 8 = 15. Paso 2: para encontrar el número misterioso, hacemos la operación contraria: 15 − 8 = 7. Paso 3: comprobamos: 7 + 8 = 15. ¡Correcto! Tenía 7 láminas."
+      }
+     ]
+    },
+    {
+     "id": "figuras-2d-3d",
+     "nombre": "Figuras y cuerpos geométricos",
+     "emoji": "📐",
+     "oa": "OA 15-18: describir figuras 2D con sus lados y vértices, cuerpos geométricos (3D) con sus redes, y reconocer ángulos en el entorno.",
+     "intro": "La geometría está en todas partes: en las cajas, las pelotas, las banderas y hasta en los panales de abejas.",
+     "items": [
+      {
+       "t": "Figura 2D",
+       "d": "Figura plana, como las que dibujas en el cuaderno: el triángulo, el cuadrado, el rectángulo y el círculo.",
+       "e": "🔷",
+       "en": "2D shape"
+      },
+      {
+       "t": "Lado y vértice",
+       "d": "Los lados son las líneas que forman la figura y los vértices son sus esquinas. Un cuadrado tiene 4 lados y 4 vértices.",
+       "e": "📌",
+       "en": "Side and vertex"
+      },
+      {
+       "t": "Cuerpo geométrico (3D)",
+       "d": "Figura con volumen que puedes tomar con las manos: el cubo (un dado), la esfera (una pelota), el cilindro (un tarro) y el cono (un helado).",
+       "e": "🎲",
+       "en": "3D shape (solid)"
+      },
+      {
+       "t": "Cara, arista y vértice",
+       "d": "Las caras son las partes planas, las aristas son los bordes y los vértices las puntas. Un cubo tiene 6 caras, 12 aristas y 8 vértices.",
+       "e": "🧊",
+       "en": "Face, edge and vertex"
+      },
+      {
+       "t": "Red de un cuerpo",
+       "d": "Es el cuerpo geométrico 'desarmado' y estirado en el plano, como una caja abierta. La red del cubo tiene 6 cuadrados unidos.",
+       "e": "📦",
+       "en": "Net"
+      },
+      {
+       "t": "Ángulo",
+       "d": "La abertura que se forma entre dos lados que se juntan. La esquina de tu cuaderno forma un ángulo recto, como una L.",
+       "e": "📐",
+       "en": "Angle"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la pelota de fútbol clásica está formada por 12 pentágonos negros y 20 hexágonos blancos cosidos entre sí?",
+      "¿Sabías que la estrella de la bandera chilena es una figura de 5 puntas? Se le llama 'la estrella solitaria'."
+     ],
+     "retos": [
+      {
+       "q": "Diego quiere construir el esqueleto de un cubo usando palitos de brocheta para las aristas y bolitas de plasticina para los vértices. ¿Cuántos palitos necesita?",
+       "ops": [
+        "6",
+        "12",
+        "8"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: los palitos son las aristas del cubo. Paso 2: contamos con orden: 4 aristas en el cuadrado de abajo, 4 en el de arriba y 4 verticales que los unen. Paso 3: 4 + 4 + 4 = 12 palitos. (El 6 son las caras y el 8 los vértices, ¡no confundir!)"
+      },
+      {
+       "q": "Tomás dice: 'Dibujé una figura cerrada con 3 lados y 4 vértices'. ¿Qué le dirías?",
+       "ops": [
+        "Es imposible: una figura cerrada de 3 lados siempre tiene 3 vértices, es un triángulo",
+        "Es posible: sería un cuadrado",
+        "Es posible: sería un rectángulo"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: en toda figura cerrada, cada vértice une dos lados, por eso hay tantos vértices como lados. Paso 2: si tiene 3 lados, tiene exactamente 3 vértices: es un triángulo. Paso 3: el cuadrado y el rectángulo tienen 4 lados Y 4 vértices. Antes de afirmar algo, ¡hay que revisar y ser honesto si nos equivocamos!"
+      }
+     ]
+    },
+    {
+     "id": "medicion-tiempo-longitud",
+     "nombre": "Medición: tiempo, longitud y perímetro",
+     "emoji": "📏",
+     "oa": "OA 19-21: leer calendarios y relojes, medir longitudes en metros y centímetros, y calcular perímetros.",
+     "intro": "Medir es comparar con una unidad: así sabemos cuánto dura un partido, cuánto mides tú o cuánto borde tiene una cancha.",
+     "items": [
+      {
+       "t": "Hora y minuto",
+       "d": "Unidades para medir el tiempo: 1 hora = 60 minutos. Media hora son 30 minutos, como un recreo largo.",
+       "e": "⏰",
+       "en": "Hour and minute"
+      },
+      {
+       "t": "Reloj análogo y digital",
+       "d": "El análogo tiene manecillas y el digital muestra números. Cuando el digital marca 3:30, en el análogo el minutero apunta al 6: son las tres y media.",
+       "e": "🕞",
+       "en": "Analog and digital clock"
+      },
+      {
+       "t": "Calendario",
+       "d": "Organiza el tiempo en días, semanas y meses. Una semana tiene 7 días y un año tiene 12 meses.",
+       "e": "📅",
+       "en": "Calendar"
+      },
+      {
+       "t": "Centímetro (cm)",
+       "d": "Unidad para medir cosas pequeñas con la regla. El ancho de tu dedo mide más o menos 1 cm y un lápiz nuevo, unos 17 cm.",
+       "e": "🖍️",
+       "en": "Centimeter"
+      },
+      {
+       "t": "Metro (m)",
+       "d": "Unidad para medir cosas grandes: 1 metro = 100 centímetros. Una puerta mide como 2 metros de alto.",
+       "e": "🚪",
+       "en": "Meter"
+      },
+      {
+       "t": "Perímetro",
+       "d": "La medida del contorno de una figura: se suman todos sus lados. Un cuadrado de lado 3 cm tiene perímetro 3 + 3 + 3 + 3 = 12 cm.",
+       "e": "🔲",
+       "en": "Perimeter"
+      }
+     ],
+     "datos": [
+      "¿Sabías que Chile es tan largo que mide más de 4.000 kilómetros de norte a sur? Si caminaras 20 km por día, tardarías más de 200 días en cruzarlo.",
+      "¿Sabías que antes de inventar el metro, la gente medía con partes del cuerpo, como pies y codos? El problema era que cada persona medía distinto."
+     ],
+     "retos": [
+      {
+       "q": "La familia de Emilia quiere poner una guirnalda alrededor del borde de la mesa para el 18 de septiembre. La mesa es rectangular: mide 2 metros de largo y 1 metro de ancho. ¿Cuántos metros de guirnalda necesitan?",
+       "ops": [
+        "3 metros",
+        "4 metros",
+        "6 metros"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: la guirnalda va por TODO el contorno, así que buscamos el perímetro. Paso 2: el rectángulo tiene dos largos y dos anchos: 2 + 1 + 2 + 1. Paso 3: sumamos: 2 + 1 + 2 + 1 = 6 metros. Con 3 metros solo alcanzaría para la mitad del borde."
+      },
+      {
+       "q": "El partido de fútbol empieza a las 4:30 de la tarde. Se juegan 90 minutos y además hay 15 minutos de entretiempo. ¿A qué hora termina?",
+       "ops": [
+        "6:00",
+        "6:15",
+        "5:45"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: tiempo total = 90 + 15 = 105 minutos. Paso 2: convertimos: 105 minutos = 60 + 45, o sea 1 hora y 45 minutos. Paso 3: 4:30 + 1 hora = 5:30. Paso 4: 5:30 + 45 minutos = 6:15. El partido termina a las 6:15."
+      }
+     ]
+    },
+    {
+     "id": "datos-graficos",
+     "nombre": "Datos y gráficos",
+     "emoji": "📊",
+     "oa": "OA 23-25: realizar encuestas, registrar datos de juegos aleatorios en tablas y construir e interpretar pictogramas y gráficos de barra simple.",
+     "intro": "Los datos son información que recolectamos y ordenamos para responder preguntas y tomar buenas decisiones.",
+     "items": [
+      {
+       "t": "Encuesta",
+       "d": "Hacer la misma pregunta a muchas personas para reunir información, como preguntar a todo el curso: '¿cuál es tu fruta favorita?'",
+       "e": "🎤",
+       "en": "Survey"
+      },
+      {
+       "t": "Tabla de conteo",
+       "d": "Tabla donde anotamos con palotes cada respuesta: |||| significa 4. Cada 5 se agrupan para contar más fácil.",
+       "e": "✏️",
+       "en": "Tally chart"
+      },
+      {
+       "t": "Pictograma",
+       "d": "Gráfico con dibujos, donde cada dibujo puede valer más de 1. Si cada 🍦 vale 2 helados, entonces 3 dibujos son 3 × 2 = 6 helados.",
+       "e": "🖼️",
+       "en": "Pictogram"
+      },
+      {
+       "t": "Gráfico de barras",
+       "d": "Gráfico con barras: mientras más alta la barra, mayor es la cantidad. Se compara de un vistazo cuál ganó.",
+       "e": "📊",
+       "en": "Bar graph"
+      },
+      {
+       "t": "Dato más frecuente",
+       "d": "El que más se repite en los resultados. Si 12 niños eligen manzana, 9 plátano y 7 frutilla, el más frecuente es la manzana.",
+       "e": "🏆",
+       "en": "Most frequent value"
+      },
+      {
+       "t": "Juego aleatorio",
+       "d": "Juego donde no sabemos qué resultado saldrá, como lanzar un dado o una moneda. Registramos los resultados en una tabla para descubrir cuál salió más veces y cuál menos.",
+       "e": "🎲",
+       "en": "Game of chance"
+      }
+     ],
+     "datos": [
+      "¿Sabías que en Chile el INE hace un Censo para contar a TODAS las personas del país? Es la encuesta más grande de Chile y sus datos ayudan a decidir dónde construir escuelas y hospitales.",
+      "¿Sabías que los meteorólogos usan miles de datos de temperatura y viento para pronosticar si mañana lloverá? ¡Sin datos no hay pronóstico!"
+     ],
+     "retos": [
+      {
+       "q": "En el 3° básico votaron por su fruta favorita: manzana 12 votos, plátano 9 votos y frutilla 7 votos. ¿Cuántos niños votaron en total y qué fruta ganó?",
+       "ops": [
+        "Votaron 28 niños y ganó la manzana",
+        "Votaron 28 niños y ganó el plátano",
+        "Votaron 26 niños y ganó la manzana"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: sumamos todos los votos: 12 + 9 = 21, y 21 + 7 = 28 niños en total. Paso 2: comparamos las cantidades: 12 > 9 > 7, así que la manzana es el dato más frecuente. Respuesta: 28 niños y ganó la manzana."
+      },
+      {
+       "q": "Don José hizo un pictograma de las manzanas que vendió en la feria: cada 🍎 dibujado vale 2 kilos. El lunes dibujó 5 manzanas y el martes dibujó 3. ¿Cuántos kilos MÁS vendió el lunes que el martes?",
+       "ops": [
+        "2 kilos",
+        "16 kilos",
+        "4 kilos"
+       ],
+       "correcta": 2,
+       "porque": "¡Ojo con la escala! Paso 1: lunes = 5 × 2 = 10 kilos. Paso 2: martes = 3 × 2 = 6 kilos. Paso 3: la diferencia es 10 − 6 = 4 kilos. Quien responde '2' olvidó que cada dibujo vale 2 kilos, y '16' es la suma, no la diferencia."
+      }
+     ]
+    }
+   ],
+   "4": [
+    {
+     "id": "numeros-10000",
+     "nombre": "Números hasta el 10.000",
+     "emoji": "🔢",
+     "oa": "Números y Operaciones (OA1–OA6): representar, comparar y redondear números hasta 10.000; adición y sustracción",
+     "intro": "Los números grandes están en todas partes: en los precios, las distancias y hasta en la altura de las montañas de Chile.",
+     "items": [
+      {
+       "t": "Unidad de mil",
+       "d": "Es un grupo de 1.000 unidades. En el número 4.582, el 4 vale 4.000.",
+       "e": "🏔️",
+       "en": "Thousand"
+      },
+      {
+       "t": "Valor posicional",
+       "d": "El valor de un dígito depende del lugar donde está. En 3.475, el 7 vale 70, pero en 3.745 el 7 vale 700.",
+       "e": "📍",
+       "en": "Place value"
+      },
+      {
+       "t": "Comparar números",
+       "d": "Para saber cuál es mayor, comparo de izquierda a derecha. 5.320 > 5.230 porque 3 centenas es más que 2 centenas.",
+       "e": "⚖️",
+       "en": "Comparing numbers"
+      },
+      {
+       "t": "Redondear",
+       "d": "Aproximar un número al más cercano para estimar rápido. 3.780 redondeado a la centena es 3.800, porque 80 está más cerca de 100 que de 0.",
+       "e": "🎯",
+       "en": "Rounding"
+      },
+      {
+       "t": "Adición con reserva",
+       "d": "Cuando una columna suma más de 9, llevo un grupo a la columna siguiente. En 456 + 378 = 834, el 6 + 8 = 14: escribo 4 y llevo 1.",
+       "e": "➕",
+       "en": "Addition with regrouping"
+      },
+      {
+       "t": "Sustracción con canje",
+       "d": "Cuando no alcanza para restar, pido prestado al vecino de la izquierda. En 502 − 178 = 324, canjeo una centena para poder restar.",
+       "e": "➖",
+       "en": "Subtraction with borrowing"
+      }
+     ],
+     "datos": [
+      "¿Sabías que usamos un sistema con 10 dígitos porque los humanos empezaron a contar con los 10 dedos de las manos? Por eso se llama sistema decimal.",
+      "¿Sabías que Chile mide más de 4.300 kilómetros de largo? Si viajaras en auto sin parar de Arica a Punta Arenas, ¡demorarías más de 50 horas!"
+     ],
+     "retos": [
+      {
+       "q": "En la feria, el kilo de paltas cuesta $3.990 y el kilo de tomates $1.290. Compras un kilo de cada uno y pagas con $10.000. El casero es honesto y te da el vuelto exacto. ¿Cuánto vuelto recibes?",
+       "ops": [
+        "$4.720",
+        "$5.280",
+        "$4.280"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: sumo lo que gasto: $3.990 + $1.290 = $5.280. Paso 2: al pago le resto el gasto: $10.000 − $5.280 = $4.720. Un buen truco honesto para revisar tu vuelto: $5.280 + $4.720 debe dar exactamente $10.000. ¡Y da!"
+      },
+      {
+       "q": "Martina tiene ahorrados $6.500 y quiere una pelota que cuesta $9.990. Cada semana ahorra $500 con mucho esfuerzo. ¿Cuántas semanas más necesita para poder comprarla?",
+       "ops": [
+        "6 semanas",
+        "7 semanas",
+        "8 semanas"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: calculo cuánto le falta: $9.990 − $6.500 = $3.490. Paso 2: en 6 semanas junta 6 × $500 = $3.000, que todavía no alcanza. Paso 3: en 7 semanas junta 7 × $500 = $3.500, que sí supera los $3.490. Ojo: aunque $3.490 está 'cerca' de $3.000, hay que redondear hacia arriba, ¡porque con menos plata no puede comprar!"
+      }
+     ]
+    },
+    {
+     "id": "multiplicar-dividir",
+     "nombre": "Multiplicación y división",
+     "emoji": "✖️",
+     "oa": "Números y Operaciones (OA5–OA7): multiplicar y dividir usando estrategias y comprender la relación entre ambas",
+     "intro": "Multiplicar es sumar rapidísimo y dividir es repartir en partes justas: dos superpoderes matemáticos.",
+     "items": [
+      {
+       "t": "Multiplicación",
+       "d": "Es una suma repetida del mismo número. 4 × 6 significa 6 + 6 + 6 + 6 = 24.",
+       "e": "✖️",
+       "en": "Multiplication"
+      },
+      {
+       "t": "Doble y mitad",
+       "d": "El doble es multiplicar por 2 y la mitad es dividir por 2. El doble de 35 es 70 y la mitad de 48 es 24.",
+       "e": "👯",
+       "en": "Double and half"
+      },
+      {
+       "t": "Multiplicar por 10",
+       "d": "Cada dígito sube un lugar de valor, por eso agregamos un cero. 23 × 10 = 230.",
+       "e": "🚀",
+       "en": "Multiplying by 10"
+      },
+      {
+       "t": "División",
+       "d": "Es repartir en partes iguales. Si reparto 24 dulces entre 6 amigos, cada uno recibe 24 ÷ 6 = 4 dulces.",
+       "e": "🍬",
+       "en": "Division"
+      },
+      {
+       "t": "Resto",
+       "d": "Es lo que sobra cuando no se puede repartir todo en partes iguales. 17 ÷ 5 = 3 y sobran 2, porque 5 × 3 = 15 y 15 + 2 = 17.",
+       "e": "🧮",
+       "en": "Remainder"
+      },
+      {
+       "t": "Operación inversa",
+       "d": "La división 'deshace' la multiplicación. Si sé que 7 × 8 = 56, entonces sé que 56 ÷ 8 = 7 sin calcular de nuevo.",
+       "e": "🔄",
+       "en": "Inverse operation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los pueblos andinos, que también habitaron el norte de Chile, usaban la yupana, una especie de calculadora de piedra, y los quipus, cuerdas con nudos, para hacer sus cuentas?",
+      "¿Sabías que los antiguos egipcios multiplicaban sin saberse las tablas? Solo duplicaban números una y otra vez y luego sumaban los resultados que necesitaban."
+     ],
+     "retos": [
+      {
+       "q": "El 4° básico quiere cuidar el planeta: su meta es juntar 100 botellas plásticas para reciclar. Los 8 grupos del curso juntaron 9 botellas cada uno. ¿Cuántas botellas les faltan para la meta?",
+       "ops": [
+        "28 botellas",
+        "17 botellas",
+        "72 botellas"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: calculo cuántas juntaron en total: 8 grupos × 9 botellas = 72 botellas. Paso 2: a la meta le resto lo juntado: 100 − 72 = 28. ¡Cuidado! 72 es lo que ya tienen, no lo que falta. Cada botella reciclada ayuda a cuidar el medio ambiente."
+      },
+      {
+       "q": "La profesora tiene 50 láminas de animales chilenos y las reparte en partes iguales entre 8 estudiantes. ¿Cuántas recibe cada uno y cuántas sobran?",
+       "ops": [
+        "6 cada uno y sobran 2",
+        "7 cada uno y no sobra ninguna",
+        "5 cada uno y sobran 10"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: busco cuántas veces cabe el 8 en 50: 8 × 6 = 48, que es lo más cerca sin pasarse. Paso 2: calculo el resto: 50 − 48 = 2. La opción de 7 no sirve porque 8 × 7 = 56 y no hay 56 láminas. La de 5 tampoco, porque si sobran 10, ¡todavía se puede repartir una más a cada uno! Repartir parejo es repartir justo."
+      }
+     ]
+    },
+    {
+     "id": "fracciones-decimales",
+     "nombre": "Fracciones y decimales",
+     "emoji": "🍕",
+     "oa": "Números y Operaciones (OA8–OA11): comprender, comparar y sumar fracciones y números decimales",
+     "intro": "Las fracciones y los decimales sirven para hablar de pedazos: media pizza, un cuarto de hora o 36,5 grados de temperatura.",
+     "items": [
+      {
+       "t": "Fracción",
+       "d": "Representa partes IGUALES de un entero. Si una pizza tiene 8 trozos, 1/4 de la pizza son 2 trozos.",
+       "e": "🍕",
+       "en": "Fraction"
+      },
+      {
+       "t": "Numerador y denominador",
+       "d": "En 3/4, el 4 (denominador) dice en cuántas partes se dividió el entero, y el 3 (numerador) dice cuántas tomamos.",
+       "e": "🔺",
+       "en": "Numerator and denominator"
+      },
+      {
+       "t": "Fracciones equivalentes",
+       "d": "Fracciones distintas que valen lo mismo. 1/2 = 2/4 = 4/8: es la misma cantidad de pizza cortada en trozos más chicos.",
+       "e": "🟰",
+       "en": "Equivalent fractions"
+      },
+      {
+       "t": "Comparar fracciones",
+       "d": "Con el mismo entero, 1/3 > 1/4, porque si divido en menos partes, cada parte es más grande.",
+       "e": "⚖️",
+       "en": "Comparing fractions"
+      },
+      {
+       "t": "Décimo",
+       "d": "Una de las 10 partes iguales de un entero: 1/10 = 0,1. En el número 2,5 el 5 vale 5 décimos, o sea, la mitad de un entero.",
+       "e": "🔟",
+       "en": "Tenth"
+      },
+      {
+       "t": "Centésimo",
+       "d": "Una de las 100 partes iguales de un entero: 1/100 = 0,01. En 3,47 el 7 vale 7 centésimos.",
+       "e": "💯",
+       "en": "Hundredth"
+      }
+     ],
+     "datos": [
+      "¿Sabías que las fracciones nacieron en el antiguo Egipto hace más de 4.000 años? Las usaban para repartir pan y medir terrenos después de las crecidas del río Nilo.",
+      "¿Sabías que tu cuerpo usa decimales todos los días? La temperatura normal es cerca de 36,5 °C: ese ,5 son 5 décimos de grado, ¡y medio grado más puede significar fiebre!"
+     ],
+     "retos": [
+      {
+       "q": "Diego y su hermana comparten una barra de cereal dividida en 8 partes iguales. Diego come 2/8 de la barra y su hermana come 1/4. Diego dice que él comió más. ¿Tiene razón?",
+       "ops": [
+        "Sí, Diego comió más",
+        "No, su hermana comió más",
+        "No, comieron exactamente lo mismo"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: convierto 1/4 a octavos: si divido cada cuarto en 2, obtengo 2/8. Paso 2: comparo: Diego comió 2/8 y su hermana 2/8, ¡es lo mismo! Las fracciones 1/4 y 2/8 son equivalentes aunque se escriban distinto. Ser honesto también es reconocer cuando el otro tiene lo mismo que tú."
+      },
+      {
+       "q": "Camila prepara un queque con su abuela. La receta pide 3/4 de taza de azúcar y ella ya echó 1/4 de taza. ¿Cuánta azúcar le falta agregar?",
+       "ops": [
+        "2/4 de taza, o sea media taza",
+        "1/4 de taza",
+        "1 taza completa"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: resto las fracciones con igual denominador: 3/4 − 1/4 = 2/4 (resto solo los numeradores: 3 − 1 = 2). Paso 2: simplifico: 2/4 es equivalente a 1/2, media taza. Si echara 1 taza más, el queque quedaría demasiado dulce: en las recetas, ¡las fracciones exactas importan!"
+      }
+     ]
+    },
+    {
+     "id": "patrones-ecuaciones",
+     "nombre": "Patrones y ecuaciones",
+     "emoji": "🧩",
+     "oa": "Patrones y Álgebra (OA12–OA14): descubrir reglas de patrones y resolver ecuaciones e inecuaciones simples",
+     "intro": "Un detective matemático descubre la regla escondida en una secuencia y encuentra el número misterioso de una ecuación.",
+     "items": [
+      {
+       "t": "Patrón",
+       "d": "Una secuencia que sigue una regla. En 5, 10, 15, 20… la regla es 'sumar 5', así que el siguiente es 25.",
+       "e": "🧩",
+       "en": "Pattern"
+      },
+      {
+       "t": "Regla del patrón",
+       "d": "Es la instrucción que genera la secuencia. En 3, 6, 12, 24… la regla es 'el doble', así que sigue el 48.",
+       "e": "🔑",
+       "en": "Pattern rule"
+      },
+      {
+       "t": "Tabla de valores",
+       "d": "Tabla con números de entrada y salida que siguen una regla. Si la regla es 'sumar 7': entra 3 y sale 10, entra 8 y sale 15.",
+       "e": "📋",
+       "en": "Table of values"
+      },
+      {
+       "t": "Ecuación",
+       "d": "Una igualdad con un valor desconocido. En ▢ + 5 = 12, el número misterioso es 7, porque 7 + 5 = 12.",
+       "e": "❓",
+       "en": "Equation"
+      },
+      {
+       "t": "Inecuación",
+       "d": "Una desigualdad que se cumple con varios números. ▢ > 4 se cumple con 5, 6, 7 y muchos más, pero no con 3.",
+       "e": "↕️",
+       "en": "Inequality"
+      },
+      {
+       "t": "Balanza en equilibrio",
+       "d": "El signo = funciona como una balanza: los dos lados deben pesar lo mismo. Si 6 + 4 = ▢ + 2, entonces ▢ = 8.",
+       "e": "⚖️",
+       "en": "Balance"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la naturaleza está llena de patrones? Las escamas de la piña y las semillas del girasol crecen siguiendo la famosa secuencia de Fibonacci: 1, 1, 2, 3, 5, 8, 13…",
+      "¿Sabías que el signo = lo inventó Robert Recorde en 1557? Eligió dos rayitas paralelas porque, según él, 'no existen dos cosas más iguales'."
+     ],
+     "retos": [
+      {
+       "q": "En un estadio de fútbol chileno, las filas siguen un patrón: la fila 1 tiene 8 asientos, la fila 2 tiene 12 y la fila 3 tiene 16. Si el patrón continúa, ¿cuántos asientos tiene la fila 5?",
+       "ops": [
+        "20 asientos",
+        "24 asientos",
+        "28 asientos"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: descubro la regla: de 8 a 12 hay +4, y de 12 a 16 también +4. La regla es 'sumar 4 por fila'. Paso 2: continúo el patrón: fila 4 = 16 + 4 = 20 y fila 5 = 20 + 4 = 24. ¡Cuidado con responder 20, ese es el valor de la fila 4, no de la 5!"
+      },
+      {
+       "q": "Tomás compró un helado en el kiosco y pagó con $2.000. Le dieron $850 de vuelto. ¿Qué ecuación sirve para encontrar el precio ▢ del helado?",
+       "ops": [
+        "▢ + 850 = 2.000",
+        "▢ − 850 = 2.000",
+        "▢ + 2.000 = 850"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: pienso en la situación: el precio del helado MÁS el vuelto debe ser igual a lo que pagó. Eso se escribe ▢ + 850 = 2.000. Paso 2: resuelvo restando: ▢ = 2.000 − 850 = 1.150. Compruebo como en una balanza: 1.150 + 850 = 2.000. ¡Equilibrada!"
+      }
+     ]
+    },
+    {
+     "id": "geometria",
+     "nombre": "Geometría y movimientos",
+     "emoji": "📐",
+     "oa": "Geometría (OA15–OA18): vistas de figuras 3D, ubicación en cuadrículas y transformaciones (trasladar, reflejar, rotar)",
+     "intro": "La geometría te enseña a mirar el mundo: cubos, mapas con coordenadas y figuras que se deslizan, se reflejan y giran.",
+     "items": [
+      {
+       "t": "Figura 3D",
+       "d": "Cuerpo geométrico con volumen. Un dado es un cubo: tiene 6 caras, 12 aristas y 8 vértices.",
+       "e": "🎲",
+       "en": "3D shape"
+      },
+      {
+       "t": "Vistas de una figura",
+       "d": "Cómo se ve un cuerpo desde arriba, de frente o de lado. Un cilindro (como un tarro) visto desde arriba se ve como un círculo.",
+       "e": "👀",
+       "en": "Views of a shape"
+      },
+      {
+       "t": "Coordenadas",
+       "d": "Posición en una cuadrícula usando letra y número, como en el juego batalla naval: el barco está en B4.",
+       "e": "🗺️",
+       "en": "Coordinates"
+      },
+      {
+       "t": "Traslación",
+       "d": "Deslizar una figura sin girarla ni darla vuelta, como mover una pieza de ajedrez en línea recta. La figura queda idéntica, solo cambia de lugar.",
+       "e": "➡️",
+       "en": "Translation"
+      },
+      {
+       "t": "Reflexión",
+       "d": "Voltear una figura como en un espejo. Tu mano derecha reflejada se ve como una mano izquierda.",
+       "e": "🪞",
+       "en": "Reflection"
+      },
+      {
+       "t": "Rotación",
+       "d": "Girar una figura alrededor de un punto, como las manecillas del reloj o las aspas de un molino.",
+       "e": "🔄",
+       "en": "Rotation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la estrella de la bandera chilena se dibuja con geometría? Por ley debe ir inscrita en un círculo imaginario y tener 5 puntas perfectamente regulares.",
+      "¿Sabías que las abejas son grandes geómetras? Construyen sus panales con hexágonos porque esa figura cubre el espacio sin dejar huecos y usa menos cera."
+     ],
+     "retos": [
+      {
+       "q": "En un dado, las caras opuestas siempre suman 7. Si Martín ve el 2 en la cara de arriba, ¿qué número está escondido en la cara de abajo, tocando la mesa?",
+       "ops": [
+        "5",
+        "6",
+        "3"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: recuerdo la regla del dado: cara de arriba + cara de abajo = 7. Paso 2: planteo la ecuación 2 + ▢ = 7. Paso 3: resuelvo: ▢ = 7 − 2 = 5. No necesito dar vuelta el dado para saberlo: ¡razonar con las vistas de una figura 3D me deja 'ver' lo escondido!"
+      },
+      {
+       "q": "Ema juega batalla naval. Su barco está en la casilla C3. Lo traslada 2 casillas a la derecha (las letras avanzan) y 1 casilla hacia arriba (los números suben). ¿En qué casilla queda?",
+       "ops": [
+        "E4",
+        "A2",
+        "D5"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: muevo 2 a la derecha desde la letra C: C → D → E, quedo en E3. Paso 2: subo 1 desde el número 3: 3 → 4, quedo en E4. En una traslación el barco no gira ni se voltea, solo se desliza. A2 sería moverse hacia atrás y abajo: ¡al revés!"
+      }
+     ]
+    },
+    {
+     "id": "medicion-datos",
+     "nombre": "Medición, datos y azar",
+     "emoji": "📊",
+     "oa": "Medición (OA19–OA22) y Datos y Probabilidades (OA23–OA27): tiempo, longitud, perímetro, área, gráficos y azar",
+     "intro": "Medir, ordenar datos en gráficos y pensar en el azar te ayuda a tomar buenas decisiones en la vida real.",
+     "items": [
+      {
+       "t": "Unidades de longitud",
+       "d": "El metro (m) y el centímetro (cm) miden largos: 1 m = 100 cm. Una regla escolar mide 30 cm.",
+       "e": "📏",
+       "en": "Units of length"
+      },
+      {
+       "t": "Tiempo",
+       "d": "1 hora = 60 minutos y 1 minuto = 60 segundos. Media hora son 30 minutos: lo que dura un recreo largo más la colación.",
+       "e": "⏰",
+       "en": "Time"
+      },
+      {
+       "t": "Perímetro",
+       "d": "El contorno de una figura: sumo todos sus lados. Un rectángulo de 5 m por 3 m tiene perímetro 5 + 3 + 5 + 3 = 16 m.",
+       "e": "🔲",
+       "en": "Perimeter"
+      },
+      {
+       "t": "Área",
+       "d": "La superficie que cubre una figura, contada en cuadraditos. Un rectángulo de 4 por 3 cubre 4 × 3 = 12 cuadrados.",
+       "e": "🟩",
+       "en": "Area"
+      },
+      {
+       "t": "Gráfico de barras",
+       "d": "Muestra datos con barras: mientras más alta la barra, mayor la cantidad. Si la barra de 'fútbol' llega a 15 y la de 'vóleibol' a 9, ganó el fútbol por 6 votos.",
+       "e": "📊",
+       "en": "Bar graph"
+      },
+      {
+       "t": "Probabilidad",
+       "d": "Dice qué tan posible es que algo ocurra: seguro, posible o imposible. Sacar una bolita roja de una bolsa que solo tiene bolitas rojas es seguro.",
+       "e": "🎲",
+       "en": "Probability"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el metro se definió hace más de 200 años como la diezmillonésima parte de la distancia entre el Polo Norte y la línea del ecuador? ¡Midieron media Tierra para crearlo!",
+      "¿Sabías que el desierto de Atacama, en Chile, es el más árido del mundo? En algunas zonas caen menos de 1 milímetro de lluvia al año: por eso es un lugar perfecto para observar las estrellas."
+     ],
+     "retos": [
+      {
+       "q": "La familia de Martín quiere cercar su huerta ecológica rectangular, que mide 6 m de largo y 4 m de ancho, para proteger sus verduras. El cerco cuesta $2.000 por cada metro. ¿Cuánto gastarán?",
+       "ops": [
+        "$40.000",
+        "$48.000",
+        "$20.000"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: el cerco rodea la huerta, así que necesito el PERÍMETRO, no el área: 6 + 4 + 6 + 4 = 20 m. Paso 2: multiplico por el precio: 20 × $2.000 = $40.000. ¡Cuidado! $48.000 sale de calcular el área (6 × 4 = 24) por error: el área serviría para saber cuánta tierra plantar, no cuánto cerco comprar."
+      },
+      {
+       "q": "El 4° básico votó por su fruta favorita y armó un gráfico de barras: manzana 12 votos, plátano 9, frutilla 12 y naranja 6. ¿Cuál afirmación es verdadera?",
+       "ops": [
+        "La manzana y la frutilla empataron en primer lugar",
+        "El plátano fue la fruta más votada",
+        "Votaron 35 estudiantes en total"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: comparo las barras: manzana 12 y frutilla 12 son las más altas e iguales, ¡empate en primer lugar! Paso 2: descarto el plátano, que con 9 votos quedó tercero. Paso 3: verifico el total sumando: 12 + 9 + 12 + 6 = 39, no 35. Leer bien un gráfico antes de opinar es ser riguroso y honesto con los datos."
+      }
+     ]
+    }
+   ],
+   "5": [
+    {
+     "id": "numeros-grandes",
+     "nombre": "Grandes números y operaciones",
+     "emoji": "🔢",
+     "oa": "OA1–OA6: representar números naturales de más de 6 dígitos, multiplicar, dividir y estimar para resolver problemas",
+     "intro": "Los números grandes están en todas partes: en la población de Chile, en los precios y hasta en las distancias entre ciudades.",
+     "items": [
+      {
+       "t": "Valor posicional",
+       "d": "Es el valor que tiene una cifra según el lugar que ocupa. En 347.892, el 4 vale 40.000 porque está en las decenas de mil.",
+       "e": "🏛️",
+       "en": "Place value"
+      },
+      {
+       "t": "Multiplicación de dos dígitos",
+       "d": "Multiplicar un número de dos cifras por otro de dos cifras, descomponiendo. Ejemplo: 23 × 15 = 23 × 10 + 23 × 5 = 230 + 115 = 345.",
+       "e": "✖️",
+       "en": "Two-digit multiplication"
+      },
+      {
+       "t": "División",
+       "d": "Repartir en partes iguales. Ejemplo: 348 ÷ 4 = 87, porque 87 × 4 = 348. ¡Siempre puedes comprobar multiplicando!",
+       "e": "➗",
+       "en": "Division"
+      },
+      {
+       "t": "Resto de una división",
+       "d": "Lo que sobra cuando el reparto no es exacto. En 25 ÷ 4 = 6 con resto 1: se forman 6 grupos de 4 y sobra 1.",
+       "e": "🍪",
+       "en": "Remainder"
+      },
+      {
+       "t": "Redondeo",
+       "d": "Aproximar un número para calcular más rápido. 4.870 redondeado a la centena es 4.900, y a la unidad de mil es 5.000.",
+       "e": "🎯",
+       "en": "Rounding"
+      },
+      {
+       "t": "Cálculo mental",
+       "d": "Estrategias para calcular sin lápiz ni calculadora. Ejemplo: 25 × 12 = 25 × 4 × 3 = 100 × 3 = 300.",
+       "e": "🧠",
+       "en": "Mental math"
+      }
+     ],
+     "datos": [
+      "¿Sabías que Chile tiene cerca de 20.000.000 de habitantes? ¡Ese número tiene 8 cifras! Para escribirlo se usan puntos que separan los grupos de tres.",
+      "¿Sabías que los números que usamos (0, 1, 2, 3…) nacieron en India hace más de 1.500 años y llegaron a Europa gracias a los matemáticos árabes? Por eso se llaman indoarábigos."
+     ],
+     "retos": [
+      {
+       "q": "En la feria, el kilo de manzanas cuesta $1.290. Doña Rosa compra 3 kilos y paga con un billete de $5.000. El casero, que es muy honesto, ¿cuánto vuelto le debe dar?",
+       "ops": [
+        "$1.130",
+        "$1.290",
+        "$2.130"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: calcula el total de la compra: 3 × $1.290 = $3.870. Paso 2: calcula el vuelto restando: $5.000 − $3.870 = $1.130. La honestidad del casero está en devolver el vuelto exacto, ¡y la tuya en revisarlo con matemática!"
+      },
+      {
+       "q": "Un colegio de Valparaíso lleva a 128 estudiantes a plantar árboles nativos. Cada bus tiene 40 asientos. ¿Cuántos buses deben contratar para que nadie quede abajo?",
+       "ops": [
+        "3 buses",
+        "4 buses",
+        "5 buses"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: divide 128 ÷ 40 = 3 con resto 8. Paso 2: piensa qué significa el resto: con 3 buses viajan solo 120 estudiantes y quedan 8 abajo. Paso 3: como esos 8 también deben viajar, se necesita un bus más: 4 buses en total. ¡A veces el resto obliga a redondear hacia arriba!"
+      }
+     ]
+    },
+    {
+     "id": "fracciones-decimales",
+     "nombre": "Fracciones y decimales",
+     "emoji": "🍕",
+     "oa": "OA7–OA12: fracciones propias e impropias, números mixtos, sumas con igual denominador y números decimales",
+     "intro": "Las fracciones y los decimales sirven para hablar de las partes de un todo: media pizza, un cuarto de kilo o 1,5 litros de jugo.",
+     "items": [
+      {
+       "t": "Fracción propia",
+       "d": "Fracción menor que un entero: el numerador es menor que el denominador. Ejemplo: 3/4 de una pizza es menos que la pizza completa.",
+       "e": "🍕",
+       "en": "Proper fraction"
+      },
+      {
+       "t": "Fracción impropia",
+       "d": "Fracción mayor o igual que un entero. Ejemplo: 7/4 son 7 pedazos de tamaño un cuarto, o sea, más de una pizza entera.",
+       "e": "🥧",
+       "en": "Improper fraction"
+      },
+      {
+       "t": "Número mixto",
+       "d": "Un entero más una fracción. Ejemplo: 7/4 = 1 3/4, que se lee 'uno y tres cuartos'.",
+       "e": "🔀",
+       "en": "Mixed number"
+      },
+      {
+       "t": "Fracciones equivalentes",
+       "d": "Fracciones que representan la misma cantidad. Ejemplo: 1/2 = 2/4 = 4/8. Se ven distintas, ¡pero valen lo mismo!",
+       "e": "⚖️",
+       "en": "Equivalent fractions"
+      },
+      {
+       "t": "Suma de fracciones",
+       "d": "Con igual denominador, se suman los numeradores. Ejemplo: 2/5 + 1/5 = 3/5. El denominador no cambia.",
+       "e": "➕",
+       "en": "Adding fractions"
+      },
+      {
+       "t": "Número decimal",
+       "d": "Otra forma de escribir partes de un entero usando la coma. Ejemplo: 1/2 = 0,5 y 3/4 = 0,75. Para comparar: 0,8 > 0,75.",
+       "e": "🔟",
+       "en": "Decimal number"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los antiguos egipcios ya usaban fracciones hace más de 4.000 años? Ellos escribían casi todo con fracciones de numerador 1, como 1/2, 1/3 y 1/4.",
+      "¿Sabías que en Chile usamos la coma decimal (1,5) pero en Estados Unidos usan el punto (1.5)? ¡El mismo número se escribe distinto según el país!"
+     ],
+     "retos": [
+      {
+       "q": "Martina comió 2/8 de una pizza y su hermano Diego comió 1/4 de la misma pizza. Diego reclama que Martina comió más. ¿Quién tiene razón?",
+       "ops": [
+        "Martina comió más",
+        "Diego comió más",
+        "Comieron exactamente lo mismo"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: busca fracciones equivalentes para comparar: 1/4 = 2/8. Paso 2: compara: Martina comió 2/8 y Diego también comió 2/8. Paso 3: concluye que comieron lo mismo. ¡Antes de reclamar, conviene comprobar con matemática!"
+      },
+      {
+       "q": "En el almacén, la botella de jugo de 1,5 litros cuesta $1.200. También venden botellas de 0,75 litros a $700 cada una. Si necesitas 1,5 litros para un cumpleaños, ¿qué conviene comprar?",
+       "ops": [
+        "Una botella de 1,5 litros",
+        "Dos botellas de 0,75 litros",
+        "Da lo mismo, cuestan igual"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: verifica la cantidad: 0,75 + 0,75 = 1,5 litros, o sea, ambas opciones dan el mismo jugo. Paso 2: compara precios: dos botellas chicas cuestan 2 × $700 = $1.400, y la grande cuesta $1.200. Paso 3: $1.200 < $1.400, así que la botella grande ahorra $200 y además genera menos envases plásticos."
+      }
+     ]
+    },
+    {
+     "id": "patrones-ecuaciones",
+     "nombre": "Patrones y ecuaciones",
+     "emoji": "🧩",
+     "oa": "OA14–OA15: descubrir reglas de patrones usando tablas y resolver ecuaciones e inecuaciones de un paso",
+     "intro": "El álgebra es como ser detective: descubres reglas escondidas en los números y encuentras valores desconocidos.",
+     "items": [
+      {
+       "t": "Patrón numérico",
+       "d": "Secuencia de números que sigue una regla. Ejemplo: 3, 6, 9, 12… la regla es 'sumar 3'.",
+       "e": "🔁",
+       "en": "Number pattern"
+      },
+      {
+       "t": "Regla del patrón",
+       "d": "La instrucción que genera el patrón. En 5, 10, 20, 40… la regla es 'multiplicar por 2'.",
+       "e": "📐",
+       "en": "Pattern rule"
+      },
+      {
+       "t": "Tabla de valores",
+       "d": "Tabla que muestra cómo se relacionan dos cantidades. Ejemplo: 1 completo → $2.000; 2 completos → $4.000; 3 → $6.000.",
+       "e": "📋",
+       "en": "Table of values"
+      },
+      {
+       "t": "Incógnita",
+       "d": "El valor desconocido que buscamos, representado por una letra. En x + 5 = 12, la incógnita es x.",
+       "e": "🕵️",
+       "en": "Unknown"
+      },
+      {
+       "t": "Ecuación",
+       "d": "Igualdad con una incógnita, como una balanza equilibrada. Ejemplo: x + 5 = 12, entonces x = 7 porque 7 + 5 = 12.",
+       "e": "⚖️",
+       "en": "Equation"
+      },
+      {
+       "t": "Inecuación",
+       "d": "Desigualdad que se cumple para varios valores. Ejemplo: x > 4 se cumple con 5, 6, 7… pero no con 3.",
+       "e": "↔️",
+       "en": "Inequality"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los girasoles y las piñas de los pinos chilenos crecen siguiendo un patrón numérico famoso, la secuencia de Fibonacci (1, 1, 2, 3, 5, 8, 13…)? ¡La naturaleza también hace matemática!",
+      "¿Sabías que la palabra 'álgebra' viene del árabe al-jabr, el título de un libro escrito hace unos 1.200 años por el matemático Al-Juarismi? De su nombre también viene la palabra 'algoritmo'."
+     ],
+     "retos": [
+      {
+       "q": "Una micro del Transantiago parte con 5 pasajeros. En cada parada suben 3 personas y no baja nadie. Siguiendo el patrón, ¿cuántos pasajeros hay después de 6 paradas?",
+       "ops": [
+        "20 pasajeros",
+        "23 pasajeros",
+        "18 pasajeros"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: identifica la regla del patrón: se parte de 5 y se suma 3 en cada parada. Paso 2: en 6 paradas suben 6 × 3 = 18 personas. Paso 3: suma el inicio: 5 + 18 = 23 pasajeros. Cuidado con el error común de olvidar los 5 del comienzo."
+      },
+      {
+       "q": "Tomás quiere comprar una pelota de fútbol que cuesta $12.990. Ya ahorró $8.500 con esfuerzo, guardando parte de su mesada. Si x es lo que le falta, la ecuación es 8.500 + x = 12.990. ¿Cuánto le falta ahorrar?",
+       "ops": [
+        "$4.490",
+        "$4.590",
+        "$3.490"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: plantea la ecuación 8.500 + x = 12.990. Paso 2: para despejar x, resta 8.500 a ambos lados: x = 12.990 − 8.500 = 4.490. Paso 3: comprueba: 8.500 + 4.490 = 12.990. El ahorro constante es un esfuerzo que la matemática ayuda a planificar."
+      }
+     ]
+    },
+    {
+     "id": "geometria-plano",
+     "nombre": "Geometría y movimientos",
+     "emoji": "📐",
+     "oa": "OA16–OA18: ubicar puntos en el plano cartesiano y reconocer traslaciones, reflexiones y rotaciones de figuras",
+     "intro": "En geometría aprenderás a ubicar puntos como en un mapa del tesoro y a mover figuras sin cambiar su forma.",
+     "items": [
+      {
+       "t": "Plano cartesiano",
+       "d": "Cuadrícula con dos ejes numerados: el eje x (horizontal) y el eje y (vertical), que sirve para ubicar puntos exactos.",
+       "e": "🗺️",
+       "en": "Cartesian plane"
+      },
+      {
+       "t": "Par ordenado",
+       "d": "Las 'coordenadas' de un punto: (x, y). El punto (3, 2) está 3 hacia la derecha y 2 hacia arriba desde el origen. ¡El orden importa: (3, 2) ≠ (2, 3)!",
+       "e": "📍",
+       "en": "Ordered pair"
+      },
+      {
+       "t": "Traslación",
+       "d": "Deslizar una figura sin girarla ni voltearla. Si el punto (3, 4) se traslada 2 a la derecha, queda en (5, 4).",
+       "e": "➡️",
+       "en": "Translation"
+      },
+      {
+       "t": "Reflexión",
+       "d": "Voltear una figura como en un espejo, respecto de una línea llamada eje de reflexión. La letra A se ve igual reflejada; la letra F, no.",
+       "e": "🪞",
+       "en": "Reflection"
+      },
+      {
+       "t": "Rotación",
+       "d": "Girar una figura alrededor de un punto, como las aspas de un remolino. Puede ser un cuarto de giro (90°), medio giro (180°) o más.",
+       "e": "🌀",
+       "en": "Rotation"
+      },
+      {
+       "t": "Figuras congruentes",
+       "d": "Figuras con la misma forma y el mismo tamaño. Al trasladar, reflejar o rotar una figura, la nueva figura es congruente con la original.",
+       "e": "👯",
+       "en": "Congruent figures"
+      }
+     ],
+     "datos": [
+      "¿Sabías que, según una historia famosa, René Descartes inventó el plano cartesiano hace unos 400 años mientras miraba una mosca caminar por el techo? Se preguntó cómo describir su posición exacta con números.",
+      "¿Sabías que el GPS de los celulares ubica cualquier lugar de Chile con coordenadas, igual que un par ordenado gigante? Así los mapas saben exactamente dónde estás."
+     ],
+     "retos": [
+      {
+       "q": "En un mapa del tesoro sobre un plano cartesiano, el cofre está en el punto (3, 4). Las instrucciones dicen: 'trasládalo 2 unidades a la derecha y 1 unidad hacia arriba'. ¿En qué punto queda el cofre?",
+       "ops": [
+        "(5, 5)",
+        "(4, 6)",
+        "(1, 3)"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: moverse a la derecha aumenta la coordenada x: 3 + 2 = 5. Paso 2: moverse hacia arriba aumenta la coordenada y: 4 + 1 = 5. Paso 3: el nuevo punto es (5, 5). Recuerda: la primera coordenada siempre es la horizontal (x)."
+      },
+      {
+       "q": "Antonia diseña un volantín con una figura y quiere que el lado izquierdo sea idéntico al derecho, como en un espejo. ¿Qué transformación debe usar para copiar la mitad de su diseño?",
+       "ops": [
+        "Una traslación",
+        "Una reflexión",
+        "Una rotación de 180°"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: piensa en el efecto que necesita: una imagen 'espejada' respecto de la línea central del volantín. Paso 2: la traslación solo desliza (no voltea) y la rotación gira la figura. Paso 3: la reflexión voltea la figura respecto de un eje, creando la simetría de espejo perfecta para el volantín."
+      }
+     ]
+    },
+    {
+     "id": "medicion-area",
+     "nombre": "Medición: perímetro y área",
+     "emoji": "📏",
+     "oa": "OA19–OA22: medir longitudes, transformar unidades (km, m, cm, mm) y calcular perímetros y áreas de rectángulos",
+     "intro": "Medir sirve para todo: saber cuánta reja necesita un huerto, cuánto mide tu pieza o cuán largo es Chile.",
+     "items": [
+      {
+       "t": "Unidades de longitud",
+       "d": "Kilómetro (km), metro (m), centímetro (cm) y milímetro (mm). Ejemplo: 1 km = 1.000 m y 1 m = 100 cm.",
+       "e": "📏",
+       "en": "Units of length"
+      },
+      {
+       "t": "Transformar unidades",
+       "d": "Cambiar de una unidad a otra multiplicando o dividiendo. Ejemplo: 250 cm = 2,5 m, porque 250 ÷ 100 = 2,5.",
+       "e": "🔄",
+       "en": "Unit conversion"
+      },
+      {
+       "t": "Perímetro",
+       "d": "La medida del contorno de una figura: se suman todos sus lados. Un rectángulo de 5 m por 3 m tiene perímetro 5 + 3 + 5 + 3 = 16 m.",
+       "e": "🔲",
+       "en": "Perimeter"
+      },
+      {
+       "t": "Área",
+       "d": "La medida de la superficie que cubre una figura. En un rectángulo, área = largo × ancho. Ejemplo: 5 m × 3 m = 15 m².",
+       "e": "🟩",
+       "en": "Area"
+      },
+      {
+       "t": "Metro cuadrado (m²)",
+       "d": "Unidad para medir superficies: un cuadrado de 1 m por 1 m. Una sala de clases mide alrededor de 50 m².",
+       "e": "⬜",
+       "en": "Square meter"
+      },
+      {
+       "t": "Estimación de medidas",
+       "d": "Aproximar una medida usando referencias del cuerpo: un paso mide cerca de 1 m y el ancho de un dedo, cerca de 1 cm.",
+       "e": "🤏",
+       "en": "Estimating measurements"
+      }
+     ],
+     "datos": [
+      "¿Sabías que Chile continental mide unos 4.300 km de largo? Si caminaras 20 km por día, ¡demorarías más de 7 meses en recorrerlo de Arica a Punta Arenas!",
+      "¿Sabías que una cancha de fútbol profesional, como las del Estadio Nacional, tiene un área cercana a los 7.000 m²? Ahí cabrían más de 100 salas de clases."
+     ],
+     "retos": [
+      {
+       "q": "El curso construye un huerto escolar rectangular de 8 m de largo y 5 m de ancho, y quiere cercarlo con malla para proteger las lechugas. Dejarán una puerta de 1 m sin malla. ¿Cuántos metros de malla necesitan?",
+       "ops": [
+        "25 m",
+        "26 m",
+        "40 m"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: calcula el perímetro completo: 8 + 5 + 8 + 5 = 26 m. Paso 2: resta la puerta que no lleva malla: 26 − 1 = 25 m. Ojo: 40 sería el área (8 × 5), no el perímetro. Cercar bien el huerto protege el trabajo y el esfuerzo de todo el curso."
+      },
+      {
+       "q": "La municipalidad ofrece dos terrenos para una plaza con juegos: uno cuadrado de 6 m por 6 m y otro rectangular de 9 m por 4 m. Los vecinos discuten cuál tiene más espacio. ¿Cuál tiene mayor área?",
+       "ops": [
+        "El terreno de 6 m × 6 m",
+        "El terreno de 9 m × 4 m",
+        "Los dos tienen la misma área"
+       ],
+       "correcta": 2,
+       "porque": "Paso 1: calcula el área del cuadrado: 6 × 6 = 36 m². Paso 2: calcula el área del rectángulo: 9 × 4 = 36 m². Paso 3: compara: ¡son iguales! Figuras con distinta forma pueden tener la misma área, aunque sus perímetros sean diferentes (24 m y 26 m)."
+      }
+     ]
+    },
+    {
+     "id": "datos-probabilidades",
+     "nombre": "Datos y probabilidades",
+     "emoji": "📊",
+     "oa": "OA23–OA27: calcular promedios, leer gráficos y tablas, y describir la posibilidad de ocurrencia de eventos",
+     "intro": "Los datos nos ayudan a entender el mundo: desde cuántos goles anota tu equipo hasta si mañana lloverá.",
+     "items": [
+      {
+       "t": "Promedio",
+       "d": "Se suman todos los datos y se divide por la cantidad de datos. Ejemplo: las notas 4, 6 y 8 dan promedio (4 + 6 + 8) ÷ 3 = 6.",
+       "e": "🧮",
+       "en": "Average (mean)"
+      },
+      {
+       "t": "Encuesta",
+       "d": "Preguntas que se hacen a un grupo para recolectar datos. Ejemplo: preguntar a tu curso cuál es su fruta favorita.",
+       "e": "📝",
+       "en": "Survey"
+      },
+      {
+       "t": "Tabla de frecuencias",
+       "d": "Tabla que muestra cuántas veces se repite cada dato. Si 12 niños prefieren manzana, su frecuencia es 12.",
+       "e": "📋",
+       "en": "Frequency table"
+      },
+      {
+       "t": "Gráfico de barras",
+       "d": "Representa datos con barras: mientras más alta la barra, mayor la cantidad. Ideal para comparar de un vistazo.",
+       "e": "📊",
+       "en": "Bar graph"
+      },
+      {
+       "t": "Diagrama de tallo y hojas",
+       "d": "Ordena datos separando decenas (tallo) y unidades (hojas). El número 47 se anota con tallo 4 y hoja 7.",
+       "e": "🌿",
+       "en": "Stem-and-leaf plot"
+      },
+      {
+       "t": "Probabilidad",
+       "d": "Qué tan posible es que algo ocurra: seguro, probable, poco probable o imposible. Que salga cara o sello al lanzar una moneda es igualmente probable.",
+       "e": "🎲",
+       "en": "Probability"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el Censo de Chile es una encuesta gigante que intenta contar a TODOS los habitantes del país? Con esos datos se decide dónde construir escuelas, hospitales y plazas.",
+      "¿Sabías que el pronóstico del tiempo usa probabilidades? Cuando dicen '80% de probabilidad de lluvia en Concepción', significa que es muy probable que llueva, ¡pero no seguro!"
+     ],
+     "retos": [
+      {
+       "q": "Valentina jugó 4 partidos de baby fútbol y anotó 2, 0, 3 y 1 goles. Para postular a la selección del colegio necesita promedio de al menos 1,5 goles por partido. ¿Cuál es su promedio y le alcanza?",
+       "ops": [
+        "1,5 goles: sí le alcanza justo",
+        "2 goles: le sobra",
+        "1 gol: no le alcanza"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: suma todos los goles: 2 + 0 + 3 + 1 = 6. Paso 2: divide por la cantidad de partidos: 6 ÷ 4 = 1,5. Paso 3: compara con el requisito: 1,5 es exactamente el mínimo, así que sí le alcanza. Ojo: el partido con 0 goles también se cuenta en la división."
+      },
+      {
+       "q": "En la kermesse del colegio, la tómbola tiene 8 bolitas verdes y 2 amarillas. Pedro le dice a un niño más pequeño: 'Es SEGURO que sacarás una verde'. ¿Es honesto lo que dice Pedro?",
+       "ops": [
+        "Sí, porque hay muchas más verdes",
+        "No: es muy probable, pero no seguro",
+        "No: es imposible sacar una amarilla"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: cuenta las posibilidades: 8 de las 10 bolitas son verdes, así que sacar verde es muy probable. Paso 2: pero existen 2 amarillas, entonces sacar verde NO es seguro: 'seguro' significa que ocurre siempre, sin excepción. Paso 3: lo honesto es decir 'es muy probable', usando las palabras exactas que corresponden. Las palabras de probabilidad importan para no engañar a los demás."
+      }
+     ]
+    }
+   ],
+   "6": [
+    {
+     "id": "numeros-operaciones",
+     "nombre": "Grandes números y operaciones",
+     "emoji": "🔢",
+     "oa": "OA1 y OA2: operar con grandes números y comprender múltiplos, factores y números primos",
+     "intro": "Los números grandes están en todas partes: en la población de Chile, en los precios y hasta en los kilómetros de nuestra larga geografía.",
+     "items": [
+      {
+       "t": "Valor posicional",
+       "d": "Cada dígito vale según su posición. En 3.456.789, el 4 está en las centenas de mil, así que vale 400.000.",
+       "e": "🏛️",
+       "en": "Place value"
+      },
+      {
+       "t": "Múltiplo",
+       "d": "Resultado de multiplicar un número por 1, 2, 3… Los múltiplos de 6 son 6, 12, 18, 24… Es como contar saltando de 6 en 6.",
+       "e": "🐇",
+       "en": "Multiple"
+      },
+      {
+       "t": "Factor (divisor)",
+       "d": "Número que divide a otro en forma exacta. Los factores de 12 son 1, 2, 3, 4, 6 y 12, porque 12 se puede repartir exacto entre ellos.",
+       "e": "🧩",
+       "en": "Factor"
+      },
+      {
+       "t": "Número primo",
+       "d": "Número mayor que 1 que solo tiene dos factores: el 1 y él mismo. El 7 es primo (solo 1 y 7); el 9 no, porque 9 = 3 × 3.",
+       "e": "💎",
+       "en": "Prime number"
+      },
+      {
+       "t": "Mínimo común múltiplo (mcm)",
+       "d": "El múltiplo más pequeño que dos números comparten. Para 4 y 6: múltiplos de 4 son 4, 8, 12… y de 6 son 6, 12… El mcm es 12.",
+       "e": "🤝",
+       "en": "Least common multiple"
+      },
+      {
+       "t": "Operatoria combinada",
+       "d": "Cuando hay varias operaciones, primero se resuelven paréntesis, luego multiplicaciones y divisiones, y al final sumas y restas. En 5 + 3 × 4 el resultado es 17, no 32.",
+       "e": "🚦",
+       "en": "Order of operations"
+      }
+     ],
+     "datos": [
+      "¿Sabías que unas cigarras de América del Norte salen de la tierra cada 13 o 17 años? ¡Son números primos! Eso les ayuda a coincidir menos con sus depredadores.",
+      "¿Sabías que Chile tiene más de 6.000 kilómetros de costa? Si caminaras 20 km al día, necesitarías más de 300 días para recorrerla completa."
+     ],
+     "retos": [
+      {
+       "q": "Desde un terminal salen dos micros a las 8:00. La línea verde pasa cada 12 minutos y la roja cada 18 minutos. ¿A qué hora vuelven a salir juntas?",
+       "ops": [
+        "A las 8:30",
+        "A las 8:36",
+        "A las 8:48"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: busca los múltiplos de 12 → 12, 24, 36… Paso 2: busca los múltiplos de 18 → 18, 36… Paso 3: el primer múltiplo común (mcm) es 36. Paso 4: 8:00 + 36 minutos = 8:36. No basta con sumar 12 + 18: hay que encontrar el momento en que AMBOS ciclos coinciden."
+      },
+      {
+       "q": "Martín compró 3 completos a $1.500 cada uno y una bebida de $1.200. Pagó con $10.000 y el vendedor, apurado, le dio $4.800 de vuelto. Si Martín es honesto, ¿qué debería hacer?",
+       "ops": [
+        "Quedarse con el vuelto, está correcto",
+        "Avisar y devolver $500, porque le dieron de más",
+        "Reclamar porque le faltaron $500"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: costo de los completos = 3 × $1.500 = $4.500. Paso 2: total con bebida = $4.500 + $1.200 = $5.700. Paso 3: vuelto correcto = $10.000 − $5.700 = $4.300. Paso 4: le dieron $4.800, es decir $500 de más. Ser honesto significa avisar y devolver la diferencia, aunque nadie se dé cuenta."
+      }
+     ]
+    },
+    {
+     "id": "fracciones-decimales",
+     "nombre": "Fracciones y números decimales",
+     "emoji": "🍕",
+     "oa": "OA5 a OA8: representar, comparar y operar con fracciones, números mixtos y decimales",
+     "intro": "Las fracciones y los decimales son dos formas de hablar de las partes de un todo, como los pedazos de una pizza o los kilos de la feria.",
+     "items": [
+      {
+       "t": "Fracción",
+       "d": "Parte de un todo dividido en partes iguales. Si una pizza se corta en 4 y comes 3 pedazos, comiste 3/4 de la pizza.",
+       "e": "🍕",
+       "en": "Fraction"
+      },
+      {
+       "t": "Número mixto",
+       "d": "Entero más una fracción. 1 1/2 kg de pan es lo mismo que 3/2 kg: un kilo entero y medio kilo más.",
+       "e": "🥖",
+       "en": "Mixed number"
+      },
+      {
+       "t": "Fracciones equivalentes",
+       "d": "Fracciones distintas que valen lo mismo. 1/2 = 2/4 = 4/8: medio queque es igual a dos cuartos de queque.",
+       "e": "⚖️",
+       "en": "Equivalent fractions"
+      },
+      {
+       "t": "Suma de fracciones",
+       "d": "Para sumar con distinto denominador, primero se igualan. 1/2 + 1/4 = 2/4 + 1/4 = 3/4. ¡Nunca se suman los denominadores!",
+       "e": "➕",
+       "en": "Adding fractions"
+      },
+      {
+       "t": "Número decimal",
+       "d": "Número con coma que muestra partes de la unidad. 0,75 significa 75 centésimos, o sea 75/100.",
+       "e": "🔬",
+       "en": "Decimal number"
+      },
+      {
+       "t": "Fracción y decimal",
+       "d": "Son dos escrituras del mismo valor: 1/4 = 0,25 y 1/2 = 0,5. En la feria, 'medio kilo' y '0,5 kg' pesan exactamente igual.",
+       "e": "🔄",
+       "en": "Fraction-decimal equivalence"
+      }
+     ],
+     "datos": [
+      "¿Sabías que los antiguos egipcios ya usaban fracciones hace más de 4.000 años? Pero casi solo usaban fracciones con numerador 1, como 1/2, 1/3 y 1/4.",
+      "¿Sabías que en Chile los decimales se escriben con coma (0,5) pero en los países de habla inglesa se usa punto (0.5)? ¡Por eso la calculadora a veces se ve distinta!"
+     ],
+     "retos": [
+      {
+       "q": "Una receta de sopaipillas usa 3/4 kg de harina. La familia de Josefa quiere hacer el doble para compartir con los vecinos. ¿Cuánta harina necesitan?",
+       "ops": [
+        "1 1/4 kg",
+        "1 1/2 kg",
+        "6/8 kg"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: el doble de 3/4 es 3/4 × 2 = 6/4. Paso 2: simplifica 6/4 = 3/2. Paso 3: conviértelo a número mixto: 3/2 = 1 1/2 kg. Ojo con la trampa: 6/8 es MENOS que 3/4, no el doble; duplicar el denominador achica la fracción."
+      },
+      {
+       "q": "En la corrida familiar del parque, Pedro corrió 2,5 km y Ana corrió 2 3/4 km. ¿Quién corrió más y por cuánto?",
+       "ops": [
+        "Pedro, por 0,25 km",
+        "Ana, por 0,25 km",
+        "Empataron, es la misma distancia"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: convierte todo a decimal: 2 3/4 = 2 + 0,75 = 2,75 km. Paso 2: compara: 2,75 > 2,5, así que ganó Ana. Paso 3: resta: 2,75 − 2,5 = 0,25 km, o sea 250 metros. El truco está en no comparar '3/4' con '5' como si fueran lo mismo: hay que escribir ambos en el mismo formato."
+      }
+     ]
+    },
+    {
+     "id": "razones-porcentajes",
+     "nombre": "Razones y porcentajes",
+     "emoji": "💯",
+     "oa": "OA3 y OA4: demostrar comprensión de razones y porcentajes en contextos cotidianos",
+     "intro": "Las razones y los porcentajes nos ayudan a comparar cantidades y a entender las ofertas del supermercado sin que nos engañen.",
+     "items": [
+      {
+       "t": "Razón",
+       "d": "Comparación entre dos cantidades. Si en una banca hay 2 perros y 3 gatos, la razón es 2:3 y se lee 'dos es a tres'.",
+       "e": "🐶",
+       "en": "Ratio"
+      },
+      {
+       "t": "Razones equivalentes",
+       "d": "Razones que expresan la misma comparación. 2:3 es equivalente a 4:6 y a 6:9, igual que las fracciones equivalentes.",
+       "e": "🪞",
+       "en": "Equivalent ratios"
+      },
+      {
+       "t": "Porcentaje",
+       "d": "Una razón con respecto a 100. 50% significa 50 de cada 100, o sea la mitad: el 50% de 80 es 40.",
+       "e": "💯",
+       "en": "Percentage"
+      },
+      {
+       "t": "Porcentajes de referencia",
+       "d": "Valores fáciles que sirven de ancla: 10% es dividir por 10 (10% de $2.000 = $200), 25% es un cuarto y 50% es la mitad.",
+       "e": "⚓",
+       "en": "Benchmark percentages"
+      },
+      {
+       "t": "Descuento",
+       "d": "Rebaja del precio expresada en porcentaje. Un 20% de descuento en $5.000 rebaja $1.000, así que pagas $4.000.",
+       "e": "🏷️",
+       "en": "Discount"
+      },
+      {
+       "t": "Valor unitario",
+       "d": "El precio de UNA unidad, útil para comparar. Si 3 kg de manzanas cuestan $2.400, cada kilo vale $2.400 ÷ 3 = $800.",
+       "e": "🍎",
+       "en": "Unit price"
+      }
+     ],
+     "datos": [
+      "¿Sabías que el símbolo % nació de la expresión italiana 'per cento' (por ciento)? Con los siglos, la escritura se fue deformando hasta convertirse en las dos bolitas con la rayita.",
+      "¿Sabías que en Chile casi todos los precios incluyen un impuesto llamado IVA del 19%? De cada $1.000 que pagas, unos $160 van al Estado para financiar escuelas, hospitales y parques."
+     ],
+     "retos": [
+      {
+       "q": "Unas zapatillas cuestan $30.000 con 25% de descuento en una tienda. En otra tienda, las mismas zapatillas cuestan $23.500 sin descuento. ¿Dónde conviene comprarlas?",
+       "ops": [
+        "En la tienda con descuento: quedan a $22.500",
+        "En la otra tienda: $23.500 es más barato",
+        "Da exactamente lo mismo"
+       ],
+       "correcta": 0,
+       "porque": "Paso 1: 25% es un cuarto, y un cuarto de $30.000 es $30.000 ÷ 4 = $7.500. Paso 2: precio final con descuento = $30.000 − $7.500 = $22.500. Paso 3: compara: $22.500 < $23.500, así que conviene la tienda con descuento. Lección: un descuento grande no siempre gana, ¡hay que calcular el precio final antes de decidir!"
+      },
+      {
+       "q": "En un curso de 36 estudiantes, la razón entre niñas y niños es 5:4. ¿Cuántas niñas hay en el curso?",
+       "ops": [
+        "16 niñas",
+        "20 niñas",
+        "24 niñas"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: la razón 5:4 forma grupos de 5 + 4 = 9 partes. Paso 2: cada parte vale 36 ÷ 9 = 4 estudiantes. Paso 3: niñas = 5 partes × 4 = 20. Comprobación: niños = 4 × 4 = 16, y 20 + 16 = 36. ✔ La clave es repartir el total en partes iguales antes de multiplicar."
+      }
+     ]
+    },
+    {
+     "id": "patrones-algebra",
+     "nombre": "Patrones y álgebra",
+     "emoji": "🧮",
+     "oa": "OA9 a OA11: descubrir reglas en patrones y resolver ecuaciones de primer grado",
+     "intro": "El álgebra es como ser detective: buscamos el número misterioso escondido detrás de una letra.",
+     "items": [
+      {
+       "t": "Patrón numérico",
+       "d": "Secuencia que sigue una regla. En 3, 6, 9, 12… la regla es 'sumar 3'. Descubrir la regla permite predecir lo que viene.",
+       "e": "🔍",
+       "en": "Number pattern"
+      },
+      {
+       "t": "Incógnita",
+       "d": "El número desconocido que representamos con una letra, casi siempre x. En x + 3 = 10, la incógnita x vale 7.",
+       "e": "🕵️",
+       "en": "Unknown (variable)"
+      },
+      {
+       "t": "Expresión algebraica",
+       "d": "Combinación de números y letras. 2x + 1 significa 'el doble de un número, más 1'. Si x = 5, entonces 2x + 1 = 11.",
+       "e": "✍️",
+       "en": "Algebraic expression"
+      },
+      {
+       "t": "Ecuación",
+       "d": "Igualdad con una incógnita, como una balanza en equilibrio. En x + 5 = 12, quitamos 5 de cada lado y queda x = 7.",
+       "e": "⚖️",
+       "en": "Equation"
+      },
+      {
+       "t": "Tabla de valores",
+       "d": "Tabla que muestra cómo se relacionan dos cantidades. Si y = 3x: cuando x = 1, y = 3; cuando x = 2, y = 6; cuando x = 5, y = 15.",
+       "e": "📋",
+       "en": "Table of values"
+      },
+      {
+       "t": "Comprobación",
+       "d": "Reemplazar la solución en la ecuación para verificar. Si dijiste que x = 7 en x + 5 = 12, comprueba: 7 + 5 = 12. ✔ ¡Un buen matemático siempre revisa!",
+       "e": "✅",
+       "en": "Checking the solution"
+      }
+     ],
+     "datos": [
+      "¿Sabías que la palabra 'álgebra' viene del árabe 'al-jabr'? La usó el matemático Al-Juarismi hace más de 1.200 años, y de su nombre también viene la palabra 'algoritmo'.",
+      "¿Sabías que los girasoles y las piñas de los pinos chilenos esconden patrones numéricos? Sus espirales siguen la secuencia de Fibonacci: 1, 1, 2, 3, 5, 8, 13…"
+     ],
+     "retos": [
+      {
+       "q": "Un taller de fútbol cobra $2.000 de inscripción más $500 por cada clase. Camila pagó $6.000 en total. ¿A cuántas clases asistió?",
+       "ops": [
+        "6 clases",
+        "8 clases",
+        "10 clases"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: plantea la ecuación: 2.000 + 500 × x = 6.000. Paso 2: quita la inscripción: 500 × x = 6.000 − 2.000 = 4.000. Paso 3: divide: x = 4.000 ÷ 500 = 8 clases. Comprobación: 2.000 + 500 × 8 = 2.000 + 4.000 = 6.000. ✔ El error típico es dividir los $6.000 completos sin restar primero la inscripción."
+      },
+      {
+       "q": "Para el 18 de septiembre, un curso arma guirnaldas siguiendo el patrón 4, 7, 10, 13… banderines por fila. ¿Cuántos banderines tendrá la fila número 10?",
+       "ops": [
+        "30 banderines",
+        "31 banderines",
+        "40 banderines"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: descubre la regla: cada fila suma 3 banderines. Paso 2: escribe la regla general: fila n tiene 3 × n + 1 banderines (prueba: fila 1 → 3 × 1 + 1 = 4 ✔, fila 2 → 7 ✔). Paso 3: aplica para n = 10: 3 × 10 + 1 = 31. Encontrar la regla general es más rápido y seguro que contar fila por fila."
+      }
+     ]
+    },
+    {
+     "id": "geometria-medicion",
+     "nombre": "Geometría y medición",
+     "emoji": "📐",
+     "oa": "OA12 a OA21: construir y medir ángulos, teselar, y calcular áreas, superficies y volúmenes",
+     "intro": "La geometría está en las canchas, los edificios y hasta en los panales de abejas: aprender a medirla es entender el mundo que nos rodea.",
+     "items": [
+      {
+       "t": "Ángulo",
+       "d": "Abertura entre dos rayos que se mide en grados con el transportador. Un ángulo recto mide 90°, como la esquina de un cuaderno.",
+       "e": "📐",
+       "en": "Angle"
+      },
+      {
+       "t": "Ángulos opuestos por el vértice",
+       "d": "Cuando dos rectas se cruzan, los ángulos que quedan frente a frente son iguales. Si uno mide 70°, el de enfrente también mide 70°.",
+       "e": "✂️",
+       "en": "Vertically opposite angles"
+      },
+      {
+       "t": "Área del paralelogramo",
+       "d": "Base por altura. Un paralelogramo de base 5 cm y altura 3 cm tiene área 5 × 3 = 15 cm².",
+       "e": "🟦",
+       "en": "Area of a parallelogram"
+      },
+      {
+       "t": "Área del triángulo",
+       "d": "Base por altura, dividido en 2, porque un triángulo es medio paralelogramo. Con base 6 cm y altura 4 cm: (6 × 4) ÷ 2 = 12 cm².",
+       "e": "🔺",
+       "en": "Area of a triangle"
+      },
+      {
+       "t": "Volumen del paralelepípedo",
+       "d": "Largo × ancho × alto, medido en cm³ o m³. Una caja de 2 × 3 × 4 cm tiene volumen 24 cm³: caben 24 cubitos de 1 cm³.",
+       "e": "📦",
+       "en": "Volume of a rectangular prism"
+      },
+      {
+       "t": "Teselado",
+       "d": "Cubrir una superficie con figuras que calzan sin dejar huecos ni superponerse, como las baldosas del piso o el panal de las abejas.",
+       "e": "🐝",
+       "en": "Tessellation"
+      }
+     ],
+     "datos": [
+      "¿Sabías que las abejas construyen sus panales con hexágonos porque es la figura que guarda más miel usando la menor cantidad de cera? ¡Son ingenieras naturales del ahorro!",
+      "¿Sabías que el círculo se divide en 360° por culpa de los babilonios? Hace unos 4.000 años contaban en base 60, y 360 les acomodaba porque se divide exacto por muchos números."
+     ],
+     "retos": [
+      {
+       "q": "El patio de una escuela es un rectángulo de 12 m de largo y 8 m de ancho. Se pintará una zona de juegos triangular con base 12 m y altura 8 m, y el resto se dejará como jardín para atraer abejas. ¿Cuántos metros cuadrados tendrá el jardín?",
+       "ops": [
+        "24 m²",
+        "48 m²",
+        "96 m²"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: área del patio completo = 12 × 8 = 96 m². Paso 2: área del triángulo = (12 × 8) ÷ 2 = 48 m². Paso 3: jardín = 96 − 48 = 48 m². Fíjate que un triángulo con la misma base y altura que el rectángulo ocupa EXACTAMENTE la mitad: por eso jardín y zona de juegos quedan iguales."
+      },
+      {
+       "q": "Una cajita de jugo mide 5 cm de ancho, 4 cm de fondo y 10 cm de alto. Diego quiere saber cuántas cajitas necesita vaciar para llenar un jarro de 1 litro (1.000 cm³) y así reciclar los envases. ¿Cuántas necesita?",
+       "ops": [
+        "4 cajitas",
+        "5 cajitas",
+        "6 cajitas"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: volumen de la cajita = 5 × 4 × 10 = 200 cm³, que equivale a 200 ml de jugo. Paso 2: el jarro necesita 1.000 cm³. Paso 3: 1.000 ÷ 200 = 5 cajitas exactas. Además de practicar volumen, Diego recicla los 5 envases: ¡las cajas tetra pueden convertirse en planchas para construir techos!"
+      }
+     ]
+    },
+    {
+     "id": "datos-probabilidades",
+     "nombre": "Datos y probabilidades",
+     "emoji": "📊",
+     "oa": "OA22 a OA24: comparar distribuciones de datos, leer e interpretar gráficos y explorar la probabilidad",
+     "intro": "Los datos cuentan historias: aprender a leerlos te ayuda a tomar mejores decisiones y a no dejarte engañar por gráficos tramposos.",
+     "items": [
+      {
+       "t": "Promedio (media)",
+       "d": "Se suman todos los datos y se divide por la cantidad de datos. El promedio de 4, 6 y 8 es (4 + 6 + 8) ÷ 3 = 6.",
+       "e": "🎯",
+       "en": "Mean (average)"
+      },
+      {
+       "t": "Diagrama de puntos",
+       "d": "Gráfico donde cada dato es un punto sobre una recta numérica. Si 3 estudiantes sacaron un 6,0, se dibujan 3 puntos sobre el 6,0.",
+       "e": "🔵",
+       "en": "Dot plot"
+      },
+      {
+       "t": "Diagrama de tallo y hojas",
+       "d": "Organiza datos separando decenas (tallo) de unidades (hoja). El dato 23 se escribe con tallo 2 y hoja 3; así 21, 23 y 27 comparten el tallo 2.",
+       "e": "🌿",
+       "en": "Stem-and-leaf plot"
+      },
+      {
+       "t": "Gráfico de barras dobles",
+       "d": "Compara dos grupos con barras juntas de distinto color, por ejemplo, los goles de dos equipos en cada mes del campeonato.",
+       "e": "📊",
+       "en": "Double bar graph"
+      },
+      {
+       "t": "Gráfico circular",
+       "d": "Una 'torta' donde cada porción muestra un porcentaje del total. Si el 50% del curso prefiere fútbol, esa porción es media torta.",
+       "e": "🥧",
+       "en": "Pie chart"
+      },
+      {
+       "t": "Probabilidad experimental",
+       "d": "Se calcula repitiendo un experimento y contando resultados. Si lanzas una moneda 100 veces y salen 48 caras, la probabilidad experimental de cara fue 48/100.",
+       "e": "🎲",
+       "en": "Experimental probability"
+      }
+     ],
+     "datos": [
+      "¿Sabías que Florence Nightingale, una enfermera del siglo XIX, usó gráficos circulares para convencer a los políticos de mejorar los hospitales? ¡Sus gráficos salvaron miles de vidas!",
+      "¿Sabías que cuando el pronóstico dice '70% de probabilidad de lluvia' en Santiago, está usando datos de muchísimos días parecidos? Significa que en 7 de cada 10 días así, llovió."
+     ],
+     "retos": [
+      {
+       "q": "Benjamín tiene tres notas: 5,0; 6,0 y 6,4. Su meta es terminar con promedio 6,0 después de la cuarta prueba. Está tentado a copiar, pero decide esforzarse. ¿Qué nota mínima necesita?",
+       "ops": [
+        "Un 6,0",
+        "Un 6,6",
+        "Un 7,0"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: para promediar 6,0 con 4 notas, la suma total debe ser 6,0 × 4 = 24,0. Paso 2: sus notas actuales suman 5,0 + 6,0 + 6,4 = 17,4. Paso 3: le falta 24,0 − 17,4 = 6,6. Comprobación: (17,4 + 6,6) ÷ 4 = 24 ÷ 4 = 6,0. ✔ Un 6,6 estudiando vale mucho más que un 7,0 copiado: la meta es aprender."
+      },
+      {
+       "q": "En la tómbola de la kermesse hay 10 bolitas: 5 rojas, 3 azules y 2 verdes. La primera persona sacó una verde y no la devolvió. ¿Qué pasa ahora con la probabilidad de sacar verde?",
+       "ops": [
+        "Aumenta, porque ya salió una verde",
+        "Disminuye, porque queda solo 1 verde entre 9 bolitas",
+        "Sigue igual, las bolitas no tienen memoria"
+       ],
+       "correcta": 1,
+       "porque": "Paso 1: al inicio la probabilidad de verde era 2 de 10, o sea 2/10 = 20%. Paso 2: como la bolita NO se devolvió, ahora quedan 9 bolitas y solo 1 verde. Paso 3: la nueva probabilidad es 1/9, aproximadamente 11%, que es menor que 20%. La clave es notar que cambiaron LAS DOS cosas: los casos favorables (de 2 a 1) y el total (de 10 a 9)."
+      }
+     ]
+    }
+   ]
+  },
+  "avanzado": {
+   "1": [
+    {
+     "q": "En el kiosco de la escuela, un jugo cuesta $300 y una galleta cuesta $500. Pagas con una moneda de $1.000. ¿Cuánto vuelto te deben dar?",
+     "ops": [
+      "$800",
+      "$200",
+      "$300"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: Sumo lo que gasto: $300 + $500 = $800. Paso 2: Al pagar con $1.000, resto lo gastado: $1.000 − $800 = $200. El vuelto es $200. Ojo: $800 es lo que gastaste, ¡no el vuelto!"
+    },
+    {
+     "q": "Martín jugó fútbol en el recreo. Anotó 3 goles en el primer tiempo y 4 goles en el segundo tiempo. Su amiga Pía anotó 2 goles MÁS que Martín en total. ¿Cuántos goles anotó Pía?",
+     "ops": [
+      "9 goles",
+      "7 goles",
+      "6 goles"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Goles de Martín: 3 + 4 = 7 goles. Paso 2: Pía hizo 2 más que Martín: 7 + 2 = 9 goles. Cuidado: 7 son los goles de Martín, la pregunta es por los de Pía."
+    },
+    {
+     "q": "La abuela hizo 15 sopaipillas para un día de lluvia. En el almuerzo la familia comió 6 y en la once comió 4 más. ¿Cuántas sopaipillas quedan?",
+     "ops": [
+      "9 sopaipillas",
+      "11 sopaipillas",
+      "5 sopaipillas"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: Después del almuerzo: 15 − 6 = 9 sopaipillas. Paso 2: Después de la once: 9 − 4 = 5 sopaipillas. Hay que restar las DOS veces que comieron, no solo una."
+    },
+    {
+     "q": "En la micro van 8 personas. En la parada del mercado suben 5 personas y bajan 3. ¿Cuántas personas van ahora en la micro?",
+     "ops": [
+      "10 personas",
+      "13 personas",
+      "6 personas"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Suben 5: 8 + 5 = 13 personas. Paso 2: Bajan 3: 13 − 3 = 10 personas. Si respondes 13, olvidaste que 3 personas se bajaron."
+    },
+    {
+     "q": "Sofía junta conchitas en la playa de La Serena. El lunes guardó 2, el martes 4 y el miércoles 6, siguiendo un patrón. Si el jueves sigue el patrón, ¿cuántas conchitas tendrá EN TOTAL al terminar el jueves?",
+     "ops": [
+      "12 conchitas",
+      "20 conchitas",
+      "8 conchitas"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: El patrón suma 2 cada día: 2, 4, 6... el jueves guarda 8. Paso 2: Sumo todos los días: 2 + 4 + 6 + 8 = 20 conchitas en total. Ojo: 8 es solo lo del jueves y 12 es el total sin contar el jueves."
+    },
+    {
+     "q": "Tomás tiene 6 monedas de $10 en su alcancía. Su papá le regala 2 monedas más de $10. ¿Cuánto dinero tiene ahora Tomás?",
+     "ops": [
+      "$60",
+      "$8",
+      "$80"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: Cuento las monedas: 6 + 2 = 8 monedas de $10. Paso 2: Cuento de 10 en 10: 10, 20, 30, 40, 50, 60, 70, 80. Tiene $80. Cuidado: 8 es la cantidad de monedas, no de pesos; y $60 es lo que tenía ANTES del regalo."
+    },
+    {
+     "q": "En un paseo al cerro San Cristóbal, Amanda vio 14 pájaros y Diego vio 9. Después Amanda vio 3 pájaros más. ¿Cuántos pájaros más que Diego vio Amanda al final?",
+     "ops": [
+      "8 pájaros más",
+      "5 pájaros más",
+      "26 pájaros más"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Amanda al final: 14 + 3 = 17 pájaros. Paso 2: Comparo con Diego restando: 17 − 9 = 8. Amanda vio 8 pájaros más. Ojo: 5 sería sin contar los 3 nuevos, y 26 es sumar todo en vez de comparar."
+    },
+    {
+     "q": "Martín quiere completar 20 láminas de su álbum de la Roja. Ya tiene 8 láminas y su tío le regala 5 más. ¿Cuántas láminas le faltan para completar el álbum?",
+     "ops": [
+      "13 láminas",
+      "7 láminas",
+      "12 láminas"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: Láminas que tiene ahora: 8 + 5 = 13. Paso 2: Para llegar a 20 resto: 20 − 13 = 7 láminas. Cuidado: 13 es lo que ya tiene, y 12 sería olvidar el regalo del tío (20 − 8)."
+    }
+   ],
+   "2": [
+    {
+     "q": "Tomás va al kiosco de la escuela. Compra un jugo de $300 y una galleta de $250. Paga con una moneda de $500 y una moneda de $100. ¿Cuánto vuelto le deben dar?",
+     "ops": [
+      "$50",
+      "$100",
+      "$550"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: sumamos lo que compró: $300 + $250 = $550. Paso 2: sumamos las monedas con que pagó: $500 + $100 = $600. Paso 3: restamos para saber el vuelto: $600 − $550 = $50. ¡Le deben dar $50 de vuelto! (Ojo: $550 es lo que gastó, no el vuelto)."
+    },
+    {
+     "q": "En el campeonato de fútbol del barrio, el equipo de Valentina anotó 3 goles en el primer tiempo y el doble de goles en el segundo tiempo. El equipo rival anotó 7 goles en todo el partido. ¿Quién ganó y por cuánto?",
+     "ops": [
+      "El equipo de Valentina, por 2 goles",
+      "El equipo rival, por 4 goles",
+      "Empataron 7 a 7"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: el doble de 3 es 3 + 3 = 6, así que en el segundo tiempo anotaron 6 goles. Paso 2: total del equipo de Valentina: 3 + 6 = 9 goles. Paso 3: comparamos: 9 contra 7. Paso 4: 9 − 7 = 2. ¡Ganó el equipo de Valentina por 2 goles! (Si olvidas el segundo tiempo, parece que gana el rival, ¡pero no!)."
+    },
+    {
+     "q": "La abuela está haciendo empanadas para el 18 de septiembre. En cada bandeja del horno caben 10 empanadas. Llenó 4 bandejas completas y le quedaron 7 empanadas más sin bandeja. ¿Cuántas empanadas hizo en total?",
+     "ops": [
+      "47 empanadas",
+      "40 empanadas",
+      "17 empanadas"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: contamos de 10 en 10 las bandejas llenas: 10, 20, 30, 40. Son 40 empanadas. Paso 2: sumamos las que quedaron afuera: 40 + 7 = 47. ¡La abuela hizo 47 empanadas! (40 es solo lo de las bandejas: no olvides las 7 que sobraron)."
+    },
+    {
+     "q": "La familia de Amanda viaja en auto desde Santiago a la playa. El viaje completo dura 90 minutos. Ya llevan media hora viajando. ¿Cuántos minutos faltan para llegar?",
+     "ops": [
+      "60 minutos",
+      "30 minutos",
+      "120 minutos"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: media hora es lo mismo que 30 minutos. Paso 2: restamos lo que ya viajaron: 90 − 30 = 60. ¡Faltan 60 minutos, o sea una hora! (30 minutos es lo que ya viajaron, y 120 sería sumar en vez de restar)."
+    },
+    {
+     "q": "Antonia está ahorrando para comprar un libro de dinosaurios que cuesta $980. En su chanchito tiene una moneda de $500, dos monedas de $100 y una moneda de $50. ¿Cuánto dinero le falta todavía?",
+     "ops": [
+      "$230",
+      "$330",
+      "$750"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: contamos el dinero del chanchito: $500 + $100 + $100 + $50 = $750. Paso 2: restamos del precio del libro: $980 − $750 = $230. ¡Le faltan $230! (Cuidado: hay DOS monedas de $100; si cuentas solo una te da $330. Y $750 es lo que ya tiene, no lo que falta)."
+    },
+    {
+     "q": "En el paradero, la micro pasa cada 10 minutos. La primera micro del día pasó a las 3:00. Diego llegó al paradero a las 3:35. ¿Cuántos minutos debe esperar la próxima micro?",
+     "ops": [
+      "5 minutos",
+      "10 minutos",
+      "35 minutos"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: contamos de 10 en 10 los horarios de la micro: 3:00, 3:10, 3:20, 3:30, 3:40... Paso 2: Diego llegó a las 3:35, así que la de las 3:30 ya pasó. Paso 3: la próxima es a las 3:40, y de 3:35 a 3:40 hay 5 minutos. ¡Espera solo 5 minutos! (10 minutos es cada cuánto pasa la micro, no lo que espera Diego)."
+    },
+    {
+     "q": "En educación física, Sofía practica saltar la cuerda. El lunes saltó 25 veces. El martes saltó 10 veces MÁS que el lunes. El miércoles saltó 10 veces MENOS que el lunes. ¿Cuántos saltos dio en los tres días juntos?",
+     "ops": [
+      "75 saltos",
+      "60 saltos",
+      "95 saltos"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: lunes = 25 saltos. Paso 2: martes = 25 + 10 = 35 saltos. Paso 3: miércoles = 25 − 10 = 15 saltos. Paso 4: sumamos todo: 25 + 35 = 60, y 60 + 15 = 75. ¡Dio 75 saltos! (60 es si olvidas el miércoles, y 95 es si sumas 10 el miércoles en vez de restar)."
+    },
+    {
+     "q": "Doña Rosa vende sopaipillas a $100 cada una. Pedro compra 6 sopaipillas para compartir con sus amigos y paga con un billete de $1.000. ¿Cuánto vuelto recibe?",
+     "ops": [
+      "$400",
+      "$600",
+      "$500"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: contamos de 100 en 100 las 6 sopaipillas: 100, 200, 300, 400, 500, 600. Gastó $600. Paso 2: restamos del billete: $1.000 − $600 = $400. ¡Recibe $400 de vuelto! ($600 es lo que gastó, no el vuelto, y $500 sería contar solo 5 sopaipillas)."
+    }
+   ],
+   "3": [
+    {
+     "q": "Martín va al almacén con $1.000. Compra un jugo que cuesta $350 y una marraqueta que cuesta $280. ¿Cuánto vuelto le tienen que dar?",
+     "ops": [
+      "$630",
+      "$370",
+      "$430"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: suma lo que gastó: $350 + $280 = $630. Paso 2: resta al dinero que llevaba: $1.000 − $630 = $370. ¡Ojo! $630 es lo que gastó, no el vuelto."
+    },
+    {
+     "q": "En la feria, el kilo de manzanas cuesta $900. La mamá de Martín compra 3 kilos y paga con un billete de $3.000. ¿Cuánto vuelto recibe?",
+     "ops": [
+      "$300",
+      "$2.700",
+      "$400"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: calcula el total: 3 × $900 = $2.700. Paso 2: resta al billete: $3.000 − $2.700 = $300. $2.700 es lo que costaron las manzanas, no el vuelto."
+    },
+    {
+     "q": "El partido de baby fútbol de Martín tiene 2 tiempos de 20 minutos cada uno y un descanso de 10 minutos entre ellos. Si empieza a las 16:00, ¿a qué hora termina?",
+     "ops": [
+      "16:40",
+      "17:00",
+      "16:50"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: suma todo el tiempo: 20 + 10 + 20 = 50 minutos. Paso 2: avanza 50 minutos desde las 16:00, llegando a las 16:50. Si respondiste 16:40 olvidaste contar el descanso."
+    },
+    {
+     "q": "Para hacer 12 sopaipillas se necesitan 4 tazas de harina. La abuela quiere hacer 24 sopaipillas para el 18 de septiembre. ¿Cuántas tazas de harina necesita?",
+     "ops": [
+      "6 tazas",
+      "8 tazas",
+      "16 tazas"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: 24 sopaipillas es el DOBLE de 12. Paso 2: entonces la harina también se duplica: 4 × 2 = 8 tazas. No se suma 4 + 24 ni 4 + 2: hay que pensar en el doble."
+    },
+    {
+     "q": "El pasaje de micro para niños cuesta $250. Martín y sus 2 hermanos van al centro y luego vuelven a casa. ¿Cuánto pagan en total entre los tres?",
+     "ops": [
+      "$750",
+      "$1.250",
+      "$1.500"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: son 3 niños y cada uno hace 2 viajes (ida y vuelta): 3 × 2 = 6 pasajes. Paso 2: 6 × $250 = $1.500. Si respondiste $750 solo contaste la ida y olvidaste la vuelta."
+    },
+    {
+     "q": "La abuela horneó 48 empanaditas y las puso en bandejas de 8 empanaditas cada una. En el almuerzo se comieron 2 bandejas completas. ¿Cuántas empanaditas quedan?",
+     "ops": [
+      "32 empanaditas",
+      "16 empanaditas",
+      "40 empanaditas"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: se comieron 2 bandejas de 8: 2 × 8 = 16 empanaditas. Paso 2: resta al total: 48 − 16 = 32 empanaditas. 16 es lo que se comieron, no lo que queda."
+    },
+    {
+     "q": "Martín quiere una pelota que cuesta $2.500. Ya tiene ahorrados $700 y cada semana su papá le da $300 de mesada. ¿Cuántas semanas debe ahorrar para poder comprarla?",
+     "ops": [
+      "8 semanas",
+      "6 semanas",
+      "5 semanas"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: calcula cuánto le falta: $2.500 − $700 = $1.800. Paso 2: cuenta de $300 en $300 hasta llegar a $1.800: 300, 600, 900, 1.200, 1.500, 1.800. Son 6 semanas, porque 6 × $300 = $1.800."
+    },
+    {
+     "q": "El patio del colegio es un rectángulo que mide 9 metros de largo y 6 metros de ancho. Martín camina 2 vueltas completas por el borde. ¿Cuántos metros camina en total?",
+     "ops": [
+      "30 metros",
+      "54 metros",
+      "60 metros"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: una vuelta completa suma los 4 lados: 9 + 6 + 9 + 6 = 30 metros. Paso 2: como da 2 vueltas: 30 × 2 = 60 metros. 30 es solo una vuelta y 54 sería multiplicar 9 × 6, que no sirve aquí."
+    }
+   ],
+   "4": [
+    {
+     "q": "En un kiosco de la feria, Martín compra 3 completos a $1.250 cada uno y 2 jugos naturales a $890 cada uno. Si paga con un billete de $10.000, ¿cuánto vuelto le deben dar?",
+     "ops": [
+      "$7.860",
+      "$4.470",
+      "$6.250"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: completos → 3 × $1.250 = $3.750. Paso 2: jugos → 2 × $890 = $1.780. Paso 3: total gastado → $3.750 + $1.780 = $5.530. Paso 4: vuelto → $10.000 − $5.530 = $4.470. Ojo: $7.860 es el error de sumar los precios una sola vez sin multiplicar, y $6.250 es olvidar los jugos."
+    },
+    {
+     "q": "Para ver a la selección chilena en el estadio, una familia compra 2 entradas de adulto a $3.500 cada una y 3 entradas de niño a $1.500 cada una. Si pagan con $15.000, ¿cuánto vuelto reciben?",
+     "ops": [
+      "$3.500",
+      "$11.500",
+      "$1.500"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: adultos → 2 × $3.500 = $7.000. Paso 2: niños → 3 × $1.500 = $4.500. Paso 3: total → $7.000 + $4.500 = $11.500. Paso 4: vuelto → $15.000 − $11.500 = $3.500. Ojo: $11.500 es el total gastado (no el vuelto) y $1.500 resulta de intercambiar los precios de adulto y niño."
+    },
+    {
+     "q": "La receta de sopaipillas de la abuela usa 500 g de harina para 4 personas. Si el domingo vienen 10 personas a tomar once, ¿cuánta harina necesita la abuela?",
+     "ops": [
+      "5.000 g",
+      "1.000 g",
+      "1.250 g"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: harina por persona → 500 ÷ 4 = 125 g. Paso 2: para 10 personas → 125 × 10 = 1.250 g. Ojo: 5.000 g es multiplicar 500 × 10 sin dividir primero, y 1.000 g es solo duplicar la receta (alcanzaría solo para 8 personas)."
+    },
+    {
+     "q": "Un bus sale de Santiago rumbo a Valparaíso a las 9:45 de la mañana. El viaje dura 1 hora y 50 minutos. ¿A qué hora llega el bus a Valparaíso?",
+     "ops": [
+      "11:35",
+      "10:35",
+      "11:55"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: sumo la hora → 9:45 + 1 hora = 10:45. Paso 2: sumo los minutos → 10:45 + 50 min. Como 45 + 50 = 95 minutos, y 95 min = 1 hora y 35 min, la llegada es a las 11:35. Ojo: 10:35 es olvidar sumar la hora completa, y 11:55 es sumar mal los minutos sin hacer el canje de 60 minutos por 1 hora."
+    },
+    {
+     "q": "Martín tiene 185 láminas del álbum del Mundial. En cada página del álbum caben exactamente 6 láminas. ¿Cuántas páginas necesita para pegar TODAS sus láminas?",
+     "ops": [
+      "30",
+      "31",
+      "35"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: divido → 185 ÷ 6 = 30 con resto 5 (porque 30 × 6 = 180 y sobran 5 láminas). Paso 2: las 5 láminas que sobran también necesitan una página, aunque no la llenen. Total: 30 + 1 = 31 páginas. Ojo: 30 es olvidar el resto, y 35 es confundir el resto (5) con páginas extra."
+    },
+    {
+     "q": "La cancha del colegio es rectangular: mide 25 m de largo y 18 m de ancho. En Educación Física, los niños dan 3 vueltas completas corriendo por el borde de la cancha. ¿Cuántos metros corren en total?",
+     "ops": [
+      "86 m",
+      "129 m",
+      "258 m"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: perímetro de la cancha → 25 + 18 + 25 + 18 = 86 m (una vuelta completa). Paso 2: tres vueltas → 86 × 3 = 258 m. Ojo: 86 m es solo una vuelta, y 129 m es multiplicar por 3 solo la mitad del perímetro (25 + 18 = 43, y 43 × 3 = 129)."
+    },
+    {
+     "q": "Sofía quiere comprar un juego de mesa que cuesta $3.000. Ya tiene ahorrados $750 y cada semana su abuelo le regala $250. ¿Cuántas semanas debe ahorrar para juntar justo lo que le falta?",
+     "ops": [
+      "12",
+      "8",
+      "9"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: dinero que le falta → $3.000 − $750 = $2.250. Paso 2: semanas necesarias → $2.250 ÷ $250 = 9 semanas (porque 9 × 250 = 2.250). Ojo: 12 es dividir el precio completo ($3.000 ÷ 250) olvidando lo que ya tiene ahorrado, y 8 semanas no alcanza (8 × 250 = 2.000, le faltarían $250)."
+    },
+    {
+     "q": "Para el cumpleaños de Martín, su mamá compró 24 empanadas: 1/3 son de pino, 1/4 son de queso y el resto son napolitanas. ¿Cuántas empanadas napolitanas compró?",
+     "ops": [
+      "10",
+      "12",
+      "14"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: de pino → 1/3 de 24 = 24 ÷ 3 = 8 empanadas. Paso 2: de queso → 1/4 de 24 = 24 ÷ 4 = 6 empanadas. Paso 3: napolitanas → 24 − 8 − 6 = 10 empanadas. Ojo: 14 es la suma de pino y queso (lo que NO es napolitana), y 12 es pensar que las napolitanas son la mitad sin calcular."
+    }
+   ],
+   "5": [
+    {
+     "q": "Sofía va a la feria y compra 3 kg de manzanas a $1.290 el kilo y 2 kg de plátanos a $890 el kilo. Paga con un billete de $10.000. ¿Cuánto vuelto debe recibir?",
+     "ops": [
+      "$5.650",
+      "$4.350",
+      "$7.820"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: manzanas → 3 × $1.290 = $3.870. Paso 2: plátanos → 2 × $890 = $1.780. Paso 3: total → $3.870 + $1.780 = $5.650. Paso 4: vuelto → $10.000 − $5.650 = $4.350. Ojo: $5.650 es el total gastado (no el vuelto) y $7.820 sale de sumar los precios sin multiplicar por los kilos."
+    },
+    {
+     "q": "En un campeonato escolar de fútbol participan 24 equipos. Cada equipo necesita camisetas para sus 11 titulares y 5 suplentes. Las camisetas se venden solo en packs de 10. ¿Cuántos packs hay que comprar como mínimo?",
+     "ops": [
+      "38 packs",
+      "40 packs",
+      "39 packs"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: jugadores por equipo → 11 + 5 = 16. Paso 2: total de camisetas → 24 × 16 = 384. Paso 3: packs → 384 ÷ 10 = 38,4, pero no se pueden comprar packs incompletos, así que se redondea hacia ARRIBA: 39 packs (39 × 10 = 390 camisetas alcanzan; 38 × 10 = 380 no alcanzan). El error típico es redondear hacia abajo y quedarse con 38."
+    },
+    {
+     "q": "La abuela usa 3/4 kg de harina para hacer 12 empanadas. Para el 18 de septiembre quiere hacer 36 empanadas. ¿Cuánta harina necesita?",
+     "ops": [
+      "2 1/4 kg",
+      "27 kg",
+      "1 1/2 kg"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: 36 ÷ 12 = 3, o sea, hará el triple de empanadas. Paso 2: necesita el triple de harina → 3 × 3/4 = 9/4 kg. Paso 3: 9/4 = 2 1/4 kg (dos kilos y un cuarto). El error de multiplicar 3/4 × 36 da 27 kg (¡una montaña de harina!), y 1 1/2 kg sería solo el doble, no el triple."
+    },
+    {
+     "q": "Un bus recorre los 480 km entre Santiago y Chillán. Sale a las 9:00 y llega a las 15:00, pero en el camino hizo paradas que suman 1 hora en total. ¿A qué velocidad promedio avanzó el bus mientras estaba en movimiento?",
+     "ops": [
+      "80 km/h",
+      "96 km/h",
+      "90 km/h"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: tiempo total del viaje → de 9:00 a 15:00 son 6 horas. Paso 2: tiempo en movimiento → 6 − 1 = 5 horas (hay que descontar las paradas). Paso 3: velocidad → 480 ÷ 5 = 96 km/h. El error típico es olvidar descontar la parada y calcular 480 ÷ 6 = 80 km/h."
+    },
+    {
+     "q": "En la feria, un letrero dice: '1,5 kg de tomates por $1.200'. ¿Cuánto cuestan 4 kg de tomates al mismo precio?",
+     "ops": [
+      "$4.800",
+      "$3.600",
+      "$3.200"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: precio de 1 kg → $1.200 ÷ 1,5 = $800 (porque 1,5 kg × $800 = $1.200). Paso 2: 4 kg → 4 × $800 = $3.200. El error típico es multiplicar 4 × $1.200 = $4.800, tratando los $1.200 como si fueran el precio de 1 kg, cuando en realidad son de 1,5 kg."
+    },
+    {
+     "q": "Martín quiere comprar un juego y empieza a ahorrar. La primera semana guarda $500, y cada semana guarda $200 más que la semana anterior. ¿Cuánto tendrá ahorrado en total al final de la semana 6?",
+     "ops": [
+      "$6.000",
+      "$1.500",
+      "$3.000"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: el patrón semanal es $500, $700, $900, $1.100, $1.300, $1.500. Paso 2: sumar todo → 500 + 700 + 900 + 1.100 + 1.300 + 1.500 = $6.000 (truco: 500+1.500 = 2.000, 700+1.300 = 2.000, 900+1.100 = 2.000 → 3 × 2.000). $1.500 es solo lo de la última semana, y $3.000 sería si ahorrara $500 todas las semanas sin aumentar."
+    },
+    {
+     "q": "El patio de un colegio es un rectángulo de 12 m de largo y 8 m de ancho. Se pondrá pasto en todo el patio, excepto en una zona de juegos cuadrada de 4 m por lado. Si el metro cuadrado de pasto cuesta $2.500, ¿cuánto costará el pasto?",
+     "ops": [
+      "$240.000",
+      "$200.000",
+      "$100.000"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: área del patio → 12 × 8 = 96 m². Paso 2: área de la zona de juegos → 4 × 4 = 16 m². Paso 3: área con pasto → 96 − 16 = 80 m². Paso 4: costo → 80 × $2.500 = $200.000. $240.000 es el error de olvidar restar la zona de juegos (96 × $2.500), y $100.000 sale de confundir área con perímetro (el perímetro es 40 m)."
+    },
+    {
+     "q": "Los cuatro 5° básicos de un colegio van de gira a Valparaíso: llevan 34, 36, 33 y 37 estudiantes. Además deben viajar 8 profesores. Si cada bus tiene 36 asientos, ¿cuántos buses necesitan como mínimo?",
+     "ops": [
+      "4 buses",
+      "5 buses",
+      "6 buses"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: estudiantes → 34 + 36 + 33 + 37 = 140. Paso 2: pasajeros en total → 140 + 8 profesores = 148. Paso 3: buses → 148 ÷ 36 = 4 buses con resto 4 (4 × 36 = 144, quedan 4 personas de pie ¡y eso no se puede!), así que se necesita 1 bus más: 5 buses. El error típico es olvidar a los profesores (140 ÷ 36 alcanza justo con 4 buses) o redondear hacia abajo."
+    }
+   ],
+   "6": [
+    {
+     "q": "En el supermercado hay una oferta de jugos en caja: \"Lleva 3, paga 2\". Cada jugo cuesta $890. Para el cumpleaños de Martín se necesitan 12 jugos. ¿Cuánto se pagará en total aprovechando la oferta?",
+     "ops": [
+      "$10.680",
+      "$7.120",
+      "$8.010"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: Con la oferta, por cada 3 jugos que llevas, pagas solo 2. Paso 2: 12 jugos = 4 grupos de 3 jugos. Paso 3: En cada grupo pagas 2 jugos, así que pagas 4 × 2 = 8 jugos. Paso 4: 8 × $890 = $7.120. Ojo: $10.680 sería pagar los 12 sin oferta, y $8.010 sería descontar solo 3 jugos en vez de 4."
+    },
+    {
+     "q": "La receta de queque de la abuela usa 3/4 de taza de azúcar y alcanza para 4 personas. Para la once familiar vienen 10 personas. ¿Cuánta azúcar se necesita?",
+     "ops": [
+      "1 7/8 tazas",
+      "2 1/2 tazas",
+      "1 1/2 tazas"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Calcula el azúcar por persona: 3/4 ÷ 4 = 3/16 de taza. Paso 2: Multiplica por 10 personas: 3/16 × 10 = 30/16 = 15/8. Paso 3: Convierte a número mixto: 15/8 = 1 7/8 tazas. Otra forma: 10 personas es 2,5 veces la receta, y 3/4 × 2,5 = 1,875 = 1 7/8. El error típico es solo duplicar (1 1/2), que alcanzaría para 8 personas, no 10."
+    },
+    {
+     "q": "Camila juega básquetbol. En sus primeros 4 partidos su promedio fue de 18 puntos. Su meta es terminar los 5 partidos del campeonato con un promedio de 20 puntos. ¿Cuántos puntos debe anotar en el quinto partido?",
+     "ops": [
+      "22 puntos",
+      "28 puntos",
+      "20 puntos"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: Si el promedio de 4 partidos es 18, el total anotado es 4 × 18 = 72 puntos. Paso 2: Para promediar 20 en 5 partidos necesita un total de 5 × 20 = 100 puntos. Paso 3: Le faltan 100 − 72 = 28 puntos. Anotar solo 20 (el promedio deseado) no basta, porque debe 'compensar' los partidos en que anotó menos de 20."
+    },
+    {
+     "q": "Un bus viaja de Santiago a Valparaíso (120 km) a velocidad constante. En los primeros 30 minutos recorre 45 km. Si mantiene esa velocidad, ¿cuánto durará el viaje completo?",
+     "ops": [
+      "80 minutos",
+      "90 minutos",
+      "60 minutos"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Si en 30 minutos recorre 45 km, en 60 minutos recorre 90 km (velocidad: 90 km/h). Paso 2: Después de esos 90 km, faltan 120 − 90 = 30 km. Paso 3: Como recorre 45 km en 30 min, recorre 15 km en 10 min, así que 30 km toma 20 min. Paso 4: 60 + 20 = 80 minutos. También sirve la razón: 45 km : 30 min = 120 km : x → x = 120 × 30 ÷ 45 = 80."
+    },
+    {
+     "q": "Unas zapatillas cuestan $36.000 y tienen un 25% de descuento. Además compras 2 pares de calcetines a $2.500 cada uno (sin descuento). ¿Cuánto pagas en total?",
+     "ops": [
+      "$41.000",
+      "$14.000",
+      "$32.000"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: 25% es la cuarta parte, y $36.000 ÷ 4 = $9.000 de descuento. Paso 2: Las zapatillas quedan en $36.000 − $9.000 = $27.000. Paso 3: Los calcetines cuestan 2 × $2.500 = $5.000. Paso 4: Total = $27.000 + $5.000 = $32.000. Error típico: sumar sin aplicar el descuento ($41.000) o sumar el descuento con los calcetines en vez del precio rebajado ($14.000)."
+    },
+    {
+     "q": "El patio rectangular de una escuela mide 12 m de largo y 8 m de ancho. Dentro del patio se construirá una huerta rectangular de 3 m por 2 m, y el resto se cubrirá con pasto que cuesta $2.500 por metro cuadrado. ¿Cuánto costará el pasto?",
+     "ops": [
+      "$225.000",
+      "$240.000",
+      "$15.000"
+     ],
+     "correcta": 0,
+     "porque": "Paso 1: Área total del patio: 12 × 8 = 96 m². Paso 2: Área de la huerta: 3 × 2 = 6 m². Paso 3: Área con pasto: 96 − 6 = 90 m². Paso 4: Costo: 90 × $2.500 = $225.000. Error típico: olvidar restar la huerta y calcular 96 × $2.500 = $240.000, o calcular solo la huerta ($15.000)."
+    },
+    {
+     "q": "Martín empieza a ahorrar para un juego: la primera semana guarda $500, y cada semana guarda $300 más que la semana anterior. ¿Cuánto habrá ahorrado en total después de 6 semanas?",
+     "ops": [
+      "$4.500",
+      "$2.000",
+      "$7.500"
+     ],
+     "correcta": 2,
+     "porque": "Paso 1: Escribe el patrón semana a semana: $500, $800, $1.100, $1.400, $1.700, $2.000. Paso 2: Suma todo: 500 + 800 + 1.100 + 1.400 + 1.700 + 2.000 = $7.500. Truco: junta extremos que suman lo mismo: 500+2.000 = 800+1.700 = 1.100+1.400 = $2.500, y 3 × $2.500 = $7.500. Ojo: $2.000 es solo lo de la última semana, no el total acumulado."
+    },
+    {
+     "q": "Para el 18 de septiembre, la familia hará empanadas. La receta indica que con 2,5 kg de harina salen 20 empanadas. Si quieren hacer 50 empanadas, ¿cuánta harina necesitan?",
+     "ops": [
+      "5 kg",
+      "6,25 kg",
+      "7,5 kg"
+     ],
+     "correcta": 1,
+     "porque": "Paso 1: Calcula cuántas veces cabe la receta: 50 ÷ 20 = 2,5 veces. Paso 2: Multiplica la harina por esa cantidad: 2,5 × 2,5 = 6,25 kg. Comprobación por empanada: 2,5 ÷ 20 = 0,125 kg cada una, y 0,125 × 50 = 6,25 kg. Error típico: solo duplicar (5 kg), que alcanzaría para 40 empanadas, no 50."
+    }
+   ]
+  }
  }
 };
