@@ -83,6 +83,21 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { data } = await sb.from('plans').select('*').eq('activo', true);
       return data || [];
     },
+    // VerbiFox crea el pago con el monto del plan y redirige a Mercado Pago
+    async suscribir(plan_id) {
+      const s = await VFX.sesion();
+      if (!s) { location.href = 'panel.html'; return; }
+      try {
+        const r = await fetch(window.VERBIFOX_SUPABASE_URL + '/functions/v1/crear-suscripcion', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + s.access_token, 'content-type': 'application/json' },
+          body: JSON.stringify({ plan_id }),
+        });
+        const d = await r.json();
+        if (d.init_point) { location.href = d.init_point; }
+        else { alert('No se pudo iniciar el pago: ' + (d.error || 'intenta de nuevo')); }
+      } catch (e) { alert('Error de conexión: ' + e.message); }
+    },
 
     // ---------- AVANCE (lo escribe la app del niño; lo lee el panel) ----------
     // Estudiante "activo" en este dispositivo (lo fija el apoderado desde el panel)

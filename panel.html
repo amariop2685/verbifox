@@ -87,9 +87,10 @@
     <div class="card">
       <h2>💳 Suscripción</h2>
       <div id="subVacia" class="hidden">
-        <p class="mut">Aún no tienes un plan activo. Escribe a tu profesor/coordinador para activarlo.</p>
+        <p class="mut">Aún no tienes un plan activo.</p>
       </div>
       <div id="subCont"></div>
+      <div id="planesDispo" style="margin-top:12px"></div>
     </div>
 
     <!-- HIJOS / REPORTE -->
@@ -183,6 +184,7 @@ async function cargarPanel(){
 
   await pintarSuscripciones();
   await pintarHijos();
+  await pintarPlanesDispo();
 }
 
 async function pintarSuscripciones(){
@@ -207,6 +209,30 @@ async function pintarSuscripciones(){
       <div class="dato"><b>Cobro automático (PAC)</b><span>${pac}</span></div>
     </div>`;
   }).join('');
+}
+
+async function pintarPlanesDispo(){
+  const cont=$('planesDispo'); if(!cont) return;
+  let planes=[], subs=[];
+  try{ planes = await VFX.planes(); }catch(e){}
+  try{ subs = await VFX.misSuscripciones(); }catch(e){}
+  const activas = new Set(subs.filter(s=>s.estado==='activa').map(s=>s.plan_id));
+  // curso del hijo activo (si hay) para priorizar su plan completo
+  const h = hijos.find(x=>x.id===hijoSel);
+  const gn = h && h.curso ? (String(h.curso).match(/[1-6]/)||[])[0] : null;
+  const dispo = planes
+    .filter(p=>!activas.has(p.id))
+    .sort((a,b)=>{ const af=a.id.startsWith('full'), bf=b.id.startsWith('full'); return (bf-af); });
+  if(!dispo.length){ cont.innerHTML=''; return; }
+  cont.innerHTML = `<div style="border-top:1px dashed var(--linea);padding-top:12px"><b>Suscríbete a un plan</b>
+    <p class="mut" style="margin:4px 0 8px">Elige el plan del curso de tu hijo/a. El cobro se crea con el monto exacto.</p>`
+    + dispo.map(p=>{
+      const destaca = gn && p.curso && String(p.curso).includes(gn) && p.id.startsWith('full');
+      return `<div style="display:flex;justify-content:space-between;align-items:center;background:${destaca?'#fff4e0':'#f6f8fb'};border-radius:12px;padding:10px 12px;margin:6px 0">
+        <div><b>${p.nombre}</b>${destaca?' ⭐':''}<div class="mut">${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'}</div></div>
+        <button class="primary" style="width:auto;padding:9px 14px" onclick="VFX.suscribir('${p.id}')">Suscribirme</button>
+      </div>`;
+    }).join('') + `</div>`;
 }
 
 async function pintarHijos(){
