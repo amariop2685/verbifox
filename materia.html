@@ -130,7 +130,13 @@
       const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
       qs.push({concepto:null, emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops, porque:r.porque});
     }
-    return mezcla(qs).slice(0, Math.min(experto?12:8, qs.length));
+    if(experto && mat.avanzado && mat.avanzado[G]){ // bancos avanzados IA (Modo Experto)
+      for(const r of mezcla(mat.avanzado[G]).slice(0,4)){
+        const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
+        qs.push({concepto:null, emoji:'🧠', prompt:r.q, sub:'🧠 Reto experto', ops, porque:r.porque});
+      }
+    }
+    return mezcla(qs).slice(0, Math.min(experto?14:8, qs.length));
   }
   function quiz(experto){ q={preg:armarPreguntas(uActual, !!experto), i:0, ok:0, experto:!!experto}; render(); }
   function render(){
