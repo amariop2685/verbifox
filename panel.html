@@ -21,6 +21,9 @@
   button.primary{ background:var(--naranja); color:#fff; border:0; padding:13px 18px; border-radius:12px; font-size:1rem; font-weight:700; cursor:pointer; width:100%; margin-top:14px; }
   button.primary:hover{ background:#ef6a08; }
   .ghost{ background:none; border:0; color:var(--naranja); cursor:pointer; font-weight:600; text-decoration:underline; }
+  .pwd{ position:relative; }
+  .pwd input{ padding-right:46px; width:100%; }
+  .pwd .ojo{ position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:0; font-size:1.25rem; cursor:pointer; padding:6px; }
   .row{ display:flex; gap:12px; flex-wrap:wrap; }
   .row>div{ flex:1; min-width:140px; }
   .pill{ display:inline-block; padding:4px 12px; border-radius:999px; font-size:.8rem; font-weight:700; }
@@ -63,14 +66,33 @@
     <label>Correo</label>
     <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
     <label>Contraseña</label>
-    <input id="fPass" type="password" placeholder="••••••••" autocomplete="current-password">
+    <div class="pwd">
+      <input id="fPass" type="password" placeholder="••••••••" autocomplete="current-password">
+      <button type="button" class="ojo" onclick="toggleOjo('fPass',this)" aria-label="Mostrar contraseña">👁️</button>
+    </div>
     <button class="primary" id="btnAuth" onclick="hacerAuth()">Ingresar</button>
     <div class="err" id="authErr"></div>
     <div class="ok-msg" id="authOk"></div>
-    <p class="center" style="margin-top:14px">
+    <p class="center" style="margin-top:10px">
+      <button class="ghost" onclick="olvideClave()">¿Olvidaste tu contraseña?</button>
+    </p>
+    <p class="center" style="margin-top:8px">
       <span id="toggleTxt" class="mut">¿No tienes cuenta?</span>
       <button class="ghost" id="btnToggle" onclick="toggleModo()">Crear cuenta</button>
     </p>
+  </div>
+
+  <!-- NUEVA CONTRASEÑA (llega desde el correo de recuperación) -->
+  <div id="recuperar" class="card hidden">
+    <h2>🔑 Crea tu nueva contraseña</h2>
+    <p class="mut">Escribe la nueva contraseña para tu cuenta.</p>
+    <label>Nueva contraseña</label>
+    <div class="pwd">
+      <input id="rPass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
+      <button type="button" class="ojo" onclick="toggleOjo('rPass',this)" aria-label="Mostrar contraseña">👁️</button>
+    </div>
+    <button class="primary" id="btnRec" onclick="guardarNuevaClave()">Guardar y entrar</button>
+    <div class="err" id="recErr"></div>
   </div>
 
   <!-- PANEL -->
@@ -169,6 +191,41 @@ function traducir(m){
 }
 
 async function salir(){ await VFX.salir(); location.reload(); }
+
+// Ojito 👁️: mostrar/ocultar contraseña
+function toggleOjo(id, btn){
+  const i=$(id); const ver = i.type==='password';
+  i.type = ver ? 'text' : 'password';
+  btn.textContent = ver ? '🙈' : '👁️';
+}
+
+// ¿Olvidaste tu contraseña? → correo de recuperación
+async function olvideClave(){
+  const email=$('fEmail').value.trim();
+  if(!email){ showErr('Escribe tu correo arriba y vuelve a tocar "¿Olvidaste tu contraseña?".'); return; }
+  try{
+    await VFX.recuperarClave(email);
+    showOk('📩 Te enviamos un correo a '+email+' con un enlace para crear una nueva contraseña. Revisa también el spam.');
+  }catch(e){ showErr(traducir(e.message)); }
+}
+
+// Al llegar desde el enlace del correo → formulario de nueva contraseña
+function modoRecuperacion(){
+  $('auth').classList.add('hidden');
+  $('panel').classList.add('hidden');
+  $('recuperar').classList.remove('hidden');
+}
+async function guardarNuevaClave(){
+  const nueva=$('rPass').value;
+  const err=$('recErr');
+  if(!nueva || nueva.length<6){ err.textContent='La contraseña debe tener al menos 6 caracteres.'; err.style.display='block'; return; }
+  $('btnRec').disabled=true;
+  try{
+    await VFX.cambiarClave(nueva);
+    $('recuperar').classList.add('hidden');
+    await cargarPanel();
+  }catch(e){ err.textContent='No se pudo: '+e.message; err.style.display='block'; $('btnRec').disabled=false; }
+}
 
 function fechaCL(d){ if(!d) return '—'; const x=new Date(d+'T00:00:00'); return x.toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'}); }
 function pesos(n){ return '$'+(n||0).toLocaleString('es-CL'); }
@@ -341,14 +398,18 @@ async function crearHijo(){
 }
 
 // ---- arranque ----
+let enRecuperacion = /type=recovery/.test(location.hash||'');
 document.addEventListener('vfx-listo', async ()=>{
+  VFX.alRecuperar(()=>{ enRecuperacion=true; modoRecuperacion(); });
+  if(enRecuperacion){ modoRecuperacion(); return; }
   const s = await VFX.sesion();
   if(s){ await cargarPanel(); }
   else { $('auth').classList.remove('hidden'); }
 });
 // fallback si el evento ya pasó
 setTimeout(async ()=>{
-  if(window.VFX && $('auth').classList.contains('hidden') && $('panel').classList.contains('hidden')){
+  if(enRecuperacion) return;
+  if(window.VFX && $('auth').classList.contains('hidden') && $('panel').classList.contains('hidden') && $('recuperar').classList.contains('hidden')){
     const s = await VFX.sesion();
     if(s) cargarPanel(); else $('auth').classList.remove('hidden');
   }

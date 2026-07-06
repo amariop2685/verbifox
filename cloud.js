@@ -35,6 +35,16 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return data;
     },
     async salir() { await sb.auth.signOut(); },
+    // Recuperación de contraseña
+    async recuperarClave(email) {
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://www.verbifox.cl/panel.html' });
+      if (error) throw error;
+    },
+    async cambiarClave(nueva) {
+      const { error } = await sb.auth.updateUser({ password: nueva });
+      if (error) throw error;
+    },
+    alRecuperar(cb) { sb.auth.onAuthStateChange((e) => { if (e === 'PASSWORD_RECOVERY') cb(); }); },
     async sesion() { const { data } = await sb.auth.getSession(); return data.session; },
     async usuario() { const { data } = await sb.auth.getUser(); return data.user; },
     alCambiarSesion(cb) { sb.auth.onAuthStateChange((_e, s) => cb(s)); },

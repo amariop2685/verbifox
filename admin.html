@@ -39,7 +39,11 @@
   <div id="login" class="card hidden" style="max-width:380px;margin:40px auto">
     <h2>Acceso administrador</h2>
     <label>Correo</label><input id="email" type="email">
-    <label>Contraseña</label><input id="pass" type="password">
+    <label>Contraseña</label>
+    <div style="position:relative">
+      <input id="pass" type="password" style="padding-right:44px">
+      <button type="button" onclick="var i=document.getElementById('pass');var v=i.type==='password';i.type=v?'text':'password';this.textContent=v?'🙈':'👁️'" style="position:absolute;right:4px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:1.2rem;cursor:pointer;padding:6px">👁️</button>
+    </div>
     <button class="pri" style="width:100%;margin-top:12px" onclick="entrar()">Ingresar</button>
     <div class="err hidden" id="le"></div>
   </div>
