@@ -276,20 +276,28 @@ async function pintarPlanesDispo(){
   try{ planes = await VFX.planes(); }catch(e){}
   try{ subs = await VFX.misSuscripciones(); }catch(e){}
   const activas = new Set(subs.filter(s=>s.estado==='activa').map(s=>s.plan_id));
-  // curso del hijo activo (si hay) para priorizar su plan completo
+  const tieneCompleto = subs.some(s=>s.estado==='activa' && /^(full|fundador|anual)-/.test(s.plan_id||''));
+  // curso del hijo activo (si hay) para mostrar SOLO sus planes
   const h = hijos.find(x=>x.id===hijoSel);
   const gn = h && h.curso ? (String(h.curso).match(/[1-6]/)||[])[0] : null;
-  const dispo = planes
-    .filter(p=>!activas.has(p.id))
-    .sort((a,b)=>{ const af=a.id.startsWith('full'), bf=b.id.startsWith('full'); return (bf-af); });
+  let dispo = planes.filter(p=>!activas.has(p.id));
+  if(gn) dispo = dispo.filter(p=>!p.curso || String(p.curso).includes(gn));
+  // "Hermano -50%" solo si la familia ya tiene un plan completo activo
+  dispo = dispo.filter(p=>!/^hermano-/.test(p.id) || tieneCompleto);
+  const rank = p => /^fundador-/.test(p.id)?0 : /^full-/.test(p.id)?1 : /^anual-/.test(p.id)?2 : /^hermano-/.test(p.id)?3 : 4;
+  dispo.sort((a,b)=>rank(a)-rank(b) || a.precio_clp-b.precio_clp);
   if(!dispo.length){ cont.innerHTML=''; return; }
+  const etiqueta = p => /^fundador-/.test(p.id)?'🏅 Precio congelado para siempre'
+    : /^anual-/.test(p.id)?'💎 2 meses gratis'
+    : /^hermano-/.test(p.id)?'👧👦 2° hijo −50%'
+    : /^full-/.test(p.id)?'⭐ Todas las materias' : '';
   cont.innerHTML = `<div style="border-top:1px dashed var(--linea);padding-top:12px"><b>Suscríbete a un plan</b>
-    <p class="mut" style="margin:4px 0 8px">Elige el plan del curso de tu hijo/a. El cobro se crea con el monto exacto.</p>`
+    <p class="mut" style="margin:4px 0 8px">${gn?('Planes para '+gn+'° Básico.'):'Elige el plan del curso de tu hijo/a.'} El cobro se crea con el monto exacto.</p>`
     + dispo.map(p=>{
-      const destaca = gn && p.curso && String(p.curso).includes(gn) && p.id.startsWith('full');
-      return `<div style="display:flex;justify-content:space-between;align-items:center;background:${destaca?'#fff4e0':'#f6f8fb'};border-radius:12px;padding:10px 12px;margin:6px 0">
-        <div><b>${p.nombre}</b>${destaca?' ⭐':''}<div class="mut">${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'}</div></div>
-        <button class="primary" style="width:auto;padding:9px 14px" onclick="VFX.suscribir('${p.id}')">Suscribirme</button>
+      const destaca = /^fundador-/.test(p.id);
+      return `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:${destaca?'#fff4e0':'#f6f8fb'};border:${destaca?'2px solid #ffb454':'1px solid transparent'};border-radius:12px;padding:10px 12px;margin:6px 0">
+        <div style="min-width:0"><b>${p.nombre}</b><div class="mut">${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'}${etiqueta(p)?' · '+etiqueta(p):''}</div></div>
+        <button class="primary" style="width:auto;padding:9px 14px;flex-shrink:0" onclick="VFX.suscribir('${p.id}')">Suscribirme</button>
       </div>`;
     }).join('') + `</div>`;
 }
