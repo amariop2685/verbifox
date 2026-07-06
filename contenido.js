@@ -1,4 +1,4 @@
-/* VerbiFox · Motor de contenidos (todas las materias) · MINEDUC + sello Boston College · con bancos avanzados IA */
+/* VerbiFox · Motor de contenidos · contenido original alineado al currículo escolar chileno 1°-6° */
 window.CONTENIDO = {
  "ciencias": {
   "nombre": "Ciencias Naturales",

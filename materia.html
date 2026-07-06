@@ -53,6 +53,7 @@
 
   function mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
   function elegir(a){ return a[Math.floor(Math.random()*a.length)]; }
+  function sinOA(s){ return (s||'').replace(/^OA[^:]*:\s*/i,'').replace(/\s*\(OA[^)]*\)/gi,''); } // oculta códigos de objetivo
   function decir(txt){ try{ if('speechSynthesis'in window){ const u=new SpeechSynthesisUtterance(txt); u.lang=(mat&&mat.lang)||'es-CL'; speechSynthesis.cancel(); speechSynthesis.speak(u); } }catch(e){} }
   function decirItem(i){ const it=uActual.items[i]; if(it) decir(it.t+'. '+it.d); }
 
@@ -93,7 +94,7 @@
     const hayRetos=(u.retos&&u.retos.length);
     $('app').innerHTML=`<button class="back" onclick="verUnidades()">← Unidades</button>
       <h2>${u.emoji} ${u.nombre}</h2>
-      <div class="oa">🎯 ${u.oa||''}</div>
+      <div class="oa">🎯 ${sinOA(u.oa)}</div>
       ${u.intro?`<p class="mut" style="margin:8px 0">${u.intro}</p>`:''}
       ${img}
       <h3>Conceptos <span class="mut" style="font-weight:400">· español · <span class="en">inglés</span> · toca 🔊</span></h3>${items}
@@ -160,7 +161,7 @@
   function mostrarPorque(p, ok){
     $('app').innerHTML=`<div style="text-align:center;font-size:2.6rem" class="vfx-celebrate">${ok?'✅':'❌'}</div>
       <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}" class="vfx-up">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
-      <div class="card vfx-up" style="background:#f0f6ff">💡 <b>Por qué:</b> ${p.porque}</div>
+      <div class="card vfx-up" style="background:#f0f6ff">💡 <b>Por qué:</b> ${sinOA(p.porque)}</div>
       <button class="btn b-verde vfx-up" onclick="siguiente()">Siguiente ▶</button>`;
   }
   function siguiente(){ q.i++; render(); }

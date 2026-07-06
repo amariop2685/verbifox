@@ -1,7 +1,7 @@
 /* ============================================================
    VerbiFox · Temas de Inglés 1° a 6° básico
-   1°–4°: progresión escolar estándar (Inglés no es obligatorio
-   por MINEDUC hasta 5°). 5°–6°: alineado a los OA MINEDUC.
+   Contenido original, alineado a la progresión escolar de inglés
+   del currículo chileno (inglés se enseña formalmente desde 5°).
    Estructura: TEMAS_INGLES[curso] = [ {id,nombre,emoji,oa,intro,palabras:[{en,es,e}],frases:[{en,es}]} ]
    ============================================================ */
 window.TEMAS_INGLES = {

@@ -280,7 +280,7 @@
   <!-- MENÚ -->
   <section id="s-menu" class="screen">
     <h2 id="menu-titulo">¿Qué quieres hacer?</h2>
-    <button class="btn btn-verde" onclick="verTemas()">📚 Temas de 5° (MINEDUC)</button>
+    <button class="btn btn-verde" onclick="verTemas()">📚 Temas de 5°</button>
     <button class="btn btn-morado" onclick="iniciarMemoria()">🧠 Memoria: aprende sin olvidar</button>
     <button class="btn btn-rojo" onclick="iniciarRepaso()">⚡ Repaso del día (60 segundos)</button>
     <button class="btn btn-amarillo" onclick="iniciarEstudio()">📖 Estudiar los verbos</button>
@@ -298,11 +298,11 @@
     <button class="btn btn-gris btn-pequeno" style="margin:10px auto 0;" onclick="cambiarNombre()">Cambiar de jugador</button>
   </section>
 
-  <!-- TEMAS MINEDUC 5° -->
+  <!-- TEMAS 5° -->
   <section id="s-temas-lista" class="screen">
     <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
     <h2 id="temas-titulo">📚 Temas de 5° Básico</h2>
-    <p class="sub" style="margin:-4px 0 10px">Vocabulario y frases exigidos por el MINEDUC.</p>
+    <p class="sub" style="margin:-4px 0 10px">Vocabulario y frases del programa escolar.</p>
     <div id="temas-lista"></div>
   </section>
   <section id="s-tema" class="screen">
@@ -1488,7 +1488,7 @@ function fmt(seg){ seg=Math.max(0,Math.round(seg)); const m=(seg/60|0); const s=
 function elegir(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function verArmaduraIng(){ if(window.Caballero){ Caballero.render(document.getElementById('arm-cont-ing')); } mostrar('s-armadura-ing'); }
 
-/* ====== TEMAS MINEDUC 5° ====== */
+/* ====== TEMAS 5° ====== */
 let temaActual=null, tq=null;
 function _mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
 function decirIng(txt){ try{ hablar(txt,'en-US'); }catch(e){} }
