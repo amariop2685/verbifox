@@ -68,14 +68,18 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { data, error } = await sb.from('students').select('*').order('created_at');
       if (error) throw error; return data || [];
     },
-    async agregarHijo({ nombre, curso, colegio }) {
+    async agregarHijo({ nombre, curso, colegio, avatar }) {
       const u = await VFX.usuario(); if (!u) throw new Error('Sin sesión');
       const login_code = (nombre || 'NIÑO').slice(0, 3).toUpperCase() +
                          Math.floor(1000 + Math.random() * 9000);
-      const { data, error } = await sb.from('students')
-        .insert({ parent_id: u.id, nombre, curso, colegio, login_code })
-        .select().single();
-      if (error) throw error; return data;
+      const fila = { parent_id: u.id, nombre, curso, colegio, login_code };
+      if (avatar) fila.avatar = avatar;
+      let r = await sb.from('students').insert(fila).select().single();
+      if (r.error && avatar) { // por si la columna avatar aún no existe
+        delete fila.avatar;
+        r = await sb.from('students').insert(fila).select().single();
+      }
+      if (r.error) throw r.error; return r.data;
     },
 
     // ---------- SUSCRIPCIONES + PAGOS ----------

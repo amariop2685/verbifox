@@ -38,7 +38,17 @@
   <div class="hero">
     <div class="fox">🦊</div>
     <h1 id="saludo">¡Hola!</h1>
-    <p>Elige tu curso y entra a tus asignaturas 🎒</p>
+    <p id="heroSub">Elige tu curso y entra a tus asignaturas 🎒</p>
+  </div>
+
+  <!-- ¿QUIÉN APRENDE HOY? (perfiles con avatar) -->
+  <div id="perfiles" class="wrap" style="display:none">
+    <h2 style="text-align:center;margin:18px 0 6px">¿Quién aprende hoy?</h2>
+    <div id="perfilesGrid" style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:10px 0 4px"></div>
+  </div>
+  <div id="perfilChip" class="wrap" style="display:none;text-align:center;padding-top:8px">
+    <span id="chipTxt" style="background:#fff;border:2px solid #ffb454;border-radius:999px;padding:8px 16px;font-weight:800"></span>
+    <button onclick="cambiarPerfil()" style="background:none;border:0;color:#ff7a18;font-weight:700;cursor:pointer;text-decoration:underline">Cambiar</button>
   </div>
 
   <div class="cursos" id="cursos"></div>
@@ -64,7 +74,7 @@
     { id:'matematicas', nm:'Matemática',             ic:'➗', app:'mate.html', grados:['5°'] },
     { id:'historia',   nm:'Historia y Geografía',    ic:'🌎' },
     { id:'ciencias',   nm:'Ciencias Naturales',      ic:'🔬' },
-    { id:'ingles',     nm:'Inglés',                  ic:'🔤', app:'index.html', grados:['1°','2°','3°','4°','5°','6°'] },
+    { id:'ingles',     nm:'Inglés',                  ic:'🔤', app:'ingles.html', grados:['1°','2°','3°','4°','5°','6°'] },
     { id:'artes',      nm:'Artes Visuales',          ic:'🎨' },
     { id:'musica',     nm:'Música',                  ic:'🎵' },
     { id:'edfisica',   nm:'Educación Física',        ic:'⛹️' },
@@ -120,19 +130,61 @@
   function proximamente(nm){ alert('📚 '+nm+'\n\n¡Estamos preparando esta asignatura! Muy pronto disponible.'); }
 
   render();
-  // Si hay sesión con estudiante, usa su curso real
+
+  // ===== Perfiles: el niño se reconoce por su avatar y nombre =====
+  let misHijos=[];
+  function elegirPerfil(id){
+    const h=misHijos.find(x=>x.id===id); if(!h) return;
+    try{
+      VFX.setStudentActivo(h.id, h.nombre);
+      localStorage.setItem('jugador', h.nombre);
+      const m=(String(h.curso||'').match(/[1-6]/)||[])[0];
+      if(m){ curso=m+'°'; localStorage.setItem('vfx_curso',curso); }
+    }catch(e){}
+    pintarPerfiles(); render();
+  }
+  function cambiarPerfil(){
+    try{ localStorage.removeItem('vfx_student'); localStorage.removeItem('vfx_student_nombre'); }catch(e){}
+    pintarPerfiles();
+  }
+  function pintarPerfiles(){
+    if(!misHijos.length){ $('perfiles').style.display='none'; $('perfilChip').style.display='none'; return; }
+    const sel = (VFX.studentActivo && VFX.studentActivo()) || null;
+    const activo = misHijos.find(h=>h.id===sel);
+    if(activo){
+      $('perfiles').style.display='none';
+      $('perfilChip').style.display='block';
+      $('chipTxt').textContent = (activo.avatar||'🦊')+' '+activo.nombre;
+      $('saludo').textContent='¡Hola, '+activo.nombre+'!';
+      $('heroSub').textContent='¡A aprender se ha dicho! 🎒';
+    } else {
+      $('perfilChip').style.display='none';
+      $('perfiles').style.display='block';
+      $('saludo').textContent='¡Hola!';
+      $('heroSub').textContent='Toca tu cara para entrar 👇';
+      $('perfilesGrid').innerHTML = misHijos.map(h=>`
+        <div onclick="elegirPerfil('${h.id}')" style="cursor:pointer;text-align:center;background:#fff;border:2px solid var(--linea);border-radius:18px;padding:16px 20px;min-width:110px;box-shadow:0 4px 14px rgba(0,0,0,.06)">
+          <div style="font-size:3rem">${h.avatar||'🦊'}</div>
+          <div style="font-weight:800;margin-top:4px">${h.nombre}</div>
+          <div style="font-size:.8rem;color:#8294a4">${h.curso||''}</div>
+        </div>`).join('');
+    }
+  }
+
   document.addEventListener('vfx-listo', async ()=>{
     try{
+      const s = await VFX.sesion(); if(!s) return;
+      misHijos = await VFX.misHijos();
       const sid = VFX.studentActivo && VFX.studentActivo();
-      if(sid){
-        const hijos = await VFX.misHijos();
-        const h = hijos.find(x=>x.id===sid);
-        if(h){
-          if(h.nombre){ try{localStorage.setItem('vfx_student_nombre',h.nombre);}catch(e){} }
-          if(h.curso){ const m = (h.curso.match(/[1-6]/)||[])[0]; if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} } }
-          render();
-        }
+      const h = misHijos.find(x=>x.id===sid);
+      if(h){
+        if(h.nombre){ try{localStorage.setItem('vfx_student_nombre',h.nombre);}catch(e){} }
+        const m=(String(h.curso||'').match(/[1-6]/)||[])[0];
+        if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
+      } else if(misHijos.length===1){
+        elegirPerfil(misHijos[0].id); return;
       }
+      pintarPerfiles(); render();
     }catch(e){}
   });
 </script>

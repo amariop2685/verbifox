@@ -118,20 +118,27 @@
 
     <!-- HIJOS / REPORTE -->
     <div class="card">
-      <h2>📈 Avance de mi hijo/a</h2>
+      <h2>🎒 Mis estudiantes</h2>
       <div id="sinHijos" class="hidden">
-        <p class="mut">Aún no hay estudiantes registrados.</p>
-        <button class="ghost" onclick="mostrarAltaHijo()">+ Agregar estudiante</button>
-        <div id="altaHijo" class="hidden" style="margin-top:10px">
-          <div class="row">
-            <div><label>Nombre</label><input id="hNombre" placeholder="Martín"></div>
-            <div><label>Curso</label><input id="hCurso" placeholder="5° Básico"></div>
-          </div>
-          <label>Colegio</label><input id="hColegio" placeholder="Nombre del colegio (opcional)">
-          <button class="primary" onclick="crearHijo()">Guardar estudiante</button>
-        </div>
+        <p class="mut">Inscribe a tu hijo/a para empezar (puedes agregar más de uno).</p>
       </div>
       <div id="hijosTabs" class="hijo-tabs"></div>
+      <button class="ghost" onclick="mostrarAltaHijo()">+ Inscribir estudiante</button>
+      <div id="altaHijo" class="hidden" style="margin-top:10px;background:#f6f8fb;border-radius:12px;padding:12px">
+        <div class="row">
+          <div><label>Nombre</label><input id="hNombre" placeholder="Martín"></div>
+          <div><label>Curso</label>
+            <select id="hCurso">
+              <option>1° Básico</option><option>2° Básico</option><option>3° Básico</option>
+              <option>4° Básico</option><option selected>5° Básico</option><option>6° Básico</option>
+            </select>
+          </div>
+        </div>
+        <label>Elige su avatar (así se reconocerá al entrar)</label>
+        <div id="hAvatares" style="display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px"></div>
+        <label>Colegio (opcional)</label><input id="hColegio" placeholder="Nombre del colegio">
+        <button class="primary" onclick="crearHijo()">Guardar estudiante</button>
+      </div>
       <div id="devBar"></div>
       <div id="reporte"></div>
       <div id="premios"></div>
@@ -275,31 +282,31 @@ async function pintarPlanesDispo(){
   let planes=[], subs=[];
   try{ planes = await VFX.planes(); }catch(e){}
   try{ subs = await VFX.misSuscripciones(); }catch(e){}
-  const activas = new Set(subs.filter(s=>s.estado==='activa').map(s=>s.plan_id));
-  const tieneCompleto = subs.some(s=>s.estado==='activa' && /^(full|fundador|anual)-/.test(s.plan_id||''));
-  // curso del hijo activo (si hay) para mostrar SOLO sus planes
-  const h = hijos.find(x=>x.id===hijoSel);
-  const gn = h && h.curso ? (String(h.curso).match(/[1-6]/)||[])[0] : null;
-  let dispo = planes.filter(p=>!activas.has(p.id));
-  if(gn) dispo = dispo.filter(p=>!p.curso || String(p.curso).includes(gn));
-  // "Hermano -50%" solo si la familia ya tiene un plan completo activo
-  dispo = dispo.filter(p=>!/^hermano-/.test(p.id) || tieneCompleto);
-  const rank = p => /^fundador-/.test(p.id)?0 : /^full-/.test(p.id)?1 : /^anual-/.test(p.id)?2 : /^hermano-/.test(p.id)?3 : 4;
-  dispo.sort((a,b)=>rank(a)-rank(b) || a.precio_clp-b.precio_clp);
-  if(!dispo.length){ cont.innerHTML=''; return; }
-  const etiqueta = p => /^fundador-/.test(p.id)?'🏅 Precio congelado para siempre'
-    : /^anual-/.test(p.id)?'💎 2 meses gratis'
-    : /^hermano-/.test(p.id)?'👧👦 2° hijo −50%'
-    : /^full-/.test(p.id)?'⭐ Todas las materias' : '';
-  cont.innerHTML = `<div style="border-top:1px dashed var(--linea);padding-top:12px"><b>Suscríbete a un plan</b>
-    <p class="mut" style="margin:4px 0 8px">${gn?('Planes para '+gn+'° Básico.'):'Elige el plan del curso de tu hijo/a.'} El cobro se crea con el monto exacto.</p>`
-    + dispo.map(p=>{
-      const destaca = /^fundador-/.test(p.id);
-      return `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;background:${destaca?'#fff4e0':'#f6f8fb'};border:${destaca?'2px solid #ffb454':'1px solid transparent'};border-radius:12px;padding:10px 12px;margin:6px 0">
-        <div style="min-width:0"><b>${p.nombre}</b><div class="mut">${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'}${etiqueta(p)?' · '+etiqueta(p):''}</div></div>
-        <button class="primary" style="width:auto;padding:9px 14px;flex-shrink:0" onclick="VFX.suscribir('${p.id}')">Suscribirme</button>
-      </div>`;
-    }).join('') + `</div>`;
+  // Si ya hay una suscripción familiar activa, no ofrecer nada más
+  const yaActiva = subs.some(s=>s.estado==='activa');
+  if(yaActiva){ cont.innerHTML=''; return; }
+  // MODELO SIMPLE: precio según cantidad de hijos inscritos → Mensual o Anual
+  const n = Math.min(Math.max(hijos.length,1),3);
+  const men = planes.find(p=>p.id==='familia-'+n+'-mensual');
+  const anu = planes.find(p=>p.id==='familia-'+n+'-anual');
+  if(!men && !anu){ cont.innerHTML=''; return; }
+  const txtHijos = hijos.length ? (n===1?('para '+(hijos[0].nombre||'tu hijo/a')):('para tus '+n+' estudiantes')) : 'para 1 estudiante';
+  const ahorro = men&&anu ? (men.precio_clp*12 - anu.precio_clp) : 0;
+  const tarjeta = (p, destaca, nota) => p ? `
+    <div style="flex:1;min-width:200px;background:${destaca?'#fff4e0':'#f6f8fb'};border:${destaca?'2px solid #ffb454':'1px solid var(--linea)'};border-radius:14px;padding:14px;text-align:center">
+      <div style="font-weight:800">${destaca?'💎 Anual':'⭐ Mensual'}</div>
+      <div style="font-size:1.5rem;font-weight:800;margin:4px 0">${pesos(p.precio_clp)}<span style="font-size:.8rem;color:#8294a4">/${p.periodo==='anual'?'año':'mes'}</span></div>
+      <div class="mut" style="min-height:18px">${nota||''}</div>
+      <button class="primary" style="margin-top:8px" onclick="VFX.suscribir('${p.id}')">Suscribirme</button>
+    </div>` : '';
+  cont.innerHTML = `<div style="border-top:1px dashed var(--linea);padding-top:12px">
+    <b>Elige tu plan</b>
+    <p class="mut" style="margin:4px 0 10px">Plan familiar ${txtHijos}: <b>todas las materias</b> del curso de cada uno.${hijos.length>1?'':' Si inscribes otro hijo, el precio se ajusta solo.'}</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      ${tarjeta(anu, true, ahorro>0?('Ahorras '+pesos(ahorro)+' · 2 meses gratis'):'2 meses gratis')}
+      ${tarjeta(men, false, 'Cancela cuando quieras')}
+    </div>
+  </div>`;
 }
 
 async function pintarHijos(){
@@ -308,7 +315,7 @@ async function pintarHijos(){
   $('sinHijos').classList.add('hidden');
   hijoSel = hijoSel || hijos[0].id;
   $('hijosTabs').innerHTML = hijos.map(h=>
-    `<button class="${h.id===hijoSel?'activo':''}" onclick="selHijo('${h.id}')">${h.nombre}</button>`).join('');
+    `<button class="${h.id===hijoSel?'activo':''}" onclick="selHijo('${h.id}')">${h.avatar||'🦊'} ${h.nombre}${h.curso?' · '+(String(h.curso).match(/[1-6]/)||[''])[0]+'°':''}</button>`).join('');
   renderDevBar();
   await pintarReporte();
   await pintarPremios();
@@ -396,13 +403,21 @@ async function pintarReporte(){
 }
 
 // ---- alta de hijo (por si el apoderado lo agrega) ----
-function mostrarAltaHijo(){ $('altaHijo').classList.toggle('hidden'); }
+const AVATARES=['🦊','🦁','🐼','🐯','🦄','🐸','🐧','🚀','⚽','🌟','🐱','🦖'];
+let avatarSel='🦊';
+function pintarAvatares(){
+  const c=$('hAvatares'); if(!c) return;
+  c.innerHTML=AVATARES.map(a=>`<button type="button" onclick="elegirAvatar('${a}')" style="font-size:1.6rem;padding:6px 8px;border-radius:10px;cursor:pointer;border:2px solid ${a===avatarSel?'var(--naranja)':'var(--linea)'};background:${a===avatarSel?'#fff4e0':'#fff'}">${a}</button>`).join('');
+}
+function elegirAvatar(a){ avatarSel=a; pintarAvatares(); }
+function mostrarAltaHijo(){ $('altaHijo').classList.toggle('hidden'); pintarAvatares(); }
 async function crearHijo(){
   const nombre=$('hNombre').value.trim();
   if(!nombre){ alert('Escribe el nombre.'); return; }
   try{
-    await VFX.agregarHijo({ nombre, curso:$('hCurso').value.trim(), colegio:$('hColegio').value.trim() });
-    await pintarHijos();
+    await VFX.agregarHijo({ nombre, curso:$('hCurso').value, colegio:$('hColegio').value.trim(), avatar:avatarSel });
+    $('altaHijo').classList.add('hidden'); $('hNombre').value='';
+    await pintarHijos(); await pintarPlanesDispo();
   }catch(e){ alert('No se pudo: '+e.message); }
 }
 
