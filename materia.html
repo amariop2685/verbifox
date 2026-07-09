@@ -101,95 +101,231 @@
       <h3>Conceptos <span class="mut" style="font-weight:400">· español · <span class="en">inglés</span> · toca 🔊</span></h3>${items}
       ${datos?('<h3>¿Sabías que…? 🌍</h3>'+datos):''}
       <div class="bar" style="margin-top:8px"><i style="width:${Math.round(unitMastery(u)*100)}%"></i></div>
-      <p class="mut" style="text-align:center;margin:4px 0 8px">Dominio: <b>${Math.round(unitMastery(u)*100)}%</b>${expertoDesbloqueado(u)?' · 🔥 Experto desbloqueado':' · llega a 90% para Experto 🔥'}</p>
-      <button class="btn b-verde" onclick="quiz(false)">🎮 Practicar (adaptativo 🧠)</button>
-      ${expertoDesbloqueado(u)?`<button class="btn" style="background:#e15554;color:#fff" onclick="quiz(true)">🔥 Modo Experto (más difícil)</button>`:''}`;
+      <p class="mut" style="text-align:center;margin:4px 0 8px">Dominio: <b>${Math.round(unitMastery(u)*100)}%</b>${mejorExamen(u.id)?' · 📝 Mejor prueba: '+mejorExamen(u.id)+'%':''}</p>
+      <button class="btn" style="background:#8b5cf6;color:#fff" onclick="leccion()">📖 1. Aprender la lección</button>
+      <button class="btn b-verde" onclick="quizPractica()">🎮 2. Practicar (${N_PRACTICA} preguntas)</button>
+      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 3. Prueba del tema (${N_EXAMEN} preguntas · ${Math.round(N_EXAMEN*SEG_POR_PREG/60)} min ⏱️)</button>`;
   }
 
-  // ---- Quiz ADAPTATIVO: prioriza lo que te cuesta; Experto = más difícil ----
-  function armarPreguntas(u, experto){
-    const m=loadML()[u.id]||{};
-    // repetición espaciada: los conceptos con menor dominio salen primero (con algo de azar)
-    const orden=[...u.items].map(it=>({it, w:(m[it.t]||0)+Math.random()*0.9})).sort((a,b)=>a.w-b.w).map(x=>x.it);
-    const nOps = experto ? 4 : 3;
-    const sel = orden.slice(0, experto ? u.items.length : Math.min(6, u.items.length));
-    const qs=[];
-    for(const it of sel){
-      const distr=mezcla(u.items.filter(x=>x!==it)).slice(0, nOps-1);
-      const modo = experto ? Math.floor(Math.random()*3) : (Math.random()<0.5?0:1);
-      if(modo===0){
-        const ops=mezcla([{text:it.d,ok:true},...distr.map(x=>({text:x.d,ok:false}))]);
-        qs.push({concepto:it.t, emoji:it.e, prompt:it.t+(it.en?` <span class="en">(${it.en})</span>`:''), sub:'¿Qué es?', ops, porque:it.t+': '+it.d});
-      } else if(modo===1){
-        const ops=mezcla([{text:it.t,ok:true},...distr.map(x=>({text:x.t,ok:false}))]);
-        qs.push({concepto:it.t, emoji:it.e, prompt:it.d, sub:'¿Qué concepto es?', ops, porque:it.t+': '+it.d});
-      } else { // EXPERTO: desafío bilingüe (inglés → definición)
-        const ops=mezcla([{text:it.d,ok:true},...distr.map(x=>({text:x.d,ok:false}))]);
-        qs.push({concepto:it.t, emoji:'🇬🇧', prompt:`<span class="en">${it.en||it.t}</span>`, sub:'What is it? (elige en español)', ops, porque:(it.en||it.t)+' = '+it.t+': '+it.d});
-      }
-    }
-    for(const r of (u.retos||[])){
-      const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
-      qs.push({concepto:null, emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops, porque:r.porque});
-    }
-    if(experto && mat.avanzado && mat.avanzado[G]){ // bancos avanzados IA (Modo Experto)
-      for(const r of mezcla(mat.avanzado[G]).slice(0,4)){
-        const ops=mezcla(r.ops.map((o,i)=>({text:o,ok:i===r.correcta})));
-        qs.push({concepto:null, emoji:'🧠', prompt:r.q, sub:'🧠 Reto experto', ops, porque:r.porque});
-      }
-    }
-    return mezcla(qs).slice(0, Math.min(experto?14:8, qs.length));
+  // ===== MOTOR: Lección → Práctica → Prueba (sin repetir preguntas) =====
+  const N_PRACTICA=20, N_EXAMEN=20, SEG_POR_PREG=60;
+
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9ñ ]/g,'').trim(); }
+  function aceptables(it){
+    const a=new Set();
+    (it.t||'').split('/').forEach(x=>{ const n=norm(x.split('(')[0]); if(n) a.add(n); });
+    const par=((it.t||'').match(/\(([^)]+)\)/)||[])[1]; if(par) par.split('/').forEach(x=>{ const n=norm(x); if(n) a.add(n); });
+    return [...a].filter(Boolean);
   }
-  function quiz(experto){ q={preg:armarPreguntas(uActual, !!experto), i:0, ok:0, experto:!!experto}; render(); }
+
+  // -- BANCO grande de preguntas por unidad (cada una con clave estable) --
+  function bancoDe(u, examen){
+    const qs=[]; const items=u.items||[];
+    const distr=(it,campo)=>mezcla(items.filter(x=>x!==it)).slice(0,3).map(x=>({text:x[campo],ok:false}));
+    for(const it of items){
+      qs.push({key:'mc:'+it.t, tipo:'ops', concepto:it.t, emoji:it.e, prompt:it.t+(it.en?` <span class="en">(${it.en})</span>`:''), sub:'¿Qué es?', ops:mezcla([{text:it.d,ok:true},...distr(it,'d')]), porque:it.t+': '+it.d});
+      qs.push({key:'inv:'+it.t, tipo:'ops', concepto:it.t, emoji:it.e, prompt:it.d, sub:'¿Qué concepto es?', ops:mezcla([{text:it.t,ok:true},...distr(it,'t')]), porque:it.t+': '+it.d});
+      if(it.en) qs.push({key:'bil:'+it.t, tipo:'ops', concepto:it.t, emoji:'🇬🇧', prompt:`<span class="en">${it.en}</span>`, sub:'What is it? (elige en español)', ops:mezcla([{text:it.d,ok:true},...distr(it,'d')]), porque:it.en+' = '+it.t+': '+it.d});
+      qs.push({key:'vft:'+it.t, tipo:'vf', vf:true, concepto:it.t, emoji:'🤔', prompt:`<b>${it.t}</b>: “${it.d}”`, sub:'¿Verdadero o falso?', porque:'VERDADERO. '+it.t+': '+it.d});
+      const otro=elegir(items.filter(x=>x!==it));
+      if(otro) qs.push({key:'vff:'+it.t, tipo:'vf', vf:false, concepto:it.t, emoji:'🤔', prompt:`<b>${it.t}</b>: “${otro.d}”`, sub:'¿Verdadero o falso?', porque:'FALSO. Esa es la definición de '+otro.t+'. '+it.t+': '+it.d});
+      const main=(it.t||'').split('(')[0].trim();
+      if(main.length<=14 && main.split(' ').length<=2)
+        qs.push({key:'esc:'+it.t, tipo:'escribe', concepto:it.t, emoji:'⌨️', prompt:it.d, sub:'✏️ Escribe el concepto', resp:aceptables(it), muestra:main, porque:it.t+': '+it.d});
+    }
+    (u.retos||[]).forEach((r,i)=>qs.push({key:'reto:'+i, tipo:'ops', concepto:null, emoji:'🏆', prompt:r.q, sub:'🏆 Reto de campeón', ops:mezcla(r.ops.map((o,k)=>({text:o,ok:k===r.correcta}))), porque:r.porque}));
+    if(examen && mat.avanzado && mat.avanzado[G])
+      mat.avanzado[G].forEach((r,i)=>qs.push({key:'exp:'+i, tipo:'ops', concepto:null, emoji:'🧠', prompt:r.q, sub:'🧠 Reto experto', ops:mezcla(r.ops.map((o,k)=>({text:o,ok:k===r.correcta}))), porque:r.porque}));
+    return qs;
+  }
+
+  // -- SIN REPETIR: registra qué preguntas ya salieron; al agotar el banco, reinicia el ciclo --
+  function seenKey(uid){ return 'vfx_seen_'+M+'_'+G+'_'+uid; }
+  function getSeen(uid){ try{ return JSON.parse(localStorage.getItem(seenKey(uid))||'[]'); }catch(e){ return []; } }
+  function marcarVisto(uid,key){ try{ const a=getSeen(uid); if(!a.includes(key)){ a.push(key); localStorage.setItem(seenKey(uid),JSON.stringify(a)); } }catch(e){} }
+  function muestrear(u, n, examen){
+    const pool=bancoDe(u, examen);
+    const seen=getSeen(u.id);
+    const libres=pool.filter(p=>!seen.includes(p.key));
+    const m=loadML()[u.id]||{};
+    const peso=p=>(p.concepto?(m[p.concepto]||0):2)+Math.random()*1.6; // lo débil sale primero
+    const toma=(arr,k)=>arr.map(p=>({p,w:peso(p)})).sort((a,b)=>a.w-b.w).slice(0,k).map(x=>x.p);
+    let sel;
+    if(libres.length>=Math.min(n,pool.length)){
+      sel=toma(libres,n);
+    } else {
+      sel=[...libres]; // primero TODAS las que nunca han salido
+      try{ localStorage.removeItem(seenKey(u.id)); }catch(e){} // ciclo completo → reinicia
+      const resto=pool.filter(p=>!sel.some(s=>s.key===p.key));
+      sel=sel.concat(toma(resto, Math.max(0, Math.min(n-sel.length, resto.length))));
+    }
+    return sel.slice(0,n).sort(()=>Math.random()-0.5);
+  }
+
+  // ===== 1) LECCIÓN: enseñar paso a paso =====
+  let lec=null;
+  function leccion(){
+    const u=uActual, s=[];
+    s.push({html:`<div style="text-align:center;font-size:3rem">${u.emoji}</div><h2 style="text-align:center">${u.nombre}</h2><div class="oa">🎯 ${sinOA(u.oa)}</div><p class="mut" style="text-align:center;margin-top:10px">${u.intro||''}</p>${u.img?`<img class="diag" src="${u.img}">`:''}<p class="mut" style="text-align:center">Vamos a aprender <b>${u.items.length} conceptos</b>, uno por uno. 🚶</p>`, di:u.nombre+'. '+(u.intro||'')});
+    u.items.forEach((it,i)=>s.push({html:`<p class="mut" style="text-align:center">Concepto ${i+1} de ${u.items.length}</p><div style="text-align:center;font-size:3.4rem" class="vfx-pop">${it.e||'📌'}</div><h2 style="text-align:center">${it.t}</h2>${it.en?`<p style="text-align:center" class="en">🇬🇧 ${it.en}</p>`:''}<div class="card" style="background:#f0f6ff;font-size:1.05rem">${it.d}</div><button class="btn b-gris" onclick="decir('${(it.t+'. '+it.d).replace(/'/g,"\\'")}')">🔊 Escuchar de nuevo</button>`, di:it.t+'. '+it.d}));
+    (u.datos||[]).forEach(d=>s.push({html:`<div style="text-align:center;font-size:3rem">💡</div><h2 style="text-align:center">¿Sabías que…?</h2><div class="card" style="background:#fff7e6;font-size:1.02rem">${d}</div>`, di:d}));
+    s.push({html:`<div style="text-align:center;font-size:3rem">🎉</div><h2 style="text-align:center">¡Lección completa!</h2><p class="mut" style="text-align:center">Ahora practica: cada vez que juegues saldrán <b>preguntas distintas</b> del mismo tema.</p><button class="btn b-verde" onclick="quizPractica()">🎮 ¡A practicar!</button>`, di:'¡Lección completa! Ahora a practicar.'});
+    lec={slides:s,i:0}; renderLeccion();
+  }
+  function renderLeccion(){
+    const s=lec.slides[lec.i];
+    const dots=lec.slides.map((_,k)=>`<span style="width:8px;height:8px;border-radius:50%;display:inline-block;margin:0 2px;background:${k===lec.i?'var(--naranja)':'#d7dee5'}"></span>`).join('');
+    $('app').innerHTML=`<button class="back" onclick="abrir('${uActual.id}')">← Salir</button>
+      <div class="vfx-up">${s.html}</div>
+      <div style="text-align:center;margin:14px 0 6px">${dots}</div>
+      <div style="display:flex;gap:8px">
+        ${lec.i>0?'<button class="btn b-gris" style="flex:1;margin:0" onclick="lecMueve(-1)">← Anterior</button>':''}
+        ${lec.i<lec.slides.length-1?'<button class="btn b-verde" style="flex:1;margin:0" onclick="lecMueve(1)">Siguiente →</button>':''}
+      </div>`;
+    decir(s.di||'');
+  }
+  function lecMueve(d){ lec.i=Math.max(0,Math.min(lec.slides.length-1,lec.i+d)); renderLeccion(); }
+
+  // ===== 2) PRÁCTICA (20 preguntas variadas, con explicación) =====
+  function quizPractica(){
+    q={preg:muestrear(uActual,N_PRACTICA,false), i:0, ok:0, modo:'practica', falladas:[]};
+    pedirIA().then(p=>{ if(p && q && q.modo==='practica' && q.i<q.preg.length-1) q.preg.splice(Math.min(q.i+3,q.preg.length),0,p); });
+    render();
+  }
+
+  // ===== 3) PRUEBA con tiempo (20 preguntas, tipos mixtos) =====
+  function confirmExamen(){
+    $('app').innerHTML=`<button class="back" onclick="abrir('${uActual.id}')">← Volver</button>
+      <div style="text-align:center;font-size:3rem">📝</div>
+      <h2 style="text-align:center">Prueba: ${uActual.nombre}</h2>
+      <div class="card" style="background:#fff4e0">
+        <b>Reglas del juego:</b><ul style="margin:6px 0;padding-left:20px">
+        <li>${N_EXAMEN} preguntas de distintos tipos: elegir, ✔/✘ verdadero-falso y ✏️ escribir.</li>
+        <li>⏱️ ${Math.round(N_EXAMEN*SEG_POR_PREG/60)} minutos en total (~1 minuto por pregunta).</li>
+        <li>Las respuestas se muestran al final.</li>
+        <li>Con <b>60% o más</b> apruebas ¡y ganas una conquista para tu Caballero! 🏰</li></ul></div>
+      <button class="btn" style="background:#e15554;color:#fff" onclick="examen()">🚀 ¡Empezar la prueba!</button>`;
+  }
+  function examen(){
+    q={preg:muestrear(uActual,N_EXAMEN,true), i:0, ok:0, modo:'examen', falladas:[]};
+    q.fin=Date.now()+q.preg.length*SEG_POR_PREG*1000;
+    render();
+  }
+  function pintaReloj(){
+    const el=$('reloj'); if(!el||!q||!q.fin) return;
+    const s=Math.max(0,Math.round((q.fin-Date.now())/1000));
+    el.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+    if(s<=60) el.style.color='#ff9d9d';
+    if(s<=0){ finExamen(true); return; }
+    clearTimeout(q._t); q._t=setTimeout(pintaReloj,500);
+  }
+
+  // ===== Render y respuesta (tipos: opciones, verdadero/falso, escribir) =====
   function render(){
-    if(q.i>=q.preg.length){ verResultado(); return; }
+    if(q.i>=q.preg.length){ q.modo==='examen'?finExamen(false):finPractica(); return; }
     const p=q.preg[q.i];
-    $('app').innerHTML=`<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>
+    const head = q.modo==='examen'
+      ? `<div style="position:sticky;top:0;background:#26303b;color:#fff;border-radius:10px;padding:8px 12px;display:flex;justify-content:space-between;font-weight:700;z-index:5"><span>📝 ${q.i+1}/${q.preg.length}</span><span id="reloj">--:--</span></div>`
+      : `<p class="mut">Pregunta ${q.i+1} de ${q.preg.length}</p>`;
+    let cuerpo='';
+    if(p.tipo==='vf'){
+      cuerpo=`<div style="display:flex;gap:10px"><button class="op" style="flex:1;background:var(--verde)" onclick="resp(true)">✔ Verdadero</button><button class="op" style="flex:1;background:var(--rojo)" onclick="resp(false)">✘ Falso</button></div>`;
+    } else if(p.tipo==='escribe'){
+      cuerpo=`<input id="respTxt" autocomplete="off" autocapitalize="off" style="width:100%;padding:13px;border:2px solid var(--linea);border-radius:12px;font-size:1.05rem" placeholder="Escribe aquí…" onkeydown="if(event.key==='Enter')resp('txt')">
+        <button class="op" style="margin-top:8px" onclick="resp('txt')">Responder ✔</button>`;
+    } else {
+      cuerpo=p.ops.map((o,k)=>`<button class="op vfx-up" style="animation-delay:${k*50}ms" onclick="resp(${k})">${o.text}</button>`).join('');
+    }
+    $('app').innerHTML=`${head}
       <div style="text-align:center;font-size:2rem" class="vfx-pop">${p.emoji||'❓'}</div>
       <h2 style="text-align:center" class="vfx-up">${p.prompt}</h2>
-      <p style="text-align:center" class="mut">${p.sub}</p>
-      ${p.ops.map((o,k)=>`<button class="op vfx-up" style="animation-delay:${k*60}ms" onclick="resp(${k})">${o.text}</button>`).join('')}`;
+      <p style="text-align:center" class="mut">${p.sub}</p>${cuerpo}`;
+    if(q.modo==='examen') pintaReloj();
+    if(p.tipo==='escribe'){ const el=$('respTxt'); if(el) setTimeout(()=>el.focus(),60); }
   }
   function resp(k){
-    const p=q.preg[q.i];
-    const btns=[...document.querySelectorAll('#app .op')];
-    btns.forEach((b,idx)=>{ b.disabled=true; if(p.ops[idx].ok) b.classList.add('op-correcta'); });
-    const ok=p.ops[k].ok;
-    cUpdate(uActual.id, p.concepto, ok); // el tutor aprende qué te cuesta
-    if(ok){ q.ok++; btns[k].classList.add('vfx-ok'); } else { btns[k].classList.add('op-incorrecta','vfx-shake'); }
-    setTimeout(()=>mostrarPorque(p, ok), ok?700:950);
+    const p=q.preg[q.i]; let ok=false;
+    if(p.tipo==='vf'){ ok=(k===p.vf); }
+    else if(p.tipo==='escribe'){ const v=norm(($('respTxt')||{}).value||''); if(!v) return; ok=p.resp.includes(v); }
+    else {
+      ok=p.ops[k].ok;
+      const btns=[...document.querySelectorAll('#app .op')];
+      btns.forEach((b,idx)=>{ b.disabled=true; if(p.ops[idx]&&p.ops[idx].ok) b.classList.add('op-correcta'); });
+      if(btns[k]){ if(ok) btns[k].classList.add('vfx-ok'); else btns[k].classList.add('op-incorrecta','vfx-shake'); }
+    }
+    if(!String(p.key||'').startsWith('ia:')) marcarVisto(uActual.id, p.key);
+    cUpdate(uActual.id, p.concepto, ok);
+    if(ok) q.ok++; else q.falladas.push(p);
+    if(q.modo==='examen'){ setTimeout(()=>{ q.i++; render(); }, p.tipo==='ops'?500:200); }
+    else setTimeout(()=>mostrarPorque(p, ok), ok?700:950);
   }
   function mostrarPorque(p, ok){
+    const correcta = p.tipo==='vf' ? (p.vf?'Verdadero':'Falso') : (p.tipo==='escribe' ? p.muestra : '');
     $('app').innerHTML=`<div style="text-align:center;font-size:2.6rem" class="vfx-celebrate">${ok?'✅':'❌'}</div>
       <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}" class="vfx-up">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
+      ${!ok&&correcta?`<p style="text-align:center;font-weight:800;color:var(--verde)">Respuesta: ${correcta}</p>`:''}
       <div class="card vfx-up" style="background:#f0f6ff">💡 <b>Por qué:</b> ${sinOA(p.porque)}</div>
       <button class="btn b-verde vfx-up" onclick="siguiente()">Siguiente ▶</button>`;
   }
   function siguiente(){ q.i++; render(); }
-  function verResultado(){
+
+  function finPractica(){
     const pct=Math.round(q.ok/q.preg.length*100);
     const mast=Math.round(unitMastery(uActual)*100);
-    const exp=expertoDesbloqueado(uActual);
     let bonusMsg='';
     if(unitMastery(uActual)>=0.9 && !yaBonus(uActual.id)){
       marcarBonus(uActual.id);
       try{ if(window.Caballero) Caballero.premiar(3); }catch(e){}
       bonusMsg='<div class="card vfx-pop" style="background:#fff7e6;color:#7c4a03;text-align:center;font-weight:800">🛡️ +3 💎 para tu Caballero · ¡dominaste esta unidad!</div>';
     }
-    const msg = pct>=80?'¡Excelente! 🌟':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
-    const extra = exp
-      ? '<div class="card vfx-pop" style="background:#fff0f0;color:#c0392b;text-align:center;font-weight:800">🔥 ¡Nivel Experto desbloqueado! Domina en profundidad.</div>'
-      : `<p class="mut" style="text-align:center;margin-top:6px">Dominio de la unidad: <b>${mast}%</b> · llega a 90% para el Modo Experto 🔥</p>`;
-    $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} (${pct}%)${q.experto?' · 🔥 Experto':''}<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
-      ${extra}
+    const msg = pct>=80?'¡Excelente! 🌟 ¿Listo para la prueba?':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
+    $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
+      <p class="mut" style="text-align:center;margin-top:6px">Dominio de la unidad: <b>${mast}%</b></p>
       ${bonusMsg}
-      <p style="text-align:center;margin-top:12px" class="mut">¿Cómo sentiste esta unidad? 🧠</p>
-      <div style="text-align:center;font-size:2rem"><span onclick="sentir()" style="cursor:pointer">😟</span><span onclick="sentir()" style="cursor:pointer;margin:0 16px">😐</span><span onclick="sentir()" style="cursor:pointer">😄</span></div>
-      <button class="btn b-verde" onclick="quiz(${q.experto?'true':'false'})">🔁 Practicar otra vez</button>
-      ${exp&&!q.experto?`<button class="btn" style="background:#e15554;color:#fff" onclick="quiz(true)">🔥 Modo Experto</button>`:''}
+      <button class="btn b-verde" onclick="quizPractica()">🔁 Seguir practicando (preguntas nuevas)</button>
+      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 ¡Estoy listo para la prueba!</button>
       <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
   }
-  function sentir(){ verUnidades(); }
+
+  function exscKey(){ return 'vfx_exsc_'+M+'_'+G; }
+  function mejorExamen(uid){ try{ return (JSON.parse(localStorage.getItem(exscKey())||'{}'))[uid]||0; }catch(e){ return 0; } }
+  function guardaExamen(uid,pct){ try{ const d=JSON.parse(localStorage.getItem(exscKey())||'{}'); d[uid]=Math.max(d[uid]||0,pct); localStorage.setItem(exscKey(),JSON.stringify(d)); }catch(e){} }
+  function finExamen(agotado){
+    if(q._t) clearTimeout(q._t);
+    const total=q.preg.length, pct=Math.round(q.ok/total*100), aprueba=pct>=60;
+    guardaExamen(uActual.id,pct);
+    let conquista='';
+    try{
+      const kk='vfx_examok_'+M+'_'+G;
+      const done=JSON.parse(localStorage.getItem(kk)||'[]');
+      if(aprueba && !done.includes(uActual.id) && window.Caballero){
+        done.push(uActual.id); localStorage.setItem(kk,JSON.stringify(done));
+        const rc=Caballero.conquistar(mat.nombre+' — '+uActual.nombre+' ('+pct+'%)');
+        conquista=`<div class="card vfx-pop" style="background:#fff7e6;color:#7c4a03;text-align:center;font-weight:800">🏰 ¡Conquista para tu Caballero! ${rc.piezaNueva?('Ganaste '+Caballero.nombrePieza(rc.piezaNueva,1)+' 🛡️ (+2 💎)'):'+2 💎'}${rc.ganoSobre?' · 🎟️ ¡y un sobre!':''}</div>`;
+      }
+    }catch(e){}
+    const rev=q.falladas.length?('<h3>Para repasar 📌</h3>'+q.falladas.map(p=>`<div class="card" style="background:#fdf0ef"><div>${p.prompt}</div><div style="color:var(--verde);font-weight:800;margin-top:4px">✔ ${p.tipo==='vf'?(p.vf?'Verdadero':'Falso'):(p.tipo==='escribe'?p.muestra:((p.ops.find(o=>o.ok)||{}).text||''))}</div><div class="mut">${sinOA(p.porque)}</div></div>`).join('')):'';
+    $('app').innerHTML=`${agotado?'<div class="card" style="background:#fdeceb;color:#c0392b;text-align:center;font-weight:800">⏱️ ¡Se acabó el tiempo!</div>':''}
+      <div class="res vfx-celebrate">${aprueba?'🎉':'💪'} ${q.ok}/${total} correctas (${pct}%)<div style="font-size:.95rem;margin-top:4px;color:#557">${aprueba?'¡PRUEBA APROBADA! 🌟':'Necesitas 60%. Practica un poco más y vuelve: saldrán otras preguntas.'}</div></div>
+      ${conquista}${rev}
+      <button class="btn b-verde" onclick="quizPractica()">🎮 Seguir practicando (preguntas nuevas)</button>
+      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 Repetir la prueba (otras preguntas)</button>
+      <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
+  }
+
+  // ===== Tutor IA en vivo (se activa solo cuando exista la función tutor-ia) =====
+  async function pedirIA(){
+    try{
+      if(!window.VFX || !window.VERBIFOX_SUPABASE_URL) return null;
+      const s=await VFX.sesion(); if(!s) return null;
+      const m=loadML()[uActual.id]||{};
+      const debiles=uActual.items.filter(it=>(m[it.t]||0)<2).map(it=>it.t).slice(0,5);
+      const r=await fetch(window.VERBIFOX_SUPABASE_URL+'/functions/v1/tutor-ia',{method:'POST',headers:{'content-type':'application/json','Authorization':'Bearer '+s.access_token},body:JSON.stringify({materia:mat.nombre,curso:G,tema:uActual.nombre,conceptos:uActual.items.map(i=>i.t),debiles})});
+      if(!r.ok) return null;
+      const d=await r.json(); if(!d||!d.q||!Array.isArray(d.ops)||typeof d.correcta!=='number') return null;
+      return {key:'ia:'+Math.random().toString(36).slice(2), tipo:'ops', concepto:null, emoji:'🤖', prompt:d.q, sub:'🤖 Pregunta creada especialmente para ti', ops:mezcla(d.ops.map((o,k)=>({text:o,ok:k===d.correcta}))), porque:d.porque||''};
+    }catch(e){ return null; }
+  }
 
   init();
   // Candado por suscripción (prueba 7 días / pago). Las materias del motor requieren plan del grado.
