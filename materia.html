@@ -70,22 +70,74 @@
   function yaBonus(uid){ try{ return JSON.parse(localStorage.getItem(bonusKey())||'[]').includes(uid); }catch(e){ return false; } }
   function marcarBonus(uid){ try{ const a=JSON.parse(localStorage.getItem(bonusKey())||'[]'); if(!a.includes(uid)){ a.push(uid); localStorage.setItem(bonusKey(),JSON.stringify(a)); } }catch(e){} }
 
+  // ===== VIAJE GUIADO: la app conduce al niño a la siguiente actividad =====
+  function lecKey(){ return 'vfx_lec_'+M+'_'+G; }
+  function lecDone(uid){ try{ return JSON.parse(localStorage.getItem(lecKey())||'[]').includes(uid); }catch(e){ return false; } }
+  function marcarLec(uid){ try{ const a=JSON.parse(localStorage.getItem(lecKey())||'[]'); if(!a.includes(uid)){ a.push(uid); localStorage.setItem(lecKey(),JSON.stringify(a)); } }catch(e){} }
+  function pracKey(){ return 'vfx_prac_'+M+'_'+G; }
+  function pracCount(uid){ try{ return (JSON.parse(localStorage.getItem(pracKey())||'{}'))[uid]||0; }catch(e){ return 0; } }
+  function marcarPrac(uid){ try{ const d=JSON.parse(localStorage.getItem(pracKey())||'{}'); d[uid]=(d[uid]||0)+1; localStorage.setItem(pracKey(),JSON.stringify(d)); }catch(e){} }
+  function pasoDe(u){
+    if(!lecDone(u.id)) return 'leccion';
+    if(pracCount(u.id)<1) return 'practica';
+    if(mejorExamen(u.id)<60) return 'prueba';
+    return 'completa';
+  }
+  const PASO_TXT={leccion:'📖 la lección', practica:'🎮 practicar', prueba:'📝 la prueba', completa:'✅ completada'};
+  function guardaRuta(u,paso){ try{ localStorage.setItem('vfx_ruta', JSON.stringify({m:M,g:G,uid:u?u.id:null,paso,materia:mat.nombre,emoji:(u&&u.emoji)||mat.emoji,unidad:u?u.nombre:''})); }catch(e){} }
+  function unidadSiguiente(u){
+    const i=unidades.indexOf(u);
+    for(let k=1;k<=unidades.length;k++){ const c=unidades[(i+k)%unidades.length]; if(pasoDe(c)!=='completa') return c; }
+    return null;
+  }
+  function irPaso(u,paso){
+    uActual=u; guardaRuta(u,paso);
+    if(paso==='leccion') leccion(); else if(paso==='practica') quizPractica(); else if(paso==='prueba') confirmExamen(); else abrir(u.id);
+  }
+  // Cuenta regresiva que lleva SOLA a la siguiente actividad (con opción de elegir otra cosa)
+  let _auto=null;
+  function pararAuto(){ if(_auto){ clearInterval(_auto); _auto=null; } }
+  function autoNext(titulo, fn, segs){
+    pararAuto(); let s=segs||5;
+    window._autoGo=()=>{ pararAuto(); fn(); };
+    window._autoCancel=()=>{ pararAuto(); abrir(uActual.id); };
+    _auto=setInterval(()=>{ s--; const el=$('cuenta'); if(el) el.textContent=s; if(s<=0){ pararAuto(); fn(); } },1000);
+    return `<div class="card vfx-pop" style="background:#eef7ff;text-align:center;border:2px solid #9cc4f0">
+      <div style="font-weight:800;font-size:1.05rem">Siguiente: ${titulo}</div>
+      <div class="mut">Continuamos en <b id="cuenta" style="font-size:1.2rem;color:var(--azul)">${s}</b>…</div>
+      <button class="btn b-verde" style="margin-top:8px" onclick="_autoGo()">▶ ¡Vamos ya!</button>
+      <button class="btn b-gris" onclick="_autoCancel()">Elegir otra cosa</button>
+    </div>`;
+  }
+
   function init(){
     if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
     $('h-ic').textContent=mat.emoji||'📚'; $('h-nom').textContent=mat.nombre; $('h-curso').textContent=G+'° Básico';
     document.title='VerbiFox · '+mat.nombre;
+    // ¿viene desde "Continuar donde quedé"? → directo a la actividad
+    const uidP=params.get('u'), pasoP=params.get('paso');
+    const uP=uidP && unidades.find(x=>x.id===uidP);
+    if(uP){ irPaso(uP, pasoP && pasoP!=='completa' ? pasoP : pasoDe(uP)); return; }
     verUnidades();
   }
   function verUnidades(){
+    pararAuto();
     if(!unidades.length){ $('app').innerHTML='<div class="card mut">Contenido de este curso en preparación. 🌱</div>'; return; }
-    $('app').innerHTML = '<p class="mut">Elige una unidad:</p>' + unidades.map((u,i)=>{
+    // ¿dónde seguir? → la primera unidad no completada
+    const sig = unidades.find(u=>pasoDe(u)!=='completa');
+    const hero = sig
+      ? `<button class="btn vfx-pop" style="background:linear-gradient(135deg,#2bb673,#57cf95);color:#fff;font-size:1.1rem;padding:18px" onclick="irPaso(unidades.find(x=>x.id==='${sig.id}'),'${pasoDe(sig)}')">▶ CONTINUAR: ${sig.emoji} ${sig.nombre}<br><span style="font-size:.85rem;font-weight:600">te toca ${PASO_TXT[pasoDe(sig)]}</span></button>`
+      : `<div class="res vfx-celebrate">🏆 ¡Completaste TODA la materia! Puedes repasar cualquier unidad.</div>`;
+    $('app').innerHTML = hero + '<p class="mut" style="margin-top:12px">O elige una unidad:</p>' + unidades.map((u,i)=>{
       const pct=Math.round(unitMastery(u)*100);
-      const estrella = pct>=90?'🔥':pct>=60?'🌟':pct>=30?'⭐':'';
-      return `<button class="btn b-azul vfx-up" style="animation-delay:${i*50}ms" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${estrella}
+      const paso=pasoDe(u);
+      const marca = paso==='completa'?'✅':(pct>=60?'🌟':pct>=30?'⭐':'');
+      return `<button class="btn b-azul vfx-up" style="animation-delay:${i*50}ms" onclick="abrir('${u.id}')">${u.emoji} ${u.nombre} ${marca}
         <div class="bar"><i style="width:${pct}%"></i></div></button>`;
     }).join('');
   }
   function abrir(id){
+    pararAuto();
     const u=unidades.find(x=>x.id===id); if(!u) return; uActual=u;
     const img=u.img?`<img class="diag" src="${u.img}" alt="${u.nombre}">`:'';
     const items=u.items.map((it,i)=>`<div class="item vfx-up" style="animation-delay:${i*45}ms" onclick="decirItem(${i})">
@@ -102,9 +154,15 @@
       ${datos?('<h3>¿Sabías que…? 🌍</h3>'+datos):''}
       <div class="bar" style="margin-top:8px"><i style="width:${Math.round(unitMastery(u)*100)}%"></i></div>
       <p class="mut" style="text-align:center;margin:4px 0 8px">Dominio: <b>${Math.round(unitMastery(u)*100)}%</b>${mejorExamen(u.id)?' · 📝 Mejor prueba: '+mejorExamen(u.id)+'%':''}</p>
-      <button class="btn" style="background:#8b5cf6;color:#fff" onclick="leccion()">📖 1. Aprender la lección</button>
-      <button class="btn b-verde" onclick="quizPractica()">🎮 2. Practicar (${N_PRACTICA} preguntas)</button>
-      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 3. Prueba del tema (${N_EXAMEN} preguntas · ${Math.round(N_EXAMEN*SEG_POR_PREG/60)} min ⏱️)</button>`;
+      ${botonPaso(u,'leccion','#8b5cf6','📖 1. Aprender la lección')}
+      ${botonPaso(u,'practica','#2bb673','🎮 2. Practicar ('+N_PRACTICA+' preguntas)')}
+      ${botonPaso(u,'prueba','#e15554','📝 3. Prueba del tema ('+N_EXAMEN+' preguntas · '+Math.round(N_EXAMEN*SEG_POR_PREG/60)+' min ⏱️)')}`;
+  }
+  function botonPaso(u,paso,color,texto){
+    const rec = pasoDe(u)===paso;
+    const badge = rec ? '<span style="display:block;font-size:.78rem;font-weight:800;letter-spacing:.5px">▶ SIGUE AQUÍ</span>' : '';
+    const hecho = (paso==='leccion'&&lecDone(u.id))||(paso==='practica'&&pracCount(u.id)>0)||(paso==='prueba'&&mejorExamen(u.id)>=60);
+    return `<button class="btn ${rec?'vfx-ok':''}" style="background:${color};color:#fff;${rec?'font-size:1.06rem;padding:16px;border:3px solid #ffd23f':''};${!rec&&hecho?'opacity:.75':''}" onclick="irPaso(unidades.find(x=>x.id==='${u.id}'),'${paso}')">${badge}${texto}${hecho?' ✅':''}</button>`;
   }
 
   // ===== MOTOR: Lección → Práctica → Prueba (sin repetir preguntas) =====
@@ -169,14 +227,18 @@
     s.push({html:`<div style="text-align:center;font-size:3rem">${u.emoji}</div><h2 style="text-align:center">${u.nombre}</h2><div class="oa">🎯 ${sinOA(u.oa)}</div><p class="mut" style="text-align:center;margin-top:10px">${u.intro||''}</p>${u.img?`<img class="diag" src="${u.img}">`:''}<p class="mut" style="text-align:center">Vamos a aprender <b>${u.items.length} conceptos</b>, uno por uno. 🚶</p>`, di:u.nombre+'. '+(u.intro||'')});
     u.items.forEach((it,i)=>s.push({html:`<p class="mut" style="text-align:center">Concepto ${i+1} de ${u.items.length}</p><div style="text-align:center;font-size:3.4rem" class="vfx-pop">${it.e||'📌'}</div><h2 style="text-align:center">${it.t}</h2>${it.en?`<p style="text-align:center" class="en">🇬🇧 ${it.en}</p>`:''}<div class="card" style="background:#f0f6ff;font-size:1.05rem">${it.d}</div><button class="btn b-gris" onclick="decir('${(it.t+'. '+it.d).replace(/'/g,"\\'")}')">🔊 Escuchar de nuevo</button>`, di:it.t+'. '+it.d}));
     (u.datos||[]).forEach(d=>s.push({html:`<div style="text-align:center;font-size:3rem">💡</div><h2 style="text-align:center">¿Sabías que…?</h2><div class="card" style="background:#fff7e6;font-size:1.02rem">${d}</div>`, di:d}));
-    s.push({html:`<div style="text-align:center;font-size:3rem">🎉</div><h2 style="text-align:center">¡Lección completa!</h2><p class="mut" style="text-align:center">Ahora practica: cada vez que juegues saldrán <b>preguntas distintas</b> del mismo tema.</p><button class="btn b-verde" onclick="quizPractica()">🎮 ¡A practicar!</button>`, di:'¡Lección completa! Ahora a practicar.'});
-    lec={slides:s,i:0}; renderLeccion();
+    s.push({html:`<div style="text-align:center;font-size:3rem">🎉</div><h2 style="text-align:center">¡Lección completa!</h2><p class="mut" style="text-align:center">Ahora practica: cada vez que juegues saldrán <b>preguntas distintas</b> del mismo tema.</p>`, di:'¡Lección completa! Ahora a practicar.', fin:true});
+    lec={slides:s,i:0}; guardaRuta(uActual,'leccion'); renderLeccion();
   }
   function renderLeccion(){
+    pararAuto();
     const s=lec.slides[lec.i];
+    let autoHtml='';
+    if(s.fin){ marcarLec(uActual.id); autoHtml=autoNext('🎮 Practicar lo aprendido', ()=>irPaso(uActual,'practica')); }
     const dots=lec.slides.map((_,k)=>`<span style="width:8px;height:8px;border-radius:50%;display:inline-block;margin:0 2px;background:${k===lec.i?'var(--naranja)':'#d7dee5'}"></span>`).join('');
     $('app').innerHTML=`<button class="back" onclick="abrir('${uActual.id}')">← Salir</button>
       <div class="vfx-up">${s.html}</div>
+      ${autoHtml}
       <div style="text-align:center;margin:14px 0 6px">${dots}</div>
       <div style="display:flex;gap:8px">
         ${lec.i>0?'<button class="btn b-gris" style="flex:1;margin:0" onclick="lecMueve(-1)">← Anterior</button>':''}
@@ -188,6 +250,7 @@
 
   // ===== 2) PRÁCTICA (20 preguntas variadas, con explicación) =====
   function quizPractica(){
+    guardaRuta(uActual,'practica');
     q={preg:muestrear(uActual,N_PRACTICA,false), i:0, ok:0, modo:'practica', falladas:[]};
     pedirIA().then(p=>{ if(p && q && q.modo==='practica' && q.i<q.preg.length-1) q.preg.splice(Math.min(q.i+3,q.preg.length),0,p); });
     render();
@@ -195,6 +258,7 @@
 
   // ===== 3) PRUEBA con tiempo (20 preguntas, tipos mixtos) =====
   function confirmExamen(){
+    pararAuto(); guardaRuta(uActual,'prueba');
     $('app').innerHTML=`<button class="back" onclick="abrir('${uActual.id}')">← Volver</button>
       <div style="text-align:center;font-size:3rem">📝</div>
       <h2 style="text-align:center">Prueba: ${uActual.nombre}</h2>
@@ -222,6 +286,7 @@
 
   // ===== Render y respuesta (tipos: opciones, verdadero/falso, escribir) =====
   function render(){
+    pararAuto();
     if(q.i>=q.preg.length){ q.modo==='examen'?finExamen(false):finPractica(); return; }
     const p=q.preg[q.i];
     const head = q.modo==='examen'
@@ -270,6 +335,7 @@
   function siguiente(){ q.i++; render(); }
 
   function finPractica(){
+    marcarPrac(uActual.id);
     const pct=Math.round(q.ok/q.preg.length*100);
     const mast=Math.round(unitMastery(uActual)*100);
     let bonusMsg='';
@@ -278,12 +344,14 @@
       try{ if(window.Caballero) Caballero.premiar(3); }catch(e){}
       bonusMsg='<div class="card vfx-pop" style="background:#fff7e6;color:#7c4a03;text-align:center;font-weight:800">🛡️ +3 💎 para tu Caballero · ¡dominaste esta unidad!</div>';
     }
-    const msg = pct>=80?'¡Excelente! 🌟 ¿Listo para la prueba?':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
+    const listo = pct>=70 && mejorExamen(uActual.id)<60; // le fue bien y aún no aprueba la prueba → lo llevamos
+    const msg = pct>=80?'¡Excelente! 🌟':pct>=50?'¡Vas muy bien! 💪':'Tu cerebro CRECE con cada error. 🌱';
     $('app').innerHTML=`<div class="res vfx-celebrate">🎉 ${q.ok}/${q.preg.length} (${pct}%)<div style="font-size:.92rem;color:#557;font-weight:600;margin-top:4px">${msg}</div></div>
       <p class="mut" style="text-align:center;margin-top:6px">Dominio de la unidad: <b>${mast}%</b></p>
       ${bonusMsg}
+      ${listo ? autoNext('📝 ¡La prueba del tema! Estás listo 💪', ()=>irPaso(uActual,'prueba')) : ''}
       <button class="btn b-verde" onclick="quizPractica()">🔁 Seguir practicando (preguntas nuevas)</button>
-      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 ¡Estoy listo para la prueba!</button>
+      ${listo?'':'<button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 Ir a la prueba</button>'}
       <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
   }
 
@@ -305,11 +373,22 @@
       }
     }catch(e){}
     const rev=q.falladas.length?('<h3>Para repasar 📌</h3>'+q.falladas.map(p=>`<div class="card" style="background:#fdf0ef"><div>${p.prompt}</div><div style="color:var(--verde);font-weight:800;margin-top:4px">✔ ${p.tipo==='vf'?(p.vf?'Verdadero':'Falso'):(p.tipo==='escribe'?p.muestra:((p.ops.find(o=>o.ok)||{}).text||''))}</div><div class="mut">${sinOA(p.porque)}</div></div>`).join('')):'';
+    // La app conduce SOLA a lo que sigue
+    let autoHtml='';
+    const espera = q.falladas.length ? 15 : 5; // si hay fallos que revisar, damos más tiempo
+    if(aprueba){
+      const next=unidadSiguiente(uActual);
+      if(next) autoHtml=autoNext(`${next.emoji} ${next.nombre} (nueva aventura 📖)`, ()=>irPaso(next,'leccion'), espera);
+      else autoHtml=autoNext('🏫 ¡Materia completa! Elegir otra materia', ()=>{ location.href='inicio.html'; }, espera);
+    } else {
+      autoHtml=autoNext('🎮 Practicar un poco más (con otras preguntas)', ()=>irPaso(uActual,'practica'), espera);
+    }
     $('app').innerHTML=`${agotado?'<div class="card" style="background:#fdeceb;color:#c0392b;text-align:center;font-weight:800">⏱️ ¡Se acabó el tiempo!</div>':''}
       <div class="res vfx-celebrate">${aprueba?'🎉':'💪'} ${q.ok}/${total} correctas (${pct}%)<div style="font-size:.95rem;margin-top:4px;color:#557">${aprueba?'¡PRUEBA APROBADA! 🌟':'Necesitas 60%. Practica un poco más y vuelve: saldrán otras preguntas.'}</div></div>
-      ${conquista}${rev}
-      <button class="btn b-verde" onclick="quizPractica()">🎮 Seguir practicando (preguntas nuevas)</button>
-      <button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 Repetir la prueba (otras preguntas)</button>
+      ${conquista}
+      ${autoHtml}
+      ${rev}
+      ${aprueba?'<button class="btn" style="background:#e15554;color:#fff" onclick="confirmExamen()">📝 Repetir la prueba (otras preguntas)</button>':''}
       <button class="btn b-gris" onclick="abrir('${uActual.id}')">← Volver a la unidad</button>`;
   }
 

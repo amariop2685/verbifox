@@ -147,6 +147,22 @@
     try{ localStorage.removeItem('vfx_student'); localStorage.removeItem('vfx_student_nombre'); }catch(e){}
     pintarPerfiles();
   }
+  // ▶ Continuar donde quedé: la app lleva al niño directo a su siguiente actividad
+  function pintarContinuar(){
+    let r=null; try{ r=JSON.parse(localStorage.getItem('vfx_ruta')||'null'); }catch(e){}
+    const viejo=document.getElementById('btnContinuar'); if(viejo) viejo.remove();
+    if(!r || !r.m || !r.uid) return;
+    const gn=(curso.match(/[1-6]/)||[])[0];
+    if(r.g && gn && r.g!==gn) return; // la ruta guardada es de otro curso (otro hermano)
+    const PASOS={leccion:'la lección 📖',practica:'practicar 🎮',prueba:'la prueba 📝'};
+    const a=document.createElement('a');
+    a.id='btnContinuar';
+    a.href='materia.html?m='+r.m+'&g='+r.g+'&u='+encodeURIComponent(r.uid)+'&paso='+(r.paso||'');
+    a.style.cssText='display:block;max-width:520px;margin:14px auto 0;text-align:center;background:linear-gradient(135deg,#2bb673,#57cf95);color:#fff;text-decoration:none;font-weight:800;padding:16px;border-radius:16px;box-shadow:0 8px 20px rgba(43,182,115,.35);font-size:1.05rem';
+    a.innerHTML='▶ CONTINUAR donde quedé<br><span style="font-size:.85rem;font-weight:600">'+(r.emoji||'📚')+' '+(r.materia||'')+' · '+(r.unidad||'')+' · te toca '+(PASOS[r.paso]||'seguir')+'</span>';
+    const cursosEl=document.getElementById('cursos');
+    cursosEl.parentNode.insertBefore(a, cursosEl);
+  }
   function pintarPerfiles(){
     if(!misHijos.length){ $('perfiles').style.display='none'; $('perfilChip').style.display='none'; return; }
     const sel = (VFX.studentActivo && VFX.studentActivo()) || null;
@@ -157,6 +173,7 @@
       $('chipTxt').textContent = (activo.avatar||'🦊')+' '+activo.nombre;
       $('saludo').textContent='¡Hola, '+activo.nombre+'!';
       $('heroSub').textContent='¡A aprender se ha dicho! 🎒';
+      pintarContinuar();
     } else {
       $('perfilChip').style.display='none';
       $('perfiles').style.display='block';
