@@ -35,6 +35,12 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return data;
     },
     async salir() { await sb.auth.signOut(); },
+    // ¿Hay una cuenta con este correo? (para mensajes de login claros)
+    async emailExiste(email) {
+      const { data, error } = await sb.rpc('existe_email', { p_email: email });
+      if (error) throw error;
+      return !!data;
+    },
     // Recuperación de contraseña
     async recuperarClave(email) {
       const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: 'https://www.verbifox.cl/panel.html' });

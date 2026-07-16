@@ -158,7 +158,7 @@ let modo = 'login'; // 'login' | 'registro'
 let hijos = [], hijoSel = null;
 
 const $ = id => document.getElementById(id);
-function showErr(m){ const e=$('authErr'); e.textContent=m; e.style.display='block'; setTimeout(()=>e.style.display='none',5000); }
+function showErr(m){ const e=$('authErr'); e.textContent=m; e.style.display='block'; clearTimeout(e._t); e._t=setTimeout(()=>e.style.display='none',9000); }
 function showOk(m){ const e=$('authOk'); e.textContent=m; e.style.display='block'; }
 
 function toggleModo(){
@@ -185,16 +185,31 @@ async function hacerAuth(){
     }
     await cargarPanel();
   }catch(err){
-    showErr(traducir(err.message));
+    // Al ingresar: distinguir "no existe la cuenta" de "contraseña incorrecta"
+    if(modo==='login' && /Invalid login/i.test(err.message||'')){
+      let existe=null;
+      try{ existe=await VFX.emailExiste(email); }catch(e){}
+      if(existe===false){
+        showErr('🔎 No encontramos una cuenta con el correo '+email+'. Si es tu primera vez, crea tu cuenta aquí abajo 👇');
+        if(modo==='login') toggleModo(); // lo dejamos listo en "Crear cuenta"
+      } else if(existe===true){
+        showErr('🔑 La contraseña no es correcta. Inténtalo de nuevo o toca “¿Olvidaste tu contraseña?”.');
+      } else {
+        showErr(traducir(err.message));
+      }
+    } else {
+      showErr(traducir(err.message));
+    }
   }
   $('btnAuth').disabled=false;
 }
 
 function traducir(m){
   if(/Invalid login/i.test(m)) return 'Correo o contraseña incorrectos.';
-  if(/already registered/i.test(m)) return 'Ese correo ya tiene cuenta. Ingresa.';
+  if(/already registered/i.test(m)) return 'Ese correo ya tiene una cuenta. Usa "Ingresar" o recupera tu contraseña.';
   if(/at least 6/i.test(m)) return 'La contraseña debe tener al menos 6 caracteres.';
-  if(/Email not confirmed/i.test(m)) return 'Debes confirmar tu correo antes de entrar.';
+  if(/Email not confirmed/i.test(m)) return 'Debes confirmar tu correo antes de entrar (revisa tu bandeja y el spam).';
+  if(/rate limit|too many/i.test(m)) return 'Demasiados intentos seguidos. Espera un minuto y vuelve a intentar.';
   return m;
 }
 
