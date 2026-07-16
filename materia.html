@@ -47,7 +47,15 @@
 <script>
   const $=id=>document.getElementById(id);
   const params=new URLSearchParams(location.search);
-  const M=params.get('m'), G=(params.get('g')||'5').replace(/\D/g,'')||'5';
+  const M=params.get('m');
+  let G=(params.get('g')||'5').replace(/\D/g,'')||'5';
+  // Con un niño activo, su curso es FIJO (el que inscribió el apoderado), aunque cambien la URL
+  try{
+    if(window.VFX && VFX.studentActivo && VFX.studentActivo()){
+      const c=(localStorage.getItem('vfx_curso')||'').match(/[1-6]/);
+      if(c) G=c[0];
+    }
+  }catch(e){}
   const mat = (window.CONTENIDO||{})[M];
   let unidades = mat && mat.cursos ? (mat.cursos[G]||[]) : [];
   let uActual=null, q=null;

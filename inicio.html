@@ -112,7 +112,11 @@
     $('cursos').innerHTML = CURSOS.map(c =>
       `<button class="curso ${c===curso?'on':''}" onclick="setCurso('${c}')">${c} Básico</button>`).join('');
   }
-  function setCurso(c){ curso=c; try{localStorage.setItem('vfx_curso',c);}catch(e){} render(); }
+  function setCurso(c){
+    // Con un niño activo, su curso es fijo (el que inscribió el apoderado)
+    try{ if(window.VFX && VFX.studentActivo && VFX.studentActivo()) return; }catch(e){}
+    curso=c; try{localStorage.setItem('vfx_curso',c);}catch(e){} render();
+  }
 
   function linkDe(a){
     const gn=(curso.match(/[1-6]/)||[])[0];
@@ -238,8 +242,13 @@
       $('chipTxt').textContent = (activo.avatar||'🦊')+' '+activo.nombre;
       $('saludo').textContent='¡Hola, '+activo.nombre+'!';
       $('heroSub').textContent='¡A aprender se ha dicho! 🎒';
+      // El curso del niño es FIJO: el que inscribió su apoderado
+      const m=(String(activo.curso||'').match(/[1-6]/)||[])[0];
+      if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
+      $('cursos').style.display='none';
       pintarContinuar();
     } else {
+      $('cursos').style.display='flex';
       $('perfilChip').style.display='none';
       $('perfiles').style.display='block';
       $('saludo').textContent='¡Hola!';

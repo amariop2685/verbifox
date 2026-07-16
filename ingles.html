@@ -1507,16 +1507,20 @@ let temaActual=null, tq=null;
 function _mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
 function decirIng(txt){ try{ hablar(txt,'en-US'); }catch(e){} }
 function cursoIng(){ const c=localStorage.getItem('vfx_curso')||'5°'; return (String(c).match(/[1-6]/)||['5'])[0]; }
-function setCursoIng(g){ try{ localStorage.setItem('vfx_curso', g+'°'); }catch(e){} verTemas(); }
+function cursoFijoIng(){ try{ return !!(window.VFX && VFX.studentActivo && VFX.studentActivo()); }catch(e){ return false; } }
+function setCursoIng(g){ if(cursoFijoIng()) return; try{ localStorage.setItem('vfx_curso', g+'°'); }catch(e){} verTemas(); }
 function temasCurso(){ return (window.TEMAS_INGLES||{})[cursoIng()]||[]; }
 function verTemas(){
   const g=cursoIng(), temas=temasCurso();
   const tt=document.getElementById('temas-titulo'); if(tt) tt.textContent='📚 Temas de '+g+'° Básico';
-  const selector = [1,2,3,4,5,6].map(n=>`<button class="btn btn-pequeno ${(''+n)===g?'btn-azul':'btn-gris'}" style="display:inline-block;width:auto;margin:2px" onclick="setCursoIng(${n})">${n}°</button>`).join('');
+  // Con niño activo, el curso es FIJO (el que inscribió el apoderado): sin selector
+  const selector = cursoFijoIng()
+    ? `<span class="btn btn-azul btn-pequeno" style="display:inline-block;width:auto;margin:2px;cursor:default">🎒 Tu curso: ${g}° Básico</span>`
+    : 'Curso: '+[1,2,3,4,5,6].map(n=>`<button class="btn btn-pequeno ${(''+n)===g?'btn-azul':'btn-gris'}" style="display:inline-block;width:auto;margin:2px" onclick="setCursoIng(${n})">${n}°</button>`).join('');
   document.getElementById('temas-lista').innerHTML =
-    `<div style="text-align:center;margin-bottom:8px">Curso: ${selector}</div>` +
+    `<div style="text-align:center;margin-bottom:8px">${selector}</div>` +
     temas.map(t=>`<button class="btn btn-azul" style="text-align:left" onclick="abrirTema('${t.id}')">${t.emoji} ${t.nombre}</button>`).join('') +
-    (g==='5'||g==='6' ? '<p class="sub" style="margin-top:12px">Y en el menú: 🎓 Verbos irregulares (past simple).</p>' : '');
+    (g==='5'||g==='6' ? '<p class="sub" style="margin-top:12px">Y en el menú: 🦸 Los verbos (past simple).</p>' : '');
   mostrar('s-temas-lista');
 }
 function abrirTema(id){
