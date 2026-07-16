@@ -278,25 +278,38 @@
     <button class="btn btn-morado" onclick="mostrar('s-menu')">Continuar ➡️</button>
   </section>
 
-  <!-- MENÚ -->
+  <!-- MENÚ (simple: 3 grandes caminos) -->
   <section id="s-menu" class="screen">
     <h2 id="menu-titulo">¿Qué quieres hacer?</h2>
-    <button class="btn btn-verde" onclick="verTemas()">📚 Temas de 5°</button>
-    <button class="btn btn-morado" onclick="iniciarMemoria()">🧠 Memoria: aprende sin olvidar</button>
-    <button class="btn btn-rojo" onclick="iniciarRepaso()">⚡ Repaso del día (60 segundos)</button>
-    <button class="btn btn-amarillo" onclick="iniciarEstudio()">📖 Estudiar los verbos</button>
-    <button class="btn btn-naranja" onclick="iniciarExamenProfe()">🎓 Examen estilo profesor</button>
-    <button class="btn btn-azul" onclick="iniciarExamen()">📝 Examen completo (con tiempo)</button>
-    <button class="btn btn-verde" onclick="iniciarPractica()">🎮 Práctica libre (sin tiempo)</button>
-    <button class="btn btn-amarillo" onclick="verArmaduraIng()">🛡️ Mi Armadura del Caballero 🐎</button>
-    <button class="btn btn-naranja" onclick="location.href='inicio.html'">🏫 Mis materias (Matemática y más)</button>
-    <div id="record-box"></div>
+    <button class="btn btn-verde" onclick="verTemas()" style="font-size:1.15rem;padding:18px;">📚 TEMAS DE MI CURSO<br><span style="font-size:.8rem;font-weight:600;">vocabulario y frases · con quiz</span></button>
+    <button class="btn btn-morado" onclick="mostrar('s-verbos-menu')" style="font-size:1.15rem;padding:18px;">🦸 LOS VERBOS<br><span style="font-size:.8rem;font-weight:600;">memoria, exámenes y juegos</span></button>
     <div class="grid2" style="margin-top:4px;">
-      <button class="btn btn-gris btn-pequeno" onclick="respaldar()" style="margin:0;">💾 Guardar copia</button>
-      <button class="btn btn-gris btn-pequeno" onclick="document.getElementById('rest-file').click()" style="margin:0;">📂 Restaurar</button>
+      <button class="btn btn-amarillo" onclick="verArmaduraIng()" style="margin:0;">🛡️ Mi Armadura</button>
+      <button class="btn btn-naranja" onclick="location.href='inicio.html'" style="margin:0;">🏫 Mis materias</button>
     </div>
+    <details style="margin-top:14px;text-align:center">
+      <summary style="cursor:pointer;color:#94a3b8;font-weight:700;font-size:.85rem">⚙️ Opciones</summary>
+      <div class="grid2" style="margin-top:8px;">
+        <button class="btn btn-gris btn-pequeno" onclick="respaldar()" style="margin:0;">💾 Guardar copia</button>
+        <button class="btn btn-gris btn-pequeno" onclick="document.getElementById('rest-file').click()" style="margin:0;">📂 Restaurar</button>
+      </div>
+      <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarNombre()">Cambiar de jugador</button>
+    </details>
     <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
-    <button class="btn btn-gris btn-pequeno" style="margin:10px auto 0;" onclick="cambiarNombre()">Cambiar de jugador</button>
+  </section>
+
+  <!-- SUBMENÚ: LOS VERBOS -->
+  <section id="s-verbos-menu" class="screen">
+    <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
+    <h2>🦸 Los verbos en inglés</h2>
+    <p class="sub" style="margin:-4px 0 10px">El camino: primero estudia, luego memoriza y al final ¡los exámenes!</p>
+    <button class="btn btn-amarillo" onclick="iniciarEstudio()">📖 1. Estudiar los verbos</button>
+    <button class="btn btn-morado" onclick="iniciarMemoria()">🧠 2. Memoria: aprende sin olvidar</button>
+    <button class="btn btn-verde" onclick="iniciarPractica()">🎮 3. Práctica libre (sin tiempo)</button>
+    <button class="btn btn-naranja" onclick="iniciarExamenProfe()">🎓 4. Examen estilo profesor</button>
+    <button class="btn btn-azul" onclick="iniciarExamen()">📝 5. Examen completo (con tiempo)</button>
+    <button class="btn btn-rojo" onclick="iniciarRepaso()">⚡ Repaso del día (60 segundos)</button>
+    <div id="record-box"></div>
   </section>
 
   <!-- TEMAS 5° -->
