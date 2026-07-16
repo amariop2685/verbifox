@@ -262,7 +262,9 @@
     }
   }
 
-  document.addEventListener('vfx-listo', async ()=>{
+  let _arrancado=false;
+  async function arranqueInicio(){
+    if(_arrancado) return; _arrancado=true;
     try{
       const s = await VFX.sesion();
       if(s){
@@ -292,7 +294,9 @@
       // Sin sesión ni código → invitar a entrar con código
       mostrarEntradaCodigo();
     }catch(e){}
-  });
+  }
+  document.addEventListener('vfx-listo', arranqueInicio);
+  if(window.VFX) arranqueInicio(); // cloud.js suele estar listo ANTES de que esta página escuche
 </script>
 </body>
 </html>
