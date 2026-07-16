@@ -226,9 +226,14 @@ function toggleOjo(id, btn){
 async function olvideClave(){
   const email=$('fEmail').value.trim();
   if(!email){ showErr('Escribe tu correo arriba y vuelve a tocar "¿Olvidaste tu contraseña?".'); return; }
+  // primero verificamos que ese correo tenga cuenta (si no, avisamos en vez de prometer un correo que no llegará)
+  try{
+    const existe = await VFX.emailExiste(email);
+    if(!existe){ showErr('🔎 El correo '+email+' no tiene una cuenta en VerbiFox. Revisa si lo escribiste bien o crea tu cuenta.'); return; }
+  }catch(e){ /* si la verificación no está disponible, seguimos igual */ }
   try{
     await VFX.recuperarClave(email);
-    showOk('📩 Te enviamos un correo a '+email+' con un enlace para crear una nueva contraseña. Revisa también el spam.');
+    showOk('📩 Te enviamos un correo a '+email+' con un enlace para crear una nueva contraseña. Puede tardar 1–2 minutos; revisa también el spam.');
   }catch(e){ showErr(traducir(e.message)); }
 }
 
