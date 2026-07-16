@@ -51,17 +51,19 @@
     <button onclick="cambiarPerfil()" style="background:none;border:0;color:#ff7a18;font-weight:700;cursor:pointer;text-decoration:underline">Cambiar</button>
   </div>
 
-  <!-- ENTRADA DEL NIÑO CON SU CÓDIGO (sin cuenta, desde cualquier dispositivo) -->
-  <div id="codigoBox" class="wrap" style="display:none;max-width:420px">
-    <div style="background:#fff;border:2px solid #e3e9ef;border-radius:18px;padding:18px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.06)">
-      <div style="font-size:2.2rem">🔑</div>
-      <h3 style="margin:6px 0">Entra con tu código</h3>
-      <p style="color:#8294a4;font-size:.9rem;margin:0 0 10px">Pídele tu código a papá o mamá (aparece en su panel).</p>
-      <input id="codeInput" placeholder="EJ: MAR1234" maxlength="10" autocapitalize="characters" autocomplete="off"
-        style="width:100%;padding:12px;border:2px solid #e3e9ef;border-radius:12px;font-size:1.25rem;text-align:center;text-transform:uppercase;letter-spacing:2px"
-        onkeydown="if(event.key==='Enter')entrarCodigo()">
-      <button onclick="entrarCodigo()" style="width:100%;margin-top:10px;background:#ff7a18;color:#fff;border:0;border-radius:12px;padding:13px;font-weight:800;font-size:1rem;cursor:pointer">▶ ¡Entrar!</button>
-      <div id="codeErr" style="display:none;background:#fdeceb;color:#e15554;border-radius:10px;padding:8px;margin-top:8px;font-size:.9rem"></div>
+  <!-- ENTRADA DEL NIÑO CON PIN (modal flotante + teclado tipo teléfono) -->
+  <div id="pinAbrir" class="wrap" style="display:none;max-width:420px;text-align:center">
+    <button onclick="abrirPin()" style="width:100%;background:#ff7a18;color:#fff;border:0;border-radius:16px;padding:16px;font-weight:800;font-size:1.12rem;cursor:pointer;box-shadow:0 8px 20px rgba(255,122,24,.35)">🔑 Entrar con mi PIN</button>
+  </div>
+  <div id="pinModal" style="display:none;position:fixed;inset:0;z-index:100001;background:rgba(24,32,44,.55);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:16px">
+    <div class="vfx-pop" style="position:relative;background:#fff;border-radius:26px;padding:24px 20px 20px;max-width:330px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+      <button onclick="cerrarPin()" aria-label="Cerrar" style="position:absolute;top:10px;right:12px;background:#eef2f6;border:0;border-radius:50%;width:32px;height:32px;font-size:1rem;cursor:pointer">✕</button>
+      <div style="font-size:2.4rem">🦊</div>
+      <h3 style="margin:4px 0 2px">Escribe tu PIN</h3>
+      <p style="color:#8294a4;font-size:.85rem;margin:0 0 14px">Son 4 números. Pídeselo a papá o mamá.</p>
+      <div id="pinDots" style="display:flex;gap:14px;justify-content:center;margin-bottom:8px"></div>
+      <div id="pinErr" style="display:none;background:#fdeceb;color:#e15554;border-radius:10px;padding:7px;margin:6px 0;font-size:.85rem"></div>
+      <div id="pinPad" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px"></div>
     </div>
   </div>
 
@@ -164,20 +166,52 @@
     try{ ['vfx_student','vfx_student_nombre','vfx_code','vfx_code_info'].forEach(k=>localStorage.removeItem(k)); }catch(e){}
     setTimeout(()=>location.reload(), 300);
   }
-  // --- Entrada por código (el niño solo, sin cuenta) ---
+  // --- Entrada por PIN (el niño solo, sin cuenta): modal con teclado tipo teléfono ---
+  let pin='', pinOcupado=false;
   function mostrarEntradaCodigo(){
-    $('codigoBox').style.display='block';
-    $('heroSub').textContent='Escribe tu código para entrar 🔑';
+    $('pinAbrir').style.display='block';
+    $('heroSub').textContent='Escribe tu PIN para entrar 🔑';
+    abrirPin();
   }
-  async function entrarCodigo(){
-    const c=($('codeInput').value||'').trim(), err=$('codeErr');
-    if(c.length<5){ err.textContent='Escribe tu código completo (letras y números).'; err.style.display='block'; return; }
+  function abrirPin(){ pin=''; pinOcupado=false; pintaPinPad(); pintaPin(); $('pinErr').style.display='none'; $('pinModal').style.display='flex'; }
+  function cerrarPin(){ $('pinModal').style.display='none'; }
+  function pintaPin(){
+    $('pinDots').innerHTML=[0,1,2,3].map(i=>`<span style="width:20px;height:20px;border-radius:50%;border:3px solid #ff7a18;display:inline-block;background:${i<pin.length?'#ff7a18':'transparent'};transition:background .15s"></span>`).join('');
+  }
+  function pintaPinPad(){
+    $('pinPad').innerHTML=['1','2','3','4','5','6','7','8','9','','0','del'].map(t=>
+      t==='' ? '<span></span>' :
+      `<button onclick="pinTecla('${t}')" style="font-size:${t==='del'?'1.35rem':'1.55rem'};font-weight:800;padding:15px 0;border-radius:16px;border:0;background:${t==='del'?'#eef2f6':'#f6f8fb'};cursor:pointer;box-shadow:0 3px 0 #dfe5ec;color:#26303b">${t==='del'?'⌫':t}</button>`
+    ).join('');
+  }
+  function pinTecla(t){
+    if(pinOcupado) return;
+    $('pinErr').style.display='none';
+    if(t==='del'){ pin=pin.slice(0,-1); pintaPin(); return; }
+    if(pin.length>=4) return;
+    pin+=t; pintaPin();
+    if(pin.length===4) enviarPin();
+  }
+  async function enviarPin(){
+    pinOcupado=true;
     try{
-      const d=await VFX.entrarConCodigo(c);
-      if(!d){ err.textContent='No encontramos ese código. Revísalo con papá o mamá 🙈'; err.style.display='block'; return; }
+      const d=await VFX.entrarConCodigo(pin);
+      if(!d){ pinFallo('Ese PIN no existe. ¡Revísalo! 🙈'); return; }
+      $('pinErr').style.display='none';
       location.reload();
-    }catch(e){ err.textContent='No se pudo entrar. Intenta de nuevo en un momento.'; err.style.display='block'; }
+    }catch(e){ pinFallo('No se pudo entrar. Intenta de nuevo.'); }
   }
+  function pinFallo(msg){
+    const err=$('pinErr'); err.textContent=msg; err.style.display='block';
+    const d=$('pinDots'); d.classList.add('vfx-shake');
+    setTimeout(()=>{ d.classList.remove('vfx-shake'); pin=''; pintaPin(); pinOcupado=false; }, 500);
+  }
+  // teclado físico (notebook): números y borrar
+  document.addEventListener('keydown', e=>{
+    if($('pinModal').style.display!=='flex') return;
+    if(/^[0-9]$/.test(e.key)) pinTecla(e.key);
+    else if(e.key==='Backspace') pinTecla('del');
+  });
   // ▶ Continuar donde quedé: la app lleva al niño directo a su siguiente actividad
   function pintarContinuar(){
     let r=null; try{ r=JSON.parse(localStorage.getItem('vfx_ruta')||'null'); }catch(e){}
