@@ -51,6 +51,20 @@
     <button onclick="cambiarPerfil()" style="background:none;border:0;color:#ff7a18;font-weight:700;cursor:pointer;text-decoration:underline">Cambiar</button>
   </div>
 
+  <!-- ENTRADA DEL NIÑO CON SU CÓDIGO (sin cuenta, desde cualquier dispositivo) -->
+  <div id="codigoBox" class="wrap" style="display:none;max-width:420px">
+    <div style="background:#fff;border:2px solid #e3e9ef;border-radius:18px;padding:18px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.06)">
+      <div style="font-size:2.2rem">🔑</div>
+      <h3 style="margin:6px 0">Entra con tu código</h3>
+      <p style="color:#8294a4;font-size:.9rem;margin:0 0 10px">Pídele tu código a papá o mamá (aparece en su panel).</p>
+      <input id="codeInput" placeholder="EJ: MAR1234" maxlength="10" autocapitalize="characters" autocomplete="off"
+        style="width:100%;padding:12px;border:2px solid #e3e9ef;border-radius:12px;font-size:1.25rem;text-align:center;text-transform:uppercase;letter-spacing:2px"
+        onkeydown="if(event.key==='Enter')entrarCodigo()">
+      <button onclick="entrarCodigo()" style="width:100%;margin-top:10px;background:#ff7a18;color:#fff;border:0;border-radius:12px;padding:13px;font-weight:800;font-size:1rem;cursor:pointer">▶ ¡Entrar!</button>
+      <div id="codeErr" style="display:none;background:#fdeceb;color:#e15554;border-radius:10px;padding:8px;margin-top:8px;font-size:.9rem"></div>
+    </div>
+  </div>
+
   <div class="cursos" id="cursos"></div>
   <div class="wrap">
     <div class="tit" id="subtit"></div>
@@ -133,8 +147,10 @@
 
   // ===== Perfiles: el niño se reconoce por su avatar y nombre =====
   let misHijos=[];
-  function elegirPerfil(id){
+  async function elegirPerfil(id){
     const h=misHijos.find(x=>x.id===id); if(!h) return;
+    // baja su avance de la nube ANTES de fijarlo (así ve lo mismo en cualquier dispositivo)
+    try{ const s=await VFX.sesion(); if(s && VFX.cargarEstadoNube) await VFX.cargarEstadoNube(h.id); }catch(e){}
     try{
       VFX.setStudentActivo(h.id, h.nombre);
       localStorage.setItem('jugador', h.nombre);
@@ -144,8 +160,23 @@
     pintarPerfiles(); render();
   }
   function cambiarPerfil(){
-    try{ localStorage.removeItem('vfx_student'); localStorage.removeItem('vfx_student_nombre'); }catch(e){}
-    pintarPerfiles();
+    try{ if(window.VFX && VFX.subirEstadoNube) VFX.subirEstadoNube(); }catch(e){} // guarda antes de cambiar
+    try{ ['vfx_student','vfx_student_nombre','vfx_code','vfx_code_info'].forEach(k=>localStorage.removeItem(k)); }catch(e){}
+    setTimeout(()=>location.reload(), 300);
+  }
+  // --- Entrada por código (el niño solo, sin cuenta) ---
+  function mostrarEntradaCodigo(){
+    $('codigoBox').style.display='block';
+    $('heroSub').textContent='Escribe tu código para entrar 🔑';
+  }
+  async function entrarCodigo(){
+    const c=($('codeInput').value||'').trim(), err=$('codeErr');
+    if(c.length<5){ err.textContent='Escribe tu código completo (letras y números).'; err.style.display='block'; return; }
+    try{
+      const d=await VFX.entrarConCodigo(c);
+      if(!d){ err.textContent='No encontramos ese código. Revísalo con papá o mamá 🙈'; err.style.display='block'; return; }
+      location.reload();
+    }catch(e){ err.textContent='No se pudo entrar. Intenta de nuevo en un momento.'; err.style.display='block'; }
   }
   // ▶ Continuar donde quedé: la app lleva al niño directo a su siguiente actividad
   function pintarContinuar(){
@@ -190,18 +221,33 @@
 
   document.addEventListener('vfx-listo', async ()=>{
     try{
-      const s = await VFX.sesion(); if(!s) return;
-      misHijos = await VFX.misHijos();
-      const sid = VFX.studentActivo && VFX.studentActivo();
-      const h = misHijos.find(x=>x.id===sid);
-      if(h){
-        if(h.nombre){ try{localStorage.setItem('vfx_student_nombre',h.nombre);}catch(e){} }
-        const m=(String(h.curso||'').match(/[1-6]/)||[])[0];
-        if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
-      } else if(misHijos.length===1){
-        elegirPerfil(misHijos[0].id); return;
+      const s = await VFX.sesion();
+      if(s){
+        misHijos = await VFX.misHijos();
+        const sid = VFX.studentActivo && VFX.studentActivo();
+        const h = misHijos.find(x=>x.id===sid);
+        if(h){
+          if(h.nombre){ try{localStorage.setItem('vfx_student_nombre',h.nombre);}catch(e){} }
+          const m=(String(h.curso||'').match(/[1-6]/)||[])[0];
+          if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
+        } else if(misHijos.length===1){
+          elegirPerfil(misHijos[0].id); return;
+        }
+        pintarPerfiles(); render();
+        return;
       }
-      pintarPerfiles(); render();
+      // SIN sesión: ¿el niño ya entró con su código en este dispositivo?
+      let info=null; try{ info=JSON.parse(localStorage.getItem('vfx_code_info')||'null'); }catch(e){}
+      if(info && VFX.codigoActivo && VFX.codigoActivo()){
+        misHijos=[info];
+        if((VFX.studentActivo&&VFX.studentActivo())!==info.id) VFX.setStudentActivo(info.id, info.nombre);
+        const m=(String(info.curso||'').match(/[1-6]/)||[])[0];
+        if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
+        pintarPerfiles(); render();
+        return;
+      }
+      // Sin sesión ni código → invitar a entrar con código
+      mostrarEntradaCodigo();
     }catch(e){}
   });
 </script>

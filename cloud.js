@@ -126,12 +126,14 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     setStudentActivo(id, nombre) {
       try { localStorage.setItem('vfx_student', id); if (nombre) localStorage.setItem('vfx_student_nombre', nombre); } catch (e) {}
     },
-    // Guarda un evento de avance usando el estudiante activo + la sesión actual. "Fire and forget".
+    // Guarda un evento de avance usando el estudiante activo (sesión del papá o código del niño).
     async logAvance(ev) {
       try {
         const sid = VFX.studentActivo(); if (!sid) return;
-        const s = await VFX.sesion(); if (!s) return;
-        VFX.registrarAvance(sid, ev);
+        const s = await VFX.sesion();
+        if (s) { VFX.registrarAvance(sid, ev); return; }
+        const code = VFX.codigoActivo();
+        if (code) sb.rpc('avance_codigo', { p_code: code, p_materia: ev.materia || null, p_app: ev.app || null, p_tipo: ev.tipo || null, p_correcto: !!ev.correcto, p_tiempo: ev.tiempo_ms || null });
       } catch (e) { /* sin conexión: el juego sigue igual */ }
     },
     async registrarAvance(studentId, ev) {
@@ -189,6 +191,62 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       if (error) throw error;
     },
 
+    // ---------- AVANCE EN LA NUBE (multi-dispositivo) + MODO CÓDIGO DEL NIÑO ----------
+    _SYNC_PREFIJOS: ['vfx_ml_','vfx_seen_','vfx_lec_','vfx_prac_','vfx_exsc_','vfx_examok_','vfx_bonus_','vfx_caballero','vfx_ruta','vfx_curso','mate_','verbos_','memoria_','jugador'],
+    _snapEstado() {
+      const o = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (VFX._SYNC_PREFIJOS.some(p => k === p || k.indexOf(p) === 0)) o[k] = localStorage.getItem(k);
+      }
+      return o;
+    },
+    _aplicarEstado(o) {
+      if (!o || !Object.keys(o).length) return;
+      const del = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (VFX._SYNC_PREFIJOS.some(p => k === p || k.indexOf(p) === 0)) del.push(k);
+      }
+      del.forEach(k => { try { localStorage.removeItem(k); } catch (e) {} });
+      for (const k of Object.keys(o)) { try { localStorage.setItem(k, o[k]); } catch (e) {} }
+    },
+    codigoActivo() { try { return localStorage.getItem('vfx_code') || null; } catch (e) { return null; } },
+    // El niño entra con su código (sin cuenta): baja su avance de la nube y queda activo
+    async entrarConCodigo(code) {
+      code = (code || '').toUpperCase().trim();
+      const { data, error } = await sb.rpc('nino_por_codigo', { p_code: code });
+      if (error) throw error;
+      if (!data) return null;
+      try { const r = await sb.rpc('estado_por_codigo', { p_code: code }); if (r.data) VFX._aplicarEstado(r.data); } catch (e) {}
+      try {
+        localStorage.setItem('vfx_code', code);
+        localStorage.setItem('vfx_code_info', JSON.stringify(data));
+        localStorage.setItem('jugador', data.nombre || '');
+        const m = String(data.curso || '').match(/[1-6]/); if (m) localStorage.setItem('vfx_curso', m[0] + '°');
+      } catch (e) {}
+      VFX.setStudentActivo(data.id, data.nombre);
+      return data;
+    },
+    // Con sesión del apoderado: bajar el avance del niño elegido
+    async cargarEstadoNube(studentId) {
+      try {
+        const { data } = await sb.from('estado_estudiante').select('estado').eq('student_id', studentId).maybeSingle();
+        if (data && data.estado && Object.keys(data.estado).length) VFX._aplicarEstado(data.estado);
+      } catch (e) {}
+    },
+    // Subir el avance actual (sesión del papá o código del niño)
+    async subirEstadoNube() {
+      const sid = VFX.studentActivo(); if (!sid) return;
+      const estado = VFX._snapEstado();
+      try {
+        const s = await VFX.sesion();
+        if (s) { await sb.from('estado_estudiante').upsert({ student_id: sid, estado, updated_at: new Date().toISOString() }); return; }
+        const code = VFX.codigoActivo();
+        if (code) await sb.rpc('guardar_estado_codigo', { p_code: code, p_estado: estado });
+      } catch (e) {}
+    },
+
     // ---------- ACCESO / CANDADO POR SUSCRIPCIÓN ----------
     // Materias desbloqueadas para un estudiante (según sus suscripciones activas o de cortesía)
     async misMaterias(studentId) {
@@ -207,7 +265,17 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     // Estado de acceso: sesión, admin, materias pagadas y prueba de 7 días
     async estadoAcceso(studentId) {
       let u = null; try { u = await VFX.usuario(); } catch (e) {}
-      if (!u) return { sinSesion: true };
+      if (!u) {
+        // Modo código del niño: el candado usa el plan (y la prueba de 7 días) del papá
+        const code = VFX.codigoActivo();
+        if (code) {
+          try {
+            const { data } = await sb.rpc('acceso_codigo', { p_code: code });
+            if (data) return { materias: data.materias || [], trialActivo: !!data.trialActivo, diasRestantes: data.diasRestantes || 0 };
+          } catch (e) {}
+        }
+        return { sinSesion: true };
+      }
       try { if (await VFX.soyAdmin()) return { admin: true, materias: ['*'] }; } catch (e) {}
       let materias = [];
       try { const r = await VFX.misMaterias(studentId); materias = r.materias; } catch (e) {}
@@ -343,5 +411,15 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
   };
 
   window.VFX = VFX;
+  // Auto-guardado del avance en la nube: cada 20s si algo cambió, y al salir de la página
+  let _lastSnap = '';
+  setInterval(() => {
+    try {
+      if (!VFX.studentActivo()) return;
+      const j = JSON.stringify(VFX._snapEstado());
+      if (j !== _lastSnap) { _lastSnap = j; VFX.subirEstadoNube(); }
+    } catch (e) {}
+  }, 20000);
+  window.addEventListener('pagehide', () => { try { VFX.subirEstadoNube(); } catch (e) {} });
   document.dispatchEvent(new Event('vfx-listo'));
 })();
