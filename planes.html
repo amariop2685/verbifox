@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff7a18">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VerbiFox">
 <meta http-equiv="refresh" content="0; url=index.html#planes">
 <title>VerbiFox · Planes</title>
 </head>
@@ -11,5 +17,6 @@
   Te llevamos a los planes… <a href="index.html#planes">tocar aquí si no avanza</a> 🦊
 </p>
 <script>location.replace('index.html#planes');</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}</script>
 </body>
 </html>
