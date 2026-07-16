@@ -205,11 +205,15 @@ async function hacerAuth(){
 }
 
 function traducir(m){
+  m = (typeof m==='string' && m && m!=='{}') ? m : '';
+  if(!m) return 'Algo no funcionó en este momento. Inténtalo de nuevo en unos minutos, o escríbenos por Ayuda 💬.';
+  if(/sending confirmation email|sending recovery email|error sending/i.test(m)) return 'No pudimos enviar el correo en este momento. Inténtalo de nuevo en unos minutos, o escríbenos por Ayuda 💬.';
   if(/Invalid login/i.test(m)) return 'Correo o contraseña incorrectos.';
   if(/already registered/i.test(m)) return 'Ese correo ya tiene una cuenta. Usa "Ingresar" o recupera tu contraseña.';
   if(/at least 6/i.test(m)) return 'La contraseña debe tener al menos 6 caracteres.';
   if(/Email not confirmed/i.test(m)) return 'Debes confirmar tu correo antes de entrar (revisa tu bandeja y el spam).';
   if(/rate limit|too many/i.test(m)) return 'Demasiados intentos seguidos. Espera un minuto y vuelve a intentar.';
+  if(/invalid.*email|email.*invalid/i.test(m)) return 'Ese correo no parece válido. Revísalo.';
   return m;
 }
 
