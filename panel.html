@@ -444,9 +444,10 @@ async function crearHijo(){
   const nombre=$('hNombre').value.trim();
   if(!nombre){ alert('Escribe el nombre.'); return; }
   try{
-    await VFX.agregarHijo({ nombre, curso:$('hCurso').value, colegio:$('hColegio').value.trim(), avatar:avatarSel });
+    const nuevo = await VFX.agregarHijo({ nombre, curso:$('hCurso').value, colegio:$('hColegio').value.trim(), avatar:avatarSel });
     $('altaHijo').classList.add('hidden'); $('hNombre').value='';
     await pintarHijos(); await pintarPlanesDispo();
+    if(nuevo && nuevo.login_code) alert('🎉 ¡'+nombre+' quedó inscrito/a!\n\n🔑 Su PIN de acceso es: '+nuevo.login_code+'\n\nCon ese PIN entra solo/a desde cualquier dispositivo:\nverbifox.cl → 🎒 Soy estudiante → marcar el PIN.');
   }catch(e){ alert('No se pudo: '+e.message); }
 }
 
