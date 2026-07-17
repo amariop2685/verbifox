@@ -26,8 +26,8 @@
 
   /* área de juego */
   #tablero{ position:fixed; inset:0; }
-  .bola{ position:absolute; width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #6ba3ff, var(--azul) 65%); box-shadow:0 4px 10px rgba(0,0,0,.4); cursor:grab; transition:left .28s cubic-bezier(.2,.9,.3,1.2), top .28s cubic-bezier(.2,.9,.3,1.2), background .2s; z-index:2; }
-  .bola.arrastrando{ transition:none; z-index:10; transform:scale(1.15); cursor:grabbing; box-shadow:0 10px 22px rgba(0,0,0,.55); }
+  .bola{ position:absolute; width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #6ba3ff, var(--azul) 65%); box-shadow:0 4px 10px rgba(0,0,0,.4); cursor:grab; transition:left .28s cubic-bezier(.2,.9,.3,1.2), top .28s cubic-bezier(.2,.9,.3,1.2), background .2s; z-index:2; will-change:transform; }
+  .bola.arrastrando{ transition:none; z-index:10; cursor:grabbing; box-shadow:0 10px 22px rgba(0,0,0,.55); }
   .bola.parcial{ background:radial-gradient(circle at 32% 30%, #ff6d94, var(--rojo) 65%); }
   .bola.completa{ background:radial-gradient(circle at 32% 30%, #ffab6b, var(--naranja) 65%); cursor:pointer; }
   .bola.pop{ animation:pop .4s cubic-bezier(.2,1.6,.4,1); }
@@ -88,6 +88,10 @@ function nuevo(){
     const x=40+Math.random()*(W-120), y=110+Math.random()*(H-230);
     b.style.left=x+'px'; b.style.top=y+'px';
     b._x=x; b._y=y; b._grupo=null;
+    // deriva molecular: offset (w) y velocidad (v) lentos
+    b._wx=0; b._wy=0;
+    b._vx=(Math.random()-.5)*0.5; b._vy=(Math.random()-.5)*0.5;
+    b._drag=false;
     tablero.appendChild(b);
     activarArrastre(b);
     bolas.push(b);
@@ -102,12 +106,18 @@ function activarArrastre(b){
     const g=b._grupo;
     if(g && g.completo){ romper(g); return; }   // tocar una flor completa la deshace
     if(g) salirDeGrupo(b);                       // sacar la bola de un grupo parcial
+    // plegar la deriva a la posición base (el dedo toma la bola donde SE VE)
+    b._x+=b._wx; b._y+=b._wy; b._wx=0; b._wy=0; b._drag=true;
+    b.style.left=b._x+'px'; b.style.top=b._y+'px';
+    b.style.transform='scale(1.15)';
     b.setPointerCapture(ev.pointerId);
     b.classList.add('arrastrando');
     const dx=ev.clientX-b._x, dy=ev.clientY-b._y;
     const move=e=>{ b._x=e.clientX-dx; b._y=e.clientY-dy; b.style.left=b._x+'px'; b.style.top=b._y+'px'; };
     const up=e=>{
       b.classList.remove('arrastrando');
+      b.style.transform=''; b._drag=false;
+      b._vx=(Math.random()-.5)*0.5; b._vy=(Math.random()-.5)*0.5;
       b.removeEventListener('pointermove',move); b.removeEventListener('pointerup',up);
       soltar(b);
     };
@@ -117,26 +127,33 @@ function activarArrastre(b){
 }
 
 function soltar(b){
-  // ¿cerca de un grupo parcial o de otra bola suelta?
+  // ¿cerca de un grupo parcial o de otra bola suelta? (usando la posición VISIBLE)
   const c=centro(b);
-  let mejor=null, dist=70; // radio de imán
+  let mejor=null, dist=74; // radio de imán
   for(const g of grupos){
     if(g.completo || g.miembros.length>=B) continue;
     const gc=centroGrupo(g);
-    const d=Math.hypot(gc.x-c.x, gc.y-c.y);
+    const d=Math.hypot(gc.x+g._wx-c.x, gc.y+g._wy-c.y);
     if(d<dist){ dist=d; mejor={tipo:'grupo', g}; }
   }
   for(const o of bolas){
     if(o===b || o._grupo) continue;
     const oc=centro(o);
-    const d=Math.hypot(oc.x-c.x, oc.y-c.y);
+    const d=Math.hypot(oc.x+o._wx-c.x, oc.y+o._wy-c.y);
     if(d<dist){ dist=d; mejor={tipo:'bola', o}; }
   }
   if(!mejor){ leyenda(); return; }
   let g;
   if(mejor.tipo==='grupo'){ g=mejor.g; }
-  else { g={id:gid++, miembros:[mejor.o], completo:false}; mejor.o._grupo=g; grupos.push(g); }
-  g.miembros.push(b); b._grupo=g;
+  else {
+    // plegar la deriva de la bola ancla y crear el grupo con deriva propia
+    const o=mejor.o;
+    o._x+=o._wx; o._y+=o._wy; o._wx=0; o._wy=0;
+    o.style.left=o._x+'px'; o.style.top=o._y+'px';
+    g={id:gid++, miembros:[o], completo:false, _wx:0,_wy:0, _vx:(Math.random()-.5)*0.3, _vy:(Math.random()-.5)*0.3};
+    o._grupo=g; grupos.push(g);
+  }
+  g.miembros.push(b); b._grupo=g; b._wx=0; b._wy=0; b.style.transform='';
   if(g.miembros.length>=B){ g.completo=true; beep(660,.12); setTimeout(()=>beep(880,.18),110); }
   else beep(440,.08);
   acomodar(g);
@@ -168,6 +185,8 @@ function salirDeGrupo(b){
   const g=b._grupo; if(!g) return;
   g.miembros=g.miembros.filter(m=>m!==b);
   b._grupo=null; b.classList.remove('parcial','completa');
+  b._x+=g._wx; b._y+=g._wy; b._wx=0; b._wy=0; // hereda dónde SE VEÍA
+  b.style.left=b._x+'px'; b.style.top=b._y+'px'; b.style.transform='';
   if(!g.miembros.length) grupos=grupos.filter(x=>x!==g);
   else acomodar(g);
   leyenda();
@@ -178,11 +197,12 @@ function romper(g){
   const c=centroGrupo(g);
   for(const m of g.miembros){
     m._grupo=null; m.classList.remove('parcial','completa');
-    // esparcir alrededor
+    // esparcir alrededor (desde donde se VEÍA el grupo)
     const ang=Math.random()*2*Math.PI, d=60+Math.random()*50;
-    m._x=Math.max(20,Math.min(innerWidth-62, c.x+d*Math.cos(ang)-21));
-    m._y=Math.max(100,Math.min(innerHeight-140, c.y+d*Math.sin(ang)-21));
-    m.style.left=m._x+'px'; m.style.top=m._y+'px';
+    m._x=Math.max(20,Math.min(innerWidth-62, c.x+g._wx+d*Math.cos(ang)-21));
+    m._y=Math.max(100,Math.min(innerHeight-140, c.y+g._wy+d*Math.sin(ang)-21));
+    m._wx=0; m._wy=0; m._vx=(Math.random()-.5)*0.5; m._vy=(Math.random()-.5)*0.5;
+    m.style.left=m._x+'px'; m.style.top=m._y+'px'; m.style.transform='';
   }
   grupos=grupos.filter(x=>x!==g);
   leyenda();
@@ -224,7 +244,41 @@ function comprobar(){
   }
 }
 
+// ===== Deriva molecular: todo flota MUY despacio, como moléculas =====
+const clamp=(v,m)=>Math.max(-m,Math.min(m,v));
+function animar(){
+  // bolas sueltas: deriva lenta con pequeños empujones al azar
+  for(const b of bolas){
+    if(b._grupo || b._drag) continue;
+    b._vx=clamp(b._vx+(Math.random()-.5)*0.03, 0.35);
+    b._vy=clamp(b._vy+(Math.random()-.5)*0.03, 0.35);
+    b._wx+=b._vx; b._wy+=b._vy;
+    const ax=b._x+b._wx, ay=b._y+b._wy;
+    if(ax<8||ax>innerWidth-54) b._vx*=-1;      // rebote en los bordes
+    if(ay<95||ay>innerHeight-150) b._vy*=-1;
+    if(Math.abs(b._wx)>36) b._vx*=-1;          // vuelve suave a su zona
+    if(Math.abs(b._wy)>36) b._vy*=-1;
+    b.style.transform=`translate(${b._wx.toFixed(1)}px,${b._wy.toFixed(1)}px)`;
+  }
+  // grupos: flotan como una sola molécula (las flores, aún más lento)
+  for(const g of grupos){
+    const max=g.completo?0.14:0.22;
+    g._vx=clamp(g._vx+(Math.random()-.5)*0.015, max);
+    g._vy=clamp(g._vy+(Math.random()-.5)*0.015, max);
+    g._wx+=g._vx; g._wy+=g._vy;
+    const c=centroGrupo(g), ax=c.x+g._wx, ay=c.y+g._wy;
+    if(ax<45||ax>innerWidth-45) g._vx*=-1;
+    if(ay<115||ay>innerHeight-165) g._vy*=-1;
+    if(Math.abs(g._wx)>48) g._vx*=-1;
+    if(Math.abs(g._wy)>48) g._vy*=-1;
+    const t=`translate(${g._wx.toFixed(1)}px,${g._wy.toFixed(1)}px)`;
+    for(const m of g.miembros){ if(!m._drag) m.style.transform=t; }
+  }
+  requestAnimationFrame(animar);
+}
+
 nuevo();
+requestAnimationFrame(animar);
 addEventListener('resize', ()=>{});
 </script>
 </body>
