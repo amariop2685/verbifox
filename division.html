@@ -11,7 +11,7 @@
   body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; overflow:hidden; touch-action:none; }
 
   /* barra superior */
-  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; flex-wrap:wrap; }
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; flex-wrap:wrap; position:relative; z-index:8; }
   .chipTotal{ background:#fff; border-radius:14px; padding:8px 14px; font-weight:800; color:#26303b; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,.3); }
   .chipTotal .n{ background:#5b6472; color:#fff; border-radius:50%; width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; font-size:.95rem; }
   .ecuacion{ background:#fff; border-radius:14px; padding:8px 12px; display:flex; align-items:center; gap:8px; font-weight:800; font-size:1.25rem; color:#26303b; box-shadow:0 4px 12px rgba(0,0,0,.3); }
@@ -25,7 +25,8 @@
   .leyenda .b{ width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; flex-shrink:0; }
 
   /* área de juego */
-  #tablero{ position:fixed; inset:0; }
+  #tablero{ position:fixed; inset:0; pointer-events:none; }
+  #tablero .bola{ pointer-events:auto; }
   .bola{ position:absolute; width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #6ba3ff, var(--azul) 65%); box-shadow:0 4px 10px rgba(0,0,0,.4); cursor:grab; transition:left .28s cubic-bezier(.2,.9,.3,1.2), top .28s cubic-bezier(.2,.9,.3,1.2), background .2s; z-index:2; will-change:transform; }
   .bola.arrastrando{ transition:none; z-index:10; cursor:grabbing; box-shadow:0 10px 22px rgba(0,0,0,.55); }
   .bola.parcial{ background:radial-gradient(circle at 32% 30%, #ff6d94, var(--rojo) 65%); }
@@ -88,9 +89,11 @@ function nuevo(){
     const x=40+Math.random()*(W-120), y=110+Math.random()*(H-230);
     b.style.left=x+'px'; b.style.top=y+'px';
     b._x=x; b._y=y; b._grupo=null;
-    // deriva molecular: offset (w) y velocidad (v) lentos
+    // vibración molecular EN SU LUGAR: amplitud pequeña (3-6px) y ritmo propio
     b._wx=0; b._wy=0;
-    b._vx=(Math.random()-.5)*0.5; b._vy=(Math.random()-.5)*0.5;
+    b._amp=3+Math.random()*3;
+    b._sp=0.5+Math.random()*0.6;
+    b._ph=Math.random()*Math.PI*2; b._ph2=Math.random()*Math.PI*2;
     b._drag=false;
     tablero.appendChild(b);
     activarArrastre(b);
@@ -117,7 +120,7 @@ function activarArrastre(b){
     const up=e=>{
       b.classList.remove('arrastrando');
       b.style.transform=''; b._drag=false;
-      b._vx=(Math.random()-.5)*0.5; b._vy=(Math.random()-.5)*0.5;
+      b._ph=Math.random()*Math.PI*2; b._ph2=Math.random()*Math.PI*2;
       b.removeEventListener('pointermove',move); b.removeEventListener('pointerup',up);
       soltar(b);
     };
@@ -150,7 +153,7 @@ function soltar(b){
     const o=mejor.o;
     o._x+=o._wx; o._y+=o._wy; o._wx=0; o._wy=0;
     o.style.left=o._x+'px'; o.style.top=o._y+'px';
-    g={id:gid++, miembros:[o], completo:false, _wx:0,_wy:0, _vx:(Math.random()-.5)*0.3, _vy:(Math.random()-.5)*0.3};
+    g={id:gid++, miembros:[o], completo:false, _wx:0,_wy:0, _sp:0.4+Math.random()*0.4, _ph:Math.random()*Math.PI*2, _ph2:Math.random()*Math.PI*2};
     o._grupo=g; grupos.push(g);
   }
   g.miembros.push(b); b._grupo=g; b._wx=0; b._wy=0; b.style.transform='';
@@ -201,7 +204,7 @@ function romper(g){
     const ang=Math.random()*2*Math.PI, d=60+Math.random()*50;
     m._x=Math.max(20,Math.min(innerWidth-62, c.x+g._wx+d*Math.cos(ang)-21));
     m._y=Math.max(100,Math.min(innerHeight-140, c.y+g._wy+d*Math.sin(ang)-21));
-    m._wx=0; m._wy=0; m._vx=(Math.random()-.5)*0.5; m._vy=(Math.random()-.5)*0.5;
+    m._wx=0; m._wy=0; m._ph=Math.random()*Math.PI*2; m._ph2=Math.random()*Math.PI*2;
     m.style.left=m._x+'px'; m.style.top=m._y+'px'; m.style.transform='';
   }
   grupos=grupos.filter(x=>x!==g);
@@ -244,35 +247,21 @@ function comprobar(){
   }
 }
 
-// ===== Deriva molecular: todo flota MUY despacio, como moléculas =====
-const clamp=(v,m)=>Math.max(-m,Math.min(m,v));
-function animar(){
-  // bolas sueltas: deriva lenta con pequeños empujones al azar
+// ===== Vibración molecular: cada esfera oscila SUAVE en su propio lugar (pocos px) =====
+function animar(ts){
+  const t=(ts||0)/1000;
   for(const b of bolas){
     if(b._grupo || b._drag) continue;
-    b._vx=clamp(b._vx+(Math.random()-.5)*0.03, 0.35);
-    b._vy=clamp(b._vy+(Math.random()-.5)*0.03, 0.35);
-    b._wx+=b._vx; b._wy+=b._vy;
-    const ax=b._x+b._wx, ay=b._y+b._wy;
-    if(ax<8||ax>innerWidth-54) b._vx*=-1;      // rebote en los bordes
-    if(ay<95||ay>innerHeight-150) b._vy*=-1;
-    if(Math.abs(b._wx)>36) b._vx*=-1;          // vuelve suave a su zona
-    if(Math.abs(b._wy)>36) b._vy*=-1;
+    b._wx=b._amp*Math.sin(t*b._sp+b._ph);
+    b._wy=b._amp*Math.cos(t*b._sp*0.9+b._ph2);
     b.style.transform=`translate(${b._wx.toFixed(1)}px,${b._wy.toFixed(1)}px)`;
   }
-  // grupos: flotan como una sola molécula (las flores, aún más lento)
   for(const g of grupos){
-    const max=g.completo?0.14:0.22;
-    g._vx=clamp(g._vx+(Math.random()-.5)*0.015, max);
-    g._vy=clamp(g._vy+(Math.random()-.5)*0.015, max);
-    g._wx+=g._vx; g._wy+=g._vy;
-    const c=centroGrupo(g), ax=c.x+g._wx, ay=c.y+g._wy;
-    if(ax<45||ax>innerWidth-45) g._vx*=-1;
-    if(ay<115||ay>innerHeight-165) g._vy*=-1;
-    if(Math.abs(g._wx)>48) g._vx*=-1;
-    if(Math.abs(g._wy)>48) g._vy*=-1;
-    const t=`translate(${g._wx.toFixed(1)}px,${g._wy.toFixed(1)}px)`;
-    for(const m of g.miembros){ if(!m._drag) m.style.transform=t; }
+    const amp=g.completo?2:3; // las flores casi quietas, con respiración mínima
+    g._wx=amp*Math.sin(t*g._sp+g._ph);
+    g._wy=amp*Math.cos(t*g._sp*0.85+g._ph2);
+    const tr=`translate(${g._wx.toFixed(1)}px,${g._wy.toFixed(1)}px)`;
+    for(const m of g.miembros){ if(!m._drag) m.style.transform=tr; }
   }
   requestAnimationFrame(animar);
 }
