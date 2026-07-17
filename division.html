@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VerbiFox · División con peloticas</title>
+<style>
+  :root{ --azul:#3b82f6; --naranja:#f97316; --rojo:#e11d48; --verde:#2bb673; --fondo:#0f1b34; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; overflow:hidden; touch-action:none; }
+
+  /* barra superior */
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 14px; flex-wrap:wrap; }
+  .chipTotal{ background:#fff; border-radius:14px; padding:8px 14px; font-weight:800; color:#26303b; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+  .chipTotal .n{ background:#5b6472; color:#fff; border-radius:50%; width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center; font-size:.95rem; }
+  .ecuacion{ background:#fff; border-radius:14px; padding:8px 12px; display:flex; align-items:center; gap:8px; font-weight:800; font-size:1.25rem; color:#26303b; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+  .ecuacion input{ width:52px; height:44px; text-align:center; font-size:1.25rem; font-weight:800; border:2px solid #cbd5e1; border-radius:10px; background:#eef2f7; color:#26303b; }
+  .ecuacion input:focus{ outline:none; border-color:var(--naranja); background:#fff; }
+  .ecuacion .r{ color:#e11d48; font-size:1rem; }
+
+  /* leyenda */
+  .leyenda{ position:fixed; left:12px; top:74px; background:#fff; border-radius:14px; padding:10px 14px; box-shadow:0 4px 14px rgba(0,0,0,.3); z-index:5; min-width:96px; }
+  .leyenda div{ display:flex; align-items:center; gap:8px; margin:6px 0; font-weight:800; color:#26303b; }
+  .leyenda .b{ width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; flex-shrink:0; }
+
+  /* área de juego */
+  #tablero{ position:fixed; inset:0; }
+  .bola{ position:absolute; width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #6ba3ff, var(--azul) 65%); box-shadow:0 4px 10px rgba(0,0,0,.4); cursor:grab; transition:left .28s cubic-bezier(.2,.9,.3,1.2), top .28s cubic-bezier(.2,.9,.3,1.2), background .2s; z-index:2; }
+  .bola.arrastrando{ transition:none; z-index:10; transform:scale(1.15); cursor:grabbing; box-shadow:0 10px 22px rgba(0,0,0,.55); }
+  .bola.parcial{ background:radial-gradient(circle at 32% 30%, #ff6d94, var(--rojo) 65%); }
+  .bola.completa{ background:radial-gradient(circle at 32% 30%, #ffab6b, var(--naranja) 65%); cursor:pointer; }
+  .bola.pop{ animation:pop .4s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes pop{ 0%{transform:scale(.6)} 60%{transform:scale(1.25)} 100%{transform:scale(1)} }
+
+  /* botones inferiores */
+  .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:12px; z-index:6; flex-wrap:wrap; }
+  .btn{ border:0; border-radius:14px; padding:13px 20px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .b-verde{ background:var(--verde); color:#fff; } .b-gris{ background:#dbe3ec; color:#26303b; } .b-azulb{ background:#3a7bd5; color:#fff; }
+
+  /* mensajes */
+  #msj{ position:fixed; left:50%; top:64px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:20; display:none; text-align:center; max-width:88vw; }
+  .volver{ position:fixed; right:10px; top:12px; z-index:6; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="chipTotal"><span class="n" id="tTotal">0</span> Total</div>
+    <div class="ecuacion">
+      <span id="eA">39</span> ÷ <span id="eB">5</span> =
+      <input id="inC" inputmode="numeric" maxlength="2" placeholder="">
+      <span class="r">R</span>
+      <input id="inR" inputmode="numeric" maxlength="2" placeholder="">
+    </div>
+  </div>
+  <a class="volver" href="mate.html">✕ Salir</a>
+  <div class="leyenda" id="leyenda"></div>
+  <div id="tablero"></div>
+  <div id="msj"></div>
+  <div class="abajo">
+    <button class="btn b-azulb" onclick="deshacer()">↩️ Deshacer grupo</button>
+    <button class="btn b-verde" onclick="comprobar()">✔ Comprobar</button>
+    <button class="btn b-gris" onclick="nuevo()">🎲 Nuevo</button>
+  </div>
+
+<script>
+const $=id=>document.getElementById(id);
+const tablero=$('tablero');
+let A=39, B=5, bolas=[], grupos=[]; // grupo: {id, miembros:[bolas], completo}
+let gid=1;
+
+function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(), g=c.createGain(); o.frequency.value=f; o.type='sine'; g.gain.setValueAtTime(.18,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+d); }catch(e){} }
+
+function nuevo(){
+  // problema al azar con resto variado
+  B = 2+Math.floor(Math.random()*5);           // divisor 2..6
+  const q = 3+Math.floor(Math.random()*6);     // cociente 3..8
+  const r = Math.floor(Math.random()*B);       // resto 0..B-1
+  A = q*B+r;
+  $('eA').textContent=A; $('eB').textContent=B; $('tTotal').textContent=A;
+  $('inC').value=''; $('inR').value='';
+  // crear bolas dispersas
+  tablero.innerHTML=''; bolas=[]; grupos=[]; gid=1;
+  const W=innerWidth, H=innerHeight;
+  for(let i=0;i<A;i++){
+    const b=document.createElement('div'); b.className='bola';
+    const x=40+Math.random()*(W-120), y=110+Math.random()*(H-230);
+    b.style.left=x+'px'; b.style.top=y+'px';
+    b._x=x; b._y=y; b._grupo=null;
+    tablero.appendChild(b);
+    activarArrastre(b);
+    bolas.push(b);
+  }
+  leyenda();
+}
+
+function centro(b){ return { x:b._x+21, y:b._y+21 }; }
+
+function activarArrastre(b){
+  b.addEventListener('pointerdown', ev=>{
+    const g=b._grupo;
+    if(g && g.completo){ romper(g); return; }   // tocar una flor completa la deshace
+    if(g) salirDeGrupo(b);                       // sacar la bola de un grupo parcial
+    b.setPointerCapture(ev.pointerId);
+    b.classList.add('arrastrando');
+    const dx=ev.clientX-b._x, dy=ev.clientY-b._y;
+    const move=e=>{ b._x=e.clientX-dx; b._y=e.clientY-dy; b.style.left=b._x+'px'; b.style.top=b._y+'px'; };
+    const up=e=>{
+      b.classList.remove('arrastrando');
+      b.removeEventListener('pointermove',move); b.removeEventListener('pointerup',up);
+      soltar(b);
+    };
+    b.addEventListener('pointermove',move);
+    b.addEventListener('pointerup',up);
+  });
+}
+
+function soltar(b){
+  // ¿cerca de un grupo parcial o de otra bola suelta?
+  const c=centro(b);
+  let mejor=null, dist=70; // radio de imán
+  for(const g of grupos){
+    if(g.completo || g.miembros.length>=B) continue;
+    const gc=centroGrupo(g);
+    const d=Math.hypot(gc.x-c.x, gc.y-c.y);
+    if(d<dist){ dist=d; mejor={tipo:'grupo', g}; }
+  }
+  for(const o of bolas){
+    if(o===b || o._grupo) continue;
+    const oc=centro(o);
+    const d=Math.hypot(oc.x-c.x, oc.y-c.y);
+    if(d<dist){ dist=d; mejor={tipo:'bola', o}; }
+  }
+  if(!mejor){ leyenda(); return; }
+  let g;
+  if(mejor.tipo==='grupo'){ g=mejor.g; }
+  else { g={id:gid++, miembros:[mejor.o], completo:false}; mejor.o._grupo=g; grupos.push(g); }
+  g.miembros.push(b); b._grupo=g;
+  if(g.miembros.length>=B){ g.completo=true; beep(660,.12); setTimeout(()=>beep(880,.18),110); }
+  else beep(440,.08);
+  acomodar(g);
+  leyenda();
+}
+
+function centroGrupo(g){
+  let x=0,y=0; for(const m of g.miembros){ const c=centro(m); x+=c.x; y+=c.y; }
+  return { x:x/g.miembros.length, y:y/g.miembros.length };
+}
+
+function acomodar(g){
+  // formar la "flor": bolas en círculo alrededor del centro del grupo
+  const c=centroGrupo(g);
+  const n=g.miembros.length;
+  const R = n===1?0 : (n<=3? 20 : 24);
+  g.miembros.forEach((m,i)=>{
+    const ang = -Math.PI/2 + i*(2*Math.PI/Math.max(n,1));
+    m._x = c.x + (n>1?R*Math.cos(ang):0) - 21;
+    m._y = c.y + (n>1?R*Math.sin(ang):0) - 21;
+    m.style.left=m._x+'px'; m.style.top=m._y+'px';
+    m.classList.remove('parcial','completa');
+    m.classList.add(g.completo?'completa':'parcial','pop');
+    setTimeout(()=>m.classList.remove('pop'),450);
+  });
+}
+
+function salirDeGrupo(b){
+  const g=b._grupo; if(!g) return;
+  g.miembros=g.miembros.filter(m=>m!==b);
+  b._grupo=null; b.classList.remove('parcial','completa');
+  if(!g.miembros.length) grupos=grupos.filter(x=>x!==g);
+  else acomodar(g);
+  leyenda();
+}
+
+function romper(g){
+  beep(300,.12);
+  const c=centroGrupo(g);
+  for(const m of g.miembros){
+    m._grupo=null; m.classList.remove('parcial','completa');
+    // esparcir alrededor
+    const ang=Math.random()*2*Math.PI, d=60+Math.random()*50;
+    m._x=Math.max(20,Math.min(innerWidth-62, c.x+d*Math.cos(ang)-21));
+    m._y=Math.max(100,Math.min(innerHeight-140, c.y+d*Math.sin(ang)-21));
+    m.style.left=m._x+'px'; m.style.top=m._y+'px';
+  }
+  grupos=grupos.filter(x=>x!==g);
+  leyenda();
+}
+
+function deshacer(){
+  const g=[...grupos].reverse().find(x=>x.completo) || grupos[grupos.length-1];
+  if(g) romper(g);
+}
+
+function leyenda(){
+  const comp=grupos.filter(g=>g.completo).length;
+  const parc=grupos.filter(g=>!g.completo);
+  const sueltas=bolas.filter(b=>!b._grupo).length;
+  let h=`<div><span class="b" style="background:var(--naranja)">${B}</span>× ${comp}</div>`;
+  for(const p of parc) h+=`<div><span class="b" style="background:var(--rojo)">${p.miembros.length}</span>× 1</div>`;
+  h+=`<div><span class="b" style="background:var(--azul)">1</span>× ${sueltas}</div>`;
+  $('leyenda').innerHTML=h;
+}
+
+function msj(t, buenos){
+  const m=$('msj'); m.innerHTML=t; m.style.display='block';
+  clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', buenos?3600:2600);
+}
+
+function comprobar(){
+  const c=parseInt($('inC').value,10), r=parseInt($('inR').value,10);
+  const C=Math.floor(A/B), R=A%B;
+  if(isNaN(c)||isNaN(r)){ msj('✏️ Escribe el resultado y el resto (si no sobra nada, pon 0).'); return; }
+  const comp=grupos.filter(g=>g.completo).length;
+  if(c===C && r===R){
+    beep(660,.12); setTimeout(()=>beep(880,.12),120); setTimeout(()=>beep(1100,.2),240);
+    msj(`🎉 ¡PERFECTO! ${A} ÷ ${B} = <b>${C}</b> y sobran <b>${R}</b>.<br>Formaste ${comp} grupo(s) de ${B}. ¡Eres un crack! 🏆`, true);
+    setTimeout(nuevo, 3400);
+  } else if(comp<C){
+    msj(`🤔 Todavía puedes formar <b>más grupos de ${B}</b>. ¡Arrastra las peloticas azules para juntarlas!`);
+  } else {
+    msj(`💪 Casi… Cuenta las flores 🌸 (grupos de ${B}) para el resultado, y las peloticas azules sueltas para el resto.`);
+  }
+}
+
+nuevo();
+addEventListener('resize', ()=>{});
+</script>
+</body>
+</html>
