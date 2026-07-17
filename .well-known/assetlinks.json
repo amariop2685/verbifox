@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "cl.verbifox.app",
+    "sha256_cert_fingerprints": ["A9:22:C7:A9:AC:93:AF:A5:B2:C0:88:F0:A2:F1:37:04:B8:09:35:42:D7:BD:87:8E:E5:01:E5:DB:10:4E:DA:E5"]
+  }
+}]
