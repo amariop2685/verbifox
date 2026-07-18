@@ -21,17 +21,26 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     sb,
 
     // ---------- AUTENTICACIÓN (apoderado) ----------
-    async registrar(email, password, nombre) {
-      const { data, error } = await sb.auth.signUp({ email, password });
+    async registrar(email, password, nombre, rut) {
+      // nombre y rut viajan en los metadatos: sobreviven a la confirmación del correo
+      const { data, error } = await sb.auth.signUp({ email, password, options: { data: { nombre: nombre || '', rut: rut || '' } } });
       if (error) throw error;
-      // crea/actualiza su perfil
-      if (data.user) await VFX.guardarPerfil({ nombre, email });
+      // si hubo sesión inmediata (confirmación apagada), guardamos el perfil ya
+      if (data.session) await VFX.guardarPerfil({ nombre, rut, email });
       return data;
     },
     async entrar(email, password) {
       const { data, error } = await sb.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      await VFX.guardarPerfil({ email });
+      // completa el perfil con lo que falte (nombre/rut quedaron en metadatos al registrarse)
+      try {
+        const p = await VFX.miPerfil();
+        const md = (data.user && data.user.user_metadata) || {};
+        const fila = { email };
+        if ((!p || !p.nombre) && md.nombre) fila.nombre = md.nombre;
+        if ((!p || !p.rut) && md.rut) fila.rut = md.rut;
+        await VFX.guardarPerfil(fila);
+      } catch (e) { try { await VFX.guardarPerfil({ email }); } catch (e2) {} }
       return data;
     },
     async salir() { await sb.auth.signOut(); },
@@ -60,7 +69,12 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const u = await VFX.usuario(); if (!u) return;
       const fila = { id: u.id, ...campos };
       if (!fila.email) fila.email = u.email;
-      const { error } = await sb.from('profiles').upsert(fila);
+      let { error } = await sb.from('profiles').upsert(fila);
+      // si la columna rut aún no existe en la base, guarda el resto igual
+      if (error && /rut/i.test(error.message || '') && 'rut' in fila) {
+        delete fila.rut;
+        ({ error } = await sb.from('profiles').upsert(fila));
+      }
       if (error) console.warn('perfil:', error.message);
     },
     async miPerfil() {

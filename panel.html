@@ -68,8 +68,12 @@
   <div id="auth" class="card hidden">
     <h2 id="authTit">Ingresar</h2>
     <p class="mut" id="authSub">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
-    <label>Tu nombre</label>
-    <input id="fNombre" placeholder="Ej: María Pérez" class="hidden">
+    <div id="regCampos" class="hidden">
+      <label>Tu nombre</label>
+      <input id="fNombre" placeholder="Ej: María Pérez">
+      <label>Tu RUT</label>
+      <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off">
+    </div>
     <label>Correo</label>
     <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
     <label>Contraseña</label>
@@ -109,7 +113,17 @@
     <div class="card">
       <h2>👤 Mi cuenta</h2>
       <div class="dato"><b>Apoderado</b><span id="cNombre">—</span></div>
+      <div class="dato"><b>RUT</b><span id="cRut">—</span></div>
       <div class="dato"><b>Correo</b><span id="cEmail">—</span></div>
+      <div id="datosFaltan" class="hidden" style="margin-top:10px;background:#fff4e0;border-radius:12px;padding:12px">
+        <b>Completa tus datos 🙌</b>
+        <p class="mut" style="margin:4px 0 8px">Nos faltan datos tuyos como apoderado (se usan para tu boleta y soporte).</p>
+        <div class="row">
+          <div><label>Tu nombre</label><input id="dNombre" placeholder="Ej: María Pérez"></div>
+          <div><label>Tu RUT</label><input id="dRut" placeholder="Ej: 12.345.678-9"></div>
+        </div>
+        <button class="primary" style="margin-top:10px" onclick="guardarDatos()">Guardar mis datos</button>
+      </div>
     </div>
 
     <!-- SUSCRIPCIÓN -->
@@ -201,18 +215,40 @@ function toggleModo(){
   const reg = modo==='registro';
   $('authTit').textContent = reg ? 'Crear cuenta' : 'Ingresar';
   $('btnAuth').textContent  = reg ? 'Crear cuenta' : 'Ingresar';
-  $('fNombre').classList.toggle('hidden', !reg);
+  $('regCampos').classList.toggle('hidden', !reg);
   $('toggleTxt').textContent = reg ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?';
   $('btnToggle').textContent = reg ? 'Ingresar' : 'Crear cuenta';
+}
+
+// ---- RUT chileno: limpiar, validar dígito verificador y dar formato ----
+function rutLimpio(r){ return String(r||'').replace(/[^0-9kK]/g,'').toUpperCase(); }
+function rutValido(r){
+  r=rutLimpio(r); if(r.length<7) return false;
+  const cuerpo=r.slice(0,-1), dv=r.slice(-1);
+  if(!/^\d+$/.test(cuerpo)) return false;
+  let suma=0, mul=2;
+  for(let i=cuerpo.length-1;i>=0;i--){ suma+=parseInt(cuerpo[i],10)*mul; mul=mul===7?2:mul+1; }
+  const res=11-(suma%11);
+  const dvOk=res===11?'0':res===10?'K':String(res);
+  return dv===dvOk;
+}
+function rutFormato(r){
+  r=rutLimpio(r); if(r.length<2) return r;
+  const cuerpo=r.slice(0,-1), dv=r.slice(-1);
+  return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'-'+dv;
 }
 
 async function hacerAuth(){
   const email=$('fEmail').value.trim(), pass=$('fPass').value;
   if(!email||!pass){ showErr('Completa correo y contraseña.'); return; }
+  if(modo==='registro'){
+    if(!$('fNombre').value.trim()){ showErr('Escribe tu nombre.'); return; }
+    if(!rutValido($('fRut').value)){ showErr('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
+  }
   $('btnAuth').disabled=true;
   try{
     if(modo==='registro'){
-      await VFX.registrar(email, pass, $('fNombre').value.trim());
+      await VFX.registrar(email, pass, $('fNombre').value.trim(), rutFormato($('fRut').value));
       const s = await VFX.sesion();
       if(!s){ showOk('Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego ingresa.'); $('btnAuth').disabled=false; return; }
     } else {
@@ -253,6 +289,18 @@ function traducir(m){
 }
 
 async function salir(){ await VFX.salir(); location.reload(); }
+
+// Completar nombre/RUT de cuentas que se registraron sin ellos
+async function guardarDatos(){
+  const nombre=$('dNombre').value.trim(), rut=$('dRut').value;
+  if(!nombre){ alert('Escribe tu nombre.'); return; }
+  if(!rutValido(rut)){ alert('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
+  try{
+    await VFX.guardarPerfil({ nombre, rut: rutFormato(rut) });
+    $('cNombre').textContent=nombre; $('cRut').textContent=rutFormato(rut);
+    $('datosFaltan').classList.add('hidden');
+  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+}
 
 // Ojito 👁️: mostrar/ocultar contraseña
 function toggleOjo(id, btn){
@@ -305,7 +353,11 @@ async function cargarPanel(){
   const perfil = await VFX.miPerfil();
   const u = await VFX.usuario();
   $('cNombre').textContent = (perfil&&perfil.nombre) || '—';
+  $('cRut').textContent    = (perfil&&perfil.rut) || '—';
   $('cEmail').textContent  = (u&&u.email) || '—';
+  const faltan = !(perfil&&perfil.nombre) || !(perfil&&perfil.rut);
+  $('datosFaltan').classList.toggle('hidden', !faltan);
+  if(faltan){ $('dNombre').value=(perfil&&perfil.nombre)||''; $('dRut').value=(perfil&&perfil.rut)||''; }
 
   await pintarSuscripciones();
   await pintarHijos();

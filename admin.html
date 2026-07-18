@@ -35,6 +35,11 @@
   .mut{ color:#8294a4; font-size:.85rem; }
   .hidden{ display:none; }
   table{ width:100%; border-collapse:collapse; font-size:.85rem; }
+  .tablaWrap{ max-height:62vh; overflow:auto; background:#fff; border:1px solid var(--linea); border-radius:14px; }
+  .tablaWrap th{ position:sticky; top:0; background:#eef2f6; text-align:left; padding:10px 12px; z-index:2; border-bottom:1px solid var(--linea); font-size:.78rem; color:#5a6b7a; }
+  .tablaWrap td{ padding:10px 12px; border-bottom:1px solid var(--linea); vertical-align:top; }
+  tr.fila{ cursor:pointer; } tr.fila:hover{ background:#fbfcfe; }
+  #buzon{ max-height:50vh; overflow:auto; }
   .acc{ display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
   .err{ background:#fdeceb; color:var(--rojo); padding:10px; border-radius:9px; margin-top:8px; }
 </style>
@@ -68,7 +73,7 @@
         <button class="sec" onclick="cargar()">↻ Actualizar</button>
       </div>
       <div id="resumen" style="margin-top:12px"></div>
-      <input id="buscar" placeholder="🔍 Buscar por nombre o correo…" oninput="onBuscar(this.value)" style="margin-top:12px">
+      <input id="buscar" placeholder="🔍 Buscar por nombre, RUT o correo…" oninput="onBuscar(this.value)" style="margin-top:12px">
       <div id="filtros" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px"></div>
     </div>
     <div id="lista"></div>
@@ -143,8 +148,8 @@ async function estadoTicket(id, estado){
   try{ await VFX.adminResponderTicket(id,{estado}); await cargarBuzon(); }catch(e){ alert('Error: '+e.message); }
 }
 
-let fTexto='', fEstado='todas', limite=12;
-const PAGINA=12;
+let fTexto='', fEstado='todas', limite=30;
+const PAGINA=30;
 const EST_LABEL={todas:'Todas',activa:'Activas',cortesia:'🎁 Cortesías',pendiente:'Pendientes',vencida:'Sin vigencia',sin:'Sin plan'};
 
 async function cargar(){
@@ -196,34 +201,45 @@ function renderLista(){
   const q=fTexto.trim().toLowerCase();
   let ap=DATA.apoderados.filter(a=>{
     if(fEstado!=='todas' && estadoSub(a)!==fEstado) return false;
-    if(q){ const t=((a.nombre||'')+' '+(a.email||'')).toLowerCase(); if(!t.includes(q)) return false; }
+    if(q){ const t=((a.nombre||'')+' '+(a.email||'')+' '+(a.rut||'')).toLowerCase(); if(!t.includes(q)) return false; }
     return true;
   }).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
   if(!ap.length){ cont.innerHTML='<div class="card mut">Nada coincide con el filtro o la búsqueda.</div>'; return; }
   const total=ap.length, visibles=ap.slice(0,limite);
-  const masBtn = total>limite ? `<button class="sec" style="width:100%;padding:13px;margin-top:4px" onclick="verMas()">Mostrar más (${total-limite} restantes)</button>` : '';
-  cont.innerHTML=`<div class="mut" style="margin:0 2px 8px">Mostrando ${visibles.length} de ${total}${fTexto||fEstado!=='todas'?' (filtrado)':''}</div>`+visibles.map(renderAp).join('')+masBtn;
+  const masFila = total>limite ? `<tr><td colspan="6" style="padding:0"><button class="sec" style="width:100%;padding:13px;border-radius:0" onclick="verMas()">Mostrar más (${total-limite} restantes)</button></td></tr>` : '';
+  cont.innerHTML=`<div class="mut" style="margin:0 2px 8px">Mostrando ${visibles.length} de ${total}${fTexto||fEstado!=='todas'?' (filtrado)':''} · toca una fila para ver el detalle</div>
+  <div class="tablaWrap"><table>
+    <thead><tr><th>Apoderado</th><th>RUT</th><th>Estudiantes</th><th>Plan</th><th>Estado</th><th></th></tr></thead>
+    <tbody>${visibles.map(renderAp).join('')}${masFila}</tbody>
+  </table></div>`;
+}
+
+function toggleDet(id){
+  const d=document.getElementById('det_'+id); if(!d) return;
+  d.classList.toggle('hidden');
+  const f=document.getElementById('flecha_'+id); if(f) f.textContent=d.classList.contains('hidden')?'▸':'▾';
 }
 
 function renderAp(a){
   const est=estadoSub(a);
-  const hijos = a.hijos.map(h=>h.nombre).join(', ') || 'sin estudiantes aún';
+  const hijos = a.hijos.map(h=>`${h.avatar||''} ${h.nombre}`).join(', ') || '—';
   const subs = a.subs.map(s=>renderSub(s)).join('') || '<p class="mut" style="margin:6px 0">Sin suscripción.</p>';
   const optHijos = a.hijos.map(h=>`<option value="${h.id}">${h.nombre}</option>`).join('');
   const optPlanes = DATA.planes.filter(p=>p.activo)
     .sort((a,b)=> (a.periodo==='anual')-(b.periodo==='anual') || a.precio_clp-b.precio_clp)
     .map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
   const planTxt = a.subs.length ? a.subs.map(s=>s.plan?s.plan.nombre:s.plan_id).join(', ') : '—';
-  return `<details class="card" style="padding:0;margin-bottom:10px">
-    <summary style="padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px">
-      <span style="min-width:0;overflow:hidden">
-        <b>${a.nombre||'(sin nombre)'}</b> ${pillEstado(est)}
-        <span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${a.email||''}</span>
-      </span>
-      <span class="mut" style="text-align:right;white-space:nowrap;flex-shrink:0">${planTxt}</span>
-    </summary>
-    <div style="padding:6px 16px 16px;border-top:1px solid var(--linea)">
-      <div class="mut" style="margin:8px 0">Estudiantes: ${hijos}</div>
+  const nom = a.nombre || (a.email?a.email.split('@')[0]:'') || '(sin nombre)';
+  return `<tr class="fila" onclick="toggleDet('${a.id}')">
+    <td style="min-width:150px"><b>${nom}</b><span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px">${a.email||''}</span></td>
+    <td style="white-space:nowrap">${a.rut||'—'}</td>
+    <td>${hijos}</td>
+    <td>${planTxt}</td>
+    <td>${pillEstado(est)}</td>
+    <td id="flecha_${a.id}">▸</td>
+  </tr>
+  <tr id="det_${a.id}" class="hidden"><td colspan="6" style="background:var(--gris)">
+      <div class="mut" style="margin:2px 0 8px">Estudiantes: ${hijos}</div>
       ${subs}
       <details style="margin-top:10px">
         <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar / dar acceso</summary>
@@ -236,8 +252,7 @@ function renderAp(a){
           <div style="flex:0"><button class="pri" onclick="crearSub('${a.id}')">Activar</button></div>
         </div>
       </details>
-    </div>
-  </details>`;
+  </td></tr>`;
 }
 
 function renderSub(s){
