@@ -821,18 +821,6 @@ function explicar(){
   hablar(txt, 'es-MX');
 }
 function cambiarNombre(){ document.getElementById('nombre').value=""; mostrar('s-bienvenida'); }
-function respaldar(){
-  const all={}; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); all[k]=localStorage.getItem(k); }
-  const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='verbifox-'+(nombre||'avance')+'.json'; document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
-}
-function restaurar(input){
-  const f=input.files&&input.files[0]; if(!f) return;
-  const r=new FileReader();
-  r.onload=()=>{ try{ const o=JSON.parse(r.result); Object.keys(o).forEach(k=>localStorage.setItem(k,o[k])); alert('¡Avance restaurado! 🎉'); location.reload(); }catch(e){ alert('No se pudo leer el archivo de avance.'); } };
-  r.readAsText(f);
-}
 
 /* ====== RECORD (localStorage) ====== */
 function claveRecord(){ return "verbos_"+nombre.toLowerCase(); }

@@ -191,11 +191,6 @@
       <button class="btn btn-gris btn-pequeno" onclick="verVoz()" style="margin:0;">🎙️ Voz</button>
       <button class="btn btn-gris btn-pequeno" onclick="location.href='inicio.html'" style="margin:0;">🏫 Mis materias</button>
     </div>
-    <div class="grid2" style="margin-top:4px;">
-      <button class="btn btn-gris btn-pequeno" onclick="respaldar()" style="margin:0;">💾 Guardar copia</button>
-      <button class="btn btn-gris btn-pequeno" onclick="document.getElementById('rest-file').click()" style="margin:0;">📂 Restaurar</button>
-    </div>
-    <input type="file" id="rest-file" accept="application/json,.json" style="display:none" onchange="restaurar(this)">
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
     <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 29-jun · armadura 🛡️</p>
   </section>
@@ -527,19 +522,6 @@ function empezar(){
   cargar();
   document.getElementById('m-titulo').textContent="¿Qué practicamos, "+nombre+"?";
   irMenu();
-}
-// Respaldo y restauración del avance (un archivo en Descargas)
-function respaldar(){
-  const all={}; for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); all[k]=localStorage.getItem(k); }
-  const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='verbifox-'+(nombre||'avance')+'.json'; document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
-}
-function restaurar(input){
-  const f=input.files&&input.files[0]; if(!f) return;
-  const r=new FileReader();
-  r.onload=()=>{ try{ const o=JSON.parse(r.result); Object.keys(o).forEach(k=>localStorage.setItem(k,o[k])); alert('¡Avance restaurado! 🎉'); location.reload(); }catch(e){ alert('No se pudo leer el archivo de avance.'); } };
-  r.readAsText(f);
 }
 function cambiarJugador(){ document.getElementById('nombre').value=""; mostrar('s-bien'); }
 function irMenu(){
