@@ -210,7 +210,9 @@ function renderAp(a){
   const hijos = a.hijos.map(h=>h.nombre).join(', ') || 'sin estudiantes aún';
   const subs = a.subs.map(s=>renderSub(s)).join('') || '<p class="mut" style="margin:6px 0">Sin suscripción.</p>';
   const optHijos = a.hijos.map(h=>`<option value="${h.id}">${h.nombre}</option>`).join('');
-  const optPlanes = DATA.planes.map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
+  const optPlanes = DATA.planes.filter(p=>p.activo)
+    .sort((a,b)=> (a.periodo==='anual')-(b.periodo==='anual') || a.precio_clp-b.precio_clp)
+    .map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
   const planTxt = a.subs.length ? a.subs.map(s=>s.plan?s.plan.nombre:s.plan_id).join(', ') : '—';
   return `<details class="card" style="padding:0;margin-bottom:10px">
     <summary style="padding:13px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px">
