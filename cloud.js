@@ -434,6 +434,43 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { error } = await sb.from('subscriptions').update(campos).eq('id', id);
       if (error) throw error;
     },
+
+    // ---------- CRUD DE APODERADOS (admin) ----------
+    // Editar datos del apoderado directamente en la tabla (permitido por RLS a admins)
+    async adminEditarApoderado(id, { nombre, rut, telefono }) {
+      const campos = {};
+      if (nombre !== undefined) campos.nombre = nombre;
+      if (rut !== undefined) campos.rut = rut;
+      if (telefono !== undefined) campos.telefono = telefono;
+      const { error } = await sb.from('profiles').update(campos).eq('id', id);
+      if (error) throw error;
+    },
+    async adminBorrarHijo(id) {
+      const { error } = await sb.from('students').delete().eq('id', id);
+      if (error) throw error;
+    },
+    // Crear / eliminar cuenta y enviar recuperación: pasan por la función edge (service_role)
+    async _adminUsuarios(payload) {
+      const s = await VFX.sesion();
+      if (!s) throw new Error('Sin sesión');
+      const r = await fetch(window.VERBIFOX_SUPABASE_URL + '/functions/v1/admin-usuarios', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + s.access_token, 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || d.error) throw new Error(d.error || ('Error ' + r.status));
+      return d;
+    },
+    adminCrearApoderado({ email, password, nombre, rut }) {
+      return VFX._adminUsuarios({ accion: 'crear', email, password, nombre, rut });
+    },
+    adminEliminarApoderado(user_id) {
+      return VFX._adminUsuarios({ accion: 'eliminar', user_id });
+    },
+    adminEnviarRecuperacion(email) {
+      return VFX._adminUsuarios({ accion: 'clave', email });
+    },
   };
 
   window.VFX = VFX;

@@ -68,9 +68,12 @@
 
   <div id="admin" class="hidden">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
         <h2 style="margin:0">Apoderados y suscripciones</h2>
-        <button class="sec" onclick="cargar()">↻ Actualizar</button>
+        <div style="display:flex;gap:8px">
+          <button class="pri" onclick="nuevoApoderado()">＋ Nuevo apoderado</button>
+          <button class="sec" onclick="cargar()">↻ Actualizar</button>
+        </div>
       </div>
       <div id="resumen" style="margin-top:12px"></div>
       <input id="buscar" placeholder="🔍 Buscar por nombre, RUT o correo…" oninput="onBuscar(this.value)" style="margin-top:12px">
@@ -86,6 +89,30 @@
     <div id="buzon"></div>
   </div>
 
+</div>
+
+<!-- MODAL: crear / editar apoderado -->
+<style>
+  #apModal{ position:fixed; inset:0; background:rgba(15,27,52,.55); z-index:9998; display:flex; align-items:center; justify-content:center; padding:16px; }
+  #apModal.hidden{ display:none; }
+</style>
+<div id="apModal" class="hidden">
+  <div class="card" style="max-width:440px;width:100%;margin:0">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 id="apmTit" style="margin:0">Nuevo apoderado</h2>
+      <button class="sec" onclick="cerrarAp()">✕</button>
+    </div>
+    <label>Nombre</label><input id="apmNombre" placeholder="Ej: María Pérez">
+    <label>RUT</label><input id="apmRut" placeholder="Ej: 12.345.678-9">
+    <label>Teléfono (opcional)</label><input id="apmTel" placeholder="+56 9 …">
+    <div id="apmCrearCampos">
+      <label>Correo</label><input id="apmEmail" type="email" placeholder="correo@gmail.com">
+      <label>Contraseña temporal</label><input id="apmPass" placeholder="mínimo 6 caracteres">
+      <p class="mut" style="margin-top:6px">La cuenta queda lista para entrar (sin correo de confirmación). Dale al apoderado la clave temporal, o usa “Enviar recuperación” luego.</p>
+    </div>
+    <div class="err hidden" id="apmErr"></div>
+    <button class="pri" style="width:100%;margin-top:12px" id="apmBtn" onclick="guardarAp()">Guardar</button>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -239,7 +266,13 @@ function renderAp(a){
     <td id="flecha_${a.id}">▸</td>
   </tr>
   <tr id="det_${a.id}" class="hidden"><td colspan="6" style="background:var(--gris)">
-      <div class="mut" style="margin:2px 0 8px">Estudiantes: ${hijos}</div>
+      <div class="acc" style="margin:2px 0 10px">
+        <button class="sec" onclick='editarApoderado(${JSON.stringify({id:a.id,nombre:a.nombre||"",rut:a.rut||"",telefono:a.telefono||"",email:a.email||""})})'>✏️ Editar datos</button>
+        <button class="sec" onclick="recuperarClaveDe('${(a.email||'').replace(/'/g,"\\'")}')">🔑 Enviar recuperación de clave</button>
+        <button class="sec" style="color:var(--rojo)" onclick="eliminarApoderado('${a.id}','${(a.nombre||a.email||'').replace(/'/g,"\\'")}')">🗑️ Eliminar cuenta</button>
+      </div>
+      <div class="mut" style="margin:2px 0 6px">Estudiantes:</div>
+      <div style="margin-bottom:8px">${a.hijos.length ? a.hijos.map(h=>`<span class="pill pend" style="margin:2px 4px 2px 0;display:inline-flex;align-items:center;gap:6px">${h.avatar||''} ${h.nombre} · PIN ${h.login_code||'—'} <button onclick="eliminarHijo('${h.id}','${(h.nombre||'').replace(/'/g,"\\'")}')" style="background:none;color:var(--rojo);padding:0 2px;font-size:.95rem" title="Quitar estudiante">✕</button></span>`).join('') : '<span class="mut">sin estudiantes aún</span>'}</div>
       ${subs}
       <details style="margin-top:10px">
         <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar / dar acceso</summary>
@@ -297,6 +330,68 @@ async function pagar(subId, periodo, monto){
 }
 async function togglePac(subId, actual){ try{ await VFX.adminActualizarSub(subId,{cobro_automatico:!actual}); await cargar(); }catch(e){ alert(e.message); } }
 async function toggleEstado(subId, est){ const nuevo= est==='activa'?'cancelada':'activa'; try{ await VFX.adminActualizarSub(subId,{estado:nuevo}); await cargar(); }catch(e){ alert(e.message); } }
+
+// ---------- CRUD de apoderados ----------
+let apEdit=null; // null = crear; {id,...} = editar
+function rutLimpio(r){ return String(r||'').replace(/[^0-9kK]/g,'').toUpperCase(); }
+function rutValido(r){ r=rutLimpio(r); if(r.length<7) return false; const c=r.slice(0,-1),dv=r.slice(-1); if(!/^\d+$/.test(c)) return false; let s=0,m=2; for(let i=c.length-1;i>=0;i--){ s+=parseInt(c[i],10)*m; m=m===7?2:m+1; } const res=11-(s%11); const ok=res===11?'0':res===10?'K':String(res); return dv===ok; }
+function rutFormato(r){ r=rutLimpio(r); if(r.length<2) return r; return r.slice(0,-1).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'-'+r.slice(-1); }
+function apmErr(m){ const e=$('apmErr'); e.textContent=m; e.classList.remove('hidden'); }
+
+function nuevoApoderado(){
+  apEdit=null;
+  $('apmTit').textContent='Nuevo apoderado';
+  $('apmCrearCampos').classList.remove('hidden');
+  $('apmNombre').value=''; $('apmRut').value=''; $('apmTel').value=''; $('apmEmail').value=''; $('apmPass').value='';
+  $('apmErr').classList.add('hidden');
+  $('apModal').classList.remove('hidden');
+}
+function editarApoderado(a){
+  apEdit=a;
+  $('apmTit').textContent='Editar apoderado';
+  $('apmCrearCampos').classList.add('hidden');
+  $('apmNombre').value=a.nombre||''; $('apmRut').value=a.rut||''; $('apmTel').value=a.telefono||'';
+  $('apmErr').classList.add('hidden');
+  $('apModal').classList.remove('hidden');
+}
+function cerrarAp(){ $('apModal').classList.add('hidden'); }
+
+async function guardarAp(){
+  const nombre=$('apmNombre').value.trim(), rutIn=$('apmRut').value.trim(), tel=$('apmTel').value.trim();
+  if(!nombre){ apmErr('Escribe el nombre.'); return; }
+  if(rutIn && !rutValido(rutIn)){ apmErr('El RUT no es válido (ej: 12.345.678-9).'); return; }
+  const rut = rutIn ? rutFormato(rutIn) : '';
+  $('apmBtn').disabled=true;
+  try{
+    if(apEdit){
+      await VFX.adminEditarApoderado(apEdit.id, { nombre, rut, telefono: tel });
+    } else {
+      const email=$('apmEmail').value.trim(), pass=$('apmPass').value;
+      if(!email){ apmErr('Escribe el correo.'); $('apmBtn').disabled=false; return; }
+      if(!pass || pass.length<6){ apmErr('La contraseña debe tener al menos 6 caracteres.'); $('apmBtn').disabled=false; return; }
+      await VFX.adminCrearApoderado({ email, password:pass, nombre, rut });
+    }
+    cerrarAp(); await cargar();
+  }catch(e){ apmErr('No se pudo: '+(e.message||e)); }
+  $('apmBtn').disabled=false;
+}
+
+async function eliminarApoderado(id, quien){
+  if(!confirm('¿Eliminar la cuenta de "'+quien+'"?\n\nSe borra su cuenta, sus estudiantes, avances y suscripciones. Esto NO se puede deshacer.')) return;
+  try{ await VFX.adminEliminarApoderado(id); await cargar(); }
+  catch(e){ alert('No se pudo eliminar: '+(e.message||e)); }
+}
+async function eliminarHijo(id, nombre){
+  if(!confirm('¿Quitar al estudiante "'+nombre+'"? Se borra su avance. No se puede deshacer.')) return;
+  try{ await VFX.adminBorrarHijo(id); await cargar(); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
+async function recuperarClaveDe(email){
+  if(!email){ alert('Este apoderado no tiene correo registrado.'); return; }
+  if(!confirm('¿Enviar a '+email+' un correo para restablecer su contraseña?')) return;
+  try{ await VFX.adminEnviarRecuperacion(email); alert('📩 Correo de recuperación enviado a '+email); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
 
 document.addEventListener('vfx-listo', arranque);
 setTimeout(()=>{ if(window.VFX && $('login').classList.contains('hidden') && $('admin').classList.contains('hidden') && $('noadmin').classList.contains('hidden')) arranque(); }, 1200);
