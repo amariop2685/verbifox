@@ -88,6 +88,7 @@ const DENOMS=[
   {v:500,tipo:'moneda',cls:'',etq:'$500'},
   {v:100,tipo:'moneda',cls:'',etq:'$100'},
   {v:50,tipo:'moneda',cls:'',etq:'$50'},
+  {v:10,tipo:'moneda',cls:'',etq:'$10'},
 ];
 const PRODUCTOS=['🍎 manzanas','🍞 pan','🥛 leche','🍅 tomates','🍌 plátanos','🥕 zanahorias','🧀 queso','🍫 chocolate','🥚 huevos','🍇 uvas'];
 const BILLETES_PAGO=[1000,2000,5000,10000,20000];
@@ -113,7 +114,7 @@ function pintaPalette(){
 function nuevo(){
   items=[]; llevado=0;
   const prod=PRODUCTOS[rnd(PRODUCTOS.length)];
-  const precio=(3+rnd(158))*50;   // $150 .. $8000, múltiplos de 50
+  const precio=(15+rnd(786))*10;  // $150 .. $8000, múltiplos de 10 (usa la moneda de $10)
   if(modo==='pagar'){
     objetivo=precio;
     $('consigna').innerHTML=`En la feria compras ${prod}. ¡Paga justo!`;
