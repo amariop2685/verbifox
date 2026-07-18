@@ -153,6 +153,35 @@
   </div>
 </div>
 
+<!-- MODAL: VOZ DEL RELATOR (la configura el apoderado, por niño) -->
+<style>
+  #vozModal{ position:fixed; inset:0; background:rgba(15,27,52,.55); z-index:9998; display:flex; align-items:center; justify-content:center; padding:16px; }
+  #vozModal.hidden{ display:none; }
+</style>
+<div id="vozModal" class="hidden">
+  <div style="background:#fff;border-radius:18px;max-width:440px;width:100%;max-height:86vh;overflow:auto;padding:20px;box-shadow:0 18px 50px rgba(0,0,0,.35)">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <b id="vozTitulo">🎙️ Voz del relator</b>
+      <button onclick="cerrarVoz()" style="border:0;background:none;font-size:1.25rem;cursor:pointer;line-height:1">✕</button>
+    </div>
+    <p class="mut" style="margin:6px 0 10px">El relator lee las instrucciones y anima a tu hijo/a mientras juega. Toca una voz para <b>escucharla</b> y dejarla elegida. Queda guardada en la nube para este niño.</p>
+    <label style="display:flex;align-items:center;gap:8px;margin:10px 0;font-weight:700;cursor:pointer">
+      <input type="checkbox" id="vozOnChk" checked style="width:20px;height:20px"> Relator encendido
+    </label>
+    <div id="vozLista"></div>
+    <div style="border-top:1px dashed var(--linea);margin-top:14px;padding-top:12px">
+      <b>🌎 Voz para Inglés</b>
+      <div style="display:flex;gap:8px;margin:8px 0">
+        <button type="button" id="diaUS" onclick="elegirDia('US')" style="flex:1;padding:9px;border-radius:12px;cursor:pointer;border:2px solid var(--linea);background:#fff;font-weight:700">🇺🇸 EE.UU.</button>
+        <button type="button" id="diaUK" onclick="elegirDia('UK')" style="flex:1;padding:9px;border-radius:12px;cursor:pointer;border:2px solid var(--linea);background:#fff;font-weight:700">🇬🇧 Británico</button>
+      </div>
+      <div id="vozListaEn"></div>
+    </div>
+    <p class="mut" style="margin-top:8px">💡 Las voces que dicen "natural" suenan más humanas. Si el aparato donde juega no tiene la voz elegida, se usará la más parecida.</p>
+    <button class="primary" onclick="guardarVoz()">💾 Guardar para este niño</button>
+  </div>
+</div>
+
 <footer>VerbiFox · Aprendizaje alineado al currículo escolar chileno · <span id="ver">panel v1</span><br>
   <a href="privacidad.html" style="color:#9fb0bf">Privacidad</a> · <a href="terminos.html" style="color:#9fb0bf">Términos</a></footer>
 <a href="soporte.html" style="position:fixed;right:16px;bottom:16px;background:#ff7a18;color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.22);z-index:9999">💬 Ayuda</a>
@@ -396,9 +425,80 @@ function renderDevBar(){
         <div>🔑 PIN de ${h.nombre}: <b style="font-size:1.3rem;letter-spacing:3px">${h.login_code||'—'}</b></div>
         <div class="mut">Con este PIN de 4 números, ${h.nombre} entra <b>solo/a desde cualquier dispositivo</b> (notebook, tablet o teléfono): verbifox.cl → 🎒 Soy estudiante → marcar el PIN. Su avance lo sigue a todas partes. ☁️</div>
       </div>
-      <button class="primary" style="width:auto;padding:10px 14px;flex-shrink:0" onclick="modoEstudiante('${h.id}')">🎒 Ir al modo estudiante</button>
+      <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0">
+        <button class="primary" style="width:auto;padding:10px 14px;margin-top:0" onclick="modoEstudiante('${h.id}')">🎒 Ir al modo estudiante</button>
+        <button class="primary" style="width:auto;padding:10px 14px;margin-top:0;background:#3a7bd5" onclick="abrirVoz('${h.id}')">🎙️ Voz del relator</button>
+      </div>
     </div></div>`;
 }
+
+// ---- voz del relator e inglés (el apoderado las elige por niño; se guardan en su nube) ----
+let vozHijoId=null, vozSel='', vozSelEn='', diaSel='US';
+function vocesDe(pref){ const vs=('speechSynthesis' in window ? speechSynthesis.getVoices() : [])||[]; return vs.filter(v=>new RegExp('^'+pref,'i').test(v.lang||'')); }
+async function abrirVoz(id){
+  vozHijoId=id;
+  const h=hijos.find(x=>x.id===id)||{};
+  $('vozTitulo').textContent='🎙️ Voces de '+(h.nombre||'');
+  $('vozModal').classList.remove('hidden');
+  vozSel=''; vozSelEn=''; diaSel='US'; $('vozOnChk').checked=true; pintarVoces();
+  try{
+    const e=await VFX.estadoHijo(id);
+    vozSel=e.mate_voz_nombre||''; $('vozOnChk').checked=e.mate_voz!=='0';
+    vozSelEn=e.vozIngles||''; diaSel=e.dialecto||'US';
+  }catch(err){}
+  pintarVoces();
+}
+function pintarVoces(){
+  const fila=(v,sel)=>`<div onclick="probarVoz(this.dataset.n)" data-n="${v.name.replace(/"/g,'')}" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;margin-top:6px;border:2px solid ${sel?'var(--naranja)':'var(--linea)'};border-radius:12px;cursor:pointer;background:${sel?'#fff4e0':'#fff'}">
+      <span>${v.name}<span class="mut">${v.localService?'':' · natural'}</span></span><span>${sel?'✅':'▶'}</span></div>`;
+  const nat=v=>{ let s=0; const n=(v.name||'').toLowerCase();
+    if(/google|siri/.test(n)) s+=6;
+    if(/enhanced|premium|natural|neural/.test(n)) s+=5;
+    if(!v.localService) s+=2;
+    if(/\(|bells|bahh|boing|bubbles|cellos|organ|jester|whisper|wobble|trinoids|zarvox|albert|bad news|buenas|good news|superstar/.test(n)) s-=4;
+    return s; };
+  const ordena=vs=>vs.slice().sort((a,b)=>nat(b)-nat(a));
+  const es=ordena(vocesDe('es')), c=$('vozLista');
+  c.innerHTML = es.length ? es.map(v=>fila(v, v.name===vozSel)).join('')
+    : '<p class="mut">Este navegador aún no entrega sus voces en español. Espera un segundo…</p>';
+  let en=vocesDe(diaSel==='UK'?'en-GB':'en-US'); if(!en.length) en=vocesDe('en');
+  en=ordena(en); const cEn=$('vozListaEn');
+  cEn.innerHTML = en.length ? en.map(v=>fila(v, v.name===vozSelEn)).join('')
+    : '<p class="mut">Sin voces en inglés en este aparato.</p>';
+  $('diaUS').style.borderColor = diaSel==='US'?'var(--naranja)':'var(--linea)';
+  $('diaUS').style.background = diaSel==='US'?'#fff4e0':'#fff';
+  $('diaUK').style.borderColor = diaSel==='UK'?'var(--naranja)':'var(--linea)';
+  $('diaUK').style.background = diaSel==='UK'?'#fff4e0':'#fff';
+}
+function elegirDia(d){ diaSel=d; pintarVoces(); }
+function probarVoz(n){
+  const h=hijos.find(x=>x.id===vozHijoId)||{};
+  const v=(speechSynthesis.getVoices()||[]).find(x=>x.name===n); if(!v) return;
+  const esIngles=/^en/i.test(v.lang||'');
+  if(esIngles) vozSelEn=n; else vozSel=n;
+  pintarVoces();
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(esIngles ? ('Hello '+(h.nombre||'champion')+'! Let\'s learn English!') : ('¡Hola '+(h.nombre||'campeón')+'! Soy tu relator. ¡Vamos a jugar!'));
+    u.voice=v; u.lang=v.lang;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+async function guardarVoz(){
+  if(!vozHijoId) return;
+  try{
+    await VFX.ajustarEstadoHijo(vozHijoId, {
+      mate_voz: $('vozOnChk').checked?'1':'0',
+      mate_voz_nombre: vozSel||'',
+      vozIngles: vozSelEn||'',
+      dialecto: diaSel
+    });
+    cerrarVoz();
+    alert('🎙️ ¡Listo! Las voces quedaron guardadas en la nube para este niño.');
+  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+}
+function cerrarVoz(){ $('vozModal').classList.add('hidden'); try{ speechSynthesis.cancel(); }catch(e){} }
+if('speechSynthesis' in window){ try{ speechSynthesis.onvoiceschanged=()=>{ if(!$('vozModal').classList.contains('hidden')) pintarVoces(); }; speechSynthesis.getVoices(); }catch(e){} }
 async function modoEstudiante(id){
   const h=hijos.find(x=>x.id===id); if(!h) return;
   try{ if(window.VFX && VFX.cargarEstadoNube) await VFX.cargarEstadoNube(h.id); }catch(e){} // baja su avance de la nube
@@ -453,7 +553,8 @@ async function crearHijo(){
     const nuevo = await VFX.agregarHijo({ nombre, curso:$('hCurso').value, colegio:$('hColegio').value.trim(), avatar:avatarSel });
     $('altaHijo').classList.add('hidden'); $('hNombre').value='';
     await pintarHijos(); await pintarPlanesDispo();
-    if(nuevo && nuevo.login_code) alert('🎉 ¡'+nombre+' quedó inscrito/a!\n\n🔑 Su PIN de acceso es: '+nuevo.login_code+'\n\nCon ese PIN entra solo/a desde cualquier dispositivo:\nverbifox.cl → 🎒 Soy estudiante → marcar el PIN.');
+    if(nuevo && nuevo.login_code) alert('🎉 ¡'+nombre+' quedó inscrito/a!\n\n🔑 Su PIN de acceso es: '+nuevo.login_code+'\n\nCon ese PIN entra solo/a desde cualquier dispositivo:\nverbifox.cl → 🎒 Soy estudiante → marcar el PIN.\n\nAhora elige la voz del relator que lo acompañará. 🎙️');
+    if(nuevo && nuevo.id) abrirVoz(nuevo.id);
   }catch(e){ alert('No se pudo: '+e.message); }
 }
 

@@ -191,7 +191,7 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     },
 
     // ---------- AVANCE EN LA NUBE (multi-dispositivo) + MODO CÓDIGO DEL NIÑO ----------
-    _SYNC_PREFIJOS: ['vfx_ml_','vfx_seen_','vfx_lec_','vfx_prac_','vfx_exsc_','vfx_examok_','vfx_bonus_','vfx_caballero','vfx_ruta','vfx_curso','mate_','verbos_','memoria_','jugador'],
+    _SYNC_PREFIJOS: ['vfx_ml_','vfx_seen_','vfx_lec_','vfx_prac_','vfx_exsc_','vfx_examok_','vfx_bonus_','vfx_caballero','vfx_ruta','vfx_curso','mate_','verbos_','memoria_','jugador','vozIngles','dialecto'],
     _snapEstado() {
       const o = {};
       for (let i = 0; i < localStorage.length; i++) {
@@ -244,6 +244,19 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
         const code = VFX.codigoActivo();
         if (code) await sb.rpc('guardar_estado_codigo', { p_code: code, p_estado: estado });
       } catch (e) {}
+    },
+    // Leer el estado guardado de un hijo (sesión del apoderado)
+    async estadoHijo(studentId) {
+      const { data } = await sb.from('estado_estudiante').select('estado').eq('student_id', studentId).maybeSingle();
+      return (data && data.estado) || {};
+    },
+    // El apoderado ajusta preferencias del niño (ej: voz del relator) sin pisar su avance
+    async ajustarEstadoHijo(studentId, parche) {
+      const { data } = await sb.from('estado_estudiante').select('estado').eq('student_id', studentId).maybeSingle();
+      const estado = Object.assign({}, (data && data.estado) || {}, parche);
+      const { error } = await sb.from('estado_estudiante').upsert({ student_id: studentId, estado, updated_at: new Date().toISOString() });
+      if (error) throw error;
+      return estado;
     },
 
     // ---------- ACCESO / CANDADO POR SUSCRIPCIÓN ----------

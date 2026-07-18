@@ -187,10 +187,7 @@
     </div>
     <button class="btn btn-amarillo" onclick="verArmadura()" style="margin-top:11px;">🛡️ Mi Armadura del Caballero 🐎</button>
     <button class="btn btn-azul" onclick="verReporte()" style="margin-top:11px;">👨‍👩‍👦 Reporte para papá</button>
-    <div class="grid2" style="margin-top:4px;">
-      <button class="btn btn-gris btn-pequeno" onclick="verVoz()" style="margin:0;">🎙️ Voz</button>
-      <button class="btn btn-gris btn-pequeno" onclick="location.href='inicio.html'" style="margin:0;">🏫 Mis materias</button>
-    </div>
+    <button class="btn btn-gris btn-pequeno" style="margin-top:4px;" onclick="location.href='inicio.html'">🏫 Mis materias</button>
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
     <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 29-jun · armadura 🛡️</p>
   </section>
@@ -204,14 +201,6 @@
     <h2 id="n-titulo">Niveles</h2>
     <p class="sub">Domina un nivel (7 de 8) para avanzar y sumar una lección ✅</p>
     <div id="n-lista"></div>
-  </section>
-
-  <!-- SELECTOR DE VOZ DEL RELATOR -->
-  <section id="s-voz" class="screen">
-    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
-    <h2>🎙️ Voz del relator</h2>
-    <p class="sub">Toca una voz para escucharla y elegirla. Las que dicen "natural" suelen ser más humanas.</p>
-    <div id="voz-lista"></div>
   </section>
 
   <!-- ANTESALA DE LA EVALUACIÓN -->
@@ -471,17 +460,8 @@ function _vozEs(){
   return vs.slice().sort((a,b)=>score(b)-score(a))[0];
 }
 function decir(t){ if(!vozOn||!('speechSynthesis'in window)) return; try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t.replace(/[⚽🎉🙌🔥💪🎙️🏆🐢🎯👍]/g,'')); const v=_vozEs(); u.lang=v?v.lang:'es-MX'; if(v)u.voice=v; u.rate=1.0; u.pitch=1.0; if(speechSynthesis.resume)speechSynthesis.resume(); speechSynthesis.speak(u);}catch(e){} }
-function verVoz(){
-  const vs=vozPrefList();
-  const lista=document.getElementById('voz-lista');
-  if(!vs.length){ lista.innerHTML='<p class="sub">Aún no hay voces en español. Recarga la página o prueba en otro navegador.</p>'; mostrar('s-voz'); return; }
-  const actual=(_vozEs()||{}).name;
-  lista.innerHTML = vs.map(v=>{ const sel=(vozNombre?v.name===vozNombre:v.name===actual); const tipo=v.localService?'':' · natural';
-    return `<div class="niv-btn" onclick="elegirVoz(this.dataset.n)" data-n="${v.name.replace(/"/g,'')}"><span>${v.name}${tipo}</span><span class="est">${sel?'✅':'▶'}</span></div>`; }).join('');
-  mostrar('s-voz');
-}
-function elegirVoz(n){ vozNombre=n; try{ localStorage.setItem('mate_voz_nombre',n); }catch(e){} const antes=vozOn; vozOn=true; decir('¡Hola '+nombre+'! Soy tu relator. ¡Vamos a jugar!'); vozOn=antes; verVoz(); }
-if('speechSynthesis'in window){ try{ speechSynthesis.onvoiceschanged=()=>{ const sv=document.getElementById('s-voz'); if(sv&&sv.classList.contains('activa')) verVoz(); }; speechSynthesis.getVoices(); }catch(e){} }
+// La voz la configura el apoderado desde su panel (se guarda en la nube por niño).
+if('speechSynthesis'in window){ try{ speechSynthesis.getVoices(); }catch(e){} }
 function toggleVoz(){ vozOn=!vozOn; try{ localStorage.setItem('mate_voz', vozOn?'1':'0'); }catch(e){} const b=document.getElementById('q-voz'); if(b)b.textContent=vozOn?'🔊':'🔇'; if(vozOn) decir('¡Relator encendido!'); else if('speechSynthesis'in window) speechSynthesis.cancel(); }
 function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 let _rx="";
