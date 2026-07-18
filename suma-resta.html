@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VerbiFox · Sumar y restar con canje</title>
+<style>
+  :root{ --azul:#3b82f6; --naranja:#f97316; --rojo:#e11d48; --verde:#2bb673; --morado:#7c3aed; --fondo:#0f1b34; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; overflow:hidden; touch-action:manipulation; color:#fff; }
+
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 92px 12px 14px; flex-wrap:wrap; position:relative; z-index:8; }
+  .tabs{ display:flex; gap:6px; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; }
+  .tab{ border:0; background:transparent; color:#cdd7e4; font-weight:800; padding:8px 14px; border-radius:9px; cursor:pointer; font-size:.95rem; }
+  .tab.on{ background:#fff; color:#26303b; }
+  .ecuacion{ background:#fff; border-radius:14px; padding:8px 12px; display:flex; align-items:center; gap:8px; font-weight:800; font-size:1.3rem; color:#26303b; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+  .ecuacion input{ width:66px; height:44px; text-align:center; font-size:1.25rem; font-weight:800; border:2px solid #cbd5e1; border-radius:10px; background:#eef2f7; color:#26303b; }
+  .ecuacion input:focus{ outline:none; border-color:var(--naranja); background:#fff; }
+  .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
+
+  .consigna{ width:max-content; max-width:92vw; margin:4px auto 0; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); color:#fff; border-radius:12px; padding:8px 16px; font-weight:800; text-align:center; z-index:5; position:relative; }
+
+  #mesa{ position:fixed; left:0; right:0; top:132px; bottom:150px; display:flex; gap:14px; justify-content:center; align-items:stretch; padding:0 12px; }
+  .col{ flex:1; max-width:340px; display:flex; flex-direction:column; }
+  .col-tit{ text-align:center; font-weight:900; letter-spacing:1px; padding:6px; border-radius:12px 12px 0 0; }
+  #wrapD .col-tit{ background:rgba(59,130,246,.35); } #wrapU .col-tit{ background:rgba(249,115,22,.35); }
+  .col-caja{ flex:1; border:2px dashed rgba(255,255,255,.28); border-top:0; border-radius:0 0 14px 14px; padding:10px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; justify-content:center; overflow:auto; }
+  #wrapD .col-caja{ align-items:flex-end; align-content:flex-end; }
+
+  /* Barra de decena: 10 segmentos */
+  .rod{ width:34px; height:150px; border-radius:8px; background:
+      repeating-linear-gradient(to top, #1e4fa3 0 1px, transparent 1px 15px),
+      linear-gradient(145deg,#5b9bff,#2f6fdb); border:2px solid #1c3f7a;
+      box-shadow:0 4px 10px rgba(0,0,0,.4); cursor:pointer; position:relative; will-change:transform; }
+  .rod::after{ content:"10"; position:absolute; top:4px; left:0; right:0; text-align:center; font-size:.72rem; font-weight:800; color:#fff; opacity:.9; }
+  .rod.pop{ animation:pop .4s cubic-bezier(.2,1.6,.4,1); }
+  .rod.romper{ animation:sacude .45s; }
+  .ball{ width:34px; height:34px; border-radius:50%; background:radial-gradient(circle at 32% 30%, #ffc182, var(--naranja) 65%); box-shadow:0 3px 8px rgba(0,0,0,.4); cursor:pointer; will-change:transform; }
+  .ball.pop{ animation:pop .4s cubic-bezier(.2,1.6,.4,1); }
+  .comido{ animation:comido .3s forwards; pointer-events:none; }
+  @keyframes pop{ 0%{transform:scale(.4)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+  @keyframes comido{ to{ transform:scale(0) rotate(40deg); opacity:0; } }
+  @keyframes sacude{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+
+  #monstruo{ position:fixed; left:50%; bottom:150px; transform:translateX(-50%); font-size:2.6rem; z-index:6; filter:drop-shadow(0 4px 8px rgba(0,0,0,.5)); display:none; }
+  #monstruo.comiendo{ animation:masca .3s; }
+  @keyframes masca{ 50%{ transform:translateX(-50%) scale(1.25); } }
+
+  .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:12px; z-index:7; flex-wrap:wrap; }
+  .btn{ border:0; border-radius:14px; padding:13px 18px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .btn:disabled{ opacity:.4; cursor:default; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .b-verde{ background:var(--verde); color:#fff; } .b-gris{ background:#dbe3ec; color:#26303b; } .b-azulb{ background:#3a7bd5; color:#fff; } .b-morado{ background:var(--morado); color:#fff; }
+
+  #msj{ position:fixed; left:50%; top:132px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:20; display:none; text-align:center; max-width:88vw; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs">
+      <button class="tab on" id="tabS" onclick="setModo('sumar')">➕ Sumar</button>
+      <button class="tab" id="tabR" onclick="setModo('restar')">➖ Restar</button>
+    </div>
+    <div class="ecuacion">
+      <span id="eq">27 + 15</span> =
+      <input id="inT" inputmode="numeric" maxlength="3" placeholder="">
+    </div>
+  </div>
+  <a class="volver" href="mate.html">✕ Salir</a>
+  <div class="consigna" id="consigna"></div>
+
+  <div id="mesa">
+    <div class="col" id="wrapD"><div class="col-tit">🔟 DECENAS</div><div class="col-caja" id="colD"></div></div>
+    <div class="col" id="wrapU"><div class="col-tit">🔵 UNIDADES</div><div class="col-caja" id="colU"></div></div>
+  </div>
+
+  <div id="monstruo">🦖</div>
+  <div id="msj"></div>
+
+  <div class="abajo">
+    <button class="btn b-morado" id="btnCanje" onclick="canjear()">🔟 Formar una decena</button>
+    <button class="btn b-morado" id="btnRomper" onclick="romper()">🔨 Romper una decena</button>
+    <button class="btn b-verde" onclick="comprobar()">✔ Comprobar</button>
+    <button class="btn b-gris" onclick="nuevo()">🎲 Nuevo</button>
+  </div>
+
+<script>
+const $=id=>document.getElementById(id);
+const rnd=n=>Math.floor(Math.random()*n);
+function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(), g=c.createGain(); o.frequency.value=f; o.type='sine'; g.gain.setValueAtTime(.18,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+d); }catch(e){} }
+function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
+function msj(t,largo){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', largo?3600:2200); }
+
+let modo='sumar';
+let D=0, U=0;            // barras de decena y bolitas de unidad en la mesa
+let a=0, b=0, resultado=0;
+let remD=0, remU=0;     // (restar) lo que falta por quitar
+let listo=false;        // ya se puede escribir el resultado
+
+function setModo(m){
+  modo=m;
+  $('tabS').classList.toggle('on', m==='sumar');
+  $('tabR').classList.toggle('on', m==='restar');
+  $('monstruo').style.display = m==='restar' ? 'block' : 'none';
+  nuevo();
+}
+
+function nuevo(){ $('inT').value=''; listo=false; modo==='sumar'?nuevoSumar():nuevoRestar(); }
+
+// ---------- SUMAR (llevar) ----------
+function nuevoSumar(){
+  const d1=1+rnd(4), d2=1+rnd(Math.min(4, 8-d1));   // d1+d2 ≤ 8
+  const sumU=11+rnd(7);                              // 11..17 → obliga a llevar
+  let u1=Math.max(2, sumU-9)+rnd(Math.min(9,sumU-2)-Math.max(2,sumU-9)+1);
+  if(u1>9)u1=9; if(u1<2)u1=2; let u2=sumU-u1; if(u2>9){u1+=(u2-9);u2=9;} if(u2<1){u2=1;u1=sumU-1;}
+  a=d1*10+u1; b=d2*10+u2; resultado=a+b;
+  D=d1+d2; U=u1+u2;
+  $('eq').textContent=a+' + '+b;
+  $('btnCanje').style.display=''; $('btnRomper').style.display='none';
+  render();
+  $('consigna').innerHTML=`Ya juntamos <b>${a}</b> y <b>${b}</b>. Hay <b>${U} unidades</b>: ¡son más de 10! Toca <b>🔟 Formar una decena</b> para <b>llevar</b>.`;
+  actualizaBtns();
+}
+function canjear(){
+  if(U<10){ msj('Ya no quedan 10 unidades para juntar 🙂'); return; }
+  U-=10; D+=1; beep(660,.18);
+  render(true);
+  if(U>=10){ $('consigna').innerHTML=`¡Bien! Formaste una decena. Todavía hay <b>${U} unidades</b>: junta otra.`; }
+  else { terminarSuma(); }
+  actualizaBtns();
+}
+function terminarSuma(){
+  listo=true;
+  $('consigna').innerHTML=`¡Perfecto! Quedaron <b>${D} decenas</b> y <b>${U} unidades</b>. ¿Cuánto es el total? ✍️`;
+  msj('🔟 ¡Llevaste una decena!'); beep(720,.2);
+  $('inT').focus();
+}
+
+// ---------- RESTAR (pedir prestado) ----------
+function nuevoRestar(){
+  const uM=rnd(8);                 // 0..7 unidades del número grande
+  const uS=uM+1+rnd(9-uM);         // más unidades que uM → obliga a pedir prestado
+  const tS=1+rnd(3);               // 1..3 decenas a quitar
+  const tM=tS+1+rnd(Math.min(5,6-tS)); // más decenas que tS
+  a=tM*10+uM; b=tS*10+uS; resultado=a-b;
+  D=tM; U=uM; remD=tS; remU=uS;
+  $('eq').textContent=a+' − '+b;
+  $('btnCanje').style.display='none'; $('btnRomper').style.display='';
+  render();
+  $('consigna').innerHTML=`Tienes <b>${a}</b>. Hay que quitar <b>${b}</b> = <b>${tS} decena(s)</b> y <b>${uS} unidad(es)</b>. Empieza por las unidades 👇`;
+  actualizaBtns();
+}
+function romper(){
+  if(D<=0){ msj('No quedan decenas para romper 🙂'); return; }
+  D-=1; U+=10; beep(300,.2);
+  render(true);
+  const rod=null;
+  $('consigna').innerHTML=`🔨 ¡Rompiste una decena! Ahora tienes <b>${U} unidades</b> para poder quitar.`;
+  actualizaBtns();
+}
+function comerBola(el){
+  if(modo!=='restar'){ return; }
+  if(remU<=0){ msj('Ya quitaste todas las unidades que pedía 🙂'); return; }
+  el.classList.add('comido'); mascar();
+  U--; remU--; beep(440,.12);
+  setTimeout(()=>{ render(); pasoRestar(); }, 240);
+}
+function comerBarra(el){
+  if(modo!=='restar') return;
+  if(remD>0){ el.classList.add('comido'); mascar(); D--; remD--; beep(380,.14); setTimeout(()=>{ render(); pasoRestar(); }, 240); }
+  else { romper(); }     // si ya no hay decenas que quitar, tocar una barra la rompe (pedir prestado)
+}
+function mascar(){ const m=$('monstruo'); m.classList.remove('comiendo'); void m.offsetWidth; m.classList.add('comiendo'); }
+function pasoRestar(){
+  if(remU>0 && U<=0){ $('consigna').innerHTML=`¡No alcanzan las unidades! Toca <b>🔨 Romper una decena</b> para pedir prestado.`; }
+  else if(remU>0){ $('consigna').innerHTML=`Quita <b>${remU} unidad(es)</b> más 👆 (toca las bolitas).`; }
+  else if(remD>0){ $('consigna').innerHTML=`¡Unidades listas! Ahora quita <b>${remD} decena(s)</b> 👆 (toca las barras).`; }
+  else { terminarResta(); }
+  actualizaBtns();
+}
+function terminarResta(){
+  listo=true;
+  $('consigna').innerHTML=`¡Genial! Quedan <b>${D} decenas</b> y <b>${U} unidades</b>. ¿Cuánto sobró? ✍️`;
+  msj('🦖 ¡Le diste al monstruo justo lo que pedía!'); beep(720,.2);
+  $('inT').focus();
+}
+
+// ---------- RENDER ----------
+function render(conPop){
+  const colD=$('colD'), colU=$('colU');
+  colD.innerHTML=''; colU.innerHTML='';
+  for(let i=0;i<D;i++){ const r=document.createElement('div'); r.className='rod'+(conPop&&i===D-1?' pop':''); r.onclick=()=>comerBarra(r); colD.appendChild(r); }
+  for(let i=0;i<U;i++){ const b2=document.createElement('div'); b2.className='ball'+(conPop&&i>=U-10?' pop':''); b2.onclick=()=>comerBola(b2); colU.appendChild(b2); }
+  vibrar();
+}
+function actualizaBtns(){
+  if(modo==='sumar'){ $('btnCanje').disabled = !(U>=10) || listo; }
+  else { $('btnRomper').disabled = !(D>0) || listo; }
+}
+
+// vibración molecular suave de las bolitas
+let _t0=0;
+function vibrar(){ /* activada por rAF continuo */ }
+function animar(ts){
+  const t=(ts||0)/1000, bolas=document.querySelectorAll('#colU .ball');
+  let i=0; for(const b of bolas){ const ph=i*0.7; b.style.transform=`translate(${(2.2*Math.sin(t*1.6+ph)).toFixed(1)}px,${(2*Math.cos(t*1.4+ph)).toFixed(1)}px)`; i++; }
+  requestAnimationFrame(animar);
+}
+requestAnimationFrame(animar);
+
+// ---------- COMPROBAR ----------
+function comprobar(){
+  const v=parseInt($('inT').value,10);
+  if(!listo){
+    if(modo==='sumar') msj('Primero forma las decenas que se pueden 🔟');
+    else msj('Primero quita del monstruo lo que pide 🦖');
+    return;
+  }
+  if(isNaN(v)){ msj('Escribe el resultado en el casillero ✍️'); $('inT').focus(); return; }
+  if(v===resultado){
+    chime();
+    $('consigna').innerHTML = modo==='sumar'
+      ? `🎉 ¡CORRECTO! ${a} + ${b} = <b>${resultado}</b>. Sumar con canje es <b>juntar y llevar</b>. 🏆`
+      : `🎉 ¡CORRECTO! ${a} − ${b} = <b>${resultado}</b>. Restar con canje es <b>pedir prestado</b>. 🏆`;
+    setTimeout(nuevo, 3000);
+  } else {
+    beep(160,.3); msj('Casi… cuenta otra vez: '+D+' decenas y '+U+' unidades 🤔'); $('inT').focus();
+  }
+}
+$('inT').addEventListener('keydown', e=>{ if(e.key==='Enter') comprobar(); });
+
+nuevoSumar();
+</script>
+</body>
+</html>
