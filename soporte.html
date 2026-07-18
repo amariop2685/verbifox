@@ -82,6 +82,8 @@
   async function enviar(){
     const mensaje = $('mensaje').value.trim();
     if(!mensaje){ mostrarErr('Escribe tu mensaje, por favor.'); return; }
+    const correo = $('email').value.trim();
+    if(correo && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)){ mostrarErr('Ese correo no parece válido. Revísalo para poder responderte.'); return; }
     $('btn').disabled = true;
     try{
       await VFX.crearTicket({
@@ -106,7 +108,8 @@
       const u = await VFX.usuario();
       if(u && u.email && !$('email').value) $('email').value = u.email;
       const p = await VFX.miPerfil();
-      if(p && p.nombre && !$('nombre').value) $('nombre').value = p.nombre;
+      const nomComp = ((p&&p.nombre)||'')+' '+((p&&p.apellidos)||'');
+      if(nomComp.trim() && !$('nombre').value) $('nombre').value = nomComp.trim();
     }catch(e){}
   }
   document.addEventListener('vfx-listo', prellenar);

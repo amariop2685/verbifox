@@ -33,6 +33,9 @@
   .pwd .ojo{ position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:0; font-size:1.25rem; cursor:pointer; padding:6px; }
   .row{ display:flex; gap:12px; flex-wrap:wrap; }
   .row>div{ flex:1; min-width:140px; }
+  .telbox{ display:flex; align-items:stretch; gap:0; }
+  .telpre{ display:flex; align-items:center; padding:0 12px; background:#eef2f6; border:1px solid var(--linea); border-right:0; border-radius:10px 0 0 10px; font-weight:700; white-space:nowrap; color:#5a6b7a; }
+  .telbox input{ border-radius:0 10px 10px 0; }
   .pill{ display:inline-block; padding:4px 12px; border-radius:999px; font-size:.8rem; font-weight:700; }
   .pill.ok{ background:#e3f7ee; color:var(--verde); }
   .pill.warn{ background:#fdeceb; color:var(--rojo); }
@@ -69,10 +72,14 @@
     <h2 id="authTit">Ingresar</h2>
     <p class="mut" id="authSub">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
     <div id="regCampos" class="hidden">
-      <label>Tu nombre</label>
-      <input id="fNombre" placeholder="Ej: María Pérez">
+      <div class="row">
+        <div><label>Nombres</label><input id="fNombre" placeholder="Ej: María José"></div>
+        <div><label>Apellidos</label><input id="fApellidos" placeholder="Ej: Pérez Soto"></div>
+      </div>
       <label>Tu RUT</label>
       <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off">
+      <label>Teléfono (opcional)</label>
+      <div class="telbox"><span class="telpre">+56 9</span><input id="fTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div>
     </div>
     <label>Correo</label>
     <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
@@ -114,13 +121,18 @@
       <h2>👤 Mi cuenta</h2>
       <div class="dato"><b>Apoderado</b><span id="cNombre">—</span></div>
       <div class="dato"><b>RUT</b><span id="cRut">—</span></div>
+      <div class="dato"><b>Teléfono</b><span id="cTel">—</span></div>
       <div class="dato"><b>Correo</b><span id="cEmail">—</span></div>
       <div id="datosFaltan" class="hidden" style="margin-top:10px;background:#fff4e0;border-radius:12px;padding:12px">
         <b>Completa tus datos 🙌</b>
         <p class="mut" style="margin:4px 0 8px">Nos faltan datos tuyos como apoderado (se usan para tu boleta y soporte).</p>
         <div class="row">
-          <div><label>Tu nombre</label><input id="dNombre" placeholder="Ej: María Pérez"></div>
+          <div><label>Nombres</label><input id="dNombre" placeholder="Ej: María José"></div>
+          <div><label>Apellidos</label><input id="dApellidos" placeholder="Ej: Pérez Soto"></div>
+        </div>
+        <div class="row" style="margin-top:6px">
           <div><label>Tu RUT</label><input id="dRut" placeholder="Ej: 12.345.678-9"></div>
+          <div><label>Teléfono</label><div class="telbox"><span class="telpre">+56 9</span><input id="dTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div></div>
         </div>
         <button class="primary" style="margin-top:10px" onclick="guardarDatos()">Guardar mis datos</button>
       </div>
@@ -237,18 +249,32 @@ function rutFormato(r){
   const cuerpo=r.slice(0,-1), dv=r.slice(-1);
   return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'-'+dv;
 }
+// Email y teléfono (+56 9 fijo; el usuario solo escribe 8 dígitos)
+function emailValido(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((e||'').trim()); }
+function solo8(el){ el.value=el.value.replace(/\D/g,'').slice(0,8); }
+function telDigitos(t){ const d=String(t||'').replace(/\D/g,''); return d.length>8?d.slice(-8):d; }
+function telValido(t){ return telDigitos(t).length===8; }
+function telFormato(t){ const d=telDigitos(t); return d? '+56 9 '+d.slice(0,4)+' '+d.slice(4) : ''; }
 
 async function hacerAuth(){
   const email=$('fEmail').value.trim(), pass=$('fPass').value;
   if(!email||!pass){ showErr('Completa correo y contraseña.'); return; }
+  if(!emailValido(email)){ showErr('Ese correo no parece válido. Revísalo (ej: nombre@gmail.com).'); return; }
   if(modo==='registro'){
-    if(!$('fNombre').value.trim()){ showErr('Escribe tu nombre.'); return; }
+    if(!$('fNombre').value.trim()){ showErr('Escribe tus nombres.'); return; }
+    if(!$('fApellidos').value.trim()){ showErr('Escribe tus apellidos.'); return; }
     if(!rutValido($('fRut').value)){ showErr('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
+    if($('fTel').value && !telValido($('fTel').value)){ showErr('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
   }
   $('btnAuth').disabled=true;
   try{
     if(modo==='registro'){
-      await VFX.registrar(email, pass, $('fNombre').value.trim(), rutFormato($('fRut').value));
+      await VFX.registrar(email, pass, {
+        nombre: $('fNombre').value.trim(),
+        apellidos: $('fApellidos').value.trim(),
+        rut: rutFormato($('fRut').value),
+        telefono: $('fTel').value ? telFormato($('fTel').value) : ''
+      });
       const s = await VFX.sesion();
       if(!s){ showOk('Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego ingresa.'); $('btnAuth').disabled=false; return; }
     } else {
@@ -292,12 +318,16 @@ async function salir(){ await VFX.salir(); location.reload(); }
 
 // Completar nombre/RUT de cuentas que se registraron sin ellos
 async function guardarDatos(){
-  const nombre=$('dNombre').value.trim(), rut=$('dRut').value;
-  if(!nombre){ alert('Escribe tu nombre.'); return; }
+  const nombre=$('dNombre').value.trim(), apellidos=$('dApellidos').value.trim(), rut=$('dRut').value, tel=$('dTel').value;
+  if(!nombre){ alert('Escribe tus nombres.'); return; }
+  if(!apellidos){ alert('Escribe tus apellidos.'); return; }
   if(!rutValido(rut)){ alert('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
+  if(tel && !telValido(tel)){ alert('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
   try{
-    await VFX.guardarPerfil({ nombre, rut: rutFormato(rut) });
-    $('cNombre').textContent=nombre; $('cRut').textContent=rutFormato(rut);
+    await VFX.guardarPerfil({ nombre, apellidos, rut: rutFormato(rut), telefono: tel?telFormato(tel):'' });
+    $('cNombre').textContent=(nombre+' '+apellidos).trim();
+    $('cRut').textContent=rutFormato(rut);
+    $('cTel').textContent=tel?telFormato(tel):'—';
     $('datosFaltan').classList.add('hidden');
   }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
 }
@@ -352,12 +382,19 @@ async function cargarPanel(){
 
   const perfil = await VFX.miPerfil();
   const u = await VFX.usuario();
-  $('cNombre').textContent = (perfil&&perfil.nombre) || '—';
+  const nomComp = ((perfil&&perfil.nombre)||'') + ' ' + ((perfil&&perfil.apellidos)||'');
+  $('cNombre').textContent = nomComp.trim() || '—';
   $('cRut').textContent    = (perfil&&perfil.rut) || '—';
+  $('cTel').textContent    = (perfil&&perfil.telefono) || '—';
   $('cEmail').textContent  = (u&&u.email) || '—';
-  const faltan = !(perfil&&perfil.nombre) || !(perfil&&perfil.rut);
+  const faltan = !(perfil&&perfil.nombre) || !(perfil&&perfil.apellidos) || !(perfil&&perfil.rut);
   $('datosFaltan').classList.toggle('hidden', !faltan);
-  if(faltan){ $('dNombre').value=(perfil&&perfil.nombre)||''; $('dRut').value=(perfil&&perfil.rut)||''; }
+  if(faltan){
+    $('dNombre').value=(perfil&&perfil.nombre)||'';
+    $('dApellidos').value=(perfil&&perfil.apellidos)||'';
+    $('dRut').value=(perfil&&perfil.rut)||'';
+    $('dTel').value=(perfil&&perfil.telefono)? telDigitos(perfil.telefono):'';
+  }
 
   await pintarSuscripciones();
   await pintarHijos();

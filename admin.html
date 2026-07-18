@@ -28,6 +28,9 @@
   .sec{ background:#eef2f6; color:#26303b; padding:8px 12px; }
   .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
   .row>div{ flex:1; min-width:130px; }
+  .telbox{ display:flex; align-items:stretch; }
+  .telpre{ display:flex; align-items:center; padding:0 12px; background:#eef2f6; border:1px solid var(--linea); border-right:0; border-radius:9px 0 0 9px; font-weight:700; white-space:nowrap; color:#5a6b7a; }
+  .telbox input{ border-radius:0 9px 9px 0; }
   .pill{ padding:3px 10px; border-radius:999px; font-size:.75rem; font-weight:700; }
   .ok{ background:#e3f7ee; color:var(--verde); } .warn{ background:#fdeceb; color:var(--rojo); } .pend{ background:#fff4e0; color:#c47f12; }
   .ap{ border-left:4px solid var(--naranja); padding-left:14px; margin-bottom:18px; }
@@ -102,9 +105,14 @@
       <h2 id="apmTit" style="margin:0">Nuevo apoderado</h2>
       <button class="sec" onclick="cerrarAp()">✕</button>
     </div>
-    <label>Nombre</label><input id="apmNombre" placeholder="Ej: María Pérez">
-    <label>RUT</label><input id="apmRut" placeholder="Ej: 12.345.678-9">
-    <label>Teléfono (opcional)</label><input id="apmTel" placeholder="+56 9 …">
+    <div class="row">
+      <div><label>Nombres</label><input id="apmNombre" placeholder="Ej: María José"></div>
+      <div><label>Apellidos</label><input id="apmApellidos" placeholder="Ej: Pérez Soto"></div>
+    </div>
+    <div class="row" style="margin-top:6px">
+      <div><label>RUT</label><input id="apmRut" placeholder="Ej: 12.345.678-9"></div>
+      <div><label>Teléfono</label><div class="telbox"><span class="telpre">+56 9</span><input id="apmTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div></div>
+    </div>
     <div id="apmCrearCampos">
       <label>Correo</label><input id="apmEmail" type="email" placeholder="correo@gmail.com">
       <label>Contraseña temporal</label><input id="apmPass" placeholder="mínimo 6 caracteres">
@@ -256,7 +264,8 @@ function renderAp(a){
     .sort((a,b)=> (a.periodo==='anual')-(b.periodo==='anual') || a.precio_clp-b.precio_clp)
     .map(p=>`<option value="${p.id}">${p.nombre} (${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'})</option>`).join('');
   const planTxt = a.subs.length ? a.subs.map(s=>s.plan?s.plan.nombre:s.plan_id).join(', ') : '—';
-  const nom = a.nombre || (a.email?a.email.split('@')[0]:'') || '(sin nombre)';
+  const nomComp = ((a.nombre||'')+' '+(a.apellidos||'')).trim();
+  const nom = nomComp || (a.email?a.email.split('@')[0]:'') || '(sin nombre)';
   return `<tr class="fila" onclick="toggleDet('${a.id}')">
     <td style="min-width:150px"><b>${nom}</b><span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px">${a.email||''}</span></td>
     <td style="white-space:nowrap">${a.rut||'—'}</td>
@@ -267,7 +276,7 @@ function renderAp(a){
   </tr>
   <tr id="det_${a.id}" class="hidden"><td colspan="6" style="background:var(--gris)">
       <div class="acc" style="margin:2px 0 10px">
-        <button class="sec" onclick='editarApoderado(${JSON.stringify({id:a.id,nombre:a.nombre||"",rut:a.rut||"",telefono:a.telefono||"",email:a.email||""})})'>✏️ Editar datos</button>
+        <button class="sec" onclick='editarApoderado(${JSON.stringify({id:a.id,nombre:a.nombre||"",apellidos:a.apellidos||"",rut:a.rut||"",telefono:a.telefono||"",email:a.email||""})})'>✏️ Editar datos</button>
         <button class="sec" onclick="recuperarClaveDe('${(a.email||'').replace(/'/g,"\\'")}')">🔑 Enviar recuperación de clave</button>
         <button class="sec" style="color:var(--rojo)" onclick="eliminarApoderado('${a.id}','${(a.nombre||a.email||'').replace(/'/g,"\\'")}')">🗑️ Eliminar cuenta</button>
       </div>
@@ -336,13 +345,18 @@ let apEdit=null; // null = crear; {id,...} = editar
 function rutLimpio(r){ return String(r||'').replace(/[^0-9kK]/g,'').toUpperCase(); }
 function rutValido(r){ r=rutLimpio(r); if(r.length<7) return false; const c=r.slice(0,-1),dv=r.slice(-1); if(!/^\d+$/.test(c)) return false; let s=0,m=2; for(let i=c.length-1;i>=0;i--){ s+=parseInt(c[i],10)*m; m=m===7?2:m+1; } const res=11-(s%11); const ok=res===11?'0':res===10?'K':String(res); return dv===ok; }
 function rutFormato(r){ r=rutLimpio(r); if(r.length<2) return r; return r.slice(0,-1).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+'-'+r.slice(-1); }
+function emailValido(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((e||'').trim()); }
+function solo8(el){ el.value=el.value.replace(/\D/g,'').slice(0,8); }
+function telDigitos(t){ const d=String(t||'').replace(/\D/g,''); return d.length>8?d.slice(-8):d; }
+function telValido(t){ return telDigitos(t).length===8; }
+function telFormato(t){ const d=telDigitos(t); return d? '+56 9 '+d.slice(0,4)+' '+d.slice(4) : ''; }
 function apmErr(m){ const e=$('apmErr'); e.textContent=m; e.classList.remove('hidden'); }
 
 function nuevoApoderado(){
   apEdit=null;
   $('apmTit').textContent='Nuevo apoderado';
   $('apmCrearCampos').classList.remove('hidden');
-  $('apmNombre').value=''; $('apmRut').value=''; $('apmTel').value=''; $('apmEmail').value=''; $('apmPass').value='';
+  $('apmNombre').value=''; $('apmApellidos').value=''; $('apmRut').value=''; $('apmTel').value=''; $('apmEmail').value=''; $('apmPass').value='';
   $('apmErr').classList.add('hidden');
   $('apModal').classList.remove('hidden');
 }
@@ -350,26 +364,30 @@ function editarApoderado(a){
   apEdit=a;
   $('apmTit').textContent='Editar apoderado';
   $('apmCrearCampos').classList.add('hidden');
-  $('apmNombre').value=a.nombre||''; $('apmRut').value=a.rut||''; $('apmTel').value=a.telefono||'';
+  $('apmNombre').value=a.nombre||''; $('apmApellidos').value=a.apellidos||'';
+  $('apmRut').value=a.rut||''; $('apmTel').value=telDigitos(a.telefono||'');
   $('apmErr').classList.add('hidden');
   $('apModal').classList.remove('hidden');
 }
 function cerrarAp(){ $('apModal').classList.add('hidden'); }
 
 async function guardarAp(){
-  const nombre=$('apmNombre').value.trim(), rutIn=$('apmRut').value.trim(), tel=$('apmTel').value.trim();
-  if(!nombre){ apmErr('Escribe el nombre.'); return; }
-  if(rutIn && !rutValido(rutIn)){ apmErr('El RUT no es válido (ej: 12.345.678-9).'); return; }
-  const rut = rutIn ? rutFormato(rutIn) : '';
+  const nombre=$('apmNombre').value.trim(), apellidos=$('apmApellidos').value.trim(), rutIn=$('apmRut').value.trim(), telIn=$('apmTel').value.trim();
+  if(!nombre){ apmErr('Escribe los nombres.'); return; }
+  if(!apellidos){ apmErr('Escribe los apellidos.'); return; }
+  if(!rutValido(rutIn)){ apmErr('El RUT no es válido (ej: 12.345.678-9).'); return; }
+  if(telIn && !telValido(telIn)){ apmErr('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
+  const rut = rutFormato(rutIn);
+  const telefono = telIn ? telFormato(telIn) : '';
   $('apmBtn').disabled=true;
   try{
     if(apEdit){
-      await VFX.adminEditarApoderado(apEdit.id, { nombre, rut, telefono: tel });
+      await VFX.adminEditarApoderado(apEdit.id, { nombre, apellidos, rut, telefono });
     } else {
       const email=$('apmEmail').value.trim(), pass=$('apmPass').value;
-      if(!email){ apmErr('Escribe el correo.'); $('apmBtn').disabled=false; return; }
+      if(!emailValido(email)){ apmErr('El correo no es válido (ej: nombre@gmail.com).'); $('apmBtn').disabled=false; return; }
       if(!pass || pass.length<6){ apmErr('La contraseña debe tener al menos 6 caracteres.'); $('apmBtn').disabled=false; return; }
-      await VFX.adminCrearApoderado({ email, password:pass, nombre, rut });
+      await VFX.adminCrearApoderado({ email, password:pass, nombre, apellidos, rut, telefono });
     }
     cerrarAp(); await cargar();
   }catch(e){ apmErr('No se pudo: '+(e.message||e)); }

@@ -21,24 +21,27 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     sb,
 
     // ---------- AUTENTICACIÓN (apoderado) ----------
-    async registrar(email, password, nombre, rut) {
-      // nombre y rut viajan en los metadatos: sobreviven a la confirmación del correo
-      const { data, error } = await sb.auth.signUp({ email, password, options: { data: { nombre: nombre || '', rut: rut || '' } } });
+    async registrar(email, password, datos) {
+      datos = datos || {};
+      const meta = { nombre: datos.nombre || '', apellidos: datos.apellidos || '', rut: datos.rut || '', telefono: datos.telefono || '' };
+      // los datos viajan en los metadatos: sobreviven a la confirmación del correo
+      const { data, error } = await sb.auth.signUp({ email, password, options: { data: meta } });
       if (error) throw error;
       // si hubo sesión inmediata (confirmación apagada), guardamos el perfil ya
-      if (data.session) await VFX.guardarPerfil({ nombre, rut, email });
+      if (data.session) await VFX.guardarPerfil(Object.assign({ email }, meta));
       return data;
     },
     async entrar(email, password) {
       const { data, error } = await sb.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      // completa el perfil con lo que falte (nombre/rut quedaron en metadatos al registrarse)
+      // completa el perfil con lo que falte (los datos quedaron en metadatos al registrarse)
       try {
         const p = await VFX.miPerfil();
         const md = (data.user && data.user.user_metadata) || {};
         const fila = { email };
-        if ((!p || !p.nombre) && md.nombre) fila.nombre = md.nombre;
-        if ((!p || !p.rut) && md.rut) fila.rut = md.rut;
+        for (const k of ['nombre', 'apellidos', 'rut', 'telefono']) {
+          if ((!p || !p[k]) && md[k]) fila[k] = md[k];
+        }
         await VFX.guardarPerfil(fila);
       } catch (e) { try { await VFX.guardarPerfil({ email }); } catch (e2) {} }
       return data;
@@ -70,10 +73,15 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const fila = { id: u.id, ...campos };
       if (!fila.email) fila.email = u.email;
       let { error } = await sb.from('profiles').upsert(fila);
-      // si la columna rut aún no existe en la base, guarda el resto igual
-      if (error && /rut/i.test(error.message || '') && 'rut' in fila) {
-        delete fila.rut;
+      // si alguna columna nueva aún no existe en la base, la quitamos y reintentamos
+      let intentos = 0;
+      while (error && intentos < 3) {
+        const m = (error.message || '');
+        const col = ['rut', 'apellidos', 'telefono'].find(c => c in fila && new RegExp('\\b' + c + '\\b', 'i').test(m));
+        if (!col) break;
+        delete fila[col];
         ({ error } = await sb.from('profiles').upsert(fila));
+        intentos++;
       }
       if (error) console.warn('perfil:', error.message);
     },
@@ -437,12 +445,12 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
 
     // ---------- CRUD DE APODERADOS (admin) ----------
     // Editar datos del apoderado directamente en la tabla (permitido por RLS a admins)
-    async adminEditarApoderado(id, { nombre, rut, telefono }) {
-      const campos = {};
-      if (nombre !== undefined) campos.nombre = nombre;
-      if (rut !== undefined) campos.rut = rut;
-      if (telefono !== undefined) campos.telefono = telefono;
-      const { error } = await sb.from('profiles').update(campos).eq('id', id);
+    async adminEditarApoderado(id, campos) {
+      const fila = {};
+      for (const k of ['nombre', 'apellidos', 'rut', 'telefono']) {
+        if (campos[k] !== undefined) fila[k] = campos[k];
+      }
+      const { error } = await sb.from('profiles').update(fila).eq('id', id);
       if (error) throw error;
     },
     async adminBorrarHijo(id) {
@@ -462,8 +470,13 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       if (!r.ok || d.error) throw new Error(d.error || ('Error ' + r.status));
       return d;
     },
-    adminCrearApoderado({ email, password, nombre, rut }) {
-      return VFX._adminUsuarios({ accion: 'crear', email, password, nombre, rut });
+    async adminCrearApoderado({ email, password, nombre, apellidos, rut, telefono }) {
+      const r = await VFX._adminUsuarios({ accion: 'crear', email, password, nombre, apellidos, rut, telefono });
+      // completa apellidos/telefono en el perfil por si la función edge no los guardó (versión previa)
+      if (r && r.id) {
+        try { await VFX.adminEditarApoderado(r.id, { nombre, apellidos, rut, telefono }); } catch (e) {}
+      }
+      return r;
     },
     adminEliminarApoderado(user_id) {
       return VFX._adminUsuarios({ accion: 'eliminar', user_id });
