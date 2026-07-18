@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VerbiFox · La feria (dinero chileno)</title>
+<style>
+  :root{ --verde:#2bb673; --naranja:#f97316; --rojo:#e11d48; --azul:#3b82f6; --fondo:#0f1b34; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; overflow:hidden; touch-action:manipulation; color:#fff; }
+
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 92px 12px 14px; flex-wrap:wrap; position:relative; z-index:8; }
+  .tabs{ display:flex; gap:6px; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; }
+  .tab{ border:0; background:transparent; color:#cdd7e4; font-weight:800; padding:8px 14px; border-radius:9px; cursor:pointer; font-size:.95rem; }
+  .tab.on{ background:#fff; color:#26303b; }
+  .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
+
+  .escena{ text-align:center; margin-top:2px; }
+  .consigna{ display:inline-block; max-width:92vw; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:8px 16px; font-weight:800; }
+  .meta{ margin-top:8px; font-size:1.05rem; }
+  .meta b{ font-size:1.5rem; color:#ffd76a; }
+
+  /* Bandeja */
+  #bandeja{ position:fixed; left:12px; right:12px; top:150px; bottom:210px; border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:12px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; justify-content:center; overflow:auto; background:rgba(255,255,255,.04); }
+  #bandeja:empty::after{ content:"Toca los billetes y monedas de abajo para ponerlos aquí 👇"; color:#9fb0c4; font-weight:700; align-self:center; margin:auto; max-width:80%; text-align:center; }
+  #total{ position:fixed; left:50%; bottom:200px; transform:translateX(-50%); background:#fff; color:#26303b; font-weight:900; font-size:1.2rem; padding:8px 20px; border-radius:14px; box-shadow:0 6px 16px rgba(0,0,0,.35); z-index:6; }
+
+  .money{ border-radius:8px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#1a2436; box-shadow:0 4px 10px rgba(0,0,0,.4); border:2px solid rgba(0,0,0,.25); user-select:none; }
+  .money.pop{ animation:pop .35s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes pop{ 0%{transform:scale(.4)} 60%{transform:scale(1.18)} 100%{transform:scale(1)} }
+  .billete{ width:96px; height:52px; font-size:.95rem; }
+  .moneda{ width:52px; height:52px; border-radius:50%; font-size:.82rem; background:radial-gradient(circle at 34% 30%,#ffe28a,#d4a92a 70%); border-color:#a5811c; }
+  .b1000{ background:linear-gradient(135deg,#7fd6a2,#2bb673); }
+  .b2000{ background:linear-gradient(135deg,#c4a2f0,#7c3aed); color:#fff; }
+  .b5000{ background:linear-gradient(135deg,#e79a86,#c0392b); color:#fff; }
+  .b10000{ background:linear-gradient(135deg,#7fb3e8,#2563eb); color:#fff; }
+  .b20000{ background:linear-gradient(135deg,#f0b57f,#ea7317); color:#fff; }
+
+  .palette{ position:fixed; left:0; right:0; bottom:66px; display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; padding:6px 10px; z-index:6; }
+  .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:10px; z-index:7; flex-wrap:wrap; }
+  .btn{ border:0; border-radius:14px; padding:12px 18px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .b-verde{ background:var(--verde); color:#fff; } .b-gris{ background:#dbe3ec; color:#26303b; } .b-rojo{ background:#e05555; color:#fff; }
+
+  #msj{ position:fixed; left:50%; top:150px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:20; display:none; text-align:center; max-width:88vw; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs">
+      <button class="tab on" id="tabP" onclick="setModo('pagar')">🛒 Pagar</button>
+      <button class="tab" id="tabV" onclick="setModo('vuelto')">💵 Vuelto</button>
+    </div>
+  </div>
+  <a class="volver" href="mate.html">✕ Salir</a>
+
+  <div class="escena">
+    <div class="consigna" id="consigna"></div>
+    <div class="meta" id="metaTxt"></div>
+  </div>
+
+  <div id="bandeja"></div>
+  <div id="total">Llevas: $0</div>
+
+  <div class="palette" id="palette"></div>
+  <div id="msj"></div>
+  <div class="abajo">
+    <button class="btn b-rojo" onclick="vaciar()">↩️ Vaciar</button>
+    <button class="btn b-verde" onclick="comprobar()">✔ Listo</button>
+    <button class="btn b-gris" onclick="nuevo()">🎲 Otro</button>
+  </div>
+
+<script>
+const $=id=>document.getElementById(id);
+const rnd=n=>Math.floor(Math.random()*n);
+const pesos=n=>'$'+(n||0).toLocaleString('es-CL');
+function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(), g=c.createGain(); o.frequency.value=f; o.type='sine'; g.gain.setValueAtTime(.18,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+d); }catch(e){} }
+function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
+function msj(t,largo){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', largo?3600:2200); }
+
+// Denominaciones chilenas
+const DENOMS=[
+  {v:10000,tipo:'billete',cls:'b10000',etq:'$10.000'},
+  {v:5000,tipo:'billete',cls:'b5000',etq:'$5.000'},
+  {v:2000,tipo:'billete',cls:'b2000',etq:'$2.000'},
+  {v:1000,tipo:'billete',cls:'b1000',etq:'$1.000'},
+  {v:500,tipo:'moneda',cls:'',etq:'$500'},
+  {v:100,tipo:'moneda',cls:'',etq:'$100'},
+  {v:50,tipo:'moneda',cls:'',etq:'$50'},
+];
+const PRODUCTOS=['🍎 manzanas','🍞 pan','🥛 leche','🍅 tomates','🍌 plátanos','🥕 zanahorias','🧀 queso','🍫 chocolate','🥚 huevos','🍇 uvas'];
+const BILLETES_PAGO=[1000,2000,5000,10000,20000];
+
+let modo='pagar';
+let objetivo=0;        // lo que hay que reunir (precio o vuelto)
+let llevado=0;
+let items=[];          // valores en la bandeja
+
+function setModo(m){
+  modo=m;
+  $('tabP').classList.toggle('on', m==='pagar');
+  $('tabV').classList.toggle('on', m==='vuelto');
+  nuevo();
+}
+
+function pintaPalette(){
+  $('palette').innerHTML = DENOMS.map(d=>
+    `<div class="money ${d.tipo==='moneda'?'moneda':'billete '+d.cls}" onclick="agregar(${d.v})">${d.etq}</div>`
+  ).join('');
+}
+
+function nuevo(){
+  items=[]; llevado=0;
+  const prod=PRODUCTOS[rnd(PRODUCTOS.length)];
+  const precio=(3+rnd(158))*50;   // $150 .. $8000, múltiplos de 50
+  if(modo==='pagar'){
+    objetivo=precio;
+    $('consigna').innerHTML=`En la feria compras ${prod}. ¡Paga justo!`;
+    $('metaTxt').innerHTML=`Precio: <b>${pesos(precio)}</b>`;
+  } else {
+    const pago=BILLETES_PAGO.find(b=>b>precio) || 20000;
+    objetivo=pago-precio;
+    $('consigna').innerHTML=`El cliente compró ${prod} de ${pesos(precio)} y pagó con un billete de <b>${pesos(pago)}</b>.`;
+    $('metaTxt').innerHTML=`Dale el <b>vuelto</b> correcto 🪙`;
+  }
+  render();
+}
+
+function agregar(v){
+  items.push(v); llevado+=v; beep(560,.1);
+  render(true);
+}
+function quitar(i){
+  llevado-=items[i]; items.splice(i,1); beep(300,.08);
+  render();
+}
+function vaciar(){ items=[]; llevado=0; render(); }
+
+function render(conPop){
+  const b=$('bandeja');
+  b.innerHTML=items.map((v,i)=>{
+    const d=DENOMS.find(x=>x.v===v)||{tipo:'moneda',cls:'',etq:pesos(v)};
+    const pop=(conPop && i===items.length-1)?' pop':'';
+    return `<div class="money ${d.tipo==='moneda'?'moneda':'billete '+d.cls}${pop}" onclick="quitar(${i})">${d.etq}</div>`;
+  }).join('');
+  const dif=objetivo-llevado;
+  $('total').textContent = (modo==='pagar'?'Pagas: ':'Vuelto: ')+pesos(llevado);
+}
+
+function comprobar(){
+  if(llevado===objetivo){
+    chime();
+    $('consigna').innerHTML = modo==='pagar'
+      ? `🎉 ¡PERFECTO! Pagaste justo ${pesos(objetivo)}. 🏆`
+      : `🎉 ¡EXCELENTE! El vuelto correcto era ${pesos(objetivo)}. 🏆`;
+    setTimeout(nuevo, 3000);
+  } else if(llevado<objetivo){
+    beep(200,.25); msj('Todavía faltan <b>'+pesos(objetivo-llevado)+'</b> 💪');
+  } else {
+    beep(180,.25);
+    msj((modo==='pagar'?'Te pasaste por ':'Diste de más por ')+'<b>'+pesos(llevado-objetivo)+'</b>. Quita algo tocándolo.', true);
+  }
+}
+
+pintaPalette();
+nuevo();
+</script>
+</body>
+</html>
