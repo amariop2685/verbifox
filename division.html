@@ -238,6 +238,7 @@ function comprobar(){
   const comp=grupos.filter(g=>g.completo).length;
   if(c===C && r===R){
     beep(660,.12); setTimeout(()=>beep(880,.12),120); setTimeout(()=>beep(1100,.2),240);
+    premioMate();
     msj(`🎉 ¡PERFECTO! ${A} ÷ ${B} = <b>${C}</b> y sobran <b>${R}</b>.<br>Formaste ${comp} grupo(s) de ${B}. ¡Eres un crack! 🏆`, true);
     setTimeout(nuevo, 3400);
   } else if(comp<C){
@@ -269,6 +270,24 @@ function animar(ts){
 nuevo();
 requestAnimationFrame(animar);
 addEventListener('resize', ()=>{});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
+<script>
+const JUEGO='division';
+function premioMate(){
+  try{
+    const k='mate_juego_'+JUEGO; const n=(parseInt(localStorage.getItem(k)||'0',10)||0)+1; localStorage.setItem(k,String(n));
+    if(window.Caballero && Caballero.premiar){ Caballero.premiar(1); gemToast(); }
+  }catch(e){}
+}
+function gemToast(){
+  let t=document.getElementById('gemtoast');
+  if(!t){ t=document.createElement('div'); t.id='gemtoast'; t.style.cssText='position:fixed;left:50%;top:70px;transform:translateX(-50%);background:#fff7e6;color:#7c4a03;font-weight:800;padding:8px 16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:50;transition:opacity .3s;pointer-events:none'; document.body.appendChild(t); }
+  t.textContent='💎 +1 gema para tu Caballero'; t.style.opacity='1';
+  clearTimeout(t._t); t._t=setTimeout(()=>{t.style.opacity='0';},1500);
+}
 </script>
 </body>
 </html>

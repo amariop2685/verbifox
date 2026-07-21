@@ -181,6 +181,7 @@
     <h2 id="m-titulo">¡Hola!</h2>
     <button class="btn btn-verde" onclick="verRuta()" style="font-size:1.35rem; padding:22px;">🗺️ MI AVENTURA<br><span style="font-size:.85rem; font-weight:600;">¡avanza hasta el castillo! 🏰</span></button>
     <div class="meta-box" id="m-meta"></div>
+    <button class="btn btn-morado" onclick="verJuegos()" style="margin-top:11px; font-size:1.15rem; padding:18px;">🧩 TEMAS PARA JUGAR<br><span style="font-size:.82rem; font-weight:600;">arrastra, agrupa y descubre 🎯</span></button>
     <div class="grid2">
       <button class="btn btn-rojo" onclick="verVelocidad()" style="margin:0;">⏱️ Velocidad</button>
       <button class="btn btn-amarillo" onclick="verVales()" style="margin:0;">🎟️ Sobres</button>
@@ -190,6 +191,14 @@
     <button class="btn btn-gris btn-pequeno" style="margin-top:4px;" onclick="location.href='inicio.html'">🏫 Mis materias</button>
     <button class="btn btn-gris btn-pequeno" style="margin:8px auto 0;" onclick="cambiarJugador()">Cambiar jugador</button>
     <p class="mini" style="margin-top:8px;">VerbiFox Mate · versión 29-jun · armadura 🛡️</p>
+  </section>
+
+  <!-- TEMAS PARA JUGAR (juegos interactivos) -->
+  <section id="s-juegos" class="screen">
+    <div class="barra-sup"><button class="btn btn-gris btn-pequeno" onclick="irMenu()">⬅ Menú</button></div>
+    <h2>🧩 Temas para jugar</h2>
+    <p class="sub">Aprende manipulando: arrastra, agrupa y descubre. Cada acierto suma 💎 para tu Caballero.</p>
+    <div id="juegos-lista"></div>
   </section>
 
   <!-- NIVELES -->
@@ -510,6 +519,28 @@ function irMenu(){
   const c=datos.conquistas||0, mundo=datos.examNivel||1;
   document.getElementById('m-meta').innerHTML = `🌍 Mundo <b>${mundo}</b> · 🏰 Conquistas: <b>${c}</b> · 🎟️ Para el sobre: <b>${c%2}/2</b><br><span style="font-size:.85rem;color:var(--suave)">Toca <b>🗺️ Mi Aventura</b> para avanzar.</span>`;
   mostrar('s-menu');
+}
+
+/* ====== TEMAS PARA JUGAR (juegos interactivos) ====== */
+const JUEGOS=[
+  {id:'division',      emoji:'➗',  nombre:'División',              desc:'Reparte las esferas en grupos iguales (flores) 🌸', url:'division.html'},
+  {id:'multiplicacion',emoji:'✖️',  nombre:'Multiplicación',        desc:'Forma grupos y matrices de chocolates 🍫',        url:'multiplicacion.html'},
+  {id:'suma-resta',    emoji:'➕➖', nombre:'Suma y resta con canje', desc:'Lleva y pide prestado con decenas y unidades 🔟',  url:'suma-resta.html'},
+  {id:'feria',         emoji:'🪙',  nombre:'El dinero · La feria',  desc:'Paga justo y da el vuelto con plata chilena 🇨🇱',  url:'feria.html'},
+];
+function verJuegos(){
+  const cont=document.getElementById('juegos-lista');
+  cont.innerHTML = JUEGOS.map(j=>{
+    let n=0; try{ n=parseInt(localStorage.getItem('mate_juego_'+j.id)||'0',10)||0; }catch(e){}
+    const badge = n>0 ? `<span class="pill" style="background:#eef7ff;color:#2b7bb6;margin-left:6px">✔ ${n}</span>` : '';
+    return `<button class="btn" style="background:#fff;color:#26303b;border:2px solid var(--linea);text-align:left;padding:16px;margin:8px 0;display:flex;align-items:center;gap:12px"
+       onclick="location.href='${j.url}?src=mate'">
+       <span style="font-size:2rem;flex-shrink:0">${j.emoji}</span>
+       <span style="flex:1;min-width:0"><b style="font-size:1.08rem">${j.nombre}</b>${badge}<br><span class="mini" style="color:var(--suave)">${j.desc}</span></span>
+       <span style="font-size:1.4rem;color:var(--morado)">▶</span>
+    </button>`;
+  }).join('');
+  mostrar('s-juegos');
 }
 
 /* ====== NIVELES ====== */

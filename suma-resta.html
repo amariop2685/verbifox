@@ -219,7 +219,7 @@ function comprobar(){
   }
   if(isNaN(v)){ msj('Escribe el resultado en el casillero ✍️'); $('inT').focus(); return; }
   if(v===resultado){
-    chime();
+    chime(); premioMate();
     $('consigna').innerHTML = modo==='sumar'
       ? `🎉 ¡CORRECTO! ${a} + ${b} = <b>${resultado}</b>. Sumar con canje es <b>juntar y llevar</b>. 🏆`
       : `🎉 ¡CORRECTO! ${a} − ${b} = <b>${resultado}</b>. Restar con canje es <b>pedir prestado</b>. 🏆`;
@@ -231,6 +231,24 @@ function comprobar(){
 $('inT').addEventListener('keydown', e=>{ if(e.key==='Enter') comprobar(); });
 
 nuevoSumar();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
+<script>
+const JUEGO='suma-resta';
+function premioMate(){
+  try{
+    const k='mate_juego_'+JUEGO; const n=(parseInt(localStorage.getItem(k)||'0',10)||0)+1; localStorage.setItem(k,String(n));
+    if(window.Caballero && Caballero.premiar){ Caballero.premiar(1); gemToast(); }
+  }catch(e){}
+}
+function gemToast(){
+  let t=document.getElementById('gemtoast');
+  if(!t){ t=document.createElement('div'); t.id='gemtoast'; t.style.cssText='position:fixed;left:50%;top:70px;transform:translateX(-50%);background:#fff7e6;color:#7c4a03;font-weight:800;padding:8px 16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:50;transition:opacity .3s;pointer-events:none'; document.body.appendChild(t); }
+  t.textContent='💎 +1 gema para tu Caballero'; t.style.opacity='1';
+  clearTimeout(t._t); t._t=setTimeout(()=>{t.style.opacity='0';},1500);
+}
 </script>
 </body>
 </html>

@@ -22,7 +22,17 @@
   .meta b{ font-size:1.5rem; color:#ffd76a; }
 
   /* Bandeja */
-  #bandeja{ position:fixed; left:12px; right:12px; top:150px; bottom:210px; border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:12px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; justify-content:center; overflow:auto; background:rgba(255,255,255,.04); }
+  /* Puesto de feria: vendedor, globo de diálogo y cliente */
+  .puesto{ display:flex; align-items:flex-end; justify-content:center; gap:8px; margin:8px auto 0; max-width:520px; }
+  .pers{ font-size:2.5rem; line-height:1; text-align:center; filter:drop-shadow(0 3px 6px rgba(0,0,0,.5)); transition:transform .18s; flex-shrink:0; }
+  .pers span{ display:block; font-size:.6rem; font-weight:800; color:#ffd76a; margin-top:2px; }
+  .pers.salta{ animation:salta .5s; }
+  @keyframes salta{ 0%,100%{transform:translateY(0)} 40%{transform:translateY(-16px)} }
+  .globo{ position:relative; background:#fff; color:#26303b; font-weight:800; padding:8px 14px; border-radius:14px; font-size:.92rem; box-shadow:0 4px 12px rgba(0,0,0,.3); max-width:60vw; text-align:center; margin-bottom:14px; }
+  .globo::after{ content:''; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); border:8px solid transparent; border-top-color:#fff; border-bottom:0; }
+  .moneyfly{ position:fixed; z-index:30; pointer-events:none; transition:left .6s ease, top .6s ease, opacity .6s; }
+
+  #bandeja{ position:fixed; left:12px; right:12px; top:236px; bottom:210px; border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:12px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; justify-content:center; overflow:auto; background:rgba(255,255,255,.04); }
   #bandeja:empty::after{ content:"Toca los billetes y monedas de abajo para ponerlos aquí 👇"; color:#9fb0c4; font-weight:700; align-self:center; margin:auto; max-width:80%; text-align:center; }
   #total{ position:fixed; left:50%; bottom:200px; transform:translateX(-50%); background:#fff; color:#26303b; font-weight:900; font-size:1.2rem; padding:8px 20px; border-radius:14px; box-shadow:0 6px 16px rgba(0,0,0,.35); z-index:6; }
 
@@ -57,6 +67,11 @@
 
   <div class="escena">
     <div class="consigna" id="consigna"></div>
+    <div class="puesto">
+      <div class="pers" id="vendedor">🧑‍🌾<span>Casero/a</span></div>
+      <div class="globo" id="globo">¡Bienvenido a la feria! 🍎</div>
+      <div class="pers" id="cliente">🧒<span>Cliente</span></div>
+    </div>
     <div class="meta" id="metaTxt"></div>
   </div>
 
@@ -111,19 +126,25 @@ function pintaPalette(){
   ).join('');
 }
 
+const VENDEDORES=['🧑‍🌾','👨‍🌾','👩‍🌾','🧕','🧑‍🍳'];
+function setGlobo(t){ $('globo').innerHTML=t; }
 function nuevo(){
   items=[]; llevado=0;
   const prod=PRODUCTOS[rnd(PRODUCTOS.length)];
   const precio=(15+rnd(786))*10;  // $150 .. $8000, múltiplos de 10 (usa la moneda de $10)
+  $('vendedor').firstChild.textContent=VENDEDORES[rnd(VENDEDORES.length)];
+  const emoji=prod.split(' ')[0];
   if(modo==='pagar'){
     objetivo=precio;
     $('consigna').innerHTML=`En la feria compras ${prod}. ¡Paga justo!`;
     $('metaTxt').innerHTML=`Precio: <b>${pesos(precio)}</b>`;
+    setGlobo(`${emoji} Son <b>${pesos(precio)}</b>, por favor 😊`);
   } else {
     const pago=BILLETES_PAGO.find(b=>b>precio) || 20000;
     objetivo=pago-precio;
     $('consigna').innerHTML=`El cliente compró ${prod} de ${pesos(precio)} y pagó con un billete de <b>${pesos(pago)}</b>.`;
     $('metaTxt').innerHTML=`Dale el <b>vuelto</b> correcto 🪙`;
+    setGlobo(`Pagué con <b>${pesos(pago)}</b>. ¿Mi vuelto? 🤔`);
   }
   render();
 }
@@ -149,23 +170,49 @@ function render(conPop){
   $('total').textContent = (modo==='pagar'?'Pagas: ':'Vuelto: ')+pesos(llevado);
 }
 
+function celebra(){
+  $('vendedor').classList.add('salta'); $('cliente').classList.add('salta');
+  setTimeout(()=>{ $('vendedor').classList.remove('salta'); $('cliente').classList.remove('salta'); }, 600);
+}
 function comprobar(){
   if(llevado===objetivo){
-    chime();
+    chime(); premioMate(); celebra();
+    // quien recibe el dinero reacciona feliz
+    setGlobo(modo==='pagar' ? '¡Gracias, casero! 🤝😄' : '¡Justo, gracias! 😄');
     $('consigna').innerHTML = modo==='pagar'
       ? `🎉 ¡PERFECTO! Pagaste justo ${pesos(objetivo)}. 🏆`
       : `🎉 ¡EXCELENTE! El vuelto correcto era ${pesos(objetivo)}. 🏆`;
     setTimeout(nuevo, 3000);
   } else if(llevado<objetivo){
     beep(200,.25); msj('Todavía faltan <b>'+pesos(objetivo-llevado)+'</b> 💪');
+    setGlobo(modo==='pagar' ? 'Falta un poquito… 🪙' : 'Mmm, falta vuelto 🤔');
   } else {
     beep(180,.25);
     msj((modo==='pagar'?'Te pasaste por ':'Diste de más por ')+'<b>'+pesos(llevado-objetivo)+'</b>. Quita algo tocándolo.', true);
+    setGlobo('¡Eso es mucho! Quítale algo 😅');
   }
 }
 
 pintaPalette();
 nuevo();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
+<script>
+const JUEGO='feria';
+function premioMate(){
+  try{
+    const k='mate_juego_'+JUEGO; const n=(parseInt(localStorage.getItem(k)||'0',10)||0)+1; localStorage.setItem(k,String(n));
+    if(window.Caballero && Caballero.premiar){ Caballero.premiar(1); gemToast(); }
+  }catch(e){}
+}
+function gemToast(){
+  let t=document.getElementById('gemtoast');
+  if(!t){ t=document.createElement('div'); t.id='gemtoast'; t.style.cssText='position:fixed;left:50%;top:70px;transform:translateX(-50%);background:#fff7e6;color:#7c4a03;font-weight:800;padding:8px 16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:50;transition:opacity .3s;pointer-events:none'; document.body.appendChild(t); }
+  t.textContent='💎 +1 gema para tu Caballero'; t.style.opacity='1';
+  clearTimeout(t._t); t._t=setTimeout(()=>{t.style.opacity='0';},1500);
+}
 </script>
 </body>
 </html>
