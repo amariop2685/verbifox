@@ -476,9 +476,13 @@ async function guardarCo(){
   try{
     const r=await VFX.agregarCoApoderado({ email, password:pass, nombre, apellidos, rut: rutIn?rutFormato(rutIn):'', telefono: telIn?telFormato(telIn):'' });
     cerrarCo();
-    alert(r.creado
-      ? ('✅ ¡Listo! '+nombre+' quedó como segundo apoderado.\n\nQue entre en verbifox.cl → Panel del apoderado con:\n📧 '+email+'\n🔑 la contraseña temporal que le pusiste.')
-      : ('✅ ¡Listo! Vinculamos la cuenta de '+email+' como segundo apoderado.'));
+    if(r.emailEnviado){
+      alert('✅ ¡Listo! '+nombre+' quedó como segundo apoderado.\n\n📩 Le enviamos un correo a '+email+' con las instrucciones para entrar'+(r.creado?' y crear su contraseña.':'.'));
+    } else if(r.creado){
+      alert('✅ ¡Listo! '+nombre+' quedó como segundo apoderado.\n\n(No pudimos enviar el correo ahora.) Pásale tú estos datos:\n📧 '+email+'\n🔑 la contraseña temporal que le pusiste.\nPodrá cambiarla con "¿Olvidaste tu contraseña?".');
+    } else {
+      alert('✅ ¡Listo! Vinculamos la cuenta de '+email+' como segundo apoderado. Que entre con su correo y contraseña de siempre.');
+    }
     await pintarCoApoderado();
   }catch(e){ coErr(e.message||String(e)); }
   $('coBtn').disabled=false;
