@@ -148,6 +148,13 @@
       <div id="planesDispo" style="margin-top:12px"></div>
     </div>
 
+    <!-- APODERADOS DE LA FAMILIA -->
+    <div class="card">
+      <h2>👥 Apoderados de la familia</h2>
+      <p class="mut">Pueden ser hasta <b>dos apoderados</b> por familia. El segundo entra con su propio correo y ve a los mismos niños y su avance. El plan lo administra el apoderado principal.</p>
+      <div id="coCont"></div>
+    </div>
+
     <!-- HIJOS / REPORTE -->
     <div class="card">
       <h2>🎒 Mis estudiantes</h2>
@@ -205,6 +212,36 @@
     </div>
     <p class="mut" style="margin-top:8px">💡 Las voces que dicen "natural" suenan más humanas. Si el aparato donde juega no tiene la voz elegida, se usará la más parecida.</p>
     <button class="primary" onclick="guardarVoz()">💾 Guardar para este niño</button>
+  </div>
+</div>
+
+<!-- MODAL: agregar segundo apoderado -->
+<style>
+  #coModal{ position:fixed; inset:0; background:rgba(15,27,52,.55); z-index:9998; display:flex; align-items:center; justify-content:center; padding:16px; }
+  #coModal.hidden{ display:none; }
+  .telbox{ display:flex; align-items:stretch; }
+  .telpre{ display:flex; align-items:center; padding:0 12px; background:#eef2f6; border:1px solid var(--linea); border-right:0; border-radius:10px 0 0 10px; font-weight:700; white-space:nowrap; color:#5a6b7a; }
+  .telbox input{ border-radius:0 10px 10px 0; }
+</style>
+<div id="coModal" class="hidden">
+  <div style="background:#fff;border-radius:18px;max-width:440px;width:100%;max-height:86vh;overflow:auto;padding:20px;box-shadow:0 18px 50px rgba(0,0,0,.35)">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <b>👥 Segundo apoderado</b>
+      <button onclick="cerrarCo()" style="border:0;background:none;font-size:1.25rem;cursor:pointer;line-height:1">✕</button>
+    </div>
+    <p class="mut" style="margin:6px 0 10px">Entrará con su propio correo y verá a los mismos niños y su avance. Dale la contraseña temporal (podrá cambiarla con "¿Olvidaste tu contraseña?"). Si ese correo ya tiene cuenta VerbiFox, se vinculará sin pedir contraseña.</p>
+    <div class="row">
+      <div><label>Nombres</label><input id="coNombre" placeholder="Ej: José Luis"></div>
+      <div><label>Apellidos</label><input id="coApellidos" placeholder="Ej: Pérez Soto"></div>
+    </div>
+    <label>Correo</label><input id="coEmail" type="email" placeholder="correo@gmail.com">
+    <div class="row" style="margin-top:6px">
+      <div><label>RUT (opcional)</label><input id="coRut" placeholder="Ej: 12.345.678-9"></div>
+      <div><label>Teléfono (opcional)</label><div class="telbox"><span class="telpre">+56 9</span><input id="coTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div></div>
+    </div>
+    <label>Contraseña temporal</label><input id="coPass" placeholder="mínimo 6 caracteres">
+    <div class="err" id="coErr" style="display:none"></div>
+    <button class="primary" id="coBtn" onclick="guardarCo()">Agregar segundo apoderado</button>
   </div>
 </div>
 
@@ -396,9 +433,60 @@ async function cargarPanel(){
     $('dTel').value=(perfil&&perfil.telefono)? telDigitos(perfil.telefono):'';
   }
 
+  await pintarCoApoderado();
   await pintarSuscripciones();
   await pintarHijos();
   await pintarPlanesDispo();
+}
+
+// ---- segundo apoderado (co-apoderado) ----
+let esCoDe=null, coInfo=null;
+async function pintarCoApoderado(){
+  const cont=$('coCont'); if(!cont) return;
+  esCoDe=null; coInfo=null;
+  try{ esCoDe = await VFX.soyCoApoderado(); }catch(e){}
+  if(esCoDe){
+    const p=esCoDe.profiles||{};
+    const nom=((p.nombre||'')+' '+(p.apellidos||'')).trim()||p.email||'el apoderado principal';
+    cont.innerHTML=`<div style="background:#eef7ff;border-radius:12px;padding:12px">🤝 Eres el <b>segundo apoderado</b> de la familia de <b>${nom}</b>. Ves a los mismos niños y su avance. El plan lo administra ${nom}.</div>`;
+    return;
+  }
+  try{ coInfo = await VFX.miCoApoderado(); }catch(e){}
+  if(coInfo){
+    const nom=((coInfo.nombre||'')+' '+(coInfo.apellidos||'')).trim()||coInfo.email||'';
+    cont.innerHTML=`<div style="background:#f6f8fb;border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div style="min-width:0"><b>🤝 ${nom}</b><div class="mut" style="overflow:hidden;text-overflow:ellipsis">${coInfo.email||''}${coInfo.rut?' · '+coInfo.rut:''}</div></div>
+      <button class="ghost" style="color:#e15554" onclick="quitarCo()">Quitar</button></div>`;
+  } else {
+    cont.innerHTML=`<button class="ghost" onclick="abrirCo()">➕ Agregar segundo apoderado</button>`;
+  }
+}
+function abrirCo(){ ['coNombre','coApellidos','coEmail','coRut','coTel','coPass'].forEach(id=>{ if($(id)) $(id).value=''; }); $('coErr').style.display='none'; $('coModal').classList.remove('hidden'); }
+function cerrarCo(){ $('coModal').classList.add('hidden'); }
+function coErr(m){ const e=$('coErr'); e.textContent=m; e.style.display='block'; }
+async function guardarCo(){
+  const nombre=$('coNombre').value.trim(), apellidos=$('coApellidos').value.trim(), email=$('coEmail').value.trim();
+  const rutIn=$('coRut').value.trim(), telIn=$('coTel').value.trim(), pass=$('coPass').value;
+  if(!nombre||!apellidos){ coErr('Escribe nombres y apellidos.'); return; }
+  if(!emailValido(email)){ coErr('El correo no es válido (ej: nombre@gmail.com).'); return; }
+  if(rutIn && !rutValido(rutIn)){ coErr('El RUT no es válido (ej: 12.345.678-9).'); return; }
+  if(telIn && !telValido(telIn)){ coErr('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
+  if(!pass || pass.length<6){ coErr('La contraseña temporal debe tener al menos 6 caracteres.'); return; }
+  $('coBtn').disabled=true;
+  try{
+    const r=await VFX.agregarCoApoderado({ email, password:pass, nombre, apellidos, rut: rutIn?rutFormato(rutIn):'', telefono: telIn?telFormato(telIn):'' });
+    cerrarCo();
+    alert(r.creado
+      ? ('✅ ¡Listo! '+nombre+' quedó como segundo apoderado.\n\nQue entre en verbifox.cl → Panel del apoderado con:\n📧 '+email+'\n🔑 la contraseña temporal que le pusiste.')
+      : ('✅ ¡Listo! Vinculamos la cuenta de '+email+' como segundo apoderado.'));
+    await pintarCoApoderado();
+  }catch(e){ coErr(e.message||String(e)); }
+  $('coBtn').disabled=false;
+}
+async function quitarCo(){
+  if(!confirm('¿Quitar al segundo apoderado? Ya no verá a los niños. (Su cuenta no se elimina.)')) return;
+  try{ await VFX.quitarCoApoderado(); await pintarCoApoderado(); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
 }
 
 async function pintarSuscripciones(){
@@ -427,6 +515,7 @@ async function pintarSuscripciones(){
 
 async function pintarPlanesDispo(){
   const cont=$('planesDispo'); if(!cont) return;
+  if(esCoDe){ cont.innerHTML='<p class="mut" style="border-top:1px dashed var(--linea);padding-top:12px">El plan lo administra el apoderado principal.</p>'; return; }
   let planes=[], subs=[];
   try{ planes = await VFX.planes(); }catch(e){}
   try{ subs = await VFX.misSuscripciones(); }catch(e){}

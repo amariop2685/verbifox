@@ -91,6 +91,52 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       return data;
     },
 
+    // ---------- FAMILIA / SEGUNDO APODERADO ----------
+    // Si soy co-apoderado devuelve el id del apoderado principal; si no, mi propio id.
+    async familiaOwner() {
+      const u = await VFX.usuario(); if (!u) return null;
+      try {
+        const { data } = await sb.from('co_apoderados').select('primary_id').eq('co_id', u.id).maybeSingle();
+        if (data && data.primary_id) return data.primary_id;
+      } catch (e) {}
+      return u.id;
+    },
+    // Perfil del dueño de la familia (para trial/plan): el principal.
+    async perfilOwner() {
+      const oid = await VFX.familiaOwner(); if (!oid) return null;
+      const { data } = await sb.from('profiles').select('*').eq('id', oid).maybeSingle();
+      return data;
+    },
+    // ¿Soy el segundo apoderado? Devuelve el perfil del principal o null.
+    async soyCoApoderado() {
+      const u = await VFX.usuario(); if (!u) return null;
+      const { data } = await sb.from('co_apoderados').select('primary_id, profiles!co_apoderados_primary_id_fkey(nombre,apellidos,email)').eq('co_id', u.id).maybeSingle();
+      return data || null;
+    },
+    // Mi segundo apoderado (si soy principal): su perfil o null.
+    async miCoApoderado() {
+      const u = await VFX.usuario(); if (!u) return null;
+      const { data } = await sb.from('co_apoderados').select('co_id, profiles!co_apoderados_co_id_fkey(nombre,apellidos,email,rut,telefono)').eq('primary_id', u.id).maybeSingle();
+      if (!data) return null;
+      const p = data.profiles || {};
+      return { co_id: data.co_id, nombre: p.nombre, apellidos: p.apellidos, email: p.email, rut: p.rut, telefono: p.telefono };
+    },
+    async _coApoderado(payload) {
+      const s = await VFX.sesion(); if (!s) throw new Error('Sin sesión');
+      const r = await fetch(window.VERBIFOX_SUPABASE_URL + '/functions/v1/co-apoderado', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + s.access_token, 'content-type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || d.error) throw new Error(d.error || ('Error ' + r.status));
+      return d;
+    },
+    agregarCoApoderado({ email, password, nombre, apellidos, rut, telefono }) {
+      return VFX._coApoderado({ accion: 'agregar', email, password, nombre, apellidos, rut, telefono });
+    },
+    quitarCoApoderado() { return VFX._coApoderado({ accion: 'quitar' }); },
+
     // ---------- HIJOS ----------
     async misHijos() {
       const { data, error } = await sb.from('students').select('*').order('created_at');
@@ -98,8 +144,10 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     },
     async agregarHijo({ nombre, curso, colegio, avatar }) {
       const u = await VFX.usuario(); if (!u) throw new Error('Sin sesión');
+      // los hijos pertenecen al dueño de la familia (así el segundo apoderado no divide la familia)
+      const owner = await VFX.familiaOwner();
       // el PIN de 4 dígitos lo asigna la base de datos (único por niño)
-      const fila = { parent_id: u.id, nombre, curso, colegio };
+      const fila = { parent_id: owner || u.id, nombre, curso, colegio };
       if (avatar) fila.avatar = avatar;
       let r = await sb.from('students').insert(fila).select().single();
       if (r.error && avatar) { // por si la columna avatar aún no existe
@@ -315,7 +363,7 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       try { const r = await VFX.misMaterias(studentId); materias = r.materias; } catch (e) {}
       let trialActivo = false, diasRestantes = 0;
       try {
-        const p = await VFX.miPerfil();
+        const p = await VFX.perfilOwner();   // el trial (y el plan) siguen al apoderado principal
         if (p && p.created_at) {
           const dias = (Date.now() - new Date(p.created_at).getTime()) / 86400000;
           diasRestantes = Math.max(0, Math.ceil(7 - dias));
