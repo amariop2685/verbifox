@@ -500,6 +500,11 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { error } = await sb.from('subscriptions').update(campos).eq('id', id);
       if (error) throw error;
     },
+    // Activar / desactivar un plan (solo admin; los activos son los que ve el apoderado)
+    async adminTogglePlan(id, activo) {
+      const { error } = await sb.from('plans').update({ activo: !!activo }).eq('id', id);
+      if (error) throw error;
+    },
 
     // ---------- CRUD DE APODERADOS (admin) ----------
     // Editar datos del apoderado directamente en la tabla (permitido por RLS a admins)

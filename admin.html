@@ -85,6 +85,15 @@
     <div id="lista"></div>
 
     <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+        <h2 style="margin:0">🏷️ Planes</h2>
+        <button class="sec" onclick="cargar()">↻ Actualizar</button>
+      </div>
+      <p class="mut">Los planes <b>activos</b> son los únicos que el apoderado puede contratar en su panel. Actívalos o desactívalos aquí.</p>
+      <div id="planesAdmin"></div>
+    </div>
+
+    <div class="card">
       <h2 style="margin-top:0">📨 Buzón PQRS / Soporte</h2>
       <p class="mut">Mensajes de los apoderados (problemas, quejas, sugerencias). Marca como resuelto cuando lo atiendas.</p>
       <button class="sec" onclick="cargarBuzon()">↻ Actualizar buzón</button>
@@ -191,7 +200,35 @@ async function cargar(){
   DATA=await VFX.adminTodo();
   render();
 }
-function render(){ renderResumen(); renderFiltros(); renderLista(); }
+function render(){ renderResumen(); renderFiltros(); renderLista(); renderPlanes(); }
+
+function renderPlanes(){
+  const cont=$('planesAdmin'); if(!cont) return;
+  const planes=(DATA.planes||[]).slice().sort((a,b)=>
+    (b.activo?1:0)-(a.activo?1:0) || (a.periodo==='anual')-(b.periodo==='anual') || (a.precio_clp||0)-(b.precio_clp||0));
+  const fila=p=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--linea)">
+    <div style="min-width:0">
+      <b>${p.nombre||p.id}</b> ${p.activo?'<span class="pill ok">Activo</span>':'<span class="pill pend">Inactivo</span>'}
+      <div class="mut">${pesos(p.precio_clp)}/${p.periodo==='anual'?'año':'mes'}${p.curso?(' · '+p.curso):''} · <code>${p.id}</code></div>
+    </div>
+    <button class="${p.activo?'sec':'pri'}" style="flex-shrink:0" onclick="togglePlan('${p.id}', ${p.activo?'false':'true'})">${p.activo?'Desactivar':'Activar'}</button>
+  </div>`;
+  const familia=planes.filter(p=>/^familia-/.test(p.id));
+  const otros=planes.filter(p=>!/^familia-/.test(p.id));
+  cont.innerHTML =
+    '<div class="mut" style="margin:8px 0 2px"><b>Planes familiares</b> (el modelo actual)</div>'+familia.map(fila).join('')+
+    (otros.length?('<details style="margin-top:12px"><summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">Ver planes antiguos ('+otros.length+')</summary>'+otros.map(fila).join('')+'</details>'):'');
+}
+let planOcupado=false;
+async function togglePlan(id, activo){
+  if(planOcupado) return;
+  const accion = activo ? 'ACTIVAR' : 'DESACTIVAR';
+  if(!confirm('¿'+accion+' el plan "'+id+'"?\n\n'+(activo?'Los apoderados podrán contratarlo.':'Dejará de aparecer para los apoderados (las suscripciones ya activas no se tocan).'))) return;
+  planOcupado=true;
+  try{ await VFX.adminTogglePlan(id, activo); await cargar(); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
+  finally{ planOcupado=false; }
+}
 
 function estadoSub(a){
   const s=a.subs||[];
