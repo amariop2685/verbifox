@@ -103,6 +103,27 @@
 
 </div>
 
+<!-- MODAL: editar estudiante -->
+<style>
+  #hijoModal{ position:fixed; inset:0; background:rgba(15,27,52,.55); z-index:9998; display:flex; align-items:center; justify-content:center; padding:16px; }
+  #hijoModal.hidden{ display:none; }
+</style>
+<div id="hijoModal" class="hidden">
+  <div class="card" style="max-width:420px;width:100%;margin:0">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 style="margin:0">🎒 Editar estudiante</h2>
+      <button class="sec" onclick="cerrarHijo()">✕</button>
+    </div>
+    <label>Nombre</label><input id="hmNombre" placeholder="Ej: Martín">
+    <label>Curso</label><select id="hmCurso"></select>
+    <label>Colegio (opcional)</label><input id="hmColegio" placeholder="Nombre del colegio">
+    <label>Avatar</label>
+    <div id="hmAvatares" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"></div>
+    <div class="err hidden" id="hmErr"></div>
+    <button class="pri" style="width:100%;margin-top:12px" id="hmBtn" onclick="guardarHijo()">Guardar</button>
+  </div>
+</div>
+
 <!-- MODAL: crear / editar apoderado -->
 <style>
   #apModal{ position:fixed; inset:0; background:rgba(15,27,52,.55); z-index:9998; display:flex; align-items:center; justify-content:center; padding:16px; }
@@ -340,7 +361,12 @@ function renderAp(a){
       </div>
       ${coBlock}
       <div class="mut" style="margin:2px 0 6px">Estudiantes:</div>
-      <div style="margin-bottom:8px">${a.hijos.length ? a.hijos.map(h=>`<span class="pill pend" style="margin:2px 4px 2px 0;display:inline-flex;align-items:center;gap:6px">${h.avatar||''} ${h.nombre} · PIN ${h.login_code||'—'} <button onclick="eliminarHijo('${h.id}','${(h.nombre||'').replace(/'/g,"\\'")}')" style="background:none;color:var(--rojo);padding:0 2px;font-size:.95rem" title="Quitar estudiante">✕</button></span>`).join('') : '<span class="mut">sin estudiantes aún</span>'}</div>
+      <div style="margin-bottom:8px">${a.hijos.length ? a.hijos.map(h=>`<span class="pill pend" style="margin:2px 4px 2px 0;display:inline-flex;align-items:center;gap:6px">${h.avatar||''} ${h.nombre}${h.curso?(' · '+h.curso):''} · PIN ${h.login_code||'—'} <button onclick='editarHijo(${JSON.stringify({id:h.id,nombre:h.nombre||"",curso:h.curso||"",colegio:h.colegio||"",avatar:h.avatar||""})})' style="background:none;padding:0 2px;font-size:.95rem" title="Editar estudiante">✏️</button><button onclick="eliminarHijo('${h.id}','${(h.nombre||'').replace(/'/g,"\\'")}')" style="background:none;color:var(--rojo);padding:0 2px;font-size:.95rem" title="Quitar estudiante">✕</button></span>`).join('') : '<span class="mut">sin estudiantes aún</span>'}</div>
+      <div class="row" style="margin-bottom:10px">
+        <div><input id="nh_${a.id}" placeholder="Nombre del estudiante"></div>
+        <div><select id="nc_${a.id}">${CURSOS.map(c=>`<option${c==='5° Básico'?' selected':''}>${c}</option>`).join('')}</select></div>
+        <div style="flex:0"><button class="sec" onclick="agregarHijoAdmin('${a.id}')">＋ Agregar estudiante</button></div>
+      </div>
       ${subs}
       <details style="margin-top:10px">
         <summary class="sec" style="display:inline-block;padding:8px 12px;border-radius:9px">+ Activar / dar acceso</summary>
@@ -478,6 +504,51 @@ async function eliminarHijo(id, nombre){
   try{ await VFX.adminBorrarHijo(id); await cargar(); }
   catch(e){ alert('No se pudo: '+(e.message||e)); }
 }
+// ---------- CRUD de estudiantes ----------
+const CURSOS=['1° Básico','2° Básico','3° Básico','4° Básico','5° Básico','6° Básico'];
+const AVATARES=['🦊','🦁','🐼','🐯','🦄','🐸','🐧','🚀','⚽','🌟','🐱','🦖'];
+let hijoEdit=null, hmAvatar='🦊';
+
+async function agregarHijoAdmin(parentId){
+  const nombre=(document.getElementById('nh_'+parentId)||{}).value||'';
+  const curso=(document.getElementById('nc_'+parentId)||{}).value||'';
+  if(!nombre.trim()){ alert('Escribe el nombre del estudiante.'); return; }
+  try{
+    const n=await VFX.adminAgregarHijo(parentId, { nombre:nombre.trim(), curso, colegio:null, avatar:'🦊' });
+    await cargar();
+    alert('🎉 '+nombre.trim()+' quedó inscrito/a.\n\n🔑 Su PIN de acceso es: '+((n&&n.login_code)||'—')+'\n\nCon ese PIN entra solo/a: verbifox.cl → 🎒 Soy estudiante.');
+  }catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
+function pintarAvataresHM(){
+  const c=document.getElementById('hmAvatares'); if(!c) return;
+  c.innerHTML=AVATARES.map(a=>`<button type="button" onclick="elegirAvatarHM('${a}')" style="font-size:1.4rem;padding:5px 7px;border-radius:10px;cursor:pointer;border:2px solid ${a===hmAvatar?'var(--naranja)':'var(--linea)'};background:${a===hmAvatar?'#fff4e0':'#fff'}">${a}</button>`).join('');
+}
+function elegirAvatarHM(a){ hmAvatar=a; pintarAvataresHM(); }
+function editarHijo(h){
+  hijoEdit=h; hmAvatar=h.avatar||'🦊';
+  document.getElementById('hmCurso').innerHTML=CURSOS.map(c=>`<option${c===h.curso?' selected':''}>${c}</option>`).join('');
+  document.getElementById('hmNombre').value=h.nombre||'';
+  document.getElementById('hmColegio').value=h.colegio||'';
+  document.getElementById('hmErr').classList.add('hidden');
+  pintarAvataresHM();
+  document.getElementById('hijoModal').classList.remove('hidden');
+}
+function cerrarHijo(){ document.getElementById('hijoModal').classList.add('hidden'); }
+async function guardarHijo(){
+  if(!hijoEdit) return;
+  const nombre=document.getElementById('hmNombre').value.trim();
+  if(!nombre){ const e=document.getElementById('hmErr'); e.textContent='Escribe el nombre.'; e.classList.remove('hidden'); return; }
+  document.getElementById('hmBtn').disabled=true;
+  try{
+    await VFX.adminEditarHijo(hijoEdit.id, {
+      nombre, curso:document.getElementById('hmCurso').value,
+      colegio:document.getElementById('hmColegio').value.trim()||null, avatar:hmAvatar
+    });
+    cerrarHijo(); await cargar();
+  }catch(e){ const el=document.getElementById('hmErr'); el.textContent='No se pudo: '+(e.message||e); el.classList.remove('hidden'); }
+  document.getElementById('hmBtn').disabled=false;
+}
+
 async function vincularCo(primaryId){
   const el=document.getElementById('vco_'+primaryId);
   const email=el?el.value:'';

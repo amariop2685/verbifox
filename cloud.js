@@ -557,6 +557,21 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { error } = await sb.from('students').delete().eq('id', id);
       if (error) throw error;
     },
+    // Inscribir un estudiante en una familia concreta (admin). El PIN lo asigna la base.
+    async adminAgregarHijo(parentId, { nombre, curso, colegio, avatar }) {
+      const fila = { parent_id: parentId, nombre, curso, colegio };
+      if (avatar) fila.avatar = avatar;
+      let r = await sb.from('students').insert(fila).select().single();
+      if (r.error && avatar) { delete fila.avatar; r = await sb.from('students').insert(fila).select().single(); }
+      if (r.error) throw r.error;
+      return r.data;
+    },
+    async adminEditarHijo(id, campos) {
+      const fila = {};
+      for (const k of ['nombre', 'curso', 'colegio', 'avatar']) if (campos[k] !== undefined) fila[k] = campos[k];
+      const { error } = await sb.from('students').update(fila).eq('id', id);
+      if (error) throw error;
+    },
     // Crear / eliminar cuenta y enviar recuperación: pasan por la función edge (service_role)
     async _adminUsuarios(payload) {
       const s = await VFX.sesion();
