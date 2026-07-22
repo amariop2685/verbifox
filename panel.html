@@ -77,18 +77,20 @@
       <div class="card">
         <h2>🔑 Ya tengo cuenta</h2>
         <p class="mut">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
-        <label>Correo</label>
-        <input id="lEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
-        <label>Contraseña</label>
-        <div class="pwd">
-          <input id="lPass" type="password" placeholder="••••••••" autocomplete="current-password">
-          <button type="button" class="ojo" onclick="toggleOjo('lPass',this)" aria-label="Mostrar contraseña">👁️</button>
-        </div>
-        <button class="primary" id="btnLogin" onclick="hacerLogin()">Ingresar ▶</button>
+        <form id="formLogin" onsubmit="event.preventDefault(); hacerLogin(); return false;">
+          <label for="lEmail">Correo</label>
+          <input id="lEmail" name="username" type="email" placeholder="tucorreo@gmail.com" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          <label for="lPass">Contraseña</label>
+          <div class="pwd">
+            <input id="lPass" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" class="ojo" onclick="toggleOjo('lPass',this)" aria-label="Mostrar contraseña">👁️</button>
+          </div>
+          <button type="submit" class="primary" id="btnLogin">Ingresar ▶</button>
+        </form>
         <div class="err" id="loginErr"></div>
         <div class="ok-msg" id="loginOk"></div>
         <p class="center" style="margin-top:10px">
-          <button class="ghost" onclick="olvideClave()">¿Olvidaste tu contraseña?</button>
+          <button type="button" class="ghost" onclick="olvideClave()">¿Olvidaste tu contraseña?</button>
         </p>
       </div>
 
@@ -96,22 +98,24 @@
       <div class="card" id="cardRegistro" style="border:2px solid var(--naranja)">
         <h2>🎁 Crear cuenta · 7 días gratis</h2>
         <p class="mut">Sin tarjeta. Inscribe a tus hijos y prueba todo.</p>
-        <div class="row">
-          <div><label>Nombres</label><input id="fNombre" placeholder="Ej: María José"></div>
-          <div><label>Apellidos</label><input id="fApellidos" placeholder="Ej: Pérez Soto"></div>
-        </div>
-        <label>Tu RUT</label>
-        <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off">
-        <label>Teléfono (opcional)</label>
-        <div class="telbox"><span class="telpre">+56 9</span><input id="fTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div>
-        <label>Correo</label>
-        <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
-        <label>Contraseña</label>
-        <div class="pwd">
-          <input id="fPass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
-          <button type="button" class="ojo" onclick="toggleOjo('fPass',this)" aria-label="Mostrar contraseña">👁️</button>
-        </div>
-        <button class="primary" id="btnReg" onclick="hacerRegistro()">Crear cuenta y empezar ▶</button>
+        <form id="formRegistro" onsubmit="event.preventDefault(); hacerRegistro(); return false;">
+          <div class="row">
+            <div><label for="fNombre">Nombres</label><input id="fNombre" name="given-name" autocomplete="given-name" placeholder="Ej: María José" required></div>
+            <div><label for="fApellidos">Apellidos</label><input id="fApellidos" name="family-name" autocomplete="family-name" placeholder="Ej: Pérez Soto" required></div>
+          </div>
+          <label for="fRut">Tu RUT</label>
+          <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off" required>
+          <label for="fTel">Teléfono (opcional)</label>
+          <div class="telbox"><span class="telpre">+56 9</span><input id="fTel" name="tel" autocomplete="tel-national" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div>
+          <label for="fEmail">Correo</label>
+          <input id="fEmail" name="username" type="email" placeholder="tucorreo@gmail.com" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+          <label for="fPass">Contraseña</label>
+          <div class="pwd">
+            <input id="fPass" name="new-password" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" required>
+            <button type="button" class="ojo" onclick="toggleOjo('fPass',this)" aria-label="Mostrar contraseña">👁️</button>
+          </div>
+          <button type="submit" class="primary" id="btnReg">Crear cuenta y empezar ▶</button>
+        </form>
         <div class="err" id="regErr"></div>
         <div class="ok-msg" id="regOk"></div>
       </div>
@@ -123,12 +127,15 @@
   <div id="recuperar" class="card hidden">
     <h2>🔑 Crea tu nueva contraseña</h2>
     <p class="mut">Escribe la nueva contraseña para tu cuenta.</p>
-    <label>Nueva contraseña</label>
-    <div class="pwd">
-      <input id="rPass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
-      <button type="button" class="ojo" onclick="toggleOjo('rPass',this)" aria-label="Mostrar contraseña">👁️</button>
-    </div>
-    <button class="primary" id="btnRec" onclick="guardarNuevaClave()">Guardar y entrar</button>
+    <form id="formRec" onsubmit="event.preventDefault(); guardarNuevaClave(); return false;">
+      <input id="rUser" name="username" type="email" autocomplete="username" style="display:none" tabindex="-1" aria-hidden="true">
+      <label for="rPass">Nueva contraseña</label>
+      <div class="pwd">
+        <input id="rPass" name="new-password" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password" required>
+        <button type="button" class="ojo" onclick="toggleOjo('rPass',this)" aria-label="Mostrar contraseña">👁️</button>
+      </div>
+      <button type="submit" class="primary" id="btnRec">Guardar y entrar</button>
+    </form>
     <div class="err" id="recErr"></div>
   </div>
 
@@ -427,6 +434,8 @@ function modoRecuperacion(){
   $('auth').classList.add('hidden');
   $('panel').classList.add('hidden');
   $('recuperar').classList.remove('hidden');
+  // el correo oculto ayuda a iCloud/gestores a asociar la clave con la cuenta correcta
+  try{ VFX.usuario().then(u=>{ if(u&&u.email) $('rUser').value=u.email; }).catch(()=>{}); }catch(e){}
 }
 async function guardarNuevaClave(){
   const nueva=$('rPass').value;
