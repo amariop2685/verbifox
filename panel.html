@@ -33,6 +33,8 @@
   .pwd .ojo{ position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:0; font-size:1.25rem; cursor:pointer; padding:6px; }
   .row{ display:flex; gap:12px; flex-wrap:wrap; }
   .row>div{ flex:1; min-width:140px; }
+  .authGrid{ display:flex; gap:14px; flex-wrap:wrap; align-items:flex-start; }
+  .authGrid>.card{ flex:1; min-width:290px; margin:0; }
   .telbox{ display:flex; align-items:stretch; gap:0; }
   .telpre{ display:flex; align-items:center; padding:0 12px; background:#eef2f6; border:1px solid var(--linea); border-right:0; border-radius:10px 0 0 10px; font-weight:700; white-space:nowrap; color:#5a6b7a; }
   .telbox input{ border-radius:0 10px 10px 0; }
@@ -67,37 +69,54 @@
 
 <div class="wrap">
 
-  <!-- LOGIN / REGISTRO -->
-  <div id="auth" class="card hidden">
-    <h2 id="authTit">Ingresar</h2>
-    <p class="mut" id="authSub">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
-    <div id="regCampos" class="hidden">
-      <div class="row">
-        <div><label>Nombres</label><input id="fNombre" placeholder="Ej: María José"></div>
-        <div><label>Apellidos</label><input id="fApellidos" placeholder="Ej: Pérez Soto"></div>
+  <!-- ENTRAR (izquierda) + CREAR CUENTA (derecha) -->
+  <div id="auth" class="hidden">
+    <div class="authGrid">
+
+      <!-- YA TENGO CUENTA -->
+      <div class="card">
+        <h2>🔑 Ya tengo cuenta</h2>
+        <p class="mut">Entra con tu correo y contraseña para ver la cuenta de tu hijo/a.</p>
+        <label>Correo</label>
+        <input id="lEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
+        <label>Contraseña</label>
+        <div class="pwd">
+          <input id="lPass" type="password" placeholder="••••••••" autocomplete="current-password">
+          <button type="button" class="ojo" onclick="toggleOjo('lPass',this)" aria-label="Mostrar contraseña">👁️</button>
+        </div>
+        <button class="primary" id="btnLogin" onclick="hacerLogin()">Ingresar ▶</button>
+        <div class="err" id="loginErr"></div>
+        <div class="ok-msg" id="loginOk"></div>
+        <p class="center" style="margin-top:10px">
+          <button class="ghost" onclick="olvideClave()">¿Olvidaste tu contraseña?</button>
+        </p>
       </div>
-      <label>Tu RUT</label>
-      <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off">
-      <label>Teléfono (opcional)</label>
-      <div class="telbox"><span class="telpre">+56 9</span><input id="fTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div>
+
+      <!-- SOY NUEVO -->
+      <div class="card" id="cardRegistro" style="border:2px solid var(--naranja)">
+        <h2>🎁 Crear cuenta · 7 días gratis</h2>
+        <p class="mut">Sin tarjeta. Inscribe a tus hijos y prueba todo.</p>
+        <div class="row">
+          <div><label>Nombres</label><input id="fNombre" placeholder="Ej: María José"></div>
+          <div><label>Apellidos</label><input id="fApellidos" placeholder="Ej: Pérez Soto"></div>
+        </div>
+        <label>Tu RUT</label>
+        <input id="fRut" placeholder="Ej: 12.345.678-9" inputmode="text" autocomplete="off">
+        <label>Teléfono (opcional)</label>
+        <div class="telbox"><span class="telpre">+56 9</span><input id="fTel" inputmode="numeric" maxlength="8" placeholder="1234 5678" oninput="solo8(this)"></div>
+        <label>Correo</label>
+        <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
+        <label>Contraseña</label>
+        <div class="pwd">
+          <input id="fPass" type="password" placeholder="mínimo 6 caracteres" autocomplete="new-password">
+          <button type="button" class="ojo" onclick="toggleOjo('fPass',this)" aria-label="Mostrar contraseña">👁️</button>
+        </div>
+        <button class="primary" id="btnReg" onclick="hacerRegistro()">Crear cuenta y empezar ▶</button>
+        <div class="err" id="regErr"></div>
+        <div class="ok-msg" id="regOk"></div>
+      </div>
+
     </div>
-    <label>Correo</label>
-    <input id="fEmail" type="email" placeholder="tucorreo@gmail.com" autocomplete="email">
-    <label>Contraseña</label>
-    <div class="pwd">
-      <input id="fPass" type="password" placeholder="••••••••" autocomplete="current-password">
-      <button type="button" class="ojo" onclick="toggleOjo('fPass',this)" aria-label="Mostrar contraseña">👁️</button>
-    </div>
-    <button class="primary" id="btnAuth" onclick="hacerAuth()">Ingresar</button>
-    <div class="err" id="authErr"></div>
-    <div class="ok-msg" id="authOk"></div>
-    <p class="center" style="margin-top:10px">
-      <button class="ghost" onclick="olvideClave()">¿Olvidaste tu contraseña?</button>
-    </p>
-    <p class="center" style="margin-top:8px">
-      <span id="toggleTxt" class="mut">¿No tienes cuenta?</span>
-      <button class="ghost" id="btnToggle" onclick="toggleModo()">Crear cuenta</button>
-    </p>
   </div>
 
   <!-- NUEVA CONTRASEÑA (llega desde el correo de recuperación) -->
@@ -252,22 +271,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
 <script>
-let modo = 'login'; // 'login' | 'registro'
 let hijos = [], hijoSel = null;
 
 const $ = id => document.getElementById(id);
-function showErr(m){ const e=$('authErr'); e.textContent=m; e.style.display='block'; clearTimeout(e._t); e._t=setTimeout(()=>e.style.display='none',9000); }
-function showOk(m){ const e=$('authOk'); e.textContent=m; e.style.display='block'; }
-
-function toggleModo(){
-  modo = modo==='login' ? 'registro' : 'login';
-  const reg = modo==='registro';
-  $('authTit').textContent = reg ? 'Crear cuenta' : 'Ingresar';
-  $('btnAuth').textContent  = reg ? 'Crear cuenta' : 'Ingresar';
-  $('regCampos').classList.toggle('hidden', !reg);
-  $('toggleTxt').textContent = reg ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?';
-  $('btnToggle').textContent = reg ? 'Ingresar' : 'Crear cuenta';
-}
+function _msg(id, m, ms){ const e=$(id); if(!e) return; e.textContent=m; e.style.display='block'; clearTimeout(e._t); if(ms) e._t=setTimeout(()=>e.style.display='none',ms); }
+function showErr(m){ _msg('loginErr', m, 9000); }      // cuadro "Ya tengo cuenta"
+function showOk(m){ _msg('loginOk', m); }
+function showErrReg(m){ _msg('regErr', m, 9000); }     // cuadro "Crear cuenta"
+function showOkReg(m){ _msg('regOk', m); }
 
 // ---- RUT chileno: limpiar, validar dígito verificador y dar formato ----
 function rutLimpio(r){ return String(r||'').replace(/[^0-9kK]/g,'').toUpperCase(); }
@@ -293,39 +304,22 @@ function telDigitos(t){ const d=String(t||'').replace(/\D/g,''); return d.length
 function telValido(t){ return telDigitos(t).length===8; }
 function telFormato(t){ const d=telDigitos(t); return d? '+56 9 '+d.slice(0,4)+' '+d.slice(4) : ''; }
 
-async function hacerAuth(){
-  const email=$('fEmail').value.trim(), pass=$('fPass').value;
+// --- Cuadro 1: ya tengo cuenta ---
+async function hacerLogin(){
+  const email=$('lEmail').value.trim(), pass=$('lPass').value;
   if(!email||!pass){ showErr('Completa correo y contraseña.'); return; }
   if(!emailValido(email)){ showErr('Ese correo no parece válido. Revísalo (ej: nombre@gmail.com).'); return; }
-  if(modo==='registro'){
-    if(!$('fNombre').value.trim()){ showErr('Escribe tus nombres.'); return; }
-    if(!$('fApellidos').value.trim()){ showErr('Escribe tus apellidos.'); return; }
-    if(!rutValido($('fRut').value)){ showErr('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
-    if($('fTel').value && !telValido($('fTel').value)){ showErr('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
-  }
-  $('btnAuth').disabled=true;
+  $('btnLogin').disabled=true;
   try{
-    if(modo==='registro'){
-      await VFX.registrar(email, pass, {
-        nombre: $('fNombre').value.trim(),
-        apellidos: $('fApellidos').value.trim(),
-        rut: rutFormato($('fRut').value),
-        telefono: $('fTel').value ? telFormato($('fTel').value) : ''
-      });
-      const s = await VFX.sesion();
-      if(!s){ showOk('Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego ingresa.'); $('btnAuth').disabled=false; return; }
-    } else {
-      await VFX.entrar(email, pass);
-    }
+    await VFX.entrar(email, pass);
     await cargarPanel();
   }catch(err){
-    // Al ingresar: distinguir "no existe la cuenta" de "contraseña incorrecta"
-    if(modo==='login' && /Invalid login/i.test(err.message||'')){
+    if(/Invalid login/i.test(err.message||'')){
       let existe=null;
       try{ existe=await VFX.emailExiste(email); }catch(e){}
       if(existe===false){
-        showErr('🔎 No encontramos una cuenta con el correo '+email+'. Si es tu primera vez, crea tu cuenta aquí abajo 👇');
-        if(modo==='login') toggleModo(); // lo dejamos listo en "Crear cuenta"
+        showErr('🔎 No encontramos una cuenta con '+email+'. Si es tu primera vez, créala en el cuadro naranja 👉');
+        $('fEmail').value=email; resaltarRegistro();
       } else if(existe===true){
         showErr('🔑 La contraseña no es correcta. Inténtalo de nuevo o toca “¿Olvidaste tu contraseña?”.');
       } else {
@@ -335,7 +329,44 @@ async function hacerAuth(){
       showErr(traducir(err.message));
     }
   }
-  $('btnAuth').disabled=false;
+  $('btnLogin').disabled=false;
+}
+
+// --- Cuadro 2: crear cuenta (7 días gratis) ---
+async function hacerRegistro(){
+  const email=$('fEmail').value.trim(), pass=$('fPass').value;
+  if(!$('fNombre').value.trim()){ showErrReg('Escribe tus nombres.'); return; }
+  if(!$('fApellidos').value.trim()){ showErrReg('Escribe tus apellidos.'); return; }
+  if(!rutValido($('fRut').value)){ showErrReg('El RUT no parece válido. Revísalo (ej: 12.345.678-9).'); return; }
+  if($('fTel').value && !telValido($('fTel').value)){ showErrReg('El teléfono debe tener 8 dígitos después del +56 9.'); return; }
+  if(!emailValido(email)){ showErrReg('Ese correo no parece válido. Revísalo (ej: nombre@gmail.com).'); return; }
+  if(!pass || pass.length<6){ showErrReg('La contraseña debe tener al menos 6 caracteres.'); return; }
+  $('btnReg').disabled=true;
+  try{
+    await VFX.registrar(email, pass, {
+      nombre: $('fNombre').value.trim(),
+      apellidos: $('fApellidos').value.trim(),
+      rut: rutFormato($('fRut').value),
+      telefono: $('fTel').value ? telFormato($('fTel').value) : ''
+    });
+    const s = await VFX.sesion();
+    if(!s){ showOkReg('📩 Te enviamos un correo para confirmar tu cuenta. Ábrelo y luego entra por el cuadro de la izquierda.'); $('btnReg').disabled=false; return; }
+    await cargarPanel();
+  }catch(err){
+    if(/already registered/i.test(err.message||'')){
+      showErrReg('Ese correo ya tiene cuenta. Entra por el cuadro "Ya tengo cuenta" 👈');
+      $('lEmail').value=email;
+    } else {
+      showErrReg(traducir(err.message));
+    }
+  }
+  $('btnReg').disabled=false;
+}
+function resaltarRegistro(){
+  const c=$('cardRegistro'); if(!c) return;
+  c.scrollIntoView({behavior:'smooth', block:'center'});
+  c.classList.add('vfx-pop'); setTimeout(()=>c.classList.remove('vfx-pop'), 700);
+  const n=$('fNombre'); if(n) setTimeout(()=>n.focus(), 400);
 }
 
 function traducir(m){
@@ -378,7 +409,7 @@ function toggleOjo(id, btn){
 
 // ¿Olvidaste tu contraseña? → correo de recuperación
 async function olvideClave(){
-  const email=$('fEmail').value.trim();
+  const email=$('lEmail').value.trim();
   if(!email){ showErr('Escribe tu correo arriba y vuelve a tocar "¿Olvidaste tu contraseña?".'); return; }
   // primero verificamos que ese correo tenga cuenta (si no, avisamos en vez de prometer un correo que no llegará)
   try{
@@ -749,9 +780,9 @@ document.addEventListener('vfx-listo', async ()=>{
   if(s){ await cargarPanel(); }
   else { $('auth').classList.remove('hidden'); abrirRegistroSiPide(); }
 });
-// Si llega desde "Empieza 7 días gratis" (?nuevo=1) y no tiene cuenta, abrimos "Crear cuenta"
+// Si llega desde "Empieza 7 días gratis" (?nuevo=1), destacamos el cuadro de crear cuenta
 function abrirRegistroSiPide(){
-  if(/[?&]nuevo=1/.test(location.search) && modo==='login'){ toggleModo(); }
+  if(/[?&]nuevo=1/.test(location.search)) setTimeout(resaltarRegistro, 200);
 }
 // fallback si el evento ya pasó
 setTimeout(async ()=>{
