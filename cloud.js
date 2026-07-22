@@ -358,6 +358,16 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
         }
         return { sinSesion: true };
       }
+      // Vía robusta (función de servidor): resuelve materias + prueba siguiendo al
+      // apoderado principal, aunque quien pregunte sea el segundo apoderado.
+      try {
+        const { data, error } = await sb.rpc('acceso_familia', { p_student: studentId || null });
+        if (!error && data) {
+          if (data.admin) return { admin: true, materias: ['*'] };
+          return { materias: data.materias || [], trialActivo: !!data.trialActivo, diasRestantes: data.diasRestantes || 0 };
+        }
+      } catch (e) {}
+      // Respaldo (si la función acceso_familia aún no está instalada)
       try { if (await VFX.soyAdmin()) return { admin: true, materias: ['*'] }; } catch (e) {}
       let materias = [];
       try { const r = await VFX.misMaterias(studentId); materias = r.materias; } catch (e) {}
