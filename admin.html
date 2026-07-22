@@ -317,7 +317,13 @@ function renderAp(a){
           <button class="sec" style="color:var(--rojo)" onclick="quitarCoAdmin('${a.id}','${(coNom).replace(/'/g,"\\'")}')">Quitar vínculo</button>
         </div>
       </div>`
-    : `<div class="mut" style="margin:0 0 10px">Sin segundo apoderado.</div>`;
+    : `<div style="background:#f6f8fb;border-radius:10px;padding:10px 12px;margin:0 0 10px">
+        <div class="mut" style="margin-bottom:6px">Sin segundo apoderado. Vincula una cuenta ya existente por su correo:</div>
+        <div class="row">
+          <div><input id="vco_${a.id}" placeholder="correo del 2° apoderado"></div>
+          <div style="flex:0"><button class="sec" onclick="vincularCo('${a.id}')">➕ Vincular</button></div>
+        </div>
+      </div>`;
   return `<tr class="fila" onclick="toggleDet('${a.id}')">
     <td style="min-width:150px"><b>${nom}</b>${coBadge}<span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px">${a.email||''}</span></td>
     <td style="white-space:nowrap">${a.rut||'—'}</td>
@@ -456,6 +462,15 @@ async function eliminarHijo(id, nombre){
   if(!confirm('¿Quitar al estudiante "'+nombre+'"? Se borra su avance. No se puede deshacer.')) return;
   try{ await VFX.adminBorrarHijo(id); await cargar(); }
   catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
+async function vincularCo(primaryId){
+  const el=document.getElementById('vco_'+primaryId);
+  const email=el?el.value:'';
+  try{
+    const p=await VFX.adminVincularCo(primaryId, email);
+    await cargar();
+    alert('✅ Vinculado como segundo apoderado.');
+  }catch(e){ alert('No se pudo: '+(e.message||e)); }
 }
 async function quitarCoAdmin(primaryId, nombre){
   if(!confirm('¿Quitar a "'+nombre+'" como segundo apoderado de esta familia?\n\n(Su cuenta no se elimina; solo deja de ver a los niños.)')) return;

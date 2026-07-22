@@ -521,6 +521,22 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { error } = await sb.from('co_apoderados').delete().eq('primary_id', primaryId);
       if (error) throw error;
     },
+    // Vincular una cuenta existente como 2° apoderado de una familia (admin)
+    async adminVincularCo(primaryId, email) {
+      email = (email || '').trim();
+      if (!email) throw new Error('Escribe el correo del segundo apoderado.');
+      const { data: prof } = await sb.from('profiles').select('id, nombre').eq('email', email).maybeSingle();
+      if (!prof) throw new Error('Ese correo no tiene cuenta en VerbiFox. Créala primero con "＋ Nuevo apoderado" y luego vincúlala.');
+      if (prof.id === primaryId) throw new Error('El apoderado no puede ser su propio segundo apoderado.');
+      const { error } = await sb.from('co_apoderados').insert({ primary_id: primaryId, co_id: prof.id });
+      if (error) {
+        const m = (error.message || '');
+        if (/primary/i.test(m)) throw new Error('Esta familia ya tiene un segundo apoderado. Quítalo antes de vincular otro.');
+        if (/co_id|co_apoderados_co|duplicate|unique|pkey/i.test(m)) throw new Error('Ese apoderado ya pertenece a otra familia.');
+        throw error;
+      }
+      return prof;
+    },
 
     // ---------- CRUD DE APODERADOS (admin) ----------
     // Editar datos del apoderado directamente en la tabla (permitido por RLS a admins)
