@@ -58,8 +58,8 @@
     <div class="fox vfx-pop">🦊</div>
     <h1 class="vfx-up">El colegio digital de tu hijo</h1>
     <p class="vfx-up">Todas las asignaturas de <b>1° a 6° básico</b>, con un <b>tutor que se adapta</b> a cada niño, juegos, recompensas y reporte semanal para ti. Alineado al currículo escolar chileno.</p>
-    <a class="cta vfx-up" href="panel.html">Empieza 7 días gratis →</a>
-    <span class="free">Sin tarjeta · cancela cuando quieras</span>
+    <a class="cta vfx-up" data-cta-trial data-text-in="Entrar y aprender →" href="panel.html?nuevo=1">Empieza 7 días gratis →</a>
+    <span class="free" data-free-txt>Sin tarjeta · cancela cuando quieras</span>
     <br><a class="kid" href="inicio.html">🎒 Soy estudiante: ¡a jugar!</a>
   </div>
 
@@ -90,7 +90,7 @@
       </table>
     </div>
     <p class="pnote">Todo incluido: todas las asignaturas del curso de cada hijo, tutor adaptativo, recompensas y reporte semanal.<br>🔒 Pago seguro con Mercado Pago.</p>
-    <a class="cta2" href="panel.html">Probar 7 días gratis →</a>
+    <a class="cta2" data-cta-trial data-text-in="Entrar y aprender →" href="panel.html?nuevo=1">Probar 7 días gratis →</a>
 
     <h2 class="sec">Preguntas frecuentes</h2>
     <div class="faq">
@@ -106,6 +106,23 @@
     <a href="privacidad.html">Política de Privacidad</a> · <a href="terminos.html">Términos y Condiciones</a> · <a href="soporte.html">Ayuda</a>
   </footer>
   <a href="soporte.html" style="position:fixed;right:16px;bottom:16px;background:#ff7a18;color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.22);z-index:9999">💬 Ayuda</a>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud.js"></script>
+<script>
+// Si ya hay cuenta iniciada, los botones de prueba llevan al sitio del estudiante.
+(function(){
+  function aplicar(hay){
+    document.querySelectorAll('[data-cta-trial]').forEach(a=>{
+      if(hay){ a.href='inicio.html'; if(a.dataset.textIn) a.textContent=a.dataset.textIn; }
+      else { a.href='panel.html?nuevo=1'; }
+    });
+    if(hay){ const f=document.querySelector('[data-free-txt]'); if(f) f.textContent='Ya tienes cuenta · entra a aprender'; }
+  }
+  function check(){ try{ VFX.sesion().then(s=>aplicar(!!s)).catch(()=>{}); }catch(e){} }
+  document.addEventListener('vfx-listo', check);
+  if(window.VFX) check();
+})();
+</script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){});}</script>
 </body>
 </html>

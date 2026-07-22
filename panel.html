@@ -747,14 +747,18 @@ document.addEventListener('vfx-listo', async ()=>{
   if(enRecuperacion){ modoRecuperacion(); return; }
   const s = await VFX.sesion();
   if(s){ await cargarPanel(); }
-  else { $('auth').classList.remove('hidden'); }
+  else { $('auth').classList.remove('hidden'); abrirRegistroSiPide(); }
 });
+// Si llega desde "Empieza 7 días gratis" (?nuevo=1) y no tiene cuenta, abrimos "Crear cuenta"
+function abrirRegistroSiPide(){
+  if(/[?&]nuevo=1/.test(location.search) && modo==='login'){ toggleModo(); }
+}
 // fallback si el evento ya pasó
 setTimeout(async ()=>{
   if(enRecuperacion) return;
   if(window.VFX && $('auth').classList.contains('hidden') && $('panel').classList.contains('hidden') && $('recuperar').classList.contains('hidden')){
     const s = await VFX.sesion();
-    if(s) cargarPanel(); else $('auth').classList.remove('hidden');
+    if(s) cargarPanel(); else { $('auth').classList.remove('hidden'); abrirRegistroSiPide(); }
   }
 }, 1200);
 </script>
