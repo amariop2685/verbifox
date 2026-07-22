@@ -92,17 +92,55 @@
       return cand.find(v=>/google|siri|premium|enhanced|natural/i.test(v.name||'')) || cand[0] || null;
     }catch(e){ return null; }
   }
-  function decir(txt){
+  // Habla y avisa cuando termina (para poder preguntarle después)
+  function decirCB(txt, cb){
     try{
-      if(!('speechSynthesis'in window) || !vozEncendida()) return;
-      const t=limpiaTxt(txt); if(!t) return;
+      if(!('speechSynthesis'in window) || !vozEncendida()){ if(cb) cb(); return; }
+      const t=limpiaTxt(txt); if(!t){ if(cb) cb(); return; }
       speechSynthesis.cancel();
       const u=new SpeechSynthesisUtterance(t);
       const v=_vozPref();
       if(v){ u.voice=v; u.lang=v.lang; } else { u.lang=(mat&&mat.lang)||'es-CL'; }
       u.rate = gradoNum()<=2 ? 0.85 : (gradoNum()<=4 ? 0.92 : 1);  // más lento para los más chicos
+      if(cb) u.onend=()=>cb();
       speechSynthesis.speak(u);
+    }catch(e){ if(cb) cb(); }
+  }
+  function decir(txt){ decirCB(txt, null); }
+
+  // ===== El niño puede responder HABLANDO (opcional, pide permiso del micrófono) =====
+  let _rec=null;
+  function micDisponible(){ return !!(window.SpeechRecognition||window.webkitSpeechRecognition); }
+  function micActivo(){ try{ return localStorage.getItem('vfx_mic')==='1'; }catch(e){ return false; } }
+  function pararMic(){ try{ if(_rec) _rec.abort(); }catch(e){} _rec=null; }
+  function escucharSiNo(onSi, onNo){
+    if(!micDisponible() || !micActivo()) return;
+    try{
+      const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+      pararMic();
+      _rec=new SR(); _rec.lang='es-CL'; _rec.interimResults=false; _rec.maxAlternatives=3;
+      _rec.onresult=ev=>{
+        const t=((ev.results[0][0].transcript)||'').toLowerCase();
+        if(/otra vez|de nuevo|repite|repetir|no entend|nada|no/.test(t)){ if(onNo) onNo(); }
+        else if(/s[ií]|entend|listo|sigue|siguiente|ya/.test(t)){ if(onSi) onSi(); }
+      };
+      _rec.onerror=()=>{}; _rec.onend=()=>{ _rec=null; };
+      _rec.start();
     }catch(e){}
+  }
+  function toggleMic(){
+    const on=!micActivo();
+    try{ localStorage.setItem('vfx_mic', on?'1':'0'); }catch(e){}
+    if(!on) pararMic();
+    pintarBotonMic();
+    if(on) decir('Listo. Ahora puedes contestarme hablando: di sí, o di otra vez.');
+  }
+  function pintarBotonMic(){
+    document.querySelectorAll('[data-mic]').forEach(b=>{
+      b.textContent = micActivo() ? '🎤 Hablar: SÍ' : '🎤 Hablar: NO';
+      b.style.background = micActivo() ? '#2bb673' : '#dbe3ec';
+      b.style.color = micActivo() ? '#fff' : '#26303b';
+    });
   }
   function decirItem(i){ const it=uActual.items[i]; if(it) decir(it.t+'. '+it.d); }
   // Arma el texto hablado de una pregunta (enunciado + alternativas)
@@ -114,6 +152,12 @@
     return t;
   }
   function repetirPregunta(){ const p=q&&q.preg&&q.preg[q.i]; if(p) decir(textoPregunta(p)); }
+  // El niño elige QUÉ parte quiere que le lean
+  function leerParte(cual){
+    const p=q&&q.preg&&q.preg[q.i]; if(!p) return;
+    if(cual==='pregunta') decir(limpiaTxt(p.prompt)+'. '+limpiaTxt(p.sub));
+    else if(cual==='opciones' && p.ops) decir(p.ops.map((o,i)=>'Opción '+(i+1)+': '+limpiaTxt(o.text)).join('. '));
+  }
   function toggleLeer(){
     const nuevo = leeSolo() ? '0' : '1';
     try{ localStorage.setItem('vfx_leer', nuevo); }catch(e){}
@@ -314,13 +358,41 @@
       <div class="vfx-up">${s.html}</div>
       ${autoHtml}
       <div style="text-align:center;margin:14px 0 6px">${dots}</div>
+      <div id="askLeer" style="display:none;background:#fff7e6;border:2px solid #ffd08a;border-radius:14px;padding:14px;margin:12px 0;text-align:center">
+        <div style="font-weight:800;font-size:1.05rem;margin-bottom:10px">🦊 ¿Entendiste?</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+          <button class="btn b-verde" style="margin:0" onclick="lecSiEntendi()">✅ Sí, entendí</button>
+          <button class="btn b-azul" style="margin:0" onclick="lecOtraVez()">🔁 Léelo otra vez</button>
+        </div>
+        ${micDisponible()?`<button data-mic onclick="toggleMic()" style="border:0;border-radius:12px;padding:8px 12px;margin-top:10px;font-weight:800;cursor:pointer">🎤 Hablar: NO</button>
+        <div class="mut" style="margin-top:4px;font-size:.8rem">Si lo enciendes, puedes contestar diciendo “sí” o “otra vez”.</div>`:''}
+      </div>
       <div style="display:flex;gap:8px">
         ${lec.i>0?'<button class="btn b-gris" style="flex:1;margin:0" onclick="lecMueve(-1)">← Anterior</button>':''}
         ${lec.i<lec.slides.length-1?'<button class="btn b-verde" style="flex:1;margin:0" onclick="lecMueve(1)">Siguiente →</button>':''}
       </div>`;
-    decir(s.di||'');
+    pintarBotonMic();
+    // Lee la diapositiva y, al terminar, le PREGUNTA si entendió
+    if(leeSolo()) decirCB(s.di||'', mostrarAskLec);
+    else decir(s.di||'');
   }
-  function lecMueve(d){ lec.i=Math.max(0,Math.min(lec.slides.length-1,lec.i+d)); renderLeccion(); }
+  function ocultarAsk(){ const el=document.getElementById('askLeer'); if(el) el.style.display='none'; pararMic(); }
+  function mostrarAskLec(){
+    const el=document.getElementById('askLeer'); if(!el) return;
+    el.style.display='block';
+    decirCB('¿Entendiste? Toca sí, o toca: léelo otra vez.', ()=>escucharSiNo(lecSiEntendi, lecOtraVez));
+  }
+  function lecOtraVez(){
+    ocultarAsk();
+    const s=lec.slides[lec.i];
+    decirCB(s.di||'', mostrarAskLec);
+  }
+  function lecSiEntendi(){
+    ocultarAsk();
+    if(lec.i<lec.slides.length-1){ decir('¡Muy bien! Seguimos.'); setTimeout(()=>lecMueve(1), 700); }
+    else decir('¡Excelente! Ahora vamos a practicar.');
+  }
+  function lecMueve(d){ pararMic(); lec.i=Math.max(0,Math.min(lec.slides.length-1,lec.i+d)); renderLeccion(); }
 
   // ===== 2) PRÁCTICA (20 preguntas variadas, con explicación) =====
   function quizPractica(){
@@ -379,7 +451,11 @@
       <div style="text-align:center;font-size:2rem" class="vfx-pop">${p.emoji||'❓'}</div>
       <h2 style="text-align:center" class="vfx-up">${p.prompt}</h2>
       <p style="text-align:center" class="mut">${p.sub}</p>${cuerpo}
-      <button class="btn b-gris" style="margin-top:10px" onclick="repetirPregunta()">🔊 Escuchar de nuevo</button>`;
+      <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+        <button class="btn b-gris" style="margin:0;flex:1;min-width:130px" onclick="repetirPregunta()">🔁 Léelo todo</button>
+        <button class="btn b-gris" style="margin:0;flex:1;min-width:130px" onclick="leerParte('pregunta')">🔊 Solo la pregunta</button>
+        ${p.tipo==='ops'?`<button class="btn b-gris" style="margin:0;flex:1;min-width:130px" onclick="leerParte('opciones')">🔊 Solo las alternativas</button>`:''}
+      </div>`;
     if(q.modo==='examen') pintaReloj();
     if(p.tipo==='escribe'){ const el=$('respTxt'); if(el) setTimeout(()=>el.focus(),60); }
     if(leeSolo()) setTimeout(()=>decir(textoPregunta(p)), 260);   // la app le lee la pregunta
