@@ -42,7 +42,11 @@
   <p id="h-curso"></p>
 </header>
 <div class="wrap">
-  <button class="back" onclick="location.href='inicio.html'">← Mis materias</button>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <button class="back" onclick="location.href='inicio.html'">← Mis materias</button>
+    <button id="btnLeer" onclick="toggleLeer()" title="La app te lee todo en voz alta"
+      style="border:0;border-radius:12px;padding:9px 14px;font-weight:800;cursor:pointer;background:#2bb673;color:#fff">🔊 Me leen: SÍ</button>
+  </div>
   <div id="app"></div>
 </div>
 
@@ -69,8 +73,61 @@
   function mezcla(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
   function elegir(a){ return a[Math.floor(Math.random()*a.length)]; }
   function sinOA(s){ return (s||'').replace(/^OA[^:]*:\s*/i,'').replace(/\s*\(OA[^)]*\)/gi,''); } // oculta códigos de objetivo
-  function decir(txt){ try{ if('speechSynthesis'in window){ const u=new SpeechSynthesisUtterance(txt); u.lang=(mat&&mat.lang)||'es-CL'; speechSynthesis.cancel(); speechSynthesis.speak(u); } }catch(e){} }
+  // ===== LECTURA EN VOZ ALTA (para los que aún no leen: 1° a 4°) =====
+  function limpiaTxt(s){ return String(s==null?'':s).replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim(); }
+  function gradoNum(){ return parseInt(String(G).replace(/\D/g,''),10)||5; }
+  // ¿La app lee sola? Por defecto SÍ en 1°-4°. El niño/apoderado puede cambiarlo (vfx_leer).
+  function leeSolo(){
+    try{ const m=localStorage.getItem('vfx_leer'); if(m==='1') return true; if(m==='0') return false; }catch(e){}
+    return gradoNum()<=4;
+  }
+  function vozEncendida(){ try{ return localStorage.getItem('mate_voz')!=='0'; }catch(e){ return true; } }
+  function _vozPref(){
+    try{
+      const vs=(speechSynthesis.getVoices()||[]);
+      const pref=(mat&&mat.lang&&/^en/i.test(mat.lang)) ? 'en' : 'es';
+      const nom=localStorage.getItem(pref==='en'?'vozIngles':'mate_voz_nombre')||'';
+      if(nom){ const v=vs.find(x=>x.name===nom); if(v) return v; }
+      const cand=vs.filter(v=>new RegExp('^'+pref,'i').test(v.lang||''));
+      return cand.find(v=>/google|siri|premium|enhanced|natural/i.test(v.name||'')) || cand[0] || null;
+    }catch(e){ return null; }
+  }
+  function decir(txt){
+    try{
+      if(!('speechSynthesis'in window) || !vozEncendida()) return;
+      const t=limpiaTxt(txt); if(!t) return;
+      speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(t);
+      const v=_vozPref();
+      if(v){ u.voice=v; u.lang=v.lang; } else { u.lang=(mat&&mat.lang)||'es-CL'; }
+      u.rate = gradoNum()<=2 ? 0.85 : (gradoNum()<=4 ? 0.92 : 1);  // más lento para los más chicos
+      speechSynthesis.speak(u);
+    }catch(e){}
+  }
   function decirItem(i){ const it=uActual.items[i]; if(it) decir(it.t+'. '+it.d); }
+  // Arma el texto hablado de una pregunta (enunciado + alternativas)
+  function textoPregunta(p){
+    let t=limpiaTxt(p.prompt)+'. '+limpiaTxt(p.sub)+'. ';
+    if(p.tipo==='vf') t+='¿Es verdadero o falso?';
+    else if(p.tipo==='escribe') t+='Escribe tu respuesta.';
+    else if(p.ops) t+=p.ops.map((o,i)=>'Opción '+(i+1)+': '+limpiaTxt(o.text)).join('. ');
+    return t;
+  }
+  function repetirPregunta(){ const p=q&&q.preg&&q.preg[q.i]; if(p) decir(textoPregunta(p)); }
+  function toggleLeer(){
+    const nuevo = leeSolo() ? '0' : '1';
+    try{ localStorage.setItem('vfx_leer', nuevo); }catch(e){}
+    if(nuevo==='0'){ try{ speechSynthesis.cancel(); }catch(e){} }
+    pintarBotonLeer();
+    if(nuevo==='1') repetirPregunta();
+  }
+  function pintarBotonLeer(){
+    const b=document.getElementById('btnLeer'); if(!b) return;
+    const on=leeSolo();
+    b.textContent = on ? '🔊 Me leen: SÍ' : '🔇 Me leen: NO';
+    b.style.background = on ? '#2bb673' : '#dbe3ec';
+    b.style.color = on ? '#fff' : '#26303b';
+  }
 
   // ---- Tutor adaptativo: dominio por CONCEPTO + repetición espaciada ----
   function mlKey(){ return 'vfx_ml_'+M+'_'+G; }
@@ -128,6 +185,9 @@
     if(!mat){ $('app').innerHTML='<div class="card">Materia no encontrada.</div>'; return; }
     $('h-ic').textContent=mat.emoji||'📚'; $('h-nom').textContent=mat.nombre; $('h-curso').textContent=G+'° Básico';
     document.title='VerbiFox · '+mat.nombre;
+    pintarBotonLeer();
+    // las voces del aparato llegan con retraso: refrescamos cuando estén
+    try{ if('speechSynthesis'in window) speechSynthesis.onvoiceschanged=()=>{}; }catch(e){}
     // ¿viene desde "Continuar donde quedé"? → directo a la actividad
     const uidP=params.get('u'), pasoP=params.get('paso');
     const uP=uidP && unidades.find(x=>x.id===uidP);
@@ -313,14 +373,16 @@
       cuerpo=`<input id="respTxt" autocomplete="off" autocapitalize="off" style="width:100%;padding:13px;border:2px solid var(--linea);border-radius:12px;font-size:1.05rem" placeholder="Escribe aquí…" onkeydown="if(event.key==='Enter')resp('txt')">
         <button class="op" style="margin-top:8px" onclick="resp('txt')">Responder ✔</button>`;
     } else {
-      cuerpo=p.ops.map((o,k)=>`<button class="op vfx-up" style="animation-delay:${k*50}ms" onclick="resp(${k})">${o.text}</button>`).join('');
+      cuerpo=p.ops.map((o,k)=>`<button class="op vfx-up" style="animation-delay:${k*50}ms" onclick="resp(${k})">${o.text}<span onclick="event.stopPropagation();decir(this.dataset.t)" data-t="${limpiaTxt(o.text).replace(/"/g,'&quot;')}" style="opacity:.65;margin-left:8px;cursor:pointer" title="Escuchar esta opción">🔊</span></button>`).join('');
     }
     $('app').innerHTML=`${head}
       <div style="text-align:center;font-size:2rem" class="vfx-pop">${p.emoji||'❓'}</div>
       <h2 style="text-align:center" class="vfx-up">${p.prompt}</h2>
-      <p style="text-align:center" class="mut">${p.sub}</p>${cuerpo}`;
+      <p style="text-align:center" class="mut">${p.sub}</p>${cuerpo}
+      <button class="btn b-gris" style="margin-top:10px" onclick="repetirPregunta()">🔊 Escuchar de nuevo</button>`;
     if(q.modo==='examen') pintaReloj();
     if(p.tipo==='escribe'){ const el=$('respTxt'); if(el) setTimeout(()=>el.focus(),60); }
+    if(leeSolo()) setTimeout(()=>decir(textoPregunta(p)), 260);   // la app le lee la pregunta
   }
   function resp(k){
     const p=q.preg[q.i]; let ok=false;
@@ -344,7 +406,9 @@
       <h2 style="text-align:center;color:${ok?'var(--verde)':'var(--rojo)'}" class="vfx-up">${ok?elegir(['¡Correcto!','¡Muy bien!','¡Excelente!','¡Crack!']):'Casi… ¡así se aprende!'}</h2>
       ${!ok&&correcta?`<p style="text-align:center;font-weight:800;color:var(--verde)">Respuesta: ${correcta}</p>`:''}
       <div class="card vfx-up" style="background:#f0f6ff">💡 <b>Por qué:</b> ${sinOA(p.porque)}</div>
+      <button class="btn b-gris" onclick="decir(${JSON.stringify((ok?'¡Correcto! ':'Casi. ')+(correcta?('La respuesta es '+correcta+'. '):'')+limpiaTxt(sinOA(p.porque)))})">🔊 Escuchar de nuevo</button>
       <button class="btn b-verde vfx-up" onclick="siguiente()">Siguiente ▶</button>`;
+    if(leeSolo()) setTimeout(()=>decir((ok?'¡Correcto! ':'Casi. ')+(correcta?('La respuesta es '+correcta+'. '):'')+limpiaTxt(sinOA(p.porque))), 260);
   }
   function siguiente(){ q.i++; render(); }
 
