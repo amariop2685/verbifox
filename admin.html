@@ -368,13 +368,28 @@ function renderSub(s){
       <button class="sec" onclick="pagar('${s.id}','${per}', ${s.plan?s.plan.precio_clp:0})">💰 Marcar pago recibido</button>
       <button class="sec" onclick="togglePac('${s.id}', ${s.cobro_automatico})">${s.cobro_automatico?'Apagar PAC':'Encender PAC'}</button>
       <button class="sec" onclick="toggleEstado('${s.id}','${s.estado}')">${s.estado==='activa'?'Suspender':'Reactivar'}</button>
+      <button class="sec" style="color:var(--rojo)" onclick="eliminarSub('${s.id}','${(s.plan?s.plan.nombre:s.plan_id).replace(/'/g,"\\'")}')">🗑️ Eliminar</button>
     </div>
   </div>`;
+}
+async function eliminarSub(subId, nombre){
+  if(ocupado) return;
+  if(!confirm('¿Eliminar la suscripción "'+nombre+'"?\n\nSe borra junto con sus pagos. Úsalo para quitar duplicados. No se puede deshacer.')) return;
+  ocupado=true;
+  try{ await VFX.adminEliminarSub(subId); await cargar(); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
+  finally{ ocupado=false; }
 }
 
 let ocupado=false;
 async function crearSub(parentId){
-  if(ocupado) return; ocupado=true;
+  if(ocupado) return;
+  // Evitar duplicados: avisar si la familia ya tiene un plan activo
+  const fam=DATA.apoderados.find(a=>a.id===parentId);
+  if(fam && (fam.subs||[]).some(s=>s.estado==='activa')){
+    if(!confirm('Esta familia YA tiene un plan activo.\n\nSi activas otro, quedarán dos (duplicado). ¿Continuar de todas formas?\n\n(Tip: para reemplazarlo, elimina primero el plan actual con 🗑️.)')) return;
+  }
+  ocupado=true;
   try{
     await VFX.adminCrearSuscripcion({
       parent_id: parentId,
