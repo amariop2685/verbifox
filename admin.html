@@ -243,8 +243,9 @@ function pillEstado(e){
   const x=m[e]||['pend',e]; return `<span class="pill ${x[0]}">${x[1]}</span>`;
 }
 function stat(n,l,color){ return `<div style="background:var(--gris);border-radius:10px;padding:10px;text-align:center"><div style="font-size:1.3rem;font-weight:800;${color?'color:'+color:''}">${n}</div><div class="mut" style="font-size:.72rem">${l}</div></div>`; }
+function familias(){ return DATA.apoderados.filter(a=>!a.esCoDe); }
 function renderResumen(){
-  const ap=DATA.apoderados; let activas=0,cort=0,pend=0,ingreso=0;
+  const ap=familias(); let activas=0,cort=0,pend=0,ingreso=0;
   for(const a of ap) for(const s of (a.subs||[])){
     if(s.estado==='activa'){ if(s.cortesia) cort++; else { activas++; ingreso+=s.plan?s.plan.precio_clp:0; } }
     else if(s.estado==='pendiente') pend++;
@@ -258,8 +259,9 @@ function renderResumen(){
   </div>`;
 }
 function renderFiltros(){
-  const c={todas:DATA.apoderados.length};
-  for(const k of ['activa','cortesia','pendiente','vencida','sin']) c[k]=DATA.apoderados.filter(a=>estadoSub(a)===k).length;
+  const fam=familias();
+  const c={todas:fam.length};
+  for(const k of ['activa','cortesia','pendiente','vencida','sin']) c[k]=fam.filter(a=>estadoSub(a)===k).length;
   $('filtros').innerHTML=Object.keys(EST_LABEL).map(k=>
     `<button class="${fEstado===k?'pri':'sec'}" onclick="setFiltro('${k}')">${EST_LABEL[k]} (${c[k]||0})</button>`).join('');
 }
@@ -271,9 +273,9 @@ function renderLista(){
   const cont=$('lista');
   if(!DATA.apoderados.length){ cont.innerHTML='<div class="card mut">Aún no hay apoderados. Cuando alguien cree su cuenta, aparece aquí.</div>'; return; }
   const q=fTexto.trim().toLowerCase();
-  let ap=DATA.apoderados.filter(a=>{
+  let ap=familias().filter(a=>{                 // el 2° apoderado NO es una fila propia: va dentro de su familia
     if(fEstado!=='todas' && estadoSub(a)!==fEstado) return false;
-    if(q){ const t=((a.nombre||'')+' '+(a.email||'')+' '+(a.rut||'')).toLowerCase(); if(!t.includes(q)) return false; }
+    if(q){ const co=a.coApoderado||{}; const t=((a.nombre||'')+' '+(a.email||'')+' '+(a.rut||'')+' '+(co.nombre||'')+' '+(co.email||'')).toLowerCase(); if(!t.includes(q)) return false; }
     return true;
   }).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
   if(!ap.length){ cont.innerHTML='<div class="card mut">Nada coincide con el filtro o la búsqueda.</div>'; return; }
@@ -303,8 +305,21 @@ function renderAp(a){
   const planTxt = a.subs.length ? a.subs.map(s=>s.plan?s.plan.nombre:s.plan_id).join(', ') : '—';
   const nomComp = ((a.nombre||'')+' '+(a.apellidos||'')).trim();
   const nom = nomComp || (a.email?a.email.split('@')[0]:'') || '(sin nombre)';
+  const co = a.coApoderado;
+  const coNom = co ? (((co.nombre||'')+' '+(co.apellidos||'')).trim() || (co.email?co.email.split('@')[0]:'') || '2° apoderado') : '';
+  const coBadge = co ? ' <span class="pill ok" title="Familia con 2 apoderados">👥 2</span>' : '';
+  const coBlock = co
+    ? `<div style="background:#eef7ff;border-radius:10px;padding:10px 12px;margin:0 0 10px">
+        <b>👥 Segundo apoderado:</b> ${coNom} <span class="mut">${co.email||''}${co.rut?(' · '+co.rut):''}</span>
+        <div class="acc" style="margin-top:6px">
+          <button class="sec" onclick='editarApoderado(${JSON.stringify({id:co.id,nombre:co.nombre||"",apellidos:co.apellidos||"",rut:co.rut||"",telefono:co.telefono||"",email:co.email||""})})'>✏️ Editar</button>
+          <button class="sec" onclick="recuperarClaveDe('${(co.email||'').replace(/'/g,"\\'")}')">🔑 Recuperación</button>
+          <button class="sec" style="color:var(--rojo)" onclick="quitarCoAdmin('${a.id}','${(coNom).replace(/'/g,"\\'")}')">Quitar vínculo</button>
+        </div>
+      </div>`
+    : `<div class="mut" style="margin:0 0 10px">Sin segundo apoderado.</div>`;
   return `<tr class="fila" onclick="toggleDet('${a.id}')">
-    <td style="min-width:150px"><b>${nom}</b><span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px">${a.email||''}</span></td>
+    <td style="min-width:150px"><b>${nom}</b>${coBadge}<span class="mut" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px">${a.email||''}</span></td>
     <td style="white-space:nowrap">${a.rut||'—'}</td>
     <td>${hijos}</td>
     <td>${planTxt}</td>
@@ -317,6 +332,7 @@ function renderAp(a){
         <button class="sec" onclick="recuperarClaveDe('${(a.email||'').replace(/'/g,"\\'")}')">🔑 Enviar recuperación de clave</button>
         <button class="sec" style="color:var(--rojo)" onclick="eliminarApoderado('${a.id}','${(a.nombre||a.email||'').replace(/'/g,"\\'")}')">🗑️ Eliminar cuenta</button>
       </div>
+      ${coBlock}
       <div class="mut" style="margin:2px 0 6px">Estudiantes:</div>
       <div style="margin-bottom:8px">${a.hijos.length ? a.hijos.map(h=>`<span class="pill pend" style="margin:2px 4px 2px 0;display:inline-flex;align-items:center;gap:6px">${h.avatar||''} ${h.nombre} · PIN ${h.login_code||'—'} <button onclick="eliminarHijo('${h.id}','${(h.nombre||'').replace(/'/g,"\\'")}')" style="background:none;color:var(--rojo);padding:0 2px;font-size:.95rem" title="Quitar estudiante">✕</button></span>`).join('') : '<span class="mut">sin estudiantes aún</span>'}</div>
       ${subs}
@@ -439,6 +455,11 @@ async function eliminarApoderado(id, quien){
 async function eliminarHijo(id, nombre){
   if(!confirm('¿Quitar al estudiante "'+nombre+'"? Se borra su avance. No se puede deshacer.')) return;
   try{ await VFX.adminBorrarHijo(id); await cargar(); }
+  catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
+async function quitarCoAdmin(primaryId, nombre){
+  if(!confirm('¿Quitar a "'+nombre+'" como segundo apoderado de esta familia?\n\n(Su cuenta no se elimina; solo deja de ver a los niños.)')) return;
+  try{ await VFX.adminQuitarCo(primaryId); await cargar(); }
   catch(e){ alert('No se pudo: '+(e.message||e)); }
 }
 async function recuperarClaveDe(email){

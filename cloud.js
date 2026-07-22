@@ -461,18 +461,29 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       catch (e) { return false; }
     },
     async adminTodo() {
-      const [pf, st, su, pl] = await Promise.all([
+      const [pf, st, su, pl, co] = await Promise.all([
         sb.from('profiles').select('*'),
         sb.from('students').select('*'),
         sb.from('subscriptions').select('*'),
         sb.from('plans').select('*'),
+        sb.from('co_apoderados').select('primary_id, co_id'),
       ]);
       const planes = pl.data || [];
+      const perfiles = pf.data || [];
+      const links = co.data || [];
       const subs = (su.data || []).map(s => ({ ...s, plan: planes.find(p => p.id === s.plan_id) }));
-      const apoderados = (pf.data || []).map(p => ({
+      const coDe = {};   // co_id -> primary_id
+      const primaryCo = {}; // primary_id -> co profile
+      for (const l of links) {
+        coDe[l.co_id] = l.primary_id;
+        primaryCo[l.primary_id] = perfiles.find(p => p.id === l.co_id) || { id: l.co_id };
+      }
+      const apoderados = perfiles.map(p => ({
         ...p,
         hijos: (st.data || []).filter(x => x.parent_id === p.id),
         subs: subs.filter(x => x.parent_id === p.id),
+        esCoDe: coDe[p.id] || null,       // si este perfil es 2° apoderado, id del principal
+        coApoderado: primaryCo[p.id] || null, // si este perfil es principal, el 2° apoderado
       }));
       return { apoderados, planes };
     },
@@ -503,6 +514,11 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
     // Activar / desactivar un plan (solo admin; los activos son los que ve el apoderado)
     async adminTogglePlan(id, activo) {
       const { error } = await sb.from('plans').update({ activo: !!activo }).eq('id', id);
+      if (error) throw error;
+    },
+    // Quitar el vínculo del segundo apoderado de una familia (admin)
+    async adminQuitarCo(primaryId) {
+      const { error } = await sb.from('co_apoderados').delete().eq('primary_id', primaryId);
       if (error) throw error;
     },
 
