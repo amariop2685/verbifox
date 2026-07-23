@@ -11,48 +11,48 @@ window.CONTENIDO = {
      "nombre": "Mi Cuerpo y mis Sentidos",
      "emoji": "🧍",
      "oa": "OA6: Identificar y describir la ubicación y función de los sentidos, y proponer medidas para protegerlos.",
-     "intro": "Descubramos las partes de nuestro cuerpo y cómo los cinco sentidos nos ayudan a explorar y conocer todo lo que nos rodea.",
+     "intro": "Conoce tu cuerpo y tus cinco sentidos.",
      "items": [
       {
        "t": "Cabeza",
-       "d": "La parte de arriba del cuerpo donde están los ojos, las orejas, la nariz y la boca.",
+       "d": "Va arriba del cuerpo. Tiene ojos, nariz y boca.",
        "e": "🧠",
        "en": "Head"
       },
       {
        "t": "Sentido de la vista",
-       "d": "Con los ojos vemos los colores, las formas y todo lo que hay a nuestro alrededor.",
+       "d": "Con los ojos vemos colores y formas.",
        "e": "👀",
        "en": "Sight"
       },
       {
        "t": "Sentido del oído",
-       "d": "Con las orejas escuchamos los sonidos, la música y las voces de las personas.",
+       "d": "Con las orejas escuchamos sonidos.",
        "e": "👂",
        "en": "Hearing"
       },
       {
        "t": "Sentido del olfato",
-       "d": "Con la nariz olemos las flores, la comida y sabemos si algo huele rico o feo.",
+       "d": "Con la nariz olemos las cosas.",
        "e": "👃",
        "en": "Smell"
       },
       {
        "t": "Sentido del gusto",
-       "d": "Con la lengua sabemos si la comida es dulce, salada, ácida o amarga.",
+       "d": "Con la lengua sentimos los sabores.",
        "e": "👅",
        "en": "Taste"
       },
       {
        "t": "Sentido del tacto",
-       "d": "Con la piel y las manos sentimos si algo es suave, áspero, frío o caliente.",
+       "d": "Con la piel sentimos frío y calor.",
        "e": "✋",
        "en": "Touch"
       }
      ],
      "datos": [
-      "¿Sabías que… tu piel es el órgano más grande de todo tu cuerpo y te protege por completo?",
-      "¿Sabías que… para cuidar tus ojos no debes mirar directamente el sol, porque su luz es muy fuerte y puede dañarlos?"
+      "Tu piel es el órgano más grande del cuerpo.",
+      "Nunca mires el sol: puede dañar tus ojos."
      ],
      "retos": [
       {
@@ -82,48 +82,48 @@ window.CONTENIDO = {
      "nombre": "Los Animales y sus Hogares",
      "emoji": "🐾",
      "oa": "OA2/OA5: Observar y comparar animales según cómo se desplazan e identificar su hábitat.",
-     "intro": "Conozcamos los animales de Chile y del mundo, cómo son, cómo se mueven y dónde viven.",
+     "intro": "Conoce los animales y dónde viven.",
      "items": [
       {
        "t": "Animal terrestre",
-       "d": "Animal que vive en la tierra y camina, corre o salta, como el perro o el zorro.",
+       "d": "Vive en la tierra. Camina o corre.",
        "e": "🦊",
        "en": "Land animal"
       },
       {
        "t": "Animal acuático",
-       "d": "Animal que vive en el agua, como el pez o el lobo marino del mar de Chile.",
+       "d": "Vive en el agua. Nada.",
        "e": "🐟",
        "en": "Aquatic animal"
       },
       {
        "t": "Mamífero",
-       "d": "Animal que cuando es bebé toma leche de su mamá, como el perro, el gato o la vaca.",
+       "d": "De bebé toma leche de su mamá.",
        "e": "🐄",
        "en": "Mammal"
       },
       {
        "t": "Ave",
-       "d": "Animal con plumas, dos alas y pico, que nace de un huevo.",
+       "d": "Tiene plumas, alas y pico.",
        "e": "🐦",
        "en": "Bird"
       },
       {
        "t": "Insecto",
-       "d": "Animal muy pequeño con seis patas, como la hormiga, la abeja o la mariquita.",
+       "d": "Es chiquito y tiene seis patas.",
        "e": "🐜",
        "en": "Insect"
       },
       {
        "t": "Hábitat",
-       "d": "El lugar de la naturaleza donde vive un animal y encuentra su comida y refugio.",
+       "d": "Es el lugar donde vive un animal.",
        "e": "🏞️",
        "en": "Habitat"
       }
      ],
      "datos": [
-      "¿Sabías que… el cóndor es una de las aves que vuela más alto del mundo y vive en la cordillera de los Andes en Chile?",
-      "¿Sabías que… el pingüino es un ave, pero no vuela por el aire; usa sus alas como aletas para nadar en el mar!"
+      "El cóndor vuela muy alto en los Andes.",
+      "El pingüino es un ave que no vuela: nada."
      ],
      "retos": [
       {
@@ -153,48 +153,48 @@ window.CONTENIDO = {
      "nombre": "Las Plantas y sus Necesidades",
      "emoji": "🌱",
      "oa": "OA1: Reconocer, por medio de la exploración, que las plantas son seres vivos que crecen y necesitan agua, luz y aire para vivir.",
-     "intro": "Exploremos cómo son las plantas, que también son seres vivos, y qué necesitan para crecer sanas y fuertes.",
+     "intro": "Descubre cómo viven las plantas.",
      "items": [
       {
        "t": "Planta",
-       "d": "Ser vivo que nace, crece y necesita agua, luz y aire, como un árbol o una flor.",
+       "d": "Ser vivo. Necesita agua, luz y aire.",
        "e": "🌿",
        "en": "Plant"
       },
       {
        "t": "Raíz",
-       "d": "La parte de la planta que está bajo la tierra y toma el agua del suelo.",
+       "d": "Está bajo la tierra. Toma el agua.",
        "e": "🥕",
        "en": "Root"
       },
       {
        "t": "Hoja",
-       "d": "Parte verde de la planta que recibe la luz del sol para que la planta viva.",
+       "d": "Parte verde. Recibe la luz del sol.",
        "e": "🍃",
        "en": "Leaf"
       },
       {
        "t": "Flor",
-       "d": "Parte colorida de algunas plantas; de la flor pueden nacer los frutos y las semillas.",
+       "d": "Parte de colores. De ahí salen los frutos.",
        "e": "🌸",
        "en": "Flower"
       },
       {
        "t": "Semilla",
-       "d": "Parte pequeña de la que nace una planta nueva cuando se siembra en la tierra.",
+       "d": "De ella nace una planta nueva.",
        "e": "🌰",
        "en": "Seed"
       },
       {
        "t": "Luz del sol",
-       "d": "La luz que las plantas necesitan para poder crecer sanas y fuertes.",
+       "d": "Las plantas la necesitan para crecer.",
        "e": "☀️",
        "en": "Sunlight"
       }
      ],
      "datos": [
-      "¿Sabías que… las plantas son seres vivos, igual que los animales, porque nacen, crecen y necesitan agua y aire para vivir?",
-      "¿Sabías que… la araucaria es un árbol muy antiguo de Chile, sagrado para el pueblo mapuche, que da unos frutos llamados piñones?"
+      "Las plantas también nacen y crecen.",
+      "La araucaria da piñones. Es sagrada para los mapuche."
      ],
      "retos": [
       {
@@ -224,48 +224,48 @@ window.CONTENIDO = {
      "nombre": "El Tiempo y las Estaciones",
      "emoji": "🌤️",
      "oa": "OA12/OA13: Reconocer los cambios del tiempo atmosférico y describir las estaciones del año en Chile.",
-     "intro": "Aprendamos cómo cambia el tiempo cada día y cómo son las cuatro estaciones del año en Chile.",
+     "intro": "Mira cómo cambia el tiempo y el año.",
      "items": [
       {
        "t": "Sol",
-       "d": "Estrella que nos da luz y calor durante el día para ver y sentir el calorcito.",
+       "d": "Nos da luz y calor de día.",
        "e": "☀️",
        "en": "Sun"
       },
       {
        "t": "Lluvia",
-       "d": "Gotas de agua que caen de las nubes y riegan la tierra y las plantas.",
+       "d": "Gotas de agua que caen del cielo.",
        "e": "🌧️",
        "en": "Rain"
       },
       {
        "t": "Nube",
-       "d": "Grupo de gotitas de agua en el cielo de donde a veces cae la lluvia.",
+       "d": "Muchas gotitas de agua en el cielo.",
        "e": "☁️",
        "en": "Cloud"
       },
       {
        "t": "Verano",
-       "d": "Estación de mucho calor donde el sol brilla fuerte y vamos a la playa.",
+       "d": "Hace mucho calor. Vamos a la playa.",
        "e": "🏖️",
        "en": "Summer"
       },
       {
        "t": "Invierno",
-       "d": "Estación fría con lluvia, y en la cordillera de Chile cae nieve blanca.",
+       "d": "Hace frío. Llueve y cae nieve.",
        "e": "❄️",
        "en": "Winter"
       },
       {
        "t": "Otoño",
-       "d": "Estación en que las hojas de muchos árboles se ponen café y caen al suelo.",
+       "d": "Las hojas se ponen café y caen.",
        "e": "🍂",
        "en": "Autumn"
       }
      ],
      "datos": [
-      "¿Sabías que… cuando en Chile es verano, en muchos países del norte del mundo es invierno al mismo tiempo?",
-      "¿Sabías que… en el desierto de Atacama, en el norte de Chile, casi nunca llueve? ¡Es uno de los lugares más secos del mundo!"
+      "En Chile es verano cuando en Europa es invierno.",
+      "En el desierto de Atacama casi nunca llueve."
      ],
      "retos": [
       {
@@ -295,48 +295,48 @@ window.CONTENIDO = {
      "nombre": "Cuidamos Nuestro Planeta",
      "emoji": "🌎",
      "oa": "OAT/Actitud: Manifestar interés por el entorno natural y cuidar el medio ambiente con hábitos responsables.",
-     "intro": "Descubramos cómo cuidar la naturaleza, ahorrar agua y mantener limpio nuestro planeta entre todos.",
+     "intro": "Aprende a cuidar la naturaleza.",
      "items": [
       {
        "t": "Reciclar",
-       "d": "Separar la basura para que el papel, el vidrio y el plástico se puedan usar de nuevo.",
+       "d": "Separar la basura para usarla de nuevo.",
        "e": "♻️",
        "en": "Recycle"
       },
       {
        "t": "Agua",
-       "d": "Líquido muy valioso que necesitamos para vivir y que no debemos desperdiciar.",
+       "d": "La necesitamos para vivir. No la botes.",
        "e": "💧",
        "en": "Water"
       },
       {
        "t": "Basura",
-       "d": "Cosas que ya no usamos y debemos botar en el lugar correcto, nunca al suelo.",
+       "d": "Lo que ya no sirve. Va al basurero.",
        "e": "🗑️",
        "en": "Trash"
       },
       {
        "t": "Árbol",
-       "d": "Planta grande que da sombra, limpia el aire y hogar a muchos animales.",
+       "d": "Planta grande. Da sombra y aire limpio.",
        "e": "🌳",
        "en": "Tree"
       },
       {
        "t": "Contaminación",
-       "d": "Cuando ensuciamos el aire, el agua o la tierra y dañamos la naturaleza.",
+       "d": "Ensuciar el aire, el agua o la tierra.",
        "e": "🏭",
        "en": "Pollution"
       },
       {
        "t": "Cuidado",
-       "d": "Proteger la naturaleza y a los seres vivos con respeto y responsabilidad.",
+       "d": "Proteger la naturaleza y a los seres vivos.",
        "e": "💚",
        "en": "Care"
       }
      ],
      "datos": [
-      "¿Sabías que… reciclar ayuda a que usemos menos árboles y menos energía para fabricar cosas nuevas?",
-      "¿Sabías que… los árboles ayudan a limpiar el aire y dan oxígeno, que es el aire que necesitamos para respirar?"
+      "Reciclar ayuda a salvar árboles.",
+      "Los árboles limpian el aire que respiramos."
      ],
      "retos": [
       {
