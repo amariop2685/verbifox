@@ -41,7 +41,10 @@
 <link rel="stylesheet" href="ui.css">
 </head>
 <body>
-  <a href="panel.html" id="btnApoderado" style="position:fixed;top:10px;right:10px;z-index:50;background:rgba(255,255,255,.9);color:#c05a00;border:1px solid rgba(255,255,255,.6);border-radius:999px;padding:8px 14px;font-weight:800;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:.9rem">👨‍👩‍👦 Apoderado</a>
+  <div style="position:fixed;top:10px;right:10px;z-index:50;display:flex;gap:8px">
+    <a href="panel.html" id="btnApoderado" style="background:rgba(255,255,255,.9);color:#c05a00;border:1px solid rgba(255,255,255,.6);border-radius:999px;padding:8px 14px;font-weight:800;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:.9rem">👨‍👩‍👦 Apoderado</a>
+    <button id="btnSalirSesion" onclick="salirSesion()" style="display:none;background:rgba(255,255,255,.9);color:#c0392b;border:1px solid rgba(255,255,255,.6);border-radius:999px;padding:8px 14px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:.9rem">🚪 Salir</button>
+  </div>
   <div class="hero">
     <div class="fox">🦊</div>
     <h1 id="saludo">¡Hola!</h1>
@@ -170,7 +173,22 @@
       const m=(String(h.curso||'').match(/[1-6]/)||[])[0];
       if(m){ curso=m+'°'; localStorage.setItem('vfx_curso',curso); }
     }catch(e){}
-    pintarPerfiles(); render();
+    pintarPerfiles(); render(); pintarSalir();
+  }
+  // ---- Salir de la sesión (guarda el avance antes) ----
+  let _haySesion=false;
+  function pintarSalir(){
+    const b=document.getElementById('btnSalirSesion'); if(!b) return;
+    let hay=_haySesion;
+    try{ hay = hay || !!(VFX.studentActivo&&VFX.studentActivo()) || !!(VFX.codigoActivo&&VFX.codigoActivo()); }catch(e){}
+    b.style.display = hay ? 'block' : 'none';
+  }
+  async function salirSesion(){
+    if(!confirm('¿Salir de la sesión?\n\nTu avance queda guardado. Después hay que entrar de nuevo con el PIN o con la cuenta del apoderado.')) return;
+    try{ if(window.VFX && VFX.subirEstadoNube) await VFX.subirEstadoNube(); }catch(e){}   // guarda el avance
+    try{ ['vfx_student','vfx_student_nombre','vfx_code','vfx_code_info','vfx_ruta','jugador'].forEach(k=>localStorage.removeItem(k)); }catch(e){}
+    try{ if(window.VFX && VFX.salir) await VFX.salir(); }catch(e){}
+    location.href='inicio.html';
   }
   function cambiarPerfil(){
     try{ if(window.VFX && VFX.subirEstadoNube) VFX.subirEstadoNube(); }catch(e){} // guarda antes de cambiar
@@ -275,6 +293,7 @@
     try{
       const s = await VFX.sesion();
       if(s){
+        _haySesion=true;
         misHijos = await VFX.misHijos();
         const sid = VFX.studentActivo && VFX.studentActivo();
         const h = misHijos.find(x=>x.id===sid);
@@ -285,7 +304,7 @@
         } else if(misHijos.length===1){
           elegirPerfil(misHijos[0].id); return;
         }
-        pintarPerfiles(); render();
+        pintarPerfiles(); render(); pintarSalir();
         return;
       }
       // SIN sesión: ¿el niño ya entró con su código en este dispositivo?
@@ -295,7 +314,7 @@
         if((VFX.studentActivo&&VFX.studentActivo())!==info.id) VFX.setStudentActivo(info.id, info.nombre);
         const m=(String(info.curso||'').match(/[1-6]/)||[])[0];
         if(m){ curso=m+'°'; try{localStorage.setItem('vfx_curso',curso);}catch(e){} }
-        pintarPerfiles(); render();
+        pintarPerfiles(); render(); pintarSalir();
         return;
       }
       // Sin sesión ni código → invitar a entrar con código
