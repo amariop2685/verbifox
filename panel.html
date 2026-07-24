@@ -782,8 +782,16 @@ async function crearHijo(){
 
 // ---- arranque ----
 let enRecuperacion = /type=recovery/.test(location.hash||'');
+// ¿El enlace del correo venció o ya se usó? (Supabase lo indica en el hash)
+function enlaceVencido(){ return /error=access_denied|otp_expired|error_code=/i.test(location.hash||''); }
 document.addEventListener('vfx-listo', async ()=>{
   VFX.alRecuperar(()=>{ enRecuperacion=true; modoRecuperacion(); });
+  if(enlaceVencido()){
+    try{ history.replaceState(null,'',location.pathname); }catch(e){}
+    $('auth').classList.remove('hidden');
+    showErr('⏰ Ese enlace ya venció o se usó. Escribe tu correo aquí abajo y toca "¿Olvidaste tu contraseña?" para pedir uno nuevo.');
+    return;
+  }
   if(enRecuperacion){ modoRecuperacion(); return; }
   const s = await VFX.sesion();
   if(s){ await cargarPanel(); }
