@@ -516,6 +516,17 @@ window.VERBIFOX_SUPABASE_KEY = 'sb_publishable_uW5H9qKGxxLDk9MoWVPQDg_dNuvYEuI';
       const { error } = await sb.from('subscriptions').delete().eq('id', id);
       if (error) throw error;
     },
+    // Dar cortesía (acceso gratis) a una familia: crea la suscripción activa y de cortesía.
+    // meses = duración (1 mensual, 12 anual). Toma el plan familiar según #hijos.
+    async adminDarCortesia(parentId, { meses = 12, studentId = null } = {}) {
+      const plan_id = meses >= 12 ? 'familia-1-anual' : 'familia-1-mensual';
+      const { data, error } = await sb.rpc('admin_activar_suscripcion', {
+        p_parent: parentId, p_student: studentId || null, p_plan: plan_id,
+        p_inicio: null, p_cobro: false, p_cortesia: true,
+      });
+      if (error) throw error;
+      return data;
+    },
     // Activar / desactivar un plan (solo admin; los activos son los que ve el apoderado)
     async adminTogglePlan(id, activo) {
       const { error } = await sb.from('plans').update({ activo: !!activo }).eq('id', id);

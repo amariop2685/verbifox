@@ -358,6 +358,7 @@ function renderAp(a){
   </tr>
   <tr id="det_${a.id}" class="hidden"><td colspan="6" style="background:var(--gris)">
       <div class="acc" style="margin:2px 0 10px">
+        <button class="pri" style="background:var(--verde)" onclick="darCortesia('${a.id}','${(a.nombre||a.email||'').replace(/'/g,"\\'")}')">🎁 Dar cortesía gratis</button>
         <button class="sec" onclick='editarApoderado(${JSON.stringify({id:a.id,nombre:a.nombre||"",apellidos:a.apellidos||"",rut:a.rut||"",telefono:a.telefono||"",email:a.email||""})})'>✏️ Editar datos</button>
         <button class="sec" onclick="recuperarClaveDe('${(a.email||'').replace(/'/g,"\\'")}')">🔑 Enviar recuperación de clave</button>
         <button class="sec" style="color:var(--rojo)" onclick="eliminarApoderado('${a.id}','${(a.nombre||a.email||'').replace(/'/g,"\\'")}')">🗑️ Eliminar cuenta</button>
@@ -560,6 +561,23 @@ async function vincularCo(primaryId){
     await cargar();
     alert('✅ Vinculado como segundo apoderado.');
   }catch(e){ alert('No se pudo: '+(e.message||e)); }
+}
+async function darCortesia(parentId, nombre){
+  if(ocupado) return;
+  const fam=DATA.apoderados.find(a=>a.id===parentId);
+  if(fam && (fam.subs||[]).some(s=>s.estado==='activa')){
+    if(!confirm('"'+nombre+'" ya tiene un plan activo. ¿Igual quieres darle cortesía? (quedarían dos, mejor elimina el otro con 🗑️)')) return;
+  }
+  const r=prompt('🎁 Dar cortesía GRATIS a "'+nombre+'".\n\n¿Por cuánto tiempo? Escribe:\n  1 = un año (recomendado para familias fundadoras)\n  2 = un mes','1');
+  if(r===null) return;
+  const meses = (r.trim()==='2') ? 1 : 12;
+  ocupado=true;
+  try{
+    await VFX.adminDarCortesia(parentId, { meses });
+    await cargar();
+    alert('✅ ¡Listo! '+nombre+' tiene acceso GRATIS por '+(meses>=12?'un año':'un mes')+'. Ya no le saldrá el aviso de prueba vencida.');
+  }catch(e){ alert('No se pudo: '+(e.message||e)); }
+  finally{ ocupado=false; }
 }
 async function quitarCoAdmin(primaryId, nombre){
   if(!confirm('¿Quitar a "'+nombre+'" como segundo apoderado de esta familia?\n\n(Su cuenta no se elimina; solo deja de ver a los niños.)')) return;
