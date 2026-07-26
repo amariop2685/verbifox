@@ -67,7 +67,20 @@
   <div id="msj"></div>
   <div class="abajo">
     <button class="btn b-ayuda" id="btnAyuda" onclick="toggleAyuda()">🇪🇸 Ayuda</button>
+    <button class="btn b-ayuda" onclick="abrirVoces()">🗣️ Voz</button>
     <button class="btn b-verde" onclick="nuevo()">🎲 Otras</button>
+  </div>
+
+  <!-- Selector de voz (para elegir la más clara del aparato) -->
+  <div id="vozBox" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(15,27,52,.6);align-items:center;justify-content:center;padding:16px">
+    <div style="background:#fff;color:#26303b;border-radius:18px;max-width:420px;width:100%;max-height:82vh;overflow:auto;padding:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <b>🗣️ Elige la voz más clara</b>
+        <button onclick="cerrarVoces()" style="border:0;background:none;font-size:1.3rem;cursor:pointer">✕</button>
+      </div>
+      <p style="color:#5a6b7a;font-size:.85rem;margin:6px 0 8px">Toca una voz para escucharla. Las de arriba y las que dicen "natural" suelen sonar más humanas.</p>
+      <div id="vozLista"></div>
+    </div>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -82,16 +95,49 @@ function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||wi
 function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
 function msj(t,l){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', l?3200:2000); }
 
-// ---- Voz inglesa (la que configuró el apoderado) ----
+// ---- Voz inglesa CLARA ----
+function vocesEn(){
+  const vs=(('speechSynthesis'in window)?speechSynthesis.getVoices():[])||[];
+  let en=vs.filter(v=>/^en/i.test(v.lang||''));
+  if(localStorage.getItem('dialecto')==='UK'){ const uk=en.filter(v=>(v.lang||'').toLowerCase().startsWith('en-gb')); if(uk.length) en=uk; }
+  return en;
+}
+// puntaje: más alto = voz más clara/humana
+function puntajeVoz(v){
+  const n=(v.name||'').toLowerCase(); let s=0;
+  if(/google/.test(n)) s+=10;
+  if(/siri/.test(n)) s+=9;
+  if(/natural|neural|premium|enhanced|online/.test(n)) s+=8;
+  if(!v.localService) s+=4;
+  if(/samantha|aria|jenny|guy|ava|allison|susan|karen|daniel|serena|zoe|nathan|libby|sonia|emma|michelle/.test(n)) s+=3;
+  // voces de "novedad"/robot (nombres en inglés y su versión en español de macOS)
+  if(/fred|albert|bad news|good news|bells|boing|bubbles|cellos|jester|organ|superstar|trinoids|whisper|wobble|zarvox|junior|deranged|hysterical|ralph|kathy|bahh|buenas noticias|malas noticias|campana|burbujas|susurro|organo|órgano|guas[oó]n|ranurado|bocina|trombon|caja de m[uú]sica|globos/.test(n)) s-=12;
+  return s;
+}
 function _vozEn(){
-  try{ const vs=(speechSynthesis.getVoices()||[]);
-    const nom=localStorage.getItem('vozIngles')||''; if(nom){ const v=vs.find(x=>x.name===nom); if(v) return v; }
-    const dia=(localStorage.getItem('dialecto')==='UK')?'en-gb':'en-us';
-    let en=vs.filter(v=>(v.lang||'').toLowerCase().startsWith(dia)); if(!en.length) en=vs.filter(v=>/^en/i.test(v.lang||''));
-    return en.find(v=>/google|siri|natural|enhanced/i.test(v.name||''))||en[0]||null;
+  try{ const en=vocesEn(); if(!en.length) return null;
+    const nom=localStorage.getItem('vozIngles')||''; if(nom){ const v=en.find(x=>x.name===nom); if(v) return v; }
+    return en.slice().sort((a,b)=>puntajeVoz(b)-puntajeVoz(a))[0];
   }catch(e){ return null; }
 }
-function decir(t,cb){ try{ if(!('speechSynthesis'in window)){ if(cb)cb(); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=.9; if(cb)u.onend=cb; speechSynthesis.speak(u);}catch(e){ if(cb)cb(); } }
+function decir(t,cb){ try{ if(!('speechSynthesis'in window)){ if(cb)cb(); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=.8; u.pitch=1; if(cb)u.onend=cb; speechSynthesis.speak(u);}catch(e){ if(cb)cb(); } }
+
+// ---- Selector de voz dentro del juego (elige la que mejor se entienda) ----
+function abrirVoces(){
+  const en=vocesEn().slice().sort((a,b)=>puntajeVoz(b)-puntajeVoz(a));
+  const box=$('vozBox'), lista=$('vozLista');
+  if(!en.length){ lista.innerHTML='<p style="color:#26303b">Este aparato aún no tiene voces en inglés. Espera un segundo y vuelve a abrir.</p>'; }
+  else{
+    const actual=localStorage.getItem('vozIngles')||'';
+    lista.innerHTML=en.map(v=>{ const sel=v.name===actual; const nat=v.localService?'':' · natural';
+      return `<div onclick="probarVoz('${v.name.replace(/'/g,"\\'")}')" style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 12px;margin:6px 0;border:2px solid ${sel?'#f97316':'#e3e9ef'};border-radius:12px;cursor:pointer;background:${sel?'#fff4e0':'#fff'};color:#26303b;font-weight:700">
+        <span>${v.name}<span style="opacity:.6;font-weight:600">${nat}</span></span><span>${sel?'✅':'▶'}</span></div>`; }).join('');
+  }
+  box.style.display='flex';
+}
+function cerrarVoces(){ $('vozBox').style.display='none'; }
+function probarVoz(n){ try{ localStorage.setItem('vozIngles', n); }catch(e){} decir('Hello! Which, who, where, whose.'); abrirVoces(); }
+if('speechSynthesis'in window){ try{ speechSynthesis.onvoiceschanged=()=>{ if($('vozBox') && $('vozBox').style.display==='flex') abrirVoces(); }; }catch(e){} }
 
 // ---- Datos ----
 function gn(){ return (String(localStorage.getItem('vfx_curso')||'5°').match(/[1-6]/)||['5'])[0]; }
@@ -230,7 +276,7 @@ requestAnimationFrame(animar);
 function _gate(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('ingles'); }
 document.addEventListener('vfx-listo', _gate);
 if(window.VFX) _gate();
-if('speechSynthesis'in window){ try{ speechSynthesis.onvoiceschanged=()=>{}; speechSynthesis.getVoices(); }catch(e){} }
+if('speechSynthesis'in window){ try{ speechSynthesis.getVoices(); }catch(e){} }
 
 pintarSelector(); nuevo();
 </script>
