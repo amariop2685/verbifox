@@ -19,11 +19,11 @@
   .consigna .rep{ background:#fff; color:var(--morado); border:0; border-radius:50%; width:38px; height:38px; font-size:1.2rem; cursor:pointer; flex-shrink:0; }
   .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
 
-  #cards{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:10px 12px; position:relative; z-index:4; }
-  .card{ width:150px; min-height:118px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:10px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; transition:transform .15s, border-color .15s, background .15s; }
+  #cards{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:8px 10px; position:relative; z-index:4; }
+  .card{ width:44vw; max-width:150px; min-height:92px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:14px; padding:8px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; transition:transform .15s, border-color .15s, background .15s; }
   .card.tap{ cursor:pointer; } .card.tap:active{ transform:scale(.96); }
-  .card .emo{ font-size:2.8rem; line-height:1; }
-  .card .es{ font-size:.82rem; opacity:.85; font-weight:700; display:none; }
+  .card .emo{ font-size:clamp(1.9rem,8.5vw,2.6rem); line-height:1; }
+  .card .es{ font-size:.78rem; opacity:.85; font-weight:700; display:none; }
   .card.ayuda .es{ display:block; }
   .card .en{ font-size:1rem; font-weight:900; color:#ffd76a; display:none; }
   .card.lista{ background:rgba(43,182,115,.22); border:2px solid var(--verde); }
@@ -187,22 +187,28 @@ function iniciarArrastra(){
   $('consigna').innerHTML=`Arrastra cada palabra a su dibujo 🖐️ · <b>${temaSel.emoji} ${temaSel.nombre}</b>`;
   pintarCards(false);
   const tab=$('tablero'); tab.innerHTML=''; chips=[];
-  const W=innerWidth, H=innerHeight;
-  const yTop=$('cards').getBoundingClientRect().bottom+16;
-  const zona=Math.max(120, H-yTop-100);
+  const yTop=$('cards').getBoundingClientRect().bottom+14;
   mezcla(pares).forEach(p=>{
     const c=document.createElement('div'); c.className='chip pop';
     c.innerHTML=`${p.en} <span class="spk">🔊</span>`;
     c._en=p.en;
-    const x=20+Math.random()*(W-160), y=yTop+Math.random()*zona;
-    c._x=x; c._y=y; c.style.left=x+'px'; c.style.top=y+'px';
     c._amp=2+Math.random()*2; c._sp=.5+Math.random()*.5; c._ph=Math.random()*7; c._ph2=Math.random()*7;
     c.querySelector('.spk').addEventListener('pointerdown',e=>{ e.stopPropagation(); decir(p.en); });
     arrastre(c); tab.appendChild(c); chips.push(c);
   });
-  chips.forEach(c=>{ clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; });
+  // ya en el DOM (con su tamaño real): acomódalas en filas dentro de la banda libre
+  acomodarChips(chips, yTop);
 }
-function clamp(c){ const w=c.offsetWidth,h=c.offsetHeight,m=6; c._x=Math.max(m,Math.min(innerWidth-w-m,c._x)); c._y=Math.max(m,Math.min(innerHeight-h-m,c._y)); }
+function reservaAbajo(){ const a=document.querySelector('.abajo'); return (a?a.offsetHeight:70)+12; }
+function clamp(c){ const w=c.offsetWidth,h=c.offsetHeight,m=6; c._x=Math.max(m,Math.min(innerWidth-w-m,c._x)); c._y=Math.max(m,Math.min(innerHeight-reservaAbajo()-h-m,c._y)); }
+// Acomoda las fichas ordenadas en filas dentro de la banda libre (sin pisar los botones)
+function acomodarChips(list, yTop){
+  const W=innerWidth, gap=10; let x=gap, y=yTop, rowH=0;
+  list.forEach(c=>{ const w=c.offsetWidth, h=c.offsetHeight;
+    if(x+w+gap>W-gap){ x=gap; y+=rowH+gap; rowH=0; }
+    c._x=x; c._y=y; x+=w+gap; rowH=Math.max(rowH,h); });
+  list.forEach(c=>{ c._x+=6+Math.random()*4; clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; });
+}
 function arrastre(c){
   c.addEventListener('pointerdown', ev=>{
     if(c._done) return;
