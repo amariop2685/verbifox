@@ -110,6 +110,10 @@ window.TEMAS_INGLES = {
     frases:[{en:'I like pizza.',es:'Me gusta la pizza.'},{en:"I don't like onions.",es:'No me gustan las cebollas.'}] }
 ],
 "5": [
+  { id:'preguntas', nombre:'Palabras de pregunta (Wh-)', emoji:'❓', oa:'Which, Who, Where, Whose — hacer y responder preguntas',
+    intro:'Which? ¿Cuál? · Who? ¿Quién? · Where? ¿Dónde? · Whose? ¿De quién?',
+    palabras:[{en:'Which',es:'¿Cuál? (elegir entre opciones)',e:'🔀'},{en:'Who',es:'¿Quién? (una persona)',e:'🧑'},{en:'Where',es:'¿Dónde? (un lugar)',e:'📍'},{en:'Whose',es:'¿De quién? (posesión)',e:'🔑'},{en:'What',es:'¿Qué?',e:'❓'},{en:'When',es:'¿Cuándo? (el tiempo)',e:'🕐'},{en:'Why',es:'¿Por qué? (la razón)',e:'🤔'},{en:'How',es:'¿Cómo? (la manera)',e:'🔧'}],
+    frases:[{en:'Which color do you like?',es:'¿Cuál color te gusta?'},{en:'Who is your teacher?',es:'¿Quién es tu profesor(a)?'},{en:'Where do you live?',es:'¿Dónde vives?'},{en:'Whose backpack is this?',es:'¿De quién es esta mochila?'},{en:'Which one is bigger?',es:'¿Cuál es más grande?'},{en:'Who is she?',es:'¿Quién es ella?'},{en:'Where is my book?',es:'¿Dónde está mi libro?'},{en:'Whose pencil is that?',es:'¿De quién es ese lápiz?'}] },
   { id:'saludos', nombre:'Saludos e información personal', emoji:'👋', oa:'Dar y pedir información personal · saludar y despedirse',
     intro:"What's your name? · How old are you? · Where are you from?",
     palabras:[{en:'Hello / Hi',es:'Hola',e:'👋'},{en:'Goodbye / Bye',es:'Adiós',e:'👋'},{en:'Good morning',es:'Buenos días',e:'🌅'},{en:'Good afternoon',es:'Buenas tardes',e:'🌇'},{en:'name',es:'nombre',e:'🪪'},{en:'age',es:'edad',e:'🎂'},{en:'Nice to meet you',es:'Mucho gusto',e:'🤝'},{en:'Thank you',es:'Gracias',e:'🙏'},{en:'Please',es:'Por favor',e:'🙂'},{en:'Sorry',es:'Perdón / Lo siento',e:'😔'}],
