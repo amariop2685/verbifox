@@ -277,6 +277,7 @@
   <section id="s-menu" class="screen">
     <h2 id="menu-titulo">¿Qué quieres hacer?</h2>
     <button class="btn btn-verde" onclick="verTemas()" style="font-size:1.15rem;padding:18px;">📚 TEMAS DE MI CURSO<br><span style="font-size:.8rem;font-weight:600;">vocabulario y frases · con quiz</span></button>
+    <button class="btn btn-azul" onclick="location.href='ingles-juego.html'" style="font-size:1.15rem;padding:18px;">🎮 JUGAR: ARRASTRA Y UNE<br><span style="font-size:.8rem;font-weight:600;">arrastra la palabra a su dibujo 🖐️</span></button>
     <button class="btn btn-morado" onclick="mostrar('s-verbos-menu')" style="font-size:1.15rem;padding:18px;">🦸 LOS VERBOS<br><span style="font-size:.8rem;font-weight:600;">memoria, exámenes y juegos</span></button>
     <div class="grid2" style="margin-top:4px;">
       <button class="btn btn-amarillo" onclick="verArmaduraIng()" style="margin:0;">🛡️ Mi Armadura</button>
@@ -1641,11 +1642,7 @@ document.addEventListener('keydown', e=>{
 // Entrar directo como el último jugador (Martín), saltando al menú.
 window.addEventListener('DOMContentLoaded', ()=>{
   try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); mostrar('s-menu'); } }catch(e){}
-  // Deep-link desde el buscador: ?tema=<id> abre ese tema directo
-  try{
-    const tid=new URLSearchParams(location.search).get('tema');
-    if(tid){ setTimeout(()=>{ try{ verTemas(); abrirTema(tid); }catch(e){} }, 250); }
-  }catch(e){}
+  try{ const tid=new URLSearchParams(location.search).get('tema'); if(tid){ setTimeout(()=>{ try{ verTemas(); abrirTema(tid); }catch(e){} }, 250); } }catch(e){}
 });
 // Candado por suscripción: si el niño no tiene Inglés, muestra pantalla de bloqueo.
 function _gateIng(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('ingles'); }
