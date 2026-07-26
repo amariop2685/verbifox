@@ -10,23 +10,27 @@
   *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
   body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; overflow:hidden; touch-action:none; color:#fff; }
 
-  .top{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 92px 12px 14px; flex-wrap:wrap; position:relative; z-index:8; }
-  select{ background:#fff; color:#26303b; border:0; border-radius:12px; padding:9px 12px; font-weight:800; font-size:.95rem; max-width:60vw; }
-  .consigna{ width:max-content; max-width:92vw; margin:2px auto 0; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:8px 16px; font-weight:800; text-align:center; }
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 92px 10px 14px; flex-wrap:wrap; position:relative; z-index:8; }
+  select{ background:#fff; color:#26303b; border:0; border-radius:12px; padding:9px 12px; font-weight:800; font-size:.95rem; max-width:56vw; }
+  .tabs{ display:flex; gap:6px; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; }
+  .tab{ border:0; background:transparent; color:#cdd7e4; font-weight:800; padding:8px 12px; border-radius:9px; cursor:pointer; font-size:.9rem; }
+  .tab.on{ background:#fff; color:#26303b; }
+  .consigna{ width:max-content; max-width:92vw; margin:2px auto 0; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:8px 16px; font-weight:800; text-align:center; display:flex; align-items:center; gap:10px; justify-content:center; }
+  .consigna .rep{ background:#fff; color:var(--morado); border:0; border-radius:50%; width:38px; height:38px; font-size:1.2rem; cursor:pointer; flex-shrink:0; }
   .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
 
-  /* Tarjetas-dibujo (destino) */
   #cards{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; padding:10px 12px; position:relative; z-index:4; }
-  .card{ width:150px; min-height:120px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:10px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; transition:transform .15s, border-color .15s, background .15s; }
-  .card .emo{ font-size:2.6rem; line-height:1; }
-  .card .es{ font-size:.85rem; opacity:.9; font-weight:700; }
+  .card{ width:150px; min-height:118px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:16px; padding:10px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; transition:transform .15s, border-color .15s, background .15s; }
+  .card.tap{ cursor:pointer; } .card.tap:active{ transform:scale(.96); }
+  .card .emo{ font-size:2.8rem; line-height:1; }
+  .card .es{ font-size:.82rem; opacity:.85; font-weight:700; display:none; }
+  .card.ayuda .es{ display:block; }
   .card .en{ font-size:1rem; font-weight:900; color:#ffd76a; display:none; }
   .card.lista{ background:rgba(43,182,115,.22); border:2px solid var(--verde); }
-  .card.lista .en{ display:block; }
+  .card.lista .en{ display:block; } .card.lista .es{ display:block; }
   .card.mal{ animation:sacude .4s; border-color:var(--rojo); }
   @keyframes sacude{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
 
-  /* Fichas de palabra (arrastrables) */
   #tablero{ position:fixed; inset:0; pointer-events:none; z-index:6; }
   #tablero .chip{ pointer-events:auto; }
   .chip{ position:absolute; background:linear-gradient(145deg,#6ba3ff,#2f6fdb); color:#fff; font-weight:900; padding:12px 16px; border-radius:14px; box-shadow:0 5px 14px rgba(0,0,0,.45); cursor:grab; user-select:none; font-size:1.05rem; white-space:nowrap; will-change:transform; display:flex; align-items:center; gap:8px; }
@@ -36,28 +40,34 @@
   @keyframes pop{ 0%{transform:scale(.5)} 60%{transform:scale(1.15)} 100%{transform:scale(1)} }
 
   .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:12px; z-index:7; flex-wrap:wrap; }
-  .btn{ border:0; border-radius:14px; padding:13px 20px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn{ border:0; border-radius:14px; padding:12px 18px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
   .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
   .b-verde{ background:var(--verde); color:#fff; } .b-gris{ background:#dbe3ec; color:#26303b; } .b-morado{ background:var(--morado); color:#fff; }
+  .b-ayuda{ background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.4); }
+  .b-ayuda.on{ background:#ffd76a; color:#26303b; border-color:#ffd76a; }
 
-  #msj{ position:fixed; left:50%; top:120px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:30; display:none; text-align:center; max-width:88vw; }
+  #msj{ position:fixed; left:50%; top:150px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:30; display:none; text-align:center; max-width:88vw; }
 </style>
 </head>
 <body>
   <div class="top">
     <select id="selTema" onchange="cambiarTema()"></select>
+    <div class="tabs">
+      <button class="tab on" id="tabDrag" onclick="setModo('arrastra')">🖐️ Une</button>
+      <button class="tab" id="tabTPR" onclick="setModo('escucha')">👂 Escucha</button>
+    </div>
     <div style="font-weight:900" id="score">0/0</div>
   </div>
   <a class="volver" href="ingles.html">✕ Salir</a>
-  <div class="consigna" id="consigna">Arrastra cada palabra a su dibujo 🖐️</div>
+  <div class="consigna" id="consigna"></div>
 
   <div id="cards"></div>
   <div id="tablero"></div>
 
   <div id="msj"></div>
   <div class="abajo">
-    <button class="btn b-morado" onclick="repetirTodo()">🔊 Escuchar</button>
-    <button class="btn b-verde" onclick="nuevo()">🎲 Otras palabras</button>
+    <button class="btn b-ayuda" id="btnAyuda" onclick="toggleAyuda()">🇪🇸 Ayuda</button>
+    <button class="btn b-verde" onclick="nuevo()">🎲 Otras</button>
   </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -72,23 +82,25 @@ function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||wi
 function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
 function msj(t,l){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', l?3200:2000); }
 
-// ---- Voz inglesa (usa la que configuró el apoderado) ----
+// ---- Voz inglesa (la que configuró el apoderado) ----
 function _vozEn(){
-  try{
-    const vs=(speechSynthesis.getVoices()||[]);
-    const nom=localStorage.getItem('vozIngles')||'';
-    if(nom){ const v=vs.find(x=>x.name===nom); if(v) return v; }
-    const dia=(localStorage.getItem('dialecto')==='UK')?'en-GB':'en-US';
-    let en=vs.filter(v=>(v.lang||'').toLowerCase().startsWith(dia.toLowerCase())); if(!en.length) en=vs.filter(v=>/^en/i.test(v.lang||''));
+  try{ const vs=(speechSynthesis.getVoices()||[]);
+    const nom=localStorage.getItem('vozIngles')||''; if(nom){ const v=vs.find(x=>x.name===nom); if(v) return v; }
+    const dia=(localStorage.getItem('dialecto')==='UK')?'en-gb':'en-us';
+    let en=vs.filter(v=>(v.lang||'').toLowerCase().startsWith(dia)); if(!en.length) en=vs.filter(v=>/^en/i.test(v.lang||''));
     return en.find(v=>/google|siri|natural|enhanced/i.test(v.name||''))||en[0]||null;
   }catch(e){ return null; }
 }
-function decir(t){ try{ if(!('speechSynthesis'in window))return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=.92; speechSynthesis.speak(u);}catch(e){} }
+function decir(t,cb){ try{ if(!('speechSynthesis'in window)){ if(cb)cb(); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=.9; if(cb)u.onend=cb; speechSynthesis.speak(u);}catch(e){ if(cb)cb(); } }
 
-// ---- Datos: temas del curso ----
+// ---- Datos ----
 function gn(){ return (String(localStorage.getItem('vfx_curso')||'5°').match(/[1-6]/)||['5'])[0]; }
 function temas(){ return (window.TEMAS_INGLES||{})[gn()]||[]; }
-let temaSel=null, chips=[], pares=[], hechos=0;
+let temaSel=null, chips=[], pares=[], hechos=0, modo='arrastra';
+let ayuda=false; try{ ayuda=localStorage.getItem('ing_ayuda')==='1'; }catch(e){}
+// repetición: cuenta de veces vista por palabra (menos vistas = más prioridad)
+function vistas(){ try{ return JSON.parse(localStorage.getItem('ing_vistas')||'{}'); }catch(e){ return {}; } }
+function sumaVista(en){ try{ const v=vistas(); v[en]=(v[en]||0)+1; localStorage.setItem('ing_vistas', JSON.stringify(v)); }catch(e){} }
 
 function pintarSelector(){
   const ts=temas();
@@ -98,27 +110,36 @@ function pintarSelector(){
   temaSel = ts.find(t=>t.id===$('selTema').value) || ts[0];
 }
 function cambiarTema(){ temaSel = temas().find(t=>t.id===$('selTema').value); nuevo(); }
+function setModo(m){ modo=m; $('tabDrag').classList.toggle('on',m==='arrastra'); $('tabTPR').classList.toggle('on',m==='escucha'); nuevo(); }
+function toggleAyuda(){ ayuda=!ayuda; try{ localStorage.setItem('ing_ayuda',ayuda?'1':'0'); }catch(e){} $('btnAyuda').classList.toggle('on',ayuda); document.querySelectorAll('.card').forEach(c=>c.classList.toggle('ayuda',ayuda)); }
 
 function nuevo(){
   if(!temaSel){ $('consigna').textContent='No hay temas para este curso todavía.'; return; }
-  // elige hasta 5 palabras con emoji propio
-  const pool = mezcla((temaSel.palabras||[]).filter(p=>p.e));
-  pares = pool.slice(0,5);
+  // prioriza palabras menos vistas (repetición espaciada natural)
+  const v=vistas();
+  const pool = (temaSel.palabras||[]).filter(p=>p.e).slice().sort((a,b)=>(v[a.en]||0)-(v[b.en]||0));
+  const cabeza = pool.slice(0, Math.min(8, pool.length));
+  pares = mezcla(cabeza).slice(0,5);
   hechos=0;
-  $('consigna').innerHTML=`Arrastra cada palabra a su dibujo 🖐️ · <b>${temaSel.emoji} ${temaSel.nombre}</b>`;
-  render();
+  $('btnAyuda').classList.toggle('on',ayuda);
+  (modo==='escucha') ? iniciarTPR() : iniciarArrastra();
 }
 
-function render(){
+function pintarCards(tappable){
   $('score').textContent = hechos+'/'+pares.length;
-  // Tarjetas destino (dibujo + español)
   $('cards').innerHTML = pares.map((p,i)=>`
-    <div class="card" id="card${i}" data-en="${p.en.replace(/"/g,'&quot;')}">
+    <div class="card${ayuda?' ayuda':''}${tappable?' tap':''}" id="card${i}" data-en="${p.en.replace(/"/g,'&quot;')}"
+      ${tappable?`onclick="tocaCard(${i})"`:''}>
       <div class="emo">${p.e}</div>
       <div class="es">${p.es}</div>
       <div class="en">${p.en}</div>
     </div>`).join('');
-  // Fichas de palabra (arrastrables), repartidas abajo
+}
+
+// ===== MODO 1: ARRASTRA Y UNE (imagen ← palabra) =====
+function iniciarArrastra(){
+  $('consigna').innerHTML=`Arrastra cada palabra a su dibujo 🖐️ · <b>${temaSel.emoji} ${temaSel.nombre}</b>`;
+  pintarCards(false);
   const tab=$('tablero'); tab.innerHTML=''; chips=[];
   const W=innerWidth, H=innerHeight;
   const yTop=$('cards').getBoundingClientRect().bottom+16;
@@ -126,55 +147,67 @@ function render(){
   mezcla(pares).forEach(p=>{
     const c=document.createElement('div'); c.className='chip pop';
     c.innerHTML=`${p.en} <span class="spk">🔊</span>`;
-    c._en=p.en; c._done=false;
+    c._en=p.en;
     const x=20+Math.random()*(W-160), y=yTop+Math.random()*zona;
     c._x=x; c._y=y; c.style.left=x+'px'; c.style.top=y+'px';
     c._amp=2+Math.random()*2; c._sp=.5+Math.random()*.5; c._ph=Math.random()*7; c._ph2=Math.random()*7;
     c.querySelector('.spk').addEventListener('pointerdown',e=>{ e.stopPropagation(); decir(p.en); });
     arrastre(c); tab.appendChild(c); chips.push(c);
   });
-  // ya en el DOM: ajusta cada ficha para que NO se salga de la pantalla
   chips.forEach(c=>{ clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; });
 }
-
-// Mantiene la ficha SIEMPRE dentro de la pantalla
-function clamp(c){
-  const w=c.offsetWidth, h=c.offsetHeight, m=6;
-  c._x=Math.max(m, Math.min(innerWidth  - w - m, c._x));
-  c._y=Math.max(m, Math.min(innerHeight - h - m, c._y));
-}
+function clamp(c){ const w=c.offsetWidth,h=c.offsetHeight,m=6; c._x=Math.max(m,Math.min(innerWidth-w-m,c._x)); c._y=Math.max(m,Math.min(innerHeight-h-m,c._y)); }
 function arrastre(c){
   c.addEventListener('pointerdown', ev=>{
     if(c._done) return;
     c._x+=c._wx||0; c._y+=c._wy||0; c._wx=0; c._wy=0; c._drag=true;
-    c.classList.add('drag'); c.style.transform='scale(1.08)';
-    c.style.left=c._x+'px'; c.style.top=c._y+'px';
+    c.classList.add('drag'); c.style.transform='scale(1.08)'; c.style.left=c._x+'px'; c.style.top=c._y+'px';
     c.setPointerCapture(ev.pointerId);
     const dx=ev.clientX-c._x, dy=ev.clientY-c._y;
     const move=e=>{ c._x=e.clientX-dx; c._y=e.clientY-dy; clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; };
-    const up=e=>{
-      c.classList.remove('drag'); c.style.transform=''; c._drag=false;
-      c.removeEventListener('pointermove',move); c.removeEventListener('pointerup',up);
-      soltar(c);
-    };
+    const up=e=>{ c.classList.remove('drag'); c.style.transform=''; c._drag=false; c.removeEventListener('pointermove',move); c.removeEventListener('pointerup',up); soltar(c); };
     c.addEventListener('pointermove',move); c.addEventListener('pointerup',up);
   });
 }
-
 function soltar(c){
   const cx=c._x+c.offsetWidth/2, cy=c._y+c.offsetHeight/2;
   let card=null;
-  pares.forEach((p,i)=>{ const el=$('card'+i); if(!el||el.classList.contains('lista'))return;
-    const r=el.getBoundingClientRect(); if(cx>=r.left&&cx<=r.right&&cy>=r.top&&cy<=r.bottom) card=el; });
+  pares.forEach((p,i)=>{ const el=$('card'+i); if(!el||el.classList.contains('lista'))return; const r=el.getBoundingClientRect(); if(cx>=r.left&&cx<=r.right&&cy>=r.top&&cy<=r.bottom) card=el; });
   if(card && card.dataset.en===c._en){
-    // ¡correcto!
     card.classList.add('lista'); c._done=true; c.remove();
-    beep(660,.12); setTimeout(()=>beep(880,.14),110); decir(c._en);
+    beep(660,.12); setTimeout(()=>beep(880,.14),110); decir(c._en); sumaVista(c._en);
     hechos++; $('score').textContent=hechos+'/'+pares.length;
     if(hechos>=pares.length) ganar();
-  } else if(card){
-    card.classList.add('mal'); setTimeout(()=>card.classList.remove('mal'),400);
-    beep(180,.25);
+  } else if(card){ card.classList.add('mal'); setTimeout(()=>card.classList.remove('mal'),400); beep(180,.25); }
+}
+
+// ===== MODO 2: ESCUCHA Y TOCA (TPR · comprender oyendo, sin traducir) =====
+let cola=[], objetivo=null;
+function iniciarTPR(){
+  $('tablero').innerHTML=''; chips=[];
+  cola=mezcla(pares).slice();
+  pintarCards(true);
+  $('consigna').innerHTML=`👂 Escucha y toca el dibujo <button class="rep" onclick="repiteTPR()">🔊</button>`;
+  siguienteTPR();
+}
+function siguienteTPR(){
+  if(!cola.length){ ganar(); return; }
+  objetivo=cola[0];
+  setTimeout(()=>decir(objetivo.en), 350);
+}
+function repiteTPR(){ if(objetivo) decir(objetivo.en); }
+function tocaCard(i){
+  if(modo!=='escucha' || !objetivo) return;
+  const el=$('card'+i); if(!el || el.classList.contains('lista')) return;
+  if(el.dataset.en===objetivo.en){
+    el.classList.add('lista'); beep(660,.12); setTimeout(()=>beep(880,.14),110);
+    decir(objetivo.en); sumaVista(objetivo.en);
+    hechos++; $('score').textContent=hechos+'/'+pares.length;
+    cola.shift();
+    if(!cola.length) ganar(); else setTimeout(siguienteTPR, 700);
+  } else {
+    el.classList.add('mal'); setTimeout(()=>el.classList.remove('mal'),400); beep(180,.25);
+    setTimeout(()=>decir(objetivo.en), 300);
   }
 }
 
@@ -182,24 +215,18 @@ function ganar(){
   chime();
   try{ if(window.Caballero && Caballero.premiar) Caballero.premiar(2); }catch(e){}
   try{ const k='ing_juego'; localStorage.setItem(k,String((parseInt(localStorage.getItem(k)||'0',10)||0)+1)); }catch(e){}
-  $('consigna').innerHTML='🎉 ¡Excelente! Uniste todas las palabras. 💎 +2 gemas';
-  msj('🏆 ¡Muy bien! Sigamos con otras palabras.', true);
-  setTimeout(nuevo, 2800);
+  $('consigna').innerHTML='🎉 ¡Excellent! 💎 +2 gemas';
+  msj('🏆 ¡Muy bien! Vamos con más palabras.', true);
+  setTimeout(nuevo, 2600);
 }
 
-function repetirTodo(){ let i=0; pares.forEach(p=>{ setTimeout(()=>decir(p.en), i*900); i++; }); }
-
-// vibración molecular suave de las fichas
-function animar(ts){
-  const t=(ts||0)/1000;
-  for(const c of chips){ if(c._done||c._drag) continue;
-    c._wx=c._amp*Math.sin(t*c._sp+c._ph); c._wy=c._amp*Math.cos(t*c._sp*.9+c._ph2);
-    c.style.transform=`translate(${c._wx.toFixed(1)}px,${c._wy.toFixed(1)}px)`; }
+// vibración molecular suave (solo fichas del modo arrastra)
+function animar(ts){ const t=(ts||0)/1000;
+  for(const c of chips){ if(c._done||c._drag) continue; c._wx=c._amp*Math.sin(t*c._sp+c._ph); c._wy=c._amp*Math.cos(t*c._sp*.9+c._ph2); c.style.transform=`translate(${c._wx.toFixed(1)}px,${c._wy.toFixed(1)}px)`; }
   requestAnimationFrame(animar);
 }
 requestAnimationFrame(animar);
 
-// Candado por suscripción (Inglés), igual que la app
 function _gate(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('ingles'); }
 document.addEventListener('vfx-listo', _gate);
 if(window.VFX) _gate();
