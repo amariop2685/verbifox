@@ -1,10 +1,15 @@
 /* VerbiFox · Service Worker
-   Estrategia: RED PRIMERO (siempre lo más nuevo cuando hay internet),
-   con respaldo de caché para funcionar sin conexión. */
-const CACHE = 'vfx-v1';
+   Estrategia: RED PRIMERO y SIEMPRE REVALIDANDO con el servidor
+   (así se ve al instante lo más nuevo), con respaldo de caché offline. */
+const CACHE = 'vfx-v3';
 
 self.addEventListener('install', () => self.skipWaiting());
-self.addEventListener('activate', (e) => e.waitUntil(clients.claim()));
+self.addEventListener('activate', (e) => e.waitUntil((async () => {
+  // borra cachés viejas para que nadie se quede con la versión anterior
+  const keys = await caches.keys();
+  await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)));
+  await self.clients.claim();
+})()));
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
@@ -12,7 +17,8 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // Supabase/Mercado Pago van directo
   e.respondWith(
-    fetch(req).then((r) => {
+    // 'no-cache' obliga a revalidar con el servidor (trae lo nuevo si cambió)
+    fetch(req, { cache: 'no-cache' }).then((r) => {
       if (r && r.ok) {
         const copia = r.clone();
         caches.open(CACHE).then((k) => k.put(req, copia)).catch(() => {});
