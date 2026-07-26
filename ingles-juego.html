@@ -19,11 +19,11 @@
   .consigna .rep{ background:#fff; color:var(--morado); border:0; border-radius:50%; width:38px; height:38px; font-size:1.2rem; cursor:pointer; flex-shrink:0; }
   .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
 
-  #cards{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:8px 10px; position:relative; z-index:4; }
-  .card{ width:44vw; max-width:150px; min-height:92px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:14px; padding:8px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; transition:transform .15s, border-color .15s, background .15s; }
+  #cards{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:6px 10px; position:relative; z-index:4; }
+  .card{ width:43vw; max-width:150px; min-height:74px; background:rgba(255,255,255,.08); border:2px dashed rgba(255,255,255,.3); border-radius:14px; padding:6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; transition:transform .15s, border-color .15s, background .15s; }
   .card.tap{ cursor:pointer; } .card.tap:active{ transform:scale(.96); }
-  .card .emo{ font-size:clamp(1.9rem,8.5vw,2.6rem); line-height:1; }
-  .card .es{ font-size:.78rem; opacity:.85; font-weight:700; display:none; }
+  .card .emo{ font-size:clamp(1.7rem,7vw,2.4rem); line-height:1; }
+  .card .es{ font-size:.76rem; opacity:.85; font-weight:700; display:none; }
   .card.ayuda .es{ display:block; }
   .card .en{ font-size:1rem; font-weight:900; color:#ffd76a; display:none; }
   .card.lista{ background:rgba(43,182,115,.22); border:2px solid var(--verde); }
@@ -165,7 +165,8 @@ function nuevo(){
   const v=vistas();
   const pool = (temaSel.palabras||[]).filter(p=>p.e).slice().sort((a,b)=>(v[a.en]||0)-(v[b.en]||0));
   const cabeza = pool.slice(0, Math.min(8, pool.length));
-  pares = mezcla(cabeza).slice(0,5);
+  const N = (innerWidth<480 || innerHeight<720) ? 4 : 5;   // menos tarjetas en teléfonos
+  pares = mezcla(cabeza).slice(0, Math.min(N, cabeza.length));
   hechos=0;
   $('btnAyuda').classList.toggle('on',ayuda);
   (modo==='escucha') ? iniciarTPR() : iniciarArrastra();
@@ -196,18 +197,31 @@ function iniciarArrastra(){
     c.querySelector('.spk').addEventListener('pointerdown',e=>{ e.stopPropagation(); decir(p.en); });
     arrastre(c); tab.appendChild(c); chips.push(c);
   });
-  // ya en el DOM (con su tamaño real): acomódalas en filas dentro de la banda libre
-  acomodarChips(chips, yTop);
+  // ya en el DOM (con su tamaño real): acomódalas ancladas arriba de los botones
+  acomodarChips(chips);
 }
 function reservaAbajo(){ const a=document.querySelector('.abajo'); return (a?a.offsetHeight:70)+12; }
 function clamp(c){ const w=c.offsetWidth,h=c.offsetHeight,m=6; c._x=Math.max(m,Math.min(innerWidth-w-m,c._x)); c._y=Math.max(m,Math.min(innerHeight-reservaAbajo()-h-m,c._y)); }
-// Acomoda las fichas ordenadas en filas dentro de la banda libre (sin pisar los botones)
-function acomodarChips(list, yTop){
-  const W=innerWidth, gap=10; let x=gap, y=yTop, rowH=0;
-  list.forEach(c=>{ const w=c.offsetWidth, h=c.offsetHeight;
-    if(x+w+gap>W-gap){ x=gap; y+=rowH+gap; rowH=0; }
-    c._x=x; c._y=y; x+=w+gap; rowH=Math.max(rowH,h); });
-  list.forEach(c=>{ c._x+=6+Math.random()*4; clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; });
+// Acomoda las fichas en filas centradas, ancladas JUSTO ARRIBA de los botones (nunca encima)
+function acomodarChips(list){
+  const gap=8, W=innerWidth;
+  // agrupar fichas en filas según ancho real
+  const rows=[]; let row=[], rw=0;
+  list.forEach(c=>{ const w=c.offsetWidth+gap; if(rw+w>W-gap && row.length){ rows.push(row); row=[]; rw=0; } row.push(c); rw+=w; });
+  if(row.length) rows.push(row);
+  const rowH=Math.max.apply(null, list.map(c=>c.offsetHeight))+gap;
+  const buttonsTop=document.querySelector('.abajo').getBoundingClientRect().top;
+  const cardsBottom=$('cards').getBoundingClientRect().bottom+8;
+  const blockH=rows.length*rowH;
+  // centra el bloque de fichas en el espacio libre entre las tarjetas y los botones
+  let y=cardsBottom + Math.max(0, (buttonsTop-12-cardsBottom-blockH)/2);
+  if(y+blockH>buttonsTop-8) y=Math.max(cardsBottom, buttonsTop-8-blockH); // nunca pisar los botones
+  rows.forEach(r=>{
+    const totalW=r.reduce((a,c)=>a+c.offsetWidth+gap,0)-gap;
+    let x=Math.max(gap,(W-totalW)/2);
+    r.forEach(c=>{ c._x=x; c._y=y; x+=c.offsetWidth+gap; clamp(c); c.style.left=c._x+'px'; c.style.top=c._y+'px'; });
+    y+=rowH;
+  });
 }
 function arrastre(c){
   c.addEventListener('pointerdown', ev=>{
