@@ -1641,11 +1641,7 @@ document.addEventListener('keydown', e=>{
 // Entrar directo como el último jugador (Martín), saltando al menú.
 window.addEventListener('DOMContentLoaded', ()=>{
   try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); mostrar('s-menu'); } }catch(e){}
-  // Deep-link desde el buscador: ?tema=<id> abre ese tema directo
-  try{
-    const tid=new URLSearchParams(location.search).get('tema');
-    if(tid){ setTimeout(()=>{ try{ verTemas(); abrirTema(tid); }catch(e){} }, 250); }
-  }catch(e){}
+  try{ const tid=new URLSearchParams(location.search).get('tema'); if(tid){ setTimeout(()=>{ try{ verTemas(); abrirTema(tid); }catch(e){} }, 250); } }catch(e){}
 });
 // Candado por suscripción: si el niño no tiene Inglés, muestra pantalla de bloqueo.
 function _gateIng(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('ingles'); }

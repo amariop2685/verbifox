@@ -78,6 +78,18 @@
   </div>
 
   <div class="cursos" id="cursos"></div>
+
+  <!-- BUSCADOR DE TEMAS (todas las materias del curso) -->
+  <div class="wrap" style="max-width:640px;padding-top:6px">
+    <div style="position:relative">
+      <input id="buscaTema" oninput="buscarTema(this.value)" placeholder="🔎 Busca un tema del colegio (ej: Whose, animales, fracciones)"
+        style="width:100%;padding:14px 16px;border:2px solid var(--linea);border-radius:14px;font-size:1rem;box-shadow:0 3px 12px rgba(0,0,0,.05)">
+      <button id="buscaX" onclick="limpiarBusca()" style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#eef2f6;border:0;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:1rem">✕</button>
+    </div>
+    <p class="mut" style="text-align:center;margin:6px 0 0;font-size:.82rem">Escribe lo que mandaron a estudiar y te llevamos al tema exacto. 🎯</p>
+    <div id="buscaRes" style="margin-top:8px"></div>
+  </div>
+
   <div class="wrap">
     <div class="tit" id="subtit"></div>
     <div class="grid" id="grid"></div>
@@ -91,6 +103,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="cloud.js"></script>
 <script src="contenido.js"></script>
+<script src="temas-ingles.js"></script>
 <script>
   const $ = id => document.getElementById(id);
 
@@ -175,6 +188,51 @@
     }catch(e){}
     pintarPerfiles(); render(); pintarSalir();
   }
+  // ====== BUSCADOR DE TEMAS (todas las materias del curso) ======
+  function norm(s){ return (s==null?'':s).toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  let _idxCache={ g:null, data:null };
+  function construyeIndice(){
+    const gn=(curso.match(/[1-6]/)||[])[0]||'5';
+    if(_idxCache.g===gn && _idxCache.data) return _idxCache.data;
+    const idx=[];
+    // Materias del currículo (contenido.js)
+    const C=window.CONTENIDO||{};
+    for(const m in C){ const mat=C[m]; const us=(mat.cursos||{})[gn]||[];
+      for(const u of us) idx.push({
+        materia:mat.nombre, emojiMat:mat.emoji||'📚', tema:u.nombre, emoji:u.emoji||mat.emoji||'📚',
+        txt:norm((u.nombre||'')+' '+(u.intro||'')+' '+(u.oa||'')+' '+(u.items||[]).map(i=>i.t).join(' ')+' '+mat.nombre),
+        url:'materia.html?m='+m+'&g='+gn+'&u='+encodeURIComponent(u.id) });
+    }
+    // Inglés (temas-ingles.js)
+    const T=window.TEMAS_INGLES||{}; const te=T[gn]||[];
+    for(const t of te) idx.push({
+      materia:'Inglés', emojiMat:'🔤', tema:t.nombre, emoji:t.emoji||'🔤',
+      txt:norm((t.nombre||'')+' '+(t.oa||'')+' '+(t.intro||'')+' '+(t.palabras||[]).map(p=>p.en+' '+p.es).join(' ')+' ingles english'),
+      url:'ingles.html?tema='+encodeURIComponent(t.id) });
+    // Matemática: juegos interactivos (sirven para cualquier curso)
+    [['➗','División — repartir en grupos','division','division reparto grupos'],
+     ['✖️','Multiplicación — grupos y matriz','multiplicacion','multiplicar tablas por veces'],
+     ['➕','Suma y resta con canje','suma-resta','sumar restar llevar prestado decenas unidades'],
+     ['🪙','El dinero — La feria','feria','dinero plata vuelto pagar monedas billetes']
+    ].forEach(x=>idx.push({ materia:'Matemática', emojiMat:'➗', tema:x[1], emoji:x[0],
+        txt:norm(x[1]+' matematica '+x[3]), url:x[2]+'.html?src=busca' }));
+    _idxCache={ g:gn, data:idx }; return idx;
+  }
+  function buscarTema(q){
+    const res=$('buscaRes'); $('buscaX').style.display=q?'block':'none';
+    const nq=norm(q).trim();
+    if(nq.length<2){ res.innerHTML=''; return; }
+    const idx=construyeIndice();
+    const hits=idx.filter(x=>x.txt.includes(nq));
+    if(!hits.length){ res.innerHTML='<div class="mut" style="text-align:center;padding:12px;background:#fff;border:1px solid var(--linea);border-radius:12px">Sin resultados para “'+q+'” en '+curso+' Básico. Prueba otra palabra.</div>'; return; }
+    res.innerHTML='<div class="mut" style="font-size:.8rem;margin:2px 0 4px">'+hits.length+' tema(s) en '+curso+' Básico:</div>'+
+      hits.slice(0,25).map(h=>`<a href="${h.url}" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--linea);border-radius:12px;padding:10px 12px;margin:6px 0;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+        <span style="font-size:1.6rem;flex-shrink:0">${h.emoji}</span>
+        <span style="flex:1;min-width:0"><b>${h.tema}</b><br><span class="mut" style="font-size:.8rem">${h.emojiMat} ${h.materia}</span></span>
+        <span style="color:var(--naranja);font-weight:800;font-size:1.2rem">▶</span></a>`).join('');
+  }
+  function limpiarBusca(){ $('buscaTema').value=''; buscarTema(''); $('buscaTema').focus(); }
+
   // ---- Salir de la sesión (guarda el avance antes) ----
   let _haySesion=false;
   function pintarSalir(){
