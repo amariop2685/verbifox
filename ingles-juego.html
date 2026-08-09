@@ -81,6 +81,7 @@
       <button onclick="cerrarLaminas()" style="background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer">✕ Cerrar</button>
     </div>
     <img id="lamImg" alt="" style="max-width:100%;max-height:68vh;border-radius:14px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.45)">
+    <div id="lamSvg" style="display:none;width:100%;max-width:520px;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.45)"></div>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center">
       <button class="btn b-gris" onclick="lamMueve(-1)">‹ Antes</button>
       <button class="btn b-morado" onclick="decir(lamList[lamIdx].en)">🔊 Escuchar</button>
@@ -199,18 +200,69 @@ const SVGWORD = {
 };
 function iconoDe(p){ return SVGWORD[p.en] ? `<div class="emo svg">${SVGWORD[p.en]}</div>` : `<div class="emo">${p.e}</div>`; }
 
-// Láminas ilustradas (pósters) por palabra
+// Láminas: pósters (imagen) y láminas dibujadas (SVG)
 const POSTER = { 'Who':'img/ingles/who.jpg','Where':'img/ingles/where.jpg','Which':'img/ingles/which.jpg','Whose':'img/ingles/whose.jpg' };
+// Láminas ilustradas de direcciones (dibujadas dentro de la app)
+function lam(titulo, sub, escena){
+  return `<svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg">
+    <rect width="460" height="340" rx="18" fill="#f7fafc"/>
+    <text x="230" y="48" text-anchor="middle" font-size="34" font-weight="900" fill="#2563eb">${titulo}</text>
+    <text x="230" y="78" text-anchor="middle" font-size="18" font-weight="800" fill="#5a6b7a">${sub}</text>
+    ${escena}</svg>`;
+}
+const RD='#8b95a1', ARR='#e11d48';
+const LAMINA_SVG = {
+  'Turn left': lam('TURN LEFT','Dobla a la izquierda ⬅️',
+    `<path d="M235 320 V185 H80" stroke="${RD}" stroke-width="56" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M235 320 V185 H80" stroke="#fff" stroke-width="4" stroke-dasharray="14 14" fill="none"/>
+     <path d="M235 300 V185 H128" stroke="${ARR}" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M128 165 L96 185 L128 205 Z" fill="${ARR}"/>
+     <text x="235" y="316" text-anchor="middle" font-size="30">🚗</text>`),
+  'Turn right': lam('TURN RIGHT','Dobla a la derecha ➡️',
+    `<path d="M225 320 V185 H380" stroke="${RD}" stroke-width="56" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M225 320 V185 H380" stroke="#fff" stroke-width="4" stroke-dasharray="14 14" fill="none"/>
+     <path d="M225 300 V185 H332" stroke="${ARR}" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M332 165 L364 185 L332 205 Z" fill="${ARR}"/>
+     <text x="225" y="316" text-anchor="middle" font-size="30">🚗</text>`),
+  'Go straight on': lam('GO STRAIGHT ON','Sigue derecho ⬆️',
+    `<path d="M230 320 V120" stroke="${RD}" stroke-width="56" fill="none" stroke-linecap="round"/>
+     <path d="M230 320 V120" stroke="#fff" stroke-width="4" stroke-dasharray="14 14" fill="none"/>
+     <path d="M230 300 V150" stroke="${ARR}" stroke-width="13" fill="none" stroke-linecap="round"/>
+     <path d="M210 150 L230 116 L250 150 Z" fill="${ARR}"/>
+     <text x="230" y="316" text-anchor="middle" font-size="30">🚗</text>`),
+  'Go past': lam('GO PAST','Pasa de largo (no te detengas) ⏩',
+    `<path d="M255 320 V120" stroke="${RD}" stroke-width="52" fill="none" stroke-linecap="round"/>
+     <path d="M255 320 V120" stroke="#fff" stroke-width="4" stroke-dasharray="14 14" fill="none"/>
+     <text x="120" y="215" text-anchor="middle" font-size="52">⛲</text>
+     <text x="120" y="250" text-anchor="middle" font-size="15" font-weight="800" fill="#5a6b7a">fountain</text>
+     <path d="M255 300 V150" stroke="${ARR}" stroke-width="13" fill="none" stroke-linecap="round"/>
+     <path d="M235 150 L255 116 L275 150 Z" fill="${ARR}"/>
+     <text x="255" y="316" text-anchor="middle" font-size="28">🚗</text>`),
+  'roundabout': lam('ROUNDABOUT','La rotonda 🔄',
+    `<circle cx="230" cy="205" r="66" fill="none" stroke="${RD}" stroke-width="34"/>
+     <circle cx="230" cy="205" r="24" fill="#bfe3bf"/>
+     <line x1="230" y1="105" x2="230" y2="139" stroke="${RD}" stroke-width="34"/>
+     <line x1="230" y1="271" x2="230" y2="320" stroke="${RD}" stroke-width="34"/>
+     <line x1="130" y1="205" x2="164" y2="205" stroke="${RD}" stroke-width="34"/>
+     <line x1="296" y1="205" x2="360" y2="205" stroke="${RD}" stroke-width="34"/>
+     <path d="M230 145 A60 60 0 0 1 290 205" stroke="${ARR}" stroke-width="11" fill="none" stroke-linecap="round"/>
+     <path d="M300 178 L296 213 L272 190 Z" fill="${ARR}"/>`)
+};
 let lamList=[], lamIdx=0;
-function hayLaminas(){ return (temaSel && (temaSel.palabras||[]).some(p=>POSTER[p.en])); }
+function tieneLamina(en){ return POSTER[en] || LAMINA_SVG[en]; }
+function hayLaminas(){ return (temaSel && (temaSel.palabras||[]).some(p=>tieneLamina(p.en))); }
 function abrirLaminas(){
-  lamList=(temaSel.palabras||[]).filter(p=>POSTER[p.en]);
+  lamList=(temaSel.palabras||[]).filter(p=>tieneLamina(p.en));
   if(!lamList.length) return;
   lamIdx=0; pintaLamina(); $('laminas').style.display='flex';
 }
 function pintaLamina(){
   const p=lamList[lamIdx];
-  $('lamImg').src=POSTER[p.en];
+  if(LAMINA_SVG[p.en]){
+    $('lamSvg').innerHTML=LAMINA_SVG[p.en]; $('lamSvg').style.display='block'; $('lamImg').style.display='none';
+  } else {
+    $('lamImg').src=POSTER[p.en]; $('lamImg').style.display=''; $('lamSvg').style.display='none';
+  }
   $('lamCount').textContent=(lamIdx+1)+' / '+lamList.length+' · '+p.en;
   decir(p.en);
 }
