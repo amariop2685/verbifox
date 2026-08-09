@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VerbiFox · Fracciones y decimales</title>
+<style>
+  :root{ --azul:#3b82f6; --naranja:#f97316; --rojo:#e11d48; --verde:#2bb673; --morado:#7c3aed; --fondo:#0f1b34; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; color:#fff; overflow-x:hidden; }
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 92px 8px 14px; flex-wrap:wrap; }
+  .tabs{ display:flex; gap:6px; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; }
+  .tab{ border:0; background:transparent; color:#cdd7e4; font-weight:800; padding:8px 12px; border-radius:9px; cursor:pointer; font-size:.9rem; }
+  .tab.on{ background:#fff; color:#26303b; }
+  .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
+  .consigna{ width:max-content; max-width:94vw; margin:2px auto 10px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:8px 16px; font-weight:800; text-align:center; }
+  .consigna b{ color:#ffd76a; font-size:1.3rem; }
+
+  /* barra de igualdad grande */
+  .igual{ display:flex; align-items:center; justify-content:center; gap:12px; font-weight:900; font-size:clamp(1.4rem,7vw,2rem); margin:6px auto 12px; }
+  .igual .frac{ display:inline-flex; flex-direction:column; align-items:center; line-height:1; }
+  .igual .frac .b{ border-top:3px solid #fff; padding-top:2px; }
+  .igual .dec{ color:#8fd694; }
+
+  #grid{ margin:0 auto; display:grid; gap:4px; width:min(92vw,420px); }
+  .cel{ aspect-ratio:1; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.25); border-radius:6px; cursor:pointer; transition:background .1s, transform .08s; }
+  .cel.on{ background:linear-gradient(145deg,#57cf95,var(--verde)); border-color:#1f8f5c; }
+  .cel:active{ transform:scale(.92); }
+  .cel.diez{ border-radius:8px; }
+
+  .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:12px; flex-wrap:wrap; }
+  .btn{ border:0; border-radius:14px; padding:13px 20px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .b-verde{ background:var(--verde); color:#fff; } .b-gris{ background:#dbe3ec; color:#26303b; } .b-azulb{ background:#3a7bd5; color:#fff; }
+  #msj{ position:fixed; left:50%; top:120px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:30; display:none; text-align:center; max-width:88vw; }
+
+  /* modo emparejar */
+  #par{ display:none; max-width:520px; margin:0 auto; padding:0 12px; }
+  .parrow{ display:flex; gap:10px; align-items:center; justify-content:center; margin:8px 0; }
+  .ficha{ flex:1; background:#fff; color:#26303b; border-radius:14px; padding:14px; text-align:center; font-weight:900; font-size:1.25rem; cursor:pointer; border:3px solid transparent; box-shadow:0 4px 10px rgba(0,0,0,.3); }
+  .ficha.sel{ border-color:var(--naranja); }
+  .ficha.ok{ background:#d7f5e6; border-color:var(--verde); cursor:default; }
+  .ficha .frac{ display:inline-flex; flex-direction:column; line-height:1; }
+  .ficha .frac .b{ border-top:2px solid #26303b; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs">
+      <button class="tab on" id="tPinta" onclick="setModo('pinta')">🎨 Pinta</button>
+      <button class="tab" id="tPar" onclick="setModo('par')">🔗 Empareja</button>
+    </div>
+    <div style="font-weight:900" id="score">⭐ 0</div>
+  </div>
+  <a class="volver" href="mate.html">✕ Salir</a>
+  <div class="consigna" id="consigna"></div>
+
+  <div id="pinta">
+    <div class="igual" id="igual"></div>
+    <div id="grid"></div>
+  </div>
+  <div id="par"></div>
+
+  <div id="msj"></div>
+  <div class="abajo" id="abajoPinta">
+    <button class="btn b-azulb" onclick="limpiar()">🧽 Borrar</button>
+    <button class="btn b-verde" onclick="comprobar()">✔ Listo</button>
+    <button class="btn b-gris" onclick="nuevo()">🎲 Otro</button>
+  </div>
+
+<script src="supabase.js"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const rnd=n=>Math.floor(Math.random()*n);
+function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(), g=c.createGain(); o.frequency.value=f; o.type='sine'; g.gain.setValueAtTime(.18,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+d);}catch(e){} }
+function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
+function msj(t,l){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', l?3400:2000); }
+function premio(){ try{ if(window.Caballero&&Caballero.premiar) Caballero.premiar(1); }catch(e){} try{ const k='mate_juego_fracciones-decimales'; localStorage.setItem(k,String((parseInt(localStorage.getItem(k)||'0',10)||0)+1)); }catch(e){} }
+
+let modo='pinta', score=0;
+function setModo(m){ modo=m; $('tPinta').classList.toggle('on',m==='pinta'); $('tPar').classList.toggle('on',m==='par');
+  $('pinta').style.display=m==='pinta'?'block':'none'; $('par').style.display=m==='par'?'block':'none'; $('abajoPinta').style.display=m==='pinta'?'flex':'none';
+  nuevo();
+}
+function nuevo(){ $('score').textContent='⭐ '+score; modo==='pinta'?nuevoPinta():nuevoPar(); }
+
+// ---------- MODO PINTA: pinta la barra y ve fracción = decimal ----------
+let total=10, objetivo=0, pintado=0;
+function decDe(k,t){ return (k/t).toFixed(t===10?1:2).replace('.',','); }
+function nuevoPinta(){
+  total = Math.random()<0.55 ? 10 : 100;         // décimos o centésimos
+  if(total===10) objetivo=1+rnd(9);
+  else { const nice=[5,10,15,20,25,30,40,50,60,70,75,80,90,95]; objetivo=nice[rnd(nice.length)]; }
+  pintado=0;
+  const comoFrac = Math.random()<0.5;
+  $('consigna').innerHTML = comoFrac
+    ? `Pinta la fracción <b>${objetivo}/${total}</b>`
+    : `Pinta el decimal <b>${decDe(objetivo,total)}</b>`;
+  const g=$('grid'); g.style.gridTemplateColumns = total===10 ? 'repeat(10,1fr)' : 'repeat(10,1fr)';
+  g.innerHTML=''; for(let i=0;i<total;i++){ const c=document.createElement('div'); c.className='cel'+(total===10?' diez':''); c.onclick=()=>pintaHasta(i); g.appendChild(c); }
+  render();
+}
+function pintaHasta(i){ pintado=i+1; render(); beep(500+ i*3,.05); }
+function limpiar(){ pintado=0; render(); }
+function render(){
+  const cels=$('grid').children;
+  for(let i=0;i<cels.length;i++) cels[i].classList.toggle('on', i<pintado);
+  $('igual').innerHTML=`<span class="frac"><span>${pintado}</span><span class="b">${total}</span></span> <span>=</span> <span class="dec">${decDe(pintado,total)}</span>`;
+}
+function comprobar(){
+  if(pintado===objetivo){
+    chime(); premio(); score++; $('score').textContent='⭐ '+score;
+    $('consigna').innerHTML=`🎉 ¡Correcto! <b>${objetivo}/${total}</b> = <b style="color:#8fd694">${decDe(objetivo,total)}</b>. ¡Son la misma cantidad!`;
+    setTimeout(nuevo, 2600);
+  } else {
+    beep(180,.25);
+    msj(pintado<objetivo?'Falta pintar un poco más 💪':'Pintaste de más, borra un poco 🙂');
+  }
+}
+
+// ---------- MODO EMPAREJAR: fracción ↔ decimal ----------
+const BANCO=[[1,2,'0,5'],[1,4,'0,25'],[3,4,'0,75'],[1,10,'0,1'],[3,10,'0,3'],[7,10,'0,7'],[1,5,'0,2'],[2,5,'0,4'],[1,100,'0,01'],[25,100,'0,25'],[50,100,'0,5'],[9,10,'0,9']];
+let selFrac=null, listos=0, parN=0;
+function mezcla(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=rnd(i+1); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function nuevoPar(){
+  const set=mezcla(BANCO).slice(0,4); parN=set.length; listos=0; selFrac=null;
+  const fracs=mezcla(set), decs=mezcla(set);
+  $('consigna').innerHTML='Une cada <b>fracción</b> con su <b>decimal</b> 🔗';
+  let h='<div style="display:flex;gap:12px"><div style="flex:1">';
+  h+=fracs.map(f=>`<div class="ficha" data-k="${f[0]}/${f[1]}" onclick="tocaFrac('${f[0]}/${f[1]}',this)"><span class="frac"><span>${f[0]}</span><span class="b">${f[1]}</span></span></div>`).join('');
+  h+='</div><div style="flex:1">';
+  h+=decs.map(d=>`<div class="ficha" data-k="${d[0]}/${d[1]}" onclick="tocaDec('${d[0]}/${d[1]}',this)">${d[2]}</div>`).join('');
+  h+='</div></div>';
+  $('par').innerHTML=h;
+}
+function tocaFrac(k,el){ if(el.classList.contains('ok'))return; document.querySelectorAll('#par .ficha').forEach(f=>{ if(f.dataset.k && !f.classList.contains('ok')) f.classList.remove('sel'); }); selFrac={k,el}; el.classList.add('sel'); }
+function tocaDec(k,el){
+  if(el.classList.contains('ok')||!selFrac)return;
+  if(k===selFrac.k){ el.classList.add('ok'); selFrac.el.classList.add('ok','sel'); selFrac.el.classList.remove('sel'); el.classList.remove('sel'); selFrac=null; beep(660,.12); setTimeout(()=>beep(880,.14),100);
+    listos++; if(listos>=parN){ chime(); premio(); score++; $('score').textContent='⭐ '+score; $('consigna').innerHTML='🎉 ¡Todas unidas! Fracción y decimal son lo mismo.'; setTimeout(nuevo,2400); }
+  } else { beep(180,.25); el.classList.add('sel'); setTimeout(()=>el.classList.remove('sel'),350); }
+}
+
+function _gate(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('matematicas'); }
+document.addEventListener('vfx-listo', _gate); if(window.VFX) _gate();
+nuevo();
+</script>
+</body>
+</html>
