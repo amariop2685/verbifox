@@ -69,6 +69,7 @@
   <div id="msj"></div>
   <div class="abajo">
     <button class="btn b-ayuda" id="btnLam" onclick="abrirLaminas()" style="display:none">📖 Ver lámina</button>
+    <button class="btn b-ayuda" id="btnVel" onclick="cicloVel()">🚶 Normal</button>
     <button class="btn b-ayuda" id="btnAyuda" onclick="toggleAyuda()">🇪🇸 Ayuda</button>
     <button class="btn b-ayuda" onclick="abrirVoces()">🗣️ Voz</button>
     <button class="btn b-verde" onclick="nuevo()">🎲 Otras</button>
@@ -138,7 +139,13 @@ function _vozEn(){
     return en.slice().sort((a,b)=>puntajeVoz(b)-puntajeVoz(a))[0];
   }catch(e){ return null; }
 }
-function decir(t,cb){ try{ if(!('speechSynthesis'in window)){ if(cb)cb(); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=.8; u.pitch=1; if(cb)u.onend=cb; speechSynthesis.speak(u);}catch(e){ if(cb)cb(); } }
+// Velocidad de pronunciación elegida por el usuario (se guarda)
+const VELS=[{r:0.55,t:'🐢 Lenta'},{r:0.8,t:'🚶 Normal'},{r:1,t:'🐇 Rápida'}];
+function velIdx(){ const r=parseFloat(localStorage.getItem('vfx_rate')); const i=VELS.findIndex(v=>Math.abs(v.r-r)<0.07); return i<0?1:i; }
+function velLectura(){ return VELS[velIdx()].r; }
+function pintarVel(){ const b=$('btnVel'); if(b) b.textContent=VELS[velIdx()].t; }
+function cicloVel(){ const i=(velIdx()+1)%VELS.length; try{ localStorage.setItem('vfx_rate',String(VELS[i].r)); }catch(e){} pintarVel(); const p=(pares&&pares[0])||{en:'Hello'}; decir(p.en); }
+function decir(t,cb){ try{ if(!('speechSynthesis'in window)){ if(cb)cb(); return; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;} else u.lang='en-US'; u.rate=velLectura(); u.pitch=1; if(cb)u.onend=cb; speechSynthesis.speak(u);}catch(e){ if(cb)cb(); } }
 
 // ---- Selector de voz dentro del juego (elige la que mejor se entienda) ----
 function abrirVoces(){
@@ -394,7 +401,7 @@ document.addEventListener('vfx-listo', _gate);
 if(window.VFX) _gate();
 if('speechSynthesis'in window){ try{ speechSynthesis.getVoices(); }catch(e){} }
 
-pintarSelector(); nuevo();
+pintarSelector(); pintarVel(); nuevo();
 </script>
 </body>
 </html>
