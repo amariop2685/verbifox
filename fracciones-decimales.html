@@ -23,7 +23,8 @@
   .igual .frac .b{ border-top:3px solid #fff; padding-top:2px; }
   .igual .dec{ color:#8fd694; }
 
-  #grid{ margin:0 auto; display:grid; gap:4px; width:min(92vw,420px); }
+  #grid{ margin:0 auto 96px; width:min(92vw,420px); }
+  #pinta{ max-height:calc(100vh - 150px); overflow:auto; }
   .cel{ aspect-ratio:1; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.25); border-radius:6px; cursor:pointer; transition:background .1s, transform .08s; }
   .cel.on{ background:linear-gradient(145deg,#57cf95,var(--verde)); border-color:#1f8f5c; }
   .cel:active{ transform:scale(.92); }
@@ -87,42 +88,58 @@ function setModo(m){ modo=m; $('tPinta').classList.toggle('on',m==='pinta'); $('
 }
 function nuevo(){ $('score').textContent='⭐ '+score; modo==='pinta'?nuevoPinta():nuevoPar(); }
 
-// ---------- MODO PINTA: pinta la barra y ve fracción = decimal ----------
-let total=10, objetivo=0, pintado=0;
-function decDe(k,t){ return (k/t).toFixed(t===10?1:2).replace('.',','); }
+// ---------- MODO PINTA: pinta enteros divididos y ve fracción = decimal ----------
+// Soporta fracciones PROPIAS (3/5) e IMPROPIAS (27/5, 11/2) con varias barras.
+let den=5, objetivoN=0, pintado=0, bars=1;
+function fmtDec(v){ let s=v.toFixed(2).replace(/0+$/,'').replace(/\.$/,''); return s.replace('.',','); }
 function nuevoPinta(){
-  total = Math.random()<0.55 ? 10 : 100;         // décimos o centésimos
-  if(total===10) objetivo=1+rnd(9);
-  else { const nice=[5,10,15,20,25,30,40,50,60,70,75,80,90,95]; objetivo=nice[rnd(nice.length)]; }
+  den = [2,4,5,10][rnd(4)];                 // denominadores con decimal exacto
+  const propia = Math.random()<0.4;
+  objetivoN = propia ? (1+rnd(den-1)) : (den+1+rnd(den*5)); // impropia hasta ~6 enteros (ej: 27/5, 11/2)
+  bars = Math.max(1, Math.ceil(objetivoN/den));
   pintado=0;
   const comoFrac = Math.random()<0.5;
   $('consigna').innerHTML = comoFrac
-    ? `Pinta la fracción <b>${objetivo}/${total}</b>`
-    : `Pinta el decimal <b>${decDe(objetivo,total)}</b>`;
-  const g=$('grid'); g.style.gridTemplateColumns = total===10 ? 'repeat(10,1fr)' : 'repeat(10,1fr)';
-  g.innerHTML=''; for(let i=0;i<total;i++){ const c=document.createElement('div'); c.className='cel'+(total===10?' diez':''); c.onclick=()=>pintaHasta(i); g.appendChild(c); }
+    ? `Pinta la fracción <b>${objetivoN}/${den}</b>`
+    : `Pinta el decimal <b>${fmtDec(objetivoN/den)}</b>`;
+  pintarBarras();
   render();
 }
-function pintaHasta(i){ pintado=i+1; render(); beep(500+ i*3,.05); }
+function pintarBarras(){
+  const g=$('grid'); g.style.display='flex'; g.style.flexDirection='column'; g.style.gap='8px'; g.style.gridTemplateColumns='';
+  g.innerHTML=''; let idx=0;
+  for(let b=0;b<bars;b++){
+    const bar=document.createElement('div'); bar.style.cssText='display:flex;gap:3px;justify-content:center';
+    for(let c=0;c<den;c++){ const gi=idx; const cel=document.createElement('div'); cel.className='cel diez'; cel.style.cssText='flex:1;max-width:56px;aspect-ratio:1'; cel.onclick=()=>pintaHasta(gi); bar.appendChild(cel); idx++; }
+    g.appendChild(bar);
+  }
+}
+function pintaHasta(i){ pintado=i+1; render(); beep(480+i*4,.05); }
 function limpiar(){ pintado=0; render(); }
 function render(){
-  const cels=$('grid').children;
-  for(let i=0;i<cels.length;i++) cels[i].classList.toggle('on', i<pintado);
-  $('igual').innerHTML=`<span class="frac"><span>${pintado}</span><span class="b">${total}</span></span> <span>=</span> <span class="dec">${decDe(pintado,total)}</span>`;
+  const cels=$('grid').querySelectorAll('.cel');
+  cels.forEach((c,i)=>c.classList.toggle('on', i<pintado));
+  const dec=fmtDec(pintado/den);
+  let mixto='';
+  if(pintado>den){ const w=Math.floor(pintado/den), r=pintado%den; mixto = ` <span style="font-size:.85rem;color:#cdd7e4;font-weight:700">= ${w} entero${w>1?'s':''}${r?(' y '+r+'/'+den):''}</span>`; }
+  $('igual').innerHTML=`<span class="frac"><span>${pintado}</span><span class="b">${den}</span></span> <span>=</span> <span class="dec">${dec}</span>${mixto}`;
 }
 function comprobar(){
-  if(pintado===objetivo){
+  if(pintado===objetivoN){
     chime(); premio(); score++; $('score').textContent='⭐ '+score;
-    $('consigna').innerHTML=`🎉 ¡Correcto! <b>${objetivo}/${total}</b> = <b style="color:#8fd694">${decDe(objetivo,total)}</b>. ¡Son la misma cantidad!`;
-    setTimeout(nuevo, 2600);
+    const w=Math.floor(objetivoN/den), r=objetivoN%den;
+    const mix = objetivoN>den ? ` (${w} entero${w>1?'s':''}${r?(' y '+r+'/'+den):''})` : '';
+    $('consigna').innerHTML=`🎉 ¡Correcto! <b>${objetivoN}/${den}</b> = <b style="color:#8fd694">${fmtDec(objetivoN/den)}</b>${mix}. ¡Es la misma cantidad!`;
+    setTimeout(nuevo, 2800);
   } else {
     beep(180,.25);
-    msj(pintado<objetivo?'Falta pintar un poco más 💪':'Pintaste de más, borra un poco 🙂');
+    msj(pintado<objetivoN?'Falta pintar un poco más 💪':'Pintaste de más, borra un poco 🙂');
   }
 }
 
 // ---------- MODO EMPAREJAR: fracción ↔ decimal ----------
-const BANCO=[[1,2,'0,5'],[1,4,'0,25'],[3,4,'0,75'],[1,10,'0,1'],[3,10,'0,3'],[7,10,'0,7'],[1,5,'0,2'],[2,5,'0,4'],[1,100,'0,01'],[25,100,'0,25'],[50,100,'0,5'],[9,10,'0,9']];
+const BANCO=[[1,2,'0,5'],[1,4,'0,25'],[3,4,'0,75'],[3,10,'0,3'],[7,10,'0,7'],[1,5,'0,2'],[2,5,'0,4'],[9,10,'0,9'],
+  [11,2,'5,5'],[5,2,'2,5'],[7,2,'3,5'],[7,4,'1,75'],[5,4,'1,25'],[9,5,'1,8'],[27,5,'5,4'],[12,5,'2,4'],[3,2,'1,5'],[13,10,'1,3']];
 let selFrac=null, listos=0, parN=0;
 function mezcla(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=rnd(i+1); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function nuevoPar(){
