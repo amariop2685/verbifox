@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>VerbiFox · Leer el mapa</title>
+<style>
+  :root{ --azul:#3b82f6; --naranja:#f97316; --rojo:#e11d48; --verde:#2bb673; --morado:#7c3aed; --fondo:#0f1b34; }
+  *{ box-sizing:border-box; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; background:radial-gradient(circle at 30% 20%, #16244a, var(--fondo)); min-height:100vh; color:#fff; }
+  .top{ display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 92px 8px 14px; flex-wrap:wrap; }
+  .tabs{ display:flex; gap:6px; background:rgba(255,255,255,.12); border-radius:12px; padding:4px; }
+  .tab{ border:0; background:transparent; color:#cdd7e4; font-weight:800; padding:8px 11px; border-radius:9px; cursor:pointer; font-size:.85rem; }
+  .tab.on{ background:#fff; color:#26303b; }
+  .volver{ position:fixed; right:10px; top:12px; z-index:9; background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:10px; padding:7px 12px; font-weight:700; text-decoration:none; font-size:.85rem; }
+  .consigna{ width:max-content; max-width:94vw; margin:2px auto 8px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); border-radius:12px; padding:8px 14px; font-weight:800; text-align:center; display:flex; align-items:center; gap:10px; justify-content:center; }
+  .consigna .rep{ background:#fff; color:var(--morado); border:0; border-radius:50%; width:36px; height:36px; font-size:1.1rem; cursor:pointer; flex-shrink:0; }
+
+  #tabla{ margin:0 auto; border-collapse:collapse; }
+  #tabla td{ text-align:center; vertical-align:middle; }
+  .hdr{ color:#9fb6d8; font-weight:800; font-size:clamp(.7rem,3vw,.95rem); width:22px; height:22px; }
+  .celda{ width:clamp(42px,13.5vw,60px); height:clamp(42px,13.5vw,60px); border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.05); cursor:pointer; font-size:clamp(1.3rem,6vw,1.9rem); line-height:1; transition:background .12s, transform .12s; }
+  .celda:active{ transform:scale(.94); }
+  .celda.ok{ background:rgba(43,182,115,.5); border-color:var(--verde); }
+  .celda.mal{ background:rgba(225,29,72,.45); }
+  .celda.hi{ box-shadow:inset 0 0 0 3px #ffd76a; }
+
+  .brujula{ display:grid; grid-template-columns:repeat(3,64px); grid-template-rows:repeat(3,64px); gap:8px; justify-content:center; margin:14px auto; }
+  .bt{ border:0; border-radius:14px; background:#3a7bd5; color:#fff; font-weight:900; font-size:1.05rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .bt:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .bt.n{ grid-column:2; grid-row:1;} .bt.w{ grid-column:1; grid-row:2;} .bt.e{ grid-column:3; grid-row:2;} .bt.s{ grid-column:2; grid-row:3;}
+  .bt.c{ grid-column:2; grid-row:2; background:#26303b; font-size:1.6rem; }
+
+  .abajo{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:10px; justify-content:center; padding:12px; flex-wrap:wrap; }
+  .btn{ border:0; border-radius:14px; padding:12px 18px; font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .btn:active{ transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.25); }
+  .b-verde{ background:var(--verde); color:#fff; } .b-morado{ background:var(--morado); color:#fff; }
+  #msj{ position:fixed; left:50%; top:130px; transform:translateX(-50%); background:#fff; color:#26303b; border-radius:14px; padding:12px 18px; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.4); z-index:30; display:none; text-align:center; max-width:88vw; }
+  #mapa{ text-align:center; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="tabs">
+      <button class="tab on" id="tCoord" onclick="setModo('coord')">📍 Coordenadas</button>
+      <button class="tab" id="tFind" onclick="setModo('find')">🔎 Buscar</button>
+      <button class="tab" id="tComp" onclick="setModo('comp')">🧭 Brújula</button>
+    </div>
+    <div style="font-weight:900" id="score">⭐ 0</div>
+  </div>
+  <a class="volver" href="ingles.html">✕ Salir</a>
+  <div class="consigna" id="consigna"></div>
+
+  <div id="mapa"><table id="tabla"></table></div>
+  <div id="brujula" class="brujula" style="display:none">
+    <button class="bt n" onclick="respBrujula('N')">N</button>
+    <button class="bt w" onclick="respBrujula('W')">W</button>
+    <button class="bt c">🧭</button>
+    <button class="bt e" onclick="respBrujula('E')">E</button>
+    <button class="bt s" onclick="respBrujula('S')">S</button>
+  </div>
+
+  <div id="msj"></div>
+  <div class="abajo">
+    <button class="btn b-morado" onclick="repetir()">🔊 Repetir</button>
+    <button class="btn b-verde" onclick="nueva()">🎲 Otra</button>
+  </div>
+
+<script src="supabase.js"></script>
+<script src="cloud.js"></script>
+<script src="caballero.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const rnd=n=>Math.floor(Math.random()*n);
+function beep(f,d){ try{ const c=beep.ctx=beep.ctx||new (window.AudioContext||window.webkitAudioContext)(); const o=c.createOscillator(), g=c.createGain(); o.frequency.value=f; o.type='sine'; g.gain.setValueAtTime(.18,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+d);}catch(e){} }
+function chime(){ [523,659,784].forEach((f,i)=>setTimeout(()=>beep(f,.3),i*90)); }
+function msj(t,l){ const m=$('msj'); m.innerHTML=t; m.style.display='block'; clearTimeout(m._t); m._t=setTimeout(()=>m.style.display='none', l?3000:1900); }
+
+// voz inglesa clara
+function _vozEn(){ try{ const vs=(speechSynthesis.getVoices()||[]); const nom=localStorage.getItem('vozIngles')||''; if(nom){const v=vs.find(x=>x.name===nom); if(v)return v;} const en=vs.filter(v=>/^en/i.test(v.lang||'')); const bad=/fred|albert|bad|bells|boing|bubbles|cellos|jester|organ|zarvox|whisper|wobble|bahh|buenas|malas|campana|burbujas|susurro/i; return en.filter(v=>!bad.test(v.name||'')).sort((a,b)=>((/google|siri|natural|enhanced/i.test(b.name)?5:0)+(b.localService?0:2))-((/google|siri|natural|enhanced/i.test(a.name)?5:0)+(a.localService?0:2)))[0]||en[0]||null; }catch(e){ return null; } }
+function decir(t){ try{ if(!('speechSynthesis'in window))return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); const v=_vozEn(); if(v){u.voice=v;u.lang=v.lang;}else u.lang='en-US'; u.rate=.85; speechSynthesis.speak(u);}catch(e){} }
+
+// ----- Mapa -----
+const COLS=['A','B','C','D','E','F'];
+const ROWS=[6,5,4,3,2,1];            // 6 arriba, 1 abajo (como el libro)
+const LUGARES=[
+  {sym:'🏥', en:'hospital', es:'el hospital', col:'C', row:4},
+  {sym:'🏫', en:'school', es:'el colegio', col:'E', row:5},
+  {sym:'🏛️', en:'museum', es:'el museo', col:'B', row:2},
+  {sym:'🚒', en:'fire station', es:'los bomberos', col:'F', row:2},
+  {sym:'🏨', en:'hotel', es:'el hotel', col:'E', row:2},
+  {sym:'🚏', en:'bus stop', es:'la parada de bus', col:'C', row:2},
+  {sym:'🅿️', en:'car park', es:'el estacionamiento', col:'C', row:6},
+  {sym:'🌳', en:'park', es:'el parque', col:'A', row:5}
+];
+function lugarEn(col,row){ return LUGARES.find(l=>l.col===col && l.row===row); }
+const NUMEN={1:'one',2:'two',3:'three',4:'four',5:'five',6:'six'};
+
+let modo='coord', score=0, objetivo=null, resolviendo=false;
+
+function pintarTabla(){
+  const t=$('tabla'); let h='<tr><td class="hdr"></td>'+COLS.map(c=>`<td class="hdr">${c}</td>`).join('')+'</tr>';
+  for(const r of ROWS){
+    h+=`<tr><td class="hdr">${r}</td>`;
+    for(const c of COLS){ const l=lugarEn(c,r); h+=`<td class="celda" id="c_${c}${r}" data-col="${c}" data-row="${r}" onclick="tocaCelda('${c}',${r})">${l?l.sym:''}</td>`; }
+    h+='</tr>';
+  }
+  t.innerHTML=h;
+}
+function limpiaResaltado(){ document.querySelectorAll('.celda').forEach(c=>c.classList.remove('ok','mal','hi')); }
+
+function setModo(m){ modo=m;
+  $('tCoord').classList.toggle('on',m==='coord'); $('tFind').classList.toggle('on',m==='find'); $('tComp').classList.toggle('on',m==='comp');
+  $('brujula').style.display = m==='comp' ? 'grid' : 'none';
+  nueva();
+}
+
+function nueva(){
+  resolviendo=false; limpiaResaltado(); $('score').textContent='⭐ '+score;
+  if(modo==='coord'){
+    objetivo=LUGARES[rnd(LUGARES.length)];
+    $('consigna').innerHTML=`Toca la casilla <b style="color:#ffd76a;font-size:1.3rem">${objetivo.col}${objetivo.row}</b> <button class="rep" onclick="repetir()">🔊</button>`;
+    decir('Go to '+objetivo.col+' '+NUMEN[objetivo.row]);
+  } else if(modo==='find'){
+    objetivo=LUGARES[rnd(LUGARES.length)];
+    $('consigna').innerHTML=`Encuentra: <b>${objetivo.sym} ${objetivo.en}</b> <button class="rep" onclick="repetir()">🔊</button>`;
+    decir('Find the '+objetivo.en);
+  } else {
+    // brújula: par alineado (misma fila o columna)
+    const pares=[];
+    for(const a of LUGARES) for(const b of LUGARES) if(a!==b && (a.row===b.row || a.col===b.col)) pares.push([a,b]);
+    const [A,B]=pares[rnd(pares.length)];
+    objetivo={A,B, dir:direccion(A,B)};
+    $('consigna').innerHTML=`¿En qué dirección está <b>${A.sym} ${A.en}</b> desde <b>${B.sym} ${B.en}</b>? <button class="rep" onclick="repetir()">🔊</button>`;
+    decir('Which direction is the '+A.en+' from the '+B.en+'?');
+  }
+}
+function direccion(A,B){  // dirección de A respecto de B
+  if(A.col===B.col) return A.row>B.row ? 'N' : 'S';
+  return COLS.indexOf(A.col)>COLS.indexOf(B.col) ? 'E' : 'W';
+}
+function repetir(){
+  if(modo==='coord'&&objetivo) decir('Go to '+objetivo.col+' '+NUMEN[objetivo.row]);
+  else if(modo==='find'&&objetivo) decir('Find the '+objetivo.en);
+  else if(modo==='comp'&&objetivo) decir('Which direction is the '+objetivo.A.en+' from the '+objetivo.B.en+'?');
+}
+
+function acierto(txtEn){
+  score++; $('score').textContent='⭐ '+score; beep(660,.12); setTimeout(()=>beep(880,.14),110);
+  try{ if(window.Caballero&&Caballero.premiar) Caballero.premiar(1); }catch(e){}
+  try{ const k='ing_mapa'; localStorage.setItem(k,String((parseInt(localStorage.getItem(k)||'0',10)||0)+1)); }catch(e){}
+  if(txtEn) decir(txtEn);
+  setTimeout(nueva, 1500);
+}
+
+function tocaCelda(col,row){
+  if(modo==='comp' || resolviendo) return;
+  const el=$('c_'+col+row);
+  if(modo==='coord'){
+    if(col===objetivo.col && row===objetivo.row){ resolviendo=true; el.classList.add('ok');
+      const l=lugarEn(col,row); msj('✅ ¡Correcto! Es '+l.sym+' '+l.en, true); acierto(l.en);
+    } else { el.classList.add('mal'); setTimeout(()=>el.classList.remove('mal'),450); beep(180,.25); }
+  } else if(modo==='find'){
+    if(col===objetivo.col && row===objetivo.row){ resolviendo=true; el.classList.add('ok');
+      msj('✅ ¡Ahí está! '+objetivo.sym+' está en '+objetivo.col+objetivo.row, true); acierto(objetivo.en);
+    } else { el.classList.add('mal'); setTimeout(()=>el.classList.remove('mal'),450); beep(180,.25); }
+  }
+}
+function respBrujula(d){
+  if(modo!=='comp'||resolviendo) return;
+  const nom={N:'North',S:'South',E:'East',W:'West'}[d];
+  if(d===objetivo.dir){ resolviendo=true;
+    // resalta ambos lugares
+    $('c_'+objetivo.A.col+objetivo.A.row).classList.add('ok'); $('c_'+objetivo.B.col+objetivo.B.row).classList.add('hi');
+    msj('✅ ¡'+nom+'! Correcto 🧭', true); acierto(objetivo.A.en+' is '+nom+' of the '+objetivo.B.en);
+  } else { beep(180,.25); msj('🤔 No es '+nom+'. Mira el mapa y prueba de nuevo.'); }
+}
+
+function _gate(){ if(window.VFX && VFX.bloquearSi) VFX.bloquearSi('ingles'); }
+document.addEventListener('vfx-listo', _gate); if(window.VFX) _gate();
+if('speechSynthesis'in window){ try{ speechSynthesis.getVoices(); }catch(e){} }
+
+pintarTabla(); nueva();
+</script>
+</body>
+</html>
