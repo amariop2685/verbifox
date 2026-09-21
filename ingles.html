@@ -238,6 +238,7 @@
   @media (min-width:560px) and (min-height:700px){
     .app{ max-width:600px; }
   }
+  .lista-btn.activa{ background:var(--morado,#7c3aed) !important; color:#fff !important; box-shadow:0 0 0 3px #fde047; }
   .btn{ transition: transform .1s ease, filter .2s ease; }
   .btn:hover{ filter:brightness(1.05); }
   @media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none !important; transition:none !important; } }
@@ -291,6 +292,11 @@
     <button class="btn btn-gris btn-pequeno" onclick="mostrar('s-menu')" style="margin:0 0 10px;">⬅ Menú</button>
     <h2>🦸 Los verbos en inglés</h2>
     <p class="sub" style="margin:-4px 0 10px">El camino: primero estudia, luego memoriza y al final ¡los exámenes!</p>
+    <div class="grid2" style="margin-bottom:4px;">
+      <button class="btn btn-gris lista-btn" data-l="l1" onclick="setLista('l1')" style="margin:0;font-size:.95rem;">📄 Lista 1<br><span style="font-size:.75rem">Be → Know</span></button>
+      <button class="btn btn-gris lista-btn" data-l="l2" onclick="setLista('l2')" style="margin:0;font-size:.95rem;">📄 Lista 2<br><span style="font-size:.75rem">See → Spin</span></button>
+    </div>
+    <p class="mini" id="lista-nombre" style="text-align:center;margin:4px 0 10px;"></p>
     <button class="btn btn-amarillo" onclick="iniciarEstudio()">📖 1. Estudiar los verbos</button>
     <button class="btn btn-morado" onclick="iniciarMemoria()">🧠 2. Memoria: aprende sin olvidar</button>
     <button class="btn btn-verde" onclick="iniciarPractica()">🎮 3. Práctica libre (sin tiempo)</button>
@@ -412,7 +418,7 @@
 
 <script>
 /* ====== DATOS DE LOS VERBOS ====== */
-const VERBOS = [
+const VERBOS_L1 = [
   {inf:"begin", pas:"began", par:"begun", es:"empezar / comenzar", emoji:"▶️", ej:[
     {f:"Infinitivo", en:"I begin my homework now.", es:"Empiezo mi tarea ahora."},
     {f:"Pasado", en:"The movie began at six.", es:"La película empezó a las seis."},
@@ -497,7 +503,50 @@ const VERBOS = [
     {f:"Pasado", en:"He caught the ball quickly.", es:"Él atrapó la pelota rápido."},
     {f:"Participio", en:"I have caught a cold.", es:"Me ha dado un resfriado."}]},
 ];
-const ORACIONES = [
+const VERBOS_L2 = [
+  {inf:"see", pas:"saw", par:"seen", es:"ver", emoji:"👀", ej:[
+    {f:"Infinitivo", en:"I can see the moon.", es:"Puedo ver la luna."},
+    {f:"Pasado", en:"We saw a big dog in the park.", es:"Vimos un perro grande en el parque."},
+    {f:"Participio", en:"I have seen that movie.", es:"He visto esa película."}]},
+  {inf:"send", pas:"sent", par:"sent", es:"enviar / mandar", emoji:"📨", ej:[
+    {f:"Infinitivo", en:"Please send me a photo.", es:"Por favor mándame una foto."},
+    {f:"Pasado", en:"She sent a letter to her grandma.", es:"Ella envió una carta a su abuela."},
+    {f:"Participio", en:"I have sent the message.", es:"He enviado el mensaje."}]},
+  {inf:"shoot", pas:"shot", par:"shot", es:"disparar / chutar", emoji:"⚽", ej:[
+    {f:"Infinitivo", en:"Shoot the ball to the goal!", es:"¡Chuta la pelota al arco!"},
+    {f:"Pasado", en:"Martin shot and scored a goal.", es:"Martín chutó y metió un gol."},
+    {f:"Participio", en:"He has shot the ball very well.", es:"Él ha chutado la pelota muy bien."}]},
+  {inf:"sing", pas:"sang", par:"sung", es:"cantar", emoji:"🎤", ej:[
+    {f:"Infinitivo", en:"I like to sing in the shower.", es:"Me gusta cantar en la ducha."},
+    {f:"Pasado", en:"The children sang a song.", es:"Los niños cantaron una canción."},
+    {f:"Participio", en:"She has sung on TV.", es:"Ella ha cantado en la tele."}]},
+  {inf:"sit", pas:"sat", par:"sat", es:"sentarse", emoji:"🪑", ej:[
+    {f:"Infinitivo", en:"Please sit down.", es:"Por favor siéntate."},
+    {f:"Pasado", en:"The cat sat on the chair.", es:"El gato se sentó en la silla."},
+    {f:"Participio", en:"I have sat here all day.", es:"He estado sentado aquí todo el día."}]},
+  {inf:"sleep", pas:"slept", par:"slept", es:"dormir", emoji:"😴", ej:[
+    {f:"Infinitivo", en:"I sleep eight hours.", es:"Duermo ocho horas."},
+    {f:"Pasado", en:"The baby slept all night.", es:"El bebé durmió toda la noche."},
+    {f:"Participio", en:"Have you slept well?", es:"¿Has dormido bien?"}]},
+  {inf:"speak", pas:"spoke", par:"spoken", es:"hablar", emoji:"🗣️", ej:[
+    {f:"Infinitivo", en:"I speak Spanish and English.", es:"Hablo español e inglés."},
+    {f:"Pasado", en:"The teacher spoke to my mom.", es:"La profesora habló con mi mamá."},
+    {f:"Participio", en:"English is spoken here.", es:"Aquí se habla inglés."}]},
+  {inf:"spell", pas:"spelled", pasDisp:"spelt / spelled", pasAlt:["spelled","spelt"], par:"spelled", parUK:"spelt", parAlt:["spelled","spelt"], es:"deletrear", emoji:"🔤", ej:[
+    {f:"Infinitivo", en:"Can you spell your name?", es:"¿Puedes deletrear tu nombre?"},
+    {f:"Pasado", en:"He spelled the word correctly.", es:"Él deletreó la palabra correctamente."},
+    {f:"Participio", en:"I have spelled it wrong.", es:"Lo he deletreado mal."}]},
+  {inf:"spend", pas:"spent", par:"spent", es:"gastar (dinero) / pasar (tiempo)", emoji:"💸", ej:[
+    {f:"Infinitivo", en:"Do not spend all your money.", es:"No gastes todo tu dinero."},
+    {f:"Pasado", en:"We spent the summer at the beach.", es:"Pasamos el verano en la playa."},
+    {f:"Participio", en:"I have spent ten dollars.", es:"He gastado diez dólares."}]},
+  {inf:"spin", pas:"spun", par:"spun", es:"girar / dar vueltas", emoji:"🌀", ej:[
+    {f:"Infinitivo", en:"Watch the top spin!", es:"¡Mira girar el trompo!"},
+    {f:"Pasado", en:"The dancer spun around.", es:"La bailarina dio vueltas."},
+    {f:"Participio", en:"The wheel has spun ten times.", es:"La rueda ha girado diez veces."}]},
+];
+let VERBOS = VERBOS_L1;
+const ORACIONES_L1 = [
   {t:"She _____ (be) a student in 1991.", r:["was"]},
   {t:"Austin and Sarah _____ (come) from London yesterday.", r:["came"]},
   {t:"The company _____ (build) that train station last year.", r:["built"]},
@@ -519,6 +568,39 @@ const ORACIONES = [
   {t:"I _____ (hear) a strange noise last night.", r:["heard"]},
   {t:"He _____ (keep) the secret for many years.", r:["kept"]},
 ];
+const ORACIONES_L2 = [
+  {t:"Yesterday I _____ (see) a rainbow.", r:["saw"]},
+  {t:"Last week my aunt _____ (send) me a postcard.", r:["sent"]},
+  {t:"The player _____ (shoot) the ball and scored a goal.", r:["shot"]},
+  {t:"We _____ (sing) Happy Birthday to my dad last night.", r:["sang"]},
+  {t:"The teacher _____ (sit) at her desk this morning.", r:["sat"]},
+  {t:"I was very tired, so I _____ (sleep) ten hours.", r:["slept"]},
+  {t:"Tom _____ (speak) English with the tourists yesterday.", r:["spoke"]},
+  {t:"In the test, I _____ (spell) all the words correctly.", r:["spelled","spelt"]},
+  {t:"Last summer we _____ (spend) two weeks in the south.", r:["spent"]},
+  {t:"The top _____ (spin) for a long time.", r:["spun"]},
+  {t:"I have _____ (see) that movie three times.", r:["seen"]},
+  {t:"She has _____ (sing) in the school choir.", r:["sung"]},
+  {t:"He has _____ (speak) to the principal.", r:["spoken"]},
+  {t:"They have _____ (sleep) in a tent.", r:["slept"]},
+  {t:"My mom _____ (send) the email two hours ago.", r:["sent"]},
+];
+let ORACIONES = ORACIONES_L1;
+// Listas de estudio (como las hojas del colegio)
+const LISTAS = {
+  l1:{nombre:"Lista 1: Be → Know", verbos:VERBOS_L1, oraciones:ORACIONES_L1},
+  l2:{nombre:"Lista 2: See → Spin", verbos:VERBOS_L2, oraciones:ORACIONES_L2}
+};
+let listaId = (()=>{ try{ return localStorage.getItem('verbos_lista')||'l1'; }catch(e){ return 'l1'; } })();
+if(!LISTAS[listaId]) listaId='l1';
+function aplicarLista(){
+  VERBOS = LISTAS[listaId].verbos; ORACIONES = LISTAS[listaId].oraciones;
+  document.querySelectorAll('.lista-btn').forEach(b=>b.classList.toggle('activa', b.dataset.l===listaId));
+  const t=document.getElementById('lista-nombre'); if(t) t.textContent = LISTAS[listaId].nombre+" · "+VERBOS.map(v=>v.inf).join(", ");
+  try{ pintarRecord(); }catch(e){}
+}
+function setLista(id){ if(!LISTAS[id]) return; listaId=id; try{ localStorage.setItem('verbos_lista', id); }catch(e){} aplicarLista(); }
+aplicarLista();
 // Trucos de memoria en español (mnemotecnias). Agrupan "familias" y asociaciones de sonido.
 const TRUCOS = {
   begin:"begin → began → begun. Las 3 empiezan igual: be-GIN, be-GAN, be-GUN. 🎵",
@@ -541,7 +623,17 @@ const TRUCOS = {
   bring:"Familia -OUGHT: bring → brought. 'Lo traje' = brought. 🫴",
   choose:"choose (2 oo) → chose (1 o) → chosen. 'Elegí'. ✅",
   can:"can → could → could. 'I could' = yo podía. 💪",
-  catch:"Familia -AUGHT (rima con bought): catch → caught. 'Lo atrapé' = caught. 🥎"
+  catch:"Familia -AUGHT (rima con bought): catch → caught. 'Lo atrapé' = caught. 🥎",
+  see:"see → SAW → SEEN. 'Sí, lo vi' = I saw it. Seen suena 'sin'. 👀",
+  send:"Familia -END → -ENT: send → sent → sent (como spend → spent). 📨",
+  shoot:"shoot (2 oo) → shot (1 o) → shot. ¡Chuta y marca! ⚽",
+  sing:"Vocales I → A → U: sing, sang, sung. ¡Canta la escala! 🎤",
+  sit:"Vocales I → A: sit → sat → sat. 'Sat' = me senté. 🪑",
+  sleep:"Doble EE pierde una E y gana T: sleep → slept (como keep → kept). 😴",
+  speak:"speak → spOke → spOken. La O viene a hablar. 🗣️",
+  spell:"Dos formas válidas: spelled (EE.UU.) o spelt (británico). 🔤",
+  spend:"Familia -END → -ENT: spend → spent (como send → sent). 💸",
+  spin:"Vocales I → U: spin → spun → spun. ¡Gira el trompo! 🌀"
 };
 function trucoDe(v){ return TRUCOS[v.inf] || ""; }
 
@@ -814,7 +906,7 @@ function explicar(){
 function cambiarNombre(){ document.getElementById('nombre').value=""; mostrar('s-bienvenida'); }
 
 /* ====== RECORD (localStorage) ====== */
-function claveRecord(){ return "verbos_"+nombre.toLowerCase(); }
+function claveRecord(){ return "verbos_"+nombre.toLowerCase()+(listaId==="l1"?"":"_"+listaId); }
 function getRecord(){ try{return JSON.parse(localStorage.getItem(claveRecord()))||{};}catch(e){return {};} }
 function pintarRecord(){
   const r = getRecord();
@@ -938,7 +1030,7 @@ function crearPregunta(tipo, v){
       {col:"inf", label:"Infinitive", val:v.inf, resp:[v.inf], es:false},
       {col:"pas", label:"Past Simple", val:(v.pasDisp||v.pas), resp:(v.pasAlt||[v.pas]), es:false},
       {col:"par", label:"Past Participle", val:parDisp(v), resp:parResp(v), es:false},
-      {col:"es", label:"Meaning", val:v.es, resp:v.es.split('/').map(s=>s.trim()), es:true}
+      {col:"es", label:"Meaning", val:v.es, resp:v.es.split('/').map(s=>s.replace(/\(.*?\)/g,'').trim()), es:true}
     ];
     const elegidas = baraja([0,1,2,3]).slice(0,2).sort((a,b)=>a-b);
     const blancos = elegidas.map((ci,k)=>({col:cols[ci].col, idx:k, resp:cols[ci].resp, es:cols[ci].es, label:cols[ci].label}));
@@ -1653,6 +1745,8 @@ document.addEventListener('keydown', e=>{
 // Entrar directo como el último jugador (Martín), saltando al menú.
 window.addEventListener('DOMContentLoaded', ()=>{
   try{ const j=localStorage.getItem('jugador'); if(j){ const el=document.getElementById('nombre'); if(el) el.value=j; empezar(); mostrar('s-menu'); } }catch(e){}
+  try{ const ql=new URLSearchParams(location.search).get('lista'); if(ql && LISTAS[ql]){ setLista(ql); mostrar('s-verbos-menu'); } }catch(e){}
+  aplicarLista();
   try{ const tid=new URLSearchParams(location.search).get('tema'); if(tid){ setTimeout(()=>{ try{ verTemas(); abrirTema(tid); }catch(e){} }, 250); } }catch(e){}
 });
 // Candado por suscripción: si el niño no tiene Inglés, muestra pantalla de bloqueo.
